@@ -88,6 +88,76 @@ def create_jam_nut_access(diameter=20.0, wall_thickness=5.0):
     return Circle(diameter / 2)
 
 
+def make_standard_corner(
+    corner_size=50.0,
+    m12_fit_dia=12.5,
+    wall_thickness=5.0,
+    jam_nut_access_dia=20.0,
+):
+    """
+    Generate standard corner with 4 M12 rod clamps
+
+    Args:
+        corner_size: Size of corner cube (default 50mm)
+        m12_fit_dia: M12 rod diameter with lumpy factor (default 12.5mm)
+        wall_thickness: Wall thickness (default 5.0mm)
+        jam_nut_access_dia: Diameter of jam nut access holes (default 20.0mm)
+
+    Returns:
+        build123d Part object for corner
+    """
+    # Create corner cube base
+    corner = Box(corner_size, corner_size, corner_size)
+
+    # Rod positions from center of corner
+    rod_offset = corner_size / 2 - wall_thickness
+
+    # Create M12 rod holes (cylinders to subtract)
+    # X-axis holes (through front and back faces)
+    for y_pos in [rod_offset, -rod_offset]:
+        rod_hole = Cylinder(m12_fit_dia / 2, corner_size)
+        rod_hole = rod_hole.moved(Location((0, y_pos, 0)))
+        corner -= rod_hole
+
+    # Y-axis holes (through left and right faces)
+    for x_pos in [rod_offset, -rod_offset]:
+        rod_hole = Cylinder(m12_fit_dia / 2, corner_size)
+        rod_hole = rod_hole.moved(Location((x_pos, 0, 0)))
+        # Rotate 90 degrees for Y-axis holes
+        rod_hole = rod_hole.rotate(Axis.Z, 90)
+        corner -= rod_hole
+
+    # Jam nut access holes (shallow holes on each face)
+    # X faces
+    for y_pos in [rod_offset, -rod_offset]:
+        access_hole = Cylinder(jam_nut_access_dia / 2, wall_thickness)
+        # Move to face position
+        access_hole = access_hole.moved(Location((corner_size / 2, y_pos, 0)))
+        # Rotate to point inward
+        access_hole = access_hole.rotate(Axis.Z, 90)
+        corner -= access_hole
+
+        # Opposite face
+        access_hole = Cylinder(jam_nut_access_dia / 2, wall_thickness)
+        access_hole = access_hole.moved(Location((-corner_size / 2, y_pos, 0)))
+        access_hole = access_hole.rotate(Axis.Z, 90)
+        corner -= access_hole
+
+    # Y faces
+    for x_pos in [rod_offset, -rod_offset]:
+        access_hole = Cylinder(jam_nut_access_dia / 2, wall_thickness)
+        # Move to face position
+        access_hole = access_hole.moved(Location((x_pos, corner_size / 2, 0)))
+        corner -= access_hole
+
+        # Opposite face
+        access_hole = Cylinder(jam_nut_access_dia / 2, wall_thickness)
+        access_hole = access_hole.moved(Location((x_pos, -corner_size / 2, 0)))
+        corner -= access_hole
+
+    return corner
+
+
 def make_motorized_corner(
     location="front_left",
     mirror=False,

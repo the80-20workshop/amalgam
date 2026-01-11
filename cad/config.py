@@ -38,6 +38,11 @@ SKELETON_X = BUILD_VOLUME["X"] + (X_OVERHANG * 2) + 40
 SKELETON_Y = BUILD_VOLUME["Y"] + 120
 SKELETON_Z = BUILD_VOLUME["Z"] + 50  # Reduced from 80
 
+# Corner Design Parameters
+CORNER_SIZE = 50.0              # Size of corner cube (mm)
+WALL_THICKNESS = 5.0            # Wall thickness of corner parts (mm)
+JAM_NUT_ACCESS_DIA = 20.0       # Diameter for jam nut access holes (mm)
+
 # Vertical Rod Positions
 FRONT_LEFT_V = True  # VFL
 FRONT_CENTER_V = True  # VFC (optional center rod)
