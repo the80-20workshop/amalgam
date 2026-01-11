@@ -28,21 +28,42 @@
 **Implementation:**
 ```python
 # config.py
-CORNER_TYPE = "STANDARD"  # Plain corner bracket
+CORNER_TYPE = "Z_MOUNT"  # 3 corners have Z-motor integrated
 # OR
-CORNER_TYPE = "Z_MOUNT"  # Corner with Z-puck integrated
+# CORNER_TYPE = "STANDARD"  # Plain corner bracket (not for Neo-Darwin baseline)
 
-Z_MOUNT_CORNERS = [FRONT_LEFT, BACK_LEFT, BACK_CENTER]
-# Front-right corner has NO Z-motor
+# CORNERS TOTAL: 4 parts
+Z_MOUNT_CORNERS = [
+    "FRONT_LEFT",    # Z1 motor
+    "FRONT_RIGHT",   # Z2 motor
+    "BACK_CENTER"     # Z3 motor (on vertical rod)
+]
+# BACK_LEFT = standard corner (no Z-motor)
+# BACK_RIGHT = NOT EXIST (Z3 is center rod, not corner)
 ```
 
 **Corner Variants:**
-1. **Standard corner**: No Z-motor (front-right corner)
-2. **Z-mount corner**: Corner bracket + Z-puck combined (3 corners)
+1. **Z-mount corner**: Corner bracket + Z-motor mount integrated
+2. **Standard corner**: Back-left corner (no Z-motor)
 
 **Parts count:**
-- **Before**: 8 corners + 3 Z-pucks = 11 parts
-- **After**: 3 Z-mount corners + 1 standard corner = 4 parts
+- **Total corners**: 4 parts (not 8!)
+  - Front Left: Z-mount corner + Z1 motor
+  - Front Right: Z-mount corner + Z2 motor
+  - Back Center: Z-mount puck on vertical rod + Z3 motor
+  - Back Left: Standard corner (no motor)
+
+**Why only 4 corners?**
+- Rectangular frame has 4 corners
+- Z1 & Z2: Front corners (integrated)
+- Z3: Back-center vertical rod (NOT a corner)
+- Back-left: Standard corner (completes rectangle)
+
+**Key insight**:
+- Neo-Darwin does NOT use 8 corner brackets like Voron
+- Voron uses 8 corners + 3 Z-motors = 11 parts
+- Neo-Darwin uses 4 corners total (3 Z-mount + 1 standard)
+- Fewer parts = simpler, less tolerance stacking
 
 **Recommendation: YES - integrate Z-pucks into corner brackets!**
 
