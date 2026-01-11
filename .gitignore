@@ -8,6 +8,8 @@ cad/.venv/
 cad/venv/
 cad/__pycache__/
 cad/parts/__pycache__/
+cad/include/__pycache__/
+cad/neo_darwin_cad.egg-info/
 
 # Reference documents (large PDFs)
 docs/reference/*.pdf
