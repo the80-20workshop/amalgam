@@ -32,10 +32,12 @@ The wizard will guide you through:
 - **Windows**: Via Git Bash, WSL, or PowerShell
 
 ### Software
-- **Python 3.9+**: Required for running build123d scripts
+- **Python 3.14+**: Required for running build123d scripts
   - [macOS](https://www.python.org/downloads/) - Download installer
   - [Linux](https://docs.python.org/3/installing/) - Use system packages
   - [Windows](https://www.python.org/downloads/) - Check "Add to PATH"
+
+**Note:** Python 3.14+ is recommended for build123d 0.9.x compatibility
 
 ### Hardware
 - ~500MB free disk space (for venv + dependencies)
@@ -125,7 +127,8 @@ source .venv/bin/activate
 .venv\Scripts\Activate.ps1
 
 # Step 3: Install dependencies (if needed)
-pip install -r requirements.txt
+# Uses pyproject.toml (modern standard)
+pip install -e .
 
 # Step 4: Configure your printer (or edit config.py directly)
 ./configure.py
@@ -241,8 +244,8 @@ sudo dnf install python3 python3-venv python3-pip
 # Make sure venv is activated
 source .venv/bin/activate
 
-# Reinstall dependencies
-pip install --force-reinstall -r requirements.txt
+# Reinstall dependencies (uses pyproject.toml)
+pip install --force-reinstall -e .
 ```
 
 ### Out of Memory
@@ -295,7 +298,7 @@ cad/
 ├── stl/               # Generated STL files (output)
 ├── config.py           # Your configuration (gitignored)
 ├── config.py.example   # Reference configuration
-├── requirements.txt    # Python dependencies
+├── pyproject.toml    # Python dependencies (modern standard)
 ├── setup.sh          # Automated setup wizard
 ├── configure.py       # Interactive configuration
 └── build.sh          # Part builder

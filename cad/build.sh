@@ -16,7 +16,7 @@ NC='\033[0m' # No Color
 CAD_DIR="parts"
 STL_DIR="stl"
 VENV_DIR=".venv"
-REQUIREMENTS_FILE="requirements.txt"
+PYPROJECT_FILE="pyproject.toml"
 
 # Parts to build (each part: name:file:args)
 # Format: "display_name:python_file:cli_args"
@@ -80,9 +80,21 @@ ensure_dependencies() {
 
         # Try uv first if available
         if command -v uv &> /dev/null; then
-            uv pip install -q -r "$REQUIREMENTS_FILE"
+            # uv prefers pyproject.toml (modern standard)
+            if [ -f "$PYPROJECT_FILE" ]; then
+                uv pip install -q -e .
+            else
+                echo -e "${RED}Error: $PYPROJECT_FILE not found${NC}"
+                exit 1
+            fi
         else
-            pip install -q -r "$REQUIREMENTS_FILE"
+            # Fallback to pip with pyproject.toml
+            if [ -f "$PYPROJECT_FILE" ]; then
+                pip install -q -e .
+            else
+                echo -e "${RED}Error: $PYPROJECT_FILE not found${NC}"
+                exit 1
+            fi
         fi
 
         echo -e "${GREEN}Dependencies installed${NC}"

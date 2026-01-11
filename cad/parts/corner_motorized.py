@@ -9,8 +9,31 @@ Usage: python corner_motorized.py [LOCATION] [ORIENTATION]
 
 import sys
 
-# --- IMPORT FROM CORRECT CONFIG LOCATION ---
-from cad.config import *
+sys.path.insert(0, "..")
+
+# --- IMPORTS ---
+try:
+    from build123d import *
+
+    BUILD123D_AVAILABLE = True
+except ImportError:
+    BUILD123D_AVAILABLE = False
+    print("Error: build123d not available. Run: pip install build123d")
+
+from config import *
+
+
+# --- HELPER FUNCTION FOR EXPORTING STL ---
+def export_stl(part, filename):
+    """Export part to STL file"""
+    try:
+        from build123d import export_stl as export_stl_func
+
+        export_stl_func(part, filename)
+        print(f"Exported: {filename}")
+    except ImportError:
+        print(f"Warning: export_stl not available, skipping file export")
+
 
 # --- PARAMETERS FROM CONFIG ---
 m12_fit_dia = M12_FIT_DIA
