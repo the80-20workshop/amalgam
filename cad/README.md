@@ -6,12 +6,20 @@ This directory contains all CAD-related files for Neo-Darwin 3D printer project.
 
 | Situation | What to Run |
 |-----------|--------------|
-| New user, first clone | `./setup.sh` (full setup) |
+| New user, first clone | `./setup.sh` (creates config + builds) |
 | Have config.py, just build | `./build.sh build_all` |
 | Want to change config | `./configure.py` then `./build.sh build_all` |
-| Just updated repo, no config changes | `./build.sh build_all` |
+| Just updated repo | `./build.sh build_all` |
 
-## Quick Start
+## Quick Start - For Testing
+
+If you want to test with only the existing parts:
+
+```bash
+./build.sh build_all
+```
+
+## Quick Start - Full Setup
 
 ### Option 1: First-Time Setup (Recommended for New Users)
 

@@ -192,10 +192,15 @@ See `config.py.example` for all available options.
 ./build.sh build_all
 ```
 
+The build script automatically:
+- Discovers all Python parts in `parts/` directory
+- Checks for and activates `.venv`
+- Installs dependencies if not found
+
 ### Build Specific Parts
 
 ```bash
-./build.sh build corner_front_left corner_front_right
+./build.sh build corner_front_left
 ```
 
 ### List Available Parts
@@ -203,6 +208,19 @@ See `config.py.example` for all available options.
 ```bash
 ./build.sh list
 ```
+
+This will show all available parts, grouped by category:
+- Frame corners, extruder parts, bed components, etc.
+
+### Advanced: Test Mode
+
+For testing with only a subset of parts:
+
+```bash
+TEST_MODE=true ./build.sh build_all
+```
+
+This uses only the corner motorized parts instead of discovering all files.
 
 ### Clean STL Directory
 

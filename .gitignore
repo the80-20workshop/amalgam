@@ -8,3 +8,6 @@ cad/.venv/
 cad/venv/
 cad/__pycache__/
 cad/parts/__pycache__/
+
+# Reference documents (large PDFs)
+docs/reference/*.pdf
