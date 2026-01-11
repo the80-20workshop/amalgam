@@ -17,6 +17,8 @@ NC='\033[0m' # No Color
 # Config
 CAD_DIR="cad/parts"
 STL_DIR="cad/stl"
+
+# Parts to build
 PARTS=(
     "corner_front_left"
     "corner_front_right"
@@ -31,14 +33,6 @@ PARTS=(
     "top_corner_br"
 )
 
-# Voron-style names (optional alternative)
-VORON_NAMES=(
-    "z_motor_kit"
-    "z_motor_bracket"
-    "corner_bracket"
-    "top_frame_corner"
-)
-
 # Help function
 show_help() {
     echo "Neo-Darwin Master Build Script"
@@ -46,24 +40,16 @@ show_help() {
     echo "Usage: $0 [command] [args...]"
     echo ""
     echo "Commands:"
-    echo "  build [PARTS...]    Build specified parts (chaining supported)"
+    echo "  build [PARTS...]    Build specified parts"
     echo "  build_all              Build all parts"
     echo "  list                    List all available parts"
     echo "  clean                   Delete all STLs"
     echo ""
     echo "Parts available:"
     for part in "${PARTS[@]}"; do
-        echo "    $part"
+        echo "  $part"
     done
-    echo ""
-    echo "Examples:"
-    echo "  $0 build corner_front_left corner_front_right"
-    echo "  $0 build_all"
-    echo ""
-    echo "Voron-style parts (not implemented yet):"
-    for name in "${VORON_NAMES[@]}"; do
-        echo "    $name"
-    done
+}
 
 # List all parts
 list_parts() {
@@ -75,21 +61,33 @@ list_parts() {
 
 # Build single part
 build_part() {
-    local part=$1
+    local part="$1"
 
     echo -e "${BLUE}Building: $part${NC}"
 
-    # Try motorized corner script first (supports location + mirror)
-    if [[ $part == corner_* ]]; then
-        # Extract location from name (front_left, front_right)
-        if [[ $part == "corner_front_left" ]]; then
-            python cad/parts/corner_motorized.py front_left
-        elif [[ $part == "corner_front_right" ]]; then
-            python cad/parts/corner_motorized.py front_right
-        else
-            echo -e "${YELLOW}Using basic part script${NC}"
-            python cad/parts/${part}.py
+    # Check if file exists
+    if [ ! -f "$CAD_DIR/${part}.py" ]; then
+        echo -e "${RED}Error: File not found: $CAD_DIR/${part}.py${NC}"
+        return 1
     fi
+
+    # Change to cad directory
+    cd "$(dirname "$CAD_DIR/${part}.py")" || return 1
+
+    # Run Python script
+    python "${part}.py"
+
+    # Check if STL was created
+    if [ -f "../../$STL_DIR/${part}.stl" ]; then
+        echo -e "${GREEN}Success: ${part}.stl created${NC}"
+        local stl_size=$(du -h "../../$STL_DIR/${part}.stl" | cut -f1)
+        echo -e "  Size: $stl_size${NC}"
+    else
+        echo -e "${RED}Failed: ${part}.stl not created${NC}"
+        return 1
+    fi
+
+    cd - > /dev/null
 }
 
 # Build all parts
@@ -109,12 +107,9 @@ build_all() {
 
     echo ""
     echo -e "${GREEN}Build summary:${NC}"
-    echo -e " Success: $success_count / $total${NC}"
+    echo -e "  Success: $success_count / $total${NC}"
     echo ""
-    echo -e "${BLUE}STL location: $STL_DIR/${NC}"
-
-    # Show what was generated
-    ls -lh "$STL_DIR" 2>/dev/null | head -20
+    echo -e "${BLUE}STL files location: $STL_DIR/${NC}"
 }
 
 # Clean all STLs
