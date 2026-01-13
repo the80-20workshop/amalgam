@@ -42,3 +42,61 @@ Moving the electronics to the base means your wires have to travel further. This
 **Total Estimated:** ~$270 AUD (leaving you $30 for a meat pie and some extra zip ties).
 
 **Since you're using Triple Z motors, would you like me to explain how to wire them?** (You can either wire them in series to one driver or use a board with enough independent drivers to auto-level the bed).
+
+Establishing your intent: You are refining the **Electronics & PSU mounting strategy** for the Neo-Darwin. You want to compare mounting directly to the **Laminated MDF Plinth** (Reference Spec) versus a **printed standalone frame** (Modular Puck) that sits inside the bottom square, especially regarding vibration isolation and the role of rubber pads.
+
+### 1. Mounting to the Baseboard vs. Printed Frame
+
+The choice between these two methods depends on whether you prioritize **Massive Damping** or **Modular Portability**.
+
+* **The Reference Spec (Mounting to MDF Plinth):**
+* **Logic:** Mounting the electronics (Mainboard, RPi) and the PSU directly to the laminated MDF baseboard is the most "industrial" solution.
+* **Vibration Sink:** The MDF plinth acts as a massive "vibration sink." By bolting the PSU and MCU to this bedrock, you ensure they are not vibrating in sympathy with the frame’s motion.
+* **Heat Management:** A large MDF board provides more surface area and airflow "headroom" within the bottom square compared to a cramped printed enclosure.
+
+
+* **The Alternative (Printed "Brain Puck" Frame):**
+* **Logic:** For users without an MDF base plate, you provide a printed "Puck" or frame that holds the electronics. This "Brain Puck" sits on the same surface as the M12 frame, connected only by the wiring loom.
+* **Benefit:** This is excellent for **portability** and **Tier 1/2 builders** who may want to pull the entire electronics suite out for maintenance without unbolting the printer frame.
+* **Downside:** Because it is lightweight plastic, it does not have the "inertial authority" of the MDF board. It may move or vibrate slightly if not secured to the workbench.
+
+
+
+---
+
+### 2. The Physics of Vibration: Bolting "Through" Rubber Pads
+
+You asked if bolting the frame *through* the rubber pads into the MDF is better than bolting the frame directly to the board. This is a common point of confusion in vibration physics.
+
+* **Isolation vs. Coupling:**
+* **Direct Bolting (Coupling):** If you bolt the M12 frame directly to the MDF, you are "coupling" them. The frame's vibration is instantly shared with the MDF’s mass. Because the MDF is laminated and heavy, it kills the vibration quickly (Constrained Layer Damping).
+* **Bolting Through Rubber (Isolation):** If you place rubber between the frame and the board and then bolt *through* it, you create a "tuned mass damper."
+
+
+* **The Recommendation:** * For a **"Tractor" build**, **Direct Coupling** to the MDF is often preferred for the frame. You want the frame to be as rigid as possible to the baseboard so they act as one single, immovable object.
+* Use the **Rubber Pads** underneath the **MDF Plinth** itself. This isolates the entire 20kg+ machine from your desk, preventing the desk from becoming a sounding board.
+
+
+
+---
+
+### 3. Is the "Standalone Frame" better?
+
+Is building a separate frame for electronics and placing it inside the base square "even better" than mounting to the board?
+
+* **Engineering Verdict:** It is **better for serviceability**, but **worse for vibration.**
+* **The Hybrid Approach:** The best "Neo-Darwin" solution is to mount the electronics to a **Printed "Puck"** first, and then **screw that Puck into the MDF baseboard**.
+* This gives you the best of both worlds: you get the industrial damping of the MDF and the modular "Puck" system that allows for easy hardware swaps if you upgrade your mainboard later.
+
+
+
+| Feature | Mounted to MDF (Reference) | Standalone Printed Frame |
+| --- | --- | --- |
+| **Vibration Damping** | **Superior** (Uses Plinth mass) | Poor (Relies on plastic mass) |
+| **Maintenance** | Permanent (Harder to remove) | **Excellent** (Can be moved) |
+| **Cost** | Minimal (Screws) | Moderate (Filament/Time) |
+| **Airflow** | Open and clean | Can be restricted if enclosed |
+
+**"The iron provides the squareness; the MDF provides the silence; the Puck provides the modularity."**
+
+**Would you like me to draft the specific "Electronics Puck" assembly instructions for the manual?**
