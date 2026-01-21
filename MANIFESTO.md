@@ -210,6 +210,8 @@ To bridge the gap between "Standard Flow" and "High Flow" without the reliabilit
 
 ---
 
+
+
 ### 🛒 The "Verified" Component Shopping List
 
 Because the Neo-Darwin is a **Mechanically Forgiving, Cognitively Demanding** build, sourcing the right "Vitamins" is the difference between a "Forever Machine" and an Ender 3 tuning nightmare.
@@ -392,6 +394,17 @@ In 2026, you can buy a 3D-printing "appliance" (Bambu/Prusa) or you can build a 
 > **"If it doesn't slide, it doesn't glide."**
 
 Some modern appliances use V-slot rollers because they are cheap to manufacture, not because they are better. The Neo-Darwin returns to **Hardened Steel Smooth Rods** for one reason: **Dimensional Authority.** 
+
+#### Rod stiffness sets the accuracy ceiling of the printer.
+Static rod sag introduces geometric error that cannot be corrected by input shaping, pressure advance, or bed meshing. For a realistic direct-drive toolhead such as a Pitan extruder with a NEMA17 motor (~600 g), 8 mm smooth rods at common Darwin spans can deflect on the order of 0.06 mm—already a significant fraction of a typical layer height. This error exists even at zero speed and directly affects first-layer consistency and dimensional accuracy.
+
+The Neo-Darwin is therefore designed around mechanical honesty rather than optimistic assumptions.
+Rod diameter and span are chosen to remain stiff under a realistic worst-case toolhead, making lighter extruders and higher speeds optional improvements rather than requirements. If the machine performs correctly with a Pitan + NEMA17, it will perform reliably with almost anything else. This prioritises robustness, scavenged-part compatibility, and predictable behaviour over software-dependent compensation.
+
+
+Acceleration loads are equal to gravity loads at modern motion settings.
+With a realistic direct-drive toolhead, inertial forces at 8–10k mm/s² match or exceed static sag forces, doubling effective rod deflection at mid-span. This bending is quasi-static during acceleration ramps and cannot be corrected by input shaping. The Neo-Darwin therefore treats acceleration as a structural design input, not a tuning afterthought.
+For a realistic direct-drive toolhead (~600 g), acceleration-induced bending equals gravity-induced sag at modern motion settings. Using first-order beam theory, 8 mm rods are mechanically limited to ~5k mm/s² if geometric error is to remain negligible, while 10 mm rods comfortably support ~10–12k mm/s². This relationship scales with rod diameter to the fourth power and span length to the third, making stiffness and compactness vastly more effective than chasing lighter toolheads.
 
 
 #### **⚙️ Linear Motion: Quick Reference**
