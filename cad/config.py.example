@@ -7,11 +7,17 @@ Parametric Logic for High-Mass, Low-Cost 3D Printing.
 # Options: "PRUSA_CLONE", "ENDER_3", "SCAVENGED"
 DONOR_TYPE = "ENDER_3"
 
-# --- 2. THE SKELETON (M12 RODS) ---
-M12_NOMINAL_DIA = 12.0
+# --- 2. THE SKELETON (M10 RODS) ---
+# M10 chosen over M12: 3x rigidity of M8, standard 17mm wrench, easier to cut
+# See ADR-001 for full rationale
+M10_NOMINAL_DIA = 10.0
 # Set 0.2 for Zinc, 0.5+ for Galvanized (The "Lumpy Factor")
 LUMPY_FACTOR = 0.5
-M12_FIT_DIA = M12_NOMINAL_DIA + LUMPY_FACTOR
+M10_FIT_DIA = M10_NOMINAL_DIA + LUMPY_FACTOR
+
+# Legacy alias for compatibility
+M12_NOMINAL_DIA = M10_NOMINAL_DIA  # DEPRECATED: Use M10_NOMINAL_DIA
+M12_FIT_DIA = M10_FIT_DIA  # DEPRECATED: Use M10_FIT_DIA
 
 # --- 3. MOTION FORK (SMOOTH RODS) ---
 # 8.0 for salvage, 10.0 for "Neo" Standard
@@ -20,15 +26,16 @@ BEARING_TYPE = "LM10UU" if SMOOTH_ROD_DIA == 10.0 else "LM8UU"
 
 # --- 4. TIER DEFINITIONS ---
 TRIPLE_Z = True  # True = Independent 3-point Z-Tilt
-EXTRUDER_TYPE = "WADE"  # The Signature 13:43 Geared Torque Monster
+EXTRUDER_TYPE = "PITAN"  # 3:1 geared, single-drive (see ADR-019)
+# Options: "PITAN" (reference), "WADE" (heritage), "MK8" (ultra-scavenger)
 HOTEND_DONOR = "ENDER_MK8"
 
 # --- 5. BUILD VOLUME ---
 BUILD_VOLUME = {"X": 250, "Y": 250, "Z": 250}
 
 # --- 6. DYNAMIC FRAME CALCULATIONS ---
-# Greg's Wade requires a significant "Gear Overhang" on the X-axis
-X_OVERHANG = 50.0 if EXTRUDER_TYPE == "WADE" else 25.0
+# Extruder overhang on X-axis (Wade needs more than Pitan)
+X_OVERHANG = 50.0 if EXTRUDER_TYPE == "WADE" else 35.0 if EXTRUDER_TYPE == "PITAN" else 25.0
 
 # --- 6.1 FRAME GEOMETRY (Neo-Darwin M12 Frame) ---
 # Frame has 8 vertical rods (4 front, 4 back) with horizontal top/bottom rods

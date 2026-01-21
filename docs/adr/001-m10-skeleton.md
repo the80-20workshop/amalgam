@@ -1,27 +1,47 @@
-# ADR-001: M12 Threaded Rod Skeleton
+# ADR-001: M10 Threaded Rod Skeleton
 
 ## Status
-Accepted
+Accepted (Updated: M12 → M10)
 
 ## Context
 The Neo-Darwin requires a rigid frame that maintains dimensional accuracy over years of operation. In 2026, there are multiple frame options available:
 - Aluminum extrusions (2020, 2040)
 - V-slot profiles
-- M12 threaded rods (RepRap heritage)
+- M8/M10/M10 threaded rods (RepRap heritage)
 - 2020 extrusion with printed corners
 
 Modern "appliance" printers often use aluminum extrusions for lightweight frames and high-speed operation. However, this approach creates machines that can be expensive, proprietary, or require complex assembly.
 
-## Decision
-We choose **M12 threaded rods** as the primary frame material for the Neo-Darwin.
+### Original Decision (M12)
+The original ADR specified M10 threaded rods, prioritizing maximum rigidity. After deeper analysis documented in `docs/decisions/tractor_01_frame_and_assembly.md`, we reconsidered this choice.
 
-### Why M12?
-1. **Mass Damping**: The heavy steel skeleton naturally dampens high-frequency vibrations that cause ringing
-2. **Rigidity**: Once tightened with jam nuts, M12 rods create a non-flexing structure that stays square
-3. **Scalability**: Threaded rods can be cut to any length without specialized tools
-4. **Accessibility**: Available at any hardware store globally
-5. **Cost**: M12 rods cost ~$45 AUD for a complete frame
-6. **Parametric Adaptability**: The `lumpy_factor` in config.py accounts for thread variations (Zinc vs Galvanized)
+## Decision
+We choose **M10 threaded rods** as the reference specification for the Neo-Darwin frame skeleton.
+
+### Why M10 Over M12?
+
+| Feature | M8 | M10 | M12 |
+|---------|-----|-----|-----|
+| Cross-section | ~50 mm² | ~78 mm² | ~113 mm² |
+| Rigidity vs M8 | 1× | 3× | 5× (overkill) |
+| Weight/Meter | ~0.3 kg | ~0.5 kg | ~0.7 kg |
+| Nut Size (Hex) | 13mm | 17mm | 19mm |
+| Printability | Easy | Easy | Can make brackets bulky |
+
+1. **Standard 17mm Wrench**: Universally available (vs 19mm for M12 which is less common)
+2. **Easier to Cut**: Hacksaws handle M10 more easily than M12
+3. **Smaller Printed Brackets**: M10 fits in more compact corner designs
+4. **Scavenger-Friendly**: Common in automotive applications—excellent for salvaging
+5. **Adequate Rigidity**: 3× the rigidity of M8 is plenty for a 235×235 build volume
+6. **M12 is Overkill**: 5× M8 rigidity provides no practical benefit at our target speeds
+
+### Why Not M8?
+M8 remains viable for ultra-budget scavenger builds, but:
+- Requires very careful corner design to maintain rigidity
+- Less margin for error in assembly
+- May flex at larger build volumes (>250mm)
+
+The design remains **parametric**—users can build in M8 or M12 if desired.
 
 ## Consequences
 
@@ -42,9 +62,9 @@ We choose **M12 threaded rods** as the primary frame material for the Neo-Darwin
 
 ### Scenario A: Buying New (Recommended for Tier 3+)
 - **Parts needed**:
-  - M12 threaded rods (Bright Zinc or Hot-Dip Galvanized)
-  - M12 hex nuts (for jam nuts)
-  - M12 flat washers
+  - M10 threaded rods (Bright Zinc or Hot-Dip Galvanized)
+  - M10 hex nuts (for jam nuts)
+  - M10 flat washers
   - 3D-printed corner brackets
 - **Cost implication**: Low (~$45-55 AUD for skeleton)
 - **Donor compatibility**: All donors
@@ -52,17 +72,17 @@ We choose **M12 threaded rods** as the primary frame material for the Neo-Darwin
 
 ### Scenario B: Salvaging from Photocopier/Large Equipment
 - **Parts needed**:
-  - Scavenged M12 rods (verify straightness)
+  - Scavenged M10 rods (verify straightness)
   - May need to clean threads
   - 3D-printed corner brackets
 - **Cost implication**: Very Low ($0-10 AUD for nuts/washers)
-- **Donor compatibility**: Only if large equipment has M12 rods
+- **Donor compatibility**: Only if large equipment has M10 rods
 - **Build volume**: Limited to scavenged lengths
 - **Note**: May have higher `lumpy_factor` due to worn threads
 
 ### Scenario C: Converting from Donor with Aluminum Frame (Ender 3, etc.)
 - **Parts needed**:
-  - Must buy new M12 rods (aluminum not compatible)
+  - Must buy new M10 rods (aluminum not compatible)
   - Corner brackets replace existing frame parts
   - Some donor hardware may be incompatible
 - **Cost implication**: Medium (~$45-55 AUD)

@@ -17,9 +17,9 @@ ADRs are numbered chronologically in order of creation (000-018). However, for u
 | ADR | Title | Status | Summary |
 |-----|-------|--------|---------|
 | [ADR-000](000-engineering-philosophy.md) | Engineering Philosophy (20 Years of RepRap Wisdom) | Accepted | Core principles: Mass, Software, Gearing, Neo-Darwin Square trade-offs |
-| [ADR-001](001-m12-skeleton.md) | M12 Threaded Rod Skeleton | Accepted | Heavy steel frame for mass damping and rigidity |
-| [ADR-002](002-greg-wade.md) | Greg's Wade Geared Extruder | Accepted | 5.22:1 geared extruder for "Tractor Torque" |
-| [ADR-003](003-smooth-rods.md) | Smooth Rods vs Linear Rails | Accepted | 10mm precision ground rods over 8mm salvage, linear rails for speed experiments |
+| [ADR-001](001-m10-skeleton.md) | M10 Threaded Rod Skeleton | Accepted | Steel frame for mass damping and rigidity (M10 over M12 for practicality) |
+| ~~[ADR-002](002-greg-wade.md)~~ | ~~Greg's Wade Geared Extruder~~ | **Archived** | Superseded by ADR-019 (Pitan) |
+| [ADR-003](003-smooth-rods.md) | Smooth Rods vs Linear Rails | Accepted | M10 for X-Y reference spec, M8 sufficient for Z; linear rails for speed experiments |
 | [ADR-004](004-v6-cht.md) | E3D V6 Hotend with CHT Nozzle | Accepted | Standard V6 with CHT clone nozzle for high flow without ooze |
 
 ### Motion & Leveling ADRs
@@ -55,11 +55,16 @@ ADRs are numbered chronologically in order of creation (000-018). However, for u
 |-----|-------|--------|---------|
 | [ADR-017](017-parametric-cad-system.md) | Parametric CAD System | Accepted | build123d over OpenSCAD/FreeCAD/TinkerCAD for BREP and Python ecosystem |
 | [ADR-018](018-documentation-system.md) | Documentation & Assembly Guide System | Accepted | Quarto for literate CAD, professional PDFs, conditional content |
+| [ADR-019](019-pitan-extruder.md) | Pitan Extruder | Accepted | Single-drive, scavengeable NEMA17, $4-10 cost (supersedes ADR-002) |
 
 ## ADR Categories
 
-### Core Hardware (001-004)
+### Core Hardware (001, 003-004, 019)
 Frame, extruder, hotend, and motion system - the physical foundation of the machine.
+- ADR-001: M10 Frame Skeleton
+- ADR-003: Smooth Rods (M10 X-Y, M8 Z)
+- ADR-004: E3D V6 + CHT Hotend
+- ADR-019: Pitan Extruder (Reference Spec)
 
 ### Motion & Leveling (005, 007-010)
 Z-axis leveling, CAN bus, modular bed, and Z-motor mounting - kinematic accuracy and foundation.
@@ -78,12 +83,14 @@ CAD system and documentation - parametric design and assembly guides.
 If you're new to Neo-Darwin and want to understand the engineering decisions:
 
 1. **Engineering Philosophy** → ADR-000
-2. **Hardware Foundations** → ADR-001, 002, 004
-3. **Motion System** → ADR-003, 005
+2. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend)
+3. **Motion System** → ADR-003 (Smooth Rods), ADR-005 (Triple-Z)
 4. **Electronics** → ADR-012, 013
 5. **Probing** → ADR-014
 6. **Advanced Features** → ADR-007, 009, 011, 015, 016
 7. **Tooling** → ADR-017, 018
+
+Note: ADR-002 (Greg's Wade) is archived—see ADR-019 for the current extruder decision.
 
 ## ADR Template
 

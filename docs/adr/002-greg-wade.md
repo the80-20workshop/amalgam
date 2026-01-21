@@ -1,7 +1,11 @@
 # ADR-002: Greg's Wade Geared Extruder
 
 ## Status
-Accepted
+**Archived** — Superseded by [ADR-019: Pitan Extruder](019-pitan-extruder.md)
+
+> **Note:** This ADR is preserved for historical reference. The Greg's Wade remains
+> a valid "Heritage Option" for PLA/PETG-only builds, but the Pitan is now the
+> Reference Specification. See ADR-019 for the current extruder decision.
 
 ## Context
 The extruder is the "heart" of a 3D printer, responsible for pushing filament through the hotend. In 2026, there are multiple extruder options:
