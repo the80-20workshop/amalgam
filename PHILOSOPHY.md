@@ -89,10 +89,13 @@ If you were to sum up the wisdom of those 20 years:
 
 ## The Lineage
 
-* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** The origin. The first practical self-replicating 3D printer. We carry its name forward.
-* **[Prusa i3 Rework (2013)](https://www.thingiverse.com/thing:119616):** The source of our geared extruder heritage.
-* **[RepRap Mendel Revisited (2024)](https://www.thingiverse.com/thing:6783269):** A modern nod to heavy threaded-rod skeletons.
-* **[The 100](https://github.com/MSzturc/the100)/[The Rook](https://github.com/Kanrog/Rook):** Box-frame cousins who proved Klipper makes DIY frames truly accurate.
+We stand on the shoulders of giants. Each project contributed specific technical elements:
+
+* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** The origin. Box-frame threaded-rod skeleton. We carry its name and its frame philosophy forward.
+* **[RepRap Mendel (2009)](https://reprap.org/wiki/Mendel) / [Mendel i2](https://reprap.org/wiki/Prusa_Mendel):** The "plough" X-carriage sled design riding on dual rods.
+* **[Prusa i3 Rework (2013)](https://www.thingiverse.com/thing:119616):** Greg's Wade geared extruder—the ancestor of our Pitan.
+* **[RepRap Mendel Revisited (2024)](https://www.thingiverse.com/thing:6783269):** Modern validation that heavy threaded-rod skeletons still work.
+* **[The 100](https://github.com/MSzturc/the100) / [The Rook](https://github.com/Kanrog/Rook):** Box-frame Klipper builds proving software intelligence makes cheap hardware perform.
 
 ---
 
@@ -135,18 +138,24 @@ In a world of proprietary "Cloud" appliances, we choose the Red Pill. We choose 
 
 The Neo-Darwin is not an island; it is a 2026 entry into a long-running conversation about mechanical sovereignty.
 
-### Heritage Builds
-* **[RepRap Mendel Revisited](https://www.thingiverse.com/thing:6783269):** Validates our skeleton choice with M12 threaded rods
-* **[Voron Legacy](https://vorondesign.com/voron_legacy):** Celebrates old-school aesthetics with modern firmware
-* **[RepRap Micron](https://reprap.org/wiki/RepRapMicron):** Returns to threaded-rod roots for micro-precision
+### Technical Ancestors
 
-### Performance Scavengers
-* **[The 100](https://github.com/MSzturc/the100):** Proves software intelligence makes cheap parts perform like elite hardware
-* **[The Rook](https://github.com/Kanrog/Rook):** Prioritizes ease of service and reliability
+Each of these projects contributed specific technical DNA to Neo-Darwin:
 
-### North Stars
-* **[Voron Trident](https://vorondesign.com/voron_trident):** Gold standard for 3-point kinematic leveling
-* **[Rat Rig V-Core 4](https://v-core4.ratrig.com/):** Pinnacle of open-source hybrid motion
+| Project | What We Borrowed |
+|---------|------------------|
+| **[Voron Legacy](https://vorondesign.com/voron_legacy)** | Dual 8mm rods with vertical stacking for X-Y gantry (ADR-021) |
+| **[Voron Trident](https://vorondesign.com/voron_trident)** | Three-pillar Z-drop bed with independent motors (ADR-005, ADR-023) |
+| **[RepRap Mendel Revisited](https://www.thingiverse.com/thing:6783269)** | M10/M12 threaded-rod skeleton revival |
+| **[The 100](https://github.com/MSzturc/the100)** | Klipper-first philosophy—software compensates for cheap hardware |
+| **[The Rook](https://github.com/Kanrog/Rook)** | Box-frame serviceability, ease of maintenance |
+| **[Rat Rig V-Core](https://v-core4.ratrig.com/)** | Open-source hybrid motion documentation style |
+
+### Heritage Validation
+* **Voron Legacy** proved that 8mm smooth rods with vertical stacking achieve excellent stiffness
+* **Voron Trident** proved that 3-point Z-tilt is the optimal bed leveling architecture
+* **The 100** proved that $100 of parts + Klipper = industrial quality
+* **RepRap Micron** proved threaded-rod frames work at precision scales
 
 > **"You aren't just building a printer; you're joining a 20-year conversation about sovereignty."**
 

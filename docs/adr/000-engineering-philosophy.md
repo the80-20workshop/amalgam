@@ -135,12 +135,22 @@ We balance four constraints, not three:
 - **Overbuilt = Forgiving**: Heavy tolerances and robust hardware absorb minor issues
 
 ## References
-- **docs/articles/wisdom.md**: Complete discussion of distilled RepRap wisdom
-- **docs/articles/3D-Printing-In-The-Age-Of-The-Appliance.md**: Context on why Neo-Darwin rejects the appliance model
+
+### Project Documentation
+- **PHILOSOPHY.md**: The "Tractor" philosophy and heritage acknowledgments
 - **MANIFESTO.md**: Project philosophy and "Tractor" concept
-- [RepRap Darwin (2007)](https://reprap.org/wiki/Darwin): Original threaded-rod design that started it all
-- [RepRap Mendel (2009)](https://reprap.org/wiki/Mendel): Prusa i3 predecessor, established bed-slinger pattern
-- [Voron Design (2015+)](https://vorondesign.com/): Demonstrated software compensation for hardware limitations
+- **docs/articles/3D-Printing-In-The-Age-Of-The-Appliance.md**: Context on why Neo-Darwin rejects the appliance model
+
+### Technical Ancestors (What We Borrowed)
+| Project | Contribution to Neo-Darwin |
+|---------|---------------------------|
+| [RepRap Darwin (2007)](https://reprap.org/wiki/Darwin) | Box-frame threaded-rod skeleton |
+| [RepRap Mendel (2009)](https://reprap.org/wiki/Mendel) | "Plough" X-carriage sled on dual rods |
+| [Prusa i3 Rework (2013)](https://www.thingiverse.com/thing:119616) | Greg's Wade geared extruder (ancestor of Pitan) |
+| [Voron Legacy](https://vorondesign.com/voron_legacy) | Dual 8mm rods, vertical stacking (ADR-021) |
+| [Voron Trident](https://vorondesign.com/voron_trident) | Three-pillar Z-drop, Triple-Z leveling (ADR-005, ADR-023) |
+| [The 100](https://github.com/MSzturc/the100) | Klipper-first: software compensates for cheap hardware |
+| [The Rook](https://github.com/Kanrog/Rook) | Box-frame serviceability and maintenance philosophy |
 
 ## Evolution Notes
 This ADR captures the consensus of the RepRap community as of 2026. As new technologies emerge (e.g., AI slicers, new materials), specific implementations may change, but the core pillars—mass, software intelligence, reliability—will remain.
