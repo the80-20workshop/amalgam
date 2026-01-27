@@ -20,9 +20,11 @@ M12_NOMINAL_DIA = M10_NOMINAL_DIA  # DEPRECATED: Use M10_NOMINAL_DIA
 M12_FIT_DIA = M10_FIT_DIA  # DEPRECATED: Use M10_FIT_DIA
 
 # --- 3. MOTION FORK (SMOOTH RODS) ---
-# 8.0 for salvage, 10.0 for "Neo" Standard
-SMOOTH_ROD_DIA = 10.0
-BEARING_TYPE = "LM10UU" if SMOOTH_ROD_DIA == 10.0 else "LM8UU"
+# Reference spec: Dual 8mm with vertical stacking (see ADR-021)
+# Alternative: 10.0 for single-rod "Neo" builds (purchased rods)
+SMOOTH_ROD_DIA = 8.0
+SMOOTH_ROD_CONFIG = "DUAL_VERTICAL"  # "DUAL_VERTICAL" (reference) or "SINGLE"
+BEARING_TYPE = "LM8UU"  # LM8LUU recommended for X-axis (see ADR-022)
 
 # --- 4. TIER DEFINITIONS ---
 TRIPLE_Z = True  # True = Independent 3-point Z-Tilt
@@ -31,7 +33,10 @@ EXTRUDER_TYPE = "PITAN"  # 3:1 geared, single-drive (see ADR-019)
 HOTEND_DONOR = "ENDER_MK8"
 
 # --- 5. BUILD VOLUME ---
-BUILD_VOLUME = {"X": 250, "Y": 250, "Z": 250}
+# Reference spec: 220×220×220mm (Anet A8 scavenger bed size)
+# See ADR-024 for bed size selection rationale
+# Alternatives: 200×200 (Prusa clone), 235×235 (Ender 3), 250×210 (Prusa MK3)
+BUILD_VOLUME = {"X": 220, "Y": 220, "Z": 220}
 
 # --- 6. DYNAMIC FRAME CALCULATIONS ---
 # Extruder overhang on X-axis (Wade needs more than Pitan)

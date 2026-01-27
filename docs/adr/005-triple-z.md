@@ -3,6 +3,9 @@
 ## Status
 Accepted
 
+## Prerequisite
+This ADR assumes **Z-Drop Architecture** (ADR-023) where the bed moves only in Z and the XY gantry operates at fixed height. Triple-Z tilts the bed to match the gantry plane.
+
 ## Context
 The Z-motion system is critical for first-layer quality and dimensional accuracy. The bed must be perfectly level and stay level across thousands of prints.
 
@@ -202,6 +205,7 @@ BTT SKR 3: 8 drivers (excellent)
 - **Check couplers**: Verify tightness every 6 months
 
 ## References
+- ADR-023: Z-Drop Architecture (explains why Z-drop enables Triple-Z)
 - MANIFESTO.md: Section "The Tiered Path" and "Triple-Z Kinematic Leveling"
 - [Voron Trident Z-System](https://vorondesign.com/voron_trident): Triple-Z reference design
 - [Klipper Z-Tilt Documentation](https://www.klipper3d.org/Bed_Level.html#z-tilt)

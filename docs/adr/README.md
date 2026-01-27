@@ -4,11 +4,15 @@ This directory contains all Architecture Decision Records (ADRs) for the Neo-Dar
 
 ## How to Read This Directory
 
-ADRs are numbered chronologically in order of creation (000-018). However, for understanding the project's engineering philosophy:
+ADRs are numbered chronologically in order of creation (000-021). However, for understanding the project's engineering philosophy:
 
 1. **Start with ADR-000**: Engineering Philosophy and "Tractor" principles
-2. **Read Core Hardware ADRs (001-016)**: Foundation, motion, electronics
-3. **Read Tooling/Software ADRs (017-018)**: CAD, documentation, systems
+2. **Read Core Hardware ADRs**: Foundation (001), motion (021), extruder (019), hotend (004)
+3. **Read Motion & Leveling ADRs**: Triple-Z (005), puck system (009, 010)
+4. **Read Electronics ADRs**: Mainboard (012), drivers (013), CAN bus (007)
+5. **Read Tooling/Software ADRs**: CAD (017), documentation (018)
+
+Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADRs are preserved for decision history.
 
 ## ADR Index
 
@@ -19,7 +23,7 @@ ADRs are numbered chronologically in order of creation (000-018). However, for u
 | [ADR-000](000-engineering-philosophy.md) | Engineering Philosophy (20 Years of RepRap Wisdom) | Accepted | Core principles: Mass, Software, Gearing, Neo-Darwin Square trade-offs |
 | [ADR-001](001-m10-skeleton.md) | M10 Threaded Rod Skeleton | Accepted | Steel frame for mass damping and rigidity (M10 over M12 for practicality) |
 | ~~[ADR-002](002-greg-wade.md)~~ | ~~Greg's Wade Geared Extruder~~ | **Archived** | Superseded by ADR-019 (Pitan) |
-| [ADR-003](003-smooth-rods.md) | Smooth Rods vs Linear Rails | Accepted | M10 for X-Y reference spec, M8 sufficient for Z; linear rails for speed experiments |
+| ~~[ADR-003](003-smooth-rods.md)~~ | ~~Smooth Rods vs Linear Rails~~ | **Superseded** | Superseded by ADR-021 (Dual-Rod Motion System) |
 | [ADR-004](004-v6-cht.md) | E3D V6 Hotend with CHT Nozzle | Accepted | Standard V6 with CHT clone nozzle for high flow without ooze |
 
 ### Motion & Leveling ADRs
@@ -30,6 +34,11 @@ ADRs are numbered chronologically in order of creation (000-018). However, for u
 | ~~ADR-006~~ | Z-Probe Selection (Legacy) | **Archived** | Superseded by ADR-014 |
 | [ADR-009](009-puck-system.md) | Modular Puck & Spider Bed System | Accepted | Standardized mounting for toolheads, bed supports, Z-motors |
 | [ADR-010](010-floating-z-puck.md) | Floating Z-Puck System | Accepted | Parametric Z-motor pucks for any bed size, double-nut anchor |
+| ~~[ADR-020](020-dual-8-scavenger.md)~~ | ~~Dual-8 Scavenger Variant~~ | **Superseded** | Analysis merged into ADR-021 |
+| [ADR-021](021-dual-rod-motion-system.md) | Dual-Rod Motion System | **Accepted** | Dual 8mm vertical stacking as reference spec (supersedes ADR-003, ADR-020) |
+| [ADR-022](022-linear-bearings.md) | Linear Bearing Selection | **Accepted** | LM8LUU for X, LM8UU for Y/Z; scavenged bearing protocol |
+| [ADR-023](023-z-drop-architecture.md) | Z-Drop Architecture | **Accepted** | Bed moves only in Z, XY gantry at fixed height; enables Triple-Z |
+| [ADR-024](024-heated-bed-size.md) | Heated Bed Size Selection | **Accepted** | 220×220mm reference (Anet A8); analysis of scavengeable bed sizes |
 
 ### Foundation & Electronics ADRs
 
@@ -59,10 +68,10 @@ ADRs are numbered chronologically in order of creation (000-018). However, for u
 
 ## ADR Categories
 
-### Core Hardware (001, 003-004, 019)
+### Core Hardware (001, 004, 019, 021)
 Frame, extruder, hotend, and motion system - the physical foundation of the machine.
 - ADR-001: M10 Frame Skeleton
-- ADR-003: Smooth Rods (M10 X-Y, M8 Z)
+- ADR-021: Dual-Rod Motion System (Dual 8mm vertical stacking - Reference Spec)
 - ADR-004: E3D V6 + CHT Hotend
 - ADR-019: Pitan Extruder (Reference Spec)
 
@@ -84,13 +93,15 @@ If you're new to Neo-Darwin and want to understand the engineering decisions:
 
 1. **Engineering Philosophy** → ADR-000
 2. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend)
-3. **Motion System** → ADR-003 (Smooth Rods), ADR-005 (Triple-Z)
+3. **Motion System** → ADR-021 (Dual-Rod Motion), ADR-005 (Triple-Z)
 4. **Electronics** → ADR-012, 013
 5. **Probing** → ADR-014
 6. **Advanced Features** → ADR-007, 009, 011, 015, 016
 7. **Tooling** → ADR-017, 018
 
-Note: ADR-002 (Greg's Wade) is archived—see ADR-019 for the current extruder decision.
+Notes:
+- ADR-002 (Greg's Wade) is archived—see ADR-019 for the current extruder decision.
+- ADR-003 (Smooth Rods) is superseded—see ADR-021 for the current motion system decision.
 
 ## ADR Template
 
@@ -123,7 +134,8 @@ Links to relevant documentation, AI conversations, or external resources.
 - **Proposed**: Initial draft, under discussion
 - **Accepted**: Decision finalized, implemented
 - **Deprecated**: Still in use, but recommended against for new builds
-- **Archived**: Replaced by newer ADR, kept for historical reference
+- **Superseded**: Replaced by newer ADR, kept for decision history (links forward to replacement)
+- **Archived**: No longer relevant, kept for historical reference only
 
 ## Version Control
 

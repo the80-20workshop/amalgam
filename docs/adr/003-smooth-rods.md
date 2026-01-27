@@ -1,6 +1,11 @@
 # ADR-003: Precision Smooth Rods
 
 ## Status
+Superseded by [ADR-021: Dual-Rod Motion System](021-dual-rod-motion-system.md)
+
+> **Note**: This ADR established M10 single-rod as the reference specification. Subsequent analysis (ADR-020, ADR-021) demonstrated that dual 8mm rods with shared load achieve equal or better deflection performance while being fully scavengeable from donor printers. ADR-021 now defines the reference specification.
+
+## Original Status
 Accepted
 
 ## Context
