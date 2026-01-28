@@ -40,6 +40,7 @@ Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADR
 | [ADR-023](023-z-drop-architecture.md) | Z-Drop Architecture | **Accepted** | Bed moves only in Z, XY gantry at fixed height; enables Triple-Z |
 | [ADR-024](024-heated-bed-size.md) | Heated Bed Size Selection | **Accepted** | 220×220mm reference (Anet A8); analysis of scavengeable bed sizes |
 | [ADR-025](025-multi-frame-architecture.md) | Multi-Frame Architecture | **Accepted** | Darwin (M10), S-Core, V-Core paths; MDF base; tier system update |
+| [ADR-026](026-donor-fitness-constraints.md) | Donor Fitness & Frame Constraints | **Accepted** | Bed size and Z-height fitness tiers; stability limits; heatbed swap guidance |
 
 ### Foundation & Electronics ADRs
 
@@ -94,13 +95,16 @@ CAD system and documentation - parametric design and assembly guides.
 If you're new to Amalgam and want to understand the engineering decisions:
 
 1. **Engineering Philosophy** → ADR-000
-2. **Frame Architecture** → ADR-025 (Multi-Frame: Darwin, S-Core, V-Core paths)
-3. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend)
-4. **Motion System** → ADR-021 (Dual-Rod Motion), ADR-005 (Triple-Z)
-5. **Electronics** → ADR-012, 013
-6. **Probing** → ADR-014
-7. **Advanced Features** → ADR-007, 009, 011, 015, 016
-8. **Tooling** → ADR-017, 018
+2. **Frame & Donor Selection** → ADR-025 (Multi-Frame: Darwin, S-Core, V-Core paths)
+3. **Donor Fitness & Constraints** → ADR-026 (Bed size, Z-height, stability limits)
+4. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend)
+5. **Motion System** → ADR-021 (Dual-Rod Motion), ADR-005 (Triple-Z), ADR-024 (Bed Size)
+6. **Electronics** → ADR-012, 013
+7. **Probing** → ADR-014
+8. **Advanced Features** → ADR-007, 009, 011, 015, 016
+9. **Tooling** → ADR-017, 018
+
+**For Donors:** Start with ADR-025, then ADR-026 for fitness constraints. See `docs/reference/donor-printer-guide.md` for per-printer details.
 
 Notes:
 - ADR-002 (Greg's Wade) is archived—see ADR-019 for the current extruder decision.
