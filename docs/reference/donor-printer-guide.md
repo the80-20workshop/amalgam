@@ -7,6 +7,8 @@ This guide helps Amalgam builders identify which donor printers provide the most
 
 ⚠️ **Cost Reality Check:** Before you start shopping, read [When NOT to Scavenge](#when-not-to-scavenge-enclosed--proprietary-printers) later in this guide. Amalgam makes financial sense only when donors are $100-150 each. Beyond that, commercial alternatives are competitive.
 
+💡 **Budget for Contingencies:** Expect to spend **$80-150 on parts you can't scavenge** (M10 rods, M8 leadscrews, bearings, PSU, misc). See [Parts Sourcing & Replacement Guide](parts-sourcing-guide.md) for how to source these if a donor part fails or is damaged. **Total realistic budget: $250-380 AUD.**
+
 ## Quick Reference: Donor Tiers
 
 ### Fitness Categories (See ADR-026)
@@ -375,6 +377,8 @@ Beyond the major components, don't overlook:
 ## Recommended Donor Combinations
 
 All combinations below use **Tier 1 donors** (200–235mm beds, <280mm Z). For Tier 2 donors (CR-10, Artillery), see ADR-026 mitigation options.
+
+⚠️ **Note:** These are best-case costs assuming all donor parts are usable. **Budget an additional $80-150 for parts you'll likely source** (M10 rods, M8 leadscrews, replacement bearings, PSU, etc.). See [Parts Sourcing & Replacement Guide](parts-sourcing-guide.md) if a donor part fails or is damaged. **Realistic total budget: $250-380 AUD.**
 
 ### Best Value: 2× Anet A8 (or Prusa i3 Clones) — Darwin Path
 **Fitness:** ✅ Tier 1 + Tier 1 → **Fully Supported**
