@@ -9,7 +9,15 @@ This folder contains **factual reference materials** for Amalgam: specifications
   - What components are scavengeable from each donor
   - Frame type, bed size, Z-travel specs
   - Mixed-donor combinations and recommendations
+  - Cost reality check: when NOT to scavenge
   - Start here if selecting donor printers
+
+- **parts-sourcing-guide.md** — How to source missing/failed parts
+  - How to spot counterfeits and duds on AliExpress/Temu/eBay
+  - Common pitfalls (wrong pitch leadscrew, fake bearings, etc.)
+  - Platform comparison and sourcing strategy
+  - Budget planning and decision tree
+  - Use this if a donor part fails during build
 
 - **MASTER_PARTS_LIST.md** — Complete bill of materials for all configurations
   - By frame path (Darwin, S-Core, V-Core)

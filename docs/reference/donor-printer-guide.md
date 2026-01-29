@@ -595,6 +595,18 @@ These machines are **better upgraded whole than dismantled**:
 
 ---
 
+## What If a Donor Part Fails?
+
+Sometimes you'll discover mid-build that a PSU is dead, a leadscrew is bent, or bearings are worn.
+
+**See [Parts Sourcing & Replacement Guide](parts-sourcing-guide.md)** for:
+- How to source replacements from AliExpress, Temu, eBay
+- How to spot counterfeits and avoid duds
+- Budget planning and decision tree
+- Common pitfalls (wrong pitch leadscrew, fake bearings, etc.)
+
+---
+
 ## References
 
 - **ADR-026**: Donor Fitness & Frame Constraints (bed size, Z-height, stability physics)
