@@ -10,17 +10,20 @@ Quick reference for Klipper calibration commands. For detailed explanations, see
 
 | Step | Print | Time | What to Check |
 |------|-------|------|---------------|
-| 1. First Layer | `first_layer_grid.stl` | 10 min | Lines touch, smooth surface, consistent |
+| 1. First Layer | `first_layer_grid.stl` or `prusa_live_z.stl` | 10 min | Lines touch, smooth surface, consistent |
 | 2. Dimensions | `xyz_calibration_cube.stl` | 15 min | Measures 20.0mm on all axes |
 | 3. Quality | `3DBenchy.stl` | 60 min | No stringing, good overhangs, clean detail |
+
+**Tip:** Use `prusa_live_z.stl` if you want to adjust Z-offset *while* printing.
 
 **If all three pass:** You're ready to print. Do the advanced tuning later (or never).
 
 **If something's wrong:** Check the troubleshooting table at the bottom, then do the relevant advanced calibration.
 
 ```bash
-# Generate first layer grid (parametric to your bed size)
-./build.sh build first_layer_grid
+# Generate parametric calibration prints (uses your bed size)
+./build.sh build first_layer_grid   # Grid of squares
+./build.sh build prusa_live_z       # Prusa-style live Z pattern
 
 # Download standard calibration prints
 python utilities/download_calibration.py
@@ -40,6 +43,20 @@ python utilities/download_calibration.py
 - Seeing ringing/ghosting artifacts
 - Corners are bulging or have gaps
 - Want maximum print speed
+
+---
+
+## Parametric Calibration Prints (build123d)
+
+Generated to match your bed size from `config.py`:
+
+| Model | Command | Use For |
+|-------|---------|---------|
+| `first_layer_grid.stl` | `./build.sh build first_layer_grid` | Grid of squares across bed |
+| `first_layer_snake.stl` | (generated with grid) | Alternative snake pattern |
+| `prusa_live_z.stl` | `./build.sh build prusa_live_z` | Live Z adjustment while printing |
+
+**Prusa Live Z pattern:** Progressive lines + square. Adjust Z-offset while it prints - each new line shows your adjustment.
 
 ---
 
