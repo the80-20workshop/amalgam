@@ -5,7 +5,7 @@ This file provides context for AI assistants working on the Amalgam project.
 ## What This Project Is
 
 Amalgam is a **2026 RepRap-inspired reference specification** for a scavenger-friendly 3D printer:
-- **Target cost:** < $300 AUD (often $160-230 with good donors)
+- **Target cost:** < $300 AUD (often $160-280 with good donors)
 - **Build volume:** 220×220×220mm (Anet A8 bed size)
 - **Philosophy:** "Tractor with a Racecar Brain" — heavy hardware + Klipper intelligence
 - **Minimum requirement:** Two donor printers (one donor = just add Klipper, not Amalgam)
@@ -16,7 +16,7 @@ Amalgam is a **2026 RepRap-inspired reference specification** for a scavenger-fr
 1. **SAFETY.md** — Hazards and safety guidance (for physical builds)
 2. **PHILOSOPHY.md** — The "Tractor" concept, heritage acknowledgments
 3. **docs/adr/README.md** — Index of all architectural decisions
-4. **docs/adr/025-multi-frame-architecture.md** — Frame paths (Darwin, S-Core, V-Core)
+4. **docs/adr/025-multi-frame-architecture.md** — Frame paths (Scaffold, Mill, Lathe)
 5. **docs/adr/021-dual-rod-motion-system.md** — Smooth rod motion system (Dual 8mm)
 6. **docs/adr/012-mainboard-host-architecture.md** — Electronics paths, dual-MCU config
 7. **docs/reference/donor-printer-guide.md** — Which printers to scavenge
@@ -25,10 +25,10 @@ Amalgam is a **2026 RepRap-inspired reference specification** for a scavenger-fr
 
 | Topic | Decision | ADR |
 |-------|----------|-----|
-| Frame Paths | Darwin (M10), S-Core, V-Core — all on MDF base | ADR-025 |
-| Frame (Primary) | M10 threaded rod skeleton + MDF squaring jig | ADR-001, ADR-025 |
-| Motion (Primary) | Dual 8mm rods, vertical stacking | ADR-021 |
-| Motion (V-Core) | V-slot rails + POM wheels | ADR-025 |
+| Frame Paths | Scaffold (M10), Mill (V-slot), Lathe (extrusion+rods) — all on MDF base | ADR-025 |
+| Frame (Scaffold) | M10 threaded rod skeleton + MDF squaring jig | ADR-001, ADR-025 |
+| Motion (Scaffold/Lathe) | Dual 8mm rods, vertical stacking | ADR-021 |
+| Motion (Mill) | V-slot rails + POM wheels | ADR-025 |
 | Bearings | LM8LUU (X), LM8UU (Y/Z), IGUS, or POM wheels | ADR-022, ADR-025 |
 | Z-System | Z-drop (bed moves), Triple-Z leveling | ADR-005, ADR-023 |
 | Bed Size | 220×220mm (Anet A8 scavenger size) | ADR-024 |
@@ -41,15 +41,15 @@ Amalgam is a **2026 RepRap-inspired reference specification** for a scavenger-fr
 
 Amalgam supports three frame/motion configurations based on donor type:
 
-| Path | Frame | Motion | Best Donors | Use Case |
-|------|-------|--------|-------------|----------|
-| **Darwin** | M10 Threaded Rod + MDF | Smooth Rods + LM8UU | Anet A8, Wanhao, Prusa clones | **Primary (heritage, common donors)** |
-| **V-Core** | Aluminum Extrusion + MDF | V-Slots + POM Wheels | Ender 3, CR-10, Aquila | **Primary (modern donors, zero-waste)** |
-| S-Core | Aluminum Extrusion + MDF | Smooth Rods + LM8UU/IGUS | Mixed: extrusion + smooth-rod donors | Fallback (rare in practice) |
+| Path | Frame | Motion | Best Donors | Character |
+|------|-------|--------|-------------|-----------|
+| **Scaffold** | M10 Threaded Rod + MDF | Smooth Rods + LM8UU | Anet A8, Wanhao, Prusa clones | Heritage — RepRap Darwin tribute, industrial "tractor" aesthetic |
+| **Mill** | Aluminum Extrusion + MDF | V-Slots + POM Wheels | Ender 3, CR-10, Aquila | Zero-waste — uses everything from Ender donors |
+| **Lathe** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Ender 3 + bought rods, mixed donors | Precision — superior motion quality, best overall |
 
 **All paths share:** MDF base (squaring jig + damping), Triple-Z, Pitan + E3D V6, Klipper.
 
-**Two primary paths:** Darwin (RepRap heritage, industrial "tractor" aesthetic) and V-Core (modern, waste-free). S-Core exists for mixed donor scenarios but is rarely needed.
+**Motion quality:** Lathe (smooth rods + IGUS) > Scaffold (smooth rods + LM8UU) > Mill (V-slots + POM wheels). Lathe is technically superior but costs ~$75 more than Mill.
 
 ## Who Is Amalgam For?
 
@@ -68,39 +68,40 @@ Amalgam supports three frame/motion configurations based on donor type:
 
 ### Cost Breakdown
 
-| Item | Darwin | S-Core/V-Core |
-|------|--------|---------------|
-| Two matching donors | $100-120 | $100-120 |
-| MDF base | $15-20 | $15-20 |
-| M10 threaded rods | $30-45 | $0 (scavenged) |
-| Pitan gear + Klicky | $4 | $4 |
-| Misc (wires, bolts) | $40 | $40 |
-| **Total** | **~$190-230** | **~$160-185** |
+| Item | Scaffold | Mill | Lathe |
+|------|----------|------|-------|
+| Two matching donors | $100-120 | $100-120 | $100-120 |
+| MDF base | $15-20 | $15-20 | $15-20 |
+| Frame material | M10 rods: $30-45 | $0 | $0 |
+| Motion (rods/bearings) | $0 | $0 | ~$75 |
+| Pitan gear + Klicky | $4 | $4 | $4 |
+| Misc (wires, bolts) | $40 | $40 | $40 |
+| **Total** | **~$190-230** | **~$160-185** | **~$235-280** |
 
 ## Donor Printer Categories
 
 | Category | Examples | Frame Path | Motion | Extra Cost |
 |----------|----------|------------|--------|------------|
-| **Rod + Sheet** | Anet A8, Wanhao i3, Prusa clones | Darwin (M10) | Smooth rods | M10 rods ~$30-45 |
-| **Rod + Extrusion** | i3 Mega, Artillery Sidewinder | S-Core | Smooth rods | $0 |
-| **V-Slot** | Ender 3, CR-10, Voxelab Aquila | V-Core | V-slots | $0 |
-| **Mixed** | One of each type | Darwin (usually) | Varies | ~$30-45 for M10 |
+| **Rod + Sheet** | Anet A8, Wanhao i3, Prusa clones | Scaffold (M10) | Smooth rods | M10 rods ~$30-45 |
+| **Rod + Extrusion** | i3 Mega, Artillery Sidewinder | Lathe | Smooth rods | $0 |
+| **V-Slot** | Ender 3, CR-10, Voxelab Aquila | Mill or Lathe | V-slots or smooth rods | $0 or ~$75 |
+| **Mixed** | One of each type | Lathe | Smooth rods | $0-75 |
 | **Limited** | Prusa Mini, deltas, resin | Not recommended | — | — |
 
-**Key insight:** Two matching donors = zero motion parts to buy. Mixed donors require buying frame material (~$30-45).
+**Key insight:** Two matching donors = minimal extra parts. Lathe costs ~$75 more but offers better motion.
 
-**Advice for mixed donors:** Buy M10 rods (cheapest fix), use smooth rods from rod-donor. Or sell odd donor, buy matching.
+**Advice for Ender donors:** Mill is zero-waste and cheap. Lathe is better motion if you can spend ~$75 on rods + IGUS.
 
 ## Heritage (What We Borrowed)
 
 | Project | Contribution | Used In |
 |---------|--------------|---------|
-| RepRap Darwin | Box-frame threaded-rod skeleton | Darwin path |
+| RepRap Darwin | Box-frame threaded-rod skeleton | Scaffold path |
 | RepRap Mendel | "Plough" X-carriage sled on dual rods | All paths |
 | Prusa i3 Rework | Wade geared extruder → Pitan | All paths |
-| Voron Legacy | Dual 8mm rods, vertical stacking | Darwin, S-Core |
+| Voron Legacy | Dual 8mm rods, vertical stacking | Scaffold, Lathe |
 | Voron Trident | Three-pillar Z-drop, Triple-Z leveling | All paths |
-| Ender 5 | Cartesian Z-drop with V-slot motion | V-Core path |
+| Ender 5 | Cartesian Z-drop with V-slot motion | Mill path |
 | The 100 / The Rook | Klipper-first philosophy | All paths |
 
 ## Technology Stack
@@ -115,9 +116,9 @@ Amalgam supports three frame/motion configurations based on donor type:
 - **Currency:** Always AUD (Australian Dollars)
 - **ADRs:** All major decisions documented in `docs/adr/`
 - **Supersession:** Old ADRs preserved with "Superseded by ADR-XXX" notes
-- **Frame paths:** Darwin (M10 + smooth rods), S-Core (extrusion + smooth rods), V-Core (extrusion + V-slots)
-- **Primary path:** Darwin is the flagship; S-Core and V-Core are supported variants
-- **Rod sizes:** M10 for Darwin frame, 8mm for smooth rod motion
+- **Frame paths:** Scaffold (M10 + smooth rods), Mill (extrusion + V-slots), Lathe (extrusion + smooth rods)
+- **Path character:** Scaffold = heritage, Mill = zero-waste, Lathe = precision
+- **Rod sizes:** M10 for Scaffold frame, 8mm for smooth rod motion
 - **Bed size:** 220×220mm reference (supports 200-250mm parametrically)
 - **MDF base:** All paths use MDF for squaring jig + mass damping
 
@@ -162,18 +163,17 @@ amalgam/                  # (currently amalgam/, rename pending)
 - Don't chase high speed — 70-120mm/s is the target, not 300mm/s
 - Don't add cloud features — 100% local control is a core value
 - Don't forget heritage credits — we stand on shoulders of giants
-- Don't force Ender users to buy rods — V-Core path exists (ADR-025)
-- Don't treat V-Core as primary — Darwin (M10 + smooth rods) is the flagship
+- Don't force Ender users to buy rods — Mill path exists for zero-waste (ADR-025)
 - Don't suggest one-donor builds as Amalgam — one donor = just add Klipper, not Amalgam
 
 ## Second-Hand Market Context
 
 - Donor printers expected to bottom out at ~$50 AUD by end of 2026
 - Real pricing (AliExpress 2026): 8× stainless rods $43, 22× IGUS $30, M10 rods $30-45
-- **Two Anet A8 donors** (Darwin path) = ~$190-230 total build
-- **Two i3 Mega donors** (S-Core path) = ~$160-185 total build
-- **Two Ender 3 donors** (V-Core path) = ~$160-185 total build (zero waste!)
-- **Mixed donors** = add ~$30-45 for M10 rods
+- **Two Anet A8 donors** (Scaffold) = ~$190-230 total build
+- **Two Ender 3 donors** (Mill) = ~$160-185 total build (zero waste!)
+- **Two Ender 3 donors** (Lathe) = ~$235-280 total build (best motion)
+- **Mixed donors** (Lathe) = ~$160-220 depending on what you can scavenge
 
 ## Useful Commands
 
@@ -193,4 +193,4 @@ cd cad && ./build.sh build_all
 
 ---
 
-*Last updated: January 2026*
+*Last updated: February 2026*

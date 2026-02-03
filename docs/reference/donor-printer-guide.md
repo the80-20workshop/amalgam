@@ -25,13 +25,13 @@ This section now uses **fitness tiers** based on bed size and Z-height (see ADR-
 
 | Path | Component Match | Common Donors | Recommendation |
 |------|-----------------|---------------|----------------|
-| **Darwin** | Two smooth-rod donors | Anet A8, Wanhao i3, Prusa clones | Primary—buy M10 rods (~$30-45) |
-| **V-Core** | Two v-slot donors | Ender 3, CR-10, Aquila | Primary—zero-waste, recommended |
-| **S-Core** | Mixed: extrusion + smooth-rod | Rare; mixed donor scenarios | Fallback only—usually avoid |
+| **Scaffold** | Two smooth-rod donors | Anet A8, Wanhao i3, Prusa clones | Primary—buy M10 rods (~$30-45) |
+| **Mill** | Two v-slot donors | Ender 3, CR-10, Aquila | Primary—zero-waste, recommended |
+| **Lathe** | Mixed: extrusion + smooth-rod | Rare; mixed donor scenarios | Fallback only—usually avoid |
 
-**S-Core is rare:** Most real-world printers are either all-smooth-rods (Darwin path) or all-v-slots (V-Core path). Extrusion + smooth-rod combinations are uncommon. If you have mixed donors, either:
-1. Buy M10 rods and use Darwin path (cheaper, simpler)
-2. Build S-Core if you have good extrusions available
+**Lathe is rare:** Most real-world printers are either all-smooth-rods (Scaffold path) or all-v-slots (Mill path). Extrusion + smooth-rod combinations are uncommon. If you have mixed donors, either:
+1. Buy M10 rods and use Scaffold path (cheaper, simpler)
+2. Build Lathe if you have good extrusions available
 
 ---
 
@@ -94,9 +94,9 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Anet A8 / A6
 
 **Fitness Tier:** ✅ **Tier 1 (Recommended)**
-**Bed:** 220×220mm | **Z-travel:** 240mm | **Frame path:** Darwin (primary)
+**Bed:** 220×220mm | **Z-travel:** 240mm | **Frame path:** Scaffold (primary)
 
-**Why it's excellent:** Millions sold, often "broken" (usually just needs firmware update or new MOSFET). 220×220mm bed matches Amalgam reference spec exactly. Perfect fit for Darwin frame path. Steel frame is not useful for Amalgam, but motion components are excellent.
+**Why it's excellent:** Millions sold, often "broken" (usually just needs firmware update or new MOSFET). 220×220mm bed matches Amalgam reference spec exactly. Perfect fit for Scaffold frame path. Steel frame is not useful for Amalgam, but motion components are excellent.
 
 | Component | Spec | Amalgam Use | Notes |
 |-----------|------|----------------|-------|
@@ -129,10 +129,10 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Prusa i3 Clones (Geeetech, Tronxy X3, Wanhao i3, Coolcoin Create, CTC, Alunar, etc.)
 
 **Fitness Tier:** ✅ **Tier 1 (Recommended)**
-**Bed:** 200–220mm | **Z-travel:** 260mm (typical) | **Frame path:** Darwin (primary)
+**Bed:** 200–220mm | **Z-travel:** 260mm (typical) | **Frame path:** Scaffold (primary)
 **Frame type:** Steel rod frame (like Anet A8, not extrusion-based)
 
-**Why it's good:** Direct descendants of original RepRap design. Rod-based steel frames are compatible with Darwin/M10 path philosophy. Build quality varies by brand. All Tier 1 compatible. Steel frame not useful for Amalgam, but smooth rods and motors are excellent.
+**Why it's good:** Direct descendants of original RepRap design. Rod-based steel frames are compatible with Scaffold/M10 path philosophy. Build quality varies by brand. All Tier 1 compatible. Steel frame not useful for Amalgam, but smooth rods and motors are excellent.
 
 | Component | Spec | Amalgam Use | Notes |
 |-----------|------|----------------|-------|
@@ -158,9 +158,9 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Anycubic i3 Mega / Mega S
 
 **Fitness Tier:** ✅ **Tier 1 (Recommended)**
-**Bed:** 210×210mm | **Z-travel:** 200mm | **Frame path:** Darwin (primary)
+**Bed:** 210×210mm | **Z-travel:** 200mm | **Frame path:** Scaffold (primary)
 
-**Why it's good:** Better build quality than Anet A8, still has smooth rods and a steel frame. Rod-based design like Anet A8. Excellent components for Darwin path. Steel frame not useful for Amalgam, but motion components are premium quality.
+**Why it's good:** Better build quality than Anet A8, still has smooth rods and a steel frame. Rod-based design like Anet A8. Excellent components for Scaffold path. Steel frame not useful for Amalgam, but motion components are premium quality.
 
 | Component | Spec | Amalgam Use | Notes |
 |-----------|------|----------------|-------|
@@ -207,14 +207,14 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Creality Ender 3 / 3 Pro / 3 V2 / 3 S1
 
 **Fitness Tier:** ✅ **Tier 1 (Recommended)**
-**Bed:** 235×235mm | **Z-travel:** 250mm | **Frame path:** V-Core (recommended) or Darwin (requires buying rods)
+**Bed:** 235×235mm | **Z-travel:** 250mm | **Frame path:** Mill (recommended) or Scaffold (requires buying rods)
 
-**Why it's excellent:** Best-selling printer ever. Cheap and everywhere. **With ADR-025 Multi-Frame Architecture, Ender 3 is now fully supported via V-Core path—use the aluminum extrusions and V-slot rails directly.** No rod purchase needed if using V-Core.
+**Why it's excellent:** Best-selling printer ever. Cheap and everywhere. **With ADR-025 Multi-Frame Architecture, Ender 3 is now fully supported via Mill path—use the aluminum extrusions and V-slot rails directly.** No rod purchase needed if using Mill.
 
 | Component | Spec | Amalgam Use | Notes |
 |-----------|------|----------------|-------|
-| **V-slot extrusions** | 2020/2040 frame | ✅ V-Core path | Reuse as frame structure |
-| **V-slot rollers** | 4× wheels per carriage | ✅ V-Core motion | Scavenged motion system, zero waste |
+| **V-slot extrusions** | 2020/2040 frame | ✅ Mill path | Reuse as frame structure |
+| **V-slot rollers** | 4× wheels per carriage | ✅ Mill motion | Scavenged motion system, zero waste |
 | **NEMA17 motors** | 4× (X, Y, Z, E) | ✅ Direct use | Need 2 donors for 7+ total |
 | **Heated bed** | 235×235mm, 24V | ✅ Good size | Slightly larger than 220 reference; works |
 | **Power supply** | 24V 30A typical | ✅ Direct use | Ideal for 24V system |
@@ -224,9 +224,9 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 | **Hotend** | MK8/Creality | ⚠️ Replace | Not E3D compatible; use E3D V6 |
 | **Extruder** | Bowden or direct | ❌ Replace | Replace with Pitan (all paths) |
 | **Belts** | GT2 6mm | ✅ Direct use | Check for wear |
-| **Smooth rods** | ❌ None | ✅ Not needed for V-Core | Darwin path would need to buy |
+| **Smooth rods** | ❌ None | ✅ Not needed for Mill | Scaffold path would need to buy |
 
-**Two Ender 3 Donors (V-Core Path):**
+**Two Ender 3 Donors (Mill Path):**
 - ✅ Frame: 2× full extrusion sets (use better condition one or combine)
 - ✅ Motion: All V-slot wheels scavenged (zero additional cost)
 - ✅ Motors: 8× NEMA17 (need 7, one spare)
@@ -241,14 +241,14 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Creality CR-10 / CR-10S / CR-10 V2
 
 **Fitness Tier:** ⚠️ **Tier 2 (Supported with Mitigation)**
-**Bed:** 300×300mm | **Z-travel:** 400mm | **Frame path:** V-Core (recommended) | **Mitigation:** Heatbed swap to 220×220 (recommended) OR heavier MDF base
+**Bed:** 300×300mm | **Z-travel:** 400mm | **Frame path:** Mill (recommended) | **Mitigation:** Heatbed swap to 220×220 (recommended) OR heavier MDF base
 
 **Why consider it:** Larger format with dual Z motors. V-slot motion system. **Note:** See ADR-026 for fitness constraints. The large bed size and Z-height require either heatbed swap or heavier MDF damping for stability.
 
 | Component | Spec | Amalgam Use | Notes |
 |-----------|------|----------------|-------|
-| **V-slot extrusions** | 2020/2040 frame | ✅ V-Core path | Good stiffness for larger format |
-| **V-slot rollers** | 4-6× per carriage | ✅ V-Core motion | Scavenged system works |
+| **V-slot extrusions** | 2020/2040 frame | ✅ Mill path | Good stiffness for larger format |
+| **V-slot rollers** | 4-6× per carriage | ✅ Mill motion | Scavenged system works |
 | **NEMA17 motors** | 5× (dual Z motors!) | ✅ Direct use | Extra Z motor is bonus ✅ |
 | **Heated bed** | 300×300mm | ⚠️ Swap recommended | Too large; recommend swap to 220×220 ($25–35) |
 | **Power supply** | 24V 30A (typical) | ✅ Direct use | Good quality PSU |
@@ -283,23 +283,23 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Voxelab Aquila
 
 **Fitness Tier:** ✅ **Tier 1 (Recommended)**
-**Bed:** 235×235mm | **Z-travel:** 250mm | **Frame path:** V-Core (primary) or Darwin (with rod purchase)
+**Bed:** 235×235mm | **Z-travel:** 250mm | **Frame path:** Mill (primary) or Scaffold (with rod purchase)
 
-**Essentially an Ender 3 clone.** Nearly identical compatibility, same V-Core path benefits (no rod purchase needed). Scavenged motion system is zero-waste.
+**Essentially an Ender 3 clone.** Nearly identical compatibility, same Mill path benefits (no rod purchase needed). Scavenged motion system is zero-waste.
 
 ---
 
 ### Artillery Sidewinder X1 / Genius
 
 **Fitness Tier:** ⚠️ **Tier 2 (Supported with Mitigation)**
-**Bed:** 300×300mm | **Z-travel:** 360mm | **Frame path:** V-Core (recommended) | **Mitigation:** Heatbed swap to 220×220 (recommended)
+**Bed:** 300×300mm | **Z-travel:** 360mm | **Frame path:** Mill (recommended) | **Mitigation:** Heatbed swap to 220×220 (recommended)
 
 **Why consider it:** Direct drive, excellent PSU, good dual Z motors. V-slot motion. Similar to CR-10 in size constraints—see ADR-026 for fitness details.
 
 | Component | Spec | Amalgam Use | Notes |
 |-----------|------|----------------|-------|
-| **V-slot extrusions** | 2020/2040 frame | ✅ V-Core path | Good stiffness |
-| **V-slot rollers** | 4-6× per carriage | ✅ V-Core motion | Scavenged system |
+| **V-slot extrusions** | 2020/2040 frame | ✅ Mill path | Good stiffness |
+| **V-slot rollers** | 4-6× per carriage | ✅ Mill motion | Scavenged system |
 | **NEMA17 motors** | 5× | ✅ Direct use | Dual Z standard (bonus) |
 | **Heated bed** | 300×300mm | ⚠️ Swap recommended | Too large; recommend swap to 220×220 ($25–35) |
 | **Power supply** | 24V 30A | ✅ Direct use | Excellent quality PSU, premium feature |
@@ -313,9 +313,9 @@ Limited usefulness due to size, proprietary parts, or unsupported geometry:
 ### Elegoo Neptune Series
 
 **Fitness Tier:** ✅ **Tier 1 (Recommended)**
-**Bed:** 235×235mm | **Z-travel:** 250mm | **Frame path:** V-Core (primary)
+**Bed:** 235×235mm | **Z-travel:** 250mm | **Frame path:** Mill (primary)
 
-**Ender 3 competitor.** Similar to Ender 3 in what's reusable—V-slot motion system, zero rod purchase needed. V-Core path highly recommended.
+**Ender 3 competitor.** Similar to Ender 3 in what's reusable—V-slot motion system, zero rod purchase needed. Mill path highly recommended.
 
 ---
 
@@ -383,10 +383,10 @@ All combinations below use **Tier 1 donors** (200–235mm beds, <280mm Z). For T
 
 ⚠️ **Note:** These are best-case costs assuming all donor parts are usable. **Budget an additional $80-150 for parts you'll likely source** (M10 rods, M8 leadscrews, replacement bearings, PSU, etc.). See [Parts Sourcing & Replacement Guide](parts-sourcing-guide.md) if a donor part fails or is damaged. **Realistic total budget: $250-380 AUD.**
 
-### Best Value: 2× Anet A8 (or Prusa i3 Clones) — Darwin Path
+### Best Value: 2× Anet A8 (or Prusa i3 Clones) — Scaffold Path
 **Fitness:** ✅ Tier 1 + Tier 1 → **Fully Supported**
 - **Total cost:** ~$100 AUD (two donors)
-- **Frame path:** Darwin (M10 rods) + MDF base
+- **Frame path:** Scaffold (M10 rods) + MDF base
 - **Motion system:** Dual 8mm smooth rods (scavenged)
 - **Heatbed size:** 220×220mm (reference spec)
 - **Electronics:** Dual-MCU Klipper
@@ -394,10 +394,10 @@ All combinations below use **Tier 1 donors** (200–235mm beds, <280mm Z). For T
 - **Total Amalgam build:** ~$160–190 AUD
 - **Why excellent:** Zero need to buy motion parts, perfect bed size, RepRap heritage
 
-### Most Common: 2× Ender 3 — V-Core Path
+### Most Common: 2× Ender 3 — Mill Path
 **Fitness:** ✅ Tier 1 + Tier 1 → **Fully Supported (with ADR-025)**
 - **Total cost:** ~$100 AUD (two donors)
-- **Frame path:** V-Core (extrusions + V-slots)
+- **Frame path:** Mill (extrusions + V-slots)
 - **Motion system:** V-slot wheels (scavenged, zero-waste)
 - **Heatbed size:** 235×235mm (within Tier 1, works great)
 - **Electronics:** Dual-MCU Klipper
@@ -408,7 +408,7 @@ All combinations below use **Tier 1 donors** (200–235mm beds, <280mm Z). For T
 ### Mixed Donor: Ender 3 + Anet A8 — Flexible Hybrid
 **Fitness:** ✅ Tier 1 + Tier 1 → **Fully Supported**
 - **Total cost:** ~$100 AUD
-- **Frame path:** Darwin (use Anet's rod-based wisdom)
+- **Frame path:** Scaffold (use Anet's rod-based wisdom)
 - **Motion system:** 8mm smooth rods (from Anet, scavenged)
 - **Heatbed:** Ender 3's 235×235 or Anet's 220×220 (both work)
 - **Electronics:** Both mainboards contribute to Tier 2 dual-MCU
@@ -419,17 +419,17 @@ All combinations below use **Tier 1 donors** (200–235mm beds, <280mm Z). For T
 ### Premium Path: Prusa MK3 + Ender 3 — Dual-MCU Overkill (Optional)
 **Fitness:** ✅ Tier 1 + Tier 1 → **Fully Supported**
 - **Total cost:** ~$200+ AUD (if you find an MK3 cheap)
-- **Frame path:** Darwin or V-Core (your choice)
+- **Frame path:** Scaffold or Mill (your choice)
 - **Heatbed:** Prusa's 250×210 (rectangular, excellent)
 - **Electronics:** Einsy (5-driver TMC) + Creality board = overkill, but works
 - **Bonus:** SuperPINDA reference-spec probe, LM8LUU premium bearings, 24V PSU
 - **Why premium:** Highest quality scavenged parts, but hard to find MK3 cheap
 - **Recommendation:** Only pursue if MK3 <$120. Otherwise, better to buy MK3 electronics new.
 
-### Tier 2 Upgrade Path: CR-10 + Ender 3 (with Heatbed Swap) — V-Core with Mitigation
+### Tier 2 Upgrade Path: CR-10 + Ender 3 (with Heatbed Swap) — Mill with Mitigation
 **Fitness:** ⚠️ Tier 2 + Tier 1 → **Supported with Heatbed Swap**
 - **Total cost:** ~$120 AUD (two donors) + $25–35 (heatbed swap)
-- **Frame path:** V-Core
+- **Frame path:** Mill
 - **Motion system:** V-slot wheels (scavenged from both)
 - **Heatbed:** Swap CR-10's 300×300 to 220×220 (MK3 Dual Power ~$25–35)
 - **Electronics:** Dual-MCU (two Creality boards)
@@ -627,7 +627,7 @@ These machines are **better upgraded whole than dismantled**:
    - Donor 1: $_____
    - Donor 2: $_____
    - MDF base: $15-20
-   - Frame material (M10 rods if Darwin, $0 if V-Core): $0-45
+   - Frame material (M10 rods if Scaffold, $0 if Mill): $0-45
    - Misc (bolts, wires): ~$40
    - **Total: $____**
 
@@ -638,7 +638,7 @@ These machines are **better upgraded whole than dismantled**:
 
 4. **If you find one printer, but no second match:**
    - Don't overpay for a second one just to avoid buying M10 rods
-   - Buy M10 rods (~$35) and pick *any* other Darwin-compatible donor
+   - Buy M10 rods (~$35) and pick *any* other Scaffold-compatible donor
    - Or buy a different matched pair
 
 ### The Enclosed Printer Problem in a Nutshell
@@ -674,7 +674,7 @@ Sometimes you'll discover mid-build that a PSU is dead, a leadscrew is bent, or 
 ## References
 
 - **ADR-026**: Donor Fitness & Frame Constraints (bed size, Z-height, stability physics)
-- **ADR-025**: Multi-Frame Architecture (Darwin, S-Core, V-Core paths)
+- **ADR-025**: Multi-Frame Architecture (Scaffold, Mill, Lathe paths)
 - **ADR-021**: Dual-Rod Motion System (rod requirements)
 - **ADR-022**: Linear Bearing Selection (bearing options, IGUS path)
 - **ADR-024**: Heated Bed Size Selection (bed compatibility)

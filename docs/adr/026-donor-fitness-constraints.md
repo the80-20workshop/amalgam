@@ -7,7 +7,7 @@ Accepted
 
 ### The Scavenger Reality Revisited
 
-ADR-025 established three frame paths (Darwin, S-Core, V-Core) to maximize donor compatibility. However, not all donors are equally suitable, even within a frame path.
+ADR-025 established three frame paths (Scaffold, Mill, Lathe) to maximize donor compatibility. However, not all donors are equally suitable, even within a frame path.
 
 The constraint is **not** the frame type (M10 threaded rod vs. extrusion), but rather two physical dimensions that affect system stability:
 
@@ -29,7 +29,7 @@ The constraint is **not** the frame type (M10 threaded rod vs. extrusion), but r
 ### Real-World Examples
 
 **CR-10 (300×300mm, 400mm Z):**
-- Supported path: V-Core (extrusions give lateral stiffness)
+- Supported path: Mill (extrusions give lateral stiffness)
 - Issue: Taller than reference, larger bed = heavier MDF required
 - Mitigation: Swap heatbed for 220×220 (cost: $20-35) OR add 20mm thicker MDF
 
@@ -79,7 +79,7 @@ We establish **fitness tiers** based on bed size and Z-height:
 **Requirements:**
 - Standard 30–40mm MDF base
 - No modifications to frame or bed
-- All frame paths (Darwin, S-Core, V-Core) supported
+- All frame paths (Scaffold, Mill, Lathe) supported
 - Print quality guaranteed with Klipper tuning
 
 **Examples:**
@@ -100,13 +100,13 @@ We establish **fitness tiers** based on bed size and Z-height:
   - **Option C:** Reduce Z-travel height if gantry permits (unsupported deviation)
 
 **Notes:**
-- Extrusion-based frames (V-Core) strongly preferred due to higher stiffness
+- Extrusion-based frames (Mill) strongly preferred due to higher stiffness
 - Test with Klipper ADXL345 resonance measurement before full build
 - Expect slightly lower max acceleration (80–100mm/s² vs. 120mm/s² for Tier 1)
 
 **Example:**
 - 2× CR-10: 300×300 bed, 400mm Z
-  - V-Core path recommended
+  - Mill path recommended
   - Suggested: Swap bed to 220×220 (cost: $25) → Frame: 220×220mm, MDF base stabilizes
   - OR: Heavier MDF (40–50mm) → ~$10 extra material
 

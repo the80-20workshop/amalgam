@@ -91,7 +91,7 @@ If you were to sum up the wisdom of those 20 years:
 
 We stand on the shoulders of giants. Each project contributed specific technical elements:
 
-* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** The origin. Box-frame threaded-rod skeleton. Inspired our "Darwin" frame path.
+* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** The origin. Box-frame threaded-rod skeleton. Inspired our "Scaffold" frame path.
 * **[RepRap Mendel (2009)](https://reprap.org/wiki/Mendel) / [Mendel i2](https://reprap.org/wiki/Prusa_Mendel):** The "plough" X-carriage sled design riding on dual rods.
 * **[Prusa i3 Rework (2013)](https://www.thingiverse.com/thing:119616):** Greg's Wade geared extruder—the ancestor of our Pitan.
 * **[RepRap Mendel Revisited (2024)](https://www.thingiverse.com/thing:6783269):** Modern validation that heavy threaded-rod skeletons still work.

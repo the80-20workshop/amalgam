@@ -53,7 +53,7 @@ The **M10 + MDF** combination is particularly elegant because:
 
 We adopt a **Multi-Frame Architecture** with three supported paths, all sharing a common MDF base:
 
-### Primary Reference: Darwin (M10 + Smooth Rods)
+### Amalgam Scaffold (M10 + Smooth Rods)
 
 | Component | Specification |
 |-----------|---------------|
@@ -63,31 +63,17 @@ We adopt a **Multi-Frame Architecture** with three supported paths, all sharing 
 | Bearings | LM8LUU (X), LM8UU (Y/Z) |
 | Best donors | Anet A8, Wanhao i3, Prusa clones |
 
-**Why primary:**
-- RepRap heritage (Darwin tribute)
-- Industrial "tractor" aesthetic
+**Character:** The heritage path. RepRap Darwin tribute with industrial "tractor" aesthetic.
+
+**Why choose Scaffold:**
+- RepRap heritage (inspired by the original Darwin)
+- Industrial "tractor" aesthetic — threaded rod is honest, visible engineering
 - Hardware-store availability
 - Forces scavenger mindset (rod-based donors)
 - Differentiated from commercial designs
+- M10 frame adds mass for vibration damping
 
-### Supported Variant: S-Core (Extrusion + Smooth Rods)
-
-| Component | Specification |
-|-----------|---------------|
-| Frame | Aluminum extrusion (2020/2040) |
-| Base | MDF squaring jig + damping mass |
-| Motion | Dual 8mm smooth rods, vertical stacking |
-| Bearings | LM8LUU (X), LM8UU (Y/Z), or IGUS |
-| Best donors | Mixed: one extrusion donor + one smooth-rod donor |
-
-**Why supported (fallback path):**
-- Extrusion + smooth-rod combination is **rare in modern donors**
-- Useful for **mixed donor scenarios**: e.g., Ender 3 extrusions + Anet A8 rods
-- Alternatively: scavenger with custom extrusion source + smooth rods
-- Stiffer than M10 (2020 is ~5× stiffer in bending) when extrusions available
-- **Not a primary path** — use only if you have mixed donors or cannot source matched donors
-
-### Supported Variant: V-Core (Extrusion + V-Slots)
+### Amalgam Mill (Extrusion + V-Slots)
 
 | Component | Specification |
 |-----------|---------------|
@@ -97,11 +83,34 @@ We adopt a **Multi-Frame Architecture** with three supported paths, all sharing 
 | Bearings | POM V-wheels (3-4 per carriage) |
 | Best donors | Ender 3, CR-10, Voxelab Aquila |
 
-**Why supported:**
+**Character:** The zero-waste path. Uses everything from your Ender donors.
+
+**Why choose Mill:**
 - Ender 3 is the most common donor
 - Uses ALL scavenged parts (zero waste)
 - Proven motion system (Ender 5 style)
 - ~$70-90 cheaper than forcing smooth rods
+- Cleaner aesthetic than threaded rod
+
+### Amalgam Lathe (Extrusion + Smooth Rods)
+
+| Component | Specification |
+|-----------|---------------|
+| Frame | Aluminum extrusion (2020/2040) |
+| Base | MDF squaring jig + damping mass |
+| Motion | Dual 8mm smooth rods, vertical stacking |
+| Bearings | IGUS drylin (recommended) or LM8UU |
+| Best donors | Ender 3 + purchased rods, or mixed donors |
+
+**Character:** The precision upgrade. Best motion quality, still under budget.
+
+**Why choose Lathe:**
+- **Superior motion system** — smooth rods + IGUS bushings outperform POM wheels
+- IGUS is self-lubricating, maintenance-free, quieter than linear bearings
+- No eccentric nut adjustments, no flat spots developing over time
+- Combines modern frame (extrusion) with proven motion (smooth rods)
+- Two Ender 3 donors @ $50-60 each + ~$75 for rods/IGUS = still under $250 AUD
+- Best choice if you prioritize motion quality over zero-waste
 
 ### The Shared Foundation
 
@@ -118,54 +127,55 @@ All paths share:
 **Got one donor?** Just add Klipper to it. Amalgam isn't for you.
 
 **Got two matching donors?** Perfect. Pick your frame path:
-- **Two smooth-rod donors** (Anet A8, Wanhao, Prusa clones) → **Darwin** (buy M10 rods)
-- **Two v-slot donors** (Ender 3, CR-10, Aquila) → **V-Core** (zero-waste)
-- **Mixed donors** (one extrusion + one smooth-rod) → **S-Core** (fallback, rare)
+- **Two smooth-rod donors** (Anet A8, Wanhao, Prusa clones) → **Scaffold** (buy M10 rods)
+- **Two V-slot donors** (Ender 3, CR-10, Aquila) → **Mill** (zero-waste) or **Lathe** (buy rods for better motion)
+- **Mixed donors** (one extrusion + one smooth-rod) → **Lathe** (use extrusions + scavenged rods)
 
 **Want to buy new?** Just buy a Bambu A1 Mini. This project is for scavengers.
 
 ### Cost Breakdown (Two Donors, Matched)
 
-| Item | Darwin Path | V-Core Path | S-Core Path (Mixed) |
-|------|-------------|-------------|-------------|
-| Two matching donors | $100-120 | $100-120 | — |
+| Item | Scaffold | Mill | Lathe |
+|------|----------|------|-------|
+| Two matching donors | $100-120 | $100-120 | $100-120 |
 | MDF base | $15-20 | $15-20 | $15-20 |
-| Frame material | M10 rods: $30-45 | $0 | $0–40 |
-| Motion (rods/rails) | $0 | $0 | $0–75* |
+| Frame material | M10 rods: $30-45 | $0 | $0 |
+| Motion (rods/bearings) | $0 | $0 | ~$75* |
 | Pitan gear | $2 | $2 | $2 |
 | Klicky microswitch | $2 | $2 | $2 |
 | Misc (wires, bolts) | $40 | $40 | $40 |
-| **Total** | **~$190-230** | **~$160-185** | **~$160–220** |
+| **Total** | **~$190-230** | **~$160-185** | **~$235-280** |
 
-*S-Core motion cost varies: $0 if both donors contribute parts, ~$75 if must buy smooth rods + IGUS
+*Lathe motion cost: ~$43 for 8× stainless rods + ~$30 for IGUS bushings
 
-**Optional:** Add MKS SKIPR (~$130) for cleaner single-board electronics: **~$290-315**
+**Optional:** Add MKS SKIPR (~$130) for cleaner single-board electronics: **~$290-410**
 
-All paths achieve the **<$300 AUD target**.
+All paths achieve the **<$300 AUD target** (Lathe is at the upper end but still qualifies).
 
-### Mismatched Donors (S-Core Fallback)
+### Choosing Between Mill and Lathe (Ender Donors)
 
-If you have **one extrusion donor + one smooth-rod donor**:
+If you have two Ender 3 donors, you have a choice:
 
-| Option | Cost | Notes |
+| Factor | Mill | Lathe |
 |--------|------|-------|
-| Use S-Core (extrusion + smooth rods) | ~$0-75 | Extrusions from one donor, rods from other; may need IGUS |
-| Buy M10 rods, build Darwin | ~$30-45 | Cheaper; discard extrusions; simpler setup |
-| Buy matching donor instead | ~$50-100 | Better long-term; fewer unknowns |
+| **Cost** | $160-185 | $235-280 |
+| **Motion quality** | Good | Better |
+| **Maintenance** | POM wheels wear, need adjustment | IGUS is maintenance-free |
+| **Waste** | Zero (use everything) | Buy rods + bearings |
+| **Philosophy** | Maximum scavenger | Pragmatic upgrade |
 
-**Advice:** Matched donors are **strongly recommended**. S-Core exists for the rare mixed scenario—don't force it if you can match donors or buy M10 rods instead.
+**Recommendation:** If budget is tight, Mill is excellent. If you want the best motion and can spend ~$75 more, Lathe is the superior choice.
 
 ## Consequences
 
 ### Benefits
 
 1. **True scavenger philosophy** — use what you have
-2. **Ender 3 support** — the most common donor (Ender 3) is now zero-waste via V-Core
-3. **Two primary paths** — Darwin (M10 rods) for heritage; V-Core (extrusions + v-slots) for modern donors
-4. **S-Core as fallback** — rare, but supports mixed donor scenarios (extrusion + smooth-rod combinations)
-5. **Same print quality** — Klipper + Pitan + E3D V6 equalizes all paths
-6. **Simple requirement** — two donors, pick your path
-7. **Parametric flexibility** — config.py branches on donor type
+2. **Ender 3 support** — the most common donor is fully supported (Mill or Lathe)
+3. **Three distinct paths** — Scaffold (heritage), Mill (zero-waste), Lathe (precision)
+4. **Same print quality** — Klipper + Pitan + E3D V6 equalizes all paths
+5. **Simple requirement** — two donors, pick your path
+6. **Parametric flexibility** — config.py branches on donor type
 
 ### Trade-offs
 
@@ -185,14 +195,15 @@ If you have **one extrusion donor + one smooth-rod donor**:
 
 | Project | Frame | Motion | Kinematics | Cost |
 |---------|-------|--------|------------|------|
-| **Amalgam (Darwin)** | M10 threaded rod + MDF | Smooth rods | Cartesian, Z-drop | <$300 AUD |
-| **Amalgam (V-Core)** | Aluminum extrusion + MDF | V-slots | Cartesian, Z-drop | <$300 AUD |
+| **Amalgam Scaffold** | M10 threaded rod + MDF | Smooth rods | Cartesian, Z-drop | <$300 AUD |
+| **Amalgam Mill** | Aluminum extrusion + MDF | V-slots | Cartesian, Z-drop | <$300 AUD |
+| **Amalgam Lathe** | Aluminum extrusion + MDF | Smooth rods | Cartesian, Z-drop | <$300 AUD |
 | Voron Legacy | Aluminum extrusion | Smooth rods | Core-XY | ~$600 USD |
 | Mercury One | Ender 5 conversion | V-slots | Core-XY | Ender 5 + $200+ |
 | Ender 5 | Aluminum extrusion | V-slots | Cartesian, Z-drop | ~$350 AUD new |
 
 Amalgam is unique in combining:
-- **RepRap threaded-rod heritage** (Darwin path)
+- **RepRap threaded-rod heritage** (Scaffold path)
 - **Scavenger economics** (all paths)
 - **Modern Klipper intelligence** (all paths)
 - **MDF squaring jig** (all paths)
@@ -218,10 +229,11 @@ Aluminum extrusion is stiffer, but:
 
 | System | Deflection @ 360mm | Pros | Cons |
 |--------|-------------------|------|------|
-| Dual 8mm smooth rods | 0.033mm | Precision, proven | Requires rod donors |
-| V-slot + POM wheels | ~0.05mm | Zero cost, simple | Wheel wear over time |
+| Dual 8mm smooth rods + LM8UU | 0.033mm | Precision, proven | Requires rod donors or purchase |
+| Dual 8mm smooth rods + IGUS | 0.033mm | Precision, maintenance-free, quiet | Must purchase (~$75) |
+| V-slot + POM wheels | ~0.05mm | Zero cost from donors | Wheel wear, periodic adjustment |
 
-Both are acceptable for quality printing. Input Shaping compensates.
+Smooth rods with IGUS (Lathe) offer the best motion quality. V-slot with POM wheels (Mill) is acceptable and zero-cost from Ender donors. Input Shaping compensates for minor differences.
 
 ## Implementation Notes
 
@@ -229,34 +241,37 @@ Both are acceptable for quality printing. Input Shaping compensates.
 
 ```python
 # Frame path selection
-FRAME_TYPE = "DARWIN"  # or "S_CORE", "V_CORE"
+FRAME_TYPE = "SCAFFOLD"  # or "MILL", "LATHE"
 
 # Derived settings
-if FRAME_TYPE == "DARWIN":
+if FRAME_TYPE == "SCAFFOLD":
     FRAME_MATERIAL = "M10_THREADED"
     MOTION_SYSTEM = "SMOOTH_ROD_DUAL"
-elif FRAME_TYPE == "S_CORE":
-    FRAME_MATERIAL = "ALUMINUM_EXTRUSION"
-    MOTION_SYSTEM = "SMOOTH_ROD_DUAL"
-elif FRAME_TYPE == "V_CORE":
+    BEARING_TYPE = "LM8UU"
+elif FRAME_TYPE == "MILL":
     FRAME_MATERIAL = "ALUMINUM_EXTRUSION"
     MOTION_SYSTEM = "V_SLOT"
+    BEARING_TYPE = "POM_WHEELS"
+elif FRAME_TYPE == "LATHE":
+    FRAME_MATERIAL = "ALUMINUM_EXTRUSION"
+    MOTION_SYSTEM = "SMOOTH_ROD_DUAL"
+    BEARING_TYPE = "IGUS"
 ```
 
 ### Wizard Flow
 
 1. "What donor printer(s) do you have?"
 2. → Detect donor type (rod-based, V-slot, mixed)
-3. → Recommend path (Darwin, S-Core, V-Core)
+3. → Recommend path (Scaffold, Mill, or Lathe)
 4. → Generate appropriate STLs, BOM, Klipper config
 
 ### Documentation Structure
 
 ```
 docs/guides/
-├── darwin-build.qmd      # M10 + smooth rods
-├── s-core-build.qmd      # Extrusion + smooth rods
-├── v-core-build.qmd      # Extrusion + V-slots
+├── scaffold-build.qmd    # M10 + smooth rods (heritage)
+├── mill-build.qmd        # Extrusion + V-slots (zero-waste)
+├── lathe-build.qmd       # Extrusion + smooth rods (precision)
 └── common/
     ├── z-axis.qmd        # Shared Triple-Z assembly
     ├── toolhead.qmd      # Shared Pitan + E3D V6
@@ -281,6 +296,7 @@ The frame and motion type affect resonance frequency, not quality. Input Shaping
 - ADR-021: Dual-Rod Motion System
 - ADR-023: Z-Drop Architecture
 - PHILOSOPHY.md: "Tractor with a Racecar Brain"
+- [RepRap Darwin](https://reprap.org/wiki/Darwin): Original threaded-rod heritage
 - [Voron Legacy](https://vorondesign.com/voron_legacy): Extrusion + smooth rod validation
 - [Ender 5](https://www.creality.com/products/ender-5-3d-printer): V-slot Cartesian Z-drop reference
 - AI Conversation: "Multi-Frame Architecture Discussion" (2025-01-28)

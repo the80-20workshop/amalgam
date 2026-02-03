@@ -43,9 +43,9 @@ Amalgam requires **two donor printers**. Pick your path based on what you scaven
 
 | Path | Frame | Motion | Best Donors | Cost |
 |------|-------|--------|-------------|------|
-| **Darwin** | M10 Threaded Rod | Smooth Rods | Anet A8, Wanhao, Prusa clones | ~$190-230 |
-| **S-Core** | Aluminum Extrusion | Smooth Rods | i3 Mega, Artillery | ~$160-185 |
-| **V-Core** | Aluminum Extrusion | V-Slots | Ender 3, CR-10 | ~$160-185 |
+| **Scaffold** | M10 Threaded Rod | Smooth Rods | Anet A8, Wanhao, Prusa clones | ~$190-230 |
+| **Mill** | Aluminum Extrusion | V-Slots | Ender 3, CR-10 | ~$160-185 |
+| **Lathe** | Aluminum Extrusion | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | ~$235-280 |
 
 **Optional:** Add MKS SKIPR (~$130) for cleaner single-board electronics.
 
