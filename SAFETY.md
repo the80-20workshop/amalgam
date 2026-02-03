@@ -190,6 +190,21 @@ Building Amalgam involves tools that can injure you:
 - **Deburr cut ends** — Freshly cut threaded rod and metal have sharp edges
 - **Utility knives cut toward the holder** — Cut away from your body
 
+### Cutting G10/FR4 (Build Plate)
+
+If you're cutting G10 (Garolite/FR4) for a replacement build plate, take extra precautions. G10 is fiberglass-reinforced epoxy—the dust contains fine glass particles that irritate lungs, skin, and eyes.
+
+- **Work outdoors or in a very well-ventilated area** — Not in your living space
+- **Wear an N95/P2 mask minimum** — Fibreglass dust is a respiratory irritant
+- **Wear safety glasses** — Glass particles and eyes don't mix
+- **Wear long sleeves or coveralls** — Fibreglass on bare skin causes itching
+- **Use a cutting method that minimizes dust** — Score-and-snap or wet cutting is better than power sanding
+- **Clean up thoroughly** — Vacuum the area; don't sweep (spreads particles into the air)
+- **Wash hands and arms after** — Soap and water, scrub well
+- **Wash clothes separately** — Fibreglass particles transfer to other fabrics
+
+If you're having a supplier cut G10 to size, you avoid this entirely. Worth the extra few dollars.
+
 ### Soldering and Heat Inserts
 
 - **Soldering irons are 300-400°C** — Same burn hazard as hotends
