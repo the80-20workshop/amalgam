@@ -8,16 +8,30 @@ Quick reference for Klipper calibration commands. For detailed explanations, see
 
 Run `python utilities/download_calibration.py` to download these:
 
-| Model | Height | Use For |
-|-------|--------|---------|
-| `first_layer_patch_0.2mm.stl` | 0.2mm | First layer / bed level check |
-| `extrusion_multiplier_cube.stl` | ~25mm | Flow rate calibration |
-| `voron_design_cube.stl` | 20mm | Dimensional accuracy (X/Y/Z) |
-| `square_tower.stl` | **~80mm** | **Pressure Advance**, Temperature (TUNING_TOWER) |
-| `ringing_tower.stl` | **~80mm** | **Input Shaper** (visual inspection) |
-| `3DBenchy.stl` | ~48mm | Final validation torture test |
+| Model | Size | Use For | Source |
+|-------|------|---------|--------|
+| `first_layer_patch_0.2mm.stl` | 0.2mm | First layer / bed level | [Ellis](https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints) |
+| `extrusion_multiplier_cube.stl` | ~25mm | Flow rate calibration | [Ellis](https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints) |
+| `xyz_calibration_cube.stl` | 20mm | Quick dimensional check | [5axes](https://github.com/5axes/Calibration-Shapes/wiki/Calibration-Cube-XYZ) |
+| `voron_design_cube.stl` | 30mm | Advanced calibration | [Voron](https://github.com/VoronDesign/Voron-2/tree/Voron2.4/STLs/Test_Prints) |
+| `square_tower.stl` | **~80mm** | **PA, Temperature** | [Klipper](https://github.com/Klipper3d/klipper/tree/master/docs/prints) |
+| `ringing_tower.stl` | **~80mm** | **Input Shaper** | [Klipper](https://github.com/Klipper3d/klipper/tree/master/docs/prints) |
+| `3DBenchy.stl` | ~48mm | Final validation | [CreativeTools](https://github.com/CreativeTools/3DBenchy) |
 
-**Key:** TUNING_TOWER requires a **tall** object. Use `square_tower.stl` or `ringing_tower.stl`, NOT the 20mm Voron cube.
+**Key:** TUNING_TOWER requires a **tall** object. Use `square_tower.stl`, NOT the cubes.
+
+### XYZ Cube vs Voron Cube
+
+| Feature | XYZ Cube (20mm) | Voron Cube (30mm) |
+|---------|-----------------|-------------------|
+| Dimensional check | Yes | Yes |
+| Overhang test | No | Yes (logos) |
+| Bridging test | No | Yes (internal) |
+| Bearing fit test | No | Yes (625, F695) |
+| PA corner check | No | Yes (90° corners) |
+| Print time | ~15 min | ~30 min |
+
+**Use XYZ cube** for quick dimensional checks. **Use Voron cube** when tuning for functional parts with bearing fits and overhangs.
 
 ---
 
@@ -232,7 +246,8 @@ After calibration, print these to verify:
 
 | Print | File | What to Check |
 |-------|------|---------------|
-| Voron Cube | `voron_design_cube.stl` | Measure 20.0mm on X, Y, Z axes |
+| XYZ Cube | `xyz_calibration_cube.stl` | Quick check: 20.0mm on X, Y, Z |
+| Voron Cube | `voron_design_cube.stl` | Full check: 30.0mm, overhangs, bearing fits |
 | 3DBenchy | `3DBenchy.stl` | Overhangs, bridging, detail, stringing |
 | Maker Coin | `./build.sh build maker_coin` | Logo clarity, layer adhesion |
 | Fidget Bolt | `./build.sh build fidget_bolt` | **Threads work = well calibrated!** |

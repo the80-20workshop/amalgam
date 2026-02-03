@@ -35,6 +35,7 @@ CALIBRATION_MODELS = {
         "filename": "ringing_tower.stl",
         "description": "Ringing/ghosting test tower for Input Shaper",
         "purpose": "Tune Klipper Input Shaper settings",
+        "source": "https://github.com/Klipper3d/klipper/tree/master/docs/prints",
         "urls": [
             "https://raw.githubusercontent.com/Klipper3d/klipper/master/docs/prints/ringing_tower.stl",
         ],
@@ -44,6 +45,7 @@ CALIBRATION_MODELS = {
         "filename": "square_tower.stl",
         "description": "Square tower for Pressure Advance tuning",
         "purpose": "Tune Klipper Pressure Advance settings",
+        "source": "https://github.com/Klipper3d/klipper/tree/master/docs/prints",
         "urls": [
             "https://raw.githubusercontent.com/Klipper3d/klipper/master/docs/prints/square_tower.stl",
         ],
@@ -52,18 +54,31 @@ CALIBRATION_MODELS = {
     # --- Voron Design test prints ---
     "voron_cube": {
         "filename": "voron_design_cube.stl",
-        "description": "Voron Design Cube - calibration cube",
-        "purpose": "Dimensional accuracy verification",
+        "description": "Voron Design Cube (30mm, advanced features)",
+        "purpose": "Dimensional accuracy, overhang, bearing fit, PA corners",
+        "source": "https://github.com/VoronDesign/Voron-2/tree/Voron2.4/STLs/Test_Prints",
         "urls": [
             "https://raw.githubusercontent.com/VoronDesign/Voron-2/Voron2.4/STLs/Test_Prints/Voron_Design_Cube_v7.stl",
         ],
         "fallback_info": "Voron GitHub: VoronDesign/Voron-2/STLs/Test_Prints/",
+    },
+    # --- 5axes Calibration Shapes (basic XYZ cube) ---
+    "xyz_cube": {
+        "filename": "xyz_calibration_cube.stl",
+        "description": "Basic XYZ Calibration Cube (20mm)",
+        "purpose": "Quick dimensional accuracy check",
+        "source": "https://github.com/5axes/Calibration-Shapes/wiki/Calibration-Cube-XYZ",
+        "urls": [
+            "https://raw.githubusercontent.com/5axes/Calibration-Shapes/master/models/CalibrationCube.stl",
+        ],
+        "fallback_info": "5axes GitHub: 5axes/Calibration-Shapes/models/",
     },
     # --- Ellis Print Tuning Guide test prints ---
     "first_layer_patch": {
         "filename": "first_layer_patch_0.2mm.stl",
         "description": "Ellis first layer patch (0.2mm layer height)",
         "purpose": "First layer calibration and bed level verification",
+        "source": "https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints",
         "urls": [
             "https://raw.githubusercontent.com/AndrewEllis93/Print-Tuning-Guide/main/test_prints/first_layer_patches/First_Layer_Patch-0.2mm.stl",
         ],
@@ -73,6 +88,7 @@ CALIBRATION_MODELS = {
         "filename": "extrusion_multiplier_cube.stl",
         "description": "Ellis extrusion multiplier test cube",
         "purpose": "Flow rate / extrusion multiplier calibration",
+        "source": "https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints",
         "urls": [
             "https://raw.githubusercontent.com/AndrewEllis93/Print-Tuning-Guide/main/test_prints/extrusion_multiplier_cubes/EM_Cube-Unlabeled.stl",
         ],
@@ -83,6 +99,7 @@ CALIBRATION_MODELS = {
         "filename": "3DBenchy.stl",
         "description": "3D Benchy - the classic torture test",
         "purpose": "Comprehensive print validation",
+        "source": "https://github.com/CreativeTools/3DBenchy",
         "urls": [
             "https://raw.githubusercontent.com/CreativeTools/3DBenchy/master/Single-part/3DBenchy.stl",
         ],
