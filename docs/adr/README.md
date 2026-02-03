@@ -41,6 +41,8 @@ Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADR
 | [ADR-024](024-heated-bed-size.md) | Heated Bed Size Selection | **Accepted** | 220×220mm reference (Anet A8); analysis of scavengeable bed sizes |
 | [ADR-025](025-multi-frame-architecture.md) | Multi-Frame Architecture | **Accepted** | Darwin (M10), S-Core, V-Core paths; MDF base; tier system update |
 | [ADR-026](026-donor-fitness-constraints.md) | Donor Fitness & Frame Constraints | **Accepted** | Bed size and Z-height fitness tiers; stability limits; heatbed swap guidance |
+| [ADR-027](027-build-plate-surfaces.md) | Build Plate Surface Selection | **Accepted** | Donor surfaces preferred; G10/FR4 for replacement; thickness scaling by bed size |
+| [ADR-028](028-target-filaments.md) | Target Filament Selection | **Accepted** | PLA, PETG, TPU as primary (80/20 rule); ABS possible but not optimized |
 
 ### Foundation & Electronics ADRs
 
@@ -70,13 +72,15 @@ Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADR
 
 ## ADR Categories
 
-### Core Hardware (001, 004, 019, 021, 025)
-Frame, extruder, hotend, and motion system - the physical foundation of the machine.
+### Core Hardware (001, 004, 019, 021, 025, 027, 028)
+Frame, extruder, hotend, motion system, build surface, and target filaments - the physical foundation of the machine.
 - ADR-025: Multi-Frame Architecture (Darwin, S-Core, V-Core paths - all on MDF base)
 - ADR-001: M10 Frame Skeleton (Darwin path primary)
 - ADR-021: Dual-Rod Motion System (Dual 8mm vertical stacking - Darwin/S-Core)
 - ADR-004: E3D V6 + CHT Hotend
 - ADR-019: Pitan Extruder (Reference Spec)
+- ADR-027: Build Plate Surface (donor surfaces or G10 replacement)
+- ADR-028: Target Filaments (PLA, PETG, TPU — 80/20 rule)
 
 ### Motion & Leveling (005, 007-010)
 Z-axis leveling, CAN bus, modular bed, and Z-motor mounting - kinematic accuracy and foundation.
@@ -97,8 +101,8 @@ If you're new to Amalgam and want to understand the engineering decisions:
 1. **Engineering Philosophy** → ADR-000
 2. **Frame & Donor Selection** → ADR-025 (Multi-Frame: Darwin, S-Core, V-Core paths)
 3. **Donor Fitness & Constraints** → ADR-026 (Bed size, Z-height, stability limits)
-4. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend)
-5. **Motion System** → ADR-021 (Dual-Rod Motion), ADR-005 (Triple-Z), ADR-024 (Bed Size)
+4. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend), ADR-028 (Target Filaments)
+5. **Motion System** → ADR-021 (Dual-Rod Motion), ADR-005 (Triple-Z), ADR-024 (Bed Size), ADR-027 (Build Surface)
 6. **Electronics** → ADR-012, 013
 7. **Probing** → ADR-014
 8. **Advanced Features** → ADR-007, 009, 011, 015, 016
