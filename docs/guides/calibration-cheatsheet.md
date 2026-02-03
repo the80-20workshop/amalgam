@@ -10,11 +10,14 @@ Quick reference for Klipper calibration commands. For detailed explanations, see
 
 | Step | Print | Time | What to Check |
 |------|-------|------|---------------|
-| 1. First Layer | `first_layer_grid.stl` or `prusa_live_z.stl` | 10 min | Lines touch, smooth surface, consistent |
+| 1. First Layer | See options below | 2-10 min | Lines touch, smooth surface, consistent |
 | 2. Dimensions | `xyz_calibration_cube.stl` | 15 min | Measures 20.0mm on all axes |
 | 3. Quality | `3DBenchy.stl` | 60 min | No stringing, good overhangs, clean detail |
 
-**Tip:** Use `prusa_live_z.stl` if you want to adjust Z-offset *while* printing.
+**First layer options:**
+- `first_layer_patch_0.2mm.stl` - Quick center check (~2 min)
+- `first_layer_grid.stl` - Full bed test (~10 min)
+- `prusa_live_z.stl` - Adjust Z live while printing (~8 min)
 
 **If all three pass:** You're ready to print. Do the advanced tuning later (or never).
 
@@ -56,7 +59,17 @@ Generated to match your bed size from `config.py`:
 | `first_layer_snake.stl` | (generated with grid) | Alternative snake pattern |
 | `prusa_live_z.stl` | `./build.sh build prusa_live_z` | Live Z adjustment while printing |
 
-**Prusa Live Z pattern:** Progressive lines + square. Adjust Z-offset while it prints - each new line shows your adjustment.
+### First Layer Test Options
+
+| Pattern | Source | Best For |
+|---------|--------|----------|
+| `first_layer_patch_0.2mm.stl` | Ellis (download) | Quick center check (~2 min) |
+| `first_layer_grid.stl` | Amalgam (build123d) | Full bed coverage, tests mesh leveling |
+| `prusa_live_z.stl` | Amalgam (build123d) | Live Z adjustment while printing |
+
+**Quick check?** Use Ellis patch (center only).
+**Testing bed mesh?** Use grid (covers entire bed).
+**Tuning Z-offset?** Use Prusa pattern (adjust while printing).
 
 ---
 
