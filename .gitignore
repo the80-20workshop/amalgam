@@ -26,6 +26,9 @@ cad/stl/*.stl
 # Downloaded calibration STLs (use utilities/download_calibration.py)
 cad/calibration/
 
+# Exported logos (use utilities/export_logo.py)
+cad/exports/
+
 # IDE
 .idea/
 .vscode/
