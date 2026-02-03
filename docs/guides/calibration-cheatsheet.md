@@ -4,6 +4,45 @@ Quick reference for Klipper calibration commands. For detailed explanations, see
 
 ---
 
+## The 80/20 Path (Quick Start)
+
+**Just want to print?** Do these 3 things and you're 80% calibrated:
+
+| Step | Print | Time | What to Check |
+|------|-------|------|---------------|
+| 1. First Layer | `first_layer_grid.stl` | 10 min | Lines touch, smooth surface, consistent |
+| 2. Dimensions | `xyz_calibration_cube.stl` | 15 min | Measures 20.0mm on all axes |
+| 3. Quality | `3DBenchy.stl` | 60 min | No stringing, good overhangs, clean detail |
+
+**If all three pass:** You're ready to print. Do the advanced tuning later (or never).
+
+**If something's wrong:** Check the troubleshooting table at the bottom, then do the relevant advanced calibration.
+
+```bash
+# Generate first layer grid (parametric to your bed size)
+./build.sh build first_layer_grid
+
+# Download standard calibration prints
+python utilities/download_calibration.py
+```
+
+---
+
+## Simple vs Advanced Path
+
+| Path | Prints | Time | Result |
+|------|--------|------|--------|
+| **Simple (80/20)** | First layer → XYZ cube → Benchy | ~90 min | Good prints, works for most people |
+| **Advanced** | All 10 steps below | 3-4 hours | Optimized PA, Input Shaper, perfect corners |
+
+**When to go Advanced:**
+- Printing functional parts with tight tolerances
+- Seeing ringing/ghosting artifacts
+- Corners are bulging or have gaps
+- Want maximum print speed
+
+---
+
 ## Downloaded Calibration Models
 
 Run `python utilities/download_calibration.py` to download these:
@@ -33,20 +72,43 @@ Run `python utilities/download_calibration.py` to download these:
 
 **Use XYZ cube** for quick dimensional checks. **Use Voron cube** when tuning for functional parts with bearing fits and overhangs.
 
+### Voron Cube vs Benchy
+
+| Test | Voron Cube | Benchy |
+|------|------------|--------|
+| Dimensions | Yes (30mm) | Yes (60mm hull) |
+| Overhangs | Yes (logos) | Yes (hull, multiple angles) |
+| Bridging | Yes (internal) | Yes (cabin roof) |
+| Fine detail | No | Yes (text, windows) |
+| Curved surfaces | No | Yes (hull) |
+| Stringing test | No | Yes (chimney) |
+| Bearing fits | **Yes** | No |
+| PA corners | **Yes** | No |
+| Universal reference | No | **Yes** (compare to millions online) |
+
+**Voron cube** = "Can I print functional parts?" (tolerances, bearing fits)
+**Benchy** = "Does my print look right?" (visual reference everyone knows)
+
+**Recommendation:** Print Voron cube for functional validation. Print Benchy if you want visual comparison or suspect quality issues. Print Fidget Bolt as the real victory test (working threads = well calibrated).
+
 ---
 
-## Calibration Order
+## Calibration Order (Advanced Path)
 
-1. Mechanical check (manual)
-2. PID tune hotend & bed
-3. Z-offset & bed mesh
-4. First layer test
-5. Extruder steps (e-steps)
-6. Pressure Advance
-7. Input Shaper
-8. Flow rate / Extrusion Multiplier
-9. Temperature (optional)
-10. Retraction (optional)
+| # | Step | Path | Required? |
+|---|------|------|-----------|
+| 1 | Mechanical check | Both | Yes |
+| 2 | PID tune hotend & bed | Both | Yes (once) |
+| 3 | Z-offset & bed mesh | Both | Yes |
+| 4 | **First layer test** | **Simple** | Yes |
+| 5 | Extruder steps (e-steps) | Advanced | If dimensions off |
+| 6 | Pressure Advance | Advanced | If corners bulge |
+| 7 | Input Shaper | Advanced | If ringing/ghosting |
+| 8 | Flow rate | Advanced | If walls wrong thickness |
+| 9 | Temperature | Advanced | Per filament |
+| 10 | Retraction | Advanced | If stringing |
+
+**Simple path:** Steps 1-4, then print XYZ cube and Benchy to validate.
 
 ---
 
