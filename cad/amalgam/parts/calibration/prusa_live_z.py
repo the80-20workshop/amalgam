@@ -1,14 +1,23 @@
 """
 Amalgam Prusa-Style Live Z Calibration Pattern
 
-Replicates the classic Prusa first layer calibration pattern:
-- Zigzag lines that progress across the bed (for live Z adjustment)
+Inspired by the Prusa MK3 firmware's built-in first layer calibration.
+Original concept by Prusa Research (prusa3d.com).
+
+This is a clean-room reimplementation in build123d, parametric to your bed size.
+
+Pattern description:
+- Progressive lines that get longer (for live Z adjustment)
 - Small square patch at the end (for final inspection)
 
 This pattern is ideal for live Z-offset adjustment because:
 - You can adjust Z while it prints the lines
 - Each line shows the result of your adjustment
 - The square at the end confirms your final setting
+
+References:
+- Prusa Knowledge Base: https://help.prusa3d.com/article/first-layer-calibration-i3_112364
+- Printables: https://www.printables.com/model/104767 (extracted pattern)
 
 Usage:
     ./build.sh build prusa_live_z

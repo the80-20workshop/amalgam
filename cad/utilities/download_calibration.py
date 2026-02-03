@@ -3,7 +3,18 @@
 Download standard calibration STL files for printer calibration.
 
 These are external community models used in the calibration process.
-Amalgam-specific prints (maker coin, fidget bolt) are built with build123d.
+All models are downloaded from their original GitHub repositories
+with full attribution to their creators.
+
+Sources:
+- Klipper3d: ringing_tower, square_tower (GPL-3.0)
+- VoronDesign: Voron Design Cube v7 (GPL-3.0)
+- AndrewEllis93: First layer patch, EM cube
+- 5axes: XYZ Calibration Cube
+- CreativeTools: 3DBenchy (Public Domain)
+
+Amalgam-specific prints (maker coin, fidget bolt, first_layer_grid,
+prusa_live_z) are built with build123d - see amalgam/parts/.
 
 Usage:
     python utilities/download_calibration.py

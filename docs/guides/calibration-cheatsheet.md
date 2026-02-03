@@ -379,4 +379,22 @@ Downloads from Klipper, Voron, and Ellis GitHub repos. See [calibration-guide.md
 
 ---
 
+## Credits & Acknowledgments
+
+Amalgam's calibration system stands on the shoulders of giants:
+
+| Source | Contribution | License |
+|--------|--------------|---------|
+| [Klipper3d](https://github.com/Klipper3d/klipper) | Ringing tower, square tower, TUNING_TOWER | GPL-3.0 |
+| [VoronDesign](https://github.com/VoronDesign/Voron-2) | Voron Design Cube v7 | GPL-3.0 |
+| [Ellis (AndrewEllis93)](https://github.com/AndrewEllis93/Print-Tuning-Guide) | First layer patch, EM cube, tuning methodology | — |
+| [5axes](https://github.com/5axes/Calibration-Shapes) | XYZ Calibration Cube | — |
+| [CreativeTools](https://github.com/CreativeTools/3DBenchy) | 3DBenchy | Public Domain |
+| [Prusa Research](https://www.prusa3d.com/) | Live Z pattern concept | — |
+| [Teaching Tech](https://teachingtechyt.github.io/) | Calibration methodology | — |
+
+**Amalgam-created prints** (`first_layer_grid`, `prusa_live_z`) are original build123d implementations inspired by community patterns. Licensed under the same terms as the Amalgam project.
+
+---
+
 *"Measure twice, print once. Or just print it and iterate."*

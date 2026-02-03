@@ -4,10 +4,20 @@ Amalgam First Layer Calibration Grid
 A parametric grid of squares for first layer calibration.
 Covers the bed to verify first layer consistency across the entire surface.
 
-Based on Prusa-style calibration patterns:
+Inspired by common first layer test patterns from the 3D printing community.
+Similar patterns exist on Printables, Thingiverse, and in printer firmwares.
+
+This is an original implementation in build123d, parametric to your bed size.
+
+Features:
 - Grid of squares at 0.2mm height (one layer)
-- Parametric: adjusts to your bed size
+- Parametric: adjusts to your bed size from config.py
 - Tests bed leveling, Z-offset, and mesh accuracy
+- Also generates a snake pattern variant
+
+References:
+- Ellis Print Tuning Guide: https://ellis3dp.com/Print-Tuning-Guide/
+- Prusa Knowledge Base: https://help.prusa3d.com/
 
 Usage:
     ./build.sh build first_layer_grid
