@@ -10,9 +10,9 @@ Amalgam requires **two matching donor printers**. Choose your frame path based o
 
 | Path | Frame | Motion | Best Donors | Reference |
 |------|-------|--------|-------------|-----------|
-| **Darwin** | M10 threaded rod + MDF | Dual 8mm smooth rods | Anet A8, Wanhao i3, Prusa clones | ADR-025, ADR-001, ADR-021 |
-| **S-Core** | Aluminum extrusion + MDF | Dual 8mm smooth rods | Mixed donors (rare) | ADR-025, ADR-021 |
-| **V-Core** | Aluminum extrusion + MDF | V-slot rails + POM wheels | Ender 3, CR-10, Aquila | ADR-025, ADR-025 |
+| **Scaffold** | M10 threaded rod + MDF | Dual 8mm smooth rods | Anet A8, Wanhao i3, Prusa clones | ADR-025, ADR-001, ADR-021 |
+| **Mill** | Aluminum extrusion + MDF | V-slot rails + POM wheels | Ender 3, CR-10, Aquila | ADR-025 |
+| **Lathe** | Aluminum extrusion + MDF | Dual 8mm smooth rods + IGUS | Ender 3 + bought rods, mixed | ADR-025, ADR-021 |
 
 ## Electronics Options
 
@@ -25,12 +25,13 @@ Amalgam requires **two matching donor printers**. Choose your frame path based o
 
 | Guide | Description |
 |-------|-------------|
+| [calibration-guide.md](calibration-guide.md) | Complete calibration sequence: first layer, dimensions, Klipper tuning, filament profiles |
 | [maintenance-setup.md](maintenance-setup.md) | Mechanical setup procedures and ongoing maintenance for all frame paths |
 
 ## Guides (In Progress)
 
 Build order for documentation:
-1. **frame-assembly.qmd** - Construct your frame per path (Darwin/S-Core/V-Core)
+1. **frame-assembly.qmd** - Construct your frame per path (Scaffold/Mill/Lathe)
 2. **klipper-config.qmd** - Configure Klipper firmware (electronics-agnostic)
 3. **klipper/** - Host-specific setup (Raspberry Pi, laptop, etc.)
 
