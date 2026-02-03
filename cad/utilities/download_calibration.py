@@ -28,14 +28,14 @@ OUTPUT_DIR = Path("calibration")
 
 # Calibration models with download URLs
 # Priority: GitHub-hosted (stable), then fallback instructions
-# Note: Thingiverse CDN blocks automated downloads (403), so we use alternatives
+# Note: Thingiverse/Printables block automated downloads, so we use GitHub sources
 CALIBRATION_MODELS = {
+    # --- Klipper official test prints ---
     "ringing_tower": {
         "filename": "ringing_tower.stl",
         "description": "Ringing/ghosting test tower for Input Shaper",
         "purpose": "Tune Klipper Input Shaper settings",
         "urls": [
-            # Klipper official - stable GitHub raw link
             "https://raw.githubusercontent.com/Klipper3d/klipper/master/docs/prints/ringing_tower.stl",
         ],
         "fallback_info": "Klipper GitHub: klipper/docs/prints/ringing_tower.stl",
@@ -45,19 +45,40 @@ CALIBRATION_MODELS = {
         "description": "Square tower for Pressure Advance tuning",
         "purpose": "Tune Klipper Pressure Advance settings",
         "urls": [
-            # Klipper official - stable GitHub raw link
             "https://raw.githubusercontent.com/Klipper3d/klipper/master/docs/prints/square_tower.stl",
         ],
         "fallback_info": "Klipper GitHub: klipper/docs/prints/square_tower.stl",
     },
-    "xyz_calibration_cube": {
-        "filename": "xyz_calibration_cube_20mm.stl",
-        "description": "Standard 20mm XYZ calibration cube",
+    # --- Voron Design test prints ---
+    "voron_cube": {
+        "filename": "voron_design_cube.stl",
+        "description": "Voron Design Cube - calibration cube",
         "purpose": "Dimensional accuracy verification",
-        "urls": [],  # No reliable auto-download source
-        "fallback_info": "Printables: printables.com/model/78638 or Thingiverse: 1278865",
-        "manual_only": True,
+        "urls": [
+            "https://raw.githubusercontent.com/VoronDesign/Voron-2/Voron2.4/STLs/Test_Prints/Voron_Design_Cube_v7.stl",
+        ],
+        "fallback_info": "Voron GitHub: VoronDesign/Voron-2/STLs/Test_Prints/",
     },
+    # --- Ellis Print Tuning Guide test prints ---
+    "first_layer_patch": {
+        "filename": "first_layer_patch_0.2mm.stl",
+        "description": "Ellis first layer patch (0.2mm layer height)",
+        "purpose": "First layer calibration and bed level verification",
+        "urls": [
+            "https://raw.githubusercontent.com/AndrewEllis93/Print-Tuning-Guide/main/test_prints/first_layer_patches/First_Layer_Patch-0.2mm.stl",
+        ],
+        "fallback_info": "Ellis GitHub: AndrewEllis93/Print-Tuning-Guide/test_prints/",
+    },
+    "extrusion_multiplier_cube": {
+        "filename": "extrusion_multiplier_cube.stl",
+        "description": "Ellis extrusion multiplier test cube",
+        "purpose": "Flow rate / extrusion multiplier calibration",
+        "urls": [
+            "https://raw.githubusercontent.com/AndrewEllis93/Print-Tuning-Guide/main/test_prints/extrusion_multiplier_cubes/EM_Cube-Unlabeled.stl",
+        ],
+        "fallback_info": "Ellis GitHub: AndrewEllis93/Print-Tuning-Guide/test_prints/",
+    },
+    # --- Manual downloads (no GitHub source) ---
     "benchy": {
         "filename": "3DBenchy.stl",
         "description": "3D Benchy - the classic torture test",
@@ -79,7 +100,7 @@ CALIBRATION_MODELS = {
         "description": "Retraction test tower",
         "purpose": "Tune retraction distance and speed",
         "urls": [],  # Thingiverse blocks automated downloads
-        "fallback_info": "Printables: printables.com/model/46846 or similar 'retraction test'",
+        "fallback_info": "Printables: printables.com/model/46846 or search 'retraction test'",
         "manual_only": True,
     },
 }
