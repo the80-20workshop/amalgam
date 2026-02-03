@@ -13,12 +13,13 @@ Amalgam is a **2026 RepRap-inspired reference specification** for a scavenger-fr
 
 ## Read First (Priority Order)
 
-1. **PHILOSOPHY.md** — The "Tractor" concept, heritage acknowledgments
-2. **docs/adr/README.md** — Index of all architectural decisions
-3. **docs/adr/025-multi-frame-architecture.md** — Frame paths (Darwin, S-Core, V-Core)
-4. **docs/adr/021-dual-rod-motion-system.md** — Smooth rod motion system (Dual 8mm)
-5. **docs/adr/012-mainboard-host-architecture.md** — Electronics paths, dual-MCU config
-6. **docs/reference/donor-printer-guide.md** — Which printers to scavenge
+1. **SAFETY.md** — Hazards and safety guidance (for physical builds)
+2. **PHILOSOPHY.md** — The "Tractor" concept, heritage acknowledgments
+3. **docs/adr/README.md** — Index of all architectural decisions
+4. **docs/adr/025-multi-frame-architecture.md** — Frame paths (Darwin, S-Core, V-Core)
+5. **docs/adr/021-dual-rod-motion-system.md** — Smooth rod motion system (Dual 8mm)
+6. **docs/adr/012-mainboard-host-architecture.md** — Electronics paths, dual-MCU config
+7. **docs/reference/donor-printer-guide.md** — Which printers to scavenge
 
 ## Key Architectural Decisions
 

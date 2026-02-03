@@ -1,5 +1,7 @@
 # Building Amalgam
 
+> **Safety first:** Before starting any physical assembly, read [SAFETY.md](SAFETY.md). This covers electrical hazards, burn risks, tool safety, and scavenger-specific concerns like inspecting donor wiring.
+
 This guide covers the three build systems:
 1. **CAD/STL Generation** - Parametric parts from build123d
 2. **Engineering Analysis** - Assess your configuration before building

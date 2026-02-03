@@ -30,6 +30,8 @@ We build a **"Tractor with the Brain of a Racecar"** — using heavy, high-torqu
 
 ## Quick Start
 
+> **Before you build:** Read [SAFETY.md](SAFETY.md). You're building a machine from salvaged parts that involves mains power, hot surfaces, and moving parts.
+
 ### Option 1: Configuration Wizard (Recommended)
 
 ```bash
@@ -93,6 +95,7 @@ Amalgam requires **two donor printers**. The frame path depends on what you scav
 
 | Document | Description |
 |----------|-------------|
+| [SAFETY.md](SAFETY.md) | **Read first** — Hazards and safety guidance |
 | [MANIFESTO.md](MANIFESTO.md) | Quick-start overview |
 | [PHILOSOPHY.md](PHILOSOPHY.md) | The "Tractor" philosophy and heritage |
 | [REFERENCE-SPEC.md](REFERENCE-SPEC.md) | Hardware specification |
