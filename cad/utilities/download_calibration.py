@@ -78,31 +78,19 @@ CALIBRATION_MODELS = {
         ],
         "fallback_info": "Ellis GitHub: AndrewEllis93/Print-Tuning-Guide/test_prints/",
     },
-    # --- Manual downloads (no GitHub source) ---
+    # --- 3DBenchy (official GitHub repo) ---
     "benchy": {
         "filename": "3DBenchy.stl",
         "description": "3D Benchy - the classic torture test",
         "purpose": "Comprehensive print validation",
-        "urls": [],  # Website requires JavaScript
-        "fallback_info": "Download from https://www.3dbenchy.com/ (click Download)",
-        "manual_only": True,
+        "urls": [
+            "https://raw.githubusercontent.com/CreativeTools/3DBenchy/master/Single-part/3DBenchy.stl",
+        ],
+        "fallback_info": "GitHub: CreativeTools/3DBenchy or https://www.3dbenchy.com/",
     },
-    "temperature_tower": {
-        "filename": "temperature_tower_pla.stl",
-        "description": "Temperature tower for PLA (180-220C)",
-        "purpose": "Find optimal printing temperature",
-        "urls": [],  # Thingiverse blocks automated downloads
-        "fallback_info": "Printables: printables.com/model/39810 (Smart Compact Temp Tower)",
-        "manual_only": True,
-    },
-    "retraction_tower": {
-        "filename": "retraction_test.stl",
-        "description": "Retraction test tower",
-        "purpose": "Tune retraction distance and speed",
-        "urls": [],  # Thingiverse blocks automated downloads
-        "fallback_info": "Printables: printables.com/model/46846 or search 'retraction test'",
-        "manual_only": True,
-    },
+    # Note: Temperature and retraction towers are NOT included.
+    # Klipper's TUNING_TOWER command works with any tall object (Voron cube, etc.)
+    # See docs/guides/calibration-cheatsheet.md for usage.
 }
 
 # =============================================================================
