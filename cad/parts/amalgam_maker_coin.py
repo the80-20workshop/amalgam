@@ -84,13 +84,6 @@ def make_amalgam_coin(
             RegularPolygon(radius=circumradius, side_count=sides, align=(Align.CENTER, Align.CENTER))
         extrude(amount=thickness)
 
-        # --- Chamfer top and bottom edges ---
-        # Get horizontal edges (the ones on top and bottom faces)
-        top_edges = coin.edges().filter_by(Plane.XY.offset(thickness))
-        bottom_edges = coin.edges().filter_by(Plane.XY)
-        chamfer(top_edges, length=chamfer_size)
-        chamfer(bottom_edges, length=chamfer_size)
-
         # --- Emboss the "A" on top face ---
         with BuildSketch(Plane.XY.offset(thickness)) as logo:
             Text("A", font_size=a_font_size, font=a_font, align=(Align.CENTER, Align.CENTER))
@@ -104,6 +97,15 @@ def make_amalgam_coin(
             with Locations([(0, hole_y)]):
                 Circle(radius=hole_diameter / 2)
         extrude(amount=thickness, both=True, mode=Mode.SUBTRACT)
+
+        # --- Optional: Fillet outer edges ---
+        # Note: Filleting after boolean operations can be tricky.
+        # Uncomment below to add edge fillets (may need tuning)
+        # try:
+        #     perimeter_edges = coin.edges().filter_by(Axis.Z)
+        #     fillet(perimeter_edges, radius=chamfer_size * 0.5)
+        # except Exception as e:
+        #     print(f"Note: Edge fillet skipped ({e})")
 
     return coin.part
 
