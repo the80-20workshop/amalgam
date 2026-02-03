@@ -23,6 +23,9 @@ cad/config.py
 cad/config.py.backup
 cad/stl/*.stl
 
+# Downloaded calibration STLs (use utilities/download_calibration.py)
+cad/calibration/
+
 # IDE
 .idea/
 .vscode/
