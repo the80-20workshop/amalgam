@@ -36,11 +36,14 @@ NUT_DIAMETER = 24 * MM          # Across flats (same as head)
 NUT_HEIGHT = 10 * MM            # Nut thickness
 NUT_SIDES = 8                   # Octagonal
 
-# Logo parameters (sized to match Logo 10 proportions)
-# The "A" should nearly fill the octagon with minimal negative space
-LOGO_SIZE = 20 * MM             # Logo octagon size on bolt head (close to head size)
-LOGO_DEPTH = 1.2 * MM           # Emboss depth
-LOGO_FONT_SIZE = 16             # Font size for "A" (~80% of logo size)
+# Logo parameters (matching Logo 10 - same approach as maker coin)
+LOGO_A_FONT_SIZE = 18           # Font size for the raised solid "A"
+LOGO_A_CUTOUT_SIZE = 16         # Font size for the A-shaped cutout (with rounded corners)
+LOGO_CIRCLE_DIAMETER = 14 * MM  # Circle that creates the curved sides
+LOGO_CIRCLE_Y_OFFSET = -1.5 * MM  # Offset circle down (negative = down)
+LOGO_DEPTH = 1.2 * MM           # Depth of recess
+LOGO_CUTOUT_FILLET = 1.4 * MM   # Radius for rounding the cutout A corners
+LOGO_ROTATION = 22.5            # Rotate octagon head to align with logo
 
 # Edge treatment
 CHAMFER_SIZE = 1.0 * MM         # Chamfer on head/nut edges
@@ -105,26 +108,33 @@ def make_amalgam_bolt(
     head_diameter: float = HEAD_DIAMETER,
     head_height: float = HEAD_HEIGHT,
     head_sides: int = HEAD_SIDES,
-    logo_size: float = LOGO_SIZE,
+    logo_a_font_size: float = LOGO_A_FONT_SIZE,
+    logo_a_cutout_size: float = LOGO_A_CUTOUT_SIZE,
+    logo_circle_diameter: float = LOGO_CIRCLE_DIAMETER,
+    logo_circle_y_offset: float = LOGO_CIRCLE_Y_OFFSET,
     logo_depth: float = LOGO_DEPTH,
-    logo_font_size: float = LOGO_FONT_SIZE,
+    logo_cutout_fillet: float = LOGO_CUTOUT_FILLET,
+    logo_rotation: float = LOGO_ROTATION,
     chamfer_size: float = CHAMFER_SIZE,
 ) -> Part:
     """
     Create the bolt with octagonal head and Logo 10.
+
+    Logo 10 design (same as maker coin):
+    - Cut circle (creates bulging sides)
+    - Cut larger A with rounded corners
+    - Add smaller sharp A back on top
     """
 
     # Calculate circumradius from inradius (across-flats to across-corners)
     head_inradius = head_diameter / 2
     head_circumradius = head_inradius / math.cos(math.pi / head_sides)
 
-    logo_inradius = logo_size / 2
-    logo_circumradius = logo_inradius / math.cos(math.pi / 8)
-
     with BuildPart() as bolt:
-        # --- Bolt head (octagonal) ---
+        # --- Bolt head (octagonal, rotated to align with logo) ---
         with BuildSketch(Plane.XY) as head_sketch:
-            RegularPolygon(radius=head_circumradius, side_count=head_sides)
+            RegularPolygon(radius=head_circumradius, side_count=head_sides,
+                          rotation=logo_rotation)
         extrude(amount=head_height)
 
         # --- Shank (smooth section under head) ---
@@ -140,52 +150,110 @@ def make_amalgam_bolt(
             Circle(radius=thread_diameter / 2)
         extrude(amount=thread_length)
 
-        # Add thread using helix
-        thread_helix = Helix(
-            pitch=thread_pitch,
-            height=thread_length,
-            radius=thread_diameter / 2,
-            center=(0, 0, -shank_length - thread_length),
-            direction=(0, 0, 1),
-        )
+        # Add external thread grooves - simple ring cuts for reliable FDM printing
+        thread_depth = thread_pitch * 0.35
+        thread_bottom_z = -shank_length - thread_length
+        num_threads = int(thread_length / thread_pitch)
 
-        # Thread profile
-        thread_depth = thread_pitch * 0.4
-        with BuildSketch(Plane(thread_helix @ 0, z_dir=thread_helix % 0)) as thread_profile:
-            with Locations([(thread_diameter / 2, 0)]):
-                Polygon(
-                    (0, 0),
-                    (-thread_depth, thread_pitch * 0.25),
-                    (-thread_depth, thread_pitch * 0.75),
-                    (0, thread_pitch),
-                    align=None
-                )
-                make_face()
+        # Cut V-grooves at each thread position
+        for i in range(num_threads):
+            groove_z = thread_bottom_z + thread_pitch * (i + 0.5)
+            # Create a V-groove ring by revolving a triangle
+            with BuildSketch(Plane.XZ) as groove_profile:
+                with Locations([(thread_diameter / 2, groove_z)]):
+                    # Small triangle pointing inward
+                    Polygon(
+                        (0, -thread_pitch * 0.3),
+                        (-thread_depth, 0),
+                        (0, thread_pitch * 0.3),
+                        align=None
+                    )
+            revolve(axis=Axis.Z, mode=Mode.SUBTRACT)
 
-        sweep(path=thread_helix)
-
-        # --- Chamfer bolt head edges ---
-        top_face = bolt.faces().sort_by(Axis.Z)[-1]
-        top_edges = top_face.edges()
-        chamfer(top_edges, length=chamfer_size)
-
-        # --- Chamfer thread end ---
-        bottom_edges = bolt.faces().sort_by(Axis.Z)[0].edges()
-        try:
-            chamfer(bottom_edges, length=chamfer_size * 0.5)
-        except:
-            pass  # May fail on thread geometry
-
-        # --- Emboss Logo 10 on top of head ---
-        with BuildSketch(Plane.XY.offset(head_height)) as logo:
-            # Octagonal outline
-            RegularPolygon(radius=logo_circumradius, side_count=8)
-            # Cut out the "A"
-            Text("A", font_size=logo_font_size, font="Arial Black",
-                 align=(Align.CENTER, Align.CENTER), mode=Mode.SUBTRACT)
+        # --- Logo 10 on top of head (same approach as maker coin) ---
+        # Step 1: Cut the circle (creates bulging sides, offset down)
+        with BuildSketch(Plane.XY.offset(head_height)) as circle_cut:
+            with Locations([(0, logo_circle_y_offset)]):
+                Circle(radius=logo_circle_diameter / 2)
         extrude(amount=-logo_depth, mode=Mode.SUBTRACT)
 
-    return bolt.part
+        # Step 2: Cut the larger A with rounded corners
+        with BuildSketch(Plane.XY.offset(head_height)) as a_cutout:
+            Text("A", font_size=logo_a_cutout_size, font="Arial Black",
+                 align=(Align.CENTER, Align.CENTER))
+            offset(amount=logo_cutout_fillet, kind=Kind.ARC)
+        extrude(amount=-logo_depth, mode=Mode.SUBTRACT)
+
+        # Step 3: Add the raised sharp A back on top
+        with BuildSketch(Plane.XY.offset(head_height - logo_depth)) as raised_a:
+            Text("A", font_size=logo_a_font_size, font="Arial Black",
+                 align=(Align.CENTER, Align.CENTER))
+        extrude(amount=logo_depth, mode=Mode.ADD)
+
+    # --- Apply edge treatments outside BuildPart for better control ---
+    result = bolt.part
+    shank_length = 3 * MM  # Match the value used above
+    head_outer_radius = (head_diameter / 2) * 0.8
+
+    # Fillet vertical edges of the bolt head (the 8 octagon corners)
+    try:
+        vertical_edges = result.edges().filter_by(
+            lambda e: (
+                abs(e.length - head_height) < head_height * 0.2 and  # Approximately head height
+                e.center().Z > 0 and  # In the head region (above Z=0)
+                math.sqrt(e.center().X**2 + e.center().Y**2) > head_outer_radius  # On outer perimeter
+            )
+        )
+        if vertical_edges:
+            result = fillet(vertical_edges, radius=chamfer_size)
+    except Exception as ex:
+        print(f"Bolt head vertical fillet failed: {ex}")
+
+    # Chamfer top edges of bolt head (outer octagon edges, not logo edges)
+    # Filter for straight LINE edges on outer perimeter at the top
+    min_edge_length = head_diameter * 0.25  # Octagon edges are ~0.41 * diameter
+    try:
+        top_edges = result.edges().filter_by(GeomType.LINE).filter_by(
+            lambda e: (
+                abs(e.center().Z - head_height) < 1.0 and  # At top (within 1mm)
+                math.sqrt(e.center().X**2 + e.center().Y**2) > head_outer_radius and
+                e.length > min_edge_length
+            )
+        )
+        if top_edges:
+            result = chamfer(top_edges, length=chamfer_size * 0.6)  # Smaller chamfer after fillets
+        else:
+            print("No top edges found for chamfer")
+    except Exception as ex:
+        print(f"Bolt head top chamfer failed: {ex}")
+
+    # Chamfer bottom edges of bolt head (outer octagon edges at Z=0, not the shank circle)
+    min_edge_length = head_diameter * 0.3  # Filter out the circular shank edge
+    try:
+        bottom_head_edges = result.edges().filter_by(
+            lambda e: (
+                abs(e.center().Z) < 0.5 and  # At Z ≈ 0
+                math.sqrt(e.center().X**2 + e.center().Y**2) > head_outer_radius and
+                e.length > min_edge_length  # Only straight octagon edges
+            )
+        )
+        if bottom_head_edges:
+            result = chamfer(bottom_head_edges, length=chamfer_size * 0.8)
+    except Exception as ex:
+        print(f"Bolt head bottom chamfer failed: {ex}")
+
+    # Chamfer the thread tip
+    try:
+        thread_tip_z = -shank_length - thread_length
+        tip_edges = result.edges().filter_by(
+            lambda e: abs(e.center().Z - thread_tip_z) < 1.0
+        )
+        if tip_edges:
+            result = chamfer(tip_edges, length=chamfer_size * 0.5)
+    except Exception as ex:
+        pass  # May fail on thread geometry
+
+    return result
 
 
 # =============================================================================
@@ -199,6 +267,7 @@ def make_amalgam_nut(
     nut_diameter: float = NUT_DIAMETER,
     nut_height: float = NUT_HEIGHT,
     nut_sides: int = NUT_SIDES,
+    nut_rotation: float = LOGO_ROTATION,  # Match bolt head rotation
     chamfer_size: float = CHAMFER_SIZE,
 ) -> Part:
     """
@@ -213,9 +282,10 @@ def make_amalgam_nut(
     internal_diameter = thread_diameter + thread_clearance * 2
 
     with BuildPart() as nut:
-        # --- Nut body (octagonal) ---
+        # --- Nut body (octagonal, rotated to match bolt head) ---
         with BuildSketch(Plane.XY) as nut_sketch:
-            RegularPolygon(radius=nut_circumradius, side_count=nut_sides)
+            RegularPolygon(radius=nut_circumradius, side_count=nut_sides,
+                          rotation=nut_rotation)
         extrude(amount=nut_height)
 
         # --- Central hole ---
@@ -223,54 +293,80 @@ def make_amalgam_nut(
             Circle(radius=internal_diameter / 2)
         extrude(amount=nut_height, mode=Mode.SUBTRACT)
 
-        # --- Internal threads ---
-        thread_helix = Helix(
-            pitch=thread_pitch,
-            height=nut_height,
-            radius=internal_diameter / 2,
-            center=(0, 0, 0),
-            direction=(0, 0, 1),
+        # --- Internal thread ridges - simple rings for reliable FDM printing ---
+        thread_depth = thread_pitch * 0.35
+        num_threads = int(nut_height / thread_pitch)
+
+        # Add V-ridges at each thread position (project into the hole)
+        for i in range(num_threads):
+            ridge_z = thread_pitch * (i + 0.5)
+            if ridge_z < nut_height - thread_pitch * 0.3:  # Leave margin at top
+                # Create a V-ridge ring by revolving a triangle
+                with BuildSketch(Plane.XZ) as ridge_profile:
+                    with Locations([(internal_diameter / 2, ridge_z)]):
+                        # Small triangle pointing inward (into the hole)
+                        Polygon(
+                            (0, -thread_pitch * 0.3),
+                            (-thread_depth, 0),
+                            (0, thread_pitch * 0.3),
+                            align=None
+                        )
+                revolve(axis=Axis.Z, mode=Mode.ADD)
+
+    # Apply edge treatments outside BuildPart for better control
+    result = nut.part
+
+    # Fillet vertical edges (the 8 outer corners) first
+    try:
+        outer_radius = (nut_diameter / 2) * 0.8
+        vertical_edges = result.edges().filter_by(
+            lambda e: (
+                abs(e.length - nut_height) < nut_height * 0.15 and
+                math.sqrt(e.center().X**2 + e.center().Y**2) > outer_radius
+            )
         )
+        if vertical_edges:
+            result = fillet(vertical_edges, radius=chamfer_size)
+    except Exception as ex:
+        print(f"Nut vertical fillet failed: {ex}")
 
-        # Thread profile (internal - cuts inward)
-        thread_depth = thread_pitch * 0.4
-        with BuildSketch(Plane(thread_helix @ 0, z_dir=thread_helix % 0)) as thread_profile:
-            with Locations([(internal_diameter / 2, 0)]):
-                Polygon(
-                    (0, 0),
-                    (thread_depth, thread_pitch * 0.25),
-                    (thread_depth, thread_pitch * 0.75),
-                    (0, thread_pitch),
-                    align=None
-                )
-                make_face()
-
-        sweep(path=thread_helix, mode=Mode.SUBTRACT)
-
-        # --- Chamfer top and bottom edges ---
-        top_edges = nut.faces().sort_by(Axis.Z)[-1].edges().filter_by(
-            lambda e: e.length > nut_diameter * 0.3  # Only outer edges
+    # Chamfer top outer edges (LINE edges only, smaller size after fillets)
+    try:
+        top_edges = result.edges().filter_by(GeomType.LINE).filter_by(
+            lambda e: (
+                abs(e.center().Z - nut_height) < 1.0 and
+                math.sqrt(e.center().X**2 + e.center().Y**2) > outer_radius
+            )
         )
-        bottom_edges = nut.faces().sort_by(Axis.Z)[0].edges().filter_by(
-            lambda e: e.length > nut_diameter * 0.3
+        if top_edges:
+            result = chamfer(top_edges, length=chamfer_size * 0.5)
+    except Exception as ex:
+        print(f"Nut top chamfer failed: {ex}")
+
+    # Chamfer bottom outer edges (LINE edges only)
+    try:
+        bottom_edges = result.edges().filter_by(GeomType.LINE).filter_by(
+            lambda e: (
+                abs(e.center().Z) < 1.0 and
+                math.sqrt(e.center().X**2 + e.center().Y**2) > outer_radius
+            )
         )
+        if bottom_edges:
+            result = chamfer(bottom_edges, length=chamfer_size * 0.5)
+    except Exception as ex:
+        print(f"Nut bottom chamfer failed: {ex}")
 
-        try:
-            chamfer(top_edges, length=chamfer_size)
-            chamfer(bottom_edges, length=chamfer_size)
-        except:
-            pass  # May fail on complex geometry
+    # Chamfer internal hole edges (top and bottom circles only)
+    try:
+        internal_edges = result.edges().filter_by(GeomType.CIRCLE).filter_by(
+            lambda e: abs(e.center().Z) < 1.0 or abs(e.center().Z - nut_height) < 1.0
+        )
+        if internal_edges:
+            result = chamfer(internal_edges, length=chamfer_size * 0.3)
+    except Exception as ex:
+        print(f"Nut internal chamfer failed: {ex}")
 
-        # --- Chamfer internal hole edges ---
-        try:
-            # Find circular edges at top and bottom of hole
-            internal_top = nut.edges().filter_by(GeomType.CIRCLE).sort_by(Axis.Z)[-1]
-            internal_bottom = nut.edges().filter_by(GeomType.CIRCLE).sort_by(Axis.Z)[0]
-            chamfer([internal_top, internal_bottom], length=chamfer_size * 0.5)
-        except:
-            pass
-
-    return nut.part
+    return result
 
 
 # =============================================================================
@@ -283,23 +379,26 @@ def make_simple_bolt(
     head_diameter: float = HEAD_DIAMETER,
     head_height: float = HEAD_HEIGHT,
     head_sides: int = HEAD_SIDES,
-    logo_size: float = LOGO_SIZE,
+    logo_a_font_size: float = LOGO_A_FONT_SIZE,
+    logo_a_cutout_size: float = LOGO_A_CUTOUT_SIZE,
+    logo_circle_diameter: float = LOGO_CIRCLE_DIAMETER,
     logo_depth: float = LOGO_DEPTH,
-    logo_font_size: float = LOGO_FONT_SIZE,
+    logo_cutout_fillet: float = LOGO_CUTOUT_FILLET,
+    logo_rotation: float = LOGO_ROTATION,
     chamfer_size: float = CHAMFER_SIZE,
 ) -> Part:
     """
     Simplified bolt without complex thread geometry.
-    Uses cosmetic thread grooves instead of full helix.
+    Smooth shank - for display or to add threads in slicer.
     """
 
     head_circumradius = (head_diameter / 2) / math.cos(math.pi / head_sides)
-    logo_circumradius = (logo_size / 2) / math.cos(math.pi / 8)
 
     with BuildPart() as bolt:
         # --- Bolt head (octagonal) ---
         with BuildSketch(Plane.XY) as head_sketch:
-            RegularPolygon(radius=head_circumradius, side_count=head_sides)
+            RegularPolygon(radius=head_circumradius, side_count=head_sides,
+                          rotation=logo_rotation)
         extrude(amount=head_height)
 
         # --- Shank + thread section ---
@@ -316,12 +415,24 @@ def make_simple_bolt(
         bottom_edges = bolt.faces().sort_by(Axis.Z)[0].edges()
         chamfer(bottom_edges, length=thread_diameter * 0.15)
 
-        # --- Logo on top ---
-        with BuildSketch(Plane.XY.offset(head_height)) as logo:
-            RegularPolygon(radius=logo_circumradius, side_count=8)
-            Text("A", font_size=logo_font_size, font="Arial Black",
-                 align=(Align.CENTER, Align.CENTER), mode=Mode.SUBTRACT)
+        # --- Logo 10 on top (same approach as maker coin) ---
+        # Step 1: Cut the circle
+        with BuildSketch(Plane.XY.offset(head_height)) as circle_cut:
+            Circle(radius=logo_circle_diameter / 2)
         extrude(amount=-logo_depth, mode=Mode.SUBTRACT)
+
+        # Step 2: Cut the larger A with rounded corners
+        with BuildSketch(Plane.XY.offset(head_height)) as a_cutout:
+            Text("A", font_size=logo_a_cutout_size, font="Arial Black",
+                 align=(Align.CENTER, Align.CENTER))
+            offset(amount=logo_cutout_fillet, kind=Kind.ARC)
+        extrude(amount=-logo_depth, mode=Mode.SUBTRACT)
+
+        # Step 3: Add the raised sharp A back on top
+        with BuildSketch(Plane.XY.offset(head_height - logo_depth)) as raised_a:
+            Text("A", font_size=logo_a_font_size, font="Arial Black",
+                 align=(Align.CENTER, Align.CENTER))
+        extrude(amount=logo_depth, mode=Mode.ADD)
 
     return bolt.part
 
@@ -332,6 +443,7 @@ def make_simple_nut(
     nut_diameter: float = NUT_DIAMETER,
     nut_height: float = NUT_HEIGHT,
     nut_sides: int = NUT_SIDES,
+    nut_rotation: float = LOGO_ROTATION,
     chamfer_size: float = CHAMFER_SIZE,
 ) -> Part:
     """
@@ -343,17 +455,60 @@ def make_simple_nut(
     internal_diameter = thread_diameter + thread_clearance * 2
 
     with BuildPart() as nut:
-        # --- Nut body ---
+        # --- Nut body (rotated to match bolt) ---
         with BuildSketch(Plane.XY) as nut_sketch:
-            RegularPolygon(radius=nut_circumradius, side_count=nut_sides)
+            RegularPolygon(radius=nut_circumradius, side_count=nut_sides,
+                          rotation=nut_rotation)
             Circle(radius=internal_diameter / 2, mode=Mode.SUBTRACT)
         extrude(amount=nut_height)
 
-        # --- Chamfer edges ---
-        all_edges = nut.edges().filter_by(Axis.Z)
-        chamfer(all_edges, length=chamfer_size)
+    # Apply edge treatments outside BuildPart
+    result = nut.part
+    outer_radius = (nut_diameter / 2) * 0.8
 
-    return nut.part
+    # Fillet vertical edges
+    try:
+        vertical_edges = result.edges().filter_by(
+            lambda e: (
+                abs(e.length - nut_height) < nut_height * 0.15 and
+                math.sqrt(e.center().X**2 + e.center().Y**2) > outer_radius
+            )
+        )
+        if vertical_edges:
+            result = fillet(vertical_edges, radius=chamfer_size)
+    except:
+        pass
+
+    # Chamfer top/bottom outer edges
+    try:
+        top_edges = result.edges().filter_by(
+            lambda e: abs(e.center().Z - nut_height) < nut_height * 0.1 and
+                      math.sqrt(e.center().X**2 + e.center().Y**2) > outer_radius
+        )
+        if top_edges:
+            result = chamfer(top_edges, length=chamfer_size * 0.8)
+    except:
+        pass
+
+    try:
+        bottom_edges = result.edges().filter_by(
+            lambda e: abs(e.center().Z) < nut_height * 0.1 and
+                      math.sqrt(e.center().X**2 + e.center().Y**2) > outer_radius
+        )
+        if bottom_edges:
+            result = chamfer(bottom_edges, length=chamfer_size * 0.8)
+    except:
+        pass
+
+    # Chamfer internal hole edges
+    try:
+        internal_edges = result.edges().filter_by(GeomType.CIRCLE)
+        if internal_edges:
+            result = chamfer(internal_edges, length=chamfer_size * 0.5)
+    except:
+        pass
+
+    return result
 
 
 # =============================================================================

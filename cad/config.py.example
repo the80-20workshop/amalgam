@@ -3,9 +3,15 @@ Darwin-Neo Master Configuration
 Parametric Logic for High-Mass, Low-Cost 3D Printing.
 """
 
-# --- 1. DONOR & TRANSPARENCY ---
+# --- 1. DONOR & FRAME PATH ---
+# Donor type - what kind of printers are you scavenging?
 # Options: "PRUSA_CLONE", "ENDER_3", "SCAVENGED"
 DONOR_TYPE = "ENDER_3"
+
+# Frame path - determines frame construction and motion system
+# Options: "Scaffold" (M10 rods), "Mill" (V-slots), "Lathe" (extrusion + smooth rods)
+# See ADR-025 for details on each path
+FRAME_PATH = "Mill"  # Auto-suggestion: Mill for Ender 3, Scaffold for Prusa clones
 
 # --- 2. THE SKELETON (M10 RODS) ---
 # M10 chosen over M12: 3x rigidity of M8, standard 17mm wrench, easier to cut
