@@ -4,6 +4,23 @@ Quick reference for Klipper calibration commands. For detailed explanations, see
 
 ---
 
+## Downloaded Calibration Models
+
+Run `python utilities/download_calibration.py` to download these:
+
+| Model | Height | Use For |
+|-------|--------|---------|
+| `first_layer_patch_0.2mm.stl` | 0.2mm | First layer / bed level check |
+| `extrusion_multiplier_cube.stl` | ~25mm | Flow rate calibration |
+| `voron_design_cube.stl` | 20mm | Dimensional accuracy (X/Y/Z) |
+| `square_tower.stl` | **~80mm** | **Pressure Advance**, Temperature (TUNING_TOWER) |
+| `ringing_tower.stl` | **~80mm** | **Input Shaper** (visual inspection) |
+| `3DBenchy.stl` | ~48mm | Final validation torture test |
+
+**Key:** TUNING_TOWER requires a **tall** object. Use `square_tower.stl` or `ringing_tower.stl`, NOT the 20mm Voron cube.
+
+---
+
 ## Calibration Order
 
 1. Mechanical check (manual)
@@ -103,15 +120,17 @@ Update `rotation_distance` in printer.cfg (inverse relationship).
 
 Compensates for filament pressure lag. Eliminates bulging corners.
 
+**Print:** `square_tower.stl` (~80mm tall)
+
 ```gcode
 # Set conservative speed limits
 SET_VELOCITY_LIMIT SQUARE_CORNER_VELOCITY=1 ACCEL=500
 
-# Start tuning tower (prints any tall object)
+# Start tuning tower - parameter changes with Z height
 TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=.005
 ```
 
-Print Voron cube or square_tower.stl. Measure height where corners look best.
+Examine the tower walls. Find the height where corners look best (no bulging, no gaps).
 
 ```
 PA = START + (height_in_mm × FACTOR)
@@ -178,17 +197,19 @@ Adjust in slicer, not Klipper.
 
 ## 8. Temperature Tuning (Optional)
 
-Use TUNING_TOWER with any tall print:
+**Print:** `square_tower.stl` (~80mm tall)
 
 ```gcode
 # Temperature varies with Z height
-# START=190, FACTOR=5 means: 190°C at Z=0, 195°C at Z=1mm, 200°C at Z=2mm...
-TUNING_TOWER COMMAND=SET_HEATER_TEMPERATURE HEATER=extruder PARAMETER=TARGET START=190 FACTOR=5
+# START=190, FACTOR=2 means: 190°C at Z=0, 200°C at Z=5mm, 210°C at Z=10mm...
+TUNING_TOWER COMMAND=SET_HEATER_TEMPERATURE HEATER=extruder PARAMETER=TARGET START=190 FACTOR=2
 ```
 
-Print Voron cube or any tall object. Examine each section:
-- **Too cold:** Poor layer adhesion, rough surface
+Examine each 5-10mm section of the tower:
+- **Too cold:** Poor layer adhesion, rough surface, weak
 - **Too hot:** Stringing, blobbing, discoloration
+
+Mark the height of the best-looking section, calculate temp: `temp = 190 + (height × 2)`
 
 ---
 
@@ -207,11 +228,14 @@ Test with stringing torture test or travel-heavy print.
 
 ## Validation Prints
 
-After calibration, print:
-1. **Voron cube** - Check dimensions (20×20×20mm)
-2. **3DBenchy** - Comprehensive torture test
-3. **Amalgam Maker Coin** - Victory print!
-4. **Amalgam Fidget Bolt** - If threads work, you're calibrated
+After calibration, print these to verify:
+
+| Print | File | What to Check |
+|-------|------|---------------|
+| Voron Cube | `voron_design_cube.stl` | Measure 20.0mm on X, Y, Z axes |
+| 3DBenchy | `3DBenchy.stl` | Overhangs, bridging, detail, stringing |
+| Maker Coin | `./build.sh build maker_coin` | Logo clarity, layer adhesion |
+| Fidget Bolt | `./build.sh build fidget_bolt` | **Threads work = well calibrated!** |
 
 ---
 
