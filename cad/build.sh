@@ -17,7 +17,7 @@ CAD_DIR="parts"
 STL_DIR="stl"
 VENV_DIR=".venv"
 PYPROJECT_FILE="pyproject.toml"
-PARTS_LIST_SCRIPT="include/list.py"
+PARTS_LIST_SCRIPT="utilities/list.py"
 
 # Testing mode (use only corner_motorized.py for initial testing)
 TEST_MODE="${TEST_MODE:-false}"
@@ -82,7 +82,7 @@ load_parts_list() {
 
     # Try dynamic discovery
     if [ -f "$PARTS_LIST_SCRIPT" ]; then
-        # Parse output from include/list.py in build format
+        # Parse output from utilities/list.py in build format
         while IFS= read -r part_spec; do
             [[ "$part_spec" =~ ^[A-Za-z_].*: ]] && PARTS+=("$part_spec")
         done < <($PYTHON_CMD "$PARTS_LIST_SCRIPT" --build-format 2>/dev/null)

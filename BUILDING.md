@@ -220,7 +220,7 @@ The build system automatically discovers all Python files in `parts/` subdirecto
 ./build.sh list
 ```
 
-This runs `include/list.py` to dynamically discover all parts, grouped by category:
+This runs `utilities/list.py` to dynamically discover all parts, grouped by category:
 - Frame corners, extruder parts, bed components, etc.
 - No hardcoded lists - just add new Python files to `parts/`
 
@@ -346,10 +346,11 @@ No manually editing STL files or dealing with version mismatches!
 ```
 cad/
 ├── include/              # Shared CAD components (project engine)
-│   ├── corner_components.py   # Reusable motorized corner logic
-│   └── list.py                # Dynamic part discovery
+│   └── corner_components.py   # Reusable motorized corner logic
 ├── parts/                # Part definitions (use include/ components)
 │   └── corner_front_left.py   # Individual part files
+├── utilities/            # Build system helpers and scripts
+│   └── list.py               # Dynamic part discovery
 ├── stl/                  # Generated STL files (output)
 ├── config.py             # Your configuration (gitignored)
 ├── config.py.example     # Reference configuration
