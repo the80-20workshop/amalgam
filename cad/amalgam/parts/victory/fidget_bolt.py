@@ -11,8 +11,8 @@ Uses the amalgam_logo module as the single source of truth for the logo design.
 from build123d import *
 import math
 
-# Import the logo from include/
-from include.amalgam_logo import make_logo
+# Import the logo from lib/
+from amalgam.lib.logo import make_logo
 
 # Try to import show for interactive viewing
 try:
@@ -387,13 +387,13 @@ def main():
         nut = make_simple_nut()
         print("Simple nut generated!")
 
-    # Export to STL
+    # Export to STL (path relative to cad/ directory where build.sh runs)
     try:
-        export_stl(bolt, "../../stl/amalgam_fidget_bolt.stl")
-        print("Exported: ../../stl/amalgam_fidget_bolt.stl")
+        export_stl(bolt, "stl/fidget_bolt.stl")
+        print("Exported: stl/fidget_bolt.stl")
 
-        export_stl(nut, "../../stl/amalgam_fidget_nut.stl")
-        print("Exported: ../../stl/amalgam_fidget_nut.stl")
+        export_stl(nut, "stl/fidget_nut.stl")
+        print("Exported: stl/fidget_nut.stl")
     except Exception as e:
         print(f"Could not export STL: {e}")
 

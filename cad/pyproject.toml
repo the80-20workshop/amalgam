@@ -1,9 +1,9 @@
 [project]
 name = "amalgam-cad"
 version = "0.1.0"
-description = "Neo-Darwin 3D Printer CAD Parts"
+description = "Amalgam 3D Printer - Parametric CAD Parts"
 readme = "README.md"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10"
 dependencies = [
     "build123d>=0.9.0",
     "numpy>=1.20.0",
@@ -15,8 +15,9 @@ dev = [
     "ruff",
 ]
 
-[tool.setuptools]
-py-modules = ["parts", "config"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["amalgam*"]
 
 [build-system]
 requires = ["setuptools>=61.0"]

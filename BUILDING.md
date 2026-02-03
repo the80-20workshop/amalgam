@@ -297,28 +297,32 @@ pip install -r requirements.txt
 
 ## Understanding the CAD System
 
-### Architecture: Engine + Parts
+### Architecture: Package + Parts
 
-Amalgam's CAD system follows a **library + application** pattern:
+Amalgam's CAD system follows a **Python package** pattern:
 
-**`include/` - The Engine:**
+**`amalgam/` - The Package:**
+- Proper Python package with `__init__.py` files
+- Imports work reliably: `from amalgam.lib.logo import make_logo`
+- Install with `pip install -e .` for development
+
+**`amalgam/lib/` - Reusable Libraries:**
 - Contains all reusable build123d components
-- Shared functions for motors, rods, mounts, clamps, etc.
+- Shared functions for logo, corners, motors, mounts, etc.
 - Single source of truth for geometric logic
 - When you fix a bug here, it's fixed everywhere
 
-**`parts/` - The Applications:**
-- Lightweight scripts that import and configure components
-- Each part is a specific configuration of shared components
-- Easy to create new parts by reusing existing logic
-- Organized by type (corner/, extruder/, bed/, etc.)
+**`amalgam/parts/` - Buildable Parts:**
+- Organized by category: `frame/`, `motion/`, `extruder/`, `bed/`, `victory/`
+- Each part imports from `amalgam.lib` and generates STL
+- Discovered automatically by `build.sh`
 
 ### Parametric Design
 
 Amalgam uses **build123d**, a modern Python CAD library:
 - **Code-based design**: All parts defined in Python scripts
 - **Single source of truth**: `config.py` controls all dimensions
-- **Composable components**: Import from `include/`, configure, export
+- **Composable components**: Import from `amalgam.lib`, configure, export
 - **Easy customization**: Change config, rebuild all parts automatically
 
 ### Why Not Just Download STLs?
@@ -329,9 +333,9 @@ Amalgam uses **build123d**, a modern Python CAD library:
 - Different hotend diameter? Update `GROOVEMOUNT_DIA`
 
 **Code reuse**:
-- All corners share the same motorized corner logic from `include/corner_components.py`
-- Fix a motor mount bug once, all corners benefit
-- Add new features to shared components, all parts automatically get them
+- All corners share the same logic from `amalgam.lib.corner`
+- The logo module is used by maker coin and fidget bolt
+- Fix a bug once, all parts benefit
 
 **One command rebuilds everything**:
 ```bash
@@ -345,25 +349,41 @@ No manually editing STL files or dealing with version mismatches!
 
 ```
 cad/
-├── include/              # Shared CAD components (project engine)
-│   └── corner_components.py   # Reusable motorized corner logic
-├── parts/                # Part definitions (use include/ components)
-│   └── corner_front_left.py   # Individual part files
-├── utilities/            # Build system helpers and scripts
-│   └── list.py               # Dynamic part discovery
-├── stl/                  # Generated STL files (output)
-├── config.py             # Your configuration (gitignored)
-├── config.py.example     # Reference configuration
-├── pyproject.toml        # Python dependencies (modern standard)
-├── setup.sh              # Automated setup wizard
-├── configure.py          # Interactive configuration
-└── build.sh              # Part builder
+├── amalgam/                  # Python package
+│   ├── __init__.py
+│   ├── lib/                  # Reusable CAD libraries
+│   │   ├── __init__.py
+│   │   ├── logo.py           # Amalgam logo (single source of truth)
+│   │   ├── stylized_a.py     # Geometric stylized A
+│   │   └── corner.py         # Corner components
+│   └── parts/                # Buildable parts (organized by category)
+│       ├── __init__.py
+│       ├── frame/            # Frame components
+│       │   ├── corner_front_left.py
+│       │   └── corner_standard.py
+│       ├── motion/           # Motion system (future)
+│       ├── extruder/         # Extruder parts (future)
+│       ├── bed/              # Bed components (future)
+│       └── victory/          # Victory prints
+│           ├── maker_coin.py
+│           └── fidget_bolt.py
+├── utilities/                # Build system helpers
+│   ├── list.py               # Dynamic part discovery
+│   └── generate_victory_print.py
+├── stl/                      # Generated STL files (output)
+├── config.py                 # Your configuration (gitignored)
+├── config.py.example         # Reference configuration
+├── pyproject.toml            # Python package config
+├── setup.sh                  # Automated setup wizard
+├── configure.py              # Interactive configuration
+└── build.sh                  # Part builder
 ```
 
-**Key Design Principle:**
-- **`include/`**: Contains all reusable CAD logic and build123d functions
-- **`parts/`**: Lightweight scripts that import from `include/` and configure parts
-- This separation maximizes code reuse and makes the codebase more maintainable
+**Key Design Principles:**
+- **`amalgam/lib/`**: Reusable CAD components - import these, don't duplicate
+- **`amalgam/parts/`**: Buildable parts organized by category
+- **`utilities/`**: Build system tools, not part of the package
+- Parts use: `from amalgam.lib.logo import make_logo`
 
 ---
 

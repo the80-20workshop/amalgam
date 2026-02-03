@@ -35,7 +35,7 @@ except ImportError:
     print("Warning: config.py not found, using default frame path")
 
 # Import the maker coin
-from parts.victory.amalgam_maker_coin import make_amalgam_coin
+from amalgam.parts.victory.maker_coin import make_amalgam_coin
 from build123d import export_stl
 
 # Try to import show for interactive viewing

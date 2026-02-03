@@ -11,8 +11,8 @@ This module adds: lanyard hole, bottom text (from config or random tagline).
 from build123d import *
 import math
 
-# Import the logo from include/
-from include.amalgam_logo import make_logo
+# Import the logo from lib/
+from amalgam.lib.logo import make_logo
 
 # Try to import show for interactive viewing
 try:
@@ -173,14 +173,13 @@ def main():
 
     print("Coin generated successfully!")
 
-    # Export to STL
-    stl_path = "../../stl/amalgam_maker_coin.stl"
+    # Export to STL (path relative to cad/ directory where build.sh runs)
+    stl_path = "stl/maker_coin.stl"
     try:
         export_stl(coin, stl_path)
         print(f"Exported: {stl_path}")
     except Exception as e:
         print(f"Could not export STL: {e}")
-        print("(Run from cad/parts/ directory for correct path)")
 
     # Show in viewer if available
     if HAS_VIEWER:

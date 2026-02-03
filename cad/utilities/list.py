@@ -2,32 +2,37 @@
 
 """
 Part Selector for Amalgam Build System
-Lists available parts dynamically from parts/ directory
+Lists available parts dynamically from amalgam/parts/ directory
 """
 
-import os
 import sys
 from pathlib import Path
 
 
 def get_parts():
-    """Dynamically discover all Python parts in parts/ directory"""
-    parts_dir = Path("parts")
+    """Dynamically discover all Python parts in amalgam/parts/ directory"""
+    parts_dir = Path("amalgam/parts")
     parts = []
 
     if not parts_dir.exists():
-        print("Error: parts/ directory not found")
+        print("Error: amalgam/parts/ directory not found")
         return []
 
-    # Find all Python files in parts/ and its subdirectories
+    # Find all Python files in amalgam/parts/ and its subdirectories
     for py_file in parts_dir.rglob("*.py"):
         # Skip __pycache__ and __init__.py
         if "__pycache__" in str(py_file) or py_file.name == "__init__.py":
             continue
-        name = py_file.stem
-        parts.append(name)
 
-    return sorted(set(parts))
+        # Get relative path from amalgam/parts/
+        rel_path = py_file.relative_to(parts_dir)
+        name = py_file.stem
+
+        # Store as (name, relative_path_without_extension)
+        path_str = str(rel_path.with_suffix(''))
+        parts.append((name, path_str))
+
+    return sorted(set(parts), key=lambda x: x[0])
 
 
 def main():
@@ -35,23 +40,25 @@ def main():
     parts = get_parts()
 
     if not parts:
-        print("No parts found in parts/ directory")
+        print("No parts found in amalgam/parts/ directory")
         sys.exit(1)
 
-    # Group parts by prefix (frame, extruder, bed, etc.)
+    # Group parts by subdirectory
     categories = {}
-    for part in parts:
-        prefix = part.split("_")[0] if "_" in part else "misc"
-        if prefix not in categories:
-            categories[prefix] = []
-        categories[prefix].append(part)
+    for name, path in parts:
+        # Get category from path (first directory)
+        category = path.split('/')[0] if '/' in path else "misc"
+        if category not in categories:
+            categories[category] = []
+        categories[category].append(name)
 
     print(f"Available parts ({len(parts)} total):")
     print("=" * 50)
 
-    for category, part_list in categories.items():
+    for category in sorted(categories.keys()):
+        part_list = categories[category]
         print(f"\n{category.upper()}:")
-        for part in part_list:
+        for part in sorted(part_list):
             print(f"  - {part}")
 
     print("\n" + "=" * 50)
@@ -60,14 +67,15 @@ def main():
     print("  Build specific: ./build.sh build <part_name>")
     print("  Example:      ./build.sh build corner_front_left")
     print("\n  Multiple parts: ./build.sh build part1 part2 part3")
-    print("  Example:      ./build.sh build corner_front_left corner_front_right")
+    print("  Example:      ./build.sh build corner_front_left corner_standard")
 
 
 def get_parts_for_build():
-    """Get parts in format: name:file:args for build.sh"""
+    """Get parts in format: name:path:args for build.sh"""
     parts = get_parts()
-    for part in parts:
-        print(f"{part}:{part}:")
+    for name, path in parts:
+        # Output format: display_name:relative_path:args
+        print(f"{name}:{path}:")
 
 
 if __name__ == "__main__":

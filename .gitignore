@@ -1,16 +1,43 @@
+# OS files
 .DS_Store
+
+# AI conversation logs
 docs/AI-Conversations/
+
+# Python cache (anywhere in repo)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
 
 # CAD generated files
 cad/config.py
 cad/config.py.backup
-cad/.venv/
-cad/venv/
-cad/__pycache__/
-cad/parts/__pycache__/
-cad/include/__pycache__/
-cad/neo_darwin_cad.egg-info/
 cad/stl/*.stl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
 
 # Reference documents (large PDFs)
 docs/reference/*.pdf

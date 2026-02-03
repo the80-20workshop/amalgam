@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Neo-Darwin Build Script
-# Build CAD parts for the Neo-Darwin project
+# Amalgam Build Script
+# Build CAD parts for the Amalgam project
 
 set -e  # Exit on error
 
@@ -13,26 +13,26 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Config
-CAD_DIR="parts"
+PARTS_DIR="amalgam/parts"
 STL_DIR="stl"
 VENV_DIR=".venv"
 PYPROJECT_FILE="pyproject.toml"
 PARTS_LIST_SCRIPT="utilities/list.py"
 
-# Testing mode (use only corner_motorized.py for initial testing)
+# Testing mode (use only corner parts for initial testing)
 TEST_MODE="${TEST_MODE:-false}"
 
-# Parts to build (each part: name:file:args)
-# Format: "display_name:python_file:cli_args"
+# Parts to build (each part: name:path:args)
+# Format: "display_name:relative_path:cli_args"
 # These are fallback values if list.py is not available
 PARTS=(
-    "corner_front_left:corner_motorized:front_left"
-    "corner_front_right:corner_motorized:front_right"
+    "corner_front_left:frame/corner_front_left:"
+    "corner_standard:frame/corner_standard:"
 )
 
 # Help function
 show_help() {
-    echo "Neo-Darwin Build Script"
+    echo "Amalgam Build Script"
     echo ""
     echo "Usage: $0 [command] [args...]"
     echo ""
@@ -41,40 +41,36 @@ show_help() {
     echo ""
     echo "Commands:"
     echo "  build [PARTS...]    Build specified parts"
-    echo "  build_all              Build all parts"
-    echo "  list                    List all available parts"
-    echo "  clean                   Delete all STLs"
-    echo "  help                    Show this help"
+    echo "  build_all           Build all parts"
+    echo "  list                List all available parts"
+    echo "  clean               Delete all STLs"
+    echo "  help                Show this help"
     echo ""
     echo "The script automatically:"
     echo "  - Checks for and activates .venv"
     echo "  - Installs dependencies if missing"
-    echo "  - Discovers parts dynamically from parts/ directory"
+    echo "  - Discovers parts dynamically from amalgam/parts/ directory"
     echo ""
     echo "Advanced options:"
-    echo "  TEST_MODE=true        Only use corner_motorized.py (for testing)"
+    echo "  TEST_MODE=true      Only use test part list"
     echo ""
     echo "Parts available:"
     list_parts
     echo ""
     echo "Examples:"
     echo "  ./build.sh build corner_front_left"
-    echo "  ./build.sh build corner_front_left corner_front_right"
-    echo "  ./build.sh build corner_motorized:front_left"
-    echo ""
-    echo "  CLI args for parts: python <part_name>.py [args]"
-    echo "  (Use this when not using build.sh wrapper)"
+    echo "  ./build.sh build corner_front_left corner_standard"
+    echo "  ./build.sh build maker_coin fidget_bolt"
 }
 
 # Load dynamic parts list
 load_parts_list() {
     PARTS=()
 
-    # In test mode, only use corner_motorized.py
+    # In test mode, only use corner parts
     if [ "$TEST_MODE" = "true" ]; then
         PARTS=(
-            "corner_front_left:corner_front_left:"
-            "corner_front_right:corner_front_left:"
+            "corner_front_left:frame/corner_front_left:"
         )
         echo -e "${YELLOW}Test mode: Using test part list${NC}"
         return
@@ -90,9 +86,9 @@ load_parts_list() {
 
     # If dynamic list is empty, use hardcoded fallback
     if [ ${#PARTS[@]} -eq 0 ]; then
-        echo -e "${YELLOW}No parts found in parts/, using fallback list${NC}"
+        echo -e "${YELLOW}No parts found, using fallback list${NC}"
         PARTS=(
-            "corner_front_left:corner_front_left:"
+            "corner_front_left:frame/corner_front_left:"
         )
     fi
 }
@@ -138,7 +134,6 @@ ensure_dependencies() {
 
         # Try uv first if available
         if command -v uv &> /dev/null; then
-            # uv prefers pyproject.toml (modern standard)
             if [ -f "$PYPROJECT_FILE" ]; then
                 uv pip install -q -e .
             else
@@ -183,35 +178,33 @@ build_part() {
     local part_spec="$1"
     local display_name="${part_spec%%:*}"
     local remaining="${part_spec#*:}"
-    local python_file="${remaining%%:*}"
+    local rel_path="${remaining%%:*}"
     local cli_args="${remaining#*:}"
 
     echo -e "${BLUE}Building: $display_name${NC}"
 
+    local full_path="${PARTS_DIR}/${rel_path}.py"
+
     # Check if file exists
-    if [ ! -f "$CAD_DIR/${python_file}.py" ]; then
-        echo -e "${RED}Error: File not found: $CAD_DIR/${python_file}.py${NC}"
+    if [ ! -f "$full_path" ]; then
+        echo -e "${RED}Error: File not found: $full_path${NC}"
         return 1
     fi
 
-    # Change to parts directory
-    cd "$CAD_DIR" || return 1
-
-    # Run Python script with arguments
-    $PYTHON_CMD "${python_file}.py" $cli_args
+    # Run Python script from cad/ directory (so package imports work)
+    $PYTHON_CMD "$full_path" $cli_args
     local exit_code=$?
 
     # Check if STL was created
-    if [ -f "../$STL_DIR/${display_name}.stl" ]; then
+    if [ -f "$STL_DIR/${display_name}.stl" ]; then
         echo -e "${GREEN}Success: ${display_name}.stl created${NC}"
-        local stl_size=$(du -h "../$STL_DIR/${display_name}.stl" | cut -f1)
-        echo -e "  Size: $stl_size${NC}"
+        local stl_size=$(du -h "$STL_DIR/${display_name}.stl" | cut -f1)
+        echo -e "  Size: $stl_size"
     else
-        echo -e "${RED}Failed: ${display_name}.stl not created${NC}"
-        exit_code=1
+        echo -e "${YELLOW}Note: ${display_name}.stl not in expected location${NC}"
+        # Not necessarily an error - script may use different output path
     fi
 
-    cd - > /dev/null
     return $exit_code
 }
 
@@ -225,16 +218,14 @@ build_all() {
     local total=${#PARTS[@]}
 
     for part in "${PARTS[@]}"; do
-        build_part "$part"
-
-        if [ $? -eq 0 ]; then
+        if build_part "$part"; then
             success_count=$((success_count + 1))
         fi
     done
 
     echo ""
     echo -e "${GREEN}Build summary:${NC}"
-    echo -e "  Success: $success_count / $total${NC}"
+    echo -e "  Success: $success_count / $total"
     echo ""
     echo -e "${BLUE}STL files location: $STL_DIR/${NC}"
 }

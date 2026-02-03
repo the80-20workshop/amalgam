@@ -5,12 +5,12 @@ The official Amalgam brand mark: stylized geometric A in an octagon.
 Based on the maker coin design, but without coin-specific features.
 
 This is the single source of truth for the logo. Import this into:
-- amalgam_maker_coin.py (adds lanyard hole, bottom text)
-- amalgam_fidget_bolt.py (bolt head)
-- corner_*.py and other printer parts (branding)
+- parts/victory/maker_coin.py (adds lanyard hole, bottom text)
+- parts/victory/fidget_bolt.py (bolt head)
+- parts/frame/*.py and other printer parts (branding)
 
 Usage:
-    from amalgam_logo import make_logo
+    from amalgam.lib.logo import make_logo
 
     # Get the logo at any size
     logo = make_logo(diameter=38, thickness=5)
@@ -19,8 +19,8 @@ Usage:
 from build123d import *
 import math
 
-# Import the stylized A from same directory
-from include.stylized_a_geometric import make_stylized_a_sketch
+# Import the stylized A from same package
+from amalgam.lib.stylized_a import make_stylized_a_sketch
 
 # Try to import show for interactive viewing
 try:

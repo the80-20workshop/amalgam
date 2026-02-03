@@ -1,0 +1,1 @@
+"""Frame components (corners, brackets)."""
