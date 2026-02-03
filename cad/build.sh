@@ -192,7 +192,8 @@ build_part() {
     fi
 
     # Run Python script from cad/ directory (so package imports work)
-    $PYTHON_CMD "$full_path" $cli_args
+    # PYTHONPATH=. ensures config.py and amalgam package are importable
+    PYTHONPATH=. $PYTHON_CMD "$full_path" $cli_args
     local exit_code=$?
 
     # Check if STL was created
