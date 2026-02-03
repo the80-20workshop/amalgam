@@ -36,10 +36,11 @@ NUT_DIAMETER = 24 * MM          # Across flats (same as head)
 NUT_HEIGHT = 10 * MM            # Nut thickness
 NUT_SIDES = 8                   # Octagonal
 
-# Logo parameters
-LOGO_SIZE = 16 * MM             # Logo octagon size on bolt head
+# Logo parameters (sized to match Logo 10 proportions)
+# The "A" should nearly fill the octagon with minimal negative space
+LOGO_SIZE = 20 * MM             # Logo octagon size on bolt head (close to head size)
 LOGO_DEPTH = 1.2 * MM           # Emboss depth
-LOGO_FONT_SIZE = 10             # Font size for "A"
+LOGO_FONT_SIZE = 16             # Font size for "A" (~80% of logo size)
 
 # Edge treatment
 CHAMFER_SIZE = 1.0 * MM         # Chamfer on head/nut edges

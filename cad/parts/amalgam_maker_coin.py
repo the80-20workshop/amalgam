@@ -23,10 +23,11 @@ DIAMETER = 40 * MM          # Across flats (not vertices)
 THICKNESS = 5 * MM          # Coin thickness
 SIDES = 8                   # Octagonal (matches Logo 10)
 
-# Logo "A" parameters
-A_FONT_SIZE = 18            # Font size for the "A"
+# Logo "A" parameters (sized to match Logo 10 proportions)
+# The "A" should nearly fill the octagon with minimal negative space
+A_FONT_SIZE = 28            # Font size for the "A" (~70% of diameter)
 A_FONT = "Arial Black"      # Bold, clean font
-EMBOSS_DEPTH = 1.2 * MM     # How deep to cut the "A"
+EMBOSS_DEPTH = 1.5 * MM     # How deep to cut the "A"
 
 # Keyring hole
 HOLE_DIAMETER = 4 * MM      # Keyring hole size
