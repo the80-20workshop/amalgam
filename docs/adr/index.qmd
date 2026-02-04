@@ -68,7 +68,7 @@ If you're new to Amalgam, read in this order:
 | ADR | Title | Status |
 |-----|-------|--------|
 | [017](017-parametric-cad-system.md) | Parametric CAD System (build123d) | Accepted |
-| [018](018-documentation-system.md) | Documentation & Assembly Guide System (Quarto) | Accepted |
+| [018](018-documentation-system.qmd) | Documentation & Assembly Guide System (Quarto) | Accepted |
 | [019](019-pitan-extruder.md) | Pitan Extruder | Accepted |
 | [030](030-multi-format-exports.md) | Multi-Format Export System | Accepted |
 
