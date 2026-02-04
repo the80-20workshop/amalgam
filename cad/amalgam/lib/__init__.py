@@ -1,1 +1,0 @@
-"""Reusable CAD component libraries."""

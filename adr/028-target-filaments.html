@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>target-filaments – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-028-target-filament-selection" id="toc-adr-028-target-filament-selection" class="nav-link active" data-scroll-target="#adr-028-target-filament-selection">ADR-028: Target Filament Selection</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#what-donors-provide" id="toc-what-donors-provide" class="nav-link" data-scroll-target="#what-donors-provide">What Donors Provide</a></li>
+  <li><a href="#the-e3d-v6-upgrade-adr-004" id="toc-the-e3d-v6-upgrade-adr-004" class="nav-link" data-scroll-target="#the-e3d-v6-upgrade-adr-004">The E3D V6 Upgrade (ADR-004)</a></li>
+  <li><a href="#the-pitan-extruder-adr-019" id="toc-the-pitan-extruder-adr-019" class="nav-link" data-scroll-target="#the-pitan-extruder-adr-019">The Pitan Extruder (ADR-019)</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#why-these-three" id="toc-why-these-three" class="nav-link" data-scroll-target="#why-these-three">Why These Three?</a></li>
+  <li><a href="#filaments-that-work-but-arent-optimized-for" id="toc-filaments-that-work-but-arent-optimized-for" class="nav-link" data-scroll-target="#filaments-that-work-but-arent-optimized-for">Filaments That Work But Aren’t Optimized For</a></li>
+  <li><a href="#filaments-explicitly-not-supported" id="toc-filaments-explicitly-not-supported" class="nav-link" data-scroll-target="#filaments-explicitly-not-supported">Filaments Explicitly Not Supported</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-means-for-the-build" id="toc-what-this-means-for-the-build" class="nav-link" data-scroll-target="#what-this-means-for-the-build">What This Means for the Build</a></li>
+  </ul></li>
+  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
+  <ul class="collapse">
+  <li><a href="#reference-build-plapetgtpu" id="toc-reference-build-plapetgtpu" class="nav-link" data-scroll-target="#reference-build-plapetgtpu">Reference Build (PLA/PETG/TPU)</a></li>
+  <li><a href="#optional-upgrades-for-expanded-materials" id="toc-optional-upgrades-for-expanded-materials" class="nav-link" data-scroll-target="#optional-upgrades-for-expanded-materials">Optional Upgrades for Expanded Materials</a></li>
+  </ul></li>
+  <li><a href="#recommended-first-prints" id="toc-recommended-first-prints" class="nav-link" data-scroll-target="#recommended-first-prints">Recommended First Prints</a></li>
+  <li><a href="#filament-storage-note" id="toc-filament-storage-note" class="nav-link" data-scroll-target="#filament-storage-note">Filament Storage Note</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-028-target-filament-selection" class="level1">
+<h1>ADR-028: Target Filament Selection</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Amalgam is a scavenger-friendly printer built from donor parts. The choice of target filaments affects every hardware decision—hotend, extruder, bed temperature capability, and whether exotic upgrades like enclosures or hardened nozzles are needed.</p>
+<p>The project follows an 80/20 philosophy: optimize for the filaments that cover 80-90% of real-world use cases, rather than chasing edge cases that require expensive upgrades.</p>
+<section id="what-donors-provide" class="level3">
+<h3 class="anchored" data-anchor-id="what-donors-provide">What Donors Provide</h3>
+<p>Most donor printers (Anet A8, Ender 3, Prusa clones, i3 Mega) shipped with: - <strong>Hotends</strong>: PTFE-lined, max ~240°C safely - <strong>Beds</strong>: 12V or 24V, capable of 60-100°C - <strong>Extruders</strong>: Basic single-drive, often with brass drive gears - <strong>Nozzles</strong>: Brass, 0.4mm</p>
+<p>This hardware handles PLA and PETG reliably. TPU is possible with care. ABS pushes bed temperatures and benefits from enclosures most donors lack.</p>
+</section>
+<section id="the-e3d-v6-upgrade-adr-004" class="level3">
+<h3 class="anchored" data-anchor-id="the-e3d-v6-upgrade-adr-004">The E3D V6 Upgrade (ADR-004)</h3>
+<p>Amalgam specifies the E3D V6 all-metal hotend, which: - Handles temperatures up to 285°C safely - Eliminates PTFE degradation concerns - Opens the door to ABS, ASA, and some exotics</p>
+<p>However, having capability doesn’t mean we should optimize for it.</p>
+</section>
+<section id="the-pitan-extruder-adr-019" class="level3">
+<h3 class="anchored" data-anchor-id="the-pitan-extruder-adr-019">The Pitan Extruder (ADR-019)</h3>
+<p>The Pitan extruder provides: - 3:1 gear reduction for consistent extrusion - Single-drive simplicity (scavenged NEMA17) - Adequate grip for flexible filaments at moderate speeds</p>
+<p>This handles PLA, PETG, and TPU well. Highly flexible TPU (Shore 85A and below) may require slower speeds.</p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>Amalgam’s <strong>target filaments</strong> are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Filament</th>
+<th>Priority</th>
+<th>Bed Temp</th>
+<th>Hotend Temp</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PLA</strong></td>
+<td>Primary</td>
+<td>50-60°C</td>
+<td>190-220°C</td>
+<td>Default material, widest compatibility</td>
+</tr>
+<tr class="even">
+<td><strong>PETG</strong></td>
+<td>Primary</td>
+<td>70-85°C</td>
+<td>230-250°C</td>
+<td>Structural parts, outdoor use</td>
+</tr>
+<tr class="odd">
+<td><strong>TPU</strong></td>
+<td>Primary</td>
+<td>40-60°C</td>
+<td>220-240°C</td>
+<td>Flexible parts, grips, bumpers</td>
+</tr>
+</tbody>
+</table>
+<p>These three filaments are the <strong>reference specification</strong>. Amalgam is optimized for them.</p>
+<section id="why-these-three" class="level3">
+<h3 class="anchored" data-anchor-id="why-these-three">Why These Three?</h3>
+<section id="they-cover-80-90-of-use-cases" class="level4">
+<h4 class="anchored" data-anchor-id="they-cover-80-90-of-use-cases">1. They Cover 80-90% of Use Cases</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Best Filament</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prototypes, models, enclosures</td>
+<td>PLA</td>
+<td>Cheap, easy, looks good</td>
+</tr>
+<tr class="even">
+<td>Functional parts, brackets, housings</td>
+<td>PETG</td>
+<td>Strong, heat-resistant, layer adhesion</td>
+</tr>
+<tr class="odd">
+<td>Outdoor parts, UV exposure</td>
+<td>PETG</td>
+<td>Better UV resistance than PLA</td>
+</tr>
+<tr class="even">
+<td>Phone cases, grips, bumpers</td>
+<td>TPU</td>
+<td>Flexible, impact-absorbing</td>
+</tr>
+<tr class="odd">
+<td>Gaskets, seals, vibration dampening</td>
+<td>TPU</td>
+<td>Compressible, durable</td>
+</tr>
+<tr class="even">
+<td>Printer parts (non-heated)</td>
+<td>PETG</td>
+<td>Survives ambient chamber temps</td>
+</tr>
+</tbody>
+</table>
+<p>The vast majority of home 3D printing falls into these categories.</p>
+</section>
+<section id="donor-hardware-handles-them" class="level4">
+<h4 class="anchored" data-anchor-id="donor-hardware-handles-them">2. Donor Hardware Handles Them</h4>
+<ul>
+<li><strong>Beds</strong>: 60-85°C is well within donor bed capability</li>
+<li><strong>Hotends</strong>: 190-250°C is safe even for PTFE-lined donors (though we use V6)</li>
+<li><strong>Extruders</strong>: Single-drive handles all three; TPU just needs slower speed</li>
+<li><strong>Nozzles</strong>: Brass works fine; no hardened nozzle needed</li>
+</ul>
+<p>No exotic upgrades required. Donors provide what’s needed.</p>
+</section>
+<section id="no-enclosure-required" class="level4">
+<h4 class="anchored" data-anchor-id="no-enclosure-required">3. No Enclosure Required</h4>
+<p>PLA, PETG, and TPU print reliably in open air: - No warping concerns (unlike ABS) - No toxic fume concerns at normal temps - No heated chamber needed</p>
+<p>This keeps build complexity low and avoids the cost/effort of enclosure construction.</p>
+</section>
+<section id="widely-available-and-cheap" class="level4">
+<h4 class="anchored" data-anchor-id="widely-available-and-cheap">4. Widely Available and Cheap</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Filament</th>
+<th>Typical Price (AUD/kg)</th>
+<th>Availability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PLA</td>
+<td>$18-30</td>
+<td>Everywhere</td>
+</tr>
+<tr class="even">
+<td>PETG</td>
+<td>$22-35</td>
+<td>Everywhere</td>
+</tr>
+<tr class="odd">
+<td>TPU</td>
+<td>$30-50</td>
+<td>Common</td>
+</tr>
+</tbody>
+</table>
+<p>No specialty suppliers needed. Hardware stores, office supply chains, and online retailers all stock these.</p>
+</section>
+</section>
+<section id="filaments-that-work-but-arent-optimized-for" class="level3">
+<h3 class="anchored" data-anchor-id="filaments-that-work-but-arent-optimized-for">Filaments That Work But Aren’t Optimized For</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 28%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Filament</th>
+<th>Bed Temp</th>
+<th>Hotend Temp</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ABS</strong></td>
+<td>90-110°C</td>
+<td>230-260°C</td>
+<td>Warping without enclosure, fumes, bed adhesion</td>
+</tr>
+<tr class="even">
+<td><strong>ASA</strong></td>
+<td>90-110°C</td>
+<td>240-260°C</td>
+<td>Same as ABS, slightly better UV</td>
+</tr>
+<tr class="odd">
+<td><strong>Nylon (PA)</strong></td>
+<td>70-90°C</td>
+<td>250-270°C</td>
+<td>Hygroscopic, needs drying, enclosure helps</td>
+</tr>
+<tr class="even">
+<td><strong>PC</strong></td>
+<td>100-120°C</td>
+<td>270-310°C</td>
+<td>Very high temps, warping, enclosure required</td>
+</tr>
+<tr class="odd">
+<td><strong>Carbon-filled</strong></td>
+<td>Varies</td>
+<td>Varies</td>
+<td>Requires hardened nozzle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>These are possible but not the target.</strong> Users can experiment, but: - ABS/ASA: Expect warping without enclosure; use brim, draft shield - Nylon: Dry filament thoroughly; expect challenges - PC: Pushes V6 to its limits; enclosure strongly recommended - Carbon-filled: Will wear brass nozzle; upgrade to hardened steel</p>
+<p>The Amalgam spec doesn’t prevent these—it just doesn’t optimize for them.</p>
+</section>
+<section id="filaments-explicitly-not-supported" class="level3">
+<h3 class="anchored" data-anchor-id="filaments-explicitly-not-supported">Filaments Explicitly Not Supported</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Filament</th>
+<th>Why Not</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PEEK/ULTEM</strong></td>
+<td>Requires 350°C+ hotend, all-metal construction, heated chamber</td>
+</tr>
+<tr class="even">
+<td><strong>Metal/Wood-filled</strong></td>
+<td>Niche, requires hardened nozzle</td>
+</tr>
+<tr class="odd">
+<td><strong>Highly flexible TPU (&lt;85A)</strong></td>
+<td>May need direct drive or very slow speeds</td>
+</tr>
+</tbody>
+</table>
+<p>These require hardware beyond the scavenger spec.</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>Maximizes donor reuse</strong>: No exotic upgrades needed for primary filaments</li>
+<li><strong>Low barrier to entry</strong>: PLA/PETG/TPU are beginner-friendly</li>
+<li><strong>Cost-effective printing</strong>: Cheap, widely available materials</li>
+<li><strong>Reliable results</strong>: These filaments are well-understood, documented</li>
+<li><strong>No enclosure needed</strong>: Simpler build, lower cost</li>
+<li><strong>Safe operation</strong>: No toxic fumes at normal temperatures</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>ABS not optimized</strong>: Users wanting ABS should consider enclosure addition</li>
+<li><strong>High-temp materials limited</strong>: PC, Nylon need care and upgrades</li>
+<li><strong>Abrasive filaments wear nozzle</strong>: Carbon-fill users should buy hardened nozzles</li>
+</ol>
+</section>
+<section id="what-this-means-for-the-build" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-means-for-the-build">What This Means for the Build</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hotend (V6)</td>
+<td>285°C max is plenty; no upgrade needed</td>
+</tr>
+<tr class="even">
+<td>Bed</td>
+<td>60-85°C target; all donors handle this</td>
+</tr>
+<tr class="odd">
+<td>Extruder (Pitan)</td>
+<td>Single-drive adequate; no dual-drive needed</td>
+</tr>
+<tr class="even">
+<td>Nozzle</td>
+<td>Brass is fine; hardened optional</td>
+</tr>
+<tr class="odd">
+<td>Enclosure</td>
+<td>Not required for reference spec</td>
+</tr>
+<tr class="even">
+<td>Drying</td>
+<td>Nice to have for PETG, not critical</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="bom-implications" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
+<section id="reference-build-plapetgtpu" class="level3">
+<h3 class="anchored" data-anchor-id="reference-build-plapetgtpu">Reference Build (PLA/PETG/TPU)</h3>
+<p>No additional parts beyond standard Amalgam spec: - E3D V6 hotend (or clone) — already specified (ADR-004) - Pitan extruder — already specified (ADR-019) - Donor heated bed — already specified (ADR-024) - Brass 0.4mm nozzle — comes with V6</p>
+<p><strong>Additional cost for filament focus: $0</strong></p>
+</section>
+<section id="optional-upgrades-for-expanded-materials" class="level3">
+<h3 class="anchored" data-anchor-id="optional-upgrades-for-expanded-materials">Optional Upgrades for Expanded Materials</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Upgrade</th>
+<th>Enables</th>
+<th>Cost (AUD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hardened steel nozzle</td>
+<td>Carbon-filled, glow-in-dark</td>
+<td>$8-15</td>
+</tr>
+<tr class="even">
+<td>Enclosure (DIY)</td>
+<td>ABS, ASA, Nylon, PC</td>
+<td>$30-80</td>
+</tr>
+<tr class="odd">
+<td>Filament dryer</td>
+<td>Nylon, PETG (improved)</td>
+<td>$40-80</td>
+</tr>
+<tr class="even">
+<td>All-metal heatbreak upgrade</td>
+<td>Higher temps (if using clone V6)</td>
+<td>$10-20</td>
+</tr>
+</tbody>
+</table>
+<p>These are user-choice upgrades, not part of reference spec.</p>
+</section>
+</section>
+<section id="recommended-first-prints" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-first-prints">Recommended First Prints</h2>
+<p>For new Amalgam builds, suggested calibration/test order:</p>
+<ol type="1">
+<li><strong>PLA calibration cube</strong> — Verify basic function</li>
+<li><strong>PLA Benchy</strong> — Check overhangs, bridging</li>
+<li><strong>PETG functional bracket</strong> — Test layer adhesion, strength</li>
+<li><strong>TPU phone bumper or grip</strong> — Verify flexible filament handling</li>
+</ol>
+<p>Master these before attempting exotics.</p>
+</section>
+<section id="filament-storage-note" class="level2">
+<h2 class="anchored" data-anchor-id="filament-storage-note">Filament Storage Note</h2>
+<p>While not strictly part of this ADR, builders should know: - <strong>PLA</strong>: Tolerates humidity reasonably well - <strong>PETG</strong>: Benefits from dry storage; slight moisture causes stringing - <strong>TPU</strong>: Quite tolerant of humidity</p>
+<p>A sealed container with desiccant is good practice but not critical for these three filaments.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-004: E3D V6 Hotend with CHT Nozzle</li>
+<li>ADR-019: Pitan Extruder</li>
+<li>ADR-024: Heated Bed Size Selection</li>
+<li>ADR-027: Build Plate Surface Selection</li>
+<li><a href="https://help.prusa3d.com/materials">Prusa Material Guide</a></li>
+<li><a href="https://e3d-online.com/products/v6-all-metal-hotend">E3D V6 Specifications</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

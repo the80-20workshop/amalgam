@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>z-drop-architecture – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-023-z-drop-architecture" id="toc-adr-023-z-drop-architecture" class="nav-link active" data-scroll-target="#adr-023-z-drop-architecture">ADR-023: Z-Drop Architecture</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#motion-architecture-options" id="toc-motion-architecture-options" class="nav-link" data-scroll-target="#motion-architecture-options">Motion Architecture Options</a></li>
+  <li><a href="#amalgam-constraints" id="toc-amalgam-constraints" class="nav-link" data-scroll-target="#amalgam-constraints">Amalgam Constraints</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#why-z-drop" id="toc-why-z-drop" class="nav-link" data-scroll-target="#why-z-drop">Why Z-Drop?</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#bed-drop-mitigation" id="toc-bed-drop-mitigation" class="nav-link" data-scroll-target="#bed-drop-mitigation">Bed Drop Mitigation</a></li>
+  </ul></li>
+  <li><a href="#architectural-integration" id="toc-architectural-integration" class="nav-link" data-scroll-target="#architectural-integration">Architectural Integration</a>
+  <ul class="collapse">
+  <li><a href="#relationship-to-other-adrs" id="toc-relationship-to-other-adrs" class="nav-link" data-scroll-target="#relationship-to-other-adrs">Relationship to Other ADRs</a></li>
+  <li><a href="#frame-layout" id="toc-frame-layout" class="nav-link" data-scroll-target="#frame-layout">Frame Layout</a></li>
+  <li><a href="#motion-independence" id="toc-motion-independence" class="nav-link" data-scroll-target="#motion-independence">Motion Independence</a></li>
+  </ul></li>
+  <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a>
+  <ul class="collapse">
+  <li><a href="#alternative-a-bed-slinger-rejected" id="toc-alternative-a-bed-slinger-rejected" class="nav-link" data-scroll-target="#alternative-a-bed-slinger-rejected">Alternative A: Bed-Slinger (Rejected)</a></li>
+  <li><a href="#alternative-b-gantry-rise-rejected" id="toc-alternative-b-gantry-rise-rejected" class="nav-link" data-scroll-target="#alternative-b-gantry-rise-rejected">Alternative B: Gantry-Rise (Rejected)</a></li>
+  <li><a href="#alternative-c-corexz-rejected" id="toc-alternative-c-corexz-rejected" class="nav-link" data-scroll-target="#alternative-c-corexz-rejected">Alternative C: CoreXZ (Rejected)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#z-travel-calculation" id="toc-z-travel-calculation" class="nav-link" data-scroll-target="#z-travel-calculation">Z Travel Calculation</a></li>
+  <li><a href="#leadscrew-positioning-for-z_tilt_adjust" id="toc-leadscrew-positioning-for-z_tilt_adjust" class="nav-link" data-scroll-target="#leadscrew-positioning-for-z_tilt_adjust">Leadscrew Positioning (for Z_TILT_ADJUST)</a></li>
+  <li><a href="#klipper-configuration" id="toc-klipper-configuration" class="nav-link" data-scroll-target="#klipper-configuration">Klipper Configuration</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-023-z-drop-architecture" class="level1">
+<h1>ADR-023: Z-Drop Architecture</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>A 3D printer must move the nozzle relative to the print surface in three axes. There are several ways to achieve this:</p>
+<section id="motion-architecture-options" class="level3">
+<h3 class="anchored" data-anchor-id="motion-architecture-options">Motion Architecture Options</h3>
+<p><strong>1. Bed-Slinger (Prusa i3 style)</strong> - Bed moves in Y, gantry moves in X, Z lifts gantry or bed - Common in: Prusa MK3, Ender 3, Anet A8 - Characteristic: Bed swings back and forth during printing</p>
+<p><strong>2. Z-Drop / Moving Bed Z (Voron Trident style)</strong> - XY gantry at fixed height, bed moves only in Z - Common in: Voron Trident, RatRig V-Core - Characteristic: Bed drops down as layers are printed</p>
+<p><strong>3. Gantry-Rise / Fixed Bed (Voron 2.4 style)</strong> - Bed fixed at bottom, entire XY gantry rises in Z - Common in: Voron 2.4, some industrial machines - Characteristic: Gantry climbs upward during printing</p>
+<p><strong>4. CoreXZ (Voron Switchwire style)</strong> - Bed moves in Y, toolhead moves in X and Z via CoreXZ kinematics - Common in: Voron Switchwire, converted Enders - Characteristic: Hybrid approach, complex belt paths</p>
+</section>
+<section id="amalgam-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="amalgam-constraints">Amalgam Constraints</h3>
+<ul>
+<li><strong>Triple-Z kinematic leveling</strong> (ADR-005) - requires independent Z control</li>
+<li><strong>M10 threaded rod frame</strong> (ADR-001) - heavy, rigid, not optimized for gantry climbing</li>
+<li><strong>Scavenger philosophy</strong> - must work with donor printer parts</li>
+<li><strong>Heavy heated bed</strong> - 235×235mm aluminum/glass bed has significant mass</li>
+<li><strong>“Tractor” philosophy</strong> - mass for stability, software for precision</li>
+</ul>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We choose <strong>Z-Drop Architecture</strong> where the bed moves only in Z and the XY gantry operates at a fixed height near the top of the frame.</p>
+<section id="why-z-drop" class="level3">
+<h3 class="anchored" data-anchor-id="why-z-drop">Why Z-Drop?</h3>
+<section id="triple-z-synergy" class="level4">
+<h4 class="anchored" data-anchor-id="triple-z-synergy">1. Triple-Z Synergy</h4>
+<p>Z-drop + Triple-Z is mathematically elegant:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 40%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Architecture</th>
+<th>Auto-Leveling Method</th>
+<th>Motors Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Z-Drop + Triple-Z</td>
+<td>Z_TILT_ADJUST (tilt bed to match gantry)</td>
+<td>3 Z-motors</td>
+</tr>
+<tr class="even">
+<td>Gantry-Rise + Fixed Bed</td>
+<td>Quad Gantry Level (tilt gantry to match bed)</td>
+<td>4 Z-motors</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three points define a plane.</strong> With Z-drop, we tilt a static bed to match the gantry - simple geometry, fewer motors, proven by Voron Trident.</p>
+<p>With gantry-rise, we’d need to tilt the entire moving XY assembly using 4 motors (Quad Gantry Leveling) - more complex, more parts, harder to scavenge.</p>
+</section>
+<section id="center-of-gravity-stability" class="level4">
+<h4 class="anchored" data-anchor-id="center-of-gravity-stability">2. Center of Gravity Stability</h4>
+<p>As the print progresses:</p>
+<p><strong>Z-Drop:</strong></p>
+<pre><code>Start of print:          End of print:
+┌─────────────┐          ┌─────────────┐
+│   [Gantry]  │          │   [Gantry]  │
+│             │          │             │
+│   [Bed+Print at top]   │             │
+│             │          │             │
+└─────────────┘          │   [Bed+Print at bottom]
+     CoG: High           └─────────────┘
+                              CoG: LOW ✓</code></pre>
+<p>The heaviest part (bed + growing print) moves <strong>toward</strong> the 36mm MDF base. Center of gravity stays low = more stability.</p>
+<p><strong>Gantry-Rise:</strong></p>
+<pre><code>Start of print:          End of print:
+┌─────────────┐          ┌─────────────┐
+│             │          │   [Gantry at top]
+│             │          │             │
+│   [Gantry at bottom]   │             │
+│   [Bed]     │          │   [Bed]     │
+└─────────────┘          └─────────────┘
+     CoG: Low                 CoG: HIGH ✗</code></pre>
+<p>Heavy gantry (motors, extruder, rods) climbs to top of frame = pendulum effect, frame flex amplified.</p>
+</section>
+<section id="cable-management" class="level4">
+<h4 class="anchored" data-anchor-id="cable-management">3. Cable Management</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Z-Drop</th>
+<th>Gantry-Rise</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Moving cables</td>
+<td>Bed heater + thermistor (2 wires)</td>
+<td>X motor, Y motors, extruder, fans, hotend, probe (10+ wires)</td>
+</tr>
+<tr class="even">
+<td>Cable chain</td>
+<td>Simple, short</td>
+<td>Long, complex, moves full Z height</td>
+</tr>
+<tr class="odd">
+<td>Failure mode</td>
+<td>Bed wire breaks (easy fix)</td>
+<td>Toolhead wire breaks (printer stops)</td>
+</tr>
+</tbody>
+</table>
+<p>The “racecar brain” (toolhead with all its sensors and actuators) stays at fixed height. Only simple power wires to the bed need to flex.</p>
+</section>
+<section id="scavenger-simplicity" class="level4">
+<h4 class="anchored" data-anchor-id="scavenger-simplicity">4. Scavenger Simplicity</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 25%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Z-Drop</th>
+<th>Gantry-Rise</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Z drive</td>
+<td>3 standard leadscrews</td>
+<td>4 leadscrews + belt sync or 4 motors</td>
+</tr>
+<tr class="even">
+<td>Z rods</td>
+<td>2 vertical smooth rods</td>
+<td>4 corner rods or rails</td>
+</tr>
+<tr class="odd">
+<td>Mechanics</td>
+<td>Bed platform rises/falls</td>
+<td>Entire gantry must climb frame</td>
+</tr>
+<tr class="even">
+<td>Donor parts</td>
+<td>Leadscrews from any printer</td>
+<td>Need matched quad setup</td>
+</tr>
+</tbody>
+</table>
+<p>Z-drop uses the simplest possible Z mechanics - vertical leadscrews and smooth rods that any donor printer provides.</p>
+</section>
+<section id="mdf-base-damping" class="level4">
+<h4 class="anchored" data-anchor-id="mdf-base-damping">5. MDF Base Damping</h4>
+<p>The 36mm laminated MDF plinth (ADR-011) provides constrained layer damping. Z-drop keeps the heavy bed <strong>close to the damping base</strong> throughout printing:</p>
+<ul>
+<li>Print layer 1: Bed at top, but print mass is minimal</li>
+<li>Print layer 100: Bed lower, print mass increasing, closer to MDF damping</li>
+<li>Print layer 500: Bed near bottom, maximum mass, maximum damping benefit</li>
+</ul>
+<p>This maximizes the effectiveness of Input Shaper calibration - resonances stay consistent because the mass stays near the damped base.</p>
+</section>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>Simpler Triple-Z</strong>: 3 motors define a plane, no quad gantry complexity</li>
+<li><strong>Stable center of gravity</strong>: Heavy parts stay low throughout print</li>
+<li><strong>Easy cable management</strong>: Only bed wires move</li>
+<li><strong>Scavenger-friendly</strong>: Standard leadscrews, no custom gantry mechanics</li>
+<li><strong>MDF damping synergy</strong>: Heavy mass stays near damped base</li>
+<li><strong>Proven design</strong>: Voron Trident validates this architecture</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>Taller frame</strong>: Need Z-height for bed travel + clearance</li>
+<li><strong>Bed drop risk</strong>: Heavy bed can crash if power lost (see mitigation below)</li>
+<li><strong>Bed heater wires</strong>: Must accommodate Z travel (flexible cable or chain)</li>
+<li><strong>Print removal</strong>: Bed at bottom after tall prints (must raise to remove)</li>
+</ol>
+</section>
+<section id="bed-drop-mitigation" class="level3">
+<h3 class="anchored" data-anchor-id="bed-drop-mitigation">Bed Drop Mitigation</h3>
+<p>Heavy beds can “back-drive” unpowered leadscrews and crash down. Mitigations:</p>
+<ol type="1">
+<li><strong>Leadscrew friction</strong>: TR8×2 (2mm pitch) has enough friction to hold 235×235 bed</li>
+<li><strong>Triple-Z distribution</strong>: Load spread across 3 screws increases holding friction</li>
+<li><strong>Anti-backlash nuts</strong>: Add friction that helps hold position</li>
+<li><strong>Software</strong>: Klipper can park bed at safe height before shutdown</li>
+<li><strong>Mechanical stop</strong>: Optional hard stop at bottom of Z travel</li>
+</ol>
+<p>For Amalgam’s 235×235mm bed (~500-800g with glass), the friction of 3 TR8×2 leadscrews is sufficient to prevent unpowered drop.</p>
+</section>
+</section>
+<section id="architectural-integration" class="level2">
+<h2 class="anchored" data-anchor-id="architectural-integration">Architectural Integration</h2>
+<section id="relationship-to-other-adrs" class="level3">
+<h3 class="anchored" data-anchor-id="relationship-to-other-adrs">Relationship to Other ADRs</h3>
+<pre><code>ADR-023: Z-Drop Architecture
+    │
+    ├── Enables → ADR-005: Triple-Z (3-motor bed leveling)
+    │
+    ├── Requires → ADR-008: Spider Bed Support (carries bed on Z)
+    │
+    ├── Informs → ADR-021: Dual-Rod Motion (XY at fixed height)
+    │
+    └── Benefits → ADR-011: Laminated Plinth (damping stays effective)</code></pre>
+</section>
+<section id="frame-layout" class="level3">
+<h3 class="anchored" data-anchor-id="frame-layout">Frame Layout</h3>
+<pre><code>┌─────────────────────────────────────┐  ← Top of M10 frame
+│                                     │
+│  ┌─────────────────────────────┐    │  ← XY Gantry (FIXED HEIGHT)
+│  │  Y-rods (dual per side)     │    │
+│  │     [Plough on X-rods]      │    │
+│  └─────────────────────────────┘    │
+│                                     │
+│         ↕ Z Travel (~250mm)         │
+│                                     │
+│  ┌─────────────────────────────┐    │  ← Bed Platform (MOVES IN Z)
+│  │      [Heated Bed]           │    │
+│  │   Z1 ─────┼───── Z2         │    │  ← Triple-Z leadscrews
+│  │           Z3                │    │
+│  └─────────────────────────────┘    │
+│                                     │
+└─────────────────────────────────────┘  ← 36mm MDF Plinth</code></pre>
+</section>
+<section id="motion-independence" class="level3">
+<h3 class="anchored" data-anchor-id="motion-independence">Motion Independence</h3>
+<p><strong>Critical design principle:</strong> The XY gantry and Z-bed are <strong>completely independent systems</strong>.</p>
+<ul>
+<li>XY gantry never moves in Z</li>
+<li>Bed never moves in X or Y</li>
+<li>Z_TILT_ADJUST tilts the bed plane to match the gantry plane</li>
+<li>No mechanical coupling between XY and Z motion</li>
+</ul>
+<p>This independence simplifies: - Klipper configuration (separate stepper sections) - Calibration (XY and Z tuned independently) - Troubleshooting (isolate issues to one system) - Scavenging (Z parts don’t need to match XY parts)</p>
+</section>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<section id="alternative-a-bed-slinger-rejected" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-a-bed-slinger-rejected">Alternative A: Bed-Slinger (Rejected)</h3>
+<p>Moving bed in Y (like Prusa i3):</p>
+<p><strong>Pros:</strong> - Simpler frame (shorter in Y) - Well-proven design - Easy to scavenge (most donors are bed-slingers)</p>
+<p><strong>Cons:</strong> - Heavy bed moving in Y causes ringing artifacts - Limits print speed for quality - Y-motor works harder (accelerating bed mass) - Bed leveling more complex (bed moves during probe)</p>
+<p><strong>Verdict:</strong> Rejected. Moving heavy bed in Y contradicts “Tractor” philosophy of keeping mass stationary for quality.</p>
+</section>
+<section id="alternative-b-gantry-rise-rejected" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-b-gantry-rise-rejected">Alternative B: Gantry-Rise (Rejected)</h3>
+<p>Fixed bed at bottom, gantry climbs (like Voron 2.4):</p>
+<p><strong>Pros:</strong> - Bed always accessible - Excellent for enclosed chambers (heat rises to gantry) - Premium feel</p>
+<p><strong>Cons:</strong> - Requires 4 Z-motors for Quad Gantry Leveling - Center of gravity rises during print - Complex cable management (toolhead wires must travel full Z) - Heavier gantry (carries more structure) - Harder to scavenge (need 4 matched Z-motors)</p>
+<p><strong>Verdict:</strong> Rejected. QGL requires 4 motors vs Triple-Z’s 3. Harder to scavenge, higher CoG during printing.</p>
+</section>
+<section id="alternative-c-corexz-rejected" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-c-corexz-rejected">Alternative C: CoreXZ (Rejected)</h3>
+<p>Bed moves in Y, toolhead moves in X and Z via crossed belts:</p>
+<p><strong>Pros:</strong> - Compact design - Good for conversions (Ender → Switchwire)</p>
+<p><strong>Cons:</strong> - Still a bed-slinger (Y-axis bed movement) - Complex belt paths - Not compatible with M10 threaded rod frame - Different lineage from Darwin/Mendel</p>
+<p><strong>Verdict:</strong> Rejected. Still has bed-slinger drawbacks, incompatible with frame philosophy.</p>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="z-travel-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="z-travel-calculation">Z Travel Calculation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From config.py</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Z_TRAVEL <span class="op">=</span> BUILD_VOLUME[<span class="st">"Z"</span>] <span class="op">+</span> CLEARANCE</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="dv">250</span> <span class="op">+</span> <span class="dv">30</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="dv">280</span><span class="er">mm</span> minimum Z travel</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>FRAME_HEIGHT <span class="op">=</span> Z_TRAVEL <span class="op">+</span> GANTRY_HEIGHT <span class="op">+</span> BED_THICKNESS <span class="op">+</span> PLINTH_CLEARANCE</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">=</span> <span class="dv">280</span> <span class="op">+</span> <span class="dv">80</span> <span class="op">+</span> <span class="dv">40</span> <span class="op">+</span> <span class="dv">30</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">=</span> <span class="dv">430</span><span class="er">mm</span> internal height</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="leadscrew-positioning-for-z_tilt_adjust" class="level3">
+<h3 class="anchored" data-anchor-id="leadscrew-positioning-for-z_tilt_adjust">Leadscrew Positioning (for Z_TILT_ADJUST)</h3>
+<p>Optimal Triple-Z placement for Z_TILT_ADJUST:</p>
+<pre><code>        ┌─────────────────────┐
+        │                     │
+        │    Z3 (back-center) │
+        │         ●           │
+        │                     │
+        │  ●               ●  │
+        │ Z1               Z2 │
+        │ (front-left) (front-right)
+        └─────────────────────┘</code></pre>
+<p><strong>Spread as wide as possible</strong> - maximizes the “lever arm” for tilt correction, improving accuracy.</p>
+</section>
+<section id="klipper-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="klipper-configuration">Klipper Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z]</span><span class="dt">   # Z1 - front left</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z1]</span><span class="dt">  # Z2 - front right</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z2]</span><span class="dt">  # Z3 - back center</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[z_tilt]</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dt">z_positions:   # Leadscrew positions</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">    30, 30     # Z1 front-left</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">    200, 30    # Z2 front-right</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">    115, 200   # Z3 back-center</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dt">points:        # Probe points (near leadscrews)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="dt">    30, 30</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="dt">    200, 30</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="dt">    115, 200</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-005: Triple-Z Independent Kinematic Leveling</li>
+<li>ADR-008: Spider Bed Support System</li>
+<li>ADR-011: Laminated Plinth Baseboard</li>
+<li>ADR-021: Dual-Rod Motion System</li>
+<li><a href="https://vorondesign.com/voron_trident">Voron Trident</a>: Z-drop + Triple-Z reference</li>
+<li><a href="https://vorondesign.com/voron2.4">Voron 2.4</a>: Gantry-rise + QGL reference</li>
+<li>docs/deep-dives/tractor_02_xy_axis_system.md: Detailed Z-drop implementation</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

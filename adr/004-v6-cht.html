@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>v6-cht – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-004-e3d-v6-with-cht-nozzle" id="toc-adr-004-e3d-v6-with-cht-nozzle" class="nav-link active" data-scroll-target="#adr-004-e3d-v6-with-cht-nozzle">ADR-004: E3D V6 with CHT Nozzle</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#why-e3d-v6" id="toc-why-e3d-v6" class="nav-link" data-scroll-target="#why-e3d-v6">Why E3D V6?</a></li>
+  <li><a href="#why-cht-nozzle-upgrade" id="toc-why-cht-nozzle-upgrade" class="nav-link" data-scroll-target="#why-cht-nozzle-upgrade">Why CHT Nozzle Upgrade?</a></li>
+  <li><a href="#selected-configuration" id="toc-selected-configuration" class="nav-link" data-scroll-target="#selected-configuration">Selected Configuration</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#why-not-volcano" id="toc-why-not-volcano" class="nav-link" data-scroll-target="#why-not-volcano">Why NOT Volcano?</a></li>
+  <li><a href="#why-not-dragonrapido" id="toc-why-not-dragonrapido" class="nav-link" data-scroll-target="#why-not-dragonrapido">Why NOT Dragon/Rapido?</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-buying-new-v6-clone-recommended-for-tier-3" id="toc-scenario-a-buying-new-v6-clone-recommended-for-tier-3" class="nav-link" data-scroll-target="#scenario-a-buying-new-v6-clone-recommended-for-tier-3">Scenario A: Buying New V6 Clone (Recommended for Tier 3+)</a></li>
+  <li><a href="#scenario-b-salvaging-from-donor-prusa-i3-anet" id="toc-scenario-b-salvaging-from-donor-prusa-i3-anet" class="nav-link" data-scroll-target="#scenario-b-salvaging-from-donor-prusa-i3-anet">Scenario B: Salvaging from Donor (Prusa i3, Anet)</a></li>
+  <li><a href="#scenario-c-donor-has-mk8-or-other-budget-hotend" id="toc-scenario-c-donor-has-mk8-or-other-budget-hotend" class="nav-link" data-scroll-target="#scenario-c-donor-has-mk8-or-other-budget-hotend">Scenario C: Donor has MK8 or Other Budget Hotend</a></li>
+  <li><a href="#scenario-d-salvaging-from-non-printer-sources" id="toc-scenario-d-salvaging-from-non-printer-sources" class="nav-link" data-scroll-target="#scenario-d-salvaging-from-non-printer-sources">Scenario D: Salvaging from Non-Printer Sources</a></li>
+  <li><a href="#scenario-e-high-end-upgrade-tinker-path" id="toc-scenario-e-high-end-upgrade-tinker-path" class="nav-link" data-scroll-target="#scenario-e-high-end-upgrade-tinker-path">Scenario E: High-End Upgrade (Tinker Path)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#hotend-mounting" id="toc-hotend-mounting" class="nav-link" data-scroll-target="#hotend-mounting">Hotend Mounting</a></li>
+  <li><a href="#thermistor-potting-critical" id="toc-thermistor-potting-critical" class="nav-link" data-scroll-target="#thermistor-potting-critical">Thermistor Potting (Critical)</a></li>
+  <li><a href="#nozzle-specifications" id="toc-nozzle-specifications" class="nav-link" data-scroll-target="#nozzle-specifications">Nozzle Specifications</a></li>
+  <li><a href="#temperature-guidelines" id="toc-temperature-guidelines" class="nav-link" data-scroll-target="#temperature-guidelines">Temperature Guidelines</a></li>
+  <li><a href="#cooling" id="toc-cooling" class="nav-link" data-scroll-target="#cooling">Cooling</a></li>
+  <li><a href="#ercf-integration" id="toc-ercf-integration" class="nav-link" data-scroll-target="#ercf-integration">ERCf Integration</a></li>
+  <li><a href="#maintenance" id="toc-maintenance" class="nav-link" data-scroll-target="#maintenance">Maintenance</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-004-e3d-v6-with-cht-nozzle" class="level1">
+<h1>ADR-004: E3D V6 with CHT Nozzle</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The hotend is the “lungs” of a 3D printer, melting and extruding filament with precision. In 2026, there are multiple hotend options: - Standard hotends (E3D V6, Dragon, Mosquito) - High-flow hotends (Volcano, Dragon HF, Rapido) - Budget hotends (MK8, generic clones) - Direct drive integrated hotends</p>
+<p>Modern printers often use high-flow hotends for fast printing (200mm/s+). However, larger melt zones cause “oozing” and require complex tuning. Budget hotends are cheap but suffer from heat creep and inconsistent flow.</p>
+<p>The Amalgam’s philosophy is “Precision over Ooze” - we prioritize reliability and dimensional accuracy over raw volumetric flow.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We choose <strong>E3D V6 (or high-quality clone) with CHT (Core Heating Technology) Nozzle</strong> as the reference hotend system.</p>
+<section id="why-e3d-v6" class="level3">
+<h3 class="anchored" data-anchor-id="why-e3d-v6">Why E3D V6?</h3>
+<ol type="1">
+<li><strong>Proven reliability</strong>: 10+ years of community testing and refinement</li>
+<li><strong>Heat creep resistance</strong>: Compact melt zone prevents filament softening upstream</li>
+<li><strong>Detail precision</strong>: Superior control for fine details and rapid tool-changes</li>
+<li><strong>ERCf compatible</strong>: Short melt zone essential for clean color swaps</li>
+<li><strong>Low mass</strong>: Maintains Z-height without adding weight to toolhead</li>
+<li><strong>Widely available</strong>: Huge ecosystem of clones, parts, and upgrades</li>
+<li><strong>Repairable</strong>: Individual parts (nozzle, heater block, heatbreak) replaceable</li>
+</ol>
+</section>
+<section id="why-cht-nozzle-upgrade" class="level3">
+<h3 class="anchored" data-anchor-id="why-cht-nozzle-upgrade">Why CHT Nozzle Upgrade?</h3>
+<p>CHT (Core Heating Technology) is a “Neo” flow hack that bridges the gap between standard and high-flow hotends.</p>
+<p><strong>What is CHT?</strong> - Nozzle with internal “three-way” splitter - Melts filament from inside out (vs outside in) - Increases flow by up to 50% without larger melt zone</p>
+<p><strong>Why CHT?</strong> - <strong>No ooze penalty</strong>: Melt zone remains V6-sized (no “Volcano” strings) - <strong>50% more flow</strong>: Enables 120mm/s speeds with Wade extruder - <strong>Better layer bonding</strong>: Improved thermal transfer - <strong>Cost-effective</strong>: ~$5-8 AUD per nozzle - <strong>Reversible</strong>: Swap back to standard nozzle any time</p>
+</section>
+<section id="selected-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="selected-configuration">Selected Configuration</h3>
+<ul>
+<li><strong>Hotend</strong>: TriangleLab or Mellow E3D V6 Clone (All-Metal for ERCF)</li>
+<li><strong>Nozzle Set</strong>:
+<ul>
+<li>1x 0.4mm Standard Brass (multi-color detail)</li>
+<li>1x 0.6mm Standard Brass (structural parts)</li>
+<li>1x 0.4mm CHT Clone (high-speed tuning)</li>
+</ul></li>
+<li><strong>Heater</strong>: 40W cartridge heater (or 24V clone)</li>
+<li><strong>Thermistor</strong>: 100K NTC 3950 (standard)</li>
+</ul>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Minimal oozing</strong>: Short melt zone prevents sagging and blobs</li>
+<li><strong>Excellent detail</strong>: 0.1mm layers with high precision</li>
+<li><strong>ERCf compatibility</strong>: Essential for clean multi-color transitions</li>
+<li><strong>Mass balance</strong>: Not too heavy for Wade extruder torque</li>
+<li><strong>Software simplicity</strong>: No complex retraction tuning required</li>
+<li><strong>Flow flexibility</strong>: CHT enables speed when needed</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Flow limited (without CHT)</strong>: Standard V6 flow ~15mm³/s (not 30mm³/s like Volcano)</li>
+<li><strong>Not for racecars</strong>: Won’t support 200mm/s+ speeds</li>
+<li><strong>Nozzle swaps</strong>: Changing flow requires nozzle change</li>
+<li><strong>Clone quality</strong>: Must buy high-quality clones (avoid garbage)</li>
+</ul>
+</section>
+<section id="why-not-volcano" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-volcano">Why NOT Volcano?</h3>
+<ol type="1">
+<li><strong>Ooze factor</strong>: Large melt zone causes stringing and blobs</li>
+<li><strong>Retraction tuning</strong>: Complex tuning required for clean retractions</li>
+<li><strong>Z-height impact</strong>: Longer block reduces build height</li>
+<li><strong>ERCf struggles</strong>: Larger melt zone causes color transition issues</li>
+<li><strong>Overkill for 70-120mm/s</strong>: Wade + CHT provides sufficient flow</li>
+</ol>
+</section>
+<section id="why-not-dragonrapido" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-dragonrapido">Why NOT Dragon/Rapido?</h3>
+<ol type="1">
+<li><strong>Cost</strong>: Dragon ~$100+, Rapido ~$150+ (vs V6 clone ~$15-25)</li>
+<li><strong>Proprietary</strong>: Specialized parts not hardware-store available</li>
+<li><strong>Complexity</strong>: More complex installation and repair</li>
+<li><strong>Over-engineering</strong>: For 70-120mm/s, V6+CHT is sufficient</li>
+</ol>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="scenario-a-buying-new-v6-clone-recommended-for-tier-3" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-buying-new-v6-clone-recommended-for-tier-3">Scenario A: Buying New V6 Clone (Recommended for Tier 3+)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>E3D V6 All-Metal hotend clone (TriangleLab, Mellow)</li>
+<li>Nozzle set: 0.4mm (2x), 0.6mm (1x), CHT 0.4mm (1x)</li>
+<li>40W cartridge heater (24V)</li>
+<li>100K NTC 3950 thermistor</li>
+<li>Heatbreak (if separate)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (~$25-35 AUD)</li>
+<li><strong>Donor compatibility</strong>: All donors (replaces donor hotend)</li>
+<li><strong>ERCf compatibility</strong>: Required All-Metal version</li>
+<li><strong>Note</strong>: Buy from reputable sellers (TriangleLab, Mellow)</li>
+</ul>
+</section>
+<section id="scenario-b-salvaging-from-donor-prusa-i3-anet" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-salvaging-from-donor-prusa-i3-anet">Scenario B: Salvaging from Donor (Prusa i3, Anet)</h3>
+<ul>
+<li><strong>Parts A: Donor has All-Metal V6 or clone</strong>
+<ul>
+<li>Parts needed: Salvage hotend assembly</li>
+<li>May need: New nozzles (0.4mm, 0.6mm, CHT)</li>
+<li>May need: New thermistor (pottable)</li>
+<li>Cost implication: Very Low (~$10-15 AUD for nozzles)</li>
+<li>Donor compatibility: Prusa MK2/3, Anet A8, Prusa i3</li>
+<li>Note: Verify thermistor type matches Klipper config</li>
+</ul></li>
+<li><strong>Parts B: Donor has PTFE hotend (Ender 3, CR-10)</strong>
+<ul>
+<li>Parts needed: <strong>MUST BUY</strong> V6 All-Metal hotend</li>
+<li>PTFE hotends cannot do multi-color (clogs with repeated loading)</li>
+<li>Cost implication: Medium (~$25-35 AUD)</li>
+<li>Donor compatibility: Ender 3, CR-10, V-Core</li>
+<li>Note: ERCf requires All-Metal (no PTFE)</li>
+</ul></li>
+</ul>
+</section>
+<section id="scenario-c-donor-has-mk8-or-other-budget-hotend" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-donor-has-mk8-or-other-budget-hotend">Scenario C: Donor has MK8 or Other Budget Hotend</h3>
+<ul>
+<li><strong>Parts needed</strong>: <strong>MUST BUY</strong> V6 All-Metal hotend</li>
+<li><strong>Reason</strong>: MK8 has poor thermal performance, heat creep issues</li>
+<li><strong>Cost implication</strong>: Medium (~$25-35 AUD)</li>
+<li><strong>Donor compatibility</strong>: Most budget printers</li>
+<li><strong>Note</strong>: Donor hotend unsuitable for precision or multi-color</li>
+</ul>
+</section>
+<section id="scenario-d-salvaging-from-non-printer-sources" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-d-salvaging-from-non-printer-sources">Scenario D: Salvaging from Non-Printer Sources</h3>
+<ul>
+<li><strong>Parts needed</strong>: Buy new (hotends rarely found in non-printers)</li>
+<li><strong>Exception</strong>: Maybe find in junked 3D printers at e-waste</li>
+<li><strong>Cost implication</strong>: Medium if buying new</li>
+<li><strong>Note</strong>: Scavenged hotends often have worn nozzles or cracked heatbreaks</li>
+</ul>
+</section>
+<section id="scenario-e-high-end-upgrade-tinker-path" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-e-high-end-upgrade-tinker-path">Scenario E: High-End Upgrade (Tinker Path)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Dragon or Rapido hotend</li>
+<li>Custom adapter puck</li>
+</ul></li>
+<li><strong>Cost implication</strong>: High (~$100-150 AUD)</li>
+<li><strong>Donor compatibility</strong>: N/A (requires new purchase)</li>
+<li><strong>Benefits</strong>: 30+mm³/s flow, superior thermal control</li>
+<li><strong>Warning</strong>: Violates “hardware store” repair ethos</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="hotend-mounting" class="level3">
+<h3 class="anchored" data-anchor-id="hotend-mounting">Hotend Mounting</h3>
+<ul>
+<li>V6 mounts via GrooveMount pattern (16mm diameter)</li>
+<li>Standard “Extruder Puck” provides GrooveMount interface</li>
+<li>Compatible with Wade extruder and other toolheads</li>
+</ul>
+</section>
+<section id="thermistor-potting-critical" class="level3">
+<h3 class="anchored" data-anchor-id="thermistor-potting-critical">Thermistor Potting (Critical)</h3>
+<ul>
+<li><strong>Why</strong>: Potted thermistor provides permanent thermal contact</li>
+<li><strong>How</strong>: Use High-Temp Red RTV Silicone</li>
+<li><strong>Process</strong>: Insert thermistor, fill void with RTV, cure 24hrs</li>
+<li><strong>Benefit</strong>: No tape failures, no thermal drift</li>
+<li><strong>Donor note</strong>: Scavenged thermistors must be re-potted</li>
+</ul>
+</section>
+<section id="nozzle-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="nozzle-specifications">Nozzle Specifications</h3>
+<pre><code>Standard Brass 0.4mm: High detail, moderate flow (~15mm³/s)
+Standard Brass 0.6mm: Structural parts, faster printing (~20mm³/s)
+CHT 0.4mm:           High-speed, 50% more flow (~22mm³/s), low ooze</code></pre>
+</section>
+<section id="temperature-guidelines" class="level3">
+<h3 class="anchored" data-anchor-id="temperature-guidelines">Temperature Guidelines</h3>
+<pre><code>PLA:   195-210°C (200°C typical)
+PETG:  235-250°C (240°C typical)
+ABS:   240-260°C (250°C typical)
+TPU:   215-230°C (220°C typical)
+ASA:   245-260°C (250°C typical)</code></pre>
+</section>
+<section id="cooling" class="level3">
+<h3 class="anchored" data-anchor-id="cooling">Cooling</h3>
+<ul>
+<li>4010 axial fan (standard E3D configuration)</li>
+<li>Duct designed to direct air at part, not nozzle</li>
+<li>Donor fans usually compatible</li>
+</ul>
+</section>
+<section id="ercf-integration" class="level3">
+<h3 class="anchored" data-anchor-id="ercf-integration">ERCf Integration</h3>
+<ul>
+<li><strong>Requirement</strong>: All-Metal heatbreak (no PTFE)</li>
+<li><strong>Why</strong>: Repeated filament loading/unloading melts PTFE, causing clogs</li>
+<li><strong>Tip</strong>: Check heatbreak material before buying (stainless steel or titanium)</li>
+</ul>
+</section>
+<section id="maintenance" class="level3">
+<h3 class="anchored" data-anchor-id="maintenance">Maintenance</h3>
+<ul>
+<li><strong>Nozzle replacement</strong>: Every ~500-1000 hours (performance degrades)</li>
+<li><strong>Heatbreak inspection</strong>: Check for cracks annually</li>
+<li><strong>Clean cold pulls</strong>: Every ~50 hours of printing</li>
+<li><strong>Thermistor check</strong>: Verify calibration with hotend thermometer</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>MANIFESTO.md: Section “Hotend Flow Optimization”</li>
+<li><a href="https://docs.e3d-online.com/v6">E3D V6 Documentation</a></li>
+<li><a href="https://microswiss.ch/pages/cht-nozzles">CHT Nozzle Information</a></li>
+<li>docs/AI-Conversations/ [Relevant conversations about hotend selection]</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

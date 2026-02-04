@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>floating-z-puck – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-010-floating-z-puck-system" id="toc-adr-010-floating-z-puck-system" class="nav-link active" data-scroll-target="#adr-010-floating-z-puck-system">ADR-010: Floating Z-Puck System</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a></li>
+  <li><a href="#why-this-works" id="toc-why-this-works" class="nav-link" data-scroll-target="#why-this-works">Why This Works</a></li>
+  <li><a href="#build-wizard-logic" id="toc-build-wizard-logic" class="nav-link" data-scroll-target="#build-wizard-logic">Build Wizard Logic</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#what-this-replaces" id="toc-what-this-replaces" class="nav-link" data-scroll-target="#what-this-replaces">What This Replaces</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#universal-requirements-all-scenarios" id="toc-universal-requirements-all-scenarios" class="nav-link" data-scroll-target="#universal-requirements-all-scenarios">Universal Requirements (All Scenarios)</a></li>
+  <li><a href="#scenario-a-naked-frame-tier-1-2" id="toc-scenario-a-naked-frame-tier-1-2" class="nav-link" data-scroll-target="#scenario-a-naked-frame-tier-1-2">Scenario A: Naked Frame (Tier 1-2)</a></li>
+  <li><a href="#scenario-b-laminated-plinth-tier-3" id="toc-scenario-b-laminated-plinth-tier-3" class="nav-link" data-scroll-target="#scenario-b-laminated-plinth-tier-3">Scenario B: Laminated Plinth (Tier 3)</a></li>
+  <li><a href="#scenario-c-future-proof-build-path" id="toc-scenario-c-future-proof-build-path" class="nav-link" data-scroll-target="#scenario-c-future-proof-build-path">Scenario C: Future-Proof Build Path</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#puck-design-specifications" id="toc-puck-design-specifications" class="nav-link" data-scroll-target="#puck-design-specifications">Puck Design Specifications</a></li>
+  <li><a href="#assembly-sequence" id="toc-assembly-sequence" class="nav-link" data-scroll-target="#assembly-sequence">Assembly Sequence</a></li>
+  <li><a href="#alignment-procedure" id="toc-alignment-procedure" class="nav-link" data-scroll-target="#alignment-procedure">Alignment Procedure</a></li>
+  <li><a href="#safety-considerations" id="toc-safety-considerations" class="nav-link" data-scroll-target="#safety-considerations">Safety Considerations</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#evolution-notes" id="toc-evolution-notes" class="nav-link" data-scroll-target="#evolution-notes">Evolution Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-010-floating-z-puck-system" class="level1">
+<h1>ADR-010: Floating Z-Puck System</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam supports various bed sizes (from salvaged donor beds to MK52 250mm²). Traditional integrated Z-motor mounts (built into corner brackets) create a “parametric paradox”:</p>
+<ol type="1">
+<li><strong>Frame Lock-in</strong>: Motor position determines bed width</li>
+<li><strong>No Adjustment</strong>: Small manufacturing tolerances (bent rods, “lumpy” prints) cause permanent Z-misalignment</li>
+<li><strong>Rebuild Required</strong>: Upgrading bed size requires replacing entire iron skeleton</li>
+</ol>
+<p>This creates a choice between: - <strong>Optimized Frame</strong>: Minimal size for current bed, but rebuild needed for upgrades - <strong>Reference Frame</strong>: Built for MK52 size, but mounting motors for smaller beds is challenging</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>Floating Z-Puck System</strong> for all three Z-motors, decoupling the iron skeleton from bed dimensions.</p>
+<section id="architecture" class="level3">
+<h3 class="anchored" data-anchor-id="architecture">Architecture</h3>
+<p><strong>The Puck</strong>: A 3D-printed motor mount that slides along the front and rear M12 Z-rods, positioned to match any bed width.</p>
+<p><strong>The Double-Nut Anchor</strong>:</p>
+<pre><code>M12 Rod
+    ↓
+[Upper M12 Nut]
+    ↓
+[  Z-Puck (clamp)  ]
+    ↓
+[Lower M12 Nut]</code></pre>
+<ul>
+<li>The puck is clamped to the M12 threaded rod</li>
+<li>Two standard M12 hex nuts trap the puck vertically</li>
+<li>Even if the clamp fails, the nuts provide physical fail-safe</li>
+</ul>
+</section>
+<section id="why-this-works" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-works">Why This Works</h3>
+<p><strong>1. Parametric Flexibility</strong> - Frame can be built for MK52 Reference Spec (250mm²) - Pucks slide inward for smaller salvaged beds - Upgrade later: only print new bed-arms, slide pucks outward - Iron skeleton never touched</p>
+<p><strong>2. The “Nylon Jam” Effect</strong> - Threaded rods are superior to smooth rods for clamping - Split-clamp design deforms plastic into M12 thread valleys - Creates mechanical interlock preventing rotation/slip - Smooth rods rely only on friction</p>
+<p><strong>3. Vibration Isolation</strong> - Integrated motors turn entire frame into “tuning fork” - Floating pucks break solid vibration transmission path - Plastic between motor and rod dampens high-frequency noise</p>
+<p><strong>4. Precision Alignment (The “True-Vertical” Rule)</strong> - Z-wobble primarily caused by misaligned motors, not loose ones - Integrated corners force user to live with 0.5mm misalignment - Floating pucks allow loosening, homing bed to find “natural” center, then tightening - Ensures perfect motor/lead-screw concentricity</p>
+</section>
+<section id="build-wizard-logic" class="level3">
+<h3 class="anchored" data-anchor-id="build-wizard-logic">Build Wizard Logic</h3>
+<pre><code>Configuration Wizard
+├─ Frame Size
+│  ├─ Option A: Optimized for Salvage (current bed only)
+│  │  └─ Result: Minimal footprint, rebuild needed for upgrades
+│  └─ Option B: Future-Proof (MK52 Reference Spec) ★
+│     └─ Result: Larger footprint, upgrade bed by sliding pucks
+├─ Z-Puck Mode
+│  ├─ Naked Frame: Pucks clamped to rods + rubber pads under corners
+│  └─ Laminated Plinth: Pucks screwed into MDF base (see ADR-011)</code></pre>
+<p><strong>Scale Limit</strong>: Automatic scaling capped at MK52 (~250mm²). Larger sizes require manual engineering due to: - M12 frame stability limits - Thermal management limits (PSU/heater capacity)</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Future-Proof</strong>: Build once for MK52, use with any smaller bed</li>
+<li><strong>No Rebuilds</strong>: Bed upgrades require only new bed-arms, not iron skeleton</li>
+<li><strong>Precision Alignment</strong>: Eliminates Z-wobble from motor misalignment</li>
+<li><strong>Reduced Vibration</strong>: Decoupled motors transmit less noise to frame</li>
+<li><strong>Single Design</strong>: One Z-puck design works for all configurations</li>
+<li><strong>Fail-Safe</strong>: Double-nut anchor prevents catastrophic failures</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Slightly More Complex</strong>: Additional assembly step vs integrated corners</li>
+<li><strong>Manual Alignment</strong>: Requires user to position pucks during build</li>
+<li><strong>Cantilever Concern</strong>: Theoretical micro-flex (mitigated by double-nut anchor)</li>
+<li><strong>Parts Count</strong>: Two extra M12 nuts per Z-motor (6 total)</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Tier 1-2 Builds</strong>: Small salvaged beds on Reference Spec frame</li>
+<li><strong>Tier 3 Builds</strong>: MK52 beds with same iron foundation</li>
+<li><strong>Modular Puck System</strong>: Consistent motor mounting across entire machine</li>
+<li><strong>Parametric Build Scripts</strong>: No need for separate “integrated” and “floating” variants</li>
+</ul>
+</section>
+<section id="what-this-replaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-replaces">What This Replaces</h3>
+<ul>
+<li>Integrated Z-motor corners (frame-locked to bed size)</li>
+<li>Fixed-position Z-motor mounts</li>
+<li>Multiple corner variants for different bed sizes</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="universal-requirements-all-scenarios" class="level3">
+<h3 class="anchored" data-anchor-id="universal-requirements-all-scenarios">Universal Requirements (All Scenarios)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3x Floating Z-Puck 3D prints</li>
+<li>6x M12 hex nuts (for double-nut anchors)</li>
+<li>6x M12 flat washers</li>
+<li>3x NEMA 17 stepper motors (Z-axis)</li>
+<li>3x Lead screws (8mm, TR8x2 or TR8x1.5)</li>
+<li>3x Lead screw couplers</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (~$30-40 AUD for hardware + plastic)</li>
+<li><strong>Donor compatibility</strong>: All donors (motors salvaged, lead screws salvaged)</li>
+</ul>
+</section>
+<section id="scenario-a-naked-frame-tier-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-naked-frame-tier-1-2">Scenario A: Naked Frame (Tier 1-2)</h3>
+<ul>
+<li><strong>Additional parts</strong>:
+<ul>
+<li>4x High-density rubber or vibration-dampening pads (corner feet)</li>
+</ul></li>
+<li><strong>Assembly</strong>: Clamp pucks to rods, no woodworking</li>
+<li><strong>Cost implication</strong>: Very Low (+$10-15 AUD for pads)</li>
+<li><strong>Stability</strong>: Moderate (relies on frame mass + pads)</li>
+</ul>
+</section>
+<section id="scenario-b-laminated-plinth-tier-3" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-laminated-plinth-tier-3">Scenario B: Laminated Plinth (Tier 3)</h3>
+<ul>
+<li><strong>Additional parts</strong>:
+<ul>
+<li>2x 18mm MDF boards (see ADR-011 for dimensions)</li>
+<li>Viscoelastic adhesive (Green Glue or construction adhesive)</li>
+<li>6x Wood screws (to secure pucks to MDF)</li>
+<li>4x Large fender washers (for frame thru-bolting)</li>
+<li>4x M12 nuts + washers (underside of MDF)</li>
+</ul></li>
+<li><strong>Assembly</strong>: Drill template required, screw pucks to MDF</li>
+<li><strong>Cost implication</strong>: Low (+$20-30 AUD for MDF + adhesive)</li>
+<li><strong>Stability</strong>: Very High (industrial-grade)</li>
+</ul>
+</section>
+<section id="scenario-c-future-proof-build-path" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-future-proof-build-path">Scenario C: Future-Proof Build Path</h3>
+<ul>
+<li><strong>Initial Build</strong>: Scenario A (Naked Frame) with small salvaged bed</li>
+<li><strong>Upgrade Path</strong>: Add laminated plinth + slide pucks outward for MK52</li>
+<li><strong>Cost implication</strong>: Spread over time, minimal additional parts</li>
+<li><strong>Benefit</strong>: No need to replace iron skeleton</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="puck-design-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="puck-design-specifications">Puck Design Specifications</h3>
+<ul>
+<li><strong>Clamping</strong>: Split-clamp design with M3 or M4 bolt</li>
+<li><strong>Motor Mount</strong>: Standard NEMA 17 pattern (31mm bolt circle)</li>
+<li><strong>Rod Clearance</strong>: M12 rod clearance ~12.5mm</li>
+<li><strong>Slot Design</strong> (if plinth-mounted): 10mm slots for alignment adjustment</li>
+<li><strong>Nut Traps</strong> (optional): Can incorporate nut traps for double-nut anchor</li>
+</ul>
+</section>
+<section id="assembly-sequence" class="level3">
+<h3 class="anchored" data-anchor-id="assembly-sequence">Assembly Sequence</h3>
+<p><strong>For Naked Frame Builds</strong>: 1. Assemble M12 skeleton on rubber pads 2. Install lead screws through pucks 3. Thread pucks onto front Z-rods 4. Slide to match bed width 5. Install upper/lower M12 nuts (hand-tight) 6. Clamp puck with bolt (compress into threads) 7. Tighten nuts fully, torque clamp bolt 8. Home bed to check alignment, adjust if needed</p>
+<p><strong>For Laminated Plinth Builds</strong>: 1. Prepare laminated MDF plinth (see ADR-011) 2. Drill holes using build123d template 3. Install Z-pucks on MDF with wood screws (loosely) 4. Thread M12 rods through pucks + MDF 5. Secure rods with fender washers + nuts underneath 6. Slide pucks to match bed width 7. Home bed, align motors to lead screws 8. Tighten wood screws fully 9. Add double-nut anchors above/below pucks</p>
+</section>
+<section id="alignment-procedure" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-procedure">Alignment Procedure</h3>
+<ol type="1">
+<li>Install lead screws and connect to bed</li>
+<li>Loosen all Z-puck clamps</li>
+<li>Home Z-axis to bottom</li>
+<li>Verify all 3 motors rotate smoothly</li>
+<li>If any motor binds, slightly reposition puck</li>
+<li>Repeat homing until all rotate freely</li>
+<li>Tighten clamps + double-nut anchors</li>
+<li>Perform Z-tilt calibration in Klipper</li>
+</ol>
+</section>
+<section id="safety-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="safety-considerations">Safety Considerations</h3>
+<ul>
+<li><strong>Double-Nut Anchor</strong>: Always use, even with strong clamp</li>
+<li><strong>Torque Specs</strong>: Clamp bolt to ~2-3 Nm (don’t crack plastic)</li>
+<li><strong>Thread Engagement</strong>: Ensure M12 nuts fully engaged (≥10mm)</li>
+<li><strong>Plinth Screws</strong>: Use appropriate length for MDF (1.5x board thickness)</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>docs/reference/ai-conversations/floating-z-puck.md</strong>: Complete technical discussion</li>
+<li><strong>docs/adr/011-laminated-plinth.md</strong>: Baseboard foundation strategy</li>
+<li><strong>docs/adr/001-m12-skeleton.md</strong>: Frame architecture</li>
+<li><strong>docs/adr/005-triple-z.md</strong>: Triple-Z kinematic leveling</li>
+<li>MANIFESTO.md: “The Bed is the Anchor” pillar</li>
+<li>MANIFESTO.md: Modular Puck &amp; Spider concept</li>
+</ul>
+</section>
+<section id="evolution-notes" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-notes">Evolution Notes</h2>
+<p>This ADR establishes the Z-puck as a universal mounting system that supports all bed sizes and foundation strategies. Future variations (e.g., different motor types, direct-drive Z) will maintain this modular approach.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

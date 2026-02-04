@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>dual-8-scavenger – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-020-dual-8-scavenger-variant" id="toc-adr-020-dual-8-scavenger-variant" class="nav-link active" data-scroll-target="#adr-020-dual-8-scavenger-variant">ADR-020: Dual-8 Scavenger Variant</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#original-status" id="toc-original-status" class="nav-link" data-scroll-target="#original-status">Original Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#the-dual-rod-insight" id="toc-the-dual-rod-insight" class="nav-link" data-scroll-target="#the-dual-rod-insight">The Dual-Rod Insight</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#rod-configuration" id="toc-rod-configuration" class="nav-link" data-scroll-target="#rod-configuration">Rod Configuration</a></li>
+  <li><a href="#deflection-analysis" id="toc-deflection-analysis" class="nav-link" data-scroll-target="#deflection-analysis">Deflection Analysis</a></li>
+  <li><a href="#stiffness-comparison" id="toc-stiffness-comparison" class="nav-link" data-scroll-target="#stiffness-comparison">Stiffness Comparison</a></li>
+  <li><a href="#why-vertical-stacking" id="toc-why-vertical-stacking" class="nav-link" data-scroll-target="#why-vertical-stacking">Why Vertical Stacking?</a></li>
+  <li><a href="#long-bearings-lm8luu" id="toc-long-bearings-lm8luu" class="nav-link" data-scroll-target="#long-bearings-lm8luu">Long Bearings (LM8LUU)</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-two-prusa-clone-donors-recommended" id="toc-scenario-a-two-prusa-clone-donors-recommended" class="nav-link" data-scroll-target="#scenario-a-two-prusa-clone-donors-recommended">Scenario A: Two Prusa Clone Donors (Recommended)</a></li>
+  <li><a href="#scenario-b-two-anet-a8-donors" id="toc-scenario-b-two-anet-a8-donors" class="nav-link" data-scroll-target="#scenario-b-two-anet-a8-donors">Scenario B: Two Anet A8 Donors</a></li>
+  <li><a href="#scenario-c-mixed-donors-prusa-ender" id="toc-scenario-c-mixed-donors-prusa-ender" class="nav-link" data-scroll-target="#scenario-c-mixed-donors-prusa-ender">Scenario C: Mixed Donors (Prusa + Ender)</a></li>
+  <li><a href="#scenario-d-single-donor-purchased-rods" id="toc-scenario-d-single-donor-purchased-rods" class="nav-link" data-scroll-target="#scenario-d-single-donor-purchased-rods">Scenario D: Single Donor + Purchased Rods</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#rod-count-summary" id="toc-rod-count-summary" class="nav-link" data-scroll-target="#rod-count-summary">Rod Count Summary</a></li>
+  <li><a href="#bearing-count-summary" id="toc-bearing-count-summary" class="nav-link" data-scroll-target="#bearing-count-summary">Bearing Count Summary</a></li>
+  <li><a href="#toolhead-mass-budget" id="toc-toolhead-mass-budget" class="nav-link" data-scroll-target="#toolhead-mass-budget">Toolhead Mass Budget</a></li>
+  <li><a href="#cad-implications" id="toc-cad-implications" class="nav-link" data-scroll-target="#cad-implications">CAD Implications</a></li>
+  <li><a href="#klipper-configuration" id="toc-klipper-configuration" class="nav-link" data-scroll-target="#klipper-configuration">Klipper Configuration</a></li>
+  </ul></li>
+  <li><a href="#cost-analysis-hitting-300-target" id="toc-cost-analysis-hitting-300-target" class="nav-link" data-scroll-target="#cost-analysis-hitting-300-target">Cost Analysis: Hitting $300 Target</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-020-dual-8-scavenger-variant" class="level1">
+<h1>ADR-020: Dual-8 Scavenger Variant</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Superseded by <a href="../adr/021-dual-rod-motion-system.html">ADR-021: Dual-Rod Motion System</a></p>
+<blockquote class="blockquote">
+<p><strong>Note</strong>: This ADR proposed dual 8mm rods as a scavenger “variant.” The analysis proved compelling enough that dual 8mm was adopted as the reference specification in ADR-021, not merely an alternative. This ADR is preserved for historical context on the engineering analysis that led to that decision.</p>
+</blockquote>
+</section>
+<section id="original-status" class="level2">
+<h2 class="anchored" data-anchor-id="original-status">Original Status</h2>
+<p>Proposed</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The reference Amalgam specification uses M10 smooth rods for XY motion (ADR-003). While M10 provides excellent stiffness at 370mm spans, M10 smooth rods are difficult to scavenge:</p>
+<ul>
+<li>Photocopiers sometimes have M10/10mm shafts, but storing/disposing of the rest is problematic</li>
+<li>Most donor 3D printers (Prusa clones, Anet A8, Creality) use 8mm smooth rods</li>
+<li>Buying new M10 smooth rods costs $60-80 AUD, pushing builds toward $300+</li>
+</ul>
+<p>Analysis shows that single 8mm rods cannot achieve acceptable deflection at Amalgam’s target 370mm X-span:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Deflection @ 370mm</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Single 8mm, 280g toolhead</td>
+<td>0.072mm</td>
+<td>Excessive</td>
+</tr>
+<tr class="even">
+<td>Single 10mm, 280g toolhead</td>
+<td>0.030mm</td>
+<td>Acceptable</td>
+</tr>
+</tbody>
+</table>
+<p>However, the Voron Legacy achieves acceptable performance with 8mm rods by using a smaller build volume (~200mm). This raised the question: <strong>Can Amalgam maintain 235mm build volume with 8mm rods?</strong></p>
+<section id="the-dual-rod-insight" class="level3">
+<h3 class="anchored" data-anchor-id="the-dual-rod-insight">The Dual-Rod Insight</h3>
+<p>Beam deflection follows: <code>δ = F × L³ / (48 × E × I)</code></p>
+<p>When two parallel rods share the load: - Each rod carries F/2 - Deflection halves: <code>δ_dual = δ_single / 2</code></p>
+<p>This means <strong>dual 8mm rods can match or exceed single 10mm performance</strong>.</p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We define a <strong>“Dual-8 Scavenger”</strong> variant that uses dual 8mm smooth rods per axis with vertically-stacked configuration, enabling full 235mm build volume with scavenged parts from two donor printers.</p>
+<section id="rod-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="rod-configuration">Rod Configuration</h3>
+<p><strong>X-Axis (Vertical Stack):</strong></p>
+<pre><code>═══════════════════════════════  Top 8mm rod
+         [Plough carriage]
+═══════════════════════════════  Bottom 8mm rod</code></pre>
+<p><strong>Y-Axis (Dual per Side):</strong></p>
+<pre><code>Left side:              Right side:
+  ║══8mm══║               ║══8mm══║
+  ║ belt  ║               ║ belt  ║
+  ║══8mm══║               ║══8mm══║
+  LM8LUU                  LM8LUU</code></pre>
+</section>
+<section id="deflection-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="deflection-analysis">Deflection Analysis</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>360mm span, 280g</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Single 8mm</td>
+<td>0.066mm</td>
+<td>Excessive</td>
+</tr>
+<tr class="even">
+<td><strong>Dual 8mm (shared load)</strong></td>
+<td><strong>0.033mm</strong></td>
+<td><strong>Acceptable</strong></td>
+</tr>
+<tr class="odd">
+<td>Single 10mm</td>
+<td>0.027mm</td>
+<td>Acceptable</td>
+</tr>
+</tbody>
+</table>
+<p>The dual-8 configuration achieves 50% less deflection than single-8, bringing it within acceptable tolerance for quality printing.</p>
+</section>
+<section id="stiffness-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="stiffness-comparison">Stiffness Comparison</h3>
+<pre><code>Second moment of area (I = π×d⁴/64):
+  Single 8mm:  I = 201 mm⁴
+  Dual 8mm:    I_eff = 402 mm⁴ (load shared)
+  Single 10mm: I = 491 mm⁴
+
+Effective stiffness ratio: Dual 8mm / Single 10mm = 0.82
+With load sharing: Dual 8mm deflection &lt; Single 10mm deflection</code></pre>
+</section>
+<section id="why-vertical-stacking" class="level3">
+<h3 class="anchored" data-anchor-id="why-vertical-stacking">Why Vertical Stacking?</h3>
+<p>Vertical vs horizontal rod spacing provides identical sag resistance, but different moment resistance:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Orientation</th>
+<th>Resists</th>
+<th>Vulnerable to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Horizontal (reference Plough)</td>
+<td>Yaw (twist L-R)</td>
+<td>Pitch (nose-dive)</td>
+</tr>
+<tr class="even">
+<td>Vertical (Dual-8)</td>
+<td>Pitch (nose-dive)</td>
+<td>Yaw (twist L-R)</td>
+</tr>
+</tbody>
+</table>
+<p>Vertical stacking on X-axis is preferred because: - Pitch forces (from Y-acceleration) dominate toolhead dynamics - Voron Legacy validates this configuration - Allows belt to run between rods (cleaner routing)</p>
+</section>
+<section id="long-bearings-lm8luu" class="level3">
+<h3 class="anchored" data-anchor-id="long-bearings-lm8luu">Long Bearings (LM8LUU)</h3>
+<p>Long linear bearings are <strong>recommended but not required</strong>: - Do NOT reduce rod deflection (that requires more rods or larger diameter) - DO improve carriage stability (anti-racking) - DO provide better moment resistance - DO give smoother motion (more ball contact)</p>
+<p>Standard LM8UU bearings work; LM8LUU provides better carriage stability.</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Full scavengeability</strong>: 2 donor Prusa clones provide all 8-10 smooth rods needed</li>
+<li><strong>Maintains build volume</strong>: 235×235×250mm preserved</li>
+<li><strong>Lower cost</strong>: Eliminates $60-80 smooth rod purchase</li>
+<li><strong>Proven physics</strong>: Dual-rod load sharing is well-understood beam mechanics</li>
+<li><strong>Voron-validated</strong>: Vertical stacking proven in Voron Legacy</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>More rods</strong>: 6 XY rods vs 4 in reference design</li>
+<li><strong>More bearings</strong>: 12-16 LM8UU vs 8 LM10UU</li>
+<li><strong>Redesigned brackets</strong>: X-ends and Y-pucks need dual-rod mounts</li>
+<li><strong>Tighter toolhead mass budget</strong>: Keep under 280g for best results</li>
+<li><strong>Slightly less stiff</strong>: 82% of M10 stiffness (but deflection is better due to load sharing)</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>True 2-donor build</strong>: Motors, boards, rods, bearings all from donors</li>
+<li><strong>Sub-$150 hardware cost</strong>: When combined with scavenged electronics</li>
+<li><strong>MKS SKIPR path</strong>: $130 AUD for SKIPR + CANbus + ADXL still hits &lt;$300 total</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="scenario-a-two-prusa-clone-donors-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-two-prusa-clone-donors-recommended">Scenario A: Two Prusa Clone Donors (Recommended)</h3>
+<ul>
+<li><strong>Parts scavenged</strong>:
+<ul>
+<li>12× 8mm smooth rods (need 8-10)</li>
+<li>24× LM8UU bearings (need 12-16, keep spares)</li>
+<li>10× NEMA17 motors (need 6-7 for triple-Z)</li>
+<li>2× control boards (use best one, keep spare)</li>
+<li>2× heated beds (use best one)</li>
+<li>2× power supplies</li>
+</ul></li>
+<li><strong>Parts to buy</strong>:
+<ul>
+<li>M10 threaded rod for frame skeleton (~$45 AUD)</li>
+<li>MKS SKIPR + EBB36 CANbus + ADXL345 (~$130 AUD)</li>
+<li>E3D V6 clone hotend (~$15 AUD)</li>
+<li>Belts, pulleys, misc hardware (~$30 AUD)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: ~$220-250 AUD total</li>
+<li><strong>Build volume</strong>: Full 235×235×250mm</li>
+</ul>
+</section>
+<section id="scenario-b-two-anet-a8-donors" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-two-anet-a8-donors">Scenario B: Two Anet A8 Donors</h3>
+<ul>
+<li><strong>Parts scavenged</strong>: Similar to Scenario A</li>
+<li><strong>Note</strong>: Anet beds are smaller (220×220), may need bed upgrade</li>
+<li><strong>Cost implication</strong>: ~$250-280 AUD (if bed upgrade needed)</li>
+</ul>
+</section>
+<section id="scenario-c-mixed-donors-prusa-ender" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-mixed-donors-prusa-ender">Scenario C: Mixed Donors (Prusa + Ender)</h3>
+<ul>
+<li><strong>Challenge</strong>: Ender 3 uses V-slot rollers, not smooth rods</li>
+<li><strong>Parts scavenged from Ender</strong>: Motors, board, bed, PSU</li>
+<li><strong>Parts scavenged from Prusa</strong>: Smooth rods, bearings</li>
+<li><strong>Cost implication</strong>: May need to buy additional rods (~$30 AUD)</li>
+</ul>
+</section>
+<section id="scenario-d-single-donor-purchased-rods" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-d-single-donor-purchased-rods">Scenario D: Single Donor + Purchased Rods</h3>
+<ul>
+<li><strong>Not recommended</strong>: Defeats scavenger philosophy</li>
+<li><strong>If necessary</strong>: Buy 8mm precision ground rods (~$40-50 AUD)</li>
+<li><strong>Cost implication</strong>: Higher than dual-donor path</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="rod-count-summary" class="level3">
+<h3 class="anchored" data-anchor-id="rod-count-summary">Rod Count Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Axis</th>
+<th>Reference (M10)</th>
+<th>Dual-8 Scavenger</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X</td>
+<td>2 rods</td>
+<td>2 rods (stacked)</td>
+</tr>
+<tr class="even">
+<td>Y</td>
+<td>2 rods</td>
+<td>4 rods (2 per side)</td>
+</tr>
+<tr class="odd">
+<td>Z</td>
+<td>2 rods</td>
+<td>2 rods</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>6 rods</strong></td>
+<td><strong>8 rods</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bearing-count-summary" class="level3">
+<h3 class="anchored" data-anchor-id="bearing-count-summary">Bearing Count Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Axis</th>
+<th>Reference</th>
+<th>Dual-8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X carriage</td>
+<td>4× LM10UU</td>
+<td>4× LM8UU (or LM8LUU)</td>
+</tr>
+<tr class="even">
+<td>Y gantry (per side)</td>
+<td>2× LM10UU</td>
+<td>4× LM8UU</td>
+</tr>
+<tr class="odd">
+<td>Z</td>
+<td>4× LM10UU</td>
+<td>4× LM8UU</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>12× LM10UU</strong></td>
+<td><strong>16× LM8UU</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="toolhead-mass-budget" class="level3">
+<h3 class="anchored" data-anchor-id="toolhead-mass-budget">Toolhead Mass Budget</h3>
+<p>For acceptable deflection at 360mm span: - <strong>Target</strong>: ≤280g total toolhead mass - <strong>Pitan + pancake NEMA17</strong>: ~200-250g ✓ - <strong>Pitan + standard NEMA17</strong>: ~280-320g (borderline) - <strong>Wade + standard NEMA17</strong>: ~400g+ ✗ (too heavy)</p>
+</section>
+<section id="cad-implications" class="level3">
+<h3 class="anchored" data-anchor-id="cad-implications">CAD Implications</h3>
+<p>New parametric parts needed: - <code>x_end_dual8.py</code>: X-end brackets for dual vertical rods - <code>y_puck_dual8.py</code>: Y-pucks for dual stacked rods per side - <code>plough_vertical.py</code>: Plough carriage for vertical rod stack</p>
+<p>Config parameter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_CONFIG <span class="op">=</span> <span class="st">"DUAL_8"</span>  <span class="co"># vs "SINGLE_10" for reference</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="klipper-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="klipper-configuration">Klipper Configuration</h3>
+<p>No changes to kinematics—still Cartesian with: - <code>[stepper_x]</code>: Single motor, single axis - <code>[stepper_y]</code>: Dual motors with <code>[stepper_y1]</code> for auto-squaring - <code>[stepper_z]</code>, <code>[stepper_z1]</code>, <code>[stepper_z2]</code>: Triple-Z</p>
+</section>
+</section>
+<section id="cost-analysis-hitting-300-target" class="level2">
+<h2 class="anchored" data-anchor-id="cost-analysis-hitting-300-target">Cost Analysis: Hitting $300 Target</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Reference Spec</th>
+<th>Dual-8 Scavenger</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame (M10 threaded)</td>
+<td>$45</td>
+<td>$45</td>
+</tr>
+<tr class="even">
+<td>Smooth rods</td>
+<td>$70 (M10)</td>
+<td>$0 (scavenged)</td>
+</tr>
+<tr class="odd">
+<td>Bearings</td>
+<td>$30 (LM10UU)</td>
+<td>$0 (scavenged)</td>
+</tr>
+<tr class="even">
+<td>Motors</td>
+<td>$60</td>
+<td>$0 (scavenged)</td>
+</tr>
+<tr class="odd">
+<td>Heated bed</td>
+<td>$35</td>
+<td>$0 (scavenged)</td>
+</tr>
+<tr class="even">
+<td>Electronics</td>
+<td>$130 (SKIPR+CAN)</td>
+<td>$130 (SKIPR+CAN)</td>
+</tr>
+<tr class="odd">
+<td>Hotend</td>
+<td>$15</td>
+<td>$15</td>
+</tr>
+<tr class="even">
+<td>Belts/pulleys/misc</td>
+<td>$30</td>
+<td>$30</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>~$415</strong></td>
+<td><strong>~$220</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The Dual-8 Scavenger path achieves significant cost reduction while maintaining the full 235mm build volume—well under the $300 AUD target.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-003: Precision Smooth Rods (reference M10 specification)</li>
+<li>ADR-005: Triple-Z Independent Kinematic Leveling (requires 2 donors anyway)</li>
+<li><a href="https://vorondesign.com/voron_legacy">Voron Legacy</a>: Validates 8mm vertical stacking</li>
+<li><a href="https://en.wikipedia.org/wiki/Deflection_(engineering)">Beam Deflection Theory</a>: Simply-supported beam equations</li>
+<li>Conversation: “Voron Legacy Comparison” (2025-01-27)</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

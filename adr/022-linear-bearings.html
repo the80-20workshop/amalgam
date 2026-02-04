@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>linear-bearings – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-022-linear-bearing-selection" id="toc-adr-022-linear-bearing-selection" class="nav-link active" data-scroll-target="#adr-022-linear-bearing-selection">ADR-022: Linear Bearing Selection</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#bearing-options-available" id="toc-bearing-options-available" class="nav-link" data-scroll-target="#bearing-options-available">Bearing Options Available</a></li>
+  <li><a href="#scavenger-context" id="toc-scavenger-context" class="nav-link" data-scroll-target="#scavenger-context">Scavenger Context</a></li>
+  <li><a href="#rod-material-requirements" id="toc-rod-material-requirements" class="nav-link" data-scroll-target="#rod-material-requirements">Rod Material Requirements</a></li>
+  <li><a href="#the-long-bearing-question" id="toc-the-long-bearing-question" class="nav-link" data-scroll-target="#the-long-bearing-question">The Long Bearing Question</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#bearing-assignment" id="toc-bearing-assignment" class="nav-link" data-scroll-target="#bearing-assignment">Bearing Assignment</a></li>
+  <li><a href="#why-lm8luu-for-x-only" id="toc-why-lm8luu-for-x-only" class="nav-link" data-scroll-target="#why-lm8luu-for-x-only">Why LM8LUU for X Only?</a></li>
+  <li><a href="#why-lm8uu-is-sufficient-for-y-and-z" id="toc-why-lm8uu-is-sufficient-for-y-and-z" class="nav-link" data-scroll-target="#why-lm8uu-is-sufficient-for-y-and-z">Why LM8UU is Sufficient for Y and Z?</a></li>
+  <li><a href="#scavenged-bearing-protocol" id="toc-scavenged-bearing-protocol" class="nav-link" data-scroll-target="#scavenged-bearing-protocol">Scavenged Bearing Protocol</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  </ul></li>
+  <li><a href="#scavenger-decision-tree" id="toc-scavenger-decision-tree" class="nav-link" data-scroll-target="#scavenger-decision-tree">Scavenger Decision Tree</a>
+  <ul class="collapse">
+  <li><a href="#quick-reference-two-valid-paths" id="toc-quick-reference-two-valid-paths" class="nav-link" data-scroll-target="#quick-reference-two-valid-paths">Quick Reference: Two Valid Paths</a></li>
+  </ul></li>
+  <li><a href="#alternative-paths-documented-for-reference" id="toc-alternative-paths-documented-for-reference" class="nav-link" data-scroll-target="#alternative-paths-documented-for-reference">Alternative Paths (Documented for Reference)</a>
+  <ul class="collapse">
+  <li><a href="#alternative-a-all-lm8uu-pure-scavenger" id="toc-alternative-a-all-lm8uu-pure-scavenger" class="nav-link" data-scroll-target="#alternative-a-all-lm8uu-pure-scavenger">Alternative A: All LM8UU (Pure Scavenger)</a></li>
+  <li><a href="#alternative-b-igus-drylin-stainless-steel-silent-build-path" id="toc-alternative-b-igus-drylin-stainless-steel-silent-build-path" class="nav-link" data-scroll-target="#alternative-b-igus-drylin-stainless-steel-silent-build-path">Alternative B: IGUS Drylin + Stainless Steel (Silent Build Path)</a></li>
+  <li><a href="#alternative-c-printed-adjustable-bearings" id="toc-alternative-c-printed-adjustable-bearings" class="nav-link" data-scroll-target="#alternative-c-printed-adjustable-bearings">Alternative C: Printed Adjustable Bearings</a></li>
+  <li><a href="#alternative-d-bronze-bushings" id="toc-alternative-d-bronze-bushings" class="nav-link" data-scroll-target="#alternative-d-bronze-bushings">Alternative D: Bronze Bushings</a></li>
+  </ul></li>
+  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
+  <ul class="collapse">
+  <li><a href="#reference-build-2-donors" id="toc-reference-build-2-donors" class="nav-link" data-scroll-target="#reference-build-2-donors">Reference Build (2 Donors)</a></li>
+  <li><a href="#donor-bearing-yield" id="toc-donor-bearing-yield" class="nav-link" data-scroll-target="#donor-bearing-yield">Donor Bearing Yield</a></li>
+  <li><a href="#v-slot-donor-build-ender-3-cr-10" id="toc-v-slot-donor-build-ender-3-cr-10" class="nav-link" data-scroll-target="#v-slot-donor-build-ender-3-cr-10">V-Slot Donor Build (Ender 3, CR-10)</a></li>
+  </ul></li>
+  <li><a href="#maintenance-protocol" id="toc-maintenance-protocol" class="nav-link" data-scroll-target="#maintenance-protocol">Maintenance Protocol</a>
+  <ul class="collapse">
+  <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">Initial Setup</a></li>
+  <li><a href="#ongoing-maintenance" id="toc-ongoing-maintenance" class="nav-link" data-scroll-target="#ongoing-maintenance">Ongoing Maintenance</a></li>
+  <li><a href="#lubrication-options" id="toc-lubrication-options" class="nav-link" data-scroll-target="#lubrication-options">Lubrication Options</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#x-carriage-plough-bearing-layout" id="toc-x-carriage-plough-bearing-layout" class="nav-link" data-scroll-target="#x-carriage-plough-bearing-layout">X-Carriage (Plough) Bearing Layout</a></li>
+  <li><a href="#y-gantry-bearing-layout-each-side" id="toc-y-gantry-bearing-layout-each-side" class="nav-link" data-scroll-target="#y-gantry-bearing-layout-each-side">Y-Gantry Bearing Layout (Each Side)</a></li>
+  <li><a href="#z-axis-bearing-layout" id="toc-z-axis-bearing-layout" class="nav-link" data-scroll-target="#z-axis-bearing-layout">Z-Axis Bearing Layout</a></li>
+  </ul></li>
+  <li><a href="#quality-verification" id="toc-quality-verification" class="nav-link" data-scroll-target="#quality-verification">Quality Verification</a>
+  <ul class="collapse">
+  <li><a href="#new-bearing-test" id="toc-new-bearing-test" class="nav-link" data-scroll-target="#new-bearing-test">New Bearing Test</a></li>
+  <li><a href="#scavenged-bearing-test" id="toc-scavenged-bearing-test" class="nav-link" data-scroll-target="#scavenged-bearing-test">Scavenged Bearing Test</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
+  <ul class="collapse">
+  <li><a href="#related-adrs" id="toc-related-adrs" class="nav-link" data-scroll-target="#related-adrs">Related ADRs</a></li>
+  <li><a href="#technical-sources" id="toc-technical-sources" class="nav-link" data-scroll-target="#technical-sources">Technical Sources</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-022-linear-bearing-selection" class="level1">
+<h1>ADR-022: Linear Bearing Selection</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>ADR-021 establishes dual 8mm smooth rods as the reference motion system. This ADR addresses what <strong>rides on those rods</strong> - the linear bearings that enable smooth, low-friction motion.</p>
+<section id="bearing-options-available" class="level3">
+<h3 class="anchored" data-anchor-id="bearing-options-available">Bearing Options Available</h3>
+<ol type="1">
+<li><strong>Ball bearings (LM8UU, LM8LUU)</strong>: Recirculating steel balls in a cage</li>
+<li><strong>Polymer bushings (IGUS Drylin)</strong>: Self-lubricating polymer sleeves</li>
+<li><strong>Printed bearings</strong>: DIY polymer sleeves with adjustable clamping</li>
+<li><strong>Bronze bushings</strong>: Oil-impregnated sintered metal</li>
+</ol>
+</section>
+<section id="scavenger-context" class="level3">
+<h3 class="anchored" data-anchor-id="scavenger-context">Scavenger Context</h3>
+<p>Two donor Prusa-style printers typically provide: - 24× LM8UU bearings (12 per printer) - Amalgam Dual-8 requires 16 bearings - <strong>Surplus of 8 bearings</strong> available for spares or selection</p>
+</section>
+<section id="rod-material-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="rod-material-requirements">Rod Material Requirements</h3>
+<p><strong>Critical insight:</strong> Ball bearings and polymer bushings have <strong>different rod material requirements</strong>.</p>
+<section id="ball-bearings-lm8uulm8luu-require-hardened-steel" class="level4">
+<h4 class="anchored" data-anchor-id="ball-bearings-lm8uulm8luu-require-hardened-steel">Ball Bearings (LM8UU/LM8LUU) Require Hardened Steel</h4>
+<p>Linear ball bearings use the rod as their inner race. The steel balls “plow” into soft materials, causing rapid wear.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rod Material</th>
+<th>Typical Hardness</th>
+<th>Ball Bearing Life Factor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hardened steel (induction)</td>
+<td>HRC 60-65</td>
+<td>1.0 (100%)</td>
+<td><strong>Required for ball bearings</strong></td>
+</tr>
+<tr class="even">
+<td>Hardened stainless (440C treated)</td>
+<td>HRC 54-60</td>
+<td>0.7-1.0</td>
+<td>Acceptable</td>
+</tr>
+<tr class="odd">
+<td>Stainless 304/316 (annealed)</td>
+<td>HRC 20-25</td>
+<td><strong>Very poor</strong></td>
+<td>Galling risk - do not use</td>
+</tr>
+<tr class="even">
+<td>Aluminum</td>
+<td>HRC ~15</td>
+<td><strong>Incompatible</strong></td>
+<td>Will destroy bearings</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key finding:</strong> Using HRC 40 shaft with ball bearings gives only <strong>20% of rated life</strong> compared to HRC 60. (<a href="https://www.linearmotiontips.com/how-does-shaft-hardness-affect-the-life-of-a-linear-ball-bushing/">Linear Motion Tips</a>)</p>
+<p><strong>Warning:</strong> Standard 304/316 stainless steel is prone to <strong>galling</strong> (cold welding) with steel ball bearings. The balls create grooves and the rod surface tears. (<a href="https://nickelinstitute.org/media/1780/reviewofwearandgallingcharacteristicsofstainlesssteel_9006_.pdf">Nickel Institute</a>)</p>
+</section>
+<section id="polymer-bushings-igus-drylin-work-on-multiple-materials" class="level4">
+<h4 class="anchored" data-anchor-id="polymer-bushings-igus-drylin-work-on-multiple-materials">Polymer Bushings (IGUS Drylin) Work on Multiple Materials</h4>
+<p>IGUS Drylin bushings use self-lubricating polymer (iglidur J4) that glides rather than rolls. This enables compatibility with softer materials:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Rod Material</th>
+<th>IGUS Compatibility</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hardened steel</td>
+<td>✅ Excellent</td>
+<td>Works perfectly</td>
+</tr>
+<tr class="even">
+<td>Stainless steel (any grade)</td>
+<td>✅ Excellent</td>
+<td>No galling risk</td>
+</tr>
+<tr class="odd">
+<td>Aluminum</td>
+<td>✅ Good</td>
+<td>Lightweight option</td>
+</tr>
+<tr class="even">
+<td>Carbon fiber</td>
+<td>✅ Good</td>
+<td>Premium/experimental</td>
+</tr>
+<tr class="odd">
+<td>Chrome-plated steel</td>
+<td>✅ Excellent</td>
+<td>Common scavenged rods</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source:</strong> <a href="https://www.igus.com/product/drylin_RJ4JP_01">IGUS Official - Drylin RJ4JP</a></p>
+</section>
+<section id="can-scratched-rods-be-salvaged" class="level4">
+<h4 class="anchored" data-anchor-id="can-scratched-rods-be-salvaged">Can Scratched Rods Be Salvaged?</h4>
+<p>A common scavenger question: can damaged hardened rods be reused?</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Damage Type</th>
+<th>Ball Bearings</th>
+<th>IGUS Bushings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Light scratches</td>
+<td>May click/jam on grooves</td>
+<td><strong>Can bridge over</strong> (larger contact area)</td>
+</tr>
+<tr class="even">
+<td>Deep gouges</td>
+<td>Unusable - will damage balls</td>
+<td>May work, test carefully</td>
+</tr>
+<tr class="odd">
+<td>Bent rod</td>
+<td>Unusable</td>
+<td>Unusable</td>
+</tr>
+<tr class="even">
+<td>Surface rust</td>
+<td>Clean and test</td>
+<td>Clean and test</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The IGUS advantage:</strong> Because polymer bushings have a large contact area (vs point contact of balls), they can “bridge” minor surface imperfections that would jam ball bearings.</p>
+</section>
+</section>
+<section id="the-long-bearing-question" class="level3">
+<h3 class="anchored" data-anchor-id="the-long-bearing-question">The Long Bearing Question</h3>
+<p>LM8UU vs LM8LUU comparison:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Spec</th>
+<th>LM8UU</th>
+<th>LM8LUU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Length</td>
+<td>15mm</td>
+<td>24mm</td>
+</tr>
+<tr class="even">
+<td>Inner diameter</td>
+<td>8mm</td>
+<td>8mm</td>
+</tr>
+<tr class="odd">
+<td>Outer diameter</td>
+<td>15mm</td>
+<td>15mm</td>
+</tr>
+<tr class="even">
+<td>Ball rows</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Load capacity</td>
+<td>Lower</td>
+<td>~50% higher</td>
+</tr>
+<tr class="even">
+<td>Moment resistance</td>
+<td>Lower</td>
+<td>Higher</td>
+</tr>
+</tbody>
+</table>
+<p>Long bearings (LM8LUU) provide better <strong>moment resistance</strong> - they resist tilting and racking forces better than standard length bearings.</p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We recommend <strong>LM8LUU for X-axis</strong> and <strong>LM8UU for Y and Z axes</strong> as the reference specification.</p>
+<section id="bearing-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="bearing-assignment">Bearing Assignment</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 25%">
+<col style="width: 27%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Axis</th>
+<th>Bearing</th>
+<th>Quantity</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X (Plough carriage)</td>
+<td><strong>LM8LUU</strong></td>
+<td>4</td>
+<td>Highest dynamic loads, pitch/yaw resistance critical</td>
+</tr>
+<tr class="even">
+<td>Y (gantry, per side)</td>
+<td>LM8UU</td>
+<td>4 (8 total)</td>
+<td>Dual rods provide stability, standard bearings sufficient</td>
+</tr>
+<tr class="odd">
+<td>Z (bed support)</td>
+<td>LM8UU</td>
+<td>4</td>
+<td>Slow movement, minimal dynamic loads</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>16</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-lm8luu-for-x-only" class="level3">
+<h3 class="anchored" data-anchor-id="why-lm8luu-for-x-only">Why LM8LUU for X Only?</h3>
+<p>The X-axis carriage (Plough) experiences the most severe dynamic forces:</p>
+<ol type="1">
+<li><strong>Y-acceleration</strong> creates pitch moment (nose-dive)</li>
+<li><strong>X-acceleration</strong> creates lateral shift forces</li>
+<li><strong>Extruder retraction</strong> creates small Z-moments</li>
+<li><strong>Belt tension</strong> creates constant preload</li>
+</ol>
+<p>Long bearings on X provide: - Better pitch resistance during Y-acceleration - More stable carriage during direction changes - Reduced “racking” tendency under load</p>
+</section>
+<section id="why-lm8uu-is-sufficient-for-y-and-z" class="level3">
+<h3 class="anchored" data-anchor-id="why-lm8uu-is-sufficient-for-y-and-z">Why LM8UU is Sufficient for Y and Z?</h3>
+<p><strong>Y-axis (gantry):</strong> - Dual rods per side already provide excellent moment resistance - Load is distributed across 4 bearings per side - Lower acceleration than X-axis - Long bearings would add cost without proportional benefit</p>
+<p><strong>Z-axis:</strong> - Very slow movement (typically 5-10mm/s) - Primarily static load (bed weight) - No significant dynamic moments - Standard bearings have decades of proven service in this role</p>
+</section>
+<section id="scavenged-bearing-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="scavenged-bearing-protocol">Scavenged Bearing Protocol</h3>
+<p>Donor printer bearings should be:</p>
+<ol type="1">
+<li><strong>Inspected</strong>: Roll on a clean rod section - should be smooth, no grinding</li>
+<li><strong>Cleaned</strong>: Flush with isopropyl alcohol, remove old grease and debris</li>
+<li><strong>Dried</strong>: Allow to fully dry before regreasing</li>
+<li><strong>Regreased</strong>: Light machine oil or lithium grease</li>
+<li><strong>Tested</strong>: Should roll smoothly with minimal resistance</li>
+</ol>
+<p><strong>Reject bearings that:</strong> - Have visible rust or pitting - Make grinding sounds when rolled - Have excessive play (wobble on rod) - Have flat spots or notchy feel</p>
+<p>With 24 bearings from 2 donors, you can afford to reject questionable units.</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>Optimized performance</strong>: Long bearings where they matter most (X)</li>
+<li><strong>Cost-effective</strong>: Standard bearings where sufficient (Y, Z)</li>
+<li><strong>Fully scavengeable</strong>: All bearings from 2 donor printers</li>
+<li><strong>Proven technology</strong>: Ball bearings have decades of RepRap validation</li>
+<li><strong>Low maintenance</strong>: Occasional regrease, no adjustment needed</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>LM8LUU may need purchase</strong>: Some donors have only LM8UU</li>
+<li><strong>Slightly longer X-carriage</strong>: LM8LUU housings are 9mm longer</li>
+<li><strong>Not “pure” scavenger</strong>: May need to buy 4× LM8LUU (~$5-8 AUD)</li>
+</ol>
+</section>
+</section>
+<section id="scavenger-decision-tree" class="level2">
+<h2 class="anchored" data-anchor-id="scavenger-decision-tree">Scavenger Decision Tree</h2>
+<p>Use this flowchart to select your bearing/rod combination:</p>
+<pre><code>What does your donor printer have?
+│
+├─► Hardened steel rods + LM8UU bearings (Prusa clone, Anet A8)
+│   │
+│   └─► Are the rods in good condition?
+│       │
+│       ├─► YES: Use scavenged rods + bearings (clean &amp; regrease)
+│       │       Cost: $0 | Result: Standard "printer hum"
+│       │
+│       └─► NO (scratched/grooved):
+│           │
+│           ├─► Option A: Try IGUS bushings on scratched rods
+│           │   Cost: ~$30-40 | Bridges minor scratches
+│           │
+│           └─► Option B: Buy stainless rods + IGUS
+│               Cost: ~$70-90 | Silent, maintenance-free
+│
+├─► V-slot rollers, no rods (Ender 3, CR-10)
+│   │
+│   └─► Must purchase rods. Choose:
+│       │
+│       ├─► Hardened steel rods + LM8UU
+│       │   Cost: ~$50-70 | Standard ball bearing setup
+│       │
+│       └─► Stainless steel rods + IGUS (Recommended for V-slot donors)
+│           Cost: ~$70-90 | Silent, corrosion-proof
+│
+└─► Mixed donors (e.g., Ender + Prusa clone)
+    │
+    └─► Use rods from rod-bearing donor
+        Use best bearings available
+        Consider IGUS if rods are damaged</code></pre>
+<section id="quick-reference-two-valid-paths" class="level3">
+<h3 class="anchored" data-anchor-id="quick-reference-two-valid-paths">Quick Reference: Two Valid Paths</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>Rods</th>
+<th>Bearings</th>
+<th>Cost</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Scavenger (reference)</strong></td>
+<td>Hardened steel (donor)</td>
+<td>LM8UU/LM8LUU (donor)</td>
+<td>$0-8</td>
+<td>Standard printer sound, proven reliability</td>
+</tr>
+<tr class="even">
+<td><strong>Silent/Premium</strong></td>
+<td>Stainless steel (buy)</td>
+<td>IGUS Drylin (buy)</td>
+<td>~$70-90</td>
+<td>Silent operation, maintenance-free, corrosion-proof</td>
+</tr>
+</tbody>
+</table>
+<p>Both paths produce quality prints. Choose based on your donor situation and noise preferences.</p>
+</section>
+</section>
+<section id="alternative-paths-documented-for-reference" class="level2">
+<h2 class="anchored" data-anchor-id="alternative-paths-documented-for-reference">Alternative Paths (Documented for Reference)</h2>
+<section id="alternative-a-all-lm8uu-pure-scavenger" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-a-all-lm8uu-pure-scavenger">Alternative A: All LM8UU (Pure Scavenger)</h3>
+<pre><code>X: 4× LM8UU
+Y: 8× LM8UU
+Z: 4× LM8UU
+Total: 16× LM8UU</code></pre>
+<p><strong>Pros:</strong> - Guaranteed scavengeable from 2 donors - Zero bearing purchase cost - Simpler parts list</p>
+<p><strong>Cons:</strong> - Reduced X-carriage stability - May see more racking on X during fast Y moves - Acceptable for quality-focused (not speed-focused) printing</p>
+<p><strong>Verdict:</strong> Acceptable fallback if LM8LUU unavailable.</p>
+</section>
+<section id="alternative-b-igus-drylin-stainless-steel-silent-build-path" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-b-igus-drylin-stainless-steel-silent-build-path">Alternative B: IGUS Drylin + Stainless Steel (Silent Build Path)</h3>
+<p>This alternative is <strong>recommended for V-slot donors</strong> (Ender 3, CR-10) that provide no scavengeable rods or bearings.</p>
+<p><strong>Configuration:</strong></p>
+<pre><code>Rods: 8× stainless steel 8mm (420mm length)
+Bearings: 16-22× IGUS Drylin RJ4JP-01-08
+Cost: ~$70-90 AUD total</code></pre>
+<p><strong>Pros:</strong> - <strong>Silent operation</strong>: No “printer hum” from ball bearings - <strong>Maintenance-free</strong>: Self-lubricating polymer, no grease needed - <strong>Corrosion-proof</strong>: Stainless rods + polymer = zero rust risk - <strong>Tolerant of imperfect rods</strong>: Can bridge minor scratches - <strong>Works with any stainless grade</strong>: No galling risk (unlike ball bearings) - <strong>Vibration damping</strong>: Polymer absorbs some mechanical noise</p>
+<p><strong>Cons:</strong> - <strong>Higher friction</strong>: 2-3× static friction (“stiction”) vs ball bearings - <strong>Higher cost</strong>: ~$70-90 vs $0 for scavenged - <strong>Not scavengeable</strong>: Must be purchased new - <strong>Requires housing compliance</strong>: Needs slight clamping pressure to seat - <strong>Lower speed ceiling</strong>: Not ideal for 300mm/s+ printing</p>
+<p><strong>When to choose this path:</strong> 1. V-slot donor (Ender 3) - no rods to scavenge anyway 2. Silent operation is priority (bedroom/office printer) 3. Scavenged rods are scratched/damaged beyond ball bearing use 4. Humid environment where rust is a concern</p>
+<p><strong>Cost breakdown (AUD):</strong> | Part | Quantity | Unit Price | Total | |——|———-|————|——-| | 8mm stainless rod 420mm | 8 | ~$5-6 | ~$40-48 | | IGUS RJ4JP-01-08 | 20 | ~$1.50-2 | ~$30-40 | | <strong>Total</strong> | | | <strong>~$70-88</strong> |</p>
+<p><strong>Installation notes:</strong> 1. <strong>Chamfer rod ends</strong>: File 45° bevel to avoid slicing IGUS internal ribs 2. <strong>Do NOT lubricate</strong>: IGUS bushings are self-lubricating; grease reduces life 3. <strong>Housing design</strong>: Include compliance gap for slight clamping pressure 4. <strong>Cutting stainless</strong>: Use angle grinder with thin “Inox” cutoff wheel</p>
+<p><strong>Verdict:</strong> Excellent alternative for V-slot donors or silent builds. Not reference spec due to higher friction and cost, but a legitimate “premium” path.</p>
+<p><strong>References:</strong> - <a href="https://toms3d.org/2016/06/07/should-you-be-using-igus-polymer-bushings/">Tom’s 3D IGUS analysis</a> - <a href="https://www.igus.com/product/drylin_RJ4JP_01">IGUS Official Drylin RJ4JP</a></p>
+</section>
+<section id="alternative-c-printed-adjustable-bearings" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-c-printed-adjustable-bearings">Alternative C: Printed Adjustable Bearings</h3>
+<p>DIY polymer sleeve bearings with split-clamp adjustment:</p>
+<pre><code>    ┌─────────────┐
+    │  ╭───────╮  │  ← Printed PETG sleeve
+    │  │  rod  │  │
+    │  ╰───────╯  │
+    └──────┬──────┘
+         screw    ← Adjustable preload</code></pre>
+<p><strong>Pros:</strong> - Zero cost (print them) - Adjustable preload compensates for wear - Works with slightly imperfect rods - Silent operation - True self-replication (RepRap philosophy)</p>
+<p><strong>Cons:</strong> - 2-3× higher friction than ball bearings - Requires careful tuning (too tight = binding, too loose = play) - Will wear over time - Needs periodic relubrication (PTFE grease, not oil) - Unproven at Amalgam’s 360mm spans</p>
+<p><strong>Best candidate axis:</strong> Z (slowest, lowest risk)</p>
+<p><strong>Material recommendation:</strong> PETG with PTFE/silicone grease</p>
+<p><strong>Verdict:</strong> Experimental option for Z-axis. Not recommended for X or Y in reference spec.</p>
+<p><strong>Reference:</strong> <a href="https://github.com/superjamie/lazyweb/wiki/3D-Printing-Linear-Bearings">RepRap Printed Bearings Wiki</a></p>
+</section>
+<section id="alternative-d-bronze-bushings" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-d-bronze-bushings">Alternative D: Bronze Bushings</h3>
+<p>Oil-impregnated sintered bronze sleeves.</p>
+<p><strong>Pros:</strong> - Very long service life - Self-lubricating - High load capacity - Industrial proven</p>
+<p><strong>Cons:</strong> - Not scavengeable from printers - Require precise rod diameter match - Higher friction than ball bearings - Heavier than alternatives</p>
+<p><strong>Verdict:</strong> Not aligned with scavenger philosophy.</p>
+</section>
+</section>
+<section id="bom-implications" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
+<section id="reference-build-2-donors" class="level3">
+<h3 class="anchored" data-anchor-id="reference-build-2-donors">Reference Build (2 Donors)</h3>
+<p><strong>Scavenged:</strong> | Part | Quantity | Source | Notes | |——|———-|——–|——-| | LM8UU | 12 | Donors | For Y (8) + Z (4) |</p>
+<p><strong>Purchased (if needed):</strong> | Part | Quantity | Cost (AUD) | Notes | |——|———-|————|——-| | LM8LUU | 4 | ~$5-8 | For X-axis carriage |</p>
+<p><strong>Alternative (pure scavenger):</strong> | Part | Quantity | Source | |——|———-|——–| | LM8UU | 16 | Donors (select best 16 of 24) |</p>
+</section>
+<section id="donor-bearing-yield" class="level3">
+<h3 class="anchored" data-anchor-id="donor-bearing-yield">Donor Bearing Yield</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Donor Type</th>
+<th>LM8UU</th>
+<th>LM8LUU</th>
+<th>Rods</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prusa i3 clone</td>
+<td>11-12</td>
+<td>0</td>
+<td>6× 8mm</td>
+<td>Standard config</td>
+</tr>
+<tr class="even">
+<td>Anet A8</td>
+<td>10-12</td>
+<td>0</td>
+<td>6× 8mm</td>
+<td>Standard config</td>
+</tr>
+<tr class="odd">
+<td>Prusa MK2/MK3</td>
+<td>9</td>
+<td>3</td>
+<td>6× 8mm</td>
+<td>Y-carriage uses LM8LUU</td>
+</tr>
+<tr class="even">
+<td>Creality Ender 3</td>
+<td>0</td>
+<td>0</td>
+<td><strong>None</strong></td>
+<td>Uses V-slot rollers</td>
+</tr>
+<tr class="odd">
+<td>CR-10</td>
+<td>0</td>
+<td>0</td>
+<td><strong>None</strong></td>
+<td>Uses V-slot rollers</td>
+</tr>
+</tbody>
+</table>
+<p>If one donor is MK2/MK3 style, you may get LM8LUU for free.</p>
+</section>
+<section id="v-slot-donor-build-ender-3-cr-10" class="level3">
+<h3 class="anchored" data-anchor-id="v-slot-donor-build-ender-3-cr-10">V-Slot Donor Build (Ender 3, CR-10)</h3>
+<p>If your donor uses V-slot rollers, you must purchase the motion system:</p>
+<p><strong>Option 1: Traditional (Hardened + Ball Bearings)</strong> | Part | Quantity | Cost (AUD) | |——|———-|————| | 8mm hardened steel rods 400mm | 8 | ~$40-50 | | LM8UU bearings | 16 | ~$15-20 | | LM8LUU bearings (X-axis) | 4 | ~$8-10 | | <strong>Total</strong> | | <strong>~$63-80</strong> |</p>
+<p><strong>Option 2: Silent (Stainless + IGUS) - Recommended</strong> | Part | Quantity | Cost (AUD) | |——|———-|————| | 8mm stainless steel rods 420mm | 8 | ~$40-48 | | IGUS RJ4JP-01-08 bushings | 20 | ~$30-40 | | <strong>Total</strong> | | <strong>~$70-88</strong> |</p>
+<p>For V-slot donors, the IGUS path costs only ~$10 more but provides silent operation and zero maintenance.</p>
+</section>
+</section>
+<section id="maintenance-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="maintenance-protocol">Maintenance Protocol</h2>
+<section id="initial-setup" class="level3">
+<h3 class="anchored" data-anchor-id="initial-setup">Initial Setup</h3>
+<ol type="1">
+<li>Clean all bearings with IPA</li>
+<li>Dry completely</li>
+<li>Apply light lithium grease or machine oil</li>
+<li>Install with bearing seated fully in housing</li>
+</ol>
+</section>
+<section id="ongoing-maintenance" class="level3">
+<h3 class="anchored" data-anchor-id="ongoing-maintenance">Ongoing Maintenance</h3>
+<ul>
+<li><strong>Every ~100 print hours</strong>: Wipe rods, check for debris</li>
+<li><strong>Every ~500 print hours</strong>: Remove bearings, clean, regrease</li>
+<li><strong>Signs of wear</strong>: Grinding sound, increased resistance, visible play</li>
+</ul>
+</section>
+<section id="lubrication-options" class="level3">
+<h3 class="anchored" data-anchor-id="lubrication-options">Lubrication Options</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Lubricant</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lithium grease</td>
+<td>Long-lasting, good protection</td>
+<td>Can attract dust</td>
+</tr>
+<tr class="even">
+<td>PTFE/silicone grease</td>
+<td>Clean, low friction</td>
+<td>Needs more frequent application</td>
+</tr>
+<tr class="odd">
+<td>Light machine oil (3-in-One)</td>
+<td>Easy to apply, low friction</td>
+<td>Needs frequent reapplication</td>
+</tr>
+<tr class="even">
+<td>Sewing machine oil</td>
+<td>Very light, clean</td>
+<td>Minimal protection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reference spec recommendation:</strong> Lithium grease for long service intervals.</p>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="x-carriage-plough-bearing-layout" class="level3">
+<h3 class="anchored" data-anchor-id="x-carriage-plough-bearing-layout">X-Carriage (Plough) Bearing Layout</h3>
+<pre><code>     LM8LUU        LM8LUU
+    ┌──────┐      ┌──────┐     ← Top rod
+    │      │      │      │
+    │ 24mm │      │ 24mm │
+    │      │      │      │
+    └──────┘      └──────┘
+       ├── ~60mm ──┤            ← Bearing spacing for stability
+
+    ┌──────┐      ┌──────┐     ← Bottom rod
+    │      │      │      │
+    └──────┘      └──────┘
+     LM8LUU        LM8LUU</code></pre>
+<p>4× LM8LUU total, spaced for maximum wheelbase.</p>
+</section>
+<section id="y-gantry-bearing-layout-each-side" class="level3">
+<h3 class="anchored" data-anchor-id="y-gantry-bearing-layout-each-side">Y-Gantry Bearing Layout (Each Side)</h3>
+<pre><code>    ═══════════════════  ← Top Y rod
+         │      │
+       LM8UU  LM8UU      ← 2 bearings, spaced apart
+         │      │
+    ═══════════════════  ← Bottom Y rod
+         │      │
+       LM8UU  LM8UU</code></pre>
+<p>4× LM8UU per side (8 total), standard length is sufficient with dual-rod stability.</p>
+</section>
+<section id="z-axis-bearing-layout" class="level3">
+<h3 class="anchored" data-anchor-id="z-axis-bearing-layout">Z-Axis Bearing Layout</h3>
+<pre><code>    ┌─LM8UU─┐        ┌─LM8UU─┐
+    │       │        │       │
+    │  Z    │        │   Z   │
+    │  rod  │        │  rod  │
+    │       │        │       │
+    └─LM8UU─┘        └─LM8UU─┘</code></pre>
+<p>4× LM8UU total (2 per rod), handles bed weight with large margin.</p>
+</section>
+</section>
+<section id="quality-verification" class="level2">
+<h2 class="anchored" data-anchor-id="quality-verification">Quality Verification</h2>
+<section id="new-bearing-test" class="level3">
+<h3 class="anchored" data-anchor-id="new-bearing-test">New Bearing Test</h3>
+<ol type="1">
+<li>Roll on clean rod - should be silent and smooth</li>
+<li>Check for lateral play - minimal acceptable</li>
+<li>Verify dimensions with calipers</li>
+</ol>
+</section>
+<section id="scavenged-bearing-test" class="level3">
+<h3 class="anchored" data-anchor-id="scavenged-bearing-test">Scavenged Bearing Test</h3>
+<ol type="1">
+<li>Visual inspection for rust, pitting, damage</li>
+<li>Roll test - reject if grinding or notchy</li>
+<li>Play test - reject if excessive wobble</li>
+<li>Clean, regrease, retest before installation</li>
+</ol>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="related-adrs" class="level3">
+<h3 class="anchored" data-anchor-id="related-adrs">Related ADRs</h3>
+<ul>
+<li>ADR-021: Dual-Rod Motion System (rod configuration)</li>
+<li>ADR-024: Heated Bed Size Selection (donor printer analysis)</li>
+</ul>
+</section>
+<section id="technical-sources" class="level3">
+<h3 class="anchored" data-anchor-id="technical-sources">Technical Sources</h3>
+<ul>
+<li><a href="https://www.linearmotiontips.com/how-does-shaft-hardness-affect-the-life-of-a-linear-ball-bushing/">Linear Motion Tips: Shaft Hardness and Bearing Life</a> - HRC requirements for ball bearings</li>
+<li><a href="https://nickelinstitute.org/media/1780/reviewofwearandgallingcharacteristicsofstainlesssteel_9006_.pdf">Nickel Institute: Galling Characteristics of Stainless Steel</a> - Why 304/316 galls with ball bearings</li>
+<li><a href="https://www.igus.com/product/drylin_RJ4JP_01">IGUS Official: Drylin RJ4JP Specifications</a> - Shaft material compatibility</li>
+<li><a href="https://toms3d.org/2016/06/07/should-you-be-using-igus-polymer-bushings/">Tom’s 3D: IGUS Polymer Bushings</a> - Real-world friction comparison</li>
+<li><a href="https://github.com/superjamie/lazyweb/wiki/3D-Printing-Linear-Bearings">RepRap Wiki: Printed Linear Bearings</a></li>
+<li><a href="https://reprap.org/wiki/Lubrication">RepRap Wiki: Lubrication</a></li>
+<li><a href="https://reprap.org/forum/read.php?1,221763">RepRap Forum: LM8UU vs IGUS</a></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

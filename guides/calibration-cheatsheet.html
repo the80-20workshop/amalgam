@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>calibration-cheatsheet – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guides/calibration-cheatsheet.html">Amalgam Calibration Cheat Sheet</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Build Guides</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/print-settings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Print Settings &amp; Brand Guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/frame-assembly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Frame Assembly</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/klipper-config.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Klipper Configuration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/calibration-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam Calibration Guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/calibration-cheatsheet.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Amalgam Calibration Cheat Sheet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/maintenance-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mechanical Setup &amp; Maintenance Guide</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#amalgam-calibration-cheat-sheet" id="toc-amalgam-calibration-cheat-sheet" class="nav-link active" data-scroll-target="#amalgam-calibration-cheat-sheet">Amalgam Calibration Cheat Sheet</a>
+  <ul class="collapse">
+  <li><a href="#the-8020-path-quick-start" id="toc-the-8020-path-quick-start" class="nav-link" data-scroll-target="#the-8020-path-quick-start">The 80/20 Path (Quick Start)</a></li>
+  <li><a href="#simple-vs-advanced-path" id="toc-simple-vs-advanced-path" class="nav-link" data-scroll-target="#simple-vs-advanced-path">Simple vs Advanced Path</a></li>
+  <li><a href="#parametric-calibration-prints-build123d" id="toc-parametric-calibration-prints-build123d" class="nav-link" data-scroll-target="#parametric-calibration-prints-build123d">Parametric Calibration Prints (build123d)</a>
+  <ul class="collapse">
+  <li><a href="#first-layer-test-options" id="toc-first-layer-test-options" class="nav-link" data-scroll-target="#first-layer-test-options">First Layer Test Options</a></li>
+  </ul></li>
+  <li><a href="#downloaded-calibration-models" id="toc-downloaded-calibration-models" class="nav-link" data-scroll-target="#downloaded-calibration-models">Downloaded Calibration Models</a>
+  <ul class="collapse">
+  <li><a href="#xyz-cube-vs-voron-cube" id="toc-xyz-cube-vs-voron-cube" class="nav-link" data-scroll-target="#xyz-cube-vs-voron-cube">XYZ Cube vs Voron Cube</a></li>
+  <li><a href="#voron-cube-vs-benchy" id="toc-voron-cube-vs-benchy" class="nav-link" data-scroll-target="#voron-cube-vs-benchy">Voron Cube vs Benchy</a></li>
+  </ul></li>
+  <li><a href="#calibration-order-advanced-path" id="toc-calibration-order-advanced-path" class="nav-link" data-scroll-target="#calibration-order-advanced-path">Calibration Order (Advanced Path)</a></li>
+  <li><a href="#pid-tuning" id="toc-pid-tuning" class="nav-link" data-scroll-target="#pid-tuning">1. PID Tuning</a></li>
+  <li><a href="#z-offset-bed-mesh" id="toc-z-offset-bed-mesh" class="nav-link" data-scroll-target="#z-offset-bed-mesh">2. Z-Offset &amp; Bed Mesh</a></li>
+  <li><a href="#first-layer-test" id="toc-first-layer-test" class="nav-link" data-scroll-target="#first-layer-test">3. First Layer Test</a></li>
+  <li><a href="#extruder-steps-e-steps" id="toc-extruder-steps-e-steps" class="nav-link" data-scroll-target="#extruder-steps-e-steps">4. Extruder Steps (E-steps)</a></li>
+  <li><a href="#pressure-advance" id="toc-pressure-advance" class="nav-link" data-scroll-target="#pressure-advance">5. Pressure Advance</a></li>
+  <li><a href="#input-shaper" id="toc-input-shaper" class="nav-link" data-scroll-target="#input-shaper">6. Input Shaper</a></li>
+  <li><a href="#flow-rate-extrusion-multiplier" id="toc-flow-rate-extrusion-multiplier" class="nav-link" data-scroll-target="#flow-rate-extrusion-multiplier">7. Flow Rate / Extrusion Multiplier</a></li>
+  <li><a href="#temperature-tuning-optional" id="toc-temperature-tuning-optional" class="nav-link" data-scroll-target="#temperature-tuning-optional">8. Temperature Tuning (Optional)</a></li>
+  <li><a href="#retraction-tuning-optional" id="toc-retraction-tuning-optional" class="nav-link" data-scroll-target="#retraction-tuning-optional">9. Retraction Tuning (Optional)</a></li>
+  <li><a href="#validation-prints" id="toc-validation-prints" class="nav-link" data-scroll-target="#validation-prints">Validation Prints</a></li>
+  <li><a href="#quick-troubleshooting" id="toc-quick-troubleshooting" class="nav-link" data-scroll-target="#quick-troubleshooting">Quick Troubleshooting</a></li>
+  <li><a href="#external-resources" id="toc-external-resources" class="nav-link" data-scroll-target="#external-resources">External Resources</a></li>
+  <li><a href="#download-calibration-prints" id="toc-download-calibration-prints" class="nav-link" data-scroll-target="#download-calibration-prints">Download Calibration Prints</a></li>
+  <li><a href="#credits-acknowledgments" id="toc-credits-acknowledgments" class="nav-link" data-scroll-target="#credits-acknowledgments">Credits &amp; Acknowledgments</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="amalgam-calibration-cheat-sheet" class="level1">
+<h1>Amalgam Calibration Cheat Sheet</h1>
+<p>Quick reference for Klipper calibration commands. For detailed explanations, see <a href="../guides/calibration-guide.html">calibration-guide.md</a>.</p>
+<hr>
+<section id="the-8020-path-quick-start" class="level2">
+<h2 class="anchored" data-anchor-id="the-8020-path-quick-start">The 80/20 Path (Quick Start)</h2>
+<p><strong>Just want to print?</strong> Do these 3 things and you’re 80% calibrated:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Print</th>
+<th>Time</th>
+<th>What to Check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. First Layer</td>
+<td>See options below</td>
+<td>2-10 min</td>
+<td>Lines touch, smooth surface, consistent</td>
+</tr>
+<tr class="even">
+<td>2. Dimensions</td>
+<td><code>xyz_calibration_cube.stl</code></td>
+<td>15 min</td>
+<td>Measures 20.0mm on all axes</td>
+</tr>
+<tr class="odd">
+<td>3. Quality</td>
+<td><code>3DBenchy.stl</code></td>
+<td>60 min</td>
+<td>No stringing, good overhangs, clean detail</td>
+</tr>
+</tbody>
+</table>
+<p><strong>First layer options:</strong> - <code>first_layer_patch_0.2mm.stl</code> - Quick center check (~2 min) - <code>first_layer_grid.stl</code> - Full bed test (~10 min) - <code>prusa_live_z.stl</code> - Adjust Z live while printing (~8 min)</p>
+<p><strong>If all three pass:</strong> You’re ready to print. Do the advanced tuning later (or never).</p>
+<p><strong>If something’s wrong:</strong> Check the troubleshooting table at the bottom, then do the relevant advanced calibration.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate parametric calibration prints (uses your bed size)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./build.sh</span> build first_layer_grid   <span class="co"># Grid of squares</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./build.sh</span> build prusa_live_z       <span class="co"># Prusa-style live Z pattern</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download standard calibration prints</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> utilities/download_calibration.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="simple-vs-advanced-path" class="level2">
+<h2 class="anchored" data-anchor-id="simple-vs-advanced-path">Simple vs Advanced Path</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 21%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>Prints</th>
+<th>Time</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Simple (80/20)</strong></td>
+<td>First layer → XYZ cube → Benchy</td>
+<td>~90 min</td>
+<td>Good prints, works for most people</td>
+</tr>
+<tr class="even">
+<td><strong>Advanced</strong></td>
+<td>All 10 steps below</td>
+<td>3-4 hours</td>
+<td>Optimized PA, Input Shaper, perfect corners</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to go Advanced:</strong> - Printing functional parts with tight tolerances - Seeing ringing/ghosting artifacts - Corners are bulging or have gaps - Want maximum print speed</p>
+<hr>
+</section>
+<section id="parametric-calibration-prints-build123d" class="level2">
+<h2 class="anchored" data-anchor-id="parametric-calibration-prints-build123d">Parametric Calibration Prints (build123d)</h2>
+<p>Generated to match your bed size from <code>config.py</code>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Command</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>first_layer_grid.stl</code></td>
+<td><code>./build.sh build first_layer_grid</code></td>
+<td>Grid of squares across bed</td>
+</tr>
+<tr class="even">
+<td><code>first_layer_snake.stl</code></td>
+<td>(generated with grid)</td>
+<td>Alternative snake pattern</td>
+</tr>
+<tr class="odd">
+<td><code>prusa_live_z.stl</code></td>
+<td><code>./build.sh build prusa_live_z</code></td>
+<td>Live Z adjustment while printing</td>
+</tr>
+</tbody>
+</table>
+<section id="first-layer-test-options" class="level3">
+<h3 class="anchored" data-anchor-id="first-layer-test-options">First Layer Test Options</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 29%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Source</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>first_layer_patch_0.2mm.stl</code></td>
+<td>Ellis (download)</td>
+<td>Quick center check (~2 min)</td>
+</tr>
+<tr class="even">
+<td><code>first_layer_grid.stl</code></td>
+<td>Amalgam (build123d)</td>
+<td>Full bed coverage, tests mesh leveling</td>
+</tr>
+<tr class="odd">
+<td><code>prusa_live_z.stl</code></td>
+<td>Amalgam (build123d)</td>
+<td>Live Z adjustment while printing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quick check?</strong> Use Ellis patch (center only). <strong>Testing bed mesh?</strong> Use grid (covers entire bed). <strong>Tuning Z-offset?</strong> Use Prusa pattern (adjust while printing).</p>
+<hr>
+</section>
+</section>
+<section id="downloaded-calibration-models" class="level2">
+<h2 class="anchored" data-anchor-id="downloaded-calibration-models">Downloaded Calibration Models</h2>
+<p>Run <code>python utilities/download_calibration.py</code> to download these:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Size</th>
+<th>Use For</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>first_layer_patch_0.2mm.stl</code></td>
+<td>0.2mm</td>
+<td>First layer / bed level</td>
+<td><a href="https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints">Ellis</a></td>
+</tr>
+<tr class="even">
+<td><code>extrusion_multiplier_cube.stl</code></td>
+<td>~25mm</td>
+<td>Flow rate calibration</td>
+<td><a href="https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints">Ellis</a></td>
+</tr>
+<tr class="odd">
+<td><code>xyz_calibration_cube.stl</code></td>
+<td>20mm</td>
+<td>Quick dimensional check</td>
+<td><a href="https://github.com/5axes/Calibration-Shapes/wiki/Calibration-Cube-XYZ">5axes</a></td>
+</tr>
+<tr class="even">
+<td><code>voron_design_cube.stl</code></td>
+<td>30mm</td>
+<td>Advanced calibration</td>
+<td><a href="https://github.com/VoronDesign/Voron-2/tree/Voron2.4/STLs/Test_Prints">Voron</a></td>
+</tr>
+<tr class="odd">
+<td><code>square_tower.stl</code></td>
+<td><strong>~80mm</strong></td>
+<td><strong>PA, Temperature</strong></td>
+<td><a href="https://github.com/Klipper3d/klipper/tree/master/docs/prints">Klipper</a></td>
+</tr>
+<tr class="even">
+<td><code>ringing_tower.stl</code></td>
+<td><strong>~80mm</strong></td>
+<td><strong>Input Shaper</strong></td>
+<td><a href="https://github.com/Klipper3d/klipper/tree/master/docs/prints">Klipper</a></td>
+</tr>
+<tr class="odd">
+<td><code>3DBenchy.stl</code></td>
+<td>~48mm</td>
+<td>Final validation</td>
+<td><a href="https://github.com/CreativeTools/3DBenchy">CreativeTools</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key:</strong> TUNING_TOWER requires a <strong>tall</strong> object. Use <code>square_tower.stl</code>, NOT the cubes.</p>
+<section id="xyz-cube-vs-voron-cube" class="level3">
+<h3 class="anchored" data-anchor-id="xyz-cube-vs-voron-cube">XYZ Cube vs Voron Cube</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>XYZ Cube (20mm)</th>
+<th>Voron Cube (30mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dimensional check</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Overhang test</td>
+<td>No</td>
+<td>Yes (logos)</td>
+</tr>
+<tr class="odd">
+<td>Bridging test</td>
+<td>No</td>
+<td>Yes (internal)</td>
+</tr>
+<tr class="even">
+<td>Bearing fit test</td>
+<td>No</td>
+<td>Yes (625, F695)</td>
+</tr>
+<tr class="odd">
+<td>PA corner check</td>
+<td>No</td>
+<td>Yes (90° corners)</td>
+</tr>
+<tr class="even">
+<td>Print time</td>
+<td>~15 min</td>
+<td>~30 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use XYZ cube</strong> for quick dimensional checks. <strong>Use Voron cube</strong> when tuning for functional parts with bearing fits and overhangs.</p>
+</section>
+<section id="voron-cube-vs-benchy" class="level3">
+<h3 class="anchored" data-anchor-id="voron-cube-vs-benchy">Voron Cube vs Benchy</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Voron Cube</th>
+<th>Benchy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dimensions</td>
+<td>Yes (30mm)</td>
+<td>Yes (60mm hull)</td>
+</tr>
+<tr class="even">
+<td>Overhangs</td>
+<td>Yes (logos)</td>
+<td>Yes (hull, multiple angles)</td>
+</tr>
+<tr class="odd">
+<td>Bridging</td>
+<td>Yes (internal)</td>
+<td>Yes (cabin roof)</td>
+</tr>
+<tr class="even">
+<td>Fine detail</td>
+<td>No</td>
+<td>Yes (text, windows)</td>
+</tr>
+<tr class="odd">
+<td>Curved surfaces</td>
+<td>No</td>
+<td>Yes (hull)</td>
+</tr>
+<tr class="even">
+<td>Stringing test</td>
+<td>No</td>
+<td>Yes (chimney)</td>
+</tr>
+<tr class="odd">
+<td>Bearing fits</td>
+<td><strong>Yes</strong></td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>PA corners</td>
+<td><strong>Yes</strong></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Universal reference</td>
+<td>No</td>
+<td><strong>Yes</strong> (compare to millions online)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Voron cube</strong> = “Can I print functional parts?” (tolerances, bearing fits) <strong>Benchy</strong> = “Does my print look right?” (visual reference everyone knows)</p>
+<p><strong>Recommendation:</strong> Print Voron cube for functional validation. Print Benchy if you want visual comparison or suspect quality issues. Print Fidget Bolt as the real victory test (working threads = well calibrated).</p>
+<hr>
+</section>
+</section>
+<section id="calibration-order-advanced-path" class="level2">
+<h2 class="anchored" data-anchor-id="calibration-order-advanced-path">Calibration Order (Advanced Path)</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Step</th>
+<th>Path</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Mechanical check</td>
+<td>Both</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>PID tune hotend &amp; bed</td>
+<td>Both</td>
+<td>Yes (once)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Z-offset &amp; bed mesh</td>
+<td>Both</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><strong>First layer test</strong></td>
+<td><strong>Simple</strong></td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Extruder steps (e-steps)</td>
+<td>Advanced</td>
+<td>If dimensions off</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Pressure Advance</td>
+<td>Advanced</td>
+<td>If corners bulge</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Input Shaper</td>
+<td>Advanced</td>
+<td>If ringing/ghosting</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Flow rate</td>
+<td>Advanced</td>
+<td>If walls wrong thickness</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Temperature</td>
+<td>Advanced</td>
+<td>Per filament</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Retraction</td>
+<td>Advanced</td>
+<td>If stringing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simple path:</strong> Steps 1-4, then print XYZ cube and Benchy to validate.</p>
+<hr>
+</section>
+<section id="pid-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="pid-tuning">1. PID Tuning</h2>
+<p>Stabilizes temperature control. Run once per hotend/bed change.</p>
+<pre class="gcode"><code># Hotend (at typical print temp)
+PID_CALIBRATE HEATER=extruder TARGET=210
+
+# Bed
+PID_CALIBRATE HEATER=heater_bed TARGET=60
+
+# Save results
+SAVE_CONFIG</code></pre>
+<hr>
+</section>
+<section id="z-offset-bed-mesh" class="level2">
+<h2 class="anchored" data-anchor-id="z-offset-bed-mesh">2. Z-Offset &amp; Bed Mesh</h2>
+<pre class="gcode"><code>G28                      # Home all
+PROBE_CALIBRATE          # Interactive Z-offset (paper test)
+# Adjust with TESTZ Z=-0.1 or TESTZ Z=+0.1
+ACCEPT                   # When paper drags slightly
+SAVE_CONFIG
+
+# Then create bed mesh
+G28
+BED_MESH_CALIBRATE
+SAVE_CONFIG</code></pre>
+<p><strong>Live Z adjust during print:</strong></p>
+<pre class="gcode"><code>SET_GCODE_OFFSET Z_ADJUST=-0.02 MOVE=1   # Lower (more squish)
+SET_GCODE_OFFSET Z_ADJUST=+0.02 MOVE=1   # Higher (less squish)</code></pre>
+<hr>
+</section>
+<section id="first-layer-test" class="level2">
+<h2 class="anchored" data-anchor-id="first-layer-test">3. First Layer Test</h2>
+<p>Print the Ellis first layer patch (<code>first_layer_patch_0.2mm.stl</code>).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lines don’t touch</td>
+<td>Lower Z-offset</td>
+</tr>
+<tr class="even">
+<td>Rough/transparent</td>
+<td>Lower Z-offset</td>
+</tr>
+<tr class="odd">
+<td>Ridges between lines</td>
+<td>Raise Z-offset</td>
+</tr>
+<tr class="even">
+<td>Varies across bed</td>
+<td>Re-run BED_MESH_CALIBRATE</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="extruder-steps-e-steps" class="level2">
+<h2 class="anchored" data-anchor-id="extruder-steps-e-steps">4. Extruder Steps (E-steps)</h2>
+<p>Ensures extruder pushes exactly 100mm when asked.</p>
+<pre class="gcode"><code># Heat hotend
+M104 S210
+
+# Mark filament 120mm from extruder entrance
+# Extrude 100mm slowly
+G91                      # Relative mode
+G1 E100 F100             # Extrude 100mm at 100mm/min
+G90                      # Back to absolute
+
+# Measure remaining distance to mark
+# If 20mm remains = perfect. If 18mm remains = over-extruding.</code></pre>
+<p><strong>Calculate new e-steps:</strong></p>
+<pre><code>new_e_steps = current_e_steps × (100 / actually_extruded)</code></pre>
+<p>Update <code>rotation_distance</code> in printer.cfg (inverse relationship).</p>
+<hr>
+</section>
+<section id="pressure-advance" class="level2">
+<h2 class="anchored" data-anchor-id="pressure-advance">5. Pressure Advance</h2>
+<p>Compensates for filament pressure lag. Eliminates bulging corners.</p>
+<p><strong>Print:</strong> <code>square_tower.stl</code> (~80mm tall)</p>
+<pre class="gcode"><code># Set conservative speed limits
+SET_VELOCITY_LIMIT SQUARE_CORNER_VELOCITY=1 ACCEL=500
+
+# Start tuning tower - parameter changes with Z height
+TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=.005</code></pre>
+<p>Examine the tower walls. Find the height where corners look best (no bulging, no gaps).</p>
+<pre><code>PA = START + (height_in_mm × FACTOR)
+PA = 0 + (10mm × 0.005) = 0.05</code></pre>
+<p><strong>Typical values:</strong> | Filament | PA Range | |———-|———-| | PLA | 0.02 - 0.08 | | PETG | 0.05 - 0.10 | | TPU | 0.10 - 0.20 |</p>
+<p>Add to printer.cfg:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[extruder]</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">pressure_advance: 0.05</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="input-shaper" class="level2">
+<h2 class="anchored" data-anchor-id="input-shaper">6. Input Shaper</h2>
+<p>Eliminates ringing/ghosting. Klipper’s superpower.</p>
+<p><strong>Option A: With accelerometer (recommended)</strong></p>
+<pre class="gcode"><code>SHAPER_CALIBRATE
+SAVE_CONFIG</code></pre>
+<p><strong>Option B: Manual with ringing tower</strong></p>
+<pre class="gcode"><code># Print ringing_tower.stl at 80-100mm/s
+# Examine for ringing patterns
+# Try different shapers:
+SET_INPUT_SHAPER SHAPER_FREQ_X=40 SHAPER_FREQ_Y=40 SHAPER_TYPE=mzv</code></pre>
+<p>Add to printer.cfg:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[input_shaper]</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">shaper_freq_x: 40</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="dt">shaper_freq_y: 40</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="dt">shaper_type: mzv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="flow-rate-extrusion-multiplier" class="level2">
+<h2 class="anchored" data-anchor-id="flow-rate-extrusion-multiplier">7. Flow Rate / Extrusion Multiplier</h2>
+<p>Print Ellis extrusion_multiplier_cube.stl (single wall, 0 infill, 0 top layers).</p>
+<p>Measure wall thickness with calipers. Should equal line width (typically 0.4mm).</p>
+<pre><code>new_flow = (expected_width / measured_width) × current_flow
+new_flow = (0.4 / 0.44) × 100% = 91%</code></pre>
+<p>Adjust in slicer, not Klipper.</p>
+<hr>
+</section>
+<section id="temperature-tuning-optional" class="level2">
+<h2 class="anchored" data-anchor-id="temperature-tuning-optional">8. Temperature Tuning (Optional)</h2>
+<p><strong>Print:</strong> <code>square_tower.stl</code> (~80mm tall)</p>
+<pre class="gcode"><code># Temperature varies with Z height
+# START=190, FACTOR=2 means: 190°C at Z=0, 200°C at Z=5mm, 210°C at Z=10mm...
+TUNING_TOWER COMMAND=SET_HEATER_TEMPERATURE HEATER=extruder PARAMETER=TARGET START=190 FACTOR=2</code></pre>
+<p>Examine each 5-10mm section of the tower: - <strong>Too cold:</strong> Poor layer adhesion, rough surface, weak - <strong>Too hot:</strong> Stringing, blobbing, discoloration</p>
+<p>Mark the height of the best-looking section, calculate temp: <code>temp = 190 + (height × 2)</code></p>
+<hr>
+</section>
+<section id="retraction-tuning-optional" class="level2">
+<h2 class="anchored" data-anchor-id="retraction-tuning-optional">9. Retraction Tuning (Optional)</h2>
+<p>For direct drive (like Pitan), start with: - Distance: 0.5-1.0mm - Speed: 30-45mm/s</p>
+<p>Test with stringing torture test or travel-heavy print.</p>
+<p><strong>PETG:</strong> Less retraction than PLA (more viscous) <strong>TPU:</strong> Minimal or zero retraction</p>
+<hr>
+</section>
+<section id="validation-prints" class="level2">
+<h2 class="anchored" data-anchor-id="validation-prints">Validation Prints</h2>
+<p>After calibration, print these to verify:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 21%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Print</th>
+<th>File</th>
+<th>What to Check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>XYZ Cube</td>
+<td><code>xyz_calibration_cube.stl</code></td>
+<td>Quick check: 20.0mm on X, Y, Z</td>
+</tr>
+<tr class="even">
+<td>Voron Cube</td>
+<td><code>voron_design_cube.stl</code></td>
+<td>Full check: 30.0mm, overhangs, bearing fits</td>
+</tr>
+<tr class="odd">
+<td>3DBenchy</td>
+<td><code>3DBenchy.stl</code></td>
+<td>Overhangs, bridging, detail, stringing</td>
+</tr>
+<tr class="even">
+<td>Maker Coin</td>
+<td><code>./build.sh build maker_coin</code></td>
+<td>Logo clarity, layer adhesion</td>
+</tr>
+<tr class="odd">
+<td>Fidget Bolt</td>
+<td><code>./build.sh build fidget_bolt</code></td>
+<td><strong>Threads work = well calibrated!</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="quick-troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="quick-troubleshooting">Quick Troubleshooting</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 50%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Likely Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First layer doesn’t stick</td>
+<td>Z too high</td>
+<td>Lower Z-offset</td>
+</tr>
+<tr class="even">
+<td>Elephant foot</td>
+<td>Z too low</td>
+<td>Raise Z-offset</td>
+</tr>
+<tr class="odd">
+<td>Ringing/ghosting</td>
+<td>No Input Shaper</td>
+<td>Run SHAPER_CALIBRATE</td>
+</tr>
+<tr class="even">
+<td>Bulging corners</td>
+<td>No Pressure Advance</td>
+<td>Calibrate PA</td>
+</tr>
+<tr class="odd">
+<td>Stringing</td>
+<td>Retraction/temp</td>
+<td>Tune retraction, lower temp</td>
+</tr>
+<tr class="even">
+<td>Layer shifts</td>
+<td>Loose belts, too fast</td>
+<td>Tighten belts, reduce accel</td>
+</tr>
+<tr class="odd">
+<td>Inconsistent extrusion</td>
+<td>Flow rate wrong</td>
+<td>Calibrate e-steps and flow</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="external-resources" class="level2">
+<h2 class="anchored" data-anchor-id="external-resources">External Resources</h2>
+<ul>
+<li><strong>Ellis Print Tuning Guide:</strong> <a href="https://ellis3dp.com/Print-Tuning-Guide/">ellis3dp.com/Print-Tuning-Guide</a> - Detailed methodology, works for any Klipper printer</li>
+<li><strong>Teaching Tech Calibration:</strong> <a href="https://teachingtechyt.github.io/calibration.html">teachingtechyt.github.io/calibration</a> - Interactive gcode generators</li>
+<li><strong>Klipper Documentation:</strong> <a href="https://www.klipper3d.org/Config_Reference.html">klipper3d.org</a> - Official reference</li>
+</ul>
+<hr>
+</section>
+<section id="download-calibration-prints" class="level2">
+<h2 class="anchored" data-anchor-id="download-calibration-prints">Download Calibration Prints</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cad</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> utilities/download_calibration.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Downloads from Klipper, Voron, and Ellis GitHub repos. See <a href="../guides/calibration-guide.html">calibration-guide.md</a> for print settings.</p>
+<hr>
+</section>
+<section id="credits-acknowledgments" class="level2">
+<h2 class="anchored" data-anchor-id="credits-acknowledgments">Credits &amp; Acknowledgments</h2>
+<p>Amalgam’s calibration system stands on the shoulders of giants:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Contribution</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://github.com/Klipper3d/klipper">Klipper3d</a></td>
+<td>Ringing tower, square tower, TUNING_TOWER</td>
+<td>GPL-3.0</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/VoronDesign/Voron-2">VoronDesign</a></td>
+<td>Voron Design Cube v7</td>
+<td>GPL-3.0</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/AndrewEllis93/Print-Tuning-Guide">Ellis (AndrewEllis93)</a></td>
+<td>First layer patch, EM cube, tuning methodology</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/5axes/Calibration-Shapes">5axes</a></td>
+<td>XYZ Calibration Cube</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/CreativeTools/3DBenchy">CreativeTools</a></td>
+<td>3DBenchy</td>
+<td>Public Domain</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.prusa3d.com/">Prusa Research</a></td>
+<td>Live Z pattern concept</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><a href="https://teachingtechyt.github.io/">Teaching Tech</a></td>
+<td>Calibration methodology</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Amalgam-created prints</strong> (<code>first_layer_grid</code>, <code>prusa_live_z</code>) are original build123d implementations inspired by community patterns. Licensed under the same terms as the Amalgam project.</p>
+<hr>
+<p><em>“Measure twice, print once. Or just print it and iterate.”</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

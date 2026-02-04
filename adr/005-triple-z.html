@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>triple-z – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-005-triple-z-independent-kinematic-leveling" id="toc-adr-005-triple-z-independent-kinematic-leveling" class="nav-link active" data-scroll-target="#adr-005-triple-z-independent-kinematic-leveling">ADR-005: Triple-Z Independent Kinematic Leveling</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#prerequisite" id="toc-prerequisite" class="nav-link" data-scroll-target="#prerequisite">Prerequisite</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#why-triple-z" id="toc-why-triple-z" class="nav-link" data-scroll-target="#why-triple-z">Why Triple-Z?</a></li>
+  <li><a href="#belted-z-alternative-tier-1" id="toc-belted-z-alternative-tier-1" class="nav-link" data-scroll-target="#belted-z-alternative-tier-1">Belted-Z Alternative (Tier 1)</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#why-not-single-motor-with-mesh-compensation" id="toc-why-not-single-motor-with-mesh-compensation" class="nav-link" data-scroll-target="#why-not-single-motor-with-mesh-compensation">Why NOT Single Motor with Mesh Compensation?</a></li>
+  <li><a href="#why-not-dual-z" id="toc-why-not-dual-z" class="nav-link" data-scroll-target="#why-not-dual-z">Why NOT Dual-Z?</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-buying-new-recommended-for-tier-3" id="toc-scenario-a-buying-new-recommended-for-tier-3" class="nav-link" data-scroll-target="#scenario-a-buying-new-recommended-for-tier-3">Scenario A: Buying New (Recommended for Tier 3)</a></li>
+  <li><a href="#scenario-b-salvaging-2-new-motors" id="toc-scenario-b-salvaging-2-new-motors" class="nav-link" data-scroll-target="#scenario-b-salvaging-2-new-motors">Scenario B: Salvaging + 2 New Motors</a></li>
+  <li><a href="#scenario-c-donor-has-dual-z-prusa-mk23" id="toc-scenario-c-donor-has-dual-z-prusa-mk23" class="nav-link" data-scroll-target="#scenario-c-donor-has-dual-z-prusa-mk23">Scenario C: Donor Has Dual-Z (Prusa MK2/3)</a></li>
+  <li><a href="#scenario-d-belted-z-single-motor-tier-1" id="toc-scenario-d-belted-z-single-motor-tier-1" class="nav-link" data-scroll-target="#scenario-d-belted-z-single-motor-tier-1">Scenario D: Belted-Z Single Motor (Tier 1)</a></li>
+  <li><a href="#scenario-e-scavenging-3-motors" id="toc-scenario-e-scavenging-3-motors" class="nav-link" data-scroll-target="#scenario-e-scavenging-3-motors">Scenario E: Scavenging 3 Motors</a></li>
+  <li><a href="#scenario-f-high-end-matched-motors-tier-4" id="toc-scenario-f-high-end-matched-motors-tier-4" class="nav-link" data-scroll-target="#scenario-f-high-end-matched-motors-tier-4">Scenario F: High-End Matched Motors (Tier 4)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#lead-screw-options" id="toc-lead-screw-options" class="nav-link" data-scroll-target="#lead-screw-options">Lead Screw Options</a></li>
+  <li><a href="#z-motor-configurations" id="toc-z-motor-configurations" class="nav-link" data-scroll-target="#z-motor-configurations">Z-Motor Configurations</a></li>
+  <li><a href="#spider-bed-support" id="toc-spider-bed-support" class="nav-link" data-scroll-target="#spider-bed-support">Spider Bed Support</a></li>
+  <li><a href="#z-tilt-calibration" id="toc-z-tilt-calibration" class="nav-link" data-scroll-target="#z-tilt-calibration">Z-Tilt Calibration</a></li>
+  <li><a href="#motor-wiring" id="toc-motor-wiring" class="nav-link" data-scroll-target="#motor-wiring">Motor Wiring</a></li>
+  <li><a href="#board-requirements" id="toc-board-requirements" class="nav-link" data-scroll-target="#board-requirements">Board Requirements</a></li>
+  <li><a href="#bed-leveling-accuracy" id="toc-bed-leveling-accuracy" class="nav-link" data-scroll-target="#bed-leveling-accuracy">Bed Leveling Accuracy</a></li>
+  <li><a href="#maintenance" id="toc-maintenance" class="nav-link" data-scroll-target="#maintenance">Maintenance</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-005-triple-z-independent-kinematic-leveling" class="level1">
+<h1>ADR-005: Triple-Z Independent Kinematic Leveling</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="prerequisite" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisite">Prerequisite</h2>
+<p>This ADR assumes <strong>Z-Drop Architecture</strong> (ADR-023) where the bed moves only in Z and the XY gantry operates at fixed height. Triple-Z tilts the bed to match the gantry plane.</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Z-motion system is critical for first-layer quality and dimensional accuracy. The bed must be perfectly level and stay level across thousands of prints.</p>
+<p>In 2026, there are multiple Z-system options: - Single motor with 3-point leveling (manual or belt-synced) - Dual independent Z-motors (Prusa style) - Triple independent Z-motors (Voron style) - CoreXY Z with belt lift</p>
+<p>Most budget printers use single Z-motor systems and rely on software compensation (mesh bed leveling). This works but doesn’t fix the root cause - a physically non-level bed. Industrial printers use kinematic leveling with independent motors.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We choose <strong>Triple-Z Independent Motors with Klipper Z-Tilt</strong> for the Amalgam reference specification.</p>
+<section id="why-triple-z" class="level3">
+<h3 class="anchored" data-anchor-id="why-triple-z">Why Triple-Z?</h3>
+<ol type="1">
+<li><strong>Kinematic leveling</strong>: Physically aligns bed to gantry (not software compensation)</li>
+<li><strong>Voron-class accuracy</strong>: Same system used in high-end Voron printers</li>
+<li><strong>Automated calibration</strong>: Klipper Z-Tilt provides one-command bed leveling</li>
+<li><strong>Set-and-forget</strong>: Once calibrated, bed stays level for thousands of hours</li>
+<li><strong>Rigidity</strong>: Three points define a plane - mathematically optimal</li>
+<li><strong>Mass balanced</strong>: Distributed drive prevents bed sag</li>
+<li><strong>Industrial standard</strong>: Used in high-end CNC and manufacturing equipment</li>
+</ol>
+</section>
+<section id="belted-z-alternative-tier-1" class="level3">
+<h3 class="anchored" data-anchor-id="belted-z-alternative-tier-1">Belted-Z Alternative (Tier 1)</h3>
+<p>For budget builds, a single motor with sync belt is available: - <strong>How</strong>: One Z-motor drives three leadscrews via timing belt - <strong>Leveling</strong>: Manual one-time setup with spacers - <strong>Pros</strong>: Cheaper, simpler electronics - <strong>Cons</strong>: No auto-calibration, must manually level if moved</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>True kinematic accuracy</strong>: Physically perfect bed level</li>
+<li><strong>Automation</strong>: Klipper handles leveling with <code>Z_TILT_ADJUST</code></li>
+<li><strong>Stability</strong>: Independent motors prevent bed wobble</li>
+<li><strong>Scalability</strong>: Can handle large beds without sag</li>
+<li><strong>Repeatability</strong>: Same first-layer quality on Day 1000 as Day 1</li>
+<li><strong>Professional feel</strong>: “Set-and-forget” operation</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Cost</strong>: Requires 3 Z-motors (vs 1 for single motor)</li>
+<li><strong>Complexity</strong>: More motors, drivers, and wiring</li>
+<li><strong>Power</strong>: Higher power consumption (3 motors instead of 1)</li>
+<li><strong>Calibration time</strong>: Initial setup takes longer</li>
+</ul>
+</section>
+<section id="why-not-single-motor-with-mesh-compensation" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-single-motor-with-mesh-compensation">Why NOT Single Motor with Mesh Compensation?</h3>
+<ol type="1">
+<li><strong>Not true leveling</strong>: Software compensates but doesn’t fix misalignment</li>
+<li><strong>Bed sag</strong>: Single motor can cause center sag on large beds</li>
+<li><strong>Tuning complexity</strong>: Requires repeated mesh calibration</li>
+<li><strong>First-layer variability</strong>: Changes as bed heats and expands</li>
+</ol>
+</section>
+<section id="why-not-dual-z" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-dual-z">Why NOT Dual-Z?</h3>
+<ol type="1">
+<li><strong>Planar math</strong>: 3 points define a plane (2 points define a line)</li>
+<li><strong>Corner droop</strong>: Dual-Z has uncontrolled corners</li>
+<li><strong>Bed flex</strong>: Can cause bed to flex under weight</li>
+</ol>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="scenario-a-buying-new-recommended-for-tier-3" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-buying-new-recommended-for-tier-3">Scenario A: Buying New (Recommended for Tier 3)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3x NEMA17 Z-motors (matched if possible)</li>
+<li>3x 8mm TR8x8 or T8x8 lead screws (or scavenged)</li>
+<li>3x anti-backlash nuts (or standard nuts)</li>
+<li>3x couplers (motor-to-leadscrew)</li>
+<li>3x Z-Pucks (printed)</li>
+<li>Spider bed support (printed)</li>
+<li>MKS SKIPR (or 6+ driver board)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (~$50-70 AUD for motors/screws)</li>
+<li><strong>Donor compatibility</strong>: All donors</li>
+<li><strong>Board requirement</strong>: 6+ drivers (X, Y, E, Z1, Z2, Z3)</li>
+<li><strong>Experience</strong>: Set-and-forget</li>
+</ul>
+</section>
+<section id="scenario-b-salvaging-2-new-motors" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-salvaging-2-new-motors">Scenario B: Salvaging + 2 New Motors</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x salvaged Z-motor from donor</li>
+<li>2x new NEMA17 Z-motors (matched to salvaged)</li>
+<li>3x leadscrews (salvaged or new)</li>
+<li>3x Z-Pucks (printed)</li>
+<li>Spider bed support (printed)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (~$25-40 AUD for 2 motors)</li>
+<li><strong>Donor compatibility</strong>: All donors</li>
+<li><strong>Board requirement</strong>: 6+ drivers</li>
+<li><strong>Note</strong>: Try to match motor torque and current ratings</li>
+</ul>
+</section>
+<section id="scenario-c-donor-has-dual-z-prusa-mk23" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-donor-has-dual-z-prusa-mk23">Scenario C: Donor Has Dual-Z (Prusa MK2/3)</h3>
+<ul>
+<li><strong>Parts A: Upgrade to Triple-Z</strong>
+<ul>
+<li>Parts needed: 1x new NEMA17 motor + 1x leadscrew + 1x Z-Puck</li>
+<li>Cost implication: Low (~$12-15 AUD)</li>
+<li>Donor compatibility: Prusa MK2/3</li>
+<li>Note: Reuse 2 donor motors</li>
+</ul></li>
+<li><strong>Parts B: Keep Dual-Z (Not Recommended)</strong>
+<ul>
+<li>Parts needed: None (use donor dual-Z)</li>
+<li>Cost implication: Very Low ($0)</li>
+<li>Donor compatibility: Prusa MK2/3 only</li>
+<li>Note: Will suffer from corner droop on 250mm+ beds</li>
+</ul></li>
+</ul>
+</section>
+<section id="scenario-d-belted-z-single-motor-tier-1" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-d-belted-z-single-motor-tier-1">Scenario D: Belted-Z Single Motor (Tier 1)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x salvaged Z-motor</li>
+<li>3x leadscrews (salvaged or new)</li>
+<li>3x Z-Pucks (printed)</li>
+<li>3x pulleys (same tooth count)</li>
+<li>3x timing belts (matching length)</li>
+<li>3x belt clamps</li>
+<li>Spider bed support (printed)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (~$15-25 AUD for belts/pulleys)</li>
+<li><strong>Donor compatibility</strong>: All donors</li>
+<li><strong>Board requirement</strong>: 4 drivers (X, Y, E, Z)</li>
+<li><strong>Experience</strong>: Set-and-monitor (manual leveling)</li>
+</ul>
+</section>
+<section id="scenario-e-scavenging-3-motors" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-e-scavenging-3-motors">Scenario E: Scavenging 3 Motors</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3x NEMA17 motors from various sources</li>
+<li>3x leadscrews (scavenged or new)</li>
+<li>3x Z-Pucks (printed)</li>
+<li>Spider bed support (printed)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low ($0-15 AUD)</li>
+<li><strong>Donor compatibility</strong>: Multiple donors or photocopiers</li>
+<li><strong>Board requirement</strong>: 6+ drivers</li>
+<li><strong>Note</strong>: Motors may have different torque/current - requires careful tuning</li>
+</ul>
+</section>
+<section id="scenario-f-high-end-matched-motors-tier-4" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-f-high-end-matched-motors-tier-4">Scenario F: High-End Matched Motors (Tier 4)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3x matched NEMA17 motors (same brand, torque, current)</li>
+<li>3x high-quality leadscrews (anti-backlash)</li>
+<li>3x anti-backlash nuts</li>
+<li>3x Z-Pucks (printed)</li>
+<li>Spider bed support (printed)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: High (~$60-80 AUD for motors)</li>
+<li><strong>Donor compatibility</strong>: N/A (new purchase)</li>
+<li><strong>Board requirement</strong>: 6+ drivers</li>
+<li><strong>Benefits</strong>: Perfectly synchronized Z motion</li>
+<li><strong>Experience</strong>: Overkill</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="lead-screw-options" class="level3">
+<h3 class="anchored" data-anchor-id="lead-screw-options">Lead Screw Options</h3>
+<pre><code>TR8x8: 8mm diameter, 2mm lead (recommended)
+T8x8:  8mm diameter, 2mm lead (budget alternative)</code></pre>
+</section>
+<section id="z-motor-configurations" class="level3">
+<h3 class="anchored" data-anchor-id="z-motor-configurations">Z-Motor Configurations</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># config.py</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>TRIPLE_Z <span class="op">=</span> <span class="va">True</span>  <span class="co"># Triple independent Z-motors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="spider-bed-support" class="level3">
+<h3 class="anchored" data-anchor-id="spider-bed-support">Spider Bed Support</h3>
+<ul>
+<li><strong>Central hub</strong>: Printed with 3 mounting points</li>
+<li><strong>Three arms</strong>: Printed separately, bolted to hub</li>
+<li><strong>Bed mounting</strong>: Triangle provides stability</li>
+<li><strong>Modular</strong>: Arms can be printed on small donor printers</li>
+</ul>
+</section>
+<section id="z-tilt-calibration" class="level3">
+<h3 class="anchored" data-anchor-id="z-tilt-calibration">Z-Tilt Calibration</h3>
+<pre><code>Klipper Command: Z_TILT_ADJUST
+
+Process:
+1. Probe 3 points on bed
+2. Calculate tilt and adjust motors
+3. Repeat until tilt &lt; 0.01mm
+4. Save result to config</code></pre>
+</section>
+<section id="motor-wiring" class="level3">
+<h3 class="anchored" data-anchor-id="motor-wiring">Motor Wiring</h3>
+<ul>
+<li>Z1: Front-left motor</li>
+<li>Z2: Front-right motor</li>
+<li>Z3: Back-center motor</li>
+<li>Must be on independent drivers (not shared)</li>
+</ul>
+</section>
+<section id="board-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="board-requirements">Board Requirements</h3>
+<pre><code>Minimum 6 drivers for Triple-Z:
+- Driver 1: X-axis
+- Driver 2: Y-axis
+- Driver 3: Extruder
+- Driver 4: Z1
+- Driver 5: Z2
+- Driver 6: Z3
+
+MKS SKIPR: 7 drivers (perfect for Triple-Z + ERCF)
+BTT SKR 3: 8 drivers (excellent)</code></pre>
+</section>
+<section id="bed-leveling-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="bed-leveling-accuracy">Bed Leveling Accuracy</h3>
+<ul>
+<li><strong>Manual leveling</strong>: ±0.5mm (good enough for first layer)</li>
+<li><strong>Dual-Z</strong>: ±0.2mm (better, but corners uncontrolled)</li>
+<li><strong>Triple-Z with Z-Tilt</strong>: ±0.02mm (industrial accuracy)</li>
+</ul>
+</section>
+<section id="maintenance" class="level3">
+<h3 class="anchored" data-anchor-id="maintenance">Maintenance</h3>
+<ul>
+<li><strong>Check alignment</strong>: After moving printer</li>
+<li><strong>Re-calibrate</strong>: If bed replaced or leadscrews changed</li>
+<li><strong>Lubricate</strong>: Light grease on leadscrews every 100 hours</li>
+<li><strong>Check couplers</strong>: Verify tightness every 6 months</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-023: Z-Drop Architecture (explains why Z-drop enables Triple-Z)</li>
+<li>MANIFESTO.md: Section “The Tiered Path” and “Triple-Z Kinematic Leveling”</li>
+<li><a href="https://vorondesign.com/voron_trident">Voron Trident Z-System</a>: Triple-Z reference design</li>
+<li><a href="https://www.klipper3d.org/Bed_Level.html#z-tilt">Klipper Z-Tilt Documentation</a></li>
+<li>docs/AI-Conversations/ [Relevant conversations about Z-system selection]</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

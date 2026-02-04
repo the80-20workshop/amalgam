@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>single-vs-dual-rod – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/README.md">Analysis</a></li><li class="breadcrumb-item"><a href="../analysis/single-vs-dual-rod.html">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deep Dives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_00_decision_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Tier 0 Decision Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_01_frame_and_assembly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Frame Design &amp; Assembly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_02_xy_axis_system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: X-Y Axis System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_03_motor_mounts_vibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Motor Mounts &amp; Vibration Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_04_xgantry_design_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: X-Gantry Design Decision</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_05_psu_configurations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Power Supply Configurations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_06_extruder_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Extruder Selection &amp; Decision Record</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#single-vs-dual-rod-analysis-why-single-rods-dont-work" id="toc-single-vs-dual-rod-analysis-why-single-rods-dont-work" class="nav-link active" data-scroll-target="#single-vs-dual-rod-analysis-why-single-rods-dont-work">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</a>
+  <ul class="collapse">
+  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">1. Purpose</a></li>
+  <li><a href="#the-two-problems" id="toc-the-two-problems" class="nav-link" data-scroll-target="#the-two-problems">2. The Two Problems</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-deflection" id="toc-problem-1-deflection" class="nav-link" data-scroll-target="#problem-1-deflection">2.1 Problem 1: Deflection</a></li>
+  <li><a href="#problem-2-rotation" id="toc-problem-2-rotation" class="nav-link" data-scroll-target="#problem-2-rotation">2.2 Problem 2: Rotation</a></li>
+  </ul></li>
+  <li><a href="#deflection-comparison" id="toc-deflection-comparison" class="nav-link" data-scroll-target="#deflection-comparison">3. Deflection Comparison</a>
+  <ul class="collapse">
+  <li><a href="#beam-deflection-formula" id="toc-beam-deflection-formula" class="nav-link" data-scroll-target="#beam-deflection-formula">3.1 Beam Deflection Formula</a></li>
+  <li><a href="#load-distribution" id="toc-load-distribution" class="nav-link" data-scroll-target="#load-distribution">3.2 Load Distribution</a></li>
+  <li><a href="#the-stiffness-penalty" id="toc-the-stiffness-penalty" class="nav-link" data-scroll-target="#the-stiffness-penalty">3.3 The Stiffness Penalty</a></li>
+  <li><a href="#numeric-example-350mm-span-600g-toolhead" id="toc-numeric-example-350mm-span-600g-toolhead" class="nav-link" data-scroll-target="#numeric-example-350mm-span-600g-toolhead">3.4 Numeric Example (350mm span, 600g toolhead)</a></li>
+  </ul></li>
+  <li><a href="#rotation-analysis" id="toc-rotation-analysis" class="nav-link" data-scroll-target="#rotation-analysis">4. Rotation Analysis</a>
+  <ul class="collapse">
+  <li><a href="#the-rotation-problem" id="toc-the-rotation-problem" class="nav-link" data-scroll-target="#the-rotation-problem">4.1 The Rotation Problem</a></li>
+  <li><a href="#sources-of-rotation-torque" id="toc-sources-of-rotation-torque" class="nav-link" data-scroll-target="#sources-of-rotation-torque">4.2 Sources of Rotation Torque</a></li>
+  <li><a href="#why-dual-rods-resist-rotation" id="toc-why-dual-rods-resist-rotation" class="nav-link" data-scroll-target="#why-dual-rods-resist-rotation">4.3 Why Dual Rods Resist Rotation</a></li>
+  <li><a href="#practical-effect" id="toc-practical-effect" class="nav-link" data-scroll-target="#practical-effect">4.4 Practical Effect</a></li>
+  </ul></li>
+  <li><a href="#single-rod-workarounds" id="toc-single-rod-workarounds" class="nav-link" data-scroll-target="#single-rod-workarounds">5. Single Rod Workarounds</a>
+  <ul class="collapse">
+  <li><a href="#add-a-secondary-constraint" id="toc-add-a-secondary-constraint" class="nav-link" data-scroll-target="#add-a-secondary-constraint">5.1 Add a Secondary Constraint</a></li>
+  <li><a href="#use-a-larger-single-rod" id="toc-use-a-larger-single-rod" class="nav-link" data-scroll-target="#use-a-larger-single-rod">5.2 Use a Larger Single Rod</a></li>
+  <li><a href="#accept-the-limitations" id="toc-accept-the-limitations" class="nav-link" data-scroll-target="#accept-the-limitations">5.3 Accept the Limitations</a></li>
+  </ul></li>
+  <li><a href="#why-amalgam-requires-dual-rods" id="toc-why-amalgam-requires-dual-rods" class="nav-link" data-scroll-target="#why-amalgam-requires-dual-rods">6. Why Amalgam Requires Dual Rods</a></li>
+  <li><a href="#decision-matrix" id="toc-decision-matrix" class="nav-link" data-scroll-target="#decision-matrix">7. Decision Matrix</a>
+  <ul class="collapse">
+  <li><a href="#cost-to-fix-single-rod-donors" id="toc-cost-to-fix-single-rod-donors" class="nav-link" data-scroll-target="#cost-to-fix-single-rod-donors">7.1 Cost to Fix Single-Rod Donors</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">8. Summary</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/README.md">Analysis</a></li><li class="breadcrumb-item"><a href="../analysis/single-vs-dual-rod.html">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</a></li></ol></nav></header>
+
+
+
+
+<section id="single-vs-dual-rod-analysis-why-single-rods-dont-work" class="level1">
+<h1>Single vs Dual Rod Analysis: Why Single Rods Don’t Work</h1>
+<section id="purpose" class="level2">
+<h2 class="anchored" data-anchor-id="purpose">1. Purpose</h2>
+<p>Some budget i3 clones use <strong>single smooth rods</strong> per axis instead of dual rods. This analysis quantifies why single-rod motion systems are not supported in Amalgam and what happens if you try to use one anyway.</p>
+<p><strong>Bottom line:</strong> Single rods have ~4× more deflection AND cannot resist rotation. Don’t use them.</p>
+<hr>
+</section>
+<section id="the-two-problems" class="level2">
+<h2 class="anchored" data-anchor-id="the-two-problems">2. The Two Problems</h2>
+<section id="problem-1-deflection" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-deflection">2.1 Problem 1: Deflection</h3>
+<p>A single rod carries the entire load, not half of it.</p>
+</section>
+<section id="problem-2-rotation" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-rotation">2.2 Problem 2: Rotation</h3>
+<p>A single rod cannot resist torque around its axis. The carriage can pivot, causing: - Nozzle angle variation - Layer misalignment - Inconsistent extrusion width</p>
+<p>Dual rods solve this by creating a <strong>moment arm</strong> — the spacing between rods resists rotation.</p>
+<hr>
+</section>
+</section>
+<section id="deflection-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="deflection-comparison">3. Deflection Comparison</h2>
+<section id="beam-deflection-formula" class="level3">
+<h3 class="anchored" data-anchor-id="beam-deflection-formula">3.1 Beam Deflection Formula</h3>
+<p>For a simply supported beam with central point load:</p>
+<pre><code>δ = F × L³ / (48 × E × I)</code></pre>
+</section>
+<section id="load-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="load-distribution">3.2 Load Distribution</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Load per Rod</th>
+<th>Relative Deflection</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dual rods</td>
+<td>F/2</td>
+<td>1× (baseline)</td>
+</tr>
+<tr class="even">
+<td>Single rod</td>
+<td>F</td>
+<td>2×</td>
+</tr>
+</tbody>
+</table>
+<p>But wait — it gets worse.</p>
+</section>
+<section id="the-stiffness-penalty" class="level3">
+<h3 class="anchored" data-anchor-id="the-stiffness-penalty">3.3 The Stiffness Penalty</h3>
+<p>With dual rods, both rods deflect together, sharing the load. The <strong>effective stiffness</strong> of the system is:</p>
+<pre><code>k_dual = 2 × k_single_rod</code></pre>
+<p>Total system deflection comparison:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>System Stiffness</th>
+<th>Deflection Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dual 8mm rods</td>
+<td>2× single rod</td>
+<td>1× (baseline)</td>
+</tr>
+<tr class="even">
+<td>Single 8mm rod</td>
+<td>1×</td>
+<td>2×</td>
+</tr>
+<tr class="odd">
+<td>Single 10mm rod</td>
+<td>2.4× of 8mm</td>
+<td>0.83×</td>
+</tr>
+<tr class="even">
+<td>Single 12mm rod</td>
+<td>5× of 8mm</td>
+<td>0.4×</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="numeric-example-350mm-span-600g-toolhead" class="level3">
+<h3 class="anchored" data-anchor-id="numeric-example-350mm-span-600g-toolhead">3.4 Numeric Example (350mm span, 600g toolhead)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Mid-Span Deflection</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dual 8mm</td>
+<td>0.065 mm</td>
+</tr>
+<tr class="even">
+<td>Single 8mm</td>
+<td><strong>0.130 mm</strong></td>
+</tr>
+<tr class="odd">
+<td>Single 10mm</td>
+<td>0.054 mm</td>
+</tr>
+<tr class="even">
+<td>Single 12mm</td>
+<td>0.026 mm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation:</strong> A single 8mm rod has 2× the deflection of dual 8mm. You’d need a single 10mm rod to match dual 8mm performance — but rotation is still unsolved.</p>
+<hr>
+</section>
+</section>
+<section id="rotation-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="rotation-analysis">4. Rotation Analysis</h2>
+<section id="the-rotation-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-rotation-problem">4.1 The Rotation Problem</h3>
+<p>Even with zero deflection, a single rod cannot resist torque. When the hotend applies force (during printing, acceleration, or retraction), the carriage rotates around the rod axis.</p>
+</section>
+<section id="sources-of-rotation-torque" class="level3">
+<h3 class="anchored" data-anchor-id="sources-of-rotation-torque">4.2 Sources of Rotation Torque</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Direction</th>
+<th>Magnitude</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bowden tube push</td>
+<td>Variable</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td>Direct drive motor torque</td>
+<td>Around rod</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>Acceleration (offset mass)</td>
+<td>Depends on geometry</td>
+<td>High</td>
+</tr>
+<tr class="even">
+<td>Part adhesion (peel force)</td>
+<td>Tilts nozzle</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-dual-rods-resist-rotation" class="level3">
+<h3 class="anchored" data-anchor-id="why-dual-rods-resist-rotation">4.3 Why Dual Rods Resist Rotation</h3>
+<p>With dual rods separated by distance <code>d</code>:</p>
+<pre><code>Resisting moment = F_bearing × d</code></pre>
+<p>Where F_bearing is the reaction force at each bearing.</p>
+<p>For dual rods with 45mm spacing (typical): - Even small bearing preload creates significant rotation resistance - Carriage is constrained to translate, not rotate</p>
+<p>For a single rod: - Rotation resistance = 0 (theoretically) - In practice, limited by bearing friction (unreliable)</p>
+</section>
+<section id="practical-effect" class="level3">
+<h3 class="anchored" data-anchor-id="practical-effect">4.4 Practical Effect</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Rotation Resistance</th>
+<th>Nozzle Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dual rods, 45mm spacing</td>
+<td>High</td>
+<td>Excellent</td>
+</tr>
+<tr class="even">
+<td>Dual rods, 25mm spacing</td>
+<td>Medium</td>
+<td>Good</td>
+</tr>
+<tr class="odd">
+<td>Single rod + secondary guide</td>
+<td>Low-Medium</td>
+<td>Acceptable*</td>
+</tr>
+<tr class="even">
+<td>Single rod only</td>
+<td>Near zero</td>
+<td><strong>Unacceptable</strong></td>
+</tr>
+</tbody>
+</table>
+<p>*Some single-rod designs add a secondary guide (rail, V-slot, or bearing block) to resist rotation. This works but adds complexity and cost.</p>
+<hr>
+</section>
+</section>
+<section id="single-rod-workarounds" class="level2">
+<h2 class="anchored" data-anchor-id="single-rod-workarounds">5. Single Rod Workarounds</h2>
+<section id="add-a-secondary-constraint" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-secondary-constraint">5.1 Add a Secondary Constraint</h3>
+<p>Some designs address single-rod rotation by adding: - A parallel guide rail - A V-slot wheel on one side - A second bearing block on a stationary rod</p>
+<p><strong>Problem:</strong> This costs money and complexity. At that point, just use dual rods.</p>
+</section>
+<section id="use-a-larger-single-rod" class="level3">
+<h3 class="anchored" data-anchor-id="use-a-larger-single-rod">5.2 Use a Larger Single Rod</h3>
+<p>A 12mm single rod has less deflection than dual 8mm, but: - Still can’t resist rotation - 12mm rods are heavier and harder to source - Bearings (LM12UU) are larger and costlier</p>
+</section>
+<section id="accept-the-limitations" class="level3">
+<h3 class="anchored" data-anchor-id="accept-the-limitations">5.3 Accept the Limitations</h3>
+<p>If you insist on single 8mm rods: - Limit acceleration to &lt;3000 mm/s² - Use Bowden extrusion (reduces motor torque on carriage) - Accept ~0.1mm dimensional variation - Print speed limited to ~50mm/s for quality</p>
+<hr>
+</section>
+</section>
+<section id="why-amalgam-requires-dual-rods" class="level2">
+<h2 class="anchored" data-anchor-id="why-amalgam-requires-dual-rods">6. Why Amalgam Requires Dual Rods</h2>
+<p>The Amalgam specification requires dual rods because:</p>
+<ol type="1">
+<li><strong>Deflection is halved</strong> — dual rods share the load</li>
+<li><strong>Rotation is constrained</strong> — carriage can only translate</li>
+<li><strong>Scavenging is easier</strong> — dual-rod donors are common (Anet A8, Wanhao, Prusa clones)</li>
+<li><strong>Input Shaping works better</strong> — predictable, consistent motion</li>
+<li><strong>Direct drive is viable</strong> — can handle NEMA17 + Pitan mass</li>
+</ol>
+<hr>
+</section>
+<section id="decision-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="decision-matrix">7. Decision Matrix</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Your Donor Has</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dual 8mm smooth rods</td>
+<td><strong>Use them</strong> — Scaffold or Lathe path</td>
+</tr>
+<tr class="even">
+<td>Single 8mm + guide rail</td>
+<td><strong>Maybe</strong> — test stability before building</td>
+</tr>
+<tr class="odd">
+<td>Single 8mm only</td>
+<td><strong>Don’t use</strong> — buy rods or find different donor</td>
+</tr>
+<tr class="even">
+<td>V-slots + wheels</td>
+<td><strong>Use them</strong> — Mill path (rotation constrained by wheels)</td>
+</tr>
+</tbody>
+</table>
+<section id="cost-to-fix-single-rod-donors" class="level3">
+<h3 class="anchored" data-anchor-id="cost-to-fix-single-rod-donors">7.1 Cost to Fix Single-Rod Donors</h3>
+<p>If your donor has single rods:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fix</th>
+<th>Cost</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Buy 8× 8mm smooth rods</td>
+<td>~$40-50</td>
+<td>Dual rod system</td>
+</tr>
+<tr class="even">
+<td>Buy 8× LM8UU bearings</td>
+<td>~$20-30</td>
+<td>Complete motion system</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>~$60-80</td>
+<td>Equivalent to dual-rod donor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alternative:</strong> Sell single-rod donor, buy dual-rod donor. Often cheaper and less hassle.</p>
+<hr>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">8. Summary</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Dual 8mm Rods</th>
+<th>Single 8mm Rod</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deflection</td>
+<td>0.065mm</td>
+<td>0.130mm (2×)</td>
+</tr>
+<tr class="even">
+<td>Rotation resistance</td>
+<td>High</td>
+<td>Near zero</td>
+</tr>
+<tr class="odd">
+<td>Max safe acceleration</td>
+<td>~8000 mm/s²</td>
+<td>~3000 mm/s²</td>
+</tr>
+<tr class="even">
+<td>Direct drive viable?</td>
+<td>Yes</td>
+<td>No (Bowden only)</td>
+</tr>
+<tr class="odd">
+<td>Recommended?</td>
+<td><strong>Yes</strong></td>
+<td><strong>No</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Single rods are not supported because they can’t provide the motion quality Amalgam targets. If your donor has single rods, either upgrade the motion system or find a better donor.</p>
+<hr>
+<p><em>“Two rods are not twice as good — they’re four times as good. Plus they actually resist rotation.”</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

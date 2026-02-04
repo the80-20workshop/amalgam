@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>build-plate-surfaces – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-027-build-plate-surface-selection" id="toc-adr-027-build-plate-surface-selection" class="nav-link active" data-scroll-target="#adr-027-build-plate-surface-selection">ADR-027: Build Plate Surface Selection</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#target-filaments" id="toc-target-filaments" class="nav-link" data-scroll-target="#target-filaments">Target Filaments</a></li>
+  <li><a href="#donor-build-surfaces" id="toc-donor-build-surfaces" class="nav-link" data-scroll-target="#donor-build-surfaces">Donor Build Surfaces</a></li>
+  <li><a href="#the-replacement-problem" id="toc-the-replacement-problem" class="nav-link" data-scroll-target="#the-replacement-problem">The Replacement Problem</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#g10fr4-thickness-by-bed-size" id="toc-g10fr4-thickness-by-bed-size" class="nav-link" data-scroll-target="#g10fr4-thickness-by-bed-size">G10/FR4 Thickness by Bed Size</a></li>
+  <li><a href="#g10-preparation-and-use" id="toc-g10-preparation-and-use" class="nav-link" data-scroll-target="#g10-preparation-and-use">G10 Preparation and Use</a></li>
+  <li><a href="#temperature-compensation-for-thick-g10" id="toc-temperature-compensation-for-thick-g10" class="nav-link" data-scroll-target="#temperature-compensation-for-thick-g10">Temperature Compensation for Thick G10</a></li>
+  </ul></li>
+  <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a>
+  <ul class="collapse">
+  <li><a href="#flexible-pei-sheets-spring-steel-magnetic-base" id="toc-flexible-pei-sheets-spring-steel-magnetic-base" class="nav-link" data-scroll-target="#flexible-pei-sheets-spring-steel-magnetic-base">Flexible PEI Sheets (Spring Steel + Magnetic Base)</a></li>
+  <li><a href="#adding-magnetic-base-to-non-magnetic-donor" id="toc-adding-magnetic-base-to-non-magnetic-donor" class="nav-link" data-scroll-target="#adding-magnetic-base-to-non-magnetic-donor">Adding Magnetic Base to Non-Magnetic Donor</a></li>
+  <li><a href="#removing-existing-magnetic-surface" id="toc-removing-existing-magnetic-surface" class="nav-link" data-scroll-target="#removing-existing-magnetic-surface">Removing Existing Magnetic Surface</a></li>
+  <li><a href="#plain-glass" id="toc-plain-glass" class="nav-link" data-scroll-target="#plain-glass">Plain Glass</a></li>
+  <li><a href="#buildtak-adhesive-sticker-surfaces" id="toc-buildtak-adhesive-sticker-surfaces" class="nav-link" data-scroll-target="#buildtak-adhesive-sticker-surfaces">BuildTak / Adhesive Sticker Surfaces</a></li>
+  <li><a href="#bare-aluminum" id="toc-bare-aluminum" class="nav-link" data-scroll-target="#bare-aluminum">Bare Aluminum</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#philosophy-alignment" id="toc-philosophy-alignment" class="nav-link" data-scroll-target="#philosophy-alignment">Philosophy Alignment</a></li>
+  </ul></li>
+  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-donor-surface-functional" id="toc-scenario-a-donor-surface-functional" class="nav-link" data-scroll-target="#scenario-a-donor-surface-functional">Scenario A: Donor Surface Functional</a></li>
+  <li><a href="#scenario-b-g10-replacement" id="toc-scenario-b-g10-replacement" class="nav-link" data-scroll-target="#scenario-b-g10-replacement">Scenario B: G10 Replacement</a></li>
+  <li><a href="#scenario-c-flex-sheet-upgrade-optional" id="toc-scenario-c-flex-sheet-upgrade-optional" class="nav-link" data-scroll-target="#scenario-c-flex-sheet-upgrade-optional">Scenario C: Flex Sheet Upgrade (Optional)</a></li>
+  </ul></li>
+  <li><a href="#installation-notes" id="toc-installation-notes" class="nav-link" data-scroll-target="#installation-notes">Installation Notes</a>
+  <ul class="collapse">
+  <li><a href="#g10-mounting" id="toc-g10-mounting" class="nav-link" data-scroll-target="#g10-mounting">G10 Mounting</a></li>
+  <li><a href="#bed-leveling-after-surface-change" id="toc-bed-leveling-after-surface-change" class="nav-link" data-scroll-target="#bed-leveling-after-surface-change">Bed Leveling After Surface Change</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-027-build-plate-surface-selection" class="level1">
+<h1>ADR-027: Build Plate Surface Selection</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Amalgam’s scavenger philosophy means most builds will use whatever heated bed and build surface came with the donor printers. However, donors may arrive with damaged, missing, or unsuitable build surfaces, and builders need guidance on replacement options.</p>
+<section id="target-filaments" class="level3">
+<h3 class="anchored" data-anchor-id="target-filaments">Target Filaments</h3>
+<p>With the E3D V6 hotend (ADR-004), Amalgam supports a practical range of filaments:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 32%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Filament</th>
+<th>Bed Temp</th>
+<th>Hotend Temp</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PLA</strong></td>
+<td>50-60°C</td>
+<td>190-220°C</td>
+<td>Primary material, easiest</td>
+</tr>
+<tr class="even">
+<td><strong>PETG</strong></td>
+<td>70-85°C</td>
+<td>230-250°C</td>
+<td>Excellent strength, common</td>
+</tr>
+<tr class="odd">
+<td><strong>TPU</strong></td>
+<td>40-60°C</td>
+<td>220-240°C</td>
+<td>Flexible, slow printing</td>
+</tr>
+<tr class="even">
+<td><strong>ABS</strong></td>
+<td>90-110°C</td>
+<td>230-260°C</td>
+<td>Possible with V6, benefits from enclosure</td>
+</tr>
+</tbody>
+</table>
+<p>Most donor beds handle PLA, PETG, and TPU without issue. ABS is achievable but pushes bed temperatures higher and benefits from an enclosure (not part of the reference spec).</p>
+</section>
+<section id="donor-build-surfaces" class="level3">
+<h3 class="anchored" data-anchor-id="donor-build-surfaces">Donor Build Surfaces</h3>
+<p>Common surfaces on donor printers:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Surface Type</th>
+<th>Common On</th>
+<th>PLA</th>
+<th>PETG</th>
+<th>TPU</th>
+<th>ABS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Glass (plain)</td>
+<td>Anet A8, many clones</td>
+<td>OK</td>
+<td>OK</td>
+<td>OK</td>
+<td>OK</td>
+<td>Needs glue stick or hairspray</td>
+</tr>
+<tr class="even">
+<td>Glass + coating</td>
+<td>Ender 3 (Creality glass)</td>
+<td>Good</td>
+<td>Good</td>
+<td>OK</td>
+<td>OK</td>
+<td>Textured side works well</td>
+</tr>
+<tr class="odd">
+<td>BuildTak/sticker</td>
+<td>Various budget printers</td>
+<td>Good</td>
+<td>Fair</td>
+<td>Good</td>
+<td>Fair</td>
+<td>Wears out, replacement ~$10</td>
+</tr>
+<tr class="even">
+<td>Magnetic PEI</td>
+<td>Prusa MK3, Ender 3 V2+</td>
+<td>Excellent</td>
+<td>Excellent</td>
+<td>Good</td>
+<td>Good</td>
+<td>Premium option</td>
+</tr>
+<tr class="odd">
+<td>Bare aluminum</td>
+<td>Some budget donors</td>
+<td>Poor</td>
+<td>Poor</td>
+<td>Poor</td>
+<td>Poor</td>
+<td>Needs surface applied</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-replacement-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-replacement-problem">The Replacement Problem</h3>
+<p>When a replacement surface is needed, builders face choices: - <strong>Flex sheets (PEI on spring steel)</strong>: Excellent but $30-60 AUD - <strong>Glass</strong>: Cheap but adhesion can be finicky - <strong>G10/FR4</strong>: Industrial workhorse, affordable, predictable - <strong>BuildTak/sticker sheets</strong>: Consumable, need periodic replacement</p>
+<p>For a scavenger build targeting low cost and minimal fuss, the replacement surface should be: 1. Cheap (under $25 AUD) 2. Durable (not a consumable) 3. Works with PLA, PETG, and ABS without adhesives 4. Requires no special handling or maintenance</p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p><strong>Primary recommendation: Use the donor’s original build surface</strong> if functional.</p>
+<p><strong>If replacement is needed: FR4/G10 (Garolite)</strong> is the recommended low-maintenance option.</p>
+<section id="g10fr4-thickness-by-bed-size" class="level3">
+<h3 class="anchored" data-anchor-id="g10fr4-thickness-by-bed-size">G10/FR4 Thickness by Bed Size</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Bed Size</th>
+<th>G10 Thickness</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Up to 200×200mm</td>
+<td>1.5mm</td>
+<td>Sufficient rigidity for small span</td>
+</tr>
+<tr class="even">
+<td>~235×235mm</td>
+<td>2mm</td>
+<td>Standard for Ender-class beds</td>
+</tr>
+<tr class="odd">
+<td>300×300mm+</td>
+<td>3mm</td>
+<td>Prevents flex during part removal and thermal bow</td>
+</tr>
+</tbody>
+</table>
+<p>The scaling principle: thickness increases with span to maintain rigidity during part removal and resist thermal bow over repeated heating cycles. G10 is stiff but not steel—at 300×300mm with edge mounting, 2mm would have enough flex to be annoying.</p>
+</section>
+<section id="g10-preparation-and-use" class="level3">
+<h3 class="anchored" data-anchor-id="g10-preparation-and-use">G10 Preparation and Use</h3>
+<ol type="1">
+<li><strong>Surface prep</strong>: Scuff with 400 grit sandpaper before first use</li>
+<li><strong>Adhesion</strong>: PLA, PETG, and ABS stick directly without glue or tape</li>
+<li><strong>Removal</strong>: Wait for bed to cool—parts release cleanly at room temperature</li>
+<li><strong>Maintenance</strong>: Occasional wipe with isopropyl alcohol (IPA)</li>
+</ol>
+</section>
+<section id="temperature-compensation-for-thick-g10" class="level3">
+<h3 class="anchored" data-anchor-id="temperature-compensation-for-thick-g10">Temperature Compensation for Thick G10</h3>
+<p>At 300×300mm with 3mm G10, expect to increase bed temperature 5-10°C above normal settings. The thicker material acts as a thermal insulator. This isn’t a problem, just something to calibrate for rather than wonder why first layers aren’t sticking.</p>
+<p>A Klipper <code>BED_MESH_CALIBRATE</code> after installing any new surface is assumed anyway.</p>
+</section>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<section id="flexible-pei-sheets-spring-steel-magnetic-base" class="level3">
+<h3 class="anchored" data-anchor-id="flexible-pei-sheets-spring-steel-magnetic-base">Flexible PEI Sheets (Spring Steel + Magnetic Base)</h3>
+<p><strong>Pros:</strong> - Excellent adhesion for all filaments - Easy part removal—flex the sheet - Premium user experience</p>
+<p><strong>Cons:</strong> - $30-60 AUD for quality sheets - Magnetic base adds thermal resistance (~5°C higher bed temps needed) - Magnets can degrade above 80°C (some cheap magnetic sheets lose strength with repeated ABS temps) - If donor already has magnetic base: may be worth keeping - If donor lacks magnetic base: adding one is an upgrade, not scavenger-philosophy</p>
+<p><strong>Verdict:</strong> Keep if donor has one. Don’t purchase for a scavenger build unless budget allows.</p>
+</section>
+<section id="adding-magnetic-base-to-non-magnetic-donor" class="level3">
+<h3 class="anchored" data-anchor-id="adding-magnetic-base-to-non-magnetic-donor">Adding Magnetic Base to Non-Magnetic Donor</h3>
+<p>If considering this upgrade: - Magnetic adhesive sheets ~$15-20 AUD - Flex plate ~$20-40 AUD - Total: $35-60 AUD (exceeds G10 cost significantly) - Adds 1-2mm height to bed stack (adjust Z endstop) - May require higher bed temperatures</p>
+<p>Not recommended for budget builds, but valid upgrade path.</p>
+</section>
+<section id="removing-existing-magnetic-surface" class="level3">
+<h3 class="anchored" data-anchor-id="removing-existing-magnetic-surface">Removing Existing Magnetic Surface</h3>
+<p>Some donors arrive with worn or damaged magnetic surfaces. Options: 1. <strong>Leave it</strong>: If still flat, just add new flex plate on top 2. <strong>Remove it</strong>: Heat bed to 60°C, peel slowly, clean residue with IPA or Goo Gone 3. <strong>Replace with G10</strong>: After removal, G10 can clip or tape directly to aluminum bed</p>
+<p>Removal is tedious but not difficult. The adhesive softens with heat.</p>
+</section>
+<section id="plain-glass" class="level3">
+<h3 class="anchored" data-anchor-id="plain-glass">Plain Glass</h3>
+<p><strong>Pros:</strong> - Cheap (~$10 for cut borosilicate) - Perfectly flat - Easy to clean</p>
+<p><strong>Cons:</strong> - Requires adhesion aids (glue stick, hairspray) for most filaments - Parts can bond too well if bed cools with print attached - Risk of glass cracking from thermal shock (rare with borosilicate)</p>
+<p><strong>Verdict:</strong> Viable budget option, but G10 is similar cost with better adhesion.</p>
+</section>
+<section id="buildtak-adhesive-sticker-surfaces" class="level3">
+<h3 class="anchored" data-anchor-id="buildtak-adhesive-sticker-surfaces">BuildTak / Adhesive Sticker Surfaces</h3>
+<p><strong>Pros:</strong> - Good adhesion when new - Cheap per sheet (~$10)</p>
+<p><strong>Cons:</strong> - Consumable—wears out after 50-200 prints - Ongoing cost over time - PETG can bond too aggressively and damage surface</p>
+<p><strong>Verdict:</strong> Not recommended for Amalgam. G10 is permanent.</p>
+</section>
+<section id="bare-aluminum" class="level3">
+<h3 class="anchored" data-anchor-id="bare-aluminum">Bare Aluminum</h3>
+<p><strong>Cons:</strong> - Poor adhesion for all filaments - Scratches easily from nozzle contact - Requires some surface treatment</p>
+<p><strong>Verdict:</strong> Add a surface. Don’t print directly on aluminum.</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>Zero cost for most builds</strong>: Donor surfaces usually work fine</li>
+<li><strong>Cheap replacement</strong>: G10 sheets $10-20 AUD depending on size</li>
+<li><strong>Set and forget</strong>: G10 requires no consumables or maintenance</li>
+<li><strong>Wide compatibility</strong>: Works with PLA, PETG, TPU, and ABS</li>
+<li><strong>Predictable</strong>: Same behavior print after print</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>Patience required</strong>: G10 needs full cooling for easy release (no flex-and-pop)</li>
+<li><strong>Not as “premium”</strong>: Flex sheets offer better UX for frequent printing</li>
+<li><strong>Appearance</strong>: G10 is industrial green/tan, not aesthetic priority</li>
+</ol>
+</section>
+<section id="philosophy-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="philosophy-alignment">Philosophy Alignment</h3>
+<p>G10 fits the Amalgam “Tractor” philosophy: - Industrial material, not boutique - Durable over disposable - Practical over premium - Works reliably, no fuss</p>
+</section>
+</section>
+<section id="bom-implications" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
+<section id="scenario-a-donor-surface-functional" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-donor-surface-functional">Scenario A: Donor Surface Functional</h3>
+<ul>
+<li>Parts needed: None</li>
+<li>Cost: $0</li>
+<li>Action: Use as-is, calibrate mesh</li>
+</ul>
+</section>
+<section id="scenario-b-g10-replacement" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-g10-replacement">Scenario B: G10 Replacement</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Bed Size</th>
+<th>G10 Spec</th>
+<th>Approximate Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>200×200mm</td>
+<td>1.5mm thick</td>
+<td>$10-12 AUD</td>
+</tr>
+<tr class="even">
+<td>220×220mm</td>
+<td>2mm thick</td>
+<td>$12-15 AUD</td>
+</tr>
+<tr class="odd">
+<td>235×235mm</td>
+<td>2mm thick</td>
+<td>$12-15 AUD</td>
+</tr>
+<tr class="even">
+<td>300×300mm</td>
+<td>3mm thick</td>
+<td>$18-25 AUD</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Source: Industrial suppliers, eBay, AliExpress</li>
+<li>Also called: Garolite, fiberglass sheet, FR4</li>
+</ul>
+</section>
+<section id="scenario-c-flex-sheet-upgrade-optional" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-flex-sheet-upgrade-optional">Scenario C: Flex Sheet Upgrade (Optional)</h3>
+<ul>
+<li>Magnetic base: $15-20 AUD</li>
+<li>PEI spring steel sheet: $20-40 AUD</li>
+<li>Total: $35-60 AUD</li>
+<li>Recommended only if budget allows or donor already has magnetic base</li>
+</ul>
+</section>
+</section>
+<section id="installation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="installation-notes">Installation Notes</h2>
+<section id="g10-mounting" class="level3">
+<h3 class="anchored" data-anchor-id="g10-mounting">G10 Mounting</h3>
+<p>G10 can be secured to the heated bed aluminum with: - <strong>Binder clips</strong>: Simple, adjustable, removable (recommended) - <strong>Thermal tape</strong>: More permanent, good thermal transfer - <strong>Corner brackets</strong>: Printed, reusable</p>
+<p>Binder clips at corners are the scavenger-friendly choice. They allow easy removal for cleaning or switching surfaces.</p>
+</section>
+<section id="bed-leveling-after-surface-change" class="level3">
+<h3 class="anchored" data-anchor-id="bed-leveling-after-surface-change">Bed Leveling After Surface Change</h3>
+<p>Any surface change requires re-leveling: 1. Run <code>Z_TILT_ADJUST</code> (Triple-Z) for mechanical tramming 2. Run <code>BED_MESH_CALIBRATE</code> for surface mapping 3. Adjust Z offset if surface thickness changed significantly</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-004: E3D V6 Hotend (enables ABS temperatures)</li>
+<li>ADR-024: Heated Bed Size Selection</li>
+<li>ADR-005: Triple-Z Kinematic Leveling</li>
+<li><a href="https://www.mcmaster.com/garolite/">G10/FR4 Material Properties</a></li>
+<li><a href="https://help.prusa3d.com/article/first-layer-issues_1803">Prusa Knowledge Base: Print Surface Preparation</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>smooth-rods – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-003-precision-smooth-rods" id="toc-adr-003-precision-smooth-rods" class="nav-link active" data-scroll-target="#adr-003-precision-smooth-rods">ADR-003: Precision Smooth Rods</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#original-status" id="toc-original-status" class="nav-link" data-scroll-target="#original-status">Original Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#why-smooth-rods" id="toc-why-smooth-rods" class="nav-link" data-scroll-target="#why-smooth-rods">Why Smooth Rods?</a></li>
+  <li><a href="#diameter-decision-tree" id="toc-diameter-decision-tree" class="nav-link" data-scroll-target="#diameter-decision-tree">Diameter Decision Tree</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#why-not-v-slot-rollers" id="toc-why-not-v-slot-rollers" class="nav-link" data-scroll-target="#why-not-v-slot-rollers">Why NOT V-Slot Rollers?</a></li>
+  <li><a href="#why-not-linear-rails-for-base-spec" id="toc-why-not-linear-rails-for-base-spec" class="nav-link" data-scroll-target="#why-not-linear-rails-for-base-spec">Why NOT Linear Rails (for Base Spec)?</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-buying-new-10mm-recommended-for-tier-3" id="toc-scenario-a-buying-new-10mm-recommended-for-tier-3" class="nav-link" data-scroll-target="#scenario-a-buying-new-10mm-recommended-for-tier-3">Scenario A: Buying New 10mm (Recommended for Tier 3+)</a></li>
+  <li><a href="#scenario-b-salvaging-from-donor-with-8mm-prusa-i3-anet" id="toc-scenario-b-salvaging-from-donor-with-8mm-prusa-i3-anet" class="nav-link" data-scroll-target="#scenario-b-salvaging-from-donor-with-8mm-prusa-i3-anet">Scenario B: Salvaging from Donor with 8mm (Prusa i3, Anet)</a></li>
+  <li><a href="#scenario-c-donor-has-v-slot-rollers-ender-3-cr-10" id="toc-scenario-c-donor-has-v-slot-rollers-ender-3-cr-10" class="nav-link" data-scroll-target="#scenario-c-donor-has-v-slot-rollers-ender-3-cr-10">Scenario C: Donor has V-Slot Rollers (Ender 3, CR-10)</a></li>
+  <li><a href="#scenario-d-salvaging-from-photocopieroffice-equipment" id="toc-scenario-d-salvaging-from-photocopieroffice-equipment" class="nav-link" data-scroll-target="#scenario-d-salvaging-from-photocopieroffice-equipment">Scenario D: Salvaging from Photocopier/Office Equipment</a></li>
+  <li><a href="#scenario-e-linear-rail-upgrade-tinker-path" id="toc-scenario-e-linear-rail-upgrade-tinker-path" class="nav-link" data-scroll-target="#scenario-e-linear-rail-upgrade-tinker-path">Scenario E: Linear Rail Upgrade (Tinker Path)</a></li>
+  <li><a href="#scenario-f-emergencyimprovised-not-recommended" id="toc-scenario-f-emergencyimprovised-not-recommended" class="nav-link" data-scroll-target="#scenario-f-emergencyimprovised-not-recommended">Scenario F: Emergency/Improvised (Not Recommended)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#rod-length-calculation-from-config.py" id="toc-rod-length-calculation-from-config.py" class="nav-link" data-scroll-target="#rod-length-calculation-from-config.py">Rod Length Calculation (from config.py)</a></li>
+  <li><a href="#bearing-configurations" id="toc-bearing-configurations" class="nav-link" data-scroll-target="#bearing-configurations">Bearing Configurations</a></li>
+  <li><a href="#x-axis-carriage" id="toc-x-axis-carriage" class="nav-link" data-scroll-target="#x-axis-carriage">X-Axis Carriage</a></li>
+  <li><a href="#y-axis-gantry" id="toc-y-axis-gantry" class="nav-link" data-scroll-target="#y-axis-gantry">Y-Axis Gantry</a></li>
+  <li><a href="#z-axis-motion" id="toc-z-axis-motion" class="nav-link" data-scroll-target="#z-axis-motion">Z-Axis Motion</a></li>
+  <li><a href="#maintenance" id="toc-maintenance" class="nav-link" data-scroll-target="#maintenance">Maintenance</a></li>
+  <li><a href="#quality-indicators" id="toc-quality-indicators" class="nav-link" data-scroll-target="#quality-indicators">Quality Indicators</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-003-precision-smooth-rods" class="level1">
+<h1>ADR-003: Precision Smooth Rods</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Superseded by <a href="../adr/021-dual-rod-motion-system.html">ADR-021: Dual-Rod Motion System</a></p>
+<blockquote class="blockquote">
+<p><strong>Note</strong>: This ADR established M10 single-rod as the reference specification. Subsequent analysis (ADR-020, ADR-021) demonstrated that dual 8mm rods with shared load achieve equal or better deflection performance while being fully scavengeable from donor printers. ADR-021 now defines the reference specification.</p>
+</blockquote>
+</section>
+<section id="original-status" class="level2">
+<h2 class="anchored" data-anchor-id="original-status">Original Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Linear motion is critical for dimensional accuracy. The linear guides determine how smoothly the gantry moves and how well the printer maintains position.</p>
+<p>In 2026, there are multiple linear motion options: - Precision ground smooth rods with linear bearings - Linear rails (MGN9, MGN12, MGN15) - V-slot rollers on aluminum extrusion - Open builds with printed bearings</p>
+<p>Modern printers often use linear rails for high-speed operation and minimal maintenance. Budget printers (Ender 3) use V-slot rollers for low cost. However, both options have trade-offs for a “forever machine.”</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We choose <strong>precision ground smooth rods with linear bearings</strong> as the reference linear motion system.</p>
+<section id="why-smooth-rods" class="level3">
+<h3 class="anchored" data-anchor-id="why-smooth-rods">Why Smooth Rods?</h3>
+<ol type="1">
+<li><strong>Parallelism</strong>: Easier to align two rods than shim linear rails</li>
+<li><strong>Maintenance</strong>: Simple wipe-and-oil vs complex rail “re-balling”</li>
+<li><strong>Longevity</strong>: Rods don’t wear like roller wheels or cheap linear rails</li>
+<li><strong>Cost</strong>: Significantly cheaper than quality linear rails</li>
+<li><strong>Scalability</strong>: Available in multiple diameters for different use cases</li>
+<li><strong>Frame Integration</strong>: Natural pairing with M12 threaded-rod skeleton</li>
+<li><strong>Industrial aesthetics</strong>: “Circles and Torque” philosophy</li>
+</ol>
+</section>
+<section id="diameter-decision-tree" class="level3">
+<h3 class="anchored" data-anchor-id="diameter-decision-tree">Diameter Decision Tree</h3>
+<ul>
+<li><strong>8mm</strong>: Salvage path (Anet, Prusa clones, photocopiers)</li>
+<li><strong>10mm</strong>: “Neo” standard (2.4× stiffer than 8mm, recommended)</li>
+<li><strong>MGN12 Rails</strong>: Tinker path (for high-speed experiments)</li>
+</ul>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Proven reliability</strong>: Decades of use in RepRap and CNC</li>
+<li><strong>Easy alignment</strong>: Two rods naturally create parallel guide</li>
+<li><strong>Low friction</strong>: Linear bearings roll smoothly with minimal drag</li>
+<li><strong>Repairable</strong>: Replace individual bearings vs entire rail assembly</li>
+<li><strong>Cost-effective</strong>: Full set ~$50-80 AUD vs $200+ for quality rails</li>
+<li><strong>Frame-friendly</strong>: Easy to mount to M12 threaded-rod frame with printed clamps</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Not as smooth as quality rails</strong>: Higher friction than MGN12</li>
+<li><strong>Requires oiling</strong>: Maintenance interval (every ~100 hours)</li>
+<li><strong>Limited length</strong>: Very long builds may need multiple joined rods</li>
+<li><strong>Stiffness limits</strong>: 10mm is max practical diameter</li>
+</ul>
+</section>
+<section id="why-not-v-slot-rollers" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-v-slot-rollers">Why NOT V-Slot Rollers?</h3>
+<ol type="1">
+<li><strong>Frame mismatch</strong>: V-slot requires aluminum extrusion, not M12 rods</li>
+<li><strong>Wear pattern</strong>: Rollers develop flat spots over time</li>
+<li><strong>Crunchy budget rails</strong>: Cheap rails suffer from “crunchy” bearing issues</li>
+<li><strong>Difficult alignment</strong>: Perfectly shimming rails is challenging for beginners</li>
+</ol>
+</section>
+<section id="why-not-linear-rails-for-base-spec" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-linear-rails-for-base-spec">Why NOT Linear Rails (for Base Spec)?</h3>
+<ol type="1">
+<li><strong>Cost</strong>: Quality MGN12 rails cost 4-5× more than rods</li>
+<li><strong>Alignment complexity</strong>: Requires precision shimming for parallelism</li>
+<li><strong>Over-engineering</strong>: For 70-120mm/s, rods are sufficient</li>
+<li><strong>Donor incompatibility</strong>: Most salvaged printers don’t use rails</li>
+</ol>
+<p><strong>Note</strong>: The “Motion Pucks” are designed with mounting points for MGN12 rails for tinkerers who want high-speed upgrades.</p>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="scenario-a-buying-new-10mm-recommended-for-tier-3" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-buying-new-10mm-recommended-for-tier-3">Scenario A: Buying New 10mm (Recommended for Tier 3+)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>X-axis: 2x 370mm smooth rods (10mm)</li>
+<li>Y-axis: 2x 350mm smooth rods (10mm)</li>
+<li>Z-axis: 2x 320mm smooth rods (10mm)</li>
+<li>12x LM10UU linear bearings</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (~$60-80 AUD)</li>
+<li><strong>Donor compatibility</strong>: All donors (replaces existing motion)</li>
+<li><strong>Build volume</strong>: Unlimited (cut to length)</li>
+<li><strong>Note</strong>: 10mm has 2.4× stiffness over 8mm</li>
+</ul>
+</section>
+<section id="scenario-b-salvaging-from-donor-with-8mm-prusa-i3-anet" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-salvaging-from-donor-with-8mm-prusa-i3-anet">Scenario B: Salvaging from Donor with 8mm (Prusa i3, Anet)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Salvage: 8mm smooth rods from donor</li>
+<li>Salvage: LM8UU bearings from donor</li>
+<li>May need to clean/polish rods</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low ($0-10 AUD for cleaning)</li>
+<li><strong>Donor compatibility</strong>: Prusa i3, Anet A8, Prusa MK2/3</li>
+<li><strong>Build volume</strong>: Limited to salvaged lengths</li>
+<li><strong>Note</strong>: 8mm is lighter but less rigid</li>
+</ul>
+</section>
+<section id="scenario-c-donor-has-v-slot-rollers-ender-3-cr-10" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-donor-has-v-slot-rollers-ender-3-cr-10">Scenario C: Donor has V-Slot Rollers (Ender 3, CR-10)</h3>
+<ul>
+<li><strong>Parts needed</strong>: <strong>MUST BUY</strong>
+<ul>
+<li>6x smooth rods (8mm or 10mm)</li>
+<li>10-12x linear bearings (LM8UU or LM10UU)</li>
+<li>Cannot use existing rollers</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (~$50-70 AUD)</li>
+<li><strong>Donor compatibility</strong>: Ender 3, CR-10, V-Core</li>
+<li><strong>Build volume</strong>: Unlimited (cut to length)</li>
+<li><strong>Note</strong>: <strong>Critical</strong> - rollers incompatible with M12 frame</li>
+</ul>
+</section>
+<section id="scenario-d-salvaging-from-photocopieroffice-equipment" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-d-salvaging-from-photocopieroffice-equipment">Scenario D: Salvaging from Photocopier/Office Equipment</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Scavenge: 8mm or 10mm precision shafts</li>
+<li>May need to replace bearings</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low ($0-15 AUD)</li>
+<li><strong>Donor compatibility</strong>: Office laser printers, scanners</li>
+<li><strong>Build volume</strong>: Limited to scavenged lengths</li>
+<li><strong>Quality</strong>: Often higher quality than budget rods</li>
+<li><strong>Note</strong>: Verify straightness and diameter consistency</li>
+</ul>
+</section>
+<section id="scenario-e-linear-rail-upgrade-tinker-path" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-e-linear-rail-upgrade-tinker-path">Scenario E: Linear Rail Upgrade (Tinker Path)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>MGN12H x 4 (or MGN9H for lighter builds)</li>
+<li>4x carriages per axis</li>
+<li>Custom printed “Rail Pucks”</li>
+</ul></li>
+<li><strong>Cost implication</strong>: High (~$200-300 AUD for quality rails)</li>
+<li><strong>Donor compatibility</strong>: N/A (requires new purchase)</li>
+<li><strong>Build volume</strong>: Limited to rail lengths</li>
+<li><strong>Experience</strong>: High-speed capable (200mm/s+)</li>
+<li><strong>Warning</strong>: Requires precise alignment and shimming</li>
+</ul>
+</section>
+<section id="scenario-f-emergencyimprovised-not-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-f-emergencyimprovised-not-recommended">Scenario F: Emergency/Improvised (Not Recommended)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Any steel rod of correct diameter</li>
+<li>May use generic bearings</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low</li>
+<li><strong>Donor compatibility</strong>: Any steel rod source</li>
+<li><strong>Build volume</strong>: Limited to available rods</li>
+<li><strong>Warning</strong>: Significant risk of poor surface finish, dimensional inaccuracy</li>
+<li><strong>No support</strong>: build123d scripts not designed for non-standard rods</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="rod-length-calculation-from-config.py" class="level3">
+<h3 class="anchored" data-anchor-id="rod-length-calculation-from-config.py">Rod Length Calculation (from config.py)</h3>
+<pre><code># For 250mm³ build volume with Wade extruder
+X_OVERHANG = 50.0 (Wade gear overhang)
+
+X-axis rods: BUILD_VOLUME["X"] + (X_OVERHANG * 2) + clearance
+            = 250 + 100 + 20 = 370mm
+
+Y-axis rods: BUILD_VOLUME["Y"] + cable_management + clearance
+            = 250 + 80 + 20 = 350mm
+
+Z-axis rods: BUILD_VOLUME["Z"] + Z-puck_height + carriage_clearance
+            = 250 + 50 + 20 = 320mm</code></pre>
+</section>
+<section id="bearing-configurations" class="level3">
+<h3 class="anchored" data-anchor-id="bearing-configurations">Bearing Configurations</h3>
+<pre><code>SMOOTH_ROD_DIA = 10.0 → BEARING_TYPE = "LM10UU"
+SMOOTH_ROD_DIA = 8.0  → BEARING_TYPE = "LM8UU"</code></pre>
+</section>
+<section id="x-axis-carriage" class="level3">
+<h3 class="anchored" data-anchor-id="x-axis-carriage">X-Axis Carriage</h3>
+<ul>
+<li>4 bearings per carriage (2 per rod)</li>
+<li>Spaced ~60mm apart for stability</li>
+<li>Printed carriage provides bearing housing</li>
+</ul>
+</section>
+<section id="y-axis-gantry" class="level3">
+<h3 class="anchored" data-anchor-id="y-axis-gantry">Y-Axis Gantry</h3>
+<ul>
+<li>4 bearings per side (2 per rod)</li>
+<li>Dual-rod Y-gantry for stability</li>
+<li>Printed gantry brackets</li>
+</ul>
+</section>
+<section id="z-axis-motion" class="level3">
+<h3 class="anchored" data-anchor-id="z-axis-motion">Z-Axis Motion</h3>
+<ul>
+<li>4 bearings total (2 per rod)</li>
+<li>Single-rod Z with linear bearings</li>
+<li>Z-pucks provide structural mount to M12 frame</li>
+</ul>
+</section>
+<section id="maintenance" class="level3">
+<h3 class="anchored" data-anchor-id="maintenance">Maintenance</h3>
+<ul>
+<li><strong>Cleaning</strong>: Wipe rods with IPA or clean cloth every ~50 hours</li>
+<li><strong>Lubrication</strong>: Light machine oil (3-in-One or sewing machine oil)</li>
+<li><strong>Inspection</strong>: Check for rust, scratches, or bearing wear every ~100 hours</li>
+<li><strong>Replacement</strong>: Bearings ~$1-2 AUD each (cheap to replace)</li>
+</ul>
+</section>
+<section id="quality-indicators" class="level3">
+<h3 class="anchored" data-anchor-id="quality-indicators">Quality Indicators</h3>
+<ul>
+<li><strong>Look for</strong>: “Precision Ground” or “Hardened” marking</li>
+<li><strong>Avoid</strong>: “Construction” or “general purpose” rods (too rough)</li>
+<li><strong>Test</strong>: Roll bearing across rod - should be smooth with no grinding</li>
+<li><strong>Measure</strong>: Verify diameter with calipers (critical for bearing fit)</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>MANIFESTO.md: Section “The Motion System” and “Why we don’t offer a Roller Variant”</li>
+<li><a href="https://www.thingiverse.com/thing:6783269">RepRap Mendel Revisited</a>: Modern smooth rod implementation</li>
+<li>docs/AI-Conversations/ [Relevant conversations about linear motion]</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

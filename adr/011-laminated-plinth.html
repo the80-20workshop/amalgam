@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>laminated-plinth – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-011-laminated-plinth-baseboard" id="toc-adr-011-laminated-plinth-baseboard" class="nav-link active" data-scroll-target="#adr-011-laminated-plinth-baseboard">ADR-011: Laminated Plinth Baseboard</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a></li>
+  <li><a href="#why-laminated" id="toc-why-laminated" class="nav-link" data-scroll-target="#why-laminated">Why Laminated?</a></li>
+  <li><a href="#foundation-strategy-levels" id="toc-foundation-strategy-levels" class="nav-link" data-scroll-target="#foundation-strategy-levels">Foundation Strategy Levels</a></li>
+  <li><a href="#z-puck-mounting-on-plinth" id="toc-z-puck-mounting-on-plinth" class="nav-link" data-scroll-target="#z-puck-mounting-on-plinth">Z-Puck Mounting on Plinth</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#what-this-replaces" id="toc-what-this-replaces" class="nav-link" data-scroll-target="#what-this-replaces">What This Replaces</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-tier-1-2-builds-naked-frame" id="toc-scenario-a-tier-1-2-builds-naked-frame" class="nav-link" data-scroll-target="#scenario-a-tier-1-2-builds-naked-frame">Scenario A: Tier 1-2 Builds (Naked Frame)</a></li>
+  <li><a href="#scenario-b-tier-2-3-upgrade-single-board" id="toc-scenario-b-tier-2-3-upgrade-single-board" class="nav-link" data-scroll-target="#scenario-b-tier-2-3-upgrade-single-board">Scenario B: Tier 2-3 Upgrade (Single Board)</a></li>
+  <li><a href="#scenario-c-tier-3-reference-laminated-plinth" id="toc-scenario-c-tier-3-reference-laminated-plinth" class="nav-link" data-scroll-target="#scenario-c-tier-3-reference-laminated-plinth">Scenario C: Tier 3 Reference (Laminated Plinth)</a></li>
+  <li><a href="#donor-compatibility" id="toc-donor-compatibility" class="nav-link" data-scroll-target="#donor-compatibility">Donor Compatibility</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#mdf-dimensions-from-build123d" id="toc-mdf-dimensions-from-build123d" class="nav-link" data-scroll-target="#mdf-dimensions-from-build123d">MDF Dimensions (from build123d)</a></li>
+  <li><a href="#build-procedure" id="toc-build-procedure" class="nav-link" data-scroll-target="#build-procedure">Build Procedure</a></li>
+  <li><a href="#drill-template-features" id="toc-drill-template-features" class="nav-link" data-scroll-target="#drill-template-features">Drill Template Features</a></li>
+  <li><a href="#counter-sinking-optional" id="toc-counter-sinking-optional" class="nav-link" data-scroll-target="#counter-sinking-optional">Counter-Sinking (Optional)</a></li>
+  <li><a href="#environmental-considerations" id="toc-environmental-considerations" class="nav-link" data-scroll-target="#environmental-considerations">Environmental Considerations</a></li>
+  <li><a href="#safety-considerations" id="toc-safety-considerations" class="nav-link" data-scroll-target="#safety-considerations">Safety Considerations</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#evolution-notes" id="toc-evolution-notes" class="nav-link" data-scroll-target="#evolution-notes">Evolution Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-011-laminated-plinth-baseboard" class="level1">
+<h1>ADR-011: Laminated Plinth Baseboard</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam is a heavy machine: - M12 iron skeleton: ~15kg - 3x Z-motors + geared extruder: ~3kg - Total build weight: ~18-20kg</p>
+<p>A “Naked Frame” (frame sitting directly on workspace) has limitations: 1. <strong>Vibration Transmission</strong>: Frame acts as speaker for motor noise 2. <strong>Portability Issues</strong>: Picking up frame can flex/twist it 3. <strong>High-Frequency Resonance</strong>: Can cause ringing/ghosting 4. <strong>Floor Interaction</strong>: Uneven surfaces affect frame squareness</p>
+<p>At the same time, a well-grounded mass is an engineering advantage—mass damps vibration. The question is how to anchor that mass properly.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>Laminated Plinth Baseboard</strong> as the Tier 3 Reference Spec foundation, using <strong>Constrained Layer Damping (CLD)</strong> to convert motor vibrations into microscopic heat.</p>
+<section id="architecture" class="level3">
+<h3 class="anchored" data-anchor-id="architecture">Architecture</h3>
+<p><strong>The Plinth</strong>: Two 18mm MDF boards (36mm total thickness) glued together with viscoelastic adhesive.</p>
+<p><strong>Construction</strong>:</p>
+<pre><code>┌─────────────────────────────────────┐
+│   Top MDF Board (18mm)              │
+│   ↓                                 │
+│   Viscoelastic Glue Layer (CLD)     │ ← Converts vibration to heat
+│   ↓                                 │
+│   Bottom MDF Board (18mm)           │
+│   ↓                                 │
+│   Rubber Feet (4x corners)          │
+└─────────────────────────────────────┘</code></pre>
+<p><strong>Frame Attachment</strong>: - M12 rods pass through drilled holes in plinth - Secured with large fender washers + M12 nuts on underside - Frame bolts down to plinth (through-bolted) - Z-pucks either clamped to rods (Naked) or screwed to MDF (Tier 3)</p>
+</section>
+<section id="why-laminated" class="level3">
+<h3 class="anchored" data-anchor-id="why-laminated">Why Laminated?</h3>
+<p><strong>1. Constrained Layer Damping (CLD)</strong> - When motors vibrate, they send sound waves through plinth - Glue layer is stretched/compressed (shear strain) - Mechanical friction in glue converts kinetic energy to heat - Result: Vibration “dies” in glue instead of ringing through frame</p>
+<p><strong>2. Glue Choice Matters</strong> - <strong>Standard PVA Wood Glue</strong>: Dries hard → very stiff but poor damping - <strong>Green Glue / Construction Adhesive</strong>: Stays slightly rubbery → maximizes energy conversion (acoustically dead) - <strong>Viscoelastic</strong>: The gold standard for CLD in industrial/audio applications</p>
+<p><strong>3. Massive Inertia</strong> - 36mm MDF slab anchored to M12 frame creates ~20kg+ workstation - Provides heavy ballast resisting high-acceleration moves - Machine won’t budge or twist during operation</p>
+<p><strong>4. Rods Become Alignment Rails</strong> - Without plinth: M12 rods carry total weight (suspended load) - With plinth: MDF handles weight, rods ensure X/Y gantry square to bedrock - Shifts from “support” role to “alignment” role</p>
+</section>
+<section id="foundation-strategy-levels" class="level3">
+<h3 class="anchored" data-anchor-id="foundation-strategy-levels">Foundation Strategy Levels</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Effort</th>
+<th>Stability</th>
+<th>Resonance Peak</th>
+<th>Recommended For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Naked Frame (No pads)</strong></td>
+<td>Low</td>
+<td>Moderate</td>
+<td>High (Ringing)</td>
+<td>Emergency/Tier 1</td>
+</tr>
+<tr class="even">
+<td><strong>Naked + Rubber Pads</strong></td>
+<td>Low</td>
+<td>High</td>
+<td>Medium</td>
+<td>Tier 1-2</td>
+</tr>
+<tr class="odd">
+<td><strong>Single MDF Board</strong></td>
+<td>Medium</td>
+<td>Very High</td>
+<td>Low</td>
+<td>Tier 2-3</td>
+</tr>
+<tr class="even">
+<td><strong>Laminated Plinth</strong></td>
+<td>High</td>
+<td><strong>Industrial</strong></td>
+<td><strong>Negligible</strong></td>
+<td><strong>Tier 3 Reference</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="z-puck-mounting-on-plinth" class="level3">
+<h3 class="anchored" data-anchor-id="z-puck-mounting-on-plinth">Z-Puck Mounting on Plinth</h3>
+<p><strong>The Zero-Flex Anchor</strong>: - Z-pucks use flanged design screwed directly into MDF - Slotted mounting holes allow alignment adjustment - MDF acts as massive vibration sink for Z-motors (which move most weight)</p>
+<p><strong>The Hybrid Anchor</strong>: - Even with plinth mounting, use Double-Nut Anchor (see ADR-010) - M12 rod passes through puck + MDF, locked by nuts - “Handshakes” iron skeleton to plinth - Accommodates MDF expansion/contraction from humidity</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Industrial Silence</strong>: Negligible resonance, no ringing/ghosting</li>
+<li><strong>Structural Rigidity</strong>: Frame bolted to massive base can’t lose squareness</li>
+<li><strong>Portability</strong>: Easier to move—pick up by plinth, frame stays square</li>
+<li><strong>Vibration Isolation</strong>: Z-motor vibrations sink into plinth, don’t reach print</li>
+<li><strong>Thermal Stability</strong>: MDF is less affected by ambient temperature swings</li>
+<li><strong>Professional Feel</strong>: Machine becomes “industrial tool” rather than “toy”</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Weight</strong>: Final machine ~20-25kg (very heavy)</li>
+<li><strong>Assembly Effort</strong>: Requires woodworking (cutting, drilling, gluing)</li>
+<li><strong>Space</strong>: Larger footprint than naked frame</li>
+<li><strong>Cost</strong>: Adds $20-30 AUD for MDF + adhesive</li>
+<li><strong>Lead Time</strong>: Glue needs 24hr cure before drilling</li>
+<li><strong>Permanent</strong>: Once built, machine is semi-permanent workstation</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Tier 3 Reference Spec</strong>: Industrial-grade ±0.1mm accuracy</li>
+<li><strong>Perfect First Layers</strong>: Vibration-free foundation aids leveling</li>
+<li><strong>Engineering Materials</strong>: ABS, PC, Nylon benefit from stable environment</li>
+<li><strong>Quiet Operation</strong>: Combined with software, machine is near-silent</li>
+</ul>
+</section>
+<section id="what-this-replaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-replaces">What This Replaces</h3>
+<ul>
+<li>Naked frame with rubber pads</li>
+<li>Need for perfectly flat workspace (plinth compensates)</li>
+<li>Frequent frame re-squaring</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="scenario-a-tier-1-2-builds-naked-frame" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-tier-1-2-builds-naked-frame">Scenario A: Tier 1-2 Builds (Naked Frame)</h3>
+<ul>
+<li><strong>Recommended</strong>: Rubber pads under corners only</li>
+<li><strong>Cost implication</strong>: Very Low (+$10-15 AUD)</li>
+<li><strong>Assembly</strong>: No woodworking required</li>
+<li><strong>Performance</strong>: Good enough for hobby printing</li>
+</ul>
+</section>
+<section id="scenario-b-tier-2-3-upgrade-single-board" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-tier-2-3-upgrade-single-board">Scenario B: Tier 2-3 Upgrade (Single Board)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x 18mm MDF board (cut to script dimensions)</li>
+<li>4x M12 nuts + fender washers (for frame thru-bolting)</li>
+<li>Optional: Z-puck wood screws</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (+$15-20 AUD)</li>
+<li><strong>Assembly</strong>: Cut board, drill using template</li>
+<li><strong>Performance</strong>: Very good, significant vibration reduction</li>
+</ul>
+</section>
+<section id="scenario-c-tier-3-reference-laminated-plinth" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-tier-3-reference-laminated-plinth">Scenario C: Tier 3 Reference (Laminated Plinth)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>2x 18mm MDF boards (cut to script dimensions)</li>
+<li>1x Tube viscoelastic adhesive (Green Glue or construction adhesive)</li>
+<li>6x Wood screws (for Z-pucks, if not clamped to rods)</li>
+<li>4x Large fender washers (50mm+ dia)</li>
+<li>4x M12 nuts + washers (underside of MDF)</li>
+<li>4x Rubber feet (for plinth corners)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (+$20-30 AUD)</li>
+<li><strong>Assembly</strong>:
+<ul>
+<li>Glue boards together (24hr cure)</li>
+<li>Drill holes using build123d template</li>
+<li>Thru-bolt frame to plinth</li>
+<li>Mount Z-pucks</li>
+</ul></li>
+<li><strong>Performance</strong>: Industrial-grade, negligible resonance</li>
+</ul>
+</section>
+<section id="donor-compatibility" class="level3">
+<h3 class="anchored" data-anchor-id="donor-compatibility">Donor Compatibility</h3>
+<ul>
+<li><strong>All donors</strong>: Plinth is independent of donor parts</li>
+<li><strong>Salvage Benefit</strong>: Donor printers often have beds that need stable platform</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="mdf-dimensions-from-build123d" class="level3">
+<h3 class="anchored" data-anchor-id="mdf-dimensions-from-build123d">MDF Dimensions (from build123d)</h3>
+<pre><code>PLINTH_X = SKELETON_X + 100  # 50mm overhang each side
+PLINTH_Y = SKELETON_Y + 100  # 50mm overhang each side
+PLINTH_Z = 36mm              # 2x 18mm boards</code></pre>
+<p>For 250mm³ build volume (MK52): - Frame: ~550mm × ~370mm - Plinth: ~650mm × ~470mm × 36mm</p>
+</section>
+<section id="build-procedure" class="level3">
+<h3 class="anchored" data-anchor-id="build-procedure">Build Procedure</h3>
+<p><strong>Phase 1: Preparation</strong> 1. Cut both MDF boards to exact dimensions 2. Clean surfaces (remove dust) 3. Clamp boards together evenly 4. Apply viscoelastic adhesive in serpentine pattern (approx. 3mm bead) 5. Re-clamp with even pressure 6. Cure 24 hours (follow adhesive spec)</p>
+<p><strong>Phase 2: Drilling</strong> 1. Use build123d-generated drill template 2. Template includes: - M12 rod hole positions (8 total: 4 front, 4 rear) - Z-puck mounting positions (3 front, 0 rear if clamped) - Corner hole for fender washers (4) - Alignment marks for frame placement 3. Drill all holes with appropriate bits: - M12 holes: 12.5mm drill bit - Puck screws: Pilot bit matching screw size - Fender washers: Clearance holes</p>
+<p><strong>Phase 3: Assembly</strong> 1. Place plinth on rubber feet 2. Insert M12 rods through plinth holes 3. Install fender washers + nuts underneath (hand-tight) 4. Assemble corner brackets onto rods 5. Position Z-pucks: - If clamped: Slide onto rods, use double-nut anchor (see ADR-010) - If screwed: Position on MDF, use slotted holes for alignment 6. Home bed, align Z-pucks to lead screws 7. Tighten all connections fully: - M12 thru-bolts: 15-20 ft-lbs - Z-puck clamps: 2-3 Nm - Puck wood screws: Firm, don’t strip MDF</p>
+<p><strong>Phase 4: Validation</strong> 1. Verify frame is level on plinth 2. Check all M12 nuts are tight 3. Tap plinth - should sound “dead”, not ringing 4. Perform Z-tilt calibration 5. Print test tower, check for resonance</p>
+</section>
+<section id="drill-template-features" class="level3">
+<h3 class="anchored" data-anchor-id="drill-template-features">Drill Template Features</h3>
+<p>The build123d script generates a printable template: - <strong>Full-size paper template</strong>: Tape to MDF for drilling - <strong>Alignment marks</strong>: Ensures consistent positioning - <strong>Hole size labels</strong>: Confirms drill bit selection - <strong>Z-puck slot positions</strong>: Pre-marked for puck mounting</p>
+</section>
+<section id="counter-sinking-optional" class="level3">
+<h3 class="anchored" data-anchor-id="counter-sinking-optional">Counter-Sinking (Optional)</h3>
+<p>For flush underside: - Counter-sink M12 nuts 5mm into bottom board - Use template to mark positions before gluing - Result: Machine sits perfectly flat on workbench</p>
+</section>
+<section id="environmental-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="environmental-considerations">Environmental Considerations</h3>
+<ul>
+<li><strong>Humidity</strong>: MDF expands/contracts - use Hybrid Anchor with double-nuts</li>
+<li><strong>Moisture</strong>: Keep plinth dry, consider sealing edges with paint/varnish</li>
+<li><strong>Temperature</strong>: MDF is stable, but avoid extreme heat sources</li>
+</ul>
+</section>
+<section id="safety-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="safety-considerations">Safety Considerations</h3>
+<ul>
+<li><strong>Dust</strong>: MDF dust is harmful - use mask/ventilation when cutting/drilling</li>
+<li><strong>Weight</strong>: Get help moving 36mm plinth - it’s very heavy</li>
+<li><strong>Adhesive</strong>: Follow manufacturer safety instructions (PPE, ventilation)</li>
+<li><strong>Torque</strong>: Don’t over-tighten M12 nuts into MDF - may pull through</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>docs/reference/ai-conversations/baseboard.md</strong>: Complete technical discussion</li>
+<li><strong>docs/adr/010-floating-z-puck.md</strong>: Z-puck mounting on plinth</li>
+<li><strong>docs/adr/001-m12-skeleton.md</strong>: Frame architecture</li>
+<li>MANIFESTO.md: “The Bed is the Anchor; the Plinth is the Bedrock” pillar</li>
+<li>MANIFESTO.md: Tier 3 Reference Spec</li>
+</ul>
+</section>
+<section id="evolution-notes" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-notes">Evolution Notes</h2>
+<p>This ADR establishes the laminated plinth as the optimal foundation for Tier 3 builds. The plinth concept can be adapted for different applications (e.g., enclosed build chamber, heated build chamber) while maintaining CLD principles.</p>
+<p><strong>Related Standards</strong>: - CLD widely used in automotive, aerospace, and high-end audio - Green Glue Noiseproofing Compound: Commercial viscoelastic adhesive - Industrial machine tools often use similar laminated bases</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

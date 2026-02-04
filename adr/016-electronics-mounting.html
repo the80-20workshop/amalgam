@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>electronics-mounting – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-016-electronics-psu-mounting-strategy" id="toc-adr-016-electronics-psu-mounting-strategy" class="nav-link active" data-scroll-target="#adr-016-electronics-psu-mounting-strategy">ADR-016: Electronics &amp; PSU Mounting Strategy</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#mounting-options" id="toc-mounting-options" class="nav-link" data-scroll-target="#mounting-options">Mounting Options</a></li>
+  <li><a href="#vibration-physics-coupling-vs-isolation" id="toc-vibration-physics-coupling-vs-isolation" class="nav-link" data-scroll-target="#vibration-physics-coupling-vs-isolation">Vibration Physics: Coupling vs Isolation</a></li>
+  <li><a href="#electronics-placement-comparison" id="toc-electronics-placement-comparison" class="nav-link" data-scroll-target="#electronics-placement-comparison">Electronics Placement Comparison</a></li>
+  <li><a href="#psu-mounting-strategy" id="toc-psu-mounting-strategy" class="nav-link" data-scroll-target="#psu-mounting-strategy">PSU Mounting Strategy</a></li>
+  <li><a href="#wiring-loom-design" id="toc-wiring-loom-design" class="nav-link" data-scroll-target="#wiring-loom-design">Wiring Loom Design</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#what-this-replaces" id="toc-what-this-replaces" class="nav-link" data-scroll-target="#what-this-replaces">What This Replaces</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#tier-3-reference-direct-to-mdf-plinth" id="toc-tier-3-reference-direct-to-mdf-plinth" class="nav-link" data-scroll-target="#tier-3-reference-direct-to-mdf-plinth">Tier 3 Reference: Direct to MDF Plinth</a></li>
+  <li><a href="#tier-1-2-alternative-printed-brain-puck" id="toc-tier-1-2-alternative-printed-brain-puck" class="nav-link" data-scroll-target="#tier-1-2-alternative-printed-brain-puck">Tier 1-2 Alternative: Printed Brain Puck</a></li>
+  <li><a href="#tier-3-enhancement-hybrid-puck-to-mdf" id="toc-tier-3-enhancement-hybrid-puck-to-mdf" class="nav-link" data-scroll-target="#tier-3-enhancement-hybrid-puck-to-mdf">Tier 3 Enhancement: Hybrid (Puck to MDF)</a></li>
+  <li><a href="#universal-requirements-all-options" id="toc-universal-requirements-all-options" class="nav-link" data-scroll-target="#universal-requirements-all-options">Universal Requirements (All Options)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#direct-to-mdf-mounting-reference" id="toc-direct-to-mdf-mounting-reference" class="nav-link" data-scroll-target="#direct-to-mdf-mounting-reference">Direct to MDF Mounting (Reference)</a></li>
+  <li><a href="#printed-brain-puck-design" id="toc-printed-brain-puck-design" class="nav-link" data-scroll-target="#printed-brain-puck-design">Printed Brain Puck Design</a></li>
+  <li><a href="#wire-management" id="toc-wire-management" class="nav-link" data-scroll-target="#wire-management">Wire Management</a></li>
+  <li><a href="#thermal-management" id="toc-thermal-management" class="nav-link" data-scroll-target="#thermal-management">Thermal Management</a></li>
+  <li><a href="#safety-considerations" id="toc-safety-considerations" class="nav-link" data-scroll-target="#safety-considerations">Safety Considerations</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#evolution-notes" id="toc-evolution-notes" class="nav-link" data-scroll-target="#evolution-notes">Evolution Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-016-electronics-psu-mounting-strategy" class="level1">
+<h1>ADR-016: Electronics &amp; PSU Mounting Strategy</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam requires decisions on where to mount the mainboard, host (Pi/SKIPR), and power supply unit (PSU). The placement affects:</p>
+<p><strong>Vibration Physics</strong>: - Electronics and stepper drivers are sensitive to vibration - High-torque Wade extruder and 3xZ motors generate significant vibration - Direct coupling vs isolation affects reliability and signal integrity</p>
+<p><strong>Serviceability</strong>: - Mainboard maintenance access - PSU replacement - Wire management for repairs</p>
+<p><strong>Thermal Management</strong>: - TMC2209 drivers generate heat - MOSFETs for heated bed can run hot - Convection airflow vs active cooling</p>
+<p><strong>Weight Distribution</strong>: - PSU weight adds to machine mass - Location affects center of gravity - Affects portability</p>
+<p>With laminated plinth (ADR-011) and modular puck system (ADR-009), multiple mounting options exist.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>three-tier electronics mounting strategy</strong> with <strong>direct MDF coupling as Reference Spec</strong>.</p>
+<section id="mounting-options" class="level3">
+<h3 class="anchored" data-anchor-id="mounting-options">Mounting Options</h3>
+<p><strong>Option A: Direct to Laminated Plinth (Reference Spec)</strong> - <strong>Architecture</strong>: Mainboard and PSU bolted directly to laminated MDF plinth - <strong>Vibration Strategy</strong>: Direct coupling to vibration sink (MDF CLD kills frame vibration) - <strong>Weight</strong>: PSU adds to plinth mass (lowers center of gravity) - <strong>Thermal</strong>: Open bottom square, natural convection + optional quiet fan - <strong>Cost</strong>: $0 (uses MDF plinth from ADR-011) - <strong>Best For</strong>: Tier 3 Reference Spec builds</p>
+<p><strong>Option B: Printed “Brain Puck” Frame (Alternative)</strong> - <strong>Architecture</strong>: 3D-printed puck/frame holds mainboard and PSU - <strong>Vibration Strategy</strong>: Lightweight plastic, couples to workspace surface - <strong>Weight</strong>: Self-contained, portable - <strong>Thermal</strong>: Enclosed or honeycomb design, may require active cooling - <strong>Cost</strong>: Low (~$5-10 AUD in filament) - <strong>Best For</strong>: Tier 1-2 builds without plinth, portable maintenance</p>
+<p><strong>Option C: Hybrid - Printed Puck to MDF (Tier 3 Enhancement)</strong> - <strong>Architecture</strong>: Printed “Brain Puck” screwed into laminated MDF plinth - <strong>Vibration Strategy</strong>: MDF plinth provides damping, puck provides modularity - <strong>Weight</strong>: Puck + PSU contribute to plinth mass - <strong>Thermal</strong>: Open design with MDF backing for heat sink - <strong>Cost</strong>: Low (~$5-10 AUD in filament) - <strong>Best For</strong>: Tier 3 with modular electronics upgrades</p>
+</section>
+<section id="vibration-physics-coupling-vs-isolation" class="level3">
+<h3 class="anchored" data-anchor-id="vibration-physics-coupling-vs-isolation">Vibration Physics: Coupling vs Isolation</h3>
+<p><strong>Direct Coupling to MDF (Reference)</strong>: - Frame bolted directly to plinth (no rubber between) - MDF acts as massive vibration sink - Constrained Layer Damping (ADR-011) converts vibration to heat - Electronics experience minimal transmitted vibration - <strong>Recommendation</strong>: Direct coupling preferred for “Tractor” reliability</p>
+<p><strong>Bolting Through Rubber (Isolation)</strong>: - Rubber pads between frame and MDF, bolts through to plinth - Creates tuned mass damper - Can reduce high-frequency transmission - <strong>Trade-off</strong>: Reduces coupling, may allow slight frame movement - <strong>Recommendation</strong>: Use rubber pads <strong>under plinth</strong>, not between frame and plinth</p>
+<p><strong>Isolation Under Plinth</strong>: - 4x rubber feet under MDF plinth corners - Isolates entire 20kg+ machine from desk - Prevents desk from becoming sounding board - <strong>Recommendation</strong>: Mandatory for all tiers with plinth</p>
+</section>
+<section id="electronics-placement-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="electronics-placement-comparison">Electronics Placement Comparison</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 37%">
+<col style="width: 49%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Direct to MDF (Reference)</th>
+<th>Printed Brain Puck (Alternative)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Vibration Damping</strong></td>
+<td><strong>Superior</strong> (MDF mass)</td>
+<td>Poor (light plastic)</td>
+</tr>
+<tr class="even">
+<td><strong>Maintenance</strong></td>
+<td>Permanent (harder to remove)</td>
+<td><strong>Excellent</strong> (modular)</td>
+</tr>
+<tr class="odd">
+<td><strong>Cost</strong></td>
+<td>Minimal (screws)</td>
+<td>Low (filament)</td>
+</tr>
+<tr class="even">
+<td><strong>Airflow</strong></td>
+<td>Open, natural convection</td>
+<td>Restricted if enclosed</td>
+</tr>
+<tr class="odd">
+<td><strong>Portability</strong></td>
+<td>Low (part of plinth)</td>
+<td><strong>High</strong> (standalone)</td>
+</tr>
+<tr class="even">
+<td><strong>Serviceability</strong></td>
+<td>Moderate</td>
+<td><strong>Excellent</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="psu-mounting-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="psu-mounting-strategy">PSU Mounting Strategy</h3>
+<p><strong>Positioning</strong>: - <strong>Bottom Rear Corner</strong>: Standard placement, balances weight distribution - <strong>Bottom Front Corner</strong>: Easier access, but may affect Z-homing - <strong>On MDF Plinth</strong>: Recommended (adds mass, stable) - <strong>In Brain Puck</strong>: Only for puck-frame builds</p>
+<p><strong>Wiring Considerations</strong>: - <strong>High-Current Wires</strong> (heated bed): Use thick gauge (14-16 AWG) to prevent voltage drop - <strong>Low-Current Wires</strong> (signal): Keep away from high-voltage wiring to prevent EMI - <strong>Cable Chains</strong>: Required for X/Y axis loom to prevent snagging on moving bed - <strong>Wire Length</strong>: Keep as short as possible within safety margins</p>
+<p><strong>Thermal Management</strong>: - <strong>PSU Ventilation</strong>: Ensure airflow, don’t enclose - <strong>TMC Drivers</strong>: Can overheat at high currents, add slow quiet fan if needed - <strong>MOSFETs</strong>: May need heatsinks or active cooling for high-current beds</p>
+</section>
+<section id="wiring-loom-design" class="level3">
+<h3 class="anchored" data-anchor-id="wiring-loom-design">Wiring Loom Design</h3>
+<p><strong>Voltage Drop Mitigation</strong>: - Heated bed draws highest current (10-15A) - Use 14 AWG or 16 AWG wire for bed power - Keep bed power wires short and direct - Monitor for overheating wires (should not feel hot)</p>
+<p><strong>EMI Protection</strong>: - Keep endstop and probe wires away from motor/bed power wires - Use twisted pairs for signal wires - Shield long signal cables - Separate high-current and low-current wiring in cable chains</p>
+<p><strong>Cable Chain Routing</strong>: - X/Y axis loom from mainboard to gantry - Separate: motors (power), endstops (signal), probe (signal) - Use cable chain or umbilical (bundle held by filament) - Prevent snagging on moving bed components</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Tiered Flexibility</strong>: Direct MDF (Reference), Printed Puck (Alternative), Hybrid (Best of both)</li>
+<li><strong>Vibration Optimization</strong>: Direct coupling to CLD plinth provides industrial-grade damping</li>
+<li><strong>Modularity</strong>: Printed puck enables easy mainboard upgrades without unbolting frame</li>
+<li><strong>Serviceability</strong>: Multiple options from permanent (Reference) to modular (Puck)</li>
+<li><strong>Thermal Management</strong>: Open designs provide natural convection, fan options available</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Direct to MDF</strong>: Permanent, harder to remove for mainboard replacement</li>
+<li><strong>Printed Puck</strong>: Poor vibration damping (lightweight plastic)</li>
+<li><strong>Hybrid</strong>: Adds filament cost, but provides modularity + damping</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Tier 3 Reference</strong>: Direct MDF mounting for maximum damping</li>
+<li><strong>Tier 1-2 Alternative</strong>: Printed puck builds without plinth</li>
+<li><strong>All Tiers</strong>: Proper wire management (voltage drop, EMI protection)</li>
+<li><strong>Future Upgrades</strong>: Modular puck allows mainboard swaps</li>
+</ul>
+</section>
+<section id="what-this-replaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-replaces">What This Replaces</h3>
+<ul>
+<li>Mainboard mounting to M12 frame (transmits vibration)</li>
+<li>PSU mounting to moving gantry (adds mass to moving parts)</li>
+<li>Uncontrolled wire runs (voltage drop, EMI issues)</li>
+<li>Enclosed electronics boxes (poor thermal management)</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="tier-3-reference-direct-to-mdf-plinth" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-reference-direct-to-mdf-plinth">Tier 3 Reference: Direct to MDF Plinth</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>MDF plinth (already in ADR-011)</li>
+<li>4x Rubber feet for plinth (vibration isolation)</li>
+<li>Mounting screws for mainboard and PSU</li>
+<li>Optional: Slow quiet 120mm fan for electronics cooling</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low (~$10-15 AUD for feet + screws)</li>
+<li><strong>Vibration Damping</strong>: Superior (MDF mass)</li>
+<li><strong>Maintenance</strong>: Moderate (permanently mounted)</li>
+<li><strong>Thermal Management</strong>: Open, natural convection</li>
+</ul>
+</section>
+<section id="tier-1-2-alternative-printed-brain-puck" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-2-alternative-printed-brain-puck">Tier 1-2 Alternative: Printed Brain Puck</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3D-printed “Brain Puck” frame/enclosure</li>
+<li>Mounting hardware (standoffs, screws)</li>
+<li>Optional: 4x Rubber feet for puck</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low (~$5-10 AUD in filament)</li>
+<li><strong>Vibration Damping</strong>: Poor (lightweight plastic)</li>
+<li><strong>Maintenance</strong>: Excellent (modular, portable)</li>
+<li><strong>Thermal Management</strong>: May require active cooling fan</li>
+</ul>
+</section>
+<section id="tier-3-enhancement-hybrid-puck-to-mdf" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-enhancement-hybrid-puck-to-mdf">Tier 3 Enhancement: Hybrid (Puck to MDF)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3D-printed “Brain Puck” with mounting holes</li>
+<li>Wood screws to secure puck to MDF</li>
+<li>MDF plinth (already in ADR-011)</li>
+<li>4x Rubber feet for plinth</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low (~$5-10 AUD in filament)</li>
+<li><strong>Vibration Damping</strong>: Superior (MDF mass)</li>
+<li><strong>Maintenance</strong>: Excellent (puck can be unscrewed for upgrades)</li>
+<li><strong>Thermal Management</strong>: Open with MDF backing (heat sink)</li>
+</ul>
+</section>
+<section id="universal-requirements-all-options" class="level3">
+<h3 class="anchored" data-anchor-id="universal-requirements-all-options">Universal Requirements (All Options)</h3>
+<ul>
+<li><strong>PSU</strong>: 12V or 24V (sufficient current: 20A for 12V, 12A for 24V)</li>
+<li><strong>Wiring</strong>:
+<ul>
+<li>14-16 AWG for heated bed</li>
+<li>18-20 AWG for hotend/fans</li>
+<li>22-24 AWG for signals</li>
+<li>Shielded cables for long signal runs</li>
+</ul></li>
+<li><strong>Cable Management</strong>: Cable chains or umbilicals for X/Y loom</li>
+<li><strong>EMI Protection</strong>: Separate high-current and low-current wiring</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="direct-to-mdf-mounting-reference" class="level3">
+<h3 class="anchored" data-anchor-id="direct-to-mdf-mounting-reference">Direct to MDF Mounting (Reference)</h3>
+<p><strong>Mainboard Mounting</strong>: - Use M3 or M4 standoffs (height ~10mm) - Secure to MDF with wood screws - Ensure flat mounting surface (no warping) - Leave clearance for connectors on all sides</p>
+<p><strong>PSU Mounting</strong>: - Bottom rear corner of plinth - Use 4x M4 or M5 bolts through PSU mounting holes - Secure to MDF with large fender washers - Ensure ventilation holes are not blocked - Leave space for wiring access</p>
+<p><strong>Wiring Layout</strong>:</p>
+<pre><code>Bottom Square Layout:
+┌─────────────────────────────────────┐
+│          [MDF Plinth]             │
+│  ┌─────┐    ┌──────────────┐    │
+│  │PSU  │    │  Mainboard    │    │
+│  └─────┘    │  (SKIPR/Manta)│    │
+│              └──────────────┘    │
+│         [Cable Chain to Gantry]    │
+└─────────────────────────────────────┘</code></pre>
+</section>
+<section id="printed-brain-puck-design" class="level3">
+<h3 class="anchored" data-anchor-id="printed-brain-puck-design">Printed Brain Puck Design</h3>
+<p><strong>Puck Frame Specifications</strong>: - Fits within bottom M12 square - Holds mainboard + PSU (if compact) - Honeycomb or perforated sides for airflow - Mounting holes for MDF attachment (if hybrid) - Cable management loops for wire routing</p>
+<p><strong>Mounting to Puck</strong>: - Mainboard on standoffs (10mm height) - PSU either on puck or next to puck - Leave access for connectors and fan mounting - Wire management channels to prevent tangling</p>
+<p><strong>Hybrid Puck to MDF</strong>: - Puck screwed into MDF with 4x wood screws - Puck provides modularity, MDF provides damping - Remove puck for mainboard upgrades without unbolting frame</p>
+</section>
+<section id="wire-management" class="level3">
+<h3 class="anchored" data-anchor-id="wire-management">Wire Management</h3>
+<p><strong>Voltage Drop Calculation</strong>:</p>
+<pre><code>V_drop = I × R × L
+I = Current (heated bed ~12A)
+R = Resistance per meter (14 AWG: 0.0083 Ω/m)
+L = Length in meters (keep &lt;2m if possible)
+
+Example: 12A × 0.0083 × 1.5m = 0.15V drop (acceptable)</code></pre>
+<p><strong>EMI Protection</strong>: - Separate power and signal wires by at least 20mm - Use twisted pairs for signal wires - Shield long signal cables (connect shield to ground at one end) - Keep motor wires away from endstop/probe wires</p>
+<p><strong>Cable Chain Routing</strong>: - Bundle X/Y axis wires (motors + endstops + probe) - Use cable chain from mainboard to X/Y gantry - Prevent snagging on moving bed or Z-rods - Leave slack for full travel range</p>
+</section>
+<section id="thermal-management" class="level3">
+<h3 class="anchored" data-anchor-id="thermal-management">Thermal Management</h3>
+<p><strong>TMC Driver Cooling</strong>: - Check driver temperature with Klipper: <code>DUMP_TMC STEPPER=stepper_x</code> - Add slow quiet 120mm fan if drivers &gt; 60°C - Point airflow across heatsinks, not directly at components</p>
+<p><strong>PSU Ventilation</strong>: - Ensure ventilation holes are not obstructed - Keep at least 10mm clearance around PSU - If enclosed, add exhaust fan for hot air removal</p>
+<p><strong>MOSFET Cooling</strong>: - Check heated bed MOSFET temperature during heating cycle - Add small heatsink or directed airflow if &gt; 60°C</p>
+</section>
+<section id="safety-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="safety-considerations">Safety Considerations</h3>
+<ul>
+<li><strong>PSU Mounting</strong>: Secure with proper bolts, don’t rely on gravity</li>
+<li><strong>Wire Gauge</strong>: Use appropriate gauge for current (voltage drop = fire risk)</li>
+<li><strong>Ventilation</strong>: Don’t enclose PSU without exhaust fan (overheating = fire risk)</li>
+<li><strong>Water Protection</strong>: If using laminated plinth, seal MDF edges to prevent moisture absorption</li>
+<li><strong>Strain Relief</strong>: Use cable glands or zip ties to prevent wire fatigue</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>docs/reference/ai-conversations/electronics-mounting.md</strong>: Complete mounting discussion</li>
+<li><strong>docs/adr/011-laminated-plinth.md</strong>: Laminated plinth baseboard foundation</li>
+<li><strong>docs/adr/009-puck-system.md</strong>: Modular puck mounting system</li>
+<li><strong>docs/adr/012-mainboard-host-architecture.md</strong>: Mainboard selection</li>
+<li>Klipper Wiring Guide: <a href="https://www.klipper3d.org/Installation.html#check-and-connect-all-wiring">Wiring</a></li>
+<li>AWG Wire Gauge Chart: <a href="https://www.calculator.net/voltage-drop-calculator.html">Wire Size Calculator</a></li>
+</ul>
+</section>
+<section id="evolution-notes" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-notes">Evolution Notes</h2>
+<p>This ADR establishes direct MDF coupling as Reference Spec with printed puck as alternative. The decision framework prioritizes: - Vibration damping (MDF mass over portability) - Serviceability (modular pucks for easy upgrades) - Thermal management (open designs, natural convection) - Wire management (voltage drop, EMI protection)</p>
+<p>Future mounting systems will be evaluated against: vibration damping performance, serviceability, thermal efficiency, and modularity for mainboard upgrades.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

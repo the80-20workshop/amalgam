@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>heated-bed-size – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-024-heated-bed-size-selection" id="toc-adr-024-heated-bed-size-selection" class="nav-link active" data-scroll-target="#adr-024-heated-bed-size-selection">ADR-024: Heated Bed Size Selection</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#previous-specification" id="toc-previous-specification" class="nav-link" data-scroll-target="#previous-specification">Previous Specification</a></li>
+  <li><a href="#the-dual-donor-reality" id="toc-the-dual-donor-reality" class="nav-link" data-scroll-target="#the-dual-donor-reality">The Dual-Donor Reality</a></li>
+  <li><a href="#donor-printer-bed-survey" id="toc-donor-printer-bed-survey" class="nav-link" data-scroll-target="#donor-printer-bed-survey">Donor Printer Bed Survey</a></li>
+  <li><a href="#key-insight-235235mm-is-an-ender-size" id="toc-key-insight-235235mm-is-an-ender-size" class="nav-link" data-scroll-target="#key-insight-235235mm-is-an-ender-size">Key Insight: 235×235mm is an “Ender Size”</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#why-220220mm" id="toc-why-220220mm" class="nav-link" data-scroll-target="#why-220220mm">Why 220×220mm?</a></li>
+  <li><a href="#why-not-other-sizes" id="toc-why-not-other-sizes" class="nav-link" data-scroll-target="#why-not-other-sizes">Why NOT Other Sizes?</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#parametric-support" id="toc-parametric-support" class="nav-link" data-scroll-target="#parametric-support">Parametric Support</a></li>
+  </ul></li>
+  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
+  <ul class="collapse">
+  <li><a href="#reference-build-two-anet-a8-donors" id="toc-reference-build-two-anet-a8-donors" class="nav-link" data-scroll-target="#reference-build-two-anet-a8-donors">Reference Build: Two Anet A8 Donors</a></li>
+  <li><a href="#mixed-donor-build-prusa-clone-ender-3" id="toc-mixed-donor-build-prusa-clone-ender-3" class="nav-link" data-scroll-target="#mixed-donor-build-prusa-clone-ender-3">Mixed Donor Build (Prusa Clone + Ender 3)</a></li>
+  </ul></li>
+  <li><a href="#frame-sizing-update" id="toc-frame-sizing-update" class="nav-link" data-scroll-target="#frame-sizing-update">Frame Sizing Update</a></li>
+  <li><a href="#rod-span-analysis" id="toc-rod-span-analysis" class="nav-link" data-scroll-target="#rod-span-analysis">Rod Span Analysis</a>
+  <ul class="collapse">
+  <li><a href="#x-axis-critical-for-dual-8" id="toc-x-axis-critical-for-dual-8" class="nav-link" data-scroll-target="#x-axis-critical-for-dual-8">X-Axis (Critical for Dual-8)</a></li>
+  <li><a href="#y-axis" id="toc-y-axis" class="nav-link" data-scroll-target="#y-axis">Y-Axis</a></li>
+  </ul></li>
+  <li><a href="#supported-bed-sizes-summary" id="toc-supported-bed-sizes-summary" class="nav-link" data-scroll-target="#supported-bed-sizes-summary">Supported Bed Sizes Summary</a></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#config.py-update" id="toc-config.py-update" class="nav-link" data-scroll-target="#config.py-update">Config.py Update</a></li>
+  <li><a href="#heated-bed-compatibility" id="toc-heated-bed-compatibility" class="nav-link" data-scroll-target="#heated-bed-compatibility">Heated Bed Compatibility</a></li>
+  <li><a href="#z-height-consideration" id="toc-z-height-consideration" class="nav-link" data-scroll-target="#z-height-consideration">Z-Height Consideration</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-024-heated-bed-size-selection" class="level1">
+<h1>ADR-024: Heated Bed Size Selection</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Amalgam’s scavenger philosophy requires that the heated bed come from donor printers. The dual-rod motion system (ADR-021) provides flexibility in build volume, but the bed size should align with what’s actually scavengeable.</p>
+<section id="previous-specification" class="level3">
+<h3 class="anchored" data-anchor-id="previous-specification">Previous Specification</h3>
+<p>The original config specified 250×250×250mm build volume, which is <strong>larger than any standard donor bed</strong>. This was aspirational rather than practical for scavenger builds.</p>
+</section>
+<section id="the-dual-donor-reality" class="level3">
+<h3 class="anchored" data-anchor-id="the-dual-donor-reality">The Dual-Donor Reality</h3>
+<p>ADR-021 (Dual-Rod Motion) and ADR-005 (Triple-Z) establish that Amalgam requires <strong>two donor printers</strong> for a practical scavenger build: - 6-7 NEMA17 motors needed (most donors have 4-5) - 8 smooth rods needed for Dual-8 configuration - Single donor cannot provide enough parts</p>
+<p>Given two donors, the scavenger approach is: <strong>use the smaller of the two beds</strong>.</p>
+</section>
+<section id="donor-printer-bed-survey" class="level3">
+<h3 class="anchored" data-anchor-id="donor-printer-bed-survey">Donor Printer Bed Survey</h3>
+<section id="donors-with-8mm-smooth-rods" class="level4">
+<h4 class="anchored" data-anchor-id="donors-with-8mm-smooth-rods">Donors WITH 8mm Smooth Rods</h4>
+<p>These donors provide both beds AND rods for the Dual-8 build:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Donor Printer</th>
+<th>Bed Size</th>
+<th>Smooth Rods</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prusa i3 clones</td>
+<td>200×200mm</td>
+<td>6× 8mm</td>
+<td>Original RepRap lineage</td>
+</tr>
+<tr class="even">
+<td>Anet A8</td>
+<td>220×220mm</td>
+<td>6× 8mm</td>
+<td>Massively popular, cheap</td>
+</tr>
+<tr class="odd">
+<td>Anet A6</td>
+<td>220×220mm</td>
+<td>6× 8mm</td>
+<td>Similar to A8</td>
+</tr>
+<tr class="even">
+<td>Prusa MK2</td>
+<td>250×210mm</td>
+<td>6× 8mm</td>
+<td>Rectangular bed</td>
+</tr>
+<tr class="odd">
+<td>Prusa MK3/MK3S+</td>
+<td>250×210mm</td>
+<td>6× 8mm + 3× LM8LUU</td>
+<td>Premium donor</td>
+</tr>
+<tr class="even">
+<td>Tronxy X3</td>
+<td>220×220mm</td>
+<td>6× 8mm</td>
+<td>Budget option</td>
+</tr>
+<tr class="odd">
+<td>Geeetech i3</td>
+<td>200×200mm</td>
+<td>6× 8mm</td>
+<td>Prusa clone</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="donors-without-smooth-rods-v-slot-rollers" class="level4">
+<h4 class="anchored" data-anchor-id="donors-without-smooth-rods-v-slot-rollers">Donors WITHOUT Smooth Rods (V-Slot Rollers)</h4>
+<p>These donors provide beds, motors, and electronics but <strong>no smooth rods</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Donor Printer</th>
+<th>Bed Size</th>
+<th>Motion System</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ender 3 / 3 Pro / 3 V2</td>
+<td>235×235mm</td>
+<td>V-slot rollers</td>
+<td>Very common</td>
+</tr>
+<tr class="even">
+<td>Ender 5</td>
+<td>235×235mm</td>
+<td>V-slot rollers</td>
+<td>Cube frame</td>
+</tr>
+<tr class="odd">
+<td>CR-10</td>
+<td>300×300mm</td>
+<td>V-slot rollers</td>
+<td>Large format</td>
+</tr>
+<tr class="even">
+<td>Voxelab Aquila</td>
+<td>235×235mm</td>
+<td>V-slot rollers</td>
+<td>Ender clone</td>
+</tr>
+<tr class="odd">
+<td>Artillery Sidewinder</td>
+<td>300×300mm</td>
+<td>V-slot rollers</td>
+<td>Large format</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="compact-printers" class="level4">
+<h4 class="anchored" data-anchor-id="compact-printers">Compact Printers</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Donor Printer</th>
+<th>Bed Size</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prusa Mini</td>
+<td>180×180mm</td>
+<td>Small bed, cantilever design</td>
+</tr>
+<tr class="even">
+<td>Ender 2</td>
+<td>150×150mm</td>
+<td>Very small</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="key-insight-235235mm-is-an-ender-size" class="level3">
+<h3 class="anchored" data-anchor-id="key-insight-235235mm-is-an-ender-size">Key Insight: 235×235mm is an “Ender Size”</h3>
+<p>The 235×235mm bed is primarily associated with Creality Ender 3 series printers. However, <strong>Ender 3 uses V-slot rollers, not smooth rods</strong>.</p>
+<p>To use a 235×235mm bed in a Dual-8 Amalgam: - One donor must be Ender 3 (provides bed, motors, board) - Other donor must be rod-bearing (provides rods, bearings) - This is a valid but <strong>mixed-donor</strong> configuration</p>
+<p>For a <strong>pure rod-donor build</strong> (2× Prusa clones or 2× Anet A8), the 235×235mm bed is not available from scavenging.</p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt <strong>220×220mm</strong> as the reference specification heated bed size.</p>
+<section id="why-220220mm" class="level3">
+<h3 class="anchored" data-anchor-id="why-220220mm">Why 220×220mm?</h3>
+<section id="most-common-rod-donor-bed-size" class="level4">
+<h4 class="anchored" data-anchor-id="most-common-rod-donor-bed-size">1. Most Common Rod-Donor Bed Size</h4>
+<p>The Anet A8 was one of the most popular budget 3D printers ever sold, with millions of units. Its 220×220mm bed is: - Widely available on the secondhand market - Common in “broken printer” lots - Standard replacement part (cheap if needed)</p>
+</section>
+<section id="aligns-with-dual-8-motion-capability" class="level4">
+<h4 class="anchored" data-anchor-id="aligns-with-dual-8-motion-capability">2. Aligns with Dual-8 Motion Capability</h4>
+<p>For 220×220mm build volume with Dual-8 rods:</p>
+<pre><code>X-rod span = BUILD_X + CARRIAGE_OVERHANG + CLEARANCE
+          = 220 + 80 + 30 = 330mm
+
+Deflection analysis (from ADR-021):
+- Dual 8mm at 330mm span, 280g toolhead: 0.026mm (GOOD)
+- Well within acceptable tolerance</code></pre>
+<p>220mm build volume is comfortably within Dual-8 capability without pushing limits.</p>
+</section>
+<section id="practical-build-volume" class="level4">
+<h4 class="anchored" data-anchor-id="practical-build-volume">3. Practical Build Volume</h4>
+<p>220×220mm (48,400 mm²) provides: - 21% more area than 200×200mm (40,000 mm²) - Handles most practical prints (phone cases, enclosures, brackets) - Large enough for meaningful projects - Not so large that print times become excessive</p>
+</section>
+<section id="clean-number" class="level4">
+<h4 class="anchored" data-anchor-id="clean-number">4. Clean Number</h4>
+<p>220mm is easier to remember and communicate than 235mm. It’s also a metric-friendly dimension.</p>
+</section>
+<section id="not-ender-dependent" class="level4">
+<h4 class="anchored" data-anchor-id="not-ender-dependent">5. Not Ender-Dependent</h4>
+<p>Choosing 220×220mm means the reference build doesn’t require an Ender 3 donor (which provides no rods). Two Anet A8 donors give you everything needed.</p>
+</section>
+</section>
+<section id="why-not-other-sizes" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-other-sizes">Why NOT Other Sizes?</h3>
+<section id="mm-prusa-clone-size" class="level4">
+<h4 class="anchored" data-anchor-id="mm-prusa-clone-size">200×200mm (Prusa Clone Size)</h4>
+<p><strong>Pros:</strong> - Smallest common size = maximum scavengeability - Original RepRap heritage - Most conservative choice</p>
+<p><strong>Cons:</strong> - 17% less build area than 220mm - Anet A8 beds are equally common and larger - Leaves capability on the table</p>
+<p><strong>Verdict:</strong> Supported as minimum, but not reference.</p>
+</section>
+<section id="mm-ender-3-size" class="level4">
+<h4 class="anchored" data-anchor-id="mm-ender-3-size">235×235mm (Ender 3 Size)</h4>
+<p><strong>Pros:</strong> - Very common bed size - Slightly larger build volume</p>
+<p><strong>Cons:</strong> - Primarily from V-slot printers (no rods) - Forces mixed-donor builds - Awkward number (not metric-round) - Only 7% more area than 220mm</p>
+<p><strong>Verdict:</strong> Supported if Ender donor available, but not reference.</p>
+</section>
+<section id="mm-prusa-mk2mk3-size" class="level4">
+<h4 class="anchored" data-anchor-id="mm-prusa-mk2mk3-size">250×210mm (Prusa MK2/MK3 Size)</h4>
+<p><strong>Pros:</strong> - Premium donor quality - Rectangular allows longer prints in X</p>
+<p><strong>Cons:</strong> - Prusa MK2/MK3 are less common as scrap - Rectangular complicates some designs - Overkill for typical prints</p>
+<p><strong>Verdict:</strong> Supported for those with MK2/MK3 donors.</p>
+</section>
+<section id="mm-original-spec" class="level4">
+<h4 class="anchored" data-anchor-id="mm-original-spec">250×250mm (Original Spec)</h4>
+<p><strong>Cons:</strong> - No standard donor provides this size - Would require purchasing a bed - Contradicts scavenger philosophy</p>
+<p><strong>Verdict:</strong> Removed from reference spec.</p>
+</section>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>True scavengeability</strong>: 220×220mm beds available from Anet A8 donors</li>
+<li><strong>Aligned with Dual-8</strong>: Well within rod capability at 330mm span</li>
+<li><strong>Practical volume</strong>: Large enough for real projects</li>
+<li><strong>No mixed donors required</strong>: Two rod-bearing donors provide everything</li>
+<li><strong>Common replacement</strong>: If bed damaged, 220×220mm beds are $15-25 AUD</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>Smaller than Ender 3</strong>: 220mm vs 235mm (15mm difference)</li>
+<li><strong>Not maximum possible</strong>: Could go larger with purchased bed</li>
+<li><strong>May have leftover bed</strong>: If one donor has 250×210mm Prusa bed</li>
+</ol>
+</section>
+<section id="parametric-support" class="level3">
+<h3 class="anchored" data-anchor-id="parametric-support">Parametric Support</h3>
+<p>The build system supports multiple bed sizes via config.py:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference specification</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>BUILD_VOLUME <span class="op">=</span> {<span class="st">"X"</span>: <span class="dv">220</span>, <span class="st">"Y"</span>: <span class="dv">220</span>, <span class="st">"Z"</span>: <span class="dv">220</span>}</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatives (parametric CAD handles all)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BUILD_VOLUME = {"X": 200, "Y": 200, "Z": 200}  # Prusa clone minimum</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># BUILD_VOLUME = {"X": 235, "Y": 235, "Z": 235}  # Ender 3 size</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># BUILD_VOLUME = {"X": 250, "Y": 210, "Z": 210}  # Prusa MK3 rectangular</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="bom-implications" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
+<section id="reference-build-two-anet-a8-donors" class="level3">
+<h3 class="anchored" data-anchor-id="reference-build-two-anet-a8-donors">Reference Build: Two Anet A8 Donors</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Source</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Heated bed</td>
+<td>Donor (smaller of two)</td>
+<td>220×220mm</td>
+</tr>
+<tr class="even">
+<td>Bed heater</td>
+<td>Donor</td>
+<td>12V or 24V (rewire if needed)</td>
+</tr>
+<tr class="odd">
+<td>Build surface</td>
+<td>Donor or purchase</td>
+<td>PEI/glass/BuildTak</td>
+</tr>
+<tr class="even">
+<td>Thermistor</td>
+<td>Donor</td>
+<td>100K NTC</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cost if bed damaged:</strong> ~$15-25 AUD for replacement 220×220mm MK3 aluminum bed</p>
+</section>
+<section id="mixed-donor-build-prusa-clone-ender-3" class="level3">
+<h3 class="anchored" data-anchor-id="mixed-donor-build-prusa-clone-ender-3">Mixed Donor Build (Prusa Clone + Ender 3)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Source</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Heated bed</td>
+<td>Ender 3 donor</td>
+<td>235×235mm</td>
+</tr>
+<tr class="even">
+<td>Smooth rods</td>
+<td>Prusa clone donor</td>
+<td>8mm</td>
+</tr>
+<tr class="odd">
+<td>Build volume</td>
+<td>Limited by config</td>
+<td>Up to 235×235mm</td>
+</tr>
+</tbody>
+</table>
+<p>This configuration is supported but requires updating config.py to match the larger bed.</p>
+</section>
+</section>
+<section id="frame-sizing-update" class="level2">
+<h2 class="anchored" data-anchor-id="frame-sizing-update">Frame Sizing Update</h2>
+<p>With 220×220mm build volume, frame dimensions (from ADR-001 formula):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X_OVERHANG <span class="op">=</span> <span class="fl">35.0</span>  <span class="co"># Pitan extruder</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SKELETON_X <span class="op">=</span> BUILD_X <span class="op">+</span> (X_OVERHANG <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">40</span> <span class="op">=</span> <span class="dv">220</span> <span class="op">+</span> <span class="dv">70</span> <span class="op">+</span> <span class="dv">40</span> <span class="op">=</span> <span class="dv">330</span><span class="er">mm</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>SKELETON_Y <span class="op">=</span> BUILD_Y <span class="op">+</span> <span class="dv">120</span> <span class="op">=</span> <span class="dv">220</span> <span class="op">+</span> <span class="dv">120</span> <span class="op">=</span> <span class="dv">340</span><span class="er">mm</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>SKELETON_Z <span class="op">=</span> BUILD_Z <span class="op">+</span> <span class="dv">50</span> <span class="op">=</span> <span class="dv">220</span> <span class="op">+</span> <span class="dv">50</span> <span class="op">=</span> <span class="dv">270</span><span class="er">mm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is a more compact frame than the previous 250mm specification, reducing: - M10 threaded rod usage - Total frame weight - Material cost</p>
+</section>
+<section id="rod-span-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="rod-span-analysis">Rod Span Analysis</h2>
+<section id="x-axis-critical-for-dual-8" class="level3">
+<h3 class="anchored" data-anchor-id="x-axis-critical-for-dual-8">X-Axis (Critical for Dual-8)</h3>
+<pre><code>X-rod length ≈ BUILD_X + 2×CARRIAGE_OVERHANG + CLEARANCE
+            = 220 + 80 + 30 = 330mm
+
+Deflection at 330mm span, dual 8mm, 280g toolhead:
+δ = 0.026mm (GOOD - well under 0.035mm threshold)</code></pre>
+</section>
+<section id="y-axis" class="level3">
+<h3 class="anchored" data-anchor-id="y-axis">Y-Axis</h3>
+<pre><code>Y-rod length ≈ BUILD_Y + GANTRY_DEPTH + CLEARANCE
+            = 220 + 80 + 30 = 330mm
+
+Load: X-gantry assembly (~1.5kg distributed across 4 rods per side)
+Verdict: Well within capacity</code></pre>
+</section>
+</section>
+<section id="supported-bed-sizes-summary" class="level2">
+<h2 class="anchored" data-anchor-id="supported-bed-sizes-summary">Supported Bed Sizes Summary</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Size</th>
+<th>Status</th>
+<th>Donor Source</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>200×200mm</td>
+<td>Supported</td>
+<td>Prusa i3 clones</td>
+<td>Minimum size</td>
+</tr>
+<tr class="even">
+<td><strong>220×220mm</strong></td>
+<td><strong>Reference</strong></td>
+<td><strong>Anet A8</strong></td>
+<td><strong>Recommended</strong></td>
+</tr>
+<tr class="odd">
+<td>235×235mm</td>
+<td>Supported</td>
+<td>Ender 3 (no rods)</td>
+<td>Mixed donor build</td>
+</tr>
+<tr class="even">
+<td>250×210mm</td>
+<td>Supported</td>
+<td>Prusa MK2/MK3</td>
+<td>Rectangular</td>
+</tr>
+<tr class="odd">
+<td>180×180mm</td>
+<td>Supported</td>
+<td>Prusa Mini</td>
+<td>Compact build</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="config.py-update" class="level3">
+<h3 class="anchored" data-anchor-id="config.py-update">Config.py Update</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference specification (updated from 250×250×250)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>BUILD_VOLUME <span class="op">=</span> {<span class="st">"X"</span>: <span class="dv">220</span>, <span class="st">"Y"</span>: <span class="dv">220</span>, <span class="st">"Z"</span>: <span class="dv">220</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="heated-bed-compatibility" class="level3">
+<h3 class="anchored" data-anchor-id="heated-bed-compatibility">Heated Bed Compatibility</h3>
+<p>Most 220×220mm beds use: - <strong>Mounting</strong>: 3-point or 4-point M3 screws, ~209mm spacing - <strong>Power</strong>: 12V (~120W) or 24V (~200W) - <strong>Thermistor</strong>: 100K NTC (standard) - <strong>Connector</strong>: 2-pin or screw terminal</p>
+<p>The Spider Bed support (ADR-008) accommodates standard mounting patterns.</p>
+</section>
+<section id="z-height-consideration" class="level3">
+<h3 class="anchored" data-anchor-id="z-height-consideration">Z-Height Consideration</h3>
+<p>With 220mm XY build volume, Z-height options: - <strong>220mm</strong> (cube): Balanced, reference spec - <strong>250mm</strong>: Taller prints, uses full Z travel - <strong>200mm</strong>: Shorter frame, faster builds</p>
+<p>Reference spec uses 220×220×220mm (cube) for simplicity.</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-021: Dual-Rod Motion System (rod span capability)</li>
+<li>ADR-008: Spider Bed Support System</li>
+<li>ADR-005: Triple-Z Independent Kinematic Leveling</li>
+<li><a href="https://3dprint.wiki/reprap/anet/a8">Anet A8 Specifications</a></li>
+<li><a href="https://www.creality3dofficial.com">Ender 3 Bed Size</a></li>
+<li><a href="https://www.prusa3d.com">Prusa MK3S+ Specifications</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tractor_00_decision_guide – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_00_decision_guide.html">Amalgam: Tier 0 Decision Guide</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deep Dives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_00_decision_guide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Amalgam: Tier 0 Decision Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_01_frame_and_assembly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Frame Design &amp; Assembly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_02_xy_axis_system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: X-Y Axis System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_03_motor_mounts_vibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Motor Mounts &amp; Vibration Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_04_xgantry_design_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: X-Gantry Design Decision</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_05_psu_configurations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Power Supply Configurations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_06_extruder_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Extruder Selection &amp; Decision Record</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#amalgam-tier-0-decision-guide" id="toc-amalgam-tier-0-decision-guide" class="nav-link active" data-scroll-target="#amalgam-tier-0-decision-guide">Amalgam: Tier 0 Decision Guide</a>
+  <ul class="collapse">
+  <li><a href="#before-you-start-an-honest-conversation" id="toc-before-you-start-an-honest-conversation" class="nav-link" data-scroll-target="#before-you-start-an-honest-conversation">Before You Start: An Honest Conversation</a></li>
+  <li><a href="#the-2025-reality-check" id="toc-the-2025-reality-check" class="nav-link" data-scroll-target="#the-2025-reality-check">The 2025 Reality Check</a>
+  <ul class="collapse">
+  <li><a href="#the-new-landscape" id="toc-the-new-landscape" class="nav-link" data-scroll-target="#the-new-landscape">The New Landscape</a></li>
+  <li><a href="#the-open-vs.-closed-ecosystem-question" id="toc-the-open-vs.-closed-ecosystem-question" class="nav-link" data-scroll-target="#the-open-vs.-closed-ecosystem-question">The Open vs.&nbsp;Closed Ecosystem Question</a></li>
+  <li><a href="#the-voron-option-high-end-diy" id="toc-the-voron-option-high-end-diy" class="nav-link" data-scroll-target="#the-voron-option-high-end-diy">The Voron Option: High-End DIY</a></li>
+  </ul></li>
+  <li><a href="#the-decision-tree" id="toc-the-decision-tree" class="nav-link" data-scroll-target="#the-decision-tree">The Decision Tree</a></li>
+  <li><a href="#who-amalgam-is-for" id="toc-who-amalgam-is-for" class="nav-link" data-scroll-target="#who-amalgam-is-for">Who Amalgam Is For</a>
+  <ul class="collapse">
+  <li><a href="#the-tinkerer-with-a-parts-bin" id="toc-the-tinkerer-with-a-parts-bin" class="nav-link" data-scroll-target="#the-tinkerer-with-a-parts-bin">✅ The Tinkerer with a Parts Bin</a></li>
+  <li><a href="#the-educator-student" id="toc-the-educator-student" class="nav-link" data-scroll-target="#the-educator-student">✅ The Educator / Student</a></li>
+  <li><a href="#the-repair-first-philosophy" id="toc-the-repair-first-philosophy" class="nav-link" data-scroll-target="#the-repair-first-philosophy">✅ The Repair-First Philosophy</a></li>
+  <li><a href="#the-challenge-seeker" id="toc-the-challenge-seeker" class="nav-link" data-scroll-target="#the-challenge-seeker">✅ The Challenge Seeker</a></li>
+  </ul></li>
+  <li><a href="#who-amalgam-is-not-for" id="toc-who-amalgam-is-not-for" class="nav-link" data-scroll-target="#who-amalgam-is-not-for">Who Amalgam Is NOT For</a>
+  <ul class="collapse">
+  <li><a href="#the-i-just-want-to-print-user" id="toc-the-i-just-want-to-print-user" class="nav-link" data-scroll-target="#the-i-just-want-to-print-user">❌ The “I Just Want to Print” User</a></li>
+  <li><a href="#the-cost-optimizer-without-parts-bin" id="toc-the-cost-optimizer-without-parts-bin" class="nav-link" data-scroll-target="#the-cost-optimizer-without-parts-bin">❌ The Cost Optimizer (Without Parts Bin)</a></li>
+  <li><a href="#the-speed-chaser" id="toc-the-speed-chaser" class="nav-link" data-scroll-target="#the-speed-chaser">❌ The Speed Chaser</a></li>
+  <li><a href="#the-deadline-driven" id="toc-the-deadline-driven" class="nav-link" data-scroll-target="#the-deadline-driven">❌ The Deadline-Driven</a></li>
+  </ul></li>
+  <li><a href="#the-just-buy-a-used-prusa-mk3-option" id="toc-the-just-buy-a-used-prusa-mk3-option" class="nav-link" data-scroll-target="#the-just-buy-a-used-prusa-mk3-option">The “Just Buy a Used Prusa MK3” Option</a>
+  <ul class="collapse">
+  <li><a href="#why-the-mk3-makes-sense" id="toc-why-the-mk3-makes-sense" class="nav-link" data-scroll-target="#why-the-mk3-makes-sense">Why the MK3 Makes Sense</a></li>
+  <li><a href="#market-forces-are-your-friend" id="toc-market-forces-are-your-friend" class="nav-link" data-scroll-target="#market-forces-are-your-friend">Market Forces Are Your Friend</a></li>
+  <li><a href="#when-to-choose-mk3-over-amalgam" id="toc-when-to-choose-mk3-over-amalgam" class="nav-link" data-scroll-target="#when-to-choose-mk3-over-amalgam">When to Choose MK3 Over Amalgam</a></li>
+  </ul></li>
+  <li><a href="#the-tier-system-explained" id="toc-the-tier-system-explained" class="nav-link" data-scroll-target="#the-tier-system-explained">The Tier System Explained</a>
+  <ul class="collapse">
+  <li><a href="#tier-0-evaluate-first" id="toc-tier-0-evaluate-first" class="nav-link" data-scroll-target="#tier-0-evaluate-first">Tier 0: Evaluate First</a></li>
+  <li><a href="#tier-1-klipper-upgrade-path" id="toc-tier-1-klipper-upgrade-path" class="nav-link" data-scroll-target="#tier-1-klipper-upgrade-path">Tier 1: Klipper Upgrade Path</a></li>
+  <li><a href="#tier-2-the-full-amalgam-build" id="toc-tier-2-the-full-amalgam-build" class="nav-link" data-scroll-target="#tier-2-the-full-amalgam-build">Tier 2: The Full Amalgam Build</a></li>
+  </ul></li>
+  <li><a href="#honest-cost-analysis" id="toc-honest-cost-analysis" class="nav-link" data-scroll-target="#honest-cost-analysis">Honest Cost Analysis</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-full-parts-bin-best-case" id="toc-scenario-a-full-parts-bin-best-case" class="nav-link" data-scroll-target="#scenario-a-full-parts-bin-best-case">Scenario A: Full Parts Bin (Best Case)</a></li>
+  <li><a href="#scenario-b-minimal-parts-bin-worst-case" id="toc-scenario-b-minimal-parts-bin-worst-case" class="nav-link" data-scroll-target="#scenario-b-minimal-parts-bin-worst-case">Scenario B: Minimal Parts Bin (Worst Case)</a></li>
+  <li><a href="#the-break-even-question" id="toc-the-break-even-question" class="nav-link" data-scroll-target="#the-break-even-question">The Break-Even Question</a></li>
+  </ul></li>
+  <li><a href="#the-value-proposition-honest-version" id="toc-the-value-proposition-honest-version" class="nav-link" data-scroll-target="#the-value-proposition-honest-version">The Value Proposition (Honest Version)</a>
+  <ul class="collapse">
+  <li><a href="#what-amalgam-offers" id="toc-what-amalgam-offers" class="nav-link" data-scroll-target="#what-amalgam-offers">What Amalgam Offers</a></li>
+  <li><a href="#what-amalgam-does-not-offer" id="toc-what-amalgam-does-not-offer" class="nav-link" data-scroll-target="#what-amalgam-does-not-offer">What Amalgam Does NOT Offer</a></li>
+  </ul></li>
+  <li><a href="#final-recommendation" id="toc-final-recommendation" class="nav-link" data-scroll-target="#final-recommendation">Final Recommendation</a>
+  <ul class="collapse">
+  <li><a href="#build-amalgam-if" id="toc-build-amalgam-if" class="nav-link" data-scroll-target="#build-amalgam-if">Build Amalgam If:</a></li>
+  <li><a href="#dont-build-amalgam-if" id="toc-dont-build-amalgam-if" class="nav-link" data-scroll-target="#dont-build-amalgam-if">Don’t Build Amalgam If:</a></li>
+  <li><a href="#the-middle-path" id="toc-the-middle-path" class="nav-link" data-scroll-target="#the-middle-path">The Middle Path:</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#quick-reference-2025-buying-guide" id="toc-quick-reference-2025-buying-guide" class="nav-link" data-scroll-target="#quick-reference-2025-buying-guide">Quick Reference: 2025 Buying Guide</a>
+  <ul class="collapse">
+  <li><a href="#philosophy-guide" id="toc-philosophy-guide" class="nav-link" data-scroll-target="#philosophy-guide">Philosophy Guide</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_00_decision_guide.html">Amalgam: Tier 0 Decision Guide</a></li></ol></nav></header>
+
+
+
+
+<section id="amalgam-tier-0-decision-guide" class="level1">
+<h1>Amalgam: Tier 0 Decision Guide</h1>
+<p>⚠️ <strong>Historical Document:</strong> This guide explores design space and philosophy from the exploratory phase. <strong>Current canonical decisions are in:</strong> - <strong>ADR-025</strong>: Multi-Frame Architecture (Scaffold, Mill, Lathe paths) - <strong>ADR-026</strong>: Donor Fitness &amp; Frame Constraints (bed size, Z-height tiers) - <strong>ADR-000</strong>: Engineering Philosophy (core “Tractor” principles)</p>
+<p>This deep-dive is useful for understanding <em>how we arrived at</em> the simplified two-donor model, but refer to ADRs above for current guidance.</p>
+<hr>
+<section id="before-you-start-an-honest-conversation" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-start-an-honest-conversation">Before You Start: An Honest Conversation</h2>
+<p>Amalgam is a tribute to the original RepRap Darwin printer—a “Tractor with a Racecar Brain” built from scavenged parts, M10 threaded rods, and the Klipper firmware. It prioritizes understanding, repairability, and the satisfaction of building something with your hands.</p>
+<p><strong>But it’s not for everyone.</strong></p>
+<p>This guide will help you honestly assess whether Amalgam is the right project for you, or whether you’d be better served buying a commercial printer.</p>
+<hr>
+</section>
+<section id="the-2025-reality-check" class="level2">
+<h2 class="anchored" data-anchor-id="the-2025-reality-check">The 2025 Reality Check</h2>
+<p>The 3D printer market has fundamentally changed since the RepRap era:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 26%">
+<col style="width: 40%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Era</th>
+<th>DIY Build Cost</th>
+<th>Best Commercial Option</th>
+<th>DIY Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2007 (Darwin)</td>
+<td>~$1,000</td>
+<td>$10,000+ (Stratasys)</td>
+<td>Only option for hobbyists</td>
+</tr>
+<tr class="even">
+<td>2012 (Mendel i2)</td>
+<td>~$500</td>
+<td>$2,000+ (MakerBot)</td>
+<td>Massive cost savings</td>
+</tr>
+<tr class="odd">
+<td>2018 (Ender era)</td>
+<td>~$300</td>
+<td>$200 (Ender 3)</td>
+<td>Learning experience only</td>
+</tr>
+<tr class="even">
+<td>2025 (Today)</td>
+<td>~$200+</td>
+<td>$180 (Ender 3 V3 SE)</td>
+<td><strong>None</strong> (economically)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The brutal truth:</strong> If you need to <em>purchase</em> most of the parts for Amalgam, you cannot compete with Chinese manufacturing on cost, and increasingly not on quality either.</p>
+<section id="the-new-landscape" class="level3">
+<h3 class="anchored" data-anchor-id="the-new-landscape">The New Landscape</h3>
+<p>Budget options that didn’t exist a few years ago:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Printer</th>
+<th>Price</th>
+<th>Quality</th>
+<th>Speed</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Creality Ender 3 V3 SE</td>
+<td>~$180</td>
+<td>Good</td>
+<td>Moderate</td>
+<td>Hard to beat on value</td>
+</tr>
+<tr class="even">
+<td>Creality Ender 3 V3 KE</td>
+<td>~$250</td>
+<td>Good</td>
+<td>Fast</td>
+<td>Klipper pre-installed</td>
+</tr>
+<tr class="odd">
+<td>Elegoo Neptune 4</td>
+<td>~$200</td>
+<td>Good</td>
+<td>Fast</td>
+<td>Klipper-based</td>
+</tr>
+<tr class="even">
+<td>QIDI X-Smart 3</td>
+<td>~$350</td>
+<td>Very Good</td>
+<td>Fast</td>
+<td>Enclosed, CoreXY</td>
+</tr>
+<tr class="odd">
+<td>Bambu Lab A1 Mini</td>
+<td>~$250</td>
+<td>Excellent</td>
+<td>Very Fast</td>
+<td>“It just works”</td>
+</tr>
+<tr class="even">
+<td>Bambu Lab A1</td>
+<td>~$400</td>
+<td>Excellent</td>
+<td>Very Fast</td>
+<td>Larger build volume</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Even Creality and QIDI are approaching Bambu Lab quality</strong> in their newer models. The gap is closing rapidly.</p>
+</section>
+<section id="the-open-vs.-closed-ecosystem-question" class="level3">
+<h3 class="anchored" data-anchor-id="the-open-vs.-closed-ecosystem-question">The Open vs.&nbsp;Closed Ecosystem Question</h3>
+<p>Before recommending any printer, we need to address something important: <strong>not all printers are created equal in terms of openness</strong>.</p>
+<section id="bambu-lab-the-elephant-in-the-room" class="level4">
+<h4 class="anchored" data-anchor-id="bambu-lab-the-elephant-in-the-room">Bambu Lab: The Elephant in the Room</h4>
+<p>Bambu Lab makes excellent printers. They “just work.” But there’s a trade-off:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 44%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Bambu Lab Approach</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Firmware</td>
+<td>Closed source, encrypted</td>
+<td>You can’t modify or fully understand it</td>
+</tr>
+<tr class="even">
+<td>Cloud dependency</td>
+<td>Optional but pushed</td>
+<td>Some features require Bambu Cloud account</td>
+</tr>
+<tr class="odd">
+<td>Repair parts</td>
+<td>Proprietary components</td>
+<td>Limited third-party options</td>
+</tr>
+<tr class="even">
+<td>Modifications</td>
+<td>Discouraged, may void warranty</td>
+<td>Less hackable than open alternatives</td>
+</tr>
+<tr class="odd">
+<td>Data collection</td>
+<td>Telemetry enabled by default</td>
+<td>Privacy considerations</td>
+</tr>
+<tr class="even">
+<td>Longevity</td>
+<td>Depends on company support</td>
+<td>If Bambu disappears, so does support</td>
+</tr>
+</tbody>
+</table>
+<p><strong>This isn’t necessarily bad</strong> — many users happily trade openness for convenience. The printer works, prints are excellent, and they don’t care about modifying it.</p>
+<p><strong>But if you value:</strong> - Right to repair - Understanding your tools - Privacy and data ownership - Long-term independence from any company - The maker/hacker ethos</p>
+<p><strong>Then Bambu’s closed ecosystem may not align with your values</strong>, regardless of print quality.</p>
+</section>
+<section id="open-alternatives" class="level4">
+<h4 class="anchored" data-anchor-id="open-alternatives">Open Alternatives</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 33%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Printer</th>
+<th>Openness</th>
+<th>Trade-off</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prusa (Original)</td>
+<td>Fully open source hardware &amp; firmware</td>
+<td>Slower than Bambu, higher price</td>
+</tr>
+<tr class="even">
+<td>Voron (Self-sourced)</td>
+<td>100% open, community-driven</td>
+<td>You build it yourself</td>
+</tr>
+<tr class="odd">
+<td>Creality (Klipper models)</td>
+<td>Open firmware, mixed hardware</td>
+<td>Quality inconsistent</td>
+</tr>
+<tr class="even">
+<td>Elegoo/QIDI</td>
+<td>Mostly open (Klipper-based)</td>
+<td>Some proprietary elements</td>
+</tr>
+<tr class="odd">
+<td><strong>Amalgam</strong></td>
+<td>100% open, scavenger-friendly</td>
+<td>You build it yourself</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Our stance:</strong> We mention Bambu Lab because they make genuinely good printers, and honesty requires acknowledging that. But we also believe you should know what you’re trading away. <strong>Make an informed choice.</strong></p>
+<hr>
+</section>
+</section>
+<section id="the-voron-option-high-end-diy" class="level3">
+<h3 class="anchored" data-anchor-id="the-voron-option-high-end-diy">The Voron Option: High-End DIY</h3>
+<p>If you want to <em>build</em> a printer but also want <strong>speed, precision, and reliability</strong>, there’s another path: <strong>Voron</strong>.</p>
+<section id="what-is-voron" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-voron">What is Voron?</h4>
+<p>Voron is a family of open-source, self-sourced CoreXY printers designed by enthusiasts for enthusiasts. They’re the “high-end DIY” option:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Voron Model</th>
+<th>Build Volume</th>
+<th>Style</th>
+<th>Typical Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Voron 0.2</td>
+<td>120×120×120</td>
+<td>Tiny, enclosed</td>
+<td>$400-600</td>
+</tr>
+<tr class="even">
+<td>Voron Trident</td>
+<td>250-350mm³</td>
+<td>Enclosed, triple-Z</td>
+<td>$1,000-1,500</td>
+</tr>
+<tr class="odd">
+<td>Voron 2.4</td>
+<td>250-350mm³</td>
+<td>Enclosed, flying gantry</td>
+<td>$1,200-1,800</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="voron-vs.-amalgam" class="level4">
+<h4 class="anchored" data-anchor-id="voron-vs.-amalgam">Voron vs.&nbsp;Amalgam</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 25%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Voron</th>
+<th>Amalgam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Goal</strong></td>
+<td>Best possible DIY printer</td>
+<td>Learn, scavenge, understand</td>
+</tr>
+<tr class="even">
+<td><strong>Frame</strong></td>
+<td>Aluminum extrusion (purchased)</td>
+<td>M10 threaded rod (hardware store)</td>
+</tr>
+<tr class="odd">
+<td><strong>Motion</strong></td>
+<td>Linear rails (MGN9/12)</td>
+<td>Smooth rods (scavenged)</td>
+</tr>
+<tr class="even">
+<td><strong>Speed</strong></td>
+<td>300-500mm/s capable</td>
+<td>100-200mm/s comfortable</td>
+</tr>
+<tr class="odd">
+<td><strong>Precision</strong></td>
+<td>Excellent</td>
+<td>Good (with tuning)</td>
+</tr>
+<tr class="even">
+<td><strong>Cost</strong></td>
+<td>$800-1,800 (self-sourced)</td>
+<td>$85-170 (with parts bin)</td>
+</tr>
+<tr class="odd">
+<td><strong>Build time</strong></td>
+<td>40-80 hours</td>
+<td>20-40 hours</td>
+</tr>
+<tr class="even">
+<td><strong>Scavenger-friendly</strong></td>
+<td>No (specific parts required)</td>
+<td>Yes (that’s the point)</td>
+</tr>
+<tr class="odd">
+<td><strong>Community</strong></td>
+<td>Large, active, helpful</td>
+<td>Amalgam specific</td>
+</tr>
+<tr class="even">
+<td><strong>Philosophy</strong></td>
+<td>“Best DIY printer possible”</td>
+<td>“Understand your machine”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-choose-voron-over-amalgam" class="level4">
+<h4 class="anchored" data-anchor-id="when-to-choose-voron-over-amalgam">When to Choose Voron Over Amalgam</h4>
+<p>Choose Voron if: - You want DIY <strong>and</strong> top-tier performance - You’re willing to invest $1,000+ in quality parts - You want speed (300mm/s+) from a self-built machine - You enjoy precision assembly and tuning - You have time for a 40-80 hour build</p>
+<p>Choose Amalgam if: - You prioritize learning over performance - You have a parts bin to use - You want the cheapest viable path - You value the “scavenger” philosophy - You want something simpler to understand</p>
+</section>
+<section id="the-voron-cost-reality" class="level4">
+<h4 class="anchored" data-anchor-id="the-voron-cost-reality">The Voron Cost Reality</h4>
+<p>Voron is often described as “cheaper than buying a Bambu” — this is <strong>misleading</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Voron 2.4 Cost Breakdown</th>
+<th>Typical Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame (aluminum extrusion)</td>
+<td>$150-250</td>
+</tr>
+<tr class="even">
+<td>Linear rails (×7)</td>
+<td>$100-300</td>
+</tr>
+<tr class="odd">
+<td>Electronics (Octopus, Pi, etc.)</td>
+<td>$150-250</td>
+</tr>
+<tr class="even">
+<td>Motors (×6-7)</td>
+<td>$80-150</td>
+</tr>
+<tr class="odd">
+<td>Hotend + Extruder</td>
+<td>$80-200</td>
+</tr>
+<tr class="even">
+<td>Heated bed + SSR</td>
+<td>$80-150</td>
+</tr>
+<tr class="odd">
+<td>Panels, hardware, misc</td>
+<td>$150-300</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>$800-1,600</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Plus 40-80 hours of your time.</p>
+<p>A Bambu Lab P1S costs $600 and prints out of the box.</p>
+<p><strong>Voron makes sense if you value the build process and want maximum performance from a DIY machine.</strong> It doesn’t make sense purely as a cost-saving measure.</p>
+</section>
+<section id="voron-and-amalgam-not-competitors" class="level4">
+<h4 class="anchored" data-anchor-id="voron-and-amalgam-not-competitors">Voron and Amalgam: Not Competitors</h4>
+<p>Amalgam and Voron serve different purposes:</p>
+<ul>
+<li><strong>Voron:</strong> “I want to build the best printer I can”</li>
+<li><strong>Amalgam:</strong> “I want to understand printers and use what I have”</li>
+</ul>
+<p>Many makers own both — a Voron for production, a Amalgam for the joy of building and learning. They’re complementary philosophies, not competing ones.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="the-decision-tree" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision-tree">The Decision Tree</h2>
+<p>Ask yourself honestly:</p>
+<pre><code>What do I actually want?
+│
+├─► "I want to HAVE a 3D printer"
+│   │
+│   ├─► I need speed and reliability, don't care about openness
+│   │   └─► Bambu Lab A1 or P1S (but read "Open vs Closed" section)
+│   │
+│   ├─► I need speed and reliability, AND value open source
+│   │   └─► Prusa XL, or build a Voron
+│   │
+│   ├─► I need quality but not speed
+│   │   └─► Buy a used Prusa MK3S+ ($300-400)
+│   │
+│   ├─► I need cheap and functional
+│   │   └─► Buy an Ender 3 V3 SE (~$180)
+│   │
+│   └─► I want Klipper out of the box
+│       └─► Buy an Ender 3 V3 KE or Neptune 4
+│
+└─► "I want to BUILD a 3D printer"
+    │
+    ├─► I want the BEST DIY printer possible
+    │   └─► Build a Voron (but budget $1,000+)
+    │
+    ├─► I have a parts bin (dead printers, scavenged rods, etc.)
+    │   └─► Amalgam is for you ✓
+    │
+    ├─► I want to deeply understand how printers work
+    │   └─► Amalgam is for you ✓
+    │
+    ├─► I enjoy the build process itself
+    │   └─► Amalgam or Voron (depending on budget)
+    │
+    ├─► I need to buy most/all parts
+    │   └─► Reconsider—Voron if budget allows, else buy commercial
+    │
+    └─► I want a project but have limited budget
+        └─► Amalgam with patience (accumulate parts first)</code></pre>
+<hr>
+</section>
+<section id="who-amalgam-is-for" class="level2">
+<h2 class="anchored" data-anchor-id="who-amalgam-is-for">Who Amalgam Is For</h2>
+<section id="the-tinkerer-with-a-parts-bin" class="level3">
+<h3 class="anchored" data-anchor-id="the-tinkerer-with-a-parts-bin">✅ The Tinkerer with a Parts Bin</h3>
+<p>You have: - One or two dead Enders/Anets in the closet - A drawer of NEMA 17 steppers - Smooth rods from a photocopier teardown - Random bearings, belts, and electronics</p>
+<p><strong>For you:</strong> Amalgam turns that junk into a functional, capable printer. The “cost” is already sunk—now it’s just time and learning.</p>
+</section>
+<section id="the-educator-student" class="level3">
+<h3 class="anchored" data-anchor-id="the-educator-student">✅ The Educator / Student</h3>
+<p>You want: - To understand <em>how</em> a 3D printer works, not just <em>use</em> one - A teaching tool for mechanics, electronics, and firmware - A project that forces engagement with every subsystem</p>
+<p><strong>For you:</strong> Amalgam is a learning platform. Building it teaches more than any YouTube video or manual ever could.</p>
+</section>
+<section id="the-repair-first-philosophy" class="level3">
+<h3 class="anchored" data-anchor-id="the-repair-first-philosophy">✅ The Repair-First Philosophy</h3>
+<p>You believe: - Disposable tech is wasteful - A machine should be fixable with basic tools - Understanding your tools makes you a better maker</p>
+<p><strong>For you:</strong> Amalgam is designed for 20-year repairability. Every part is replaceable, understandable, and sourceable from a hardware store.</p>
+</section>
+<section id="the-challenge-seeker" class="level3">
+<h3 class="anchored" data-anchor-id="the-challenge-seeker">✅ The Challenge Seeker</h3>
+<p>You already: - Own a Bambu or Prusa that “just works” - Want a project, not a product - Enjoy the satisfaction of “I made this”</p>
+<p><strong>For you:</strong> Amalgam is the journey, not the destination. The printer at the end is a bonus.</p>
+<hr>
+</section>
+</section>
+<section id="who-amalgam-is-not-for" class="level2">
+<h2 class="anchored" data-anchor-id="who-amalgam-is-not-for">Who Amalgam Is NOT For</h2>
+<section id="the-i-just-want-to-print-user" class="level3">
+<h3 class="anchored" data-anchor-id="the-i-just-want-to-print-user">❌ The “I Just Want to Print” User</h3>
+<p>If your goal is to download STLs and press print, <strong>buy a commercial printer</strong>. Amalgam will frustrate you—it requires tuning, understanding, and patience.</p>
+<p><strong>Better choice:</strong> Bambu Lab A1 Mini ($250) — genuinely “it just works”</p>
+</section>
+<section id="the-cost-optimizer-without-parts-bin" class="level3">
+<h3 class="anchored" data-anchor-id="the-cost-optimizer-without-parts-bin">❌ The Cost Optimizer (Without Parts Bin)</h3>
+<p>If you’re building Amalgam to “save money” but need to buy: - Stepper motors (~$40-60 for 7) - Smooth rods (~$30-50) - Linear bearings (~$20-30) - Control boards (~$30-50) - Power supplies (~$30-50) - Heated bed (~$30-40) - Hotend (~$20-40) - Belts, pulleys, hardware (~$30-50)</p>
+<p><strong>Total: $230-370</strong> — and you still need to build it.</p>
+<p><strong>Better choice:</strong> Ender 3 V3 SE ($180) — arrives assembled, works immediately</p>
+</section>
+<section id="the-speed-chaser" class="level3">
+<h3 class="anchored" data-anchor-id="the-speed-chaser">❌ The Speed Chaser</h3>
+<p>Amalgam philosophy: <strong>Quality over Speed</strong></p>
+<p>If you want 500mm/s printing with 20,000mm/s² acceleration, Amalgam’s heavy M10 gantry and sled design is the wrong architecture.</p>
+<p><strong>Better choice:</strong> Bambu Lab P1S or Voron 2.4</p>
+</section>
+<section id="the-deadline-driven" class="level3">
+<h3 class="anchored" data-anchor-id="the-deadline-driven">❌ The Deadline-Driven</h3>
+<p>If you need a working printer by next week for a project, <strong>do not start Amalgam</strong>. It’s a journey measured in weeks or months, not days.</p>
+<p><strong>Better choice:</strong> Any commercial printer with 2-day shipping</p>
+<hr>
+</section>
+</section>
+<section id="the-just-buy-a-used-prusa-mk3-option" class="level2">
+<h2 class="anchored" data-anchor-id="the-just-buy-a-used-prusa-mk3-option">The “Just Buy a Used Prusa MK3” Option</h2>
+<p>For many people reading this, the honest best answer is:</p>
+<p><strong>Buy a used Prusa MK3S+ for $300-400</strong></p>
+<section id="why-the-mk3-makes-sense" class="level3">
+<h3 class="anchored" data-anchor-id="why-the-mk3-makes-sense">Why the MK3 Makes Sense</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 39%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Prusa MK3S+</th>
+<th>Amalgam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Time to first print</td>
+<td>1-2 hours (assembly/calibration)</td>
+<td>Weeks to months</td>
+</tr>
+<tr class="even">
+<td>Print quality</td>
+<td>Excellent</td>
+<td>Good (with tuning)</td>
+</tr>
+<tr class="odd">
+<td>Reliability</td>
+<td>Proven over years</td>
+<td>Depends on your build</td>
+</tr>
+<tr class="even">
+<td>Community support</td>
+<td>Massive</td>
+<td>Amalgam specific only</td>
+</tr>
+<tr class="odd">
+<td>Klipper compatible</td>
+<td>Yes (flash it)</td>
+<td>Yes (native)</td>
+</tr>
+<tr class="even">
+<td>Repairability</td>
+<td>Excellent</td>
+<td>Excellent</td>
+</tr>
+<tr class="odd">
+<td>Speed</td>
+<td>Moderate</td>
+<td>Moderate</td>
+</tr>
+<tr class="even">
+<td>Learning experience</td>
+<td>Moderate</td>
+<td>Extensive</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="market-forces-are-your-friend" class="level3">
+<h3 class="anchored" data-anchor-id="market-forces-are-your-friend">Market Forces Are Your Friend</h3>
+<p>The Prusa MK4 is now available, which means: - MK3S+ units flooding the used market - Prices dropping ($300-400 currently, likely lower soon) - Proven machines with known reliability - Huge parts availability</p>
+<p><strong>The MK3 shares Amalgam’s philosophy</strong> (quality over speed, repairability, open source) without the build time investment.</p>
+</section>
+<section id="when-to-choose-mk3-over-amalgam" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-choose-mk3-over-amalgam">When to Choose MK3 Over Amalgam</h3>
+<ul>
+<li>You want to <em>print</em>, not <em>build</em></li>
+<li>You value your time highly</li>
+<li>You don’t have a significant parts bin</li>
+<li>You want proven reliability immediately</li>
+<li>You’re not driven by the learning experience</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="the-tier-system-explained" class="level2">
+<h2 class="anchored" data-anchor-id="the-tier-system-explained">The Tier System Explained</h2>
+<p>Amalgam uses a “Tier” system to help you assess your starting point:</p>
+<section id="tier-0-evaluate-first" class="level3">
+<h3 class="anchored" data-anchor-id="tier-0-evaluate-first">Tier 0: Evaluate First</h3>
+<p><strong>Before building anything:</strong></p>
+<ol type="1">
+<li>Assess what you already have (parts bin inventory)</li>
+<li>Assess what you’d need to buy</li>
+<li>Calculate true cost (parts + time)</li>
+<li>Compare against commercial options</li>
+<li>Make an honest decision</li>
+</ol>
+<p><strong>If Tier 0 analysis says “don’t build”</strong> — that’s a valid outcome. The goal is to help you make the right choice, not convince you to build Amalgam regardless.</p>
+</section>
+<section id="tier-1-klipper-upgrade-path" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-klipper-upgrade-path">Tier 1: Klipper Upgrade Path</h3>
+<p><strong>If you have a working older printer (Prusa MK2/MK3, Ender 3, etc.):</strong></p>
+<p>Consider just upgrading it: - Flash Klipper firmware - Add input shaping (ADXL345) - Add dual-Z if single-Z - Tune pressure advance</p>
+<p><strong>This might be all you need.</strong> A Klipper-upgraded Ender 3 is a very capable machine.</p>
+</section>
+<section id="tier-2-the-full-amalgam-build" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-the-full-amalgam-build">Tier 2: The Full Amalgam Build</h3>
+<p><strong>If you have:</strong> - Significant parts bin (2+ donor printers worth) - Time to invest (weeks to months) - Desire to learn deeply - Acceptance that commercial options are “better” on paper</p>
+<p><strong>Then Amalgam is for you.</strong> Build the Tractor.</p>
+<hr>
+</section>
+</section>
+<section id="honest-cost-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="honest-cost-analysis">Honest Cost Analysis</h2>
+<section id="scenario-a-full-parts-bin-best-case" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-full-parts-bin-best-case">Scenario A: Full Parts Bin (Best Case)</h3>
+<p>You have two dead Enders and a photocopier teardown:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Source</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Steppers (7x)</td>
+<td>Donor printers</td>
+<td>$0</td>
+</tr>
+<tr class="even">
+<td>Smooth rods</td>
+<td>Photocopier</td>
+<td>$0</td>
+</tr>
+<tr class="odd">
+<td>Control boards</td>
+<td>Donor printers</td>
+<td>$0</td>
+</tr>
+<tr class="even">
+<td>PSUs</td>
+<td>Donor printers</td>
+<td>$0</td>
+</tr>
+<tr class="odd">
+<td>Heated bed</td>
+<td>Donor printer</td>
+<td>$0</td>
+</tr>
+<tr class="even">
+<td>Hotend</td>
+<td>Donor printer (or buy)</td>
+<td>$0-30</td>
+</tr>
+<tr class="odd">
+<td>M10 threaded rod</td>
+<td>Hardware store</td>
+<td>$20-30</td>
+</tr>
+<tr class="even">
+<td>MDF base</td>
+<td>Hardware store</td>
+<td>$15-25</td>
+</tr>
+<tr class="odd">
+<td>Bearings</td>
+<td>May need to buy</td>
+<td>$15-30</td>
+</tr>
+<tr class="even">
+<td>Hardware (nuts, bolts)</td>
+<td>Hardware store</td>
+<td>$20-30</td>
+</tr>
+<tr class="odd">
+<td>Belts, pulleys</td>
+<td>May need to buy</td>
+<td>$15-25</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>$85-170</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict:</strong> Makes sense—you’re mostly investing time, not money.</p>
+</section>
+<section id="scenario-b-minimal-parts-bin-worst-case" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-minimal-parts-bin-worst-case">Scenario B: Minimal Parts Bin (Worst Case)</h3>
+<p>You have enthusiasm but few parts:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Source</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Steppers (7x)</td>
+<td>AliExpress</td>
+<td>$45-60</td>
+</tr>
+<tr class="even">
+<td>Smooth rods (M10)</td>
+<td>AliExpress/local</td>
+<td>$30-50</td>
+</tr>
+<tr class="odd">
+<td>Control boards (2x)</td>
+<td>AliExpress</td>
+<td>$40-60</td>
+</tr>
+<tr class="even">
+<td>PSUs</td>
+<td>AliExpress</td>
+<td>$35-50</td>
+</tr>
+<tr class="odd">
+<td>Heated bed</td>
+<td>AliExpress</td>
+<td>$25-40</td>
+</tr>
+<tr class="even">
+<td>Hotend (V6 clone)</td>
+<td>AliExpress</td>
+<td>$15-25</td>
+</tr>
+<tr class="odd">
+<td>M10 threaded rod</td>
+<td>Hardware store</td>
+<td>$20-30</td>
+</tr>
+<tr class="even">
+<td>MDF base</td>
+<td>Hardware store</td>
+<td>$15-25</td>
+</tr>
+<tr class="odd">
+<td>Bearings (LM10UU)</td>
+<td>AliExpress</td>
+<td>$15-25</td>
+</tr>
+<tr class="even">
+<td>Hardware</td>
+<td>Hardware store</td>
+<td>$25-40</td>
+</tr>
+<tr class="odd">
+<td>Belts, pulleys</td>
+<td>AliExpress</td>
+<td>$20-30</td>
+</tr>
+<tr class="even">
+<td>Wiring, connectors</td>
+<td>Various</td>
+<td>$20-30</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>$305-465</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict:</strong> Questionable—you’re spending commercial printer money for a DIY result.</p>
+</section>
+<section id="the-break-even-question" class="level3">
+<h3 class="anchored" data-anchor-id="the-break-even-question">The Break-Even Question</h3>
+<p>Ask yourself: <strong>“At what parts cost does buying make more sense?”</strong></p>
+<p>Our suggestion: <strong>If you need to spend more than $150 on parts, seriously consider the commercial alternatives.</strong></p>
+<hr>
+</section>
+</section>
+<section id="the-value-proposition-honest-version" class="level2">
+<h2 class="anchored" data-anchor-id="the-value-proposition-honest-version">The Value Proposition (Honest Version)</h2>
+<section id="what-amalgam-offers" class="level3">
+<h3 class="anchored" data-anchor-id="what-amalgam-offers">What Amalgam Offers</h3>
+<p>✅ <strong>A project, not a product</strong> — The build <em>is</em> the point</p>
+<p>✅ <strong>Deep understanding</strong> — You’ll know every nut, bolt, and line of config</p>
+<p>✅ <strong>Repairability for decades</strong> — Hardware store parts, no proprietary components</p>
+<p>✅ <strong>The satisfaction of creation</strong> — “I made this with my hands”</p>
+<p>✅ <strong>Learning platform</strong> — Mechanics, electronics, firmware, calibration</p>
+<p>✅ <strong>Parts bin redemption</strong> — Turn junk into a functional tool</p>
+</section>
+<section id="what-amalgam-does-not-offer" class="level3">
+<h3 class="anchored" data-anchor-id="what-amalgam-does-not-offer">What Amalgam Does NOT Offer</h3>
+<p>❌ <strong>Cost savings</strong> — If buying parts, commercial is cheaper</p>
+<p>❌ <strong>Better performance</strong> — A Bambu will outperform it on speed</p>
+<p>❌ <strong>Faster time-to-printing</strong> — Weeks vs.&nbsp;hours</p>
+<p>❌ <strong>Warranty or support</strong> — You’re on your own (with community help)</p>
+<p>❌ <strong>Plug-and-play experience</strong> — Requires tuning and understanding</p>
+<p>❌ <strong>Impressive specs</strong> — It’s a Tractor, not a race car</p>
+<hr>
+</section>
+</section>
+<section id="final-recommendation" class="level2">
+<h2 class="anchored" data-anchor-id="final-recommendation">Final Recommendation</h2>
+<section id="build-amalgam-if" class="level3">
+<h3 class="anchored" data-anchor-id="build-amalgam-if">Build Amalgam If:</h3>
+<ul>
+<li>You have a meaningful parts bin (50%+ of components)</li>
+<li>You want to <em>understand</em> printers, not just use them</li>
+<li>You enjoy the build process itself</li>
+<li>You accept it won’t match commercial performance</li>
+<li>You value repairability and longevity</li>
+<li>You’re not in a hurry</li>
+</ul>
+</section>
+<section id="dont-build-amalgam-if" class="level3">
+<h3 class="anchored" data-anchor-id="dont-build-amalgam-if">Don’t Build Amalgam If:</h3>
+<ul>
+<li>You need to buy most parts (buy commercial instead)</li>
+<li>You just want to print things (buy a Bambu)</li>
+<li>You need speed (buy a CoreXY)</li>
+<li>You need it working soon (buy anything commercial)</li>
+<li>You’ll be frustrated if it’s not “the best”</li>
+</ul>
+</section>
+<section id="the-middle-path" class="level3">
+<h3 class="anchored" data-anchor-id="the-middle-path">The Middle Path:</h3>
+<ul>
+<li><strong>Buy a used Prusa MK3S+ ($300-400)</strong> — Same philosophy, proven design</li>
+<li><strong>Flash Klipper on an existing printer</strong> — Upgrade what you have</li>
+<li><strong>Wait and accumulate parts</strong> — Start Amalgam when your parts bin is ready</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Amalgam is a passion project for builders, tinkerers, and learners. It’s not a budget option, a performance option, or a convenience option.</p>
+<p><strong>If the decision tree led you here, welcome aboard.</strong> Let’s build a Tractor.</p>
+<p><strong>If the decision tree led you elsewhere, that’s okay too.</strong> The goal was never to convince everyone to build Amalgam—it was to help you find the right printer for <em>you</em>.</p>
+<p>Happy printing, however you get there.</p>
+<hr>
+</section>
+<section id="quick-reference-2025-buying-guide" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-2025-buying-guide">Quick Reference: 2025 Buying Guide</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Need</th>
+<th>Recommendation</th>
+<th>Price</th>
+<th>Open Source?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cheapest functional</td>
+<td>Ender 3 V3 SE</td>
+<td>~$180</td>
+<td>Mostly ✓</td>
+</tr>
+<tr class="even">
+<td>Best value (closed)</td>
+<td>Bambu Lab A1 Mini</td>
+<td>~$250</td>
+<td>❌ Closed</td>
+</tr>
+<tr class="odd">
+<td>Best value (open)</td>
+<td>Used Prusa MK3S+</td>
+<td>~$350</td>
+<td>✅ Fully open</td>
+</tr>
+<tr class="even">
+<td>Speed (closed)</td>
+<td>Bambu Lab P1S</td>
+<td>~$600</td>
+<td>❌ Closed</td>
+</tr>
+<tr class="odd">
+<td>Speed (open, buy)</td>
+<td>Prusa XL</td>
+<td>~$1,800</td>
+<td>✅ Fully open</td>
+</tr>
+<tr class="even">
+<td>Speed (open, build)</td>
+<td><strong>Voron 2.4</strong></td>
+<td>~$1,200</td>
+<td>✅ Fully open</td>
+</tr>
+<tr class="odd">
+<td>Learn by building</td>
+<td><strong>Amalgam</strong></td>
+<td>Parts bin + time</td>
+<td>✅ Fully open</td>
+</tr>
+<tr class="even">
+<td>Enclosed budget</td>
+<td>QIDI X-Plus 3</td>
+<td>~$500</td>
+<td>Mostly ✓</td>
+</tr>
+<tr class="odd">
+<td>Large format</td>
+<td>Creality K1 Max</td>
+<td>~$600</td>
+<td>Mostly ✓</td>
+</tr>
+</tbody>
+</table>
+<section id="philosophy-guide" class="level3">
+<h3 class="anchored" data-anchor-id="philosophy-guide">Philosophy Guide</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Your Values</th>
+<th>Best Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“Just works, don’t care about openness”</td>
+<td>Bambu Lab</td>
+</tr>
+<tr class="even">
+<td>“Open source matters, willing to pay more”</td>
+<td>Prusa</td>
+</tr>
+<tr class="odd">
+<td>“DIY + best performance, have budget”</td>
+<td>Voron</td>
+</tr>
+<tr class="even">
+<td>“DIY + learning, use what I have”</td>
+<td>Amalgam</td>
+</tr>
+<tr class="odd">
+<td>“Cheap and functional, some tinkering okay”</td>
+<td>Creality/Elegoo Klipper models</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

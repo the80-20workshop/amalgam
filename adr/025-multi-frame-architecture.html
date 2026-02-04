@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>multi-frame-architecture – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-025-multi-frame-architecture-scavenger-paths" id="toc-adr-025-multi-frame-architecture-scavenger-paths" class="nav-link active" data-scroll-target="#adr-025-multi-frame-architecture-scavenger-paths">ADR-025: Multi-Frame Architecture (Scavenger Paths)</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#amends" id="toc-amends" class="nav-link" data-scroll-target="#amends">Amends</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#the-scavenger-reality" id="toc-the-scavenger-reality" class="nav-link" data-scroll-target="#the-scavenger-reality">The Scavenger Reality</a></li>
+  <li><a href="#the-problem-with-v-slot-donors" id="toc-the-problem-with-v-slot-donors" class="nav-link" data-scroll-target="#the-problem-with-v-slot-donors">The Problem with V-Slot Donors</a></li>
+  <li><a href="#the-insight" id="toc-the-insight" class="nav-link" data-scroll-target="#the-insight">The Insight</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#amalgam-scaffold-m10-smooth-rods" id="toc-amalgam-scaffold-m10-smooth-rods" class="nav-link" data-scroll-target="#amalgam-scaffold-m10-smooth-rods">Amalgam Scaffold (M10 + Smooth Rods)</a></li>
+  <li><a href="#amalgam-mill-extrusion-v-slots" id="toc-amalgam-mill-extrusion-v-slots" class="nav-link" data-scroll-target="#amalgam-mill-extrusion-v-slots">Amalgam Mill (Extrusion + V-Slots)</a></li>
+  <li><a href="#amalgam-lathe-extrusion-smooth-rods" id="toc-amalgam-lathe-extrusion-smooth-rods" class="nav-link" data-scroll-target="#amalgam-lathe-extrusion-smooth-rods">Amalgam Lathe (Extrusion + Smooth Rods)</a></li>
+  <li><a href="#the-shared-foundation" id="toc-the-shared-foundation" class="nav-link" data-scroll-target="#the-shared-foundation">The Shared Foundation</a></li>
+  </ul></li>
+  <li><a href="#who-is-amalgam-for" id="toc-who-is-amalgam-for" class="nav-link" data-scroll-target="#who-is-amalgam-for">Who Is Amalgam For?</a>
+  <ul class="collapse">
+  <li><a href="#cost-breakdown-two-donors-matched" id="toc-cost-breakdown-two-donors-matched" class="nav-link" data-scroll-target="#cost-breakdown-two-donors-matched">Cost Breakdown (Two Donors, Matched)</a></li>
+  <li><a href="#choosing-between-mill-and-lathe-ender-donors" id="toc-choosing-between-mill-and-lathe-ender-donors" class="nav-link" data-scroll-target="#choosing-between-mill-and-lathe-ender-donors">Choosing Between Mill and Lathe (Ender Donors)</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  </ul></li>
+  <li><a href="#differentiation-from-other-projects" id="toc-differentiation-from-other-projects" class="nav-link" data-scroll-target="#differentiation-from-other-projects">Differentiation from Other Projects</a></li>
+  <li><a href="#physics-comparison" id="toc-physics-comparison" class="nav-link" data-scroll-target="#physics-comparison">Physics Comparison</a>
+  <ul class="collapse">
+  <li><a href="#frame-stiffness-bending" id="toc-frame-stiffness-bending" class="nav-link" data-scroll-target="#frame-stiffness-bending">Frame Stiffness (Bending)</a></li>
+  <li><a href="#motion-comparison" id="toc-motion-comparison" class="nav-link" data-scroll-target="#motion-comparison">Motion Comparison</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#config-parameters" id="toc-config-parameters" class="nav-link" data-scroll-target="#config-parameters">Config Parameters</a></li>
+  <li><a href="#wizard-flow" id="toc-wizard-flow" class="nav-link" data-scroll-target="#wizard-flow">Wizard Flow</a></li>
+  <li><a href="#documentation-structure" id="toc-documentation-structure" class="nav-link" data-scroll-target="#documentation-structure">Documentation Structure</a></li>
+  </ul></li>
+  <li><a href="#quality-consistency" id="toc-quality-consistency" class="nav-link" data-scroll-target="#quality-consistency">Quality Consistency</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-025-multi-frame-architecture-scavenger-paths" class="level1">
+<h1>ADR-025: Multi-Frame Architecture (Scavenger Paths)</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="amends" class="level2">
+<h2 class="anchored" data-anchor-id="amends">Amends</h2>
+<ul>
+<li>ADR-001: M10 Threaded Rod Skeleton (adds alternative frame paths)</li>
+<li>ADR-021: Dual-Rod Motion System (adds V-slot motion path)</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<section id="the-scavenger-reality" class="level3">
+<h3 class="anchored" data-anchor-id="the-scavenger-reality">The Scavenger Reality</h3>
+<p>Amalgam requires <strong>two donor printers</strong> for a complete build (ADR-005, ADR-021). The most common donors in 2026 fall into two categories:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 27%">
+<col style="width: 18%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Donor Type</th>
+<th>Examples</th>
+<th>Frame</th>
+<th>Motion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rod-based</strong></td>
+<td>Anet A8, Wanhao i3, Prusa clones</td>
+<td>Acrylic/sheet</td>
+<td>8mm smooth rods + LM8UU</td>
+</tr>
+<tr class="even">
+<td><strong>V-slot</strong></td>
+<td>Ender 3, CR-10, Voxelab Aquila</td>
+<td>2020/2040 aluminum</td>
+<td>V-slot + POM wheels</td>
+</tr>
+</tbody>
+</table>
+<p>The original specification (ADR-001 + ADR-021) assumed rod-based donors: - M10 threaded rod frame (buy new, ~$30-45 AUD) - Dual 8mm smooth rods scavenged from donors</p>
+</section>
+<section id="the-problem-with-v-slot-donors" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-with-v-slot-donors">The Problem with V-Slot Donors</h3>
+<p>Ender 3 is arguably the most common donor printer in 2026. Under the original spec, an Ender 3 scavenger must: 1. Discard the aluminum extrusions (no use in M10 frame) 2. Buy 8× stainless smooth rods (~$43 AUD) 3. Buy 22× IGUS bearings (~$30 AUD) 4. <strong>Total added cost: ~$73-90 AUD</strong></p>
+<p>This violates the scavenger philosophy: “use what you have.”</p>
+</section>
+<section id="the-insight" class="level3">
+<h3 class="anchored" data-anchor-id="the-insight">The Insight</h3>
+<p>The MDF base serves two functions: 1. <strong>Mass damping</strong> — absorbs vibration from the frame 2. <strong>Squaring jig</strong> — precision assembly reference</p>
+<p>With MDF as the foundation, the frame type becomes a <strong>variable</strong> rather than a constant. Whether M10 threaded rods or aluminum extrusions, the MDF provides: - Geometric reference for squaring - Mass to dampen resonance - Consistent Z-axis mounting</p>
+<p>The <strong>M10 + MDF</strong> combination is particularly elegant because: - M10 is adequately stiff (not overkill like M12) - MDF compensates for any remaining flexibility - The system is heavy enough to dampen, light enough to move - MDF is the precision reference (no need for machinist skills)</p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>Multi-Frame Architecture</strong> with three supported paths, all sharing a common MDF base:</p>
+<section id="amalgam-scaffold-m10-smooth-rods" class="level3">
+<h3 class="anchored" data-anchor-id="amalgam-scaffold-m10-smooth-rods">Amalgam Scaffold (M10 + Smooth Rods)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame</td>
+<td>M10 threaded rod skeleton</td>
+</tr>
+<tr class="even">
+<td>Base</td>
+<td>MDF squaring jig + damping mass</td>
+</tr>
+<tr class="odd">
+<td>Motion</td>
+<td>Dual 8mm smooth rods, vertical stacking</td>
+</tr>
+<tr class="even">
+<td>Bearings</td>
+<td>LM8LUU (X), LM8UU (Y/Z)</td>
+</tr>
+<tr class="odd">
+<td>Best donors</td>
+<td>Anet A8, Wanhao i3, Prusa clones</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Character:</strong> The heritage path. RepRap Darwin tribute with industrial “tractor” aesthetic.</p>
+<p><strong>Why choose Scaffold:</strong> - RepRap heritage (inspired by the original Darwin) - Industrial “tractor” aesthetic — threaded rod is honest, visible engineering - Hardware-store availability - Forces scavenger mindset (rod-based donors) - Differentiated from commercial designs - M10 frame adds mass for vibration damping</p>
+</section>
+<section id="amalgam-mill-extrusion-v-slots" class="level3">
+<h3 class="anchored" data-anchor-id="amalgam-mill-extrusion-v-slots">Amalgam Mill (Extrusion + V-Slots)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame</td>
+<td>Aluminum extrusion (2020/2040)</td>
+</tr>
+<tr class="even">
+<td>Base</td>
+<td>MDF squaring jig + damping mass</td>
+</tr>
+<tr class="odd">
+<td>Motion</td>
+<td>V-slot rails + POM wheels</td>
+</tr>
+<tr class="even">
+<td>Bearings</td>
+<td>POM V-wheels (3-4 per carriage)</td>
+</tr>
+<tr class="odd">
+<td>Best donors</td>
+<td>Ender 3, CR-10, Voxelab Aquila</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Character:</strong> The zero-waste path. Uses everything from your Ender donors.</p>
+<p><strong>Why choose Mill:</strong> - Ender 3 is the most common donor - Uses ALL scavenged parts (zero waste) - Proven motion system (Ender 5 style) - ~$70-90 cheaper than forcing smooth rods - Cleaner aesthetic than threaded rod</p>
+</section>
+<section id="amalgam-lathe-extrusion-smooth-rods" class="level3">
+<h3 class="anchored" data-anchor-id="amalgam-lathe-extrusion-smooth-rods">Amalgam Lathe (Extrusion + Smooth Rods)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame</td>
+<td>Aluminum extrusion (2020/2040)</td>
+</tr>
+<tr class="even">
+<td>Base</td>
+<td>MDF squaring jig + damping mass</td>
+</tr>
+<tr class="odd">
+<td>Motion</td>
+<td>Dual 8mm smooth rods, vertical stacking</td>
+</tr>
+<tr class="even">
+<td>Bearings</td>
+<td>IGUS drylin (recommended) or LM8UU</td>
+</tr>
+<tr class="odd">
+<td>Best donors</td>
+<td>Ender 3 + purchased rods, or mixed donors</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Character:</strong> The precision upgrade. Best motion quality, still under budget.</p>
+<p><strong>Why choose Lathe:</strong> - <strong>Superior motion system</strong> — smooth rods + IGUS bushings outperform POM wheels - IGUS is self-lubricating, maintenance-free, quieter than linear bearings - No eccentric nut adjustments, no flat spots developing over time - Combines modern frame (extrusion) with proven motion (smooth rods) - Two Ender 3 donors @ $50-60 each + ~$75 for rods/IGUS = still under $250 AUD - Best choice if you prioritize motion quality over zero-waste</p>
+</section>
+<section id="the-shared-foundation" class="level3">
+<h3 class="anchored" data-anchor-id="the-shared-foundation">The Shared Foundation</h3>
+<p>All paths share: - <strong>MDF base</strong> — squaring jig + mass damping - <strong>Z-drop architecture</strong> — bed moves in Z only (ADR-023) - <strong>Triple-Z leveling</strong> — three independent Z-motors (ADR-005) - <strong>Cartesian X-Y</strong> — head on X, gantry on Y (not Core-XY) - <strong>Toolhead</strong> — Pitan extruder + E3D V6 (ADR-019, ADR-004) - <strong>Electronics</strong> — Dual-MCU Klipper or MKS SKIPR (ADR-012)</p>
+</section>
+</section>
+<section id="who-is-amalgam-for" class="level2">
+<h2 class="anchored" data-anchor-id="who-is-amalgam-for">Who Is Amalgam For?</h2>
+<p><strong>Got one donor?</strong> Just add Klipper to it. Amalgam isn’t for you.</p>
+<p><strong>Got two matching donors?</strong> Perfect. Pick your frame path: - <strong>Two smooth-rod donors</strong> (Anet A8, Wanhao, Prusa clones) → <strong>Scaffold</strong> (buy M10 rods) - <strong>Two V-slot donors</strong> (Ender 3, CR-10, Aquila) → <strong>Mill</strong> (zero-waste) or <strong>Lathe</strong> (buy rods for better motion) - <strong>Mixed donors</strong> (one extrusion + one smooth-rod) → <strong>Lathe</strong> (use extrusions + scavenged rods)</p>
+<p><strong>Want to buy new?</strong> Just buy a Bambu A1 Mini. This project is for scavengers.</p>
+<section id="cost-breakdown-two-donors-matched" class="level3">
+<h3 class="anchored" data-anchor-id="cost-breakdown-two-donors-matched">Cost Breakdown (Two Donors, Matched)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Scaffold</th>
+<th>Mill</th>
+<th>Lathe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Two matching donors</td>
+<td>$100-120</td>
+<td>$100-120</td>
+<td>$100-120</td>
+</tr>
+<tr class="even">
+<td>MDF base</td>
+<td>$15-20</td>
+<td>$15-20</td>
+<td>$15-20</td>
+</tr>
+<tr class="odd">
+<td>Frame material</td>
+<td>M10 rods: $30-45</td>
+<td>$0</td>
+<td>$0</td>
+</tr>
+<tr class="even">
+<td>Motion (rods/bearings)</td>
+<td>$0</td>
+<td>$0</td>
+<td>~$75*</td>
+</tr>
+<tr class="odd">
+<td>Pitan gear</td>
+<td>$2</td>
+<td>$2</td>
+<td>$2</td>
+</tr>
+<tr class="even">
+<td>Klicky microswitch</td>
+<td>$2</td>
+<td>$2</td>
+<td>$2</td>
+</tr>
+<tr class="odd">
+<td>Misc (wires, bolts)</td>
+<td>$40</td>
+<td>$40</td>
+<td>$40</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>~$190-230</strong></td>
+<td><strong>~$160-185</strong></td>
+<td><strong>~$235-280</strong></td>
+</tr>
+</tbody>
+</table>
+<p>*Lathe motion cost: ~$43 for 8× stainless rods + ~$30 for IGUS bushings</p>
+<p><strong>Optional:</strong> Add MKS SKIPR (~$130) for cleaner single-board electronics: <strong>~$290-410</strong></p>
+<p>All paths achieve the <strong>&lt;$300 AUD target</strong> (Lathe is at the upper end but still qualifies).</p>
+</section>
+<section id="choosing-between-mill-and-lathe-ender-donors" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-between-mill-and-lathe-ender-donors">Choosing Between Mill and Lathe (Ender Donors)</h3>
+<p>If you have two Ender 3 donors, you have a choice:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 28%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Mill</th>
+<th>Lathe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cost</strong></td>
+<td>$160-185</td>
+<td>$235-280</td>
+</tr>
+<tr class="even">
+<td><strong>Motion quality</strong></td>
+<td>Good</td>
+<td>Better</td>
+</tr>
+<tr class="odd">
+<td><strong>Maintenance</strong></td>
+<td>POM wheels wear, need adjustment</td>
+<td>IGUS is maintenance-free</td>
+</tr>
+<tr class="even">
+<td><strong>Waste</strong></td>
+<td>Zero (use everything)</td>
+<td>Buy rods + bearings</td>
+</tr>
+<tr class="odd">
+<td><strong>Philosophy</strong></td>
+<td>Maximum scavenger</td>
+<td>Pragmatic upgrade</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> If budget is tight, Mill is excellent. If you want the best motion and can spend ~$75 more, Lathe is the superior choice.</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>True scavenger philosophy</strong> — use what you have</li>
+<li><strong>Ender 3 support</strong> — the most common donor is fully supported (Mill or Lathe)</li>
+<li><strong>Three distinct paths</strong> — Scaffold (heritage), Mill (zero-waste), Lathe (precision)</li>
+<li><strong>Same print quality</strong> — Klipper + Pitan + E3D V6 equalizes all paths</li>
+<li><strong>Simple requirement</strong> — two donors, pick your path</li>
+<li><strong>Parametric flexibility</strong> — config.py branches on donor type</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>More documentation</strong> — three paths to explain</li>
+<li><strong>More CAD work</strong> — brackets differ per path</li>
+<li><strong>Testing burden</strong> — must validate all three paths</li>
+<li><strong>Potential confusion</strong> — users must choose a path</li>
+</ol>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Wizard improvement:</strong> “What donor(s) do you have?” drives path selection</li>
+<li><strong>Conditional docs:</strong> Quarto shows relevant steps per path</li>
+<li><strong>STL generation:</strong> build123d outputs correct parts for chosen path</li>
+<li><strong>Fair comparison:</strong> Cost estimates accurate for each donor type</li>
+</ul>
+</section>
+</section>
+<section id="differentiation-from-other-projects" class="level2">
+<h2 class="anchored" data-anchor-id="differentiation-from-other-projects">Differentiation from Other Projects</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 16%">
+<col style="width: 19%">
+<col style="width: 28%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Project</th>
+<th>Frame</th>
+<th>Motion</th>
+<th>Kinematics</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Amalgam Scaffold</strong></td>
+<td>M10 threaded rod + MDF</td>
+<td>Smooth rods</td>
+<td>Cartesian, Z-drop</td>
+<td>&lt;$300 AUD</td>
+</tr>
+<tr class="even">
+<td><strong>Amalgam Mill</strong></td>
+<td>Aluminum extrusion + MDF</td>
+<td>V-slots</td>
+<td>Cartesian, Z-drop</td>
+<td>&lt;$300 AUD</td>
+</tr>
+<tr class="odd">
+<td><strong>Amalgam Lathe</strong></td>
+<td>Aluminum extrusion + MDF</td>
+<td>Smooth rods</td>
+<td>Cartesian, Z-drop</td>
+<td>&lt;$300 AUD</td>
+</tr>
+<tr class="even">
+<td>Voron Legacy</td>
+<td>Aluminum extrusion</td>
+<td>Smooth rods</td>
+<td>Core-XY</td>
+<td>~$600 USD</td>
+</tr>
+<tr class="odd">
+<td>Mercury One</td>
+<td>Ender 5 conversion</td>
+<td>V-slots</td>
+<td>Core-XY</td>
+<td>Ender 5 + $200+</td>
+</tr>
+<tr class="even">
+<td>Ender 5</td>
+<td>Aluminum extrusion</td>
+<td>V-slots</td>
+<td>Cartesian, Z-drop</td>
+<td>~$350 AUD new</td>
+</tr>
+</tbody>
+</table>
+<p>Amalgam is unique in combining: - <strong>RepRap threaded-rod heritage</strong> (Scaffold path) - <strong>Scavenger economics</strong> (all paths) - <strong>Modern Klipper intelligence</strong> (all paths) - <strong>MDF squaring jig</strong> (all paths)</p>
+</section>
+<section id="physics-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="physics-comparison">Physics Comparison</h2>
+<section id="frame-stiffness-bending" class="level3">
+<h3 class="anchored" data-anchor-id="frame-stiffness-bending">Frame Stiffness (Bending)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Frame Member</th>
+<th>Bending Stiffness (EI)</th>
+<th>Relative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>M10 Steel Rod</td>
+<td>~98,000</td>
+<td>1×</td>
+</tr>
+<tr class="even">
+<td>M12 Steel Rod</td>
+<td>~204,000</td>
+<td>2×</td>
+</tr>
+<tr class="odd">
+<td>2020 Aluminum</td>
+<td>~483,000</td>
+<td>5×</td>
+</tr>
+<tr class="even">
+<td>2040 Aluminum</td>
+<td>~3,850,000</td>
+<td>39×</td>
+</tr>
+</tbody>
+</table>
+<p>Aluminum extrusion is stiffer, but: - M10 is “adequate” for 70-120mm/s target speeds - MDF base compensates with mass damping - Klipper Input Shaping cancels resonance - M10 has the “tractor” aesthetic</p>
+</section>
+<section id="motion-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="motion-comparison">Motion Comparison</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 48%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Deflection @ 360mm</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dual 8mm smooth rods + LM8UU</td>
+<td>0.033mm</td>
+<td>Precision, proven</td>
+<td>Requires rod donors or purchase</td>
+</tr>
+<tr class="even">
+<td>Dual 8mm smooth rods + IGUS</td>
+<td>0.033mm</td>
+<td>Precision, maintenance-free, quiet</td>
+<td>Must purchase (~$75)</td>
+</tr>
+<tr class="odd">
+<td>V-slot + POM wheels</td>
+<td>~0.05mm</td>
+<td>Zero cost from donors</td>
+<td>Wheel wear, periodic adjustment</td>
+</tr>
+</tbody>
+</table>
+<p>Smooth rods with IGUS (Lathe) offer the best motion quality. V-slot with POM wheels (Mill) is acceptable and zero-cost from Ender donors. Input Shaping compensates for minor differences.</p>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="config-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="config-parameters">Config Parameters</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frame path selection</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>FRAME_TYPE <span class="op">=</span> <span class="st">"SCAFFOLD"</span>  <span class="co"># or "MILL", "LATHE"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Derived settings</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> FRAME_TYPE <span class="op">==</span> <span class="st">"SCAFFOLD"</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    FRAME_MATERIAL <span class="op">=</span> <span class="st">"M10_THREADED"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    MOTION_SYSTEM <span class="op">=</span> <span class="st">"SMOOTH_ROD_DUAL"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    BEARING_TYPE <span class="op">=</span> <span class="st">"LM8UU"</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> FRAME_TYPE <span class="op">==</span> <span class="st">"MILL"</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    FRAME_MATERIAL <span class="op">=</span> <span class="st">"ALUMINUM_EXTRUSION"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    MOTION_SYSTEM <span class="op">=</span> <span class="st">"V_SLOT"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    BEARING_TYPE <span class="op">=</span> <span class="st">"POM_WHEELS"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> FRAME_TYPE <span class="op">==</span> <span class="st">"LATHE"</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    FRAME_MATERIAL <span class="op">=</span> <span class="st">"ALUMINUM_EXTRUSION"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    MOTION_SYSTEM <span class="op">=</span> <span class="st">"SMOOTH_ROD_DUAL"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    BEARING_TYPE <span class="op">=</span> <span class="st">"IGUS"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="wizard-flow" class="level3">
+<h3 class="anchored" data-anchor-id="wizard-flow">Wizard Flow</h3>
+<ol type="1">
+<li>“What donor printer(s) do you have?”</li>
+<li>→ Detect donor type (rod-based, V-slot, mixed)</li>
+<li>→ Recommend path (Scaffold, Mill, or Lathe)</li>
+<li>→ Generate appropriate STLs, BOM, Klipper config</li>
+</ol>
+</section>
+<section id="documentation-structure" class="level3">
+<h3 class="anchored" data-anchor-id="documentation-structure">Documentation Structure</h3>
+<pre><code>docs/guides/
+├── scaffold-build.qmd    # M10 + smooth rods (heritage)
+├── mill-build.qmd        # Extrusion + V-slots (zero-waste)
+├── lathe-build.qmd       # Extrusion + smooth rods (precision)
+└── common/
+    ├── z-axis.qmd        # Shared Triple-Z assembly
+    ├── toolhead.qmd      # Shared Pitan + E3D V6
+    └── electronics.qmd   # Shared Klipper setup</code></pre>
+</section>
+</section>
+<section id="quality-consistency" class="level2">
+<h2 class="anchored" data-anchor-id="quality-consistency">Quality Consistency</h2>
+<p>All paths achieve the same print quality because:</p>
+<ol type="1">
+<li><strong>Same toolhead:</strong> Pitan + E3D V6 + CHT nozzle</li>
+<li><strong>Same firmware:</strong> Klipper with Input Shaping, Pressure Advance</li>
+<li><strong>Same Z-system:</strong> Triple-Z kinematic leveling</li>
+<li><strong>Same calibration:</strong> ADXL345 resonance measurement</li>
+</ol>
+<p>The frame and motion type affect resonance frequency, not quality. Input Shaping measures and compensates.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-001: M10 Threaded Rod Skeleton</li>
+<li>ADR-005: Triple-Z Kinematic Leveling</li>
+<li>ADR-021: Dual-Rod Motion System</li>
+<li>ADR-023: Z-Drop Architecture</li>
+<li>PHILOSOPHY.md: “Tractor with a Racecar Brain”</li>
+<li><a href="https://reprap.org/wiki/Darwin">RepRap Darwin</a>: Original threaded-rod heritage</li>
+<li><a href="https://vorondesign.com/voron_legacy">Voron Legacy</a>: Extrusion + smooth rod validation</li>
+<li><a href="https://www.creality.com/products/ender-5-3d-printer">Ender 5</a>: V-slot Cartesian Z-drop reference</li>
+<li>AI Conversation: “Multi-Frame Architecture Discussion” (2025-01-28)</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

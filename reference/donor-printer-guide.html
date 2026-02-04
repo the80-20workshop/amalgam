@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>donor-printer-guide – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/donor-printer-guide.html">Donor 3D Printer Compatibility Guide</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/donor-printer-guide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Donor 3D Printer Compatibility Guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/MASTER_PARTS_LIST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📋 Master Parts List (MPL) - Amalgam M12 Box Frame</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/parts-sourcing-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parts Sourcing &amp; Replacement Guide</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#donor-3d-printer-compatibility-guide" id="toc-donor-3d-printer-compatibility-guide" class="nav-link active" data-scroll-target="#donor-3d-printer-compatibility-guide">Donor 3D Printer Compatibility Guide</a>
+  <ul class="collapse">
+  <li><a href="#quick-reference-donor-tiers" id="toc-quick-reference-donor-tiers" class="nav-link" data-scroll-target="#quick-reference-donor-tiers">Quick Reference: Donor Tiers</a>
+  <ul class="collapse">
+  <li><a href="#fitness-categories-see-adr-026" id="toc-fitness-categories-see-adr-026" class="nav-link" data-scroll-target="#fitness-categories-see-adr-026">Fitness Categories (See ADR-026)</a></li>
+  </ul></li>
+  <li><a href="#frame-paths-by-donor-type" id="toc-frame-paths-by-donor-type" class="nav-link" data-scroll-target="#frame-paths-by-donor-type">Frame Paths by Donor Type</a>
+  <ul class="collapse">
+  <li><a href="#tier-1-rod-bearing-donors-recommended" id="toc-tier-1-rod-bearing-donors-recommended" class="nav-link" data-scroll-target="#tier-1-rod-bearing-donors-recommended">Tier 1: Rod-Bearing Donors (Recommended)</a></li>
+  <li><a href="#tier-1-v-slot-donors-recommended" id="toc-tier-1-v-slot-donors-recommended" class="nav-link" data-scroll-target="#tier-1-v-slot-donors-recommended">Tier 1: V-Slot Donors (Recommended)</a></li>
+  <li><a href="#tier-2-larger-bed-donors-supported-with-mitigation" id="toc-tier-2-larger-bed-donors-supported-with-mitigation" class="nav-link" data-scroll-target="#tier-2-larger-bed-donors-supported-with-mitigation">Tier 2: Larger Bed Donors (Supported with Mitigation)</a></li>
+  <li><a href="#tier-3-specialtylimited-donors-not-recommended" id="toc-tier-3-specialtylimited-donors-not-recommended" class="nav-link" data-scroll-target="#tier-3-specialtylimited-donors-not-recommended">Tier 3: Specialty/Limited Donors (Not Recommended)</a></li>
+  </ul></li>
+  <li><a href="#detailed-donor-breakdown" id="toc-detailed-donor-breakdown" class="nav-link" data-scroll-target="#detailed-donor-breakdown">Detailed Donor Breakdown</a>
+  <ul class="collapse">
+  <li><a href="#anet-a8-a6" id="toc-anet-a8-a6" class="nav-link" data-scroll-target="#anet-a8-a6">Anet A8 / A6</a></li>
+  <li><a href="#prusa-i3-clones-geeetech-tronxy-x3-wanhao-i3-coolcoin-create-ctc-alunar-etc." id="toc-prusa-i3-clones-geeetech-tronxy-x3-wanhao-i3-coolcoin-create-ctc-alunar-etc." class="nav-link" data-scroll-target="#prusa-i3-clones-geeetech-tronxy-x3-wanhao-i3-coolcoin-create-ctc-alunar-etc.">Prusa i3 Clones (Geeetech, Tronxy X3, Wanhao i3, Coolcoin Create, CTC, Alunar, etc.)</a></li>
+  <li><a href="#anycubic-i3-mega-mega-s" id="toc-anycubic-i3-mega-mega-s" class="nav-link" data-scroll-target="#anycubic-i3-mega-mega-s">Anycubic i3 Mega / Mega S</a></li>
+  <li><a href="#prusa-mk2-mk2s-mk3-mk3s" id="toc-prusa-mk2-mk2s-mk3-mk3s" class="nav-link" data-scroll-target="#prusa-mk2-mk2s-mk3-mk3s">Prusa MK2 / MK2S / MK3 / MK3S+</a></li>
+  <li><a href="#creality-ender-3-3-pro-3-v2-3-s1" id="toc-creality-ender-3-3-pro-3-v2-3-s1" class="nav-link" data-scroll-target="#creality-ender-3-3-pro-3-v2-3-s1">Creality Ender 3 / 3 Pro / 3 V2 / 3 S1</a></li>
+  <li><a href="#creality-cr-10-cr-10s-cr-10-v2" id="toc-creality-cr-10-cr-10s-cr-10-v2" class="nav-link" data-scroll-target="#creality-cr-10-cr-10s-cr-10-v2">Creality CR-10 / CR-10S / CR-10 V2</a></li>
+  <li><a href="#voxelab-aquila" id="toc-voxelab-aquila" class="nav-link" data-scroll-target="#voxelab-aquila">Voxelab Aquila</a></li>
+  <li><a href="#artillery-sidewinder-x1-genius" id="toc-artillery-sidewinder-x1-genius" class="nav-link" data-scroll-target="#artillery-sidewinder-x1-genius">Artillery Sidewinder X1 / Genius</a></li>
+  <li><a href="#elegoo-neptune-series" id="toc-elegoo-neptune-series" class="nav-link" data-scroll-target="#elegoo-neptune-series">Elegoo Neptune Series</a></li>
+  <li><a href="#prusa-mini-mini" id="toc-prusa-mini-mini" class="nav-link" data-scroll-target="#prusa-mini-mini">Prusa Mini / Mini+</a></li>
+  </ul></li>
+  <li><a href="#what-else-to-scavenge" id="toc-what-else-to-scavenge" class="nav-link" data-scroll-target="#what-else-to-scavenge">What Else to Scavenge</a>
+  <ul class="collapse">
+  <li><a href="#hardware-nuts-bolts-washers" id="toc-hardware-nuts-bolts-washers" class="nav-link" data-scroll-target="#hardware-nuts-bolts-washers">Hardware (Nuts, Bolts, Washers)</a></li>
+  <li><a href="#wiring-and-connectors" id="toc-wiring-and-connectors" class="nav-link" data-scroll-target="#wiring-and-connectors">Wiring and Connectors</a></li>
+  <li><a href="#microswitches-and-sensors" id="toc-microswitches-and-sensors" class="nav-link" data-scroll-target="#microswitches-and-sensors">Microswitches and Sensors</a></li>
+  <li><a href="#belts-and-pulleys" id="toc-belts-and-pulleys" class="nav-link" data-scroll-target="#belts-and-pulleys">Belts and Pulleys</a></li>
+  <li><a href="#misc-useful-parts" id="toc-misc-useful-parts" class="nav-link" data-scroll-target="#misc-useful-parts">Misc Useful Parts</a></li>
+  </ul></li>
+  <li><a href="#recommended-donor-combinations" id="toc-recommended-donor-combinations" class="nav-link" data-scroll-target="#recommended-donor-combinations">Recommended Donor Combinations</a>
+  <ul class="collapse">
+  <li><a href="#best-value-2-anet-a8-or-prusa-i3-clones-scaffold-path" id="toc-best-value-2-anet-a8-or-prusa-i3-clones-scaffold-path" class="nav-link" data-scroll-target="#best-value-2-anet-a8-or-prusa-i3-clones-scaffold-path">Best Value: 2× Anet A8 (or Prusa i3 Clones) — Scaffold Path</a></li>
+  <li><a href="#most-common-2-ender-3-mill-path" id="toc-most-common-2-ender-3-mill-path" class="nav-link" data-scroll-target="#most-common-2-ender-3-mill-path">Most Common: 2× Ender 3 — Mill Path</a></li>
+  <li><a href="#mixed-donor-ender-3-anet-a8-flexible-hybrid" id="toc-mixed-donor-ender-3-anet-a8-flexible-hybrid" class="nav-link" data-scroll-target="#mixed-donor-ender-3-anet-a8-flexible-hybrid">Mixed Donor: Ender 3 + Anet A8 — Flexible Hybrid</a></li>
+  <li><a href="#premium-path-prusa-mk3-ender-3-dual-mcu-overkill-optional" id="toc-premium-path-prusa-mk3-ender-3-dual-mcu-overkill-optional" class="nav-link" data-scroll-target="#premium-path-prusa-mk3-ender-3-dual-mcu-overkill-optional">Premium Path: Prusa MK3 + Ender 3 — Dual-MCU Overkill (Optional)</a></li>
+  <li><a href="#tier-2-upgrade-path-cr-10-ender-3-with-heatbed-swap-mill-with-mitigation" id="toc-tier-2-upgrade-path-cr-10-ender-3-with-heatbed-swap-mill-with-mitigation" class="nav-link" data-scroll-target="#tier-2-upgrade-path-cr-10-ender-3-with-heatbed-swap-mill-with-mitigation">Tier 2 Upgrade Path: CR-10 + Ender 3 (with Heatbed Swap) — Mill with Mitigation</a></li>
+  </ul></li>
+  <li><a href="#understanding-fitness-tiers-adr-026" id="toc-understanding-fitness-tiers-adr-026" class="nav-link" data-scroll-target="#understanding-fitness-tiers-adr-026">Understanding Fitness Tiers (ADR-026)</a></li>
+  <li><a href="#where-to-find-donors" id="toc-where-to-find-donors" class="nav-link" data-scroll-target="#where-to-find-donors">Where to Find Donors</a>
+  <ul class="collapse">
+  <li><a href="#best-sources-australia" id="toc-best-sources-australia" class="nav-link" data-scroll-target="#best-sources-australia">Best Sources (Australia)</a></li>
+  <li><a href="#hunting-tips" id="toc-hunting-tips" class="nav-link" data-scroll-target="#hunting-tips">Hunting Tips</a></li>
+  <li><a href="#what-to-avoid" id="toc-what-to-avoid" class="nav-link" data-scroll-target="#what-to-avoid">What to Avoid</a></li>
+  </ul></li>
+  <li><a href="#pre-teardown-checklist" id="toc-pre-teardown-checklist" class="nav-link" data-scroll-target="#pre-teardown-checklist">Pre-Teardown Checklist</a></li>
+  <li><a href="#mini-printers-not-recommended-donors" id="toc-mini-printers-not-recommended-donors" class="nav-link" data-scroll-target="#mini-printers-not-recommended-donors">Mini Printers: Not Recommended Donors</a>
+  <ul class="collapse">
+  <li><a href="#the-economics-dont-work" id="toc-the-economics-dont-work" class="nav-link" data-scroll-target="#the-economics-dont-work">The Economics Don’t Work</a></li>
+  <li><a href="#the-physics-advantage-disappears" id="toc-the-physics-advantage-disappears" class="nav-link" data-scroll-target="#the-physics-advantage-disappears">The Physics Advantage Disappears</a></li>
+  <li><a href="#just-use-them-as-is" id="toc-just-use-them-as-is" class="nav-link" data-scroll-target="#just-use-them-as-is">Just Use Them As-Is</a></li>
+  <li><a href="#better-small-format-alternatives" id="toc-better-small-format-alternatives" class="nav-link" data-scroll-target="#better-small-format-alternatives">Better Small-Format Alternatives</a></li>
+  <li><a href="#could-you-build-a-mini-amalgam" id="toc-could-you-build-a-mini-amalgam" class="nav-link" data-scroll-target="#could-you-build-a-mini-amalgam">Could You Build a “Mini Amalgam”?</a></li>
+  </ul></li>
+  <li><a href="#when-not-to-scavenge-enclosed-proprietary-printers" id="toc-when-not-to-scavenge-enclosed-proprietary-printers" class="nav-link" data-scroll-target="#when-not-to-scavenge-enclosed-proprietary-printers">When NOT to Scavenge: Enclosed &amp; Proprietary Printers</a>
+  <ul class="collapse">
+  <li><a href="#cost-threshold-reality" id="toc-cost-threshold-reality" class="nav-link" data-scroll-target="#cost-threshold-reality">Cost Threshold Reality</a></li>
+  <li><a href="#enclosed-box-frame-printers-just-klipperize-dont-dismantle" id="toc-enclosed-box-frame-printers-just-klipperize-dont-dismantle" class="nav-link" data-scroll-target="#enclosed-box-frame-printers-just-klipperize-dont-dismantle">Enclosed Box-Frame Printers: Just Klipperize, Don’t Dismantle</a></li>
+  <li><a href="#scavenging-strategy-how-to-avoid-wasting-money" id="toc-scavenging-strategy-how-to-avoid-wasting-money" class="nav-link" data-scroll-target="#scavenging-strategy-how-to-avoid-wasting-money">Scavenging Strategy: How to Avoid Wasting Money</a></li>
+  <li><a href="#the-enclosed-printer-problem-in-a-nutshell" id="toc-the-enclosed-printer-problem-in-a-nutshell" class="nav-link" data-scroll-target="#the-enclosed-printer-problem-in-a-nutshell">The Enclosed Printer Problem in a Nutshell</a></li>
+  </ul></li>
+  <li><a href="#what-if-a-donor-part-fails" id="toc-what-if-a-donor-part-fails" class="nav-link" data-scroll-target="#what-if-a-donor-part-fails">What If a Donor Part Fails?</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="donor-3d-printer-compatibility-guide" class="level1">
+<h1>Donor 3D Printer Compatibility Guide</h1>
+<p>This guide helps Amalgam builders identify which donor printers provide the most value and what to expect from each. Not all printers are equal donors—some provide smooth rods, others don’t.</p>
+<p><strong>Target release:</strong> End of 2026 <strong>Expected donor pricing:</strong> ~$50 AUD per unit (secondhand market floor)</p>
+<p>⚠️ <strong>Cost Reality Check:</strong> Before you start shopping, read <a href="#when-not-to-scavenge-enclosed--proprietary-printers">When NOT to Scavenge</a> later in this guide. Amalgam makes financial sense only when donors are $100-150 each. Beyond that, commercial alternatives are competitive.</p>
+<p>💡 <strong>Budget for Contingencies:</strong> Expect to spend <strong>$80-150 on parts you can’t scavenge</strong> (M10 rods, M8 leadscrews, bearings, PSU, misc). See <a href="../reference/parts-sourcing-guide.html">Parts Sourcing &amp; Replacement Guide</a> for how to source these if a donor part fails or is damaged. <strong>Total realistic budget: $250-380 AUD.</strong></p>
+<section id="quick-reference-donor-tiers" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-donor-tiers">Quick Reference: Donor Tiers</h2>
+<section id="fitness-categories-see-adr-026" class="level3">
+<h3 class="anchored" data-anchor-id="fitness-categories-see-adr-026">Fitness Categories (See ADR-026)</h3>
+<p>This section now uses <strong>fitness tiers</strong> based on bed size and Z-height (see ADR-026: Donor Fitness &amp; Frame Constraints):</p>
+<ul>
+<li><strong>Tier 1 (Recommended):</strong> 200–235mm bed, &lt;280mm Z → Full support, no modifications</li>
+<li><strong>Tier 2 (Supported with notes):</strong> 235–300mm bed, 280–400mm Z → Works with heatbed swap or heavier MDF</li>
+<li><strong>Tier 3 (Unsupported):</strong> &gt;300mm bed, &gt;400mm Z → Not recommended, re-sell and buy Tier 1 donors</li>
+</ul>
+</section>
+</section>
+<section id="frame-paths-by-donor-type" class="level2">
+<h2 class="anchored" data-anchor-id="frame-paths-by-donor-type">Frame Paths by Donor Type</h2>
+<p><strong>Amalgam has three frame paths</strong> (see ADR-025):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 31%">
+<col style="width: 27%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>Component Match</th>
+<th>Common Donors</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Scaffold</strong></td>
+<td>Two smooth-rod donors</td>
+<td>Anet A8, Wanhao i3, Prusa clones</td>
+<td>Primary—buy M10 rods (~$30-45)</td>
+</tr>
+<tr class="even">
+<td><strong>Mill</strong></td>
+<td>Two v-slot donors</td>
+<td>Ender 3, CR-10, Aquila</td>
+<td>Primary—zero-waste, recommended</td>
+</tr>
+<tr class="odd">
+<td><strong>Lathe</strong></td>
+<td>Mixed: extrusion + smooth-rod</td>
+<td>Rare; mixed donor scenarios</td>
+<td>Fallback only—usually avoid</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lathe is rare:</strong> Most real-world printers are either all-smooth-rods (Scaffold path) or all-v-slots (Mill path). Extrusion + smooth-rod combinations are uncommon. If you have mixed donors, either: 1. Buy M10 rods and use Scaffold path (cheaper, simpler) 2. Build Lathe if you have good extrusions available</p>
+<hr>
+<section id="tier-1-rod-bearing-donors-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-rod-bearing-donors-recommended">Tier 1: Rod-Bearing Donors (Recommended)</h3>
+<p><strong>Component compatibility:</strong> Provide smooth rods AND bearings—the hardest parts to find cheap. <strong>Bed size:</strong> 200–235mm. <strong>Z-travel:</strong> &lt;280mm.</p>
+<ul>
+<li><strong>Anet A8 / A6</strong> → Tier 1 ✅ (220×220, 240mm Z)</li>
+<li><strong>Prusa i3 clones</strong> → Tier 1 ✅ (Geeetech, Tronxy X3, CTC; 200–220mm bed, ~260mm Z)</li>
+<li><strong>Anycubic i3 Mega</strong> → Tier 1 ✅ (210×210, 200mm Z)</li>
+<li><strong>Prusa MK2 / MK2S</strong> → Tier 1 ✅ (250×210, 210mm Z; premium quality)</li>
+<li><strong>Prusa MK3 / MK3S+</strong> → Tier 1 ✅ (250×210, 210mm Z; premium quality, highest parts quality)</li>
+</ul>
+<hr>
+</section>
+<section id="tier-1-v-slot-donors-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-v-slot-donors-recommended">Tier 1: V-Slot Donors (Recommended)</h3>
+<p><strong>Component compatibility:</strong> V-slot motion system (no smooth rods), but excellent motors/electronics. <strong>Bed size:</strong> 200–235mm. <strong>Z-travel:</strong> &lt;280mm.</p>
+<ul>
+<li><strong>Creality Ender 3 / 3 Pro / 3 V2 / 3 S1</strong> → Tier 1 ✅ (235×235, 250mm Z)</li>
+<li><strong>Voxelab Aquila</strong> → Tier 1 ✅ (235×235, 250mm Z; Ender 3 clone)</li>
+<li><strong>Creality Ender 5 / 5 Pro</strong> → <strong>See Tier 3 note</strong> ⓘ (Has own dedicated projects like Mercury One)</li>
+<li><strong>Elegoo Neptune series</strong> → Tier 1 ✅ (235×235, 250mm Z; Ender 3 competitor)</li>
+</ul>
+<hr>
+</section>
+<section id="tier-2-larger-bed-donors-supported-with-mitigation" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-larger-bed-donors-supported-with-mitigation">Tier 2: Larger Bed Donors (Supported with Mitigation)</h3>
+<p><strong>Bed size:</strong> 235–300mm. <strong>Z-travel:</strong> 280–400mm. <strong>Note:</strong> Recommend heatbed swap (to 220×220) or heavier MDF base.</p>
+<ul>
+<li><strong>Creality CR-10 / CR-10S</strong> → Tier 2 ⚠️ (300×300, 400mm Z)</li>
+<li><strong>Artillery Sidewinder X1 / Genius</strong> → Tier 2 ⚠️ (300×300, 360mm Z)</li>
+</ul>
+<p><em>See ADR-026 for heatbed swap guide and MDF thickness recommendations.</em></p>
+<hr>
+</section>
+<section id="tier-3-specialtylimited-donors-not-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-specialtylimited-donors-not-recommended">Tier 3: Specialty/Limited Donors (Not Recommended)</h3>
+<p>Limited usefulness due to size, proprietary parts, or unsupported geometry:</p>
+<ul>
+<li><strong>Mini printers</strong> → Not recommended (bed &lt;180mm; see <a href="#mini-printers-not-recommended-donors">Mini Printers</a> section)
+<ul>
+<li>Prusa Mini / Mini+ (180×180)</li>
+<li>Creality Ender 2 (165×165)</li>
+<li>Cocoon Create Mini (~120×120)</li>
+<li>Monoprice Mini (~120×120)</li>
+</ul></li>
+<li><strong>Ender 5 / Ender 5 Pro</strong> → <strong>Has own project</strong> ⓘ (Mercury One and other Ender 5 conversions exist; those communities are more appropriate)</li>
+<li><strong>Tronxy models (especially X5S, large format)</strong> → <strong>Has own projects</strong> ⓘ (Tronxy community has dedicated upgrade paths; Amalgam not optimized for Tronxy geometry)</li>
+<li><strong>Delta printers</strong> → Unsupported (wrong geometry, can’t use components)</li>
+<li><strong>Resin printers</strong> → Unsupported (nothing reusable)</li>
+<li><strong>Tevo Spider (large models)</strong> → Tier 3 ❌ (500×500, too large; unsupported)</li>
+<li><strong>Custom/modified printers</strong> → Varies (too many unknowns)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="detailed-donor-breakdown" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-donor-breakdown">Detailed Donor Breakdown</h2>
+<section id="anet-a8-a6" class="level3">
+<h3 class="anchored" data-anchor-id="anet-a8-a6">Anet A8 / A6</h3>
+<p><strong>Fitness Tier:</strong> ✅ <strong>Tier 1 (Recommended)</strong> <strong>Bed:</strong> 220×220mm | <strong>Z-travel:</strong> 240mm | <strong>Frame path:</strong> Scaffold (primary)</p>
+<p><strong>Why it’s excellent:</strong> Millions sold, often “broken” (usually just needs firmware update or new MOSFET). 220×220mm bed matches Amalgam reference spec exactly. Perfect fit for Scaffold frame path. Steel frame is not useful for Amalgam, but motion components are excellent.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Smooth rods</strong></td>
+<td>6× 8mm (various lengths)</td>
+<td>✅ Direct use</td>
+<td>Check for wear/rust</td>
+</tr>
+<tr class="even">
+<td><strong>Linear bearings</strong></td>
+<td>6× LM8UU</td>
+<td>✅ Direct use</td>
+<td>Clean and regrease</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>5× (X, Y, Z×2, E)</td>
+<td>✅ Direct use</td>
+<td>Standard 1.8° steppers</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>220×220mm, 12V</td>
+<td>✅ Reference spec size</td>
+<td>May need rewire for 24V</td>
+</tr>
+<tr class="odd">
+<td><strong>Power supply</strong></td>
+<td>12V 20A (240W)</td>
+<td>⚠️ Upgrade recommended</td>
+<td>Underpowered for 24V system</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>Anet V1.x (4 drivers)</td>
+<td>✅ Tier 2 MCU</td>
+<td>Flash Klipper firmware</td>
+</tr>
+<tr class="odd">
+<td><strong>Lead screw</strong></td>
+<td>2× T8 threaded rod</td>
+<td>✅ Z-axis</td>
+<td>Check for wobble</td>
+</tr>
+<tr class="even">
+<td><strong>Endstops</strong></td>
+<td>3× mechanical switches</td>
+<td>✅ Direct use</td>
+<td>Standard microswitches</td>
+</tr>
+<tr class="odd">
+<td><strong>Hotend</strong></td>
+<td>Anet A8 (E3D V6 clone)</td>
+<td>⚠️ Replace nozzle</td>
+<td>Cheap clone, works</td>
+</tr>
+<tr class="even">
+<td><strong>Extruder</strong></td>
+<td>MK8 style</td>
+<td>❌ Replace with Pitan</td>
+<td>Not geared</td>
+</tr>
+<tr class="odd">
+<td><strong>Wiring</strong></td>
+<td>Various</td>
+<td>✅ Reuse connectors</td>
+<td>JST-XH, Dupont, etc.</td>
+</tr>
+<tr class="even">
+<td><strong>Belts</strong></td>
+<td>GT2 6mm</td>
+<td>✅ Direct use</td>
+<td>Check for wear</td>
+</tr>
+<tr class="odd">
+<td><strong>Pulleys</strong></td>
+<td>GT2 16T/20T</td>
+<td>✅ Direct use</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Hardware</strong></td>
+<td>M3, M4, M5 bolts/nuts</td>
+<td>✅ Parts bin</td>
+<td>Metric standard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Yield from 2× Anet A8:</strong> - 12× smooth rods (need 8) - 12× LM8UU bearings (need 16, buy 4 more or use LM8LUU) - 10× NEMA17 motors (need 7) - 2× heated beds (use better one) - 2× mainboards (Tier 2 dual-MCU) - 4× lead screws (need 3) - 6× endstops (need 6)</p>
+<hr>
+</section>
+<section id="prusa-i3-clones-geeetech-tronxy-x3-wanhao-i3-coolcoin-create-ctc-alunar-etc." class="level3">
+<h3 class="anchored" data-anchor-id="prusa-i3-clones-geeetech-tronxy-x3-wanhao-i3-coolcoin-create-ctc-alunar-etc.">Prusa i3 Clones (Geeetech, Tronxy X3, Wanhao i3, Coolcoin Create, CTC, Alunar, etc.)</h3>
+<p><strong>Fitness Tier:</strong> ✅ <strong>Tier 1 (Recommended)</strong> <strong>Bed:</strong> 200–220mm | <strong>Z-travel:</strong> 260mm (typical) | <strong>Frame path:</strong> Scaffold (primary) <strong>Frame type:</strong> Steel rod frame (like Anet A8, not extrusion-based)</p>
+<p><strong>Why it’s good:</strong> Direct descendants of original RepRap design. Rod-based steel frames are compatible with Scaffold/M10 path philosophy. Build quality varies by brand. All Tier 1 compatible. Steel frame not useful for Amalgam, but smooth rods and motors are excellent.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Smooth rods</strong></td>
+<td>6× 8mm</td>
+<td>✅ Direct use</td>
+<td>Quality varies by brand</td>
+</tr>
+<tr class="even">
+<td><strong>Linear bearings</strong></td>
+<td>6× LM8UU</td>
+<td>✅ Direct use</td>
+<td>Often cheap quality; use IGUS if worn</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>4-5×</td>
+<td>✅ Direct use</td>
+<td>Standard steppers</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>200–220mm</td>
+<td>✅ Works well</td>
+<td>Slightly smaller than reference; acceptable</td>
+</tr>
+<tr class="odd">
+<td><strong>Steel frame</strong></td>
+<td>Rod-based structure</td>
+<td>⚠️ Not reused</td>
+<td>Can’t transfer to Amalgam box frame (use M10 rods instead)</td>
+</tr>
+<tr class="even">
+<td><strong>Power supply</strong></td>
+<td>12V</td>
+<td>⚠️ Upgrade</td>
+<td>Consider 24V for dual MCU</td>
+</tr>
+<tr class="odd">
+<td><strong>Mainboard</strong></td>
+<td>Various (4 drivers)</td>
+<td>✅ Tier 2 MCU</td>
+<td>Check MCU (ATMEGA, STM32) compatibility</td>
+</tr>
+<tr class="even">
+<td><strong>Lead screw</strong></td>
+<td>2× T8</td>
+<td>✅ Z-axis</td>
+<td>Inspect for wobble</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Watch out for:</strong> - <strong>Tronxy X3:</strong> Good donor, classic i3 clone (220×220, 260mm Z) ✅ Tier 1 - <strong>Wanhao i3:</strong> Good donor, similar to Anet A8 (220×220, 240mm Z) ✅ Tier 1 - <strong>Coolcoin Create:</strong> Similar to Wanhao/Anet (210×210 typical, 260mm Z) ✅ Tier 1 - <strong>Tronxy X5S / large format models:</strong> <strong>See Tier 3 note</strong> ⓘ (Have their own project communities) - <strong>Geeetech i3:</strong> Some use acrylic frame (useless), but rod-based ones are Tier 1 - <strong>CTC/Alunar:</strong> Cheapest clones, rod quality varies; inspect carefully before purchase</p>
+<hr>
+</section>
+<section id="anycubic-i3-mega-mega-s" class="level3">
+<h3 class="anchored" data-anchor-id="anycubic-i3-mega-mega-s">Anycubic i3 Mega / Mega S</h3>
+<p><strong>Fitness Tier:</strong> ✅ <strong>Tier 1 (Recommended)</strong> <strong>Bed:</strong> 210×210mm | <strong>Z-travel:</strong> 200mm | <strong>Frame path:</strong> Scaffold (primary)</p>
+<p><strong>Why it’s good:</strong> Better build quality than Anet A8, still has smooth rods and a steel frame. Rod-based design like Anet A8. Excellent components for Scaffold path. Steel frame not useful for Amalgam, but motion components are premium quality.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Smooth rods</strong></td>
+<td>6× 8mm</td>
+<td>✅ Direct use</td>
+<td>Good quality, hardened steel</td>
+</tr>
+<tr class="even">
+<td><strong>Linear bearings</strong></td>
+<td>6× LM8UU</td>
+<td>✅ Direct use</td>
+<td>Branded bearings, excellent quality</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>5×</td>
+<td>✅ Direct use</td>
+<td>Higher quality than Anet</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>210×210mm (Ultrabase)</td>
+<td>✅ Works</td>
+<td>Ultrabase PEI surface is excellent</td>
+</tr>
+<tr class="odd">
+<td><strong>Power supply</strong></td>
+<td>12V 20A</td>
+<td>⚠️ Upgrade</td>
+<td>Consider 24V for efficiency</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>Trigorilla (4 drivers)</td>
+<td>✅ Tier 2 MCU</td>
+<td>ATMEGA2560 based, very capable</td>
+</tr>
+<tr class="odd">
+<td><strong>Lead screw</strong></td>
+<td>2× T8</td>
+<td>✅ Z-axis</td>
+<td>Good quality</td>
+</tr>
+<tr class="even">
+<td><strong>Steel frame</strong></td>
+<td>Structural steel</td>
+<td>⚠️ Not useful</td>
+<td>Not aluminum extrusion; discard or repurpose</td>
+</tr>
+<tr class="odd">
+<td><strong>Touchscreen</strong></td>
+<td>Anycubic TFT</td>
+<td>❌ Not useful</td>
+<td>Proprietary, leave behind</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Frame note:</strong> i3 Mega uses a <strong>steel frame</strong> (not aluminum extrusions), similar to Anet A8. The frame itself won’t transfer to an Amalgam build, but all the motion and electronics components are excellent.</p>
+<hr>
+</section>
+<section id="prusa-mk2-mk2s-mk3-mk3s" class="level3">
+<h3 class="anchored" data-anchor-id="prusa-mk2-mk2s-mk3-mk3s">Prusa MK2 / MK2S / MK3 / MK3S+</h3>
+<p><strong>Fitness Tier:</strong> ⚠️ <strong>Tier 1 Components, But Frame Not Easily Adaptable</strong> <strong>Recommendation:</strong> <strong>Just add Klipper, don’t dismantle.</strong> Prusa machines have excellent structural design that’s hard to repurpose; not ideal Amalgam donors despite component quality.</p>
+<p><strong>Why not ideal as donors:</strong> Prusa’s CNC aluminum frame (especially MK3) is not a box-frame design. Disassembling and repurposing these machines would destroy their most valuable feature—a well-engineered, integrated structure. Better to upgrade with Klipper than to scavenge.</p>
+<p><strong>Component Quality (If You Must Scavenge):</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Smooth rods</strong> (MK2/3)</td>
+<td>6× 8mm (hardened)</td>
+<td>✅ Excellent</td>
+<td>Premium hardened steel</td>
+</tr>
+<tr class="even">
+<td><strong>Linear bearings</strong></td>
+<td>3× LM8UU + 3× LM8LUU</td>
+<td>✅ Direct use</td>
+<td>Top-tier bearings, mix sizes</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>5×</td>
+<td>✅ Direct use</td>
+<td>Genuine LDO or Moons motors</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong> (MK2/3)</td>
+<td>250×210mm (MK52)</td>
+<td>✅ Works</td>
+<td>Magnetic PEI, but rectangular</td>
+</tr>
+<tr class="odd">
+<td><strong>Power supply</strong> (MK3)</td>
+<td>24V (15A+)</td>
+<td>✅ Direct use</td>
+<td>Ideal voltage</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong> (MK3)</td>
+<td>Einsy (5 drivers, TMC)</td>
+<td>✅ Excellent</td>
+<td>Has TMC2130 steppers</td>
+</tr>
+<tr class="odd">
+<td><strong>PINDA probe</strong> (MK3S+)</td>
+<td>SuperPINDA</td>
+<td>✅ Reference spec</td>
+<td>Metal-detecting, ideal</td>
+</tr>
+<tr class="even">
+<td><strong>Frame</strong> (MK2/3)</td>
+<td>CNC aluminum</td>
+<td>❌ Not useful</td>
+<td>Integrated design; can’t adapt to Amalgam box frame</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Better use:</strong> Buy a broken MK3 (~$150), flash Klipper firmware, keep it as a working printer. You gain a known-good machine + reference quality components without the scavenge overhead.</p>
+<p><strong>MK2 Note:</strong> Uses threaded rod frame (not extrusions), but still integrated design—harder to repurpose than Anet A8.</p>
+<hr>
+</section>
+<section id="creality-ender-3-3-pro-3-v2-3-s1" class="level3">
+<h3 class="anchored" data-anchor-id="creality-ender-3-3-pro-3-v2-3-s1">Creality Ender 3 / 3 Pro / 3 V2 / 3 S1</h3>
+<p><strong>Fitness Tier:</strong> ✅ <strong>Tier 1 (Recommended)</strong> <strong>Bed:</strong> 235×235mm | <strong>Z-travel:</strong> 250mm | <strong>Frame path:</strong> Mill (recommended) or Scaffold (requires buying rods)</p>
+<p><strong>Why it’s excellent:</strong> Best-selling printer ever. Cheap and everywhere. <strong>With ADR-025 Multi-Frame Architecture, Ender 3 is now fully supported via Mill path—use the aluminum extrusions and V-slot rails directly.</strong> No rod purchase needed if using Mill.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>V-slot extrusions</strong></td>
+<td>2020/2040 frame</td>
+<td>✅ Mill path</td>
+<td>Reuse as frame structure</td>
+</tr>
+<tr class="even">
+<td><strong>V-slot rollers</strong></td>
+<td>4× wheels per carriage</td>
+<td>✅ Mill motion</td>
+<td>Scavenged motion system, zero waste</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>4× (X, Y, Z, E)</td>
+<td>✅ Direct use</td>
+<td>Need 2 donors for 7+ total</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>235×235mm, 24V</td>
+<td>✅ Good size</td>
+<td>Slightly larger than 220 reference; works</td>
+</tr>
+<tr class="odd">
+<td><strong>Power supply</strong></td>
+<td>24V 30A typical</td>
+<td>✅ Direct use</td>
+<td>Ideal for 24V system</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>Creality 4.2.x (4 drivers)</td>
+<td>✅ Tier 2 MCU</td>
+<td>STM32/GD32 based, good quality</td>
+</tr>
+<tr class="odd">
+<td><strong>Lead screw</strong></td>
+<td>1× T8</td>
+<td>⚠️ Need 3 total</td>
+<td>Only one per printer; buy one more</td>
+</tr>
+<tr class="even">
+<td><strong>Endstops</strong></td>
+<td>2-3× mechanical</td>
+<td>✅ Direct use</td>
+<td>Standard microswitches</td>
+</tr>
+<tr class="odd">
+<td><strong>Hotend</strong></td>
+<td>MK8/Creality</td>
+<td>⚠️ Replace</td>
+<td>Not E3D compatible; use E3D V6</td>
+</tr>
+<tr class="even">
+<td><strong>Extruder</strong></td>
+<td>Bowden or direct</td>
+<td>❌ Replace</td>
+<td>Replace with Pitan (all paths)</td>
+</tr>
+<tr class="odd">
+<td><strong>Belts</strong></td>
+<td>GT2 6mm</td>
+<td>✅ Direct use</td>
+<td>Check for wear</td>
+</tr>
+<tr class="even">
+<td><strong>Smooth rods</strong></td>
+<td>❌ None</td>
+<td>✅ Not needed for Mill</td>
+<td>Scaffold path would need to buy</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two Ender 3 Donors (Mill Path):</strong> - ✅ Frame: 2× full extrusion sets (use better condition one or combine) - ✅ Motion: All V-slot wheels scavenged (zero additional cost) - ✅ Motors: 8× NEMA17 (need 7, one spare) - ✅ Beds: 2× 235×235 (use one) - ✅ Electronics: 2× Creality mainboards (dual-MCU setup) - ✅ PSU: 2× 24V (use better one) - ⚠️ Lead screws: 2× T8 (need 3, buy 1 more ~$5–8) - <strong>Total new parts needed:</strong> ~$8–12 (just one lead screw!)</p>
+<hr>
+</section>
+<section id="creality-cr-10-cr-10s-cr-10-v2" class="level3">
+<h3 class="anchored" data-anchor-id="creality-cr-10-cr-10s-cr-10-v2">Creality CR-10 / CR-10S / CR-10 V2</h3>
+<p><strong>Fitness Tier:</strong> ⚠️ <strong>Tier 2 (Supported with Mitigation)</strong> <strong>Bed:</strong> 300×300mm | <strong>Z-travel:</strong> 400mm | <strong>Frame path:</strong> Mill (recommended) | <strong>Mitigation:</strong> Heatbed swap to 220×220 (recommended) OR heavier MDF base</p>
+<p><strong>Why consider it:</strong> Larger format with dual Z motors. V-slot motion system. <strong>Note:</strong> See ADR-026 for fitness constraints. The large bed size and Z-height require either heatbed swap or heavier MDF damping for stability.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>V-slot extrusions</strong></td>
+<td>2020/2040 frame</td>
+<td>✅ Mill path</td>
+<td>Good stiffness for larger format</td>
+</tr>
+<tr class="even">
+<td><strong>V-slot rollers</strong></td>
+<td>4-6× per carriage</td>
+<td>✅ Mill motion</td>
+<td>Scavenged system works</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>5× (dual Z motors!)</td>
+<td>✅ Direct use</td>
+<td>Extra Z motor is bonus ✅</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>300×300mm</td>
+<td>⚠️ Swap recommended</td>
+<td>Too large; recommend swap to 220×220 ($25–35)</td>
+</tr>
+<tr class="odd">
+<td><strong>Power supply</strong></td>
+<td>24V 30A (typical)</td>
+<td>✅ Direct use</td>
+<td>Good quality PSU</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>Creality 4.2.x (4 drivers)</td>
+<td>✅ Tier 2 MCU</td>
+<td>STM32/GD32 based</td>
+</tr>
+<tr class="odd">
+<td><strong>Lead screw</strong></td>
+<td>2× T8</td>
+<td>✅ Z-axis</td>
+<td>Already has dual Z, excellent</td>
+</tr>
+<tr class="even">
+<td><strong>Endstops</strong></td>
+<td>3× mechanical</td>
+<td>✅ Direct use</td>
+<td>Standard microswitches</td>
+</tr>
+<tr class="odd">
+<td><strong>Hotend</strong></td>
+<td>MK8/Creality</td>
+<td>⚠️ Replace</td>
+<td>Not E3D; replace with E3D V6</td>
+</tr>
+<tr class="even">
+<td><strong>Extruder</strong></td>
+<td>Bowden</td>
+<td>❌ Replace</td>
+<td>Replace with Pitan</td>
+</tr>
+<tr class="odd">
+<td><strong>Belts</strong></td>
+<td>GT2 6mm (wider available)</td>
+<td>✅ Direct use</td>
+<td>Check condition</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mitigation Options (Choose One):</strong></p>
+<ol type="1">
+<li><strong>Option A (Recommended):</strong> Swap heatbed to 220×220
+<ul>
+<li>Cost: $25–35 (MK3 Dual Power or generic)</li>
+<li>Result: Frame becomes 220×220mm, Z-height unchanged (~400mm)</li>
+<li>Benefit: Perfect frame size, only moderate Z-height for Tier 2</li>
+<li>Process: 4× M3 bolts, rewire heating element</li>
+</ul></li>
+<li><strong>Option B:</strong> Use heavier MDF base (50–60mm instead of 40mm)
+<ul>
+<li>Cost: ~$10 extra material</li>
+<li>Result: Improved mass damping for larger bed</li>
+<li>Drawback: Heavier final machine, may need stronger Z-motors</li>
+</ul></li>
+<li><strong>Option C:</strong> Not Recommended: Use as-is (300×300 on standard MDF)
+<ul>
+<li>Risk: Nozzle compliance issues, bed leveling instability</li>
+<li>Outcome: Tier 3 unsupported deviation</li>
+</ul></li>
+</ol>
+<p><strong>Why Tier 2:</strong> CR-10’s 400mm Z-height is at the boundary of stability. With heatbed swap, it becomes an excellent Tier 1 candidate.</p>
+<hr>
+</section>
+<section id="voxelab-aquila" class="level3">
+<h3 class="anchored" data-anchor-id="voxelab-aquila">Voxelab Aquila</h3>
+<p><strong>Fitness Tier:</strong> ✅ <strong>Tier 1 (Recommended)</strong> <strong>Bed:</strong> 235×235mm | <strong>Z-travel:</strong> 250mm | <strong>Frame path:</strong> Mill (primary) or Scaffold (with rod purchase)</p>
+<p><strong>Essentially an Ender 3 clone.</strong> Nearly identical compatibility, same Mill path benefits (no rod purchase needed). Scavenged motion system is zero-waste.</p>
+<hr>
+</section>
+<section id="artillery-sidewinder-x1-genius" class="level3">
+<h3 class="anchored" data-anchor-id="artillery-sidewinder-x1-genius">Artillery Sidewinder X1 / Genius</h3>
+<p><strong>Fitness Tier:</strong> ⚠️ <strong>Tier 2 (Supported with Mitigation)</strong> <strong>Bed:</strong> 300×300mm | <strong>Z-travel:</strong> 360mm | <strong>Frame path:</strong> Mill (recommended) | <strong>Mitigation:</strong> Heatbed swap to 220×220 (recommended)</p>
+<p><strong>Why consider it:</strong> Direct drive, excellent PSU, good dual Z motors. V-slot motion. Similar to CR-10 in size constraints—see ADR-026 for fitness details.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>V-slot extrusions</strong></td>
+<td>2020/2040 frame</td>
+<td>✅ Mill path</td>
+<td>Good stiffness</td>
+</tr>
+<tr class="even">
+<td><strong>V-slot rollers</strong></td>
+<td>4-6× per carriage</td>
+<td>✅ Mill motion</td>
+<td>Scavenged system</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>5×</td>
+<td>✅ Direct use</td>
+<td>Dual Z standard (bonus)</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>300×300mm</td>
+<td>⚠️ Swap recommended</td>
+<td>Too large; recommend swap to 220×220 ($25–35)</td>
+</tr>
+<tr class="odd">
+<td><strong>Power supply</strong></td>
+<td>24V 30A</td>
+<td>✅ Direct use</td>
+<td>Excellent quality PSU, premium feature</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>Mainboard K</td>
+<td>✅ Tier 2 MCU</td>
+<td>STM32 based, capable</td>
+</tr>
+<tr class="odd">
+<td><strong>Direct drive</strong></td>
+<td>Titan clone</td>
+<td>⚠️ Parts for bin</td>
+<td>Gears/springs useful; replace nozzle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mitigation:</strong> Same as CR-10—recommend heatbed swap to 220×220. With swap, becomes excellent Tier 1 candidate.</p>
+<hr>
+</section>
+<section id="elegoo-neptune-series" class="level3">
+<h3 class="anchored" data-anchor-id="elegoo-neptune-series">Elegoo Neptune Series</h3>
+<p><strong>Fitness Tier:</strong> ✅ <strong>Tier 1 (Recommended)</strong> <strong>Bed:</strong> 235×235mm | <strong>Z-travel:</strong> 250mm | <strong>Frame path:</strong> Mill (primary)</p>
+<p><strong>Ender 3 competitor.</strong> Similar to Ender 3 in what’s reusable—V-slot motion system, zero rod purchase needed. Mill path highly recommended.</p>
+<hr>
+</section>
+<section id="prusa-mini-mini" class="level3">
+<h3 class="anchored" data-anchor-id="prusa-mini-mini">Prusa Mini / Mini+</h3>
+<p><strong>Fitness Tier:</strong> ❌ <strong>Tier 3 (Limited, Not Recommended as Primary Donor)</strong> <strong>Bed:</strong> 180×180mm | <strong>Z-travel:</strong> 180mm | <strong>Issue:</strong> Bed too small, rods too short for standard Amalgam specs.</p>
+<p><strong>Limited donor value:</strong> Below Tier 1 minimum (200×200mm bed). Consider Prusa Mini as <strong>secondary</strong> donor or parts scavenge only.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Spec</th>
+<th>Amalgam Use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Smooth rods</strong></td>
+<td>4× 8mm (short)</td>
+<td>⚠️ Too short</td>
+<td>Cantilever design, not 220mm+ length</td>
+</tr>
+<tr class="even">
+<td><strong>Heated bed</strong></td>
+<td>180×180mm</td>
+<td>❌ Too small</td>
+<td>Below 200mm minimum for Tier 1</td>
+</tr>
+<tr class="odd">
+<td><strong>NEMA17 motors</strong></td>
+<td>3× (no Y)</td>
+<td>⚠️ Cantilever</td>
+<td>Mini uses gantry-mounted Z</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>Buddy (5 drivers, TMC)</td>
+<td>✅ Good MCU</td>
+<td>STM32, Klipper compatible; save for electronics</td>
+</tr>
+<tr class="odd">
+<td><strong>SuperPINDA</strong></td>
+<td>Yes</td>
+<td>✅ Excellent</td>
+<td>Z-probe is reference-spec quality; valuable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best use:</strong> Scavenge the SuperPINDA (reference spec z-probe) and Buddy mainboard. Use 4× short rods for parts bin, not motion. Combine with a Tier 1 donor (e.g., Ender 3) for complete build.</p>
+<hr>
+</section>
+</section>
+<section id="what-else-to-scavenge" class="level2">
+<h2 class="anchored" data-anchor-id="what-else-to-scavenge">What Else to Scavenge</h2>
+<p>Beyond the major components, don’t overlook:</p>
+<section id="hardware-nuts-bolts-washers" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-nuts-bolts-washers">Hardware (Nuts, Bolts, Washers)</h3>
+<ul>
+<li><strong>M3 bolts</strong> (various lengths): Frame, brackets, mounts</li>
+<li><strong>M3 nuts</strong> (standard and nylock): Most printed parts</li>
+<li><strong>M3 washers</strong>: Bed leveling, spacing</li>
+<li><strong>M4/M5 bolts</strong>: Bed mounting, larger brackets</li>
+<li><strong>Heatset inserts</strong>: If donor used them</li>
+</ul>
+</section>
+<section id="wiring-and-connectors" class="level3">
+<h3 class="anchored" data-anchor-id="wiring-and-connectors">Wiring and Connectors</h3>
+<ul>
+<li><strong>JST-XH connectors</strong>: Motor, endstop, thermistor</li>
+<li><strong>Dupont connectors</strong>: Headers, jumpers</li>
+<li><strong>Silicone wire</strong>: 18-22 AWG for heated bed, hotend</li>
+<li><strong>Cable chains</strong>: If donor had them</li>
+<li><strong>Zip ties</strong>: Always useful</li>
+</ul>
+</section>
+<section id="microswitches-and-sensors" class="level3">
+<h3 class="anchored" data-anchor-id="microswitches-and-sensors">Microswitches and Sensors</h3>
+<ul>
+<li><strong>Mechanical endstops</strong>: 3× minimum for XYZ homing</li>
+<li><strong>Optical endstops</strong>: High precision alternative</li>
+<li><strong>Thermistors</strong>: 100K NTC (bed, hotend)</li>
+<li><strong>Fans</strong>: 4010, 4020, 5015 blowers</li>
+</ul>
+</section>
+<section id="belts-and-pulleys" class="level3">
+<h3 class="anchored" data-anchor-id="belts-and-pulleys">Belts and Pulleys</h3>
+<ul>
+<li><strong>GT2 belts</strong>: 6mm width, check for wear/cracks</li>
+<li><strong>GT2 pulleys</strong>: 16T or 20T, 5mm bore</li>
+<li><strong>Idler pulleys</strong>: Smooth or toothed</li>
+<li><strong>Belt tensioners</strong>: Springs, adjustment screws</li>
+</ul>
+</section>
+<section id="misc-useful-parts" class="level3">
+<h3 class="anchored" data-anchor-id="misc-useful-parts">Misc Useful Parts</h3>
+<ul>
+<li><strong>PTFE tube</strong>: Bowden tube (4mm OD, 2mm ID)</li>
+<li><strong>Couplers</strong>: Pneumatic fittings for PTFE</li>
+<li><strong>Springs</strong>: Bed leveling springs</li>
+<li><strong>Thumbwheels</strong>: Bed adjustment knobs</li>
+<li><strong>Heatsinks</strong>: Motor, driver cooling</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="recommended-donor-combinations" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-donor-combinations">Recommended Donor Combinations</h2>
+<p>All combinations below use <strong>Tier 1 donors</strong> (200–235mm beds, &lt;280mm Z). For Tier 2 donors (CR-10, Artillery), see ADR-026 mitigation options.</p>
+<p>⚠️ <strong>Note:</strong> These are best-case costs assuming all donor parts are usable. <strong>Budget an additional $80-150 for parts you’ll likely source</strong> (M10 rods, M8 leadscrews, replacement bearings, PSU, etc.). See <a href="../reference/parts-sourcing-guide.html">Parts Sourcing &amp; Replacement Guide</a> if a donor part fails or is damaged. <strong>Realistic total budget: $250-380 AUD.</strong></p>
+<section id="best-value-2-anet-a8-or-prusa-i3-clones-scaffold-path" class="level3">
+<h3 class="anchored" data-anchor-id="best-value-2-anet-a8-or-prusa-i3-clones-scaffold-path">Best Value: 2× Anet A8 (or Prusa i3 Clones) — Scaffold Path</h3>
+<p><strong>Fitness:</strong> ✅ Tier 1 + Tier 1 → <strong>Fully Supported</strong> - <strong>Total cost:</strong> ~$100 AUD (two donors) - <strong>Frame path:</strong> Scaffold (M10 rods) + MDF base - <strong>Motion system:</strong> Dual 8mm smooth rods (scavenged) - <strong>Heatbed size:</strong> 220×220mm (reference spec) - <strong>Electronics:</strong> Dual-MCU Klipper - <strong>New parts required:</strong> M10 threaded rods (~$30–45), MDF (~$15–20) - <strong>Total Amalgam build:</strong> ~$160–190 AUD - <strong>Why excellent:</strong> Zero need to buy motion parts, perfect bed size, RepRap heritage</p>
+</section>
+<section id="most-common-2-ender-3-mill-path" class="level3">
+<h3 class="anchored" data-anchor-id="most-common-2-ender-3-mill-path">Most Common: 2× Ender 3 — Mill Path</h3>
+<p><strong>Fitness:</strong> ✅ Tier 1 + Tier 1 → <strong>Fully Supported (with ADR-025)</strong> - <strong>Total cost:</strong> ~$100 AUD (two donors) - <strong>Frame path:</strong> Mill (extrusions + V-slots) - <strong>Motion system:</strong> V-slot wheels (scavenged, zero-waste) - <strong>Heatbed size:</strong> 235×235mm (within Tier 1, works great) - <strong>Electronics:</strong> Dual-MCU Klipper - <strong>New parts required:</strong> 1× lead screw (~$8), MDF (~$15–20) - <strong>Total Amalgam build:</strong> ~$160–180 AUD - <strong>Why excellent:</strong> Zero rod/bearing purchase, perfect waste-free scavenging, 24V power supply included</p>
+</section>
+<section id="mixed-donor-ender-3-anet-a8-flexible-hybrid" class="level3">
+<h3 class="anchored" data-anchor-id="mixed-donor-ender-3-anet-a8-flexible-hybrid">Mixed Donor: Ender 3 + Anet A8 — Flexible Hybrid</h3>
+<p><strong>Fitness:</strong> ✅ Tier 1 + Tier 1 → <strong>Fully Supported</strong> - <strong>Total cost:</strong> ~$100 AUD - <strong>Frame path:</strong> Scaffold (use Anet’s rod-based wisdom) - <strong>Motion system:</strong> 8mm smooth rods (from Anet, scavenged) - <strong>Heatbed:</strong> Ender 3’s 235×235 or Anet’s 220×220 (both work) - <strong>Electronics:</strong> Both mainboards contribute to Tier 2 dual-MCU - <strong>Advantage:</strong> Ender 3’s 24V PSU, Anet’s proven rods - <strong>Total:</strong> ~$160–190 AUD - <strong>Why good:</strong> Best of both worlds; no compromise on any component</p>
+</section>
+<section id="premium-path-prusa-mk3-ender-3-dual-mcu-overkill-optional" class="level3">
+<h3 class="anchored" data-anchor-id="premium-path-prusa-mk3-ender-3-dual-mcu-overkill-optional">Premium Path: Prusa MK3 + Ender 3 — Dual-MCU Overkill (Optional)</h3>
+<p><strong>Fitness:</strong> ✅ Tier 1 + Tier 1 → <strong>Fully Supported</strong> - <strong>Total cost:</strong> ~$200+ AUD (if you find an MK3 cheap) - <strong>Frame path:</strong> Scaffold or Mill (your choice) - <strong>Heatbed:</strong> Prusa’s 250×210 (rectangular, excellent) - <strong>Electronics:</strong> Einsy (5-driver TMC) + Creality board = overkill, but works - <strong>Bonus:</strong> SuperPINDA reference-spec probe, LM8LUU premium bearings, 24V PSU - <strong>Why premium:</strong> Highest quality scavenged parts, but hard to find MK3 cheap - <strong>Recommendation:</strong> Only pursue if MK3 &lt;$120. Otherwise, better to buy MK3 electronics new.</p>
+</section>
+<section id="tier-2-upgrade-path-cr-10-ender-3-with-heatbed-swap-mill-with-mitigation" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-upgrade-path-cr-10-ender-3-with-heatbed-swap-mill-with-mitigation">Tier 2 Upgrade Path: CR-10 + Ender 3 (with Heatbed Swap) — Mill with Mitigation</h3>
+<p><strong>Fitness:</strong> ⚠️ Tier 2 + Tier 1 → <strong>Supported with Heatbed Swap</strong> - <strong>Total cost:</strong> ~$120 AUD (two donors) + $25–35 (heatbed swap) - <strong>Frame path:</strong> Mill - <strong>Motion system:</strong> V-slot wheels (scavenged from both) - <strong>Heatbed:</strong> Swap CR-10’s 300×300 to 220×220 (MK3 Dual Power ~$25–35) - <strong>Electronics:</strong> Dual-MCU (two Creality boards) - <strong>New parts:</strong> Lead screw (~$8) + heatbed (~$25) + MDF (~$15) - <strong>Total Amalgam build:</strong> ~$180–210 AUD - <strong>Why consider it:</strong> CR-10’s dual Z motors and better PSU; workable with mitigation - <strong>Note:</strong> Follow ADR-026 for heatbed swap process and MDF damping requirements</p>
+<hr>
+</section>
+</section>
+<section id="understanding-fitness-tiers-adr-026" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-fitness-tiers-adr-026">Understanding Fitness Tiers (ADR-026)</h2>
+<p>This guide uses <strong>fitness tiers</strong> to help you assess donor suitability. See <strong>ADR-026: Donor Fitness &amp; Frame Constraints</strong> for the full physics and rationale.</p>
+<p><strong>Quick Summary:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 28%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Bed Size</th>
+<th>Z-Height</th>
+<th>Support Level</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Tier 1 ✅</strong></td>
+<td>200–235mm</td>
+<td>&lt;280mm</td>
+<td>Full support</td>
+<td>None needed</td>
+</tr>
+<tr class="even">
+<td><strong>Tier 2 ⚠️</strong></td>
+<td>235–300mm</td>
+<td>280–400mm</td>
+<td>Supported</td>
+<td>Heatbed swap or heavier MDF</td>
+</tr>
+<tr class="odd">
+<td><strong>Tier 3 ❌</strong></td>
+<td>&gt;300mm</td>
+<td>&gt;400mm</td>
+<td>Not recommended</td>
+<td>Buy different donor pair</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong> - Anet A8 (220×220, 240mm Z) → <strong>Tier 1</strong> ✅ - Ender 3 (235×235, 250mm Z) → <strong>Tier 1</strong> ✅ - CR-10 (300×300, 400mm Z) → <strong>Tier 2</strong> ⚠️ (swap bed or use heavier MDF) - Tevo Spider (500×500, 500mm Z) → <strong>Tier 3</strong> ❌ (don’t use)</p>
+<p><strong>Why it matters:</strong> Larger beds and taller gantries reduce system stiffness. MDF base provides damping, but there are physical limits. Tier 2 donors work great with simple mitigations (heatbed swap = $25–35). Tier 3 is beyond the scavenger philosophy—sell it and buy a matched Tier 1 pair.</p>
+<hr>
+</section>
+<section id="where-to-find-donors" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-find-donors">Where to Find Donors</h2>
+<section id="best-sources-australia" class="level3">
+<h3 class="anchored" data-anchor-id="best-sources-australia">Best Sources (Australia)</h3>
+<ol type="1">
+<li><strong>Facebook Marketplace</strong> - Search “broken 3D printer”, “Ender 3 parts”, “Anet A8”</li>
+<li><strong>Gumtree</strong> - Similar to Marketplace</li>
+<li><strong>University/TAFE surplus</strong> - Often bulk lots</li>
+<li><strong>Makerspace clearouts</strong> - Ask your local space</li>
+<li><strong>eBay</strong> - For specific parts, rarely whole printers cheap</li>
+</ol>
+</section>
+<section id="hunting-tips" class="level3">
+<h3 class="anchored" data-anchor-id="hunting-tips">Hunting Tips</h3>
+<ul>
+<li><strong>Post “wanted” ads</strong> - “Looking for broken 3D printers, any condition, $30-50”</li>
+<li><strong>Be patient</strong> - $150 listings will eventually drop</li>
+<li><strong>Lot deals</strong> - “Take all 3 for $100” is common</li>
+<li><strong>Condition doesn’t matter</strong> - “Won’t heat” or “won’t home” = easy fix</li>
+<li><strong>Inspect rods</strong> - Roll on glass to check for bends</li>
+</ul>
+</section>
+<section id="what-to-avoid" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-avoid">What to Avoid</h3>
+<ul>
+<li><strong>Resin printers</strong> - Nothing reusable</li>
+<li><strong>Delta printers</strong> - Wrong geometry, weird steppers</li>
+<li><strong>Heavily modified</strong> - Missing stock parts</li>
+<li><strong>Fire damage</strong> - Wiring compromised</li>
+<li><strong>“Upgraded” expensive</strong> - Paying for someone else’s mods</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="pre-teardown-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="pre-teardown-checklist">Pre-Teardown Checklist</h2>
+<p>Before dismantling, verify:</p>
+<ol type="1">
+<li><strong>Power on test</strong> (if safe)
+<ul>
+<li>Motors move? → Good steppers</li>
+<li>Bed heats? → Good heater, thermistor</li>
+<li>Home works? → Good endstops</li>
+</ul></li>
+<li><strong>Rod quality check</strong>
+<ul>
+<li>Roll on glass/mirror</li>
+<li>Check for rust, scoring, wear marks</li>
+<li>Measure diameter (should be 8.00 ±0.02mm)</li>
+</ul></li>
+<li><strong>Motor test</strong>
+<ul>
+<li>Spin by hand - should feel smooth with detents</li>
+<li>Check for grinding or binding</li>
+</ul></li>
+<li><strong>Bearing test</strong> (if accessible)
+<ul>
+<li>Slide on rod - should be smooth</li>
+<li>No grinding, clicking, or excessive play</li>
+</ul></li>
+<li><strong>Document wiring</strong>
+<ul>
+<li>Photo before disconnecting</li>
+<li>Label connectors with tape</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="mini-printers-not-recommended-donors" class="level2">
+<h2 class="anchored" data-anchor-id="mini-printers-not-recommended-donors">Mini Printers: Not Recommended Donors</h2>
+<p><strong>Examples:</strong> Cocoon Create Mini, Creality Ender 2, Monoprice Mini, Prusa Mini</p>
+<p>Mini printers (bed size &lt;180mm) are <strong>not recommended as Amalgam donors</strong>. Here’s why:</p>
+<section id="the-economics-dont-work" class="level3">
+<h3 class="anchored" data-anchor-id="the-economics-dont-work">The Economics Don’t Work</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 25%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>Cost</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Two mini donors</td>
+<td>$60-100</td>
+<td>~120×120mm build volume</td>
+</tr>
+<tr class="even">
+<td>Bambu A1 Mini (new)</td>
+<td>~$180</td>
+<td>180×180×180mm, warranty, proven quality</td>
+</tr>
+</tbody>
+</table>
+<p>You’re paying similar money for dramatically less capability. The A1 Mini is the better answer at this scale.</p>
+</section>
+<section id="the-physics-advantage-disappears" class="level3">
+<h3 class="anchored" data-anchor-id="the-physics-advantage-disappears">The Physics Advantage Disappears</h3>
+<p>Amalgam’s engineering (MDF damping, dual rods, box frame) solves stiffness problems that <strong>don’t exist at mini scale</strong>:</p>
+<ul>
+<li>Rod sag analysis shows deflection scales with <strong>L³</strong> (length cubed)</li>
+<li>At 150mm spans, deflection is negligible even on flimsy hardware</li>
+<li>Mini printers are already stiff due to their compact size</li>
+<li>You’re solving a problem that isn’t there</li>
+</ul>
+</section>
+<section id="just-use-them-as-is" class="level3">
+<h3 class="anchored" data-anchor-id="just-use-them-as-is">Just Use Them As-Is</h3>
+<p>If you have a mini printer:</p>
+<ol type="1">
+<li><strong>Flash Klipper</strong> — Adds Input Shaping, Pressure Advance, web interface</li>
+<li><strong>Tune it</strong> — Run resonance calibration, pressure advance test</li>
+<li><strong>Print</strong> — At this scale, they work fine with minimal upgrades</li>
+</ol>
+<p><strong>Prusa Mini specifically:</strong> Already well-engineered. Just add Klipper. Don’t dismantle.</p>
+</section>
+<section id="better-small-format-alternatives" class="level3">
+<h3 class="anchored" data-anchor-id="better-small-format-alternatives">Better Small-Format Alternatives</h3>
+<p>If you want a compact Klipper build, consider these purpose-built designs:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Project</th>
+<th>Build Volume</th>
+<th>Philosophy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://github.com/Kanrog/Rook">The Rook</a></td>
+<td>~150mm³</td>
+<td>Compact, Klipper-first, low cost</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/MSzturc/the100">The 100</a></td>
+<td>~100mm³</td>
+<td>Tiny, fast, educational</td>
+</tr>
+</tbody>
+</table>
+<p>These are optimized for small format. Amalgam is optimized for 220mm bed slingers.</p>
+</section>
+<section id="could-you-build-a-mini-amalgam" class="level3">
+<h3 class="anchored" data-anchor-id="could-you-build-a-mini-amalgam">Could You Build a “Mini Amalgam”?</h3>
+<p>Theoretically, yes — two minis could yield parts for a ~120mm box frame (probably M8 frame rods instead of M10). But:</p>
+<ul>
+<li><strong>Why bother?</strong> You’d spend $80-120 for inferior capability</li>
+<li><strong>No documentation</strong> — Amalgam doesn’t support sub-200mm builds</li>
+<li><strong>The Rook exists</strong> — Purpose-built for exactly this use case</li>
+</ul>
+<p><strong>Bottom line:</strong> Mini printers are fine machines. Use them as-is with Klipper, or look at The Rook / The 100. Don’t try to force them into Amalgam.</p>
+<hr>
+</section>
+</section>
+<section id="when-not-to-scavenge-enclosed-proprietary-printers" class="level2">
+<h2 class="anchored" data-anchor-id="when-not-to-scavenge-enclosed-proprietary-printers">When NOT to Scavenge: Enclosed &amp; Proprietary Printers</h2>
+<p>At a certain price point, <strong>dismantling an old printer costs more than its parts are worth</strong>. These machines are better off Klipperized whole or skipped entirely.</p>
+<section id="cost-threshold-reality" class="level3">
+<h3 class="anchored" data-anchor-id="cost-threshold-reality">Cost Threshold Reality</h3>
+<p><strong>Amalgam makes financial sense only if donors are reasonably priced.</strong> Before you commit:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Donor Cost</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>$100-150 each</strong></td>
+<td>✅ Good range—Amalgam build: $200-300 total</td>
+</tr>
+<tr class="even">
+<td><strong>$150-200 each</strong></td>
+<td>⚠️ Borderline—reconsider your strategy</td>
+</tr>
+<tr class="odd">
+<td><strong>&gt;$200 each</strong></td>
+<td>❌ Just buy <strong>Bambu A1 Mini</strong> (~$180) or <strong>Ender 3 V3 SE</strong> (~$150) new</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your goal:</strong> Save money by scavenging. If you’re paying premium prices, you’ve already lost.</p>
+</section>
+<section id="enclosed-box-frame-printers-just-klipperize-dont-dismantle" class="level3">
+<h3 class="anchored" data-anchor-id="enclosed-box-frame-printers-just-klipperize-dont-dismantle">Enclosed Box-Frame Printers: Just Klipperize, Don’t Dismantle</h3>
+<p>These machines are <strong>better upgraded whole than dismantled</strong>:</p>
+<section id="anycubic-4max-pro-2.0" class="level4">
+<h4 class="anchored" data-anchor-id="anycubic-4max-pro-2.0">Anycubic 4Max Pro 2.0</h4>
+<ul>
+<li><strong>Secondhand price:</strong> ~$250 AUD</li>
+<li><strong>Why keep it whole?</strong> Already enclosed, good frame, dual Z built-in, TMC drivers</li>
+<li><strong>What to do:</strong> Flash Klipper firmware; use as-is</li>
+<li><strong>Benefit:</strong> Working closed-loop system + Klipper’s best features</li>
+<li><strong>Dismantle cost:</strong> Labor &gt; parts value at this price</li>
+</ul>
+</section>
+<section id="xyz-da-vinci-all-models-pro-jr.-mini" class="level4">
+<h4 class="anchored" data-anchor-id="xyz-da-vinci-all-models-pro-jr.-mini">XYZ da Vinci (All Models: Pro, Jr., Mini)</h4>
+<ul>
+<li><strong>Mainboard:</strong> Proprietary; reverse engineering required for Klipper</li>
+<li><strong>Hotend:</strong> Proprietary cartridge system; incompatible with E3D V6</li>
+<li><strong>Bed system:</strong> Single-point support (sag issues, like Ender 5)</li>
+<li><strong>Frame:</strong> Integrated design (can’t reuse cleanly)</li>
+<li><strong>Donor value:</strong> Low; locked-down ecosystem</li>
+<li><strong>What to do:</strong> Keep and upgrade with Klipper if you want it; don’t dismantle for parts</li>
+<li><strong>Reality:</strong> Parts salvage value &lt;&lt; disassembly effort</li>
+</ul>
+</section>
+<section id="flashforge-creator-pro-adventure" class="level4">
+<h4 class="anchored" data-anchor-id="flashforge-creator-pro-adventure">FlashForge (Creator, Pro, Adventure)</h4>
+<ul>
+<li><strong>Everything:</strong> Proprietary firmware, mainboard, hotend connectors, bed system</li>
+<li><strong>Integration:</strong> Tightly integrated; difficult disassembly</li>
+<li><strong>Donor value:</strong> Very low</li>
+<li><strong>Compatibility:</strong> None with standard Klipper builds</li>
+<li><strong>What to do:</strong> Keep as-is or recycle; not a practical Amalgam source</li>
+</ul>
+</section>
+</section>
+<section id="scavenging-strategy-how-to-avoid-wasting-money" class="level3">
+<h3 class="anchored" data-anchor-id="scavenging-strategy-how-to-avoid-wasting-money">Scavenging Strategy: How to Avoid Wasting Money</h3>
+<p><strong>Before you buy an old printer to scavenge:</strong></p>
+<ol type="1">
+<li><strong>Identify two matched donors</strong> (both smooth-rod OR both v-slot)
+<ul>
+<li>Example: Two Anet A8s, or Two Ender 3s</li>
+<li>Avoid mixing (requires extra purchases)</li>
+</ul></li>
+<li><strong>Calculate total cost:</strong>
+<ul>
+<li>Donor 1: $_____</li>
+<li>Donor 2: $_____</li>
+<li>MDF base: $15-20</li>
+<li>Frame material (M10 rods if Scaffold, $0 if Mill): $0-45</li>
+<li>Misc (bolts, wires): ~$40</li>
+<li><strong>Total: $____</strong></li>
+</ul></li>
+<li><strong>Apply the rule:</strong>
+<ul>
+<li><strong>If total &lt; $280 AUD:</strong> ✅ Good scavenger territory (matched donors)</li>
+<li><strong>If total $280-300 AUD:</strong> ⚠️ At parity with Bambu A1 Mini; reconsider</li>
+<li><strong>If total &gt; $300 AUD:</strong> ❌ Just buy a new commercial printer instead</li>
+</ul></li>
+<li><strong>If you find one printer, but no second match:</strong>
+<ul>
+<li>Don’t overpay for a second one just to avoid buying M10 rods</li>
+<li>Buy M10 rods (~$35) and pick <em>any</em> other Scaffold-compatible donor</li>
+<li>Or buy a different matched pair</li>
+</ul></li>
+</ol>
+</section>
+<section id="the-enclosed-printer-problem-in-a-nutshell" class="level3">
+<h3 class="anchored" data-anchor-id="the-enclosed-printer-problem-in-a-nutshell">The Enclosed Printer Problem in a Nutshell</h3>
+<p><strong>Enclosed machines gain little from Amalgam disassembly:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Proprietary mainboards</td>
+<td>Don’t work with standard Klipper setups; reverse engineering required</td>
+</tr>
+<tr class="even">
+<td>Integrated frame + electronics</td>
+<td>Can’t reuse either cleanly; disassembly is destructive</td>
+</tr>
+<tr class="odd">
+<td>Non-standard hotends</td>
+<td>Require custom mounts; incompatible with E3D V6 reference spec</td>
+</tr>
+<tr class="even">
+<td>Proprietary bed systems</td>
+<td>Can’t adapt to Amalgam’s Triple-Z leveling</td>
+</tr>
+<tr class="odd">
+<td>Difficult disassembly</td>
+<td>More labor than the salvaged parts are worth</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Bottom line:</strong> Amalgam is for <strong>matching donor pairs</strong> scavenged in the <strong>$100-150 each range</strong>. Enclosed, proprietary machines at $200+ are better left alone, upgraded whole with Klipper, or skipped entirely. Don’t pay premium prices for parts that will cost you premium labor to extract.</p>
+<hr>
+</section>
+</section>
+<section id="what-if-a-donor-part-fails" class="level2">
+<h2 class="anchored" data-anchor-id="what-if-a-donor-part-fails">What If a Donor Part Fails?</h2>
+<p>Sometimes you’ll discover mid-build that a PSU is dead, a leadscrew is bent, or bearings are worn.</p>
+<p><strong>See <a href="../reference/parts-sourcing-guide.html">Parts Sourcing &amp; Replacement Guide</a></strong> for: - How to source replacements from AliExpress, Temu, eBay - How to spot counterfeits and avoid duds - Budget planning and decision tree - Common pitfalls (wrong pitch leadscrew, fake bearings, etc.)</p>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>ADR-026</strong>: Donor Fitness &amp; Frame Constraints (bed size, Z-height, stability physics)</li>
+<li><strong>ADR-025</strong>: Multi-Frame Architecture (Scaffold, Mill, Lathe paths)</li>
+<li><strong>ADR-021</strong>: Dual-Rod Motion System (rod requirements)</li>
+<li><strong>ADR-022</strong>: Linear Bearing Selection (bearing options, IGUS path)</li>
+<li><strong>ADR-024</strong>: Heated Bed Size Selection (bed compatibility)</li>
+<li><strong>ADR-012</strong>: Mainboard Architecture (dual-MCU configuration)</li>
+<li><strong>Parts Sourcing Guide</strong>: <a href="../reference/parts-sourcing-guide.html">parts-sourcing-guide.md</a> (replacement parts, avoiding counterfeits)</li>
+</ul>
+<hr>
+<p><em>“The code handles the permutations; the iron handles the quality.”</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

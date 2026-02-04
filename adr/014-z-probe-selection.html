@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>z-probe-selection – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-014-z-probe-selection-superpinda-vs-bltouch" id="toc-adr-014-z-probe-selection-superpinda-vs-bltouch" class="nav-link active" data-scroll-target="#adr-014-z-probe-selection-superpinda-vs-bltouch">ADR-014: Z-Probe Selection (SuperPINDA vs BLTouch)</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#probe-options" id="toc-probe-options" class="nav-link" data-scroll-target="#probe-options">Probe Options</a></li>
+  <li><a href="#technical-comparison" id="toc-technical-comparison" class="nav-link" data-scroll-target="#technical-comparison">Technical Comparison</a></li>
+  <li><a href="#why-superpinda-for-reference-spec" id="toc-why-superpinda-for-reference-spec" class="nav-link" data-scroll-target="#why-superpinda-for-reference-spec">Why SuperPINDA for Reference Spec?</a></li>
+  <li><a href="#why-bltouch-for-scavenger-builds" id="toc-why-bltouch-for-scavenger-builds" class="nav-link" data-scroll-target="#why-bltouch-for-scavenger-builds">Why BLTouch for Scavenger Builds?</a></li>
+  <li><a href="#build-wizard-logic" id="toc-build-wizard-logic" class="nav-link" data-scroll-target="#build-wizard-logic">Build Wizard Logic</a></li>
+  <li><a href="#bed-probe-compatibility-matrix" id="toc-bed-probe-compatibility-matrix" class="nav-link" data-scroll-target="#bed-probe-compatibility-matrix">Bed-Probe Compatibility Matrix</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#what-this-replaces" id="toc-what-this-replaces" class="nav-link" data-scroll-target="#what-this-replaces">What This Replaces</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#tier-3-reference-spec-superpinda-mk52" id="toc-tier-3-reference-spec-superpinda-mk52" class="nav-link" data-scroll-target="#tier-3-reference-spec-superpinda-mk52">Tier 3: Reference Spec (SuperPINDA + MK52)</a></li>
+  <li><a href="#tier-1-2-scavenger-fallback-bltouch-glass" id="toc-tier-1-2-scavenger-fallback-bltouch-glass" class="nav-link" data-scroll-target="#tier-1-2-scavenger-fallback-bltouch-glass">Tier 1-2: Scavenger Fallback (BLTouch + Glass)</a></li>
+  <li><a href="#hybrid-option-bltouch-on-metal-bed" id="toc-hybrid-option-bltouch-on-metal-bed" class="nav-link" data-scroll-target="#hybrid-option-bltouch-on-metal-bed">Hybrid Option: BLTouch on Metal Bed</a></li>
+  <li><a href="#universal-requirements-all-options" id="toc-universal-requirements-all-options" class="nav-link" data-scroll-target="#universal-requirements-all-options">Universal Requirements (All Options)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#superpinda-klipper-configuration" id="toc-superpinda-klipper-configuration" class="nav-link" data-scroll-target="#superpinda-klipper-configuration">SuperPINDA Klipper Configuration</a></li>
+  <li><a href="#bltouch-klipper-configuration" id="toc-bltouch-klipper-configuration" class="nav-link" data-scroll-target="#bltouch-klipper-configuration">BLTouch Klipper Configuration</a></li>
+  <li><a href="#probe-calibration-procedure" id="toc-probe-calibration-procedure" class="nav-link" data-scroll-target="#probe-calibration-procedure">Probe Calibration Procedure</a></li>
+  <li><a href="#mounting-considerations" id="toc-mounting-considerations" class="nav-link" data-scroll-target="#mounting-considerations">Mounting Considerations</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+  <li><a href="#safety-considerations" id="toc-safety-considerations" class="nav-link" data-scroll-target="#safety-considerations">Safety Considerations</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#evolution-notes" id="toc-evolution-notes" class="nav-link" data-scroll-target="#evolution-notes">Evolution Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-014-z-probe-selection-superpinda-vs-bltouch" class="level1">
+<h1>ADR-014: Z-Probe Selection (SuperPINDA vs BLTouch)</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam requires a Z-probe for homing and bed-leveling. The choice depends heavily on the bed surface material:</p>
+<p><strong>Two Probe Technologies</strong>: 1. <strong>BLTouch</strong>: Physical Hall Effect probe with moving pin that touches bed 2. <strong>SuperPINDA</strong>: Inductive proximity sensor that detects metal without contact</p>
+<p><strong>Bed Surface Constraints</strong>: - <strong>Inductive Probes</strong>: Only work on conductive metal (magnetic spring steel sheets like MK52) - <strong>Physical Probes</strong>: Work on any surface (glass, spring steel, wood, carbon fiber, plain aluminum)</p>
+<p><strong>Engineering Philosophy</strong>: - <strong>“Tractor” Goal</strong>: Set-and-forget reliability with minimal maintenance - <strong>“Scavenger” Goal</strong>: Universal compatibility with repurposed beds</p>
+<p>This creates a decision matrix based on both bed surface and reliability requirements.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>bed-surface-dependent probe strategy</strong> with <strong>SuperPINDA as Reference Spec</strong> and <strong>BLTouch as Scavenger Fallback</strong>.</p>
+<section id="probe-options" class="level3">
+<h3 class="anchored" data-anchor-id="probe-options">Probe Options</h3>
+<p><strong>Option A: SuperPINDA (Reference Spec)</strong> - <strong>Technology</strong>: Inductive proximity sensor (solid-state) - <strong>Bed Requirement</strong>: Magnetic spring steel sheet (MK52 or compatible) - <strong>Mounting</strong>: Fixed position on X-carriage or gantry - <strong>Wiring</strong>: 3 wires (VCC, Ground, Signal) - <strong>Reliability</strong>: Maximum - no moving parts, resin-encased, nearly indestructible - <strong>Cost</strong>: ~$30-40 AUD - <strong>Best For</strong>: Tier 3 Reference Spec builds with MK52 bed</p>
+<p><strong>Option B: BLTouch V3.1 (Scavenger Fallback)</strong> - <strong>Technology</strong>: Physical Hall Effect probe with deployable pin - <strong>Bed Requirement</strong>: Any surface (glass, carbon fiber, aluminum, spring steel) - <strong>Mounting</strong>: Fixed position on X-carriage or gantry - <strong>Wiring</strong>: 5 wires (VCC, Ground, Signal, Control Servo) - <strong>Reliability</strong>: Moderate - moving pin can snap or bend if it hits print/clip - <strong>Cost</strong>: ~$50-60 AUD (authentic), ~$15-25 AUD (3DTouch clone) - <strong>Best For</strong>: Tier 1-2 builds with scavenged beds (glass, etc.)</p>
+</section>
+<section id="technical-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="technical-comparison">Technical Comparison</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 46%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>SuperPINDA (Inductive)</th>
+<th>BLTouch (Physical)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Bed Surface</strong></td>
+<td>Metal only (conductive)</td>
+<td>Universal (any material)</td>
+</tr>
+<tr class="even">
+<td><strong>Accuracy</strong></td>
+<td>Extremely high, repeatable</td>
+<td>Extremely high, but can drift if pin bent</td>
+</tr>
+<tr class="odd">
+<td><strong>Robustness</strong></td>
+<td><strong>Maximum</strong> (solid-state, no moving parts)</td>
+<td>Moderate (pin can snap/bend)</td>
+</tr>
+<tr class="even">
+<td><strong>Complexity</strong></td>
+<td>Simple (3 wires, always-on)</td>
+<td>Moderate (5 wires, deploy/retract logic)</td>
+</tr>
+<tr class="odd">
+<td><strong>Wear Items</strong></td>
+<td>None</td>
+<td>Pin, springs, servo</td>
+</tr>
+<tr class="even">
+<td><strong>Thermal Drift</strong></td>
+<td>Minimal (modern SuperPINDA)</td>
+<td>None (mechanical contact)</td>
+</tr>
+<tr class="odd">
+<td><strong>Calibration</strong></td>
+<td>Z-offset once</td>
+<td>Z-offset once, pin deployment verification</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-superpinda-for-reference-spec" class="level3">
+<h3 class="anchored" data-anchor-id="why-superpinda-for-reference-spec">Why SuperPINDA for Reference Spec?</h3>
+<p><strong>1. Solid-State Reliability</strong> - Zero moving parts to fail - Immune to “pin-snag” failures during high-speed travel - Resin-encased design is nearly indestructible - No deployment mechanism to jam or misfire</p>
+<p><strong>2. Thermal Stability</strong> - Older inductive probes drifted with bed temperature - PINDA V2 added thermistor to compensate (0.02mm adjustments) - SuperPINDA uses higher-quality components that don’t drift - Trigger height identical at 20°C or 60°C chamber temperature</p>
+<p><strong>3. “Set-and-Forget” Philosophy</strong> - Once calibrated, requires no ongoing maintenance - No pin to straighten or replace - No servo mechanism to lubricate or adjust - Perfect for 1000+ day maintenance intervals</p>
+<p><strong>4. Simplicity</strong> - 3-wire connection (vs 5 wires for BLTouch) - No deployment/retract logic in Klipper - Always-on proximity sensing - Lower failure surface area</p>
+</section>
+<section id="why-bltouch-for-scavenger-builds" class="level3">
+<h3 class="anchored" data-anchor-id="why-bltouch-for-scavenger-builds">Why BLTouch for Scavenger Builds?</h3>
+<p><strong>1. Universal Compatibility</strong> - Works on any bed surface (glass, carbon fiber, plain aluminum) - Only option for salvaged Ender 3, i3 Mega, Anet A8 beds - Allows flexibility in bed choice during Tier 1 builds - Doesn’t force MK52 bed purchase</p>
+<p><strong>2. Well-Understood Technology</strong> - Years of community documentation and troubleshooting - Wide availability of clones and spare parts - Proven track record in millions of printers</p>
+<p><strong>3. Bed-Surface Flexibility</strong> - User can experiment with different bed surfaces - No commitment to magnetic spring steel upfront - Universal “key” for uncertain scavenger inventory</p>
+</section>
+<section id="build-wizard-logic" class="level3">
+<h3 class="anchored" data-anchor-id="build-wizard-logic">Build Wizard Logic</h3>
+<pre><code>Configuration Wizard → Z-Probe Selection
+├─ Question: "What is your bed surface material?"
+│  ├─ Glass / Carbon Fiber / Plain Aluminum
+│  │  └─ Force: BLTouch (inductive cannot see)
+│  ├─ Magnetic Spring Steel (MK52 or compatible)
+│  │  └─ Recommend: SuperPINDA ★ Reference Spec
+│  │     └─ Option: BLTouch (if preferred)
+│  └─ Unknown / Not sure
+│     └─ Default: BLTouch (universal fallback)</code></pre>
+</section>
+<section id="bed-probe-compatibility-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="bed-probe-compatibility-matrix">Bed-Probe Compatibility Matrix</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 18%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bed Surface</th>
+<th>SuperPINDA</th>
+<th>BLTouch</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Magnetic Spring Steel (MK52)</strong></td>
+<td>✅ Works</td>
+<td>✅ Works</td>
+<td>SuperPINDA ★</td>
+</tr>
+<tr class="even">
+<td><strong>Plain Aluminum</strong></td>
+<td>✅ Works</td>
+<td>✅ Works</td>
+<td>BLTouch (easier)</td>
+</tr>
+<tr class="odd">
+<td><strong>Glass</strong></td>
+<td>❌ Won’t detect</td>
+<td>✅ Works</td>
+<td>BLTouch only</td>
+</tr>
+<tr class="even">
+<td><strong>Carbon Fiber</strong></td>
+<td>❌ Won’t detect</td>
+<td>✅ Works</td>
+<td>BLTouch only</td>
+</tr>
+<tr class="odd">
+<td><strong>PEI on Glass</strong></td>
+<td>❌ Won’t detect</td>
+<td>✅ Works</td>
+<td>BLTouch only</td>
+</tr>
+<tr class="even">
+<td><strong>BuildTak on Aluminum</strong></td>
+<td>❌ Won’t detect</td>
+<td>✅ Works</td>
+<td>BLTouch only</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Tiered Flexibility</strong>: Reference path (SuperPINDA) and Scavenger path (BLTouch) both supported</li>
+<li><strong>Bed-Surface Logic</strong>: Clear decision matrix based on bed material</li>
+<li><strong>Reliability Optimization</strong>: Reference spec maximizes solid-state reliability</li>
+<li><strong>Universal Fallback</strong>: BLTouch works with any scavenged bed</li>
+<li><strong>Cost Awareness</strong>: Clones available for low-budget builds</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>SuperPINDA</strong>: Locked to metal beds, no flexibility in surface choice</li>
+<li><strong>BLTouch</strong>: Higher failure rate (moving parts), pin maintenance required</li>
+<li><strong>Cross-Compatibility</strong>: Cannot easily switch probes without changing bed</li>
+<li><strong>Clone Quality</strong>: BLTouch clones vary in reliability (3DTouch vs authentic)</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Tier 3</strong>: SuperPINDA + MK52 bed = maximum reliability (reference spec)</li>
+<li><strong>Tier 1-2</strong>: BLTouch + scavenged glass bed = universal compatibility</li>
+<li><strong>All Tiers</strong>: Z-tilt calibration and mesh bed leveling (both probes support)</li>
+</ul>
+</section>
+<section id="what-this-replaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-replaces">What This Replaces</h3>
+<ul>
+<li>Single-probe assumption (no longer viable for mixed bed inventory)</li>
+<li>Glass-bed + inductive probe combinations (won’t work)</li>
+<li>Universal probe recommendation (bed-surface dependent)</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="tier-3-reference-spec-superpinda-mk52" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-reference-spec-superpinda-mk52">Tier 3: Reference Spec (SuperPINDA + MK52)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x SuperPINDA probe (Prusa or high-quality clone)</li>
+<li>1x MK52 magnetic spring steel sheet (250x250mm)</li>
+<li>1x Magnetic build surface (under spring steel)</li>
+<li>1x Probe mounting bracket</li>
+<li>3x Female-to-female dupont cables (VCC, GND, Signal)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low-Medium (~$50-70 AUD for probe + bed)</li>
+<li><strong>Bed compatibility</strong>: Metal only (spring steel required)</li>
+<li><strong>Reliability</strong>: Maximum (solid-state, no moving parts)</li>
+<li><strong>Maintenance</strong>: None (set-and-forget)</li>
+</ul>
+</section>
+<section id="tier-1-2-scavenger-fallback-bltouch-glass" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-2-scavenger-fallback-bltouch-glass">Tier 1-2: Scavenger Fallback (BLTouch + Glass)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x BLTouch V3.1 (authentic) or 3DTouch clone</li>
+<li>1x Scavenged bed (glass, etc.)</li>
+<li>1x Probe mounting bracket</li>
+<li>5x Female-to-female dupont cables (VCC, GND, Signal, Control, Servo)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (~$15-60 AUD depending on authenticity)</li>
+<li><strong>Bed compatibility</strong>: Universal (any surface)</li>
+<li><strong>Reliability</strong>: Moderate (moving parts, potential pin failure)</li>
+<li><strong>Maintenance</strong>: Periodic pin inspection, occasional replacement</li>
+</ul>
+</section>
+<section id="hybrid-option-bltouch-on-metal-bed" class="level3">
+<h3 class="anchored" data-anchor-id="hybrid-option-bltouch-on-metal-bed">Hybrid Option: BLTouch on Metal Bed</h3>
+<ul>
+<li><strong>Use Case</strong>: User has metal bed but prefers BLTouch familiarity</li>
+<li><strong>Cost implication</strong>: Same as BLTouch + metal bed (~$50-70 AUD)</li>
+<li><strong>Trade-off</strong>: Loses SuperPINDA reliability advantages</li>
+<li><strong>Recommended</strong>: Only if user has strong BLTouch experience or spare parts</li>
+</ul>
+</section>
+<section id="universal-requirements-all-options" class="level3">
+<h3 class="anchored" data-anchor-id="universal-requirements-all-options">Universal Requirements (All Options)</h3>
+<ul>
+<li><strong>Z-Max Switch</strong>: Required regardless of probe choice (see ADR-013)</li>
+<li><strong>Mounting Bracket</strong>: 3D-printed bracket to secure probe to X-carriage</li>
+<li><strong>Klipper Configuration</strong>: <code>[probe]</code> or <code>[bltouch]</code> section based on choice</li>
+<li><strong>Z-Offset Calibration</strong>: Required for both probes (probe to nozzle distance)</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="superpinda-klipper-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="superpinda-klipper-configuration">SuperPINDA Klipper Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[probe]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">pin: ^PC2    # Example pin, adjust for board</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">x_offset: -10</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">y_offset: 20</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">z_offset: 1.6   # Calibrated via PROBE_CALIBRATE</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">samples: 3</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">sample_retract_dist: 2.0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">speed: 5.0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[bed_mesh]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">mesh_min: 30,30</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">mesh_max: 220,220</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">probe_count: 3,3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="bltouch-klipper-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="bltouch-klipper-configuration">BLTouch Klipper Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[bltouch]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">sensor_pin: ^PC2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">control_pin: PA2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">x_offset: -10</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">y_offset: 20</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">z_offset: 1.6</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">stow_on_each_sample: False</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">probe_with_touch_mode: True</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[safe_z_home]</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="dt">home_xy_position: 150,150</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="dt">speed: 50</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="dt">z_hop: 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="probe-calibration-procedure" class="level3">
+<h3 class="anchored" data-anchor-id="probe-calibration-procedure">Probe Calibration Procedure</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Home all axes</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">G28</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibrate Z-offset</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">PROBE_CALIBRATE</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Test repeatability</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">PROBE_ACCURACY</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (BLTouch only) Test pin deployment</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">BLTOUCH_DEBUG</span> COMMAND=pin_down</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">BLTOUCH_DEBUG</span> COMMAND=pin_up</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="mounting-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="mounting-considerations">Mounting Considerations</h3>
+<p><strong>SuperPINDA</strong>: - Mount ~5mm above bed surface when deployed - Ensure bed is flat (spring steel on magnetic surface) - No need for retraction mechanism - Secure firmly (no vibration or movement)</p>
+<p><strong>BLTouch</strong>: - Mount so pin deploys ~2-3mm above bed - Test pin deployment before first print - Verify pin retraction doesn’t collide with bed clips - Check for pin bending after print failures</p>
+</section>
+<section id="troubleshooting" class="level3">
+<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h3>
+<p><strong>SuperPINDA</strong>: - <strong>Issue</strong>: Probe doesn’t trigger - Check bed is metal (spring steel) - Verify probe is within 4mm of bed surface - Test with multimeter (check signal pin toggles) - <strong>Issue</strong>: Inconsistent readings - Clean bed surface (metal debris can affect inductive) - Check wiring for loose connections - Verify probe mounting is secure</p>
+<p><strong>BLTouch</strong>: - <strong>Issue</strong>: Pin doesn’t deploy - Check servo control wiring - Verify <code>[bltouch]</code> section in config - Test pin manually with BLTOUCH_DEBUG commands - <strong>Issue</strong>: Pin stuck in deployed position - Emergency retract: BLTOUCH_DEBUG COMMAND=reset - Check for debris or bent pin - May need to disassemble and clean</p>
+</section>
+<section id="safety-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="safety-considerations">Safety Considerations</h3>
+<ul>
+<li><strong>BLTouch Pin Breakage</strong>: Can occur if nozzle crashes into bed or print curls up</li>
+<li><strong>SuperPINDA Distance</strong>: Too far from bed = won’t trigger; too close = premature trigger</li>
+<li><strong>Wiring</strong>: Use shielded cables to prevent EMI interference</li>
+<li><strong>Hotend Temperature</strong>: BLTouch pin can deform near hot nozzle (ensure proper mounting)</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>docs/reference/ai-conversations/pinda-v-bltouch.md</strong>: Complete probe comparison</li>
+<li><strong>docs/adr/013-drivers-endstops.md</strong>: Driver and endstop strategy</li>
+<li><strong>docs/adr/005-triple-z.md</strong>: Triple-Z kinematic leveling</li>
+<li>Klipper Probe Guide: <a href="https://www.klipper3d.org/Probe_Calibrate.html">Probe Bed Calibrate</a></li>
+<li>Klipper BLTouch Guide: <a href="https://www.klipper3d.org/BLTouch.html">BLTouch</a></li>
+<li>Prusa SuperPINDA Documentation: <a href="https://help.prusa3d.com/en/guide/44704-prusa-superpinda_484760">Prusa Knowledge Base</a></li>
+</ul>
+</section>
+<section id="evolution-notes" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-notes">Evolution Notes</h2>
+<p>This ADR establishes SuperPINDA as the Reference Spec probe for maximum reliability. Future probe technologies will be evaluated against: solid-state reliability, bed-surface compatibility, thermal stability, and cost. BLTouch remains the universal fallback for scavenger builds with non-metal beds.</p>
+<p><strong>Emerging Technologies</strong>: - LVDT sensors (high-precision, expensive) - Capacitive sensors (work on some non-metal surfaces, experimental) - Optical sensors (complex, not widely adopted)</p>
+<p>Current consensus favors inductive (SuperPINDA) for metal beds and physical (BLTouch) for universal compatibility.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

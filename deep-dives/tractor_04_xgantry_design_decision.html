@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tractor_04_xgantry_design_decision – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_04_xgantry_design_decision.html">Amalgam: X-Gantry Design Decision</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deep Dives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_00_decision_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Tier 0 Decision Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_01_frame_and_assembly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Frame Design &amp; Assembly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_02_xy_axis_system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: X-Y Axis System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_03_motor_mounts_vibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Motor Mounts &amp; Vibration Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_04_xgantry_design_decision.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Amalgam: X-Gantry Design Decision</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_05_psu_configurations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Power Supply Configurations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_06_extruder_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Extruder Selection &amp; Decision Record</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#amalgam-x-gantry-design-decision" id="toc-amalgam-x-gantry-design-decision" class="nav-link active" data-scroll-target="#amalgam-x-gantry-design-decision">Amalgam: X-Gantry Design Decision</a>
+  <ul class="collapse">
+  <li><a href="#engineering-decision-record" id="toc-engineering-decision-record" class="nav-link" data-scroll-target="#engineering-decision-record">Engineering Decision Record</a></li>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#design-context" id="toc-design-context" class="nav-link" data-scroll-target="#design-context">Design Context</a>
+  <ul class="collapse">
+  <li><a href="#amalgam-philosophy" id="toc-amalgam-philosophy" class="nav-link" data-scroll-target="#amalgam-philosophy">Amalgam Philosophy</a></li>
+  <li><a href="#hardware-constraints" id="toc-hardware-constraints" class="nav-link" data-scroll-target="#hardware-constraints">Hardware Constraints</a></li>
+  </ul></li>
+  <li><a href="#alternatives-considered" id="toc-alternatives-considered" class="nav-link" data-scroll-target="#alternatives-considered">Alternatives Considered</a>
+  <ul class="collapse">
+  <li><a href="#option-a-cross-rod-gantry-eustathiosherculien-style" id="toc-option-a-cross-rod-gantry-eustathiosherculien-style" class="nav-link" data-scroll-target="#option-a-cross-rod-gantry-eustathiosherculien-style">Option A: Cross-Rod Gantry (Eustathios/HercuLien Style)</a></li>
+  <li><a href="#option-b-corexy-h-bot" id="toc-option-b-corexy-h-bot" class="nav-link" data-scroll-target="#option-b-corexy-h-bot">Option B: CoreXY / H-Bot</a></li>
+  <li><a href="#option-c-parallel-rail-sled-the-plough-selected" id="toc-option-c-parallel-rail-sled-the-plough-selected" class="nav-link" data-scroll-target="#option-c-parallel-rail-sled-the-plough-selected">Option C: Parallel-Rail Sled (“The Plough”) ✓ SELECTED</a></li>
+  </ul></li>
+  <li><a href="#detailed-comparison-matrix" id="toc-detailed-comparison-matrix" class="nav-link" data-scroll-target="#detailed-comparison-matrix">Detailed Comparison Matrix</a></li>
+  <li><a href="#why-moving-mass-penalty-is-acceptable" id="toc-why-moving-mass-penalty-is-acceptable" class="nav-link" data-scroll-target="#why-moving-mass-penalty-is-acceptable">Why Moving Mass Penalty is Acceptable</a>
+  <ul class="collapse">
+  <li><a href="#the-m10-advantage" id="toc-the-m10-advantage" class="nav-link" data-scroll-target="#the-m10-advantage">The M10 Advantage</a></li>
+  <li><a href="#klipper-compensation" id="toc-klipper-compensation" class="nav-link" data-scroll-target="#klipper-compensation">Klipper Compensation</a></li>
+  <li><a href="#quality-over-speed-philosophy" id="toc-quality-over-speed-philosophy" class="nav-link" data-scroll-target="#quality-over-speed-philosophy">Quality Over Speed Philosophy</a></li>
+  </ul></li>
+  <li><a href="#the-darwin-lineage" id="toc-the-darwin-lineage" class="nav-link" data-scroll-target="#the-darwin-lineage">The Darwin Lineage</a></li>
+  <li><a href="#the-plough-design-specifications" id="toc-the-plough-design-specifications" class="nav-link" data-scroll-target="#the-plough-design-specifications">The Plough: Design Specifications</a>
+  <ul class="collapse">
+  <li><a href="#rod-spacing" id="toc-rod-spacing" class="nav-link" data-scroll-target="#rod-spacing">Rod Spacing</a></li>
+  <li><a href="#bearing-arrangement" id="toc-bearing-arrangement" class="nav-link" data-scroll-target="#bearing-arrangement">Bearing Arrangement</a></li>
+  <li><a href="#extruder-positioning" id="toc-extruder-positioning" class="nav-link" data-scroll-target="#extruder-positioning">Extruder Positioning</a></li>
+  <li><a href="#belt-path" id="toc-belt-path" class="nav-link" data-scroll-target="#belt-path">Belt Path</a></li>
+  </ul></li>
+  <li><a href="#structural-optimization" id="toc-structural-optimization" class="nav-link" data-scroll-target="#structural-optimization">Structural Optimization</a>
+  <ul class="collapse">
+  <li><a href="#hollow-bone-principle" id="toc-hollow-bone-principle" class="nav-link" data-scroll-target="#hollow-bone-principle">“Hollow Bone” Principle</a></li>
+  <li><a href="#why-not-solid" id="toc-why-not-solid" class="nav-link" data-scroll-target="#why-not-solid">Why Not Solid?</a></li>
+  </ul></li>
+  <li><a href="#integration-with-other-systems" id="toc-integration-with-other-systems" class="nav-link" data-scroll-target="#integration-with-other-systems">Integration with Other Systems</a>
+  <ul class="collapse">
+  <li><a href="#dual-y-steppers" id="toc-dual-y-steppers" class="nav-link" data-scroll-target="#dual-y-steppers">Dual Y-Steppers</a></li>
+  <li><a href="#triple-z-with-kinematic-joints" id="toc-triple-z-with-kinematic-joints" class="nav-link" data-scroll-target="#triple-z-with-kinematic-joints">Triple Z with Kinematic Joints</a></li>
+  <li><a href="#rubber-gasket-motor-isolation" id="toc-rubber-gasket-motor-isolation" class="nav-link" data-scroll-target="#rubber-gasket-motor-isolation">Rubber Gasket Motor Isolation</a></li>
+  </ul></li>
+  <li><a href="#rejected-optimizations" id="toc-rejected-optimizations" class="nav-link" data-scroll-target="#rejected-optimizations">Rejected Optimizations</a>
+  <ul class="collapse">
+  <li><a href="#carbon-fiber-x-rods" id="toc-carbon-fiber-x-rods" class="nav-link" data-scroll-target="#carbon-fiber-x-rods">Carbon Fiber X-Rods</a></li>
+  <li><a href="#pancake-x-motor" id="toc-pancake-x-motor" class="nav-link" data-scroll-target="#pancake-x-motor">Pancake X-Motor</a></li>
+  <li><a href="#bowden-extruder" id="toc-bowden-extruder" class="nav-link" data-scroll-target="#bowden-extruder">Bowden Extruder</a></li>
+  </ul></li>
+  <li><a href="#future-upgrade-path" id="toc-future-upgrade-path" class="nav-link" data-scroll-target="#future-upgrade-path">Future Upgrade Path</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#decision-record" id="toc-decision-record" class="nav-link" data-scroll-target="#decision-record">Decision Record</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_04_xgantry_design_decision.html">Amalgam: X-Gantry Design Decision</a></li></ol></nav></header>
+
+
+
+
+<section id="amalgam-x-gantry-design-decision" class="level1">
+<h1>Amalgam: X-Gantry Design Decision</h1>
+<p>⚠️ <strong>Partially Outdated:</strong> This document explores Cartesian vs.&nbsp;Core-XY trade-offs in the context of old tier system (Tier 0/1/2/3). <strong>Current canonical decisions are in:</strong> - <strong>ADR-025</strong>: Multi-Frame Architecture (Scaffold, Mill, Lathe all use Cartesian, not Core-XY) - <strong>ADR-000</strong>: Engineering Philosophy (“Tractor” principles favor Cartesian simplicity)</p>
+<p>The core insight (Cartesian is simpler for scavenger builds) remains valid, but framework is outdated.</p>
+<hr>
+<section id="engineering-decision-record" class="level2">
+<h2 class="anchored" data-anchor-id="engineering-decision-record">Engineering Decision Record</h2>
+<p><strong>Project:</strong> Amalgam 3D Printer<br>
+<strong>Component:</strong> X-Axis Gantry System<br>
+<strong>Decision:</strong> Parallel-Rail Sled (“The Plough”)<br>
+<strong>Status:</strong> Accepted</p>
+<hr>
+</section>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>After evaluating multiple X-gantry architectures including Cross-Rod (Eustathios/HercuLien), CoreXY variants, and the classic Cartesian sled, we selected the <strong>Parallel-Rail Sled design</strong> (“The Plough”) for Amalgam.</p>
+<p><strong>Key Drivers:</strong> - Simplicity over speed - Scavenger-friendly construction - Maintainability by non-experts - Authentic RepRap Darwin lineage - Leverages M10 rod stiffness advantage</p>
+<hr>
+</section>
+<section id="design-context" class="level2">
+<h2 class="anchored" data-anchor-id="design-context">Design Context</h2>
+<section id="amalgam-philosophy" class="level3">
+<h3 class="anchored" data-anchor-id="amalgam-philosophy">Amalgam Philosophy</h3>
+<p>Amalgam is designed as: - A “Tractor with a Racecar Brain” (heavy frame, smart software) - A scavenger/junkstrap build using donor printers - Quality-focused rather than speed-focused - Maintainable by people with basic mechanical skills - A spiritual successor to the original RepRap Darwin (2007)</p>
+</section>
+<section id="hardware-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-constraints">Hardware Constraints</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame</td>
+<td>M10 threaded rod on 36mm laminated MDF</td>
+</tr>
+<tr class="even">
+<td>X-Rails</td>
+<td>M10 smooth rods (scavenged from photocopiers)</td>
+</tr>
+<tr class="odd">
+<td>Span</td>
+<td>~380mm</td>
+</tr>
+<tr class="even">
+<td>Extruder</td>
+<td>Pitan (Titan clone) direct drive</td>
+</tr>
+<tr class="odd">
+<td>Hotend</td>
+<td>E3D V6</td>
+</tr>
+<tr class="even">
+<td>Controller</td>
+<td>Klipper on dual MCU</td>
+</tr>
+<tr class="odd">
+<td>Z-System</td>
+<td>Triple-Z steppers with kinematic joints</td>
+</tr>
+<tr class="even">
+<td>Y-System</td>
+<td>Dual Y-steppers with auto-squaring</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="alternatives-considered" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives-considered">Alternatives Considered</h2>
+<section id="option-a-cross-rod-gantry-eustathiosherculien-style" class="level3">
+<h3 class="anchored" data-anchor-id="option-a-cross-rod-gantry-eustathiosherculien-style">Option A: Cross-Rod Gantry (Eustathios/HercuLien Style)</h3>
+<p><strong>Description:</strong><br>
+Two rods for X and two for Y intersect at the toolhead. The toolhead “floats” at the crossing point, often called a “spider” carriage. This is sometimes called “Ultimaker-style.”</p>
+<pre><code>    ════════════════════════  Y-Rod 1
+           ╲         ╱
+            ╲       ╱
+             [HEAD]
+            ╱       ╲
+           ╱         ╲
+    ════════════════════════  Y-Rod 2
+    
+    ║                      ║
+    ║      X-Rods          ║
+    ║   (perpendicular)    ║</code></pre>
+<p><strong>Pros:</strong> - Extremely light toolhead (only hotend moves in X-Y) - Excellent for high-speed printing (500mm/s+) - The “gold standard” for high-end rod-based DIY printers - M10 rods would provide essentially zero sag at 380mm</p>
+<p><strong>Cons:</strong> - Complex belt routing (crossed belts or dual belt systems) - Requires precise geometry—belt path errors cause skew - “Spider” carriage needs tight tolerances - Harder to scavenge parts (specific pulley positions required) - Klipper config more complex (<code>[hybrid_corexy]</code> or custom kinematics) - More difficult to troubleshoot and repair - Not in the Darwin/Mendel lineage</p>
+<p><strong>Verdict:</strong> Rejected—too complex for scavenger build philosophy.</p>
+<hr>
+</section>
+<section id="option-b-corexy-h-bot" class="level3">
+<h3 class="anchored" data-anchor-id="option-b-corexy-h-bot">Option B: CoreXY / H-Bot</h3>
+<p><strong>Description:</strong><br>
+Two motors work together via a continuous belt loop. Both motors spinning the same direction = Y movement. Opposite directions = X movement.</p>
+<pre><code>    [Motor A]═══════════════[Motor B]
+              ╲           ╱
+               ╲ Belts  ╱
+                ╲     ╱
+                 [HEAD]
+                ╱     ╲
+               ╱       ╲
+              ╱         ╲
+    ═══════════════════════════════</code></pre>
+<p><strong>Pros:</strong> - Both motors are stationary (not on gantry) - Very light moving mass - Excellent acceleration capability - Popular design with extensive community support</p>
+<p><strong>Cons:</strong> - Requires rigid frame (usually aluminum extrusion) - Belt routing is complex and must be precise - Misaligned belts cause “racking” (diagonal prints) - Not compatible with threaded-rod frame philosophy - Requires specific pulley stacks and belt lengths - Harder to build from scavenged parts - Completely different lineage from RepRap Darwin</p>
+<p><strong>Verdict:</strong> Rejected—incompatible with M10 threaded rod frame design.</p>
+<hr>
+</section>
+<section id="option-c-parallel-rail-sled-the-plough-selected" class="level3">
+<h3 class="anchored" data-anchor-id="option-c-parallel-rail-sled-the-plough-selected">Option C: Parallel-Rail Sled (“The Plough”) ✓ SELECTED</h3>
+<p><strong>Description:</strong><br>
+Two horizontal M10 smooth rods spaced 50-80mm apart. A sled carriage rides on linear bearings between them. Single X-motor drives belt to move sled left-right. The entire X-assembly moves on Y-rails.</p>
+<pre><code>    [Y-Motor]═══════════════════[Y-Motor]
+         ║     Y-smooth rods      ║
+         ║                        ║
+    [X-End]══════════════════[X-End]
+         ║     X-smooth rods      ║
+         ║       (60mm gap)       ║
+         ║    ┌───────────┐       ║
+         ║    │ THE PLOUGH│       ║
+         ║    │ Pitan+V6  │       ║
+         ║    └───────────┘       ║</code></pre>
+<p><strong>Pros:</strong> - Simple—one motor per axis, straightforward kinematics - Extremely scavenger-friendly (any smooth rods, any bearings) - Easy to understand, maintain, and repair - Tolerant of frame imperfections (nuts adjust everything) - Native Klipper support (simple <code>[stepper_x]</code> config) - Direct lineage from Darwin → Mendel → Mendel i2 - M10 rods provide massive stiffness at 380mm span - Pitan/V6 can be centered between rods (balanced) - All components visible and accessible</p>
+<p><strong>Cons:</strong> - Higher moving mass on Y-axis (entire X-assembly moves) - Higher moving mass on X-axis (Plough + extruder + motor) - Lower theoretical maximum speed than CoreXY - X-motor rides on gantry (adds moving mass)</p>
+<p><strong>Verdict:</strong> Accepted—best fit for Amalgam philosophy.</p>
+<hr>
+</section>
+</section>
+<section id="detailed-comparison-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-comparison-matrix">Detailed Comparison Matrix</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Cross-Rod</th>
+<th>CoreXY</th>
+<th>The Plough</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Simplicity</strong></td>
+<td>⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr class="even">
+<td><strong>Scavengeability</strong></td>
+<td>⭐⭐</td>
+<td>⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr class="odd">
+<td><strong>Maintainability</strong></td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr class="even">
+<td><strong>Frame Tolerance</strong></td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr class="odd">
+<td><strong>Klipper Config</strong></td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr class="even">
+<td><strong>Max Speed</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr class="odd">
+<td><strong>Moving Mass (X)</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr class="even">
+<td><strong>Moving Mass (Y)</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐</td>
+</tr>
+<tr class="odd">
+<td><strong>Rigidity</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr class="even">
+<td><strong>Darwin Heritage</strong></td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td><strong>Repairability</strong></td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="why-moving-mass-penalty-is-acceptable" class="level2">
+<h2 class="anchored" data-anchor-id="why-moving-mass-penalty-is-acceptable">Why Moving Mass Penalty is Acceptable</h2>
+<section id="the-m10-advantage" class="level3">
+<h3 class="anchored" data-anchor-id="the-m10-advantage">The M10 Advantage</h3>
+<p>At 380mm span with M10 smooth rods: - Deflection under load is measured in microns - Natural frequency is very high (won’t resonate at print speeds) - The “bounce” that plagues M8 systems doesn’t exist</p>
+<p><strong>The moving mass penalty of The Plough is almost irrelevant when rails don’t flex.</strong></p>
+</section>
+<section id="klipper-compensation" class="level3">
+<h3 class="anchored" data-anchor-id="klipper-compensation">Klipper Compensation</h3>
+<p>Klipper’s Input Shaping can compensate for the higher moving mass: - ADXL345 accelerometer measures actual resonance - Software shapes motor commands to avoid exciting those frequencies - Pressure Advance handles extruder response</p>
+<p><strong>Result:</strong> Quality prints at moderate speeds (150-250mm/s) with excellent surface finish.</p>
+</section>
+<section id="quality-over-speed-philosophy" class="level3">
+<h3 class="anchored" data-anchor-id="quality-over-speed-philosophy">Quality Over Speed Philosophy</h3>
+<p>Amalgam prioritizes: 1. Print quality (layer consistency, surface finish) 2. Reliability (prints complete successfully) 3. Repairability (fix it yourself) 4. Understanding (know how it works)</p>
+<p>Speed is explicitly <strong>not</strong> a priority. A well-tuned Plough at 150mm/s produces better prints than a poorly-tuned CoreXY at 500mm/s.</p>
+<hr>
+</section>
+</section>
+<section id="the-darwin-lineage" class="level2">
+<h2 class="anchored" data-anchor-id="the-darwin-lineage">The Darwin Lineage</h2>
+<p>The Plough design maintains authentic RepRap heritage:</p>
+<pre><code>RepRap Darwin (2007)
+    │
+    ├── Box frame with threaded rods
+    ├── Sled-style X-carriage
+    └── Simple Cartesian kinematics
+         │
+         ▼
+RepRap Mendel (2009)
+    │
+    ├── Triangular frame (still threaded rods)
+    ├── Sled X-carriage between parallel rods
+    └── Same kinematic philosophy
+         │
+         ▼
+Mendel i2 (2012)
+    │
+    ├── Refined sled design
+    ├── Better bearing arrangements
+    └── Still threaded rod construction
+         │
+         ▼
+Amalgam (2025)
+    │
+    ├── M10 threaded rod frame (upgraded)
+    ├── M10 smooth rod rails (upgraded)
+    ├── "The Plough" sled (evolved)
+    ├── Klipper brain (modernized)
+    └── Same fundamental philosophy</code></pre>
+<p><strong>The Eustathios/HercuLien and CoreXY come from different branches:</strong></p>
+<pre><code>Ultimaker (2011)
+    │
+    └── Cross-rod / floating head
+         │
+         ▼
+H-Bot → CoreXY (2012+)
+    │
+    └── Crossed belt systems
+         │
+         ▼
+Eustathios / HercuLien (2014+)
+    │
+    └── Rod-based CoreXY variants</code></pre>
+<p>Amalgam should remain true to its Darwin ancestry.</p>
+<hr>
+</section>
+<section id="the-plough-design-specifications" class="level2">
+<h2 class="anchored" data-anchor-id="the-plough-design-specifications">The Plough: Design Specifications</h2>
+<section id="rod-spacing" class="level3">
+<h3 class="anchored" data-anchor-id="rod-spacing">Rod Spacing</h3>
+<p><strong>60mm center-to-center (horizontal, top-down)</strong></p>
+<p>Rationale: - NEMA 17 motor is 42.3mm wide - 4mm plastic walls on each side = 8mm - ~10mm clearance for LM10UU housings - Pitan/V6 nests perfectly between rods</p>
+</section>
+<section id="bearing-arrangement" class="level3">
+<h3 class="anchored" data-anchor-id="bearing-arrangement">Bearing Arrangement</h3>
+<p><strong>LM10UU linear bearings with split-clamp housings</strong></p>
+<ul>
+<li>Minimum 2 bearings per rod (4 total)</li>
+<li>Spaced as far apart as carriage allows</li>
+<li>Split-clamp design (no zip ties)</li>
+<li>“Long wheelbase” prevents pitching during acceleration</li>
+</ul>
+</section>
+<section id="extruder-positioning" class="level3">
+<h3 class="anchored" data-anchor-id="extruder-positioning">Extruder Positioning</h3>
+<p><strong>Pitan centered between rods, nozzle at geometric center</strong></p>
+<ul>
+<li>Weight balanced left-right</li>
+<li>No torque trying to twist carriage</li>
+<li>Belt attachment at carriage center (or balanced dual-attachment)</li>
+</ul>
+</section>
+<section id="belt-path" class="level3">
+<h3 class="anchored" data-anchor-id="belt-path">Belt Path</h3>
+<p><strong>Single GT2 6mm belt, center-line routing</strong></p>
+<ul>
+<li>Belt runs parallel to X-rods</li>
+<li>Centered at 30mm mark (halfway between 60mm-spaced rods)</li>
+<li>Minimizes “cocking” force during acceleration</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="structural-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="structural-optimization">Structural Optimization</h2>
+<section id="hollow-bone-principle" class="level3">
+<h3 class="anchored" data-anchor-id="hollow-bone-principle">“Hollow Bone” Principle</h3>
+<p>The Plough should be designed with: - 4-6 perimeter walls (not high infill) - Structural ribs and webs - Cut-away weight reduction where possible - 3-5mm thick structural members</p>
+</section>
+<section id="why-not-solid" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-solid">Why Not Solid?</h3>
+<p>Solid plastic: - Heavier (bad for moving mass) - Cools unevenly (warps during printing) - Wastes material</p>
+<p>Ribbed structure: - Lighter - Cools evenly - Looks “engineered” - Actually stronger in bending</p>
+<hr>
+</section>
+</section>
+<section id="integration-with-other-systems" class="level2">
+<h2 class="anchored" data-anchor-id="integration-with-other-systems">Integration with Other Systems</h2>
+<section id="dual-y-steppers" class="level3">
+<h3 class="anchored" data-anchor-id="dual-y-steppers">Dual Y-Steppers</h3>
+<p>The Plough design works perfectly with dual Y: - Each Y-motor pulls one side of the X-assembly - Klipper auto-squares on every home - No mechanical coupling needed between Y-motors</p>
+</section>
+<section id="triple-z-with-kinematic-joints" class="level3">
+<h3 class="anchored" data-anchor-id="triple-z-with-kinematic-joints">Triple Z with Kinematic Joints</h3>
+<p>Z-axis independence means: - Plough doesn’t need to compensate for bed tilt - Klipper’s <code>z_tilt_adjust</code> handles leveling - X-gantry only needs to be parallel to itself</p>
+</section>
+<section id="rubber-gasket-motor-isolation" class="level3">
+<h3 class="anchored" data-anchor-id="rubber-gasket-motor-isolation">Rubber Gasket Motor Isolation</h3>
+<p>X-motor on the Plough benefits from Strategy B sandwich mount: - Reduces vibration transmitted to gantry - Quieter operation - Klipper Input Shaping handles residual resonance</p>
+<hr>
+</section>
+</section>
+<section id="rejected-optimizations" class="level2">
+<h2 class="anchored" data-anchor-id="rejected-optimizations">Rejected Optimizations</h2>
+<section id="carbon-fiber-x-rods" class="level3">
+<h3 class="anchored" data-anchor-id="carbon-fiber-x-rods">Carbon Fiber X-Rods</h3>
+<p><strong>Considered:</strong> Replacing M10 steel with CF tubes for weight reduction.</p>
+<p><strong>Rejected:</strong> - Not scavenger-friendly (must purchase) - M10 steel is already stiff enough - Adds complexity to bearing interface - Against “hardware store” philosophy</p>
+</section>
+<section id="pancake-x-motor" class="level3">
+<h3 class="anchored" data-anchor-id="pancake-x-motor">Pancake X-Motor</h3>
+<p><strong>Considered:</strong> Using shorter NEMA 17 to reduce moving mass.</p>
+<p><strong>Rejected:</strong> - Reduced torque - May not be available from donor printer - Standard NEMA 17 is fine for quality-focused printing</p>
+</section>
+<section id="bowden-extruder" class="level3">
+<h3 class="anchored" data-anchor-id="bowden-extruder">Bowden Extruder</h3>
+<p><strong>Considered:</strong> Moving extruder off gantry to reduce mass.</p>
+<p><strong>Rejected:</strong> - Worse print quality (retraction tuning nightmare) - Against quality-over-speed philosophy - Direct drive is better for flexible filaments - Pitan is the reference spec</p>
+<hr>
+</section>
+</section>
+<section id="future-upgrade-path" class="level2">
+<h2 class="anchored" data-anchor-id="future-upgrade-path">Future Upgrade Path</h2>
+<p>If users want more speed later, they can:</p>
+<ol type="1">
+<li><strong>Lighter Plough:</strong> Redesign with more aggressive weight reduction</li>
+<li><strong>Pancake Motor:</strong> Swap X-motor for shorter variant</li>
+<li><strong>Higher Acceleration:</strong> Increase Klipper accel values</li>
+<li><strong>Better Belts:</strong> Upgrade to Gates GT3 belts</li>
+</ol>
+<p>But the fundamental geometry—<strong>sled on parallel rails</strong>—scales well and doesn’t need to change.</p>
+<hr>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The Parallel-Rail Sled (“The Plough”) is the correct choice for Amalgam because:</p>
+<ol type="1">
+<li><p><strong>It’s simple</strong> — One motor, one belt, two rods. Anyone can understand it.</p></li>
+<li><p><strong>It’s scavenger-friendly</strong> — Photocopier rods, donor bearings, hardware store parts.</p></li>
+<li><p><strong>It’s maintainable</strong> — All parts visible, accessible, replaceable with basic tools.</p></li>
+<li><p><strong>It’s authentic</strong> — Direct descendant of RepRap Darwin and Mendel designs.</p></li>
+<li><p><strong>It leverages M10</strong> — The stiffness advantage negates the moving mass penalty.</p></li>
+<li><p><strong>It prioritizes quality</strong> — Reliable prints over maximum speed.</p></li>
+<li><p><strong>It’s a Tractor</strong> — Heavy, reliable, fixable with a wrench.</p></li>
+</ol>
+<p><strong>Amalgam should feel like a machine tool, not a race car.</strong></p>
+<hr>
+</section>
+<section id="decision-record" class="level2">
+<h2 class="anchored" data-anchor-id="decision-record">Decision Record</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 37%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Decision</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025</td>
+<td>Selected Parallel-Rail Sled</td>
+<td>Best fit for scavenger philosophy</td>
+</tr>
+<tr class="even">
+<td>2025</td>
+<td>Rejected Cross-Rod</td>
+<td>Too complex, wrong lineage</td>
+</tr>
+<tr class="odd">
+<td>2025</td>
+<td>Rejected CoreXY</td>
+<td>Incompatible with threaded rod frame</td>
+</tr>
+<tr class="even">
+<td>2025</td>
+<td>Set 60mm rod spacing</td>
+<td>Optimal for Pitan nesting</td>
+</tr>
+<tr class="odd">
+<td>2025</td>
+<td>Specified split-clamp bearings</td>
+<td>Better than zip-ties</td>
+</tr>
+<tr class="even">
+<td>2025</td>
+<td>Confirmed center-line belt</td>
+<td>Minimizes carriage twist</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>RepRap Darwin (2007) — Original box-frame threaded rod printer</li>
+<li>RepRap Mendel (2009) — Triangular frame evolution</li>
+<li>Mendel i2 (2012) — Refined sled carriage</li>
+<li>Eustathios — Cross-rod gantry reference design</li>
+<li>HercuLien — Large-format cross-rod printer</li>
+<li>Ingentis — Modernized Cartesian sled design</li>
+<li>V-Core (early versions) — Rod-based Cartesian reference</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

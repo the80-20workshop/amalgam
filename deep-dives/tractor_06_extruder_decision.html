@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tractor_06_extruder_decision – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_06_extruder_decision.html">Amalgam: Extruder Selection &amp; Decision Record</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deep Dives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_00_decision_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Tier 0 Decision Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_01_frame_and_assembly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Frame Design &amp; Assembly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_02_xy_axis_system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: X-Y Axis System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_03_motor_mounts_vibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Motor Mounts &amp; Vibration Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_04_xgantry_design_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: X-Gantry Design Decision</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_05_psu_configurations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Power Supply Configurations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_06_extruder_decision.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Amalgam: Extruder Selection &amp; Decision Record</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#amalgam-extruder-selection-decision-record" id="toc-amalgam-extruder-selection-decision-record" class="nav-link active" data-scroll-target="#amalgam-extruder-selection-decision-record">Amalgam: Extruder Selection &amp; Decision Record</a>
+  <ul class="collapse">
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a>
+  <ul class="collapse">
+  <li><a href="#extruders-evaluated" id="toc-extruders-evaluated" class="nav-link" data-scroll-target="#extruders-evaluated">Extruders Evaluated</a></li>
+  <li><a href="#recommendation-summary" id="toc-recommendation-summary" class="nav-link" data-scroll-target="#recommendation-summary">Recommendation Summary</a></li>
+  </ul></li>
+  <li><a href="#the-decision-philosophy" id="toc-the-decision-philosophy" class="nav-link" data-scroll-target="#the-decision-philosophy">The Decision Philosophy</a>
+  <ul class="collapse">
+  <li><a href="#why-this-matters-for-the-tractor" id="toc-why-this-matters-for-the-tractor" class="nav-link" data-scroll-target="#why-this-matters-for-the-tractor">Why This Matters for “The Tractor”</a></li>
+  <li><a href="#the-bambu-lab-x1c-insight" id="toc-the-bambu-lab-x1c-insight" class="nav-link" data-scroll-target="#the-bambu-lab-x1c-insight">The Bambu Lab X1C Insight</a></li>
+  <li><a href="#single-drive-vs-dual-drive-a-critical-decision" id="toc-single-drive-vs-dual-drive-a-critical-decision" class="nav-link" data-scroll-target="#single-drive-vs-dual-drive-a-critical-decision">Single-Drive vs Dual-Drive: A Critical Decision</a></li>
+  </ul></li>
+  <li><a href="#options-evaluated" id="toc-options-evaluated" class="nav-link" data-scroll-target="#options-evaluated">Options Evaluated</a>
+  <ul class="collapse">
+  <li><a href="#single-drive-extruders-preferred" id="toc-single-drive-extruders-preferred" class="nav-link" data-scroll-target="#single-drive-extruders-preferred">Single-Drive Extruders (Preferred)</a></li>
+  <li><a href="#gregs-wade-geared-extruder-classic-reprap" id="toc-gregs-wade-geared-extruder-classic-reprap" class="nav-link" data-scroll-target="#gregs-wade-geared-extruder-classic-reprap">1. Greg’s Wade Geared Extruder (Classic RepRap)</a></li>
+  <li><a href="#mk8mk9-direct-drive-ultra-simple" id="toc-mk8mk9-direct-drive-ultra-simple" class="nav-link" data-scroll-target="#mk8mk9-direct-drive-ultra-simple">2. MK8/MK9 Direct Drive (Ultra-Simple)</a></li>
+  <li><a href="#dual-drive-extruders-evaluated-but-not-selected" id="toc-dual-drive-extruders-evaluated-but-not-selected" class="nav-link" data-scroll-target="#dual-drive-extruders-evaluated-but-not-selected">Dual-Drive Extruders (Evaluated but Not Selected)</a></li>
+  <li><a href="#sherpa-mini-annex-engineering" id="toc-sherpa-mini-annex-engineering" class="nav-link" data-scroll-target="#sherpa-mini-annex-engineering">3. Sherpa Mini (Annex Engineering)</a></li>
+  <li><a href="#sherpa-micro-annex-engineering" id="toc-sherpa-micro-annex-engineering" class="nav-link" data-scroll-target="#sherpa-micro-annex-engineering">4. Sherpa Micro (Annex Engineering)</a></li>
+  <li><a href="#orbiter-v1.5-ldo-motors" id="toc-orbiter-v1.5-ldo-motors" class="nav-link" data-scroll-target="#orbiter-v1.5-ldo-motors">5. Orbiter v1.5 (LDO Motors)</a></li>
+  <li><a href="#bondtech-lgx-lite" id="toc-bondtech-lgx-lite" class="nav-link" data-scroll-target="#bondtech-lgx-lite">6. Bondtech LGX Lite</a></li>
+  <li><a href="#selected-reference-specification" id="toc-selected-reference-specification" class="nav-link" data-scroll-target="#selected-reference-specification">Selected Reference Specification</a></li>
+  <li><a href="#pitan-extruder-selected-reference-spec" id="toc-pitan-extruder-selected-reference-spec" class="nav-link" data-scroll-target="#pitan-extruder-selected-reference-spec">7. Pitan Extruder (Selected Reference Spec)</a></li>
+  <li><a href="#other-extruders-evaluated" id="toc-other-extruders-evaluated" class="nav-link" data-scroll-target="#other-extruders-evaluated">Other Extruders Evaluated</a></li>
+  <li><a href="#voron-extruders-stealthburner-clockwork-2-galileo-2" id="toc-voron-extruders-stealthburner-clockwork-2-galileo-2" class="nav-link" data-scroll-target="#voron-extruders-stealthburner-clockwork-2-galileo-2">8. Voron Extruders (Stealthburner, Clockwork 2, Galileo 2)</a></li>
+  <li><a href="#complete-bmg-clone-pre-assembled" id="toc-complete-bmg-clone-pre-assembled" class="nav-link" data-scroll-target="#complete-bmg-clone-pre-assembled">9. Complete BMG Clone (Pre-assembled)</a></li>
+  </ul></li>
+  <li><a href="#the-decision-pitan-as-reference-spec" id="toc-the-decision-pitan-as-reference-spec" class="nav-link" data-scroll-target="#the-decision-pitan-as-reference-spec">The Decision: Pitan as Reference Spec</a>
+  <ul class="collapse">
+  <li><a href="#why-pitan" id="toc-why-pitan" class="nav-link" data-scroll-target="#why-pitan">Why Pitan?</a></li>
+  <li><a href="#why-not-sherpa-mini-or-other-dual-drive" id="toc-why-not-sherpa-mini-or-other-dual-drive" class="nav-link" data-scroll-target="#why-not-sherpa-mini-or-other-dual-drive">Why Not Sherpa Mini (or other dual-drive)?</a></li>
+  <li><a href="#why-not-wade" id="toc-why-not-wade" class="nav-link" data-scroll-target="#why-not-wade">Why Not Wade?</a></li>
+  <li><a href="#the-quote-that-captures-it" id="toc-the-quote-that-captures-it" class="nav-link" data-scroll-target="#the-quote-that-captures-it">The Quote That Captures It</a></li>
+  </ul></li>
+  <li><a href="#reference-configuration" id="toc-reference-configuration" class="nav-link" data-scroll-target="#reference-configuration">Reference Configuration</a>
+  <ul class="collapse">
+  <li><a href="#bill-of-materials" id="toc-bill-of-materials" class="nav-link" data-scroll-target="#bill-of-materials">Bill of Materials</a></li>
+  <li><a href="#rod-requirements" id="toc-rod-requirements" class="nav-link" data-scroll-target="#rod-requirements">Rod Requirements</a></li>
+  <li><a href="#klipper-configuration" id="toc-klipper-configuration" class="nav-link" data-scroll-target="#klipper-configuration">Klipper Configuration</a></li>
+  <li><a href="#expected-performance" id="toc-expected-performance" class="nav-link" data-scroll-target="#expected-performance">Expected Performance</a></li>
+  </ul></li>
+  <li><a href="#alternative-configurations" id="toc-alternative-configurations" class="nav-link" data-scroll-target="#alternative-configurations">Alternative Configurations</a>
+  <ul class="collapse">
+  <li><a href="#heritage-option-gregs-wade-pancake-nema17" id="toc-heritage-option-gregs-wade-pancake-nema17" class="nav-link" data-scroll-target="#heritage-option-gregs-wade-pancake-nema17">Heritage Option: Greg’s Wade + Pancake NEMA17</a></li>
+  <li><a href="#ultra-scavenger-option-mk8-direct-drive" id="toc-ultra-scavenger-option-mk8-direct-drive" class="nav-link" data-scroll-target="#ultra-scavenger-option-mk8-direct-drive">Ultra-Scavenger Option: MK8 Direct Drive</a></li>
+  <li><a href="#use-what-you-have" id="toc-use-what-you-have" class="nav-link" data-scroll-target="#use-what-you-have">Use What You Have</a></li>
+  </ul></li>
+  <li><a href="#spare-parts-strategy" id="toc-spare-parts-strategy" class="nav-link" data-scroll-target="#spare-parts-strategy">Spare Parts Strategy</a>
+  <ul class="collapse">
+  <li><a href="#recommended-spares-kit-5-10-aud" id="toc-recommended-spares-kit-5-10-aud" class="nav-link" data-scroll-target="#recommended-spares-kit-5-10-aud">Recommended Spares Kit (~$5-10 AUD)</a></li>
+  </ul></li>
+  <li><a href="#responding-to-critics" id="toc-responding-to-critics" class="nav-link" data-scroll-target="#responding-to-critics">Responding to Critics</a>
+  <ul class="collapse">
+  <li><a href="#why-not-just-use-a-sherpa-mini-like-everyone-else" id="toc-why-not-just-use-a-sherpa-mini-like-everyone-else" class="nav-link" data-scroll-target="#why-not-just-use-a-sherpa-mini-like-everyone-else">“Why not just use a Sherpa Mini like everyone else?”</a></li>
+  <li><a href="#dual-drive-artifacts-that-sounds-like-audiophile-nonsense." id="toc-dual-drive-artifacts-that-sounds-like-audiophile-nonsense." class="nav-link" data-scroll-target="#dual-drive-artifacts-that-sounds-like-audiophile-nonsense.">“Dual-drive artifacts? That sounds like audiophile nonsense.”</a></li>
+  <li><a href="#the-orbiter-has-7.51-gearing-isnt-that-better" id="toc-the-orbiter-has-7.51-gearing-isnt-that-better" class="nav-link" data-scroll-target="#the-orbiter-has-7.51-gearing-isnt-that-better">“The Orbiter has 7.5:1 gearing — isn’t that better?”</a></li>
+  <li><a href="#the-wade-has-more-torque-isnt-that-better" id="toc-the-wade-has-more-torque-isnt-that-better" class="nav-link" data-scroll-target="#the-wade-has-more-torque-isnt-that-better">“The Wade has more torque — isn’t that better?”</a></li>
+  <li><a href="#why-not-a-voron-extruder-theyre-proven." id="toc-why-not-a-voron-extruder-theyre-proven." class="nav-link" data-scroll-target="#why-not-a-voron-extruder-theyre-proven.">“Why not a Voron extruder? They’re proven.”</a></li>
+  <li><a href="#can-i-use-other-extruder-instead" id="toc-can-i-use-other-extruder-instead" class="nav-link" data-scroll-target="#can-i-use-other-extruder-instead">“Can I use [other extruder] instead?”</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#the-pitan-decision" id="toc-the-pitan-decision" class="nav-link" data-scroll-target="#the-pitan-decision">The Pitan Decision</a></li>
+  <li><a href="#the-final-word" id="toc-the-final-word" class="nav-link" data-scroll-target="#the-final-word">The Final Word</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
+  <ul class="collapse">
+  <li><a href="#extruders-evaluated-1" id="toc-extruders-evaluated-1" class="nav-link" data-scroll-target="#extruders-evaluated-1">Extruders Evaluated</a></li>
+  <li><a href="#component-sourcing" id="toc-component-sourcing" class="nav-link" data-scroll-target="#component-sourcing">Component Sourcing</a></li>
+  <li><a href="#engineering-calculations" id="toc-engineering-calculations" class="nav-link" data-scroll-target="#engineering-calculations">Engineering Calculations</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_06_extruder_decision.html">Amalgam: Extruder Selection &amp; Decision Record</a></li></ol></nav></header>
+
+
+
+
+<section id="amalgam-extruder-selection-decision-record" class="level1">
+<h1>Amalgam: Extruder Selection &amp; Decision Record</h1>
+<p>✅ <strong>Still Relevant:</strong> This deep exploration of extruder options and rationale for Pitan selection remains current. <strong>For canonical decision, see:</strong> - <strong>ADR-019</strong>: Pitan Extruder (formal decision, supersedes ADR-002: Greg’s Wade)</p>
+<p>This deep-dive provides detailed engineering analysis of why Pitan was chosen (cost, scavengability, performance, Klipper compatibility).</p>
+<hr>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>After extensive evaluation of weight, cost, scavengability, mechanical performance, drive architecture, and Klipper compatibility, the <strong>Pitan Extruder</strong> has been selected as the Amalgam reference specification.</p>
+<p><strong>Key Decision: Single-Drive Architecture</strong></p>
+<p>Amalgam uses single-drive extruders exclusively. Dual-drive designs (BMG, Sherpa, Orbiter, LGX) introduce gear mesh artifacts that affect print quality consistency — a hidden factor in why Bambu Lab printers achieve exceptional results with their single-drive design.</p>
+<section id="extruders-evaluated" class="level3">
+<h3 class="anchored" data-anchor-id="extruders-evaluated">Extruders Evaluated</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 20%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Extruder</th>
+<th>Drive</th>
+<th>Motor</th>
+<th>Cost</th>
+<th>Weight</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><strong>Greg’s Wade</strong></td>
+<td>✅ Single</td>
+<td>NEMA17</td>
+<td>~$2-5</td>
+<td>360-600g</td>
+<td>⚠️ Heritage (PLA/PETG)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><strong>MK8/MK9</strong></td>
+<td>✅ Single</td>
+<td>NEMA17</td>
+<td>~$0-6</td>
+<td>150-200g</td>
+<td>⚠️ Ultra-Scavenger</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Sherpa Mini</td>
+<td>❌ Dual</td>
+<td>NEMA14</td>
+<td>~$22-34</td>
+<td>110-127g</td>
+<td>❌ Dual-drive</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Sherpa Micro</td>
+<td>❌ Dual</td>
+<td>NEMA14</td>
+<td>~$20-34</td>
+<td>~85g</td>
+<td>❌ Dual-drive</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Orbiter v1.5</td>
+<td>❌ Dual</td>
+<td>LDO specific</td>
+<td>~$60-100</td>
+<td>140-150g</td>
+<td>❌ Dual-drive, cost</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Bondtech LGX Lite</td>
+<td>❌ Dual</td>
+<td>NEMA14</td>
+<td>~$120-150</td>
+<td>150-165g</td>
+<td>❌ Dual-drive, cost</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><strong>Pitan</strong></td>
+<td>✅ Single</td>
+<td>NEMA17</td>
+<td>~$4-10</td>
+<td>260-300g</td>
+<td>✅ <strong>Reference Spec</strong></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Voron (various)</td>
+<td>❌ Dual</td>
+<td>Various</td>
+<td>~$60-120</td>
+<td>100-150g</td>
+<td>❌ Cost, complexity</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>BMG Clone</td>
+<td>❌ Dual</td>
+<td>NEMA17</td>
+<td>~$15-25</td>
+<td>250-350g</td>
+<td>❌ Dual-drive</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recommendation-summary" class="level3">
+<h3 class="anchored" data-anchor-id="recommendation-summary">Recommendation Summary</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 34%">
+<col style="width: 20%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Extruder</th>
+<th>Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>✅ <strong>Reference Spec</strong></td>
+<td>Pitan + NEMA17</td>
+<td>~$4-10</td>
+<td>Best balance for Tractor philosophy</td>
+</tr>
+<tr class="even">
+<td>⚠️ Heritage Option</td>
+<td>Wade + Pancake NEMA17</td>
+<td>~$2-5</td>
+<td>RepRap nostalgia, PLA/PETG only</td>
+</tr>
+<tr class="odd">
+<td>⚠️ Ultra-Scavenger</td>
+<td>MK8 Direct</td>
+<td>~$0-6</td>
+<td>If you have one, PLA/PETG only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important:</strong> This is the <em>reference specification</em>. As a tinkerer/maker, you’re free to use whatever extruder configuration suits you—perhaps you have one in your parts bin. Use that!</p>
+<hr>
+</section>
+</section>
+<section id="the-decision-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision-philosophy">The Decision Philosophy</h2>
+<section id="why-this-matters-for-the-tractor" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters-for-the-tractor">Why This Matters for “The Tractor”</h3>
+<p>The Amalgam project follows the “Tractor with the Brain of a Racecar” philosophy:</p>
+<ol type="1">
+<li><strong>Quality over Speed</strong> — Not chasing 300mm/s; targeting reliable 80-120mm/s</li>
+<li><strong>Scavenger-Friendly</strong> — Parts from donor printers, hardware stores, and minimal purchases</li>
+<li><strong>Klipper Intelligence</strong> — Software compensates for mechanical simplicity</li>
+<li><strong>Budget-Conscious</strong> — Target $300 AUD total build cost</li>
+<li><strong>Repairability</strong> — Print your own replacement parts</li>
+</ol>
+<p>The extruder choice must serve these principles, not fight them.</p>
+</section>
+<section id="the-bambu-lab-x1c-insight" class="level3">
+<h3 class="anchored" data-anchor-id="the-bambu-lab-x1c-insight">The Bambu Lab X1C Insight</h3>
+<p>Modern printers like the Bambu Lab X1C prove that a well-tuned single direct-drive extruder achieves superior print quality through <strong>software intelligence</strong> rather than raw mechanical complexity.</p>
+<blockquote class="blockquote">
+<p><strong>Key Finding:</strong> A 150g extruder with Klipper Input Shaping produces better quality than a 600g extruder without it, at any speed under 150mm/s.</p>
+</blockquote>
+<p>This insight shaped our entire evaluation process.</p>
+</section>
+<section id="single-drive-vs-dual-drive-a-critical-decision" class="level3">
+<h3 class="anchored" data-anchor-id="single-drive-vs-dual-drive-a-critical-decision">Single-Drive vs Dual-Drive: A Critical Decision</h3>
+<p>Early in our evaluation, we made a key architectural decision: <strong>Amalgam will use a single-drive extruder</strong>.</p>
+<p><strong>What’s the difference?</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 40%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Mechanism</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Single-drive</strong></td>
+<td>One drive gear + one idler bearing</td>
+<td>Pitan, Wade, MK8, E3D Titan</td>
+</tr>
+<tr class="even">
+<td><strong>Dual-drive</strong></td>
+<td>Two meshing drive gears, both grip filament</td>
+<td>BMG, Sherpa Mini, Orbiter, LGX Lite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why single-drive for Amalgam?</strong></p>
+<p>Dual-drive extruders have a hidden quality issue: <strong>gear meshing artifacts</strong>. When two drive gears mesh, microscopic variations in tooth engagement create periodic pressure fluctuations on the filament. This manifests as subtle but measurable extrusion inconsistencies.</p>
+<blockquote class="blockquote">
+<p><strong>The Bambu Lab Secret:</strong> One reason Bambu Lab printers achieve exceptional print quality is their use of single-drive extruders. While the community often focuses on their motion system and software, the single-drive design eliminates gear mesh artifacts entirely.</p>
+</blockquote>
+<p><strong>Engineering trade-offs:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 41%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Single-Drive</th>
+<th>Dual-Drive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Extrusion consistency</td>
+<td>✅ No mesh artifacts</td>
+<td>⚠️ Periodic micro-variations</td>
+</tr>
+<tr class="even">
+<td>Filament grip (rigid)</td>
+<td>✅ Adequate with good tension</td>
+<td>✅ Excellent</td>
+</tr>
+<tr class="odd">
+<td>Filament grip (TPU)</td>
+<td>⚠️ Requires careful tuning</td>
+<td>✅ Superior</td>
+</tr>
+<tr class="even">
+<td>Mechanical complexity</td>
+<td>✅ Simpler</td>
+<td>⚠️ More parts</td>
+</tr>
+<tr class="odd">
+<td>Failure modes</td>
+<td>✅ Fewer</td>
+<td>⚠️ Gear wear, alignment</td>
+</tr>
+</tbody>
+</table>
+<p>For Amalgam’s quality-focused philosophy at 80-120mm/s, the single-drive advantages outweigh the dual-drive TPU benefits. We’re building a Tractor for consistent quality, not a race car for exotic filaments.</p>
+<p><strong>This decision shaped our entire evaluation.</strong> Several excellent extruders (Sherpa Mini, Orbiter, LGX Lite) were evaluated but ultimately not selected as reference spec due to their dual-drive architecture.</p>
+<hr>
+</section>
+</section>
+<section id="options-evaluated" class="level2">
+<h2 class="anchored" data-anchor-id="options-evaluated">Options Evaluated</h2>
+<section id="single-drive-extruders-preferred" class="level3">
+<h3 class="anchored" data-anchor-id="single-drive-extruders-preferred">Single-Drive Extruders (Preferred)</h3>
+</section>
+<section id="gregs-wade-geared-extruder-classic-reprap" class="level3">
+<h3 class="anchored" data-anchor-id="gregs-wade-geared-extruder-classic-reprap">1. Greg’s Wade Geared Extruder (Classic RepRap)</h3>
+<p>The Greg’s Wade is the “Flat-6 Engine” of 3D printing—mechanical, geared, visible torque. Pure RepRap heritage from 2007-2009.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | 5.22:1 (39:11 or similar, varies by version) | | Motor | Full NEMA17 (or pancake variant) | | Weight | 450-600g (full motor) / 360-410g (pancake) | | Drive | Single hobbed bolt + idler | | Original Design | 3.00mm filament (adaptable to 1.75mm) |</p>
+<p><strong>Pros:</strong> - ✅ Single-drive design (no gear mesh artifacts) - Massive torque — 5.22:1 ratio with NEMA17 = overkill for any filament - Zero proprietary parts (M8 bolts, 608 bearings, printed gears) - Full repairability (print replacement gears for $0.50) - Heat creep resistance (motor far from hotend) - True RepRap heritage and philosophy</p>
+<p><strong>Cons:</strong> - <strong>Heavy with full NEMA17</strong> — 450-600g causes significant gantry sag - Originally designed for 3.00mm filament (longer filament path) - 1.75mm adaptation has exposed filament path — TPU will buckle - Forces upgrade to M10 rods with full motor (can’t use scavenged M8) - Inertia causes ringing at direction changes</p>
+<p><strong>Pancake Motor Variant:</strong></p>
+<p>With a pancake NEMA17 (~160g vs ~350g), the Wade drops to ~360-410g total. The 5.22:1 gear ratio provides enough mechanical advantage that the reduced motor torque (~17 N·cm motor × 5.22 = ~89 N·cm output) remains adequate for PLA/PETG.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<p>Rod sag calculations: - M8 rods + Wade (full motor, 600g), 250mm span: ~0.037mm sag (borderline) - M8 rods + Wade (full motor, 600g), 280mm span: ~0.052mm sag (❌ too much) - M8 rods + Wade (pancake, 385g), 250mm span: ~0.024mm sag (✅ good) - M8 rods + Wade (pancake, 385g), 280mm span: ~0.034mm sag (✅ acceptable) - M10 rods + Wade (full motor), 280mm span: ~0.021mm sag (✅ good)</p>
+<p><strong>Verdict:</strong> The Wade with a pancake NEMA17 becomes M8-compatible and offers pure RepRap heritage. However, the 3.00mm filament path design makes it unsuitable for TPU with 1.75mm filament. Documented as heritage option for PLA/PETG builders who value RepRap roots.</p>
+<p><strong>Status: ⚠️ Heritage Option (PLA/PETG only, pancake motor recommended)</strong></p>
+<hr>
+</section>
+<section id="mk8mk9-direct-drive-ultra-simple" class="level3">
+<h3 class="anchored" data-anchor-id="mk8mk9-direct-drive-ultra-simple">2. MK8/MK9 Direct Drive (Ultra-Simple)</h3>
+<p>The MK8 is the simplest possible extruder — a drive gear mounted directly on the motor shaft with an idler bearing opposite. No gearing, no reduction, pure simplicity.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | 1:1 (direct drive, no reduction) | | Motor | NEMA17 standard | | Weight | ~150-200g complete | | Drive | Single MK8 gear + idler |</p>
+<p><strong>Pros:</strong> - ✅ Single-drive design (no gear mesh artifacts) - Ultra-simple — fewest parts of any extruder - Extremely scavengeable (every cheap printer has one) - Lightweight enables M8 rods easily - Near-zero cost if scavenged</p>
+<p><strong>Cons:</strong> - No gear reduction means relying entirely on motor torque - Less forgiving of partial clogs or high-viscosity filaments - Higher motor current required for equivalent pushing force - TPU difficult without the mechanical advantage of gearing</p>
+<p><strong>Cost Breakdown:</strong> | Component | Cost (AUD) | |———–|————| | MK8 drive gear | $1-3 (or scavenged) | | NEMA17 motor | $0 (scavenged) | | Idler bearing + arm | $0-2 (scavenged/printed) | | Hardware | $1 | | <strong>Total</strong> | <strong>$0-6</strong> |</p>
+<p><strong>Engineering Analysis:</strong></p>
+<p>Without gear reduction, motor torque = output torque. A typical NEMA17 provides ~40-45 N·cm, which is adequate for PLA/PETG at moderate speeds but offers no headroom for difficult situations.</p>
+<p>Klipper’s pressure advance helps compensate for the lack of mechanical advantage, making MK8 more viable than it would be on Marlin.</p>
+<p><strong>Verdict:</strong> Viable ultra-budget option for PLA/PETG if you already have one. The lack of gear reduction limits performance ceiling. Not recommended as primary choice but documented for completeness.</p>
+<p><strong>Status: ⚠️ Ultra-Scavenger Option (PLA/PETG only)</strong></p>
+<hr>
+</section>
+<section id="dual-drive-extruders-evaluated-but-not-selected" class="level3">
+<h3 class="anchored" data-anchor-id="dual-drive-extruders-evaluated-but-not-selected">Dual-Drive Extruders (Evaluated but Not Selected)</h3>
+<p>The following extruders were carefully evaluated but not selected as reference spec due to their dual-drive architecture, which introduces gear mesh artifacts that affect print quality consistency.</p>
+</section>
+<section id="sherpa-mini-annex-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="sherpa-mini-annex-engineering">3. Sherpa Mini (Annex Engineering)</h3>
+<p>Developed by Annex Engineering, the Sherpa Mini is the de facto standard for lightweight direct-drive in the Voron community. Uses BMG clone gears in a compact <strong>dual-drive</strong> configuration.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | 5:1 (50:10) or 6.25:1 (50:8) | | Motor | Round NEMA14 pancake with pinion | | Weight | 110-127g complete | | Drive | ❌ BMG clone dual-drive |</p>
+<p><strong>Pros:</strong> - Extremely light (~120g) — no gantry sag - BMG gears ubiquitous ($3-8, available everywhere) - Massive community (PDF manual, Discord, years of refinement) - Dual-drive excellent for TPU - Battle-tested (thousands in service) - Printable body</p>
+<p><strong>Cons:</strong> - ❌ <strong>Dual-drive architecture</strong> — gear mesh artifacts affect consistency - Requires specific NEMA14 pancake motor with integrated pinion (~$14-21 AUD) - Heat-set inserts require soldering iron - BMG quality varies by vendor - Motor not scavengeable from donor printers</p>
+<p><strong>Cost Breakdown:</strong> | Component | Cost (AUD) | |———–|————| | BMG clone gear set | $3-8 | | Round NEMA14 pancake motor | $14-21 | | Hardware, inserts, PTFE | ~$5 | | <strong>Total</strong> | <strong>$22-34</strong> |</p>
+<p><strong>Engineering Analysis:</strong></p>
+<p>Rod sag calculations (250mm span): - M8 rods + Sherpa (NEMA14): ~0.015mm sag (excellent)</p>
+<p>The Sherpa Mini is mechanically excellent. Its rejection for Amalgam is purely architectural — the dual-drive design conflicts with our quality philosophy.</p>
+<p><strong>Verdict:</strong> Excellent extruder for builders who prioritize TPU capability and lightweight toolheads over absolute extrusion consistency. Not selected due to dual-drive architecture and non-scavengeable motor.</p>
+<p><strong>Status: ❌ Not Recommended (dual-drive architecture)</strong></p>
+<hr>
+</section>
+<section id="sherpa-micro-annex-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="sherpa-micro-annex-engineering">4. Sherpa Micro (Annex Engineering)</h3>
+<p>The Sherpa Micro is an even more compact version of the Sherpa Mini, designed for the smallest possible toolhead footprint.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | ~4:1 | | Motor | Round NEMA14 pancake with 6T pinion | | Weight | ~85g complete | | Drive | ❌ Dual-drive (BMG-style) |</p>
+<p><strong>Pros:</strong> - Extremely compact and lightweight (~85g) - Excellent for space-constrained builds - Printable body - Good community support (shares ecosystem with Sherpa Mini)</p>
+<p><strong>Cons:</strong> - ❌ <strong>Dual-drive architecture</strong> — gear mesh artifacts - Requires specific NEMA14 motor with integrated pinion (~$14-21 AUD) - Motor not scavengeable - Less torque than Sherpa Mini due to smaller gearing</p>
+<p><strong>Cost Breakdown:</strong> | Component | Cost (AUD) | |———–|————| | BMG clone gear set | $3-8 | | Round NEMA14 pancake motor (6T) | $14-21 | | Hardware, inserts | ~$3-5 | | <strong>Total</strong> | <strong>$20-34</strong> |</p>
+<p><strong>Verdict:</strong> Even more compact than Sherpa Mini but shares the same dual-drive limitation. The smaller gearing also reduces torque headroom.</p>
+<p><strong>Status: ❌ Not Recommended (dual-drive architecture)</strong></p>
+<hr>
+</section>
+<section id="orbiter-v1.5-ldo-motors" class="level3">
+<h3 class="anchored" data-anchor-id="orbiter-v1.5-ldo-motors">5. Orbiter v1.5 (LDO Motors)</h3>
+<p>The Orbiter is a high-performance planetary geared extruder designed by Róbert Lőrincz in cooperation with LDO Motors. Features an innovative orbiting gear mechanism.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | 7.5:1 (planetary) | | Motor | LDO-36STH20-1004AHG (specific motor required) | | Weight | ~140-150g complete | | Drive | ❌ Dual-drive planetary | | Filament Force | Up to 9.4kg pushing force |</p>
+<p><strong>Pros:</strong> - Very high gear ratio (7.5:1) in compact package - Excellent filament pushing force - High-quality injection molded housing (glass-fiber reinforced nylon) - Good for high-speed printing and flexible filaments - Proven design with strong community</p>
+<p><strong>Cons:</strong> - ❌ <strong>Dual-drive architecture</strong> — planetary gears still mesh - <strong>Requires specific LDO motor</strong> (~$50-75 AUD) — not scavengeable - Expensive complete kit (~$75-100 AUD) - Proprietary gears — clone quality questionable (~$10 AUD but risky) - Injection molded parts — not printable for repairs</p>
+<p><strong>Cost Breakdown:</strong> | Component | Cost (AUD) | |———–|————| | Orbiter v1.5 kit with motor | $75-100 | | OR: Clone gears + LDO motor | $10 + $50-75 | | <strong>Total</strong> | <strong>$60-100</strong> |</p>
+<p><strong>Engineering Analysis:</strong></p>
+<p>The Orbiter’s 7.5:1 ratio provides exceptional torque from a small motor, enabling high acceleration extrusion. However, the planetary gear system is still dual-drive — two gears grip the filament, introducing mesh artifacts.</p>
+<p><strong>Verdict:</strong> Excellent high-performance extruder, but the specific motor requirement, cost, and dual-drive architecture exclude it from Amalgam consideration. The clone gears available on AliExpress (~$10) are a quality gamble.</p>
+<p><strong>Status: ❌ Not Recommended (dual-drive, specific motor, cost)</strong></p>
+<hr>
+</section>
+<section id="bondtech-lgx-lite" class="level3">
+<h3 class="anchored" data-anchor-id="bondtech-lgx-lite">6. Bondtech LGX Lite</h3>
+<p>The Bondtech LGX Lite is a commercial extruder using Bondtech’s “Large Gears eXtruder” technology with oversized drive gears for increased filament contact.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | ~3.5:1 (44:10, 37:17 compound) | | Motor | Round NEMA14 36mm pancake | | Weight | ~150-165g complete | | Drive | ❌ Dual-drive (Bondtech LGX gears) | | Filament Tension | 3-position lever (open/rigid/flexible) |</p>
+<p><strong>Pros:</strong> - High-quality commercial product - Large drive gears (18mm Ø) = 50% more filament contact area - Excellent tension adjustment system - Good for flexible filaments - Professional injection-molded PA12 housing</p>
+<p><strong>Cons:</strong> - ❌ <strong>Dual-drive architecture</strong> — two meshing gears - <strong>Expensive</strong> — ~$120-150 AUD complete with motor - Commercial product — no printed parts, no customization - Requires specific NEMA14 motor (~$25-35 AUD) - Not scavengeable, not repairable with printed parts</p>
+<p><strong>Cost Breakdown:</strong> | Component | Cost (AUD) | |———–|————| | LGX Lite V2 with motor | $120-150 | | LGX Lite V2 without motor | $85-100 | | NEMA14 36mm motor | $25-35 | | <strong>Total</strong> | <strong>$120-150</strong> |</p>
+<p><strong>Verdict:</strong> Premium commercial option with excellent build quality, but the cost exceeds our entire extruder budget, and the dual-drive architecture conflicts with our quality philosophy. Represents the opposite of RepRap principles — buy rather than build.</p>
+<p><strong>Status: ❌ Not Recommended (dual-drive, cost, commercial)</strong></p>
+<hr>
+</section>
+<section id="selected-reference-specification" class="level3">
+<h3 class="anchored" data-anchor-id="selected-reference-specification">Selected Reference Specification</h3>
+</section>
+<section id="pitan-extruder-selected-reference-spec" class="level3">
+<h3 class="anchored" data-anchor-id="pitan-extruder-selected-reference-spec">7. Pitan Extruder (Selected Reference Spec)</h3>
+<p>The Pitan (Printable Titan) is a 3D-printed clone of the E3D Titan, designed for the RepRap philosophy—lightweight, easy to assemble, and optimized for NEMA17 motors with full repairability.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Gear Ratio | 3:1 (same as E3D Titan) | | Motor | NEMA17 standard or pancake | | Weight | ~260-300g (with NEMA17) | | Drive | ✅ Single drive gear + idler (Titan-style) |</p>
+<p><strong>Pros:</strong> - ✅ <strong>Single-drive design</strong> — no gear mesh artifacts - <strong>Motor scavengeable</strong> — Uses standard NEMA17 from any donor printer - Fully printable gears and body (true RepRap spirit) - 3:1 gear ratio provides excellent torque - Moderate weight enables M8 rods at 250mm span - Can use pancake NEMA17 for lighter builds - Simple design is easy to maintain and repair</p>
+<p><strong>Cons:</strong> - Heavier than Sherpa Mini (but lighter than Wade) - Single-drive less aggressive than dual-drive for flexible filaments (TPU) - Less community support than Sherpa</p>
+<p><strong>Cost Breakdown:</strong> | Component | Cost (AUD) | |———–|————| | Pitan printed parts (body + gears) | $0.50-1 (filament) | | NEMA17 motor | $0 (scavenged) | | 608 bearings | $0-2 | | Hobbed bolt or MK8 drive gear | $2-5 | | Hardware (springs, fasteners) | $1-2 | | <strong>Total</strong> | <strong>$3.50-10</strong> |</p>
+<p><strong>Engineering Analysis:</strong></p>
+<p>Rod sag calculations: - M8 @ 250mm span + Pitan/NEMA17: ~0.024mm sag (very good) - M8 @ 280mm span + Pitan/NEMA17: ~0.034mm sag (acceptable) - M10 @ 280mm span + Pitan/NEMA17: ~0.014mm sag (excellent)</p>
+<p><strong>Why Pitan Wins for Amalgam:</strong></p>
+<ol type="1">
+<li><strong>Scavengeable motor</strong> — The NEMA17 from your Ender 3 donor works perfectly</li>
+<li><strong>Enables M8 rods</strong> — Don’t need to upgrade to M10 for reasonable spans</li>
+<li><strong>3:1 geared torque</strong> — Handles PLA, PETG reliably; adequate for careful TPU</li>
+<li><strong>Printable</strong> — “If a gear breaks, you have a new one before your coffee gets cold”</li>
+<li><strong>Budget</strong> — $4-10 vs $18-28 for Sherpa saves money for other components</li>
+</ol>
+<p><strong>Status: ✅ Selected as Reference Specification</strong></p>
+<hr>
+</section>
+<section id="other-extruders-evaluated" class="level3">
+<h3 class="anchored" data-anchor-id="other-extruders-evaluated">Other Extruders Evaluated</h3>
+</section>
+<section id="voron-extruders-stealthburner-clockwork-2-galileo-2" class="level3">
+<h3 class="anchored" data-anchor-id="voron-extruders-stealthburner-clockwork-2-galileo-2">8. Voron Extruders (Stealthburner, Clockwork 2, Galileo 2)</h3>
+<p>These represent the “Formula 1” extruders—designed for Voron CoreXY machines chasing 300-500mm/s.</p>
+<p><strong>Specifications:</strong> | Attribute | Value | |———–|——-| | Weight | 100-150g | | Cost | $60-120 (Bondtech kit required) | | Complexity | Very high |</p>
+<p><strong>Why Not Recommended:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Impact on Amalgam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cost</td>
+<td>$60-120 exceeds entire extruder budget</td>
+</tr>
+<tr class="even">
+<td>Proprietary</td>
+<td>Requires Bondtech/BMG kits that can’t be scavenged</td>
+</tr>
+<tr class="odd">
+<td>Complexity</td>
+<td>Many tiny parts, precision assembly</td>
+</tr>
+<tr class="even">
+<td>Overkill</td>
+<td>Designed for 300mm/s; we target 80-120mm/s</td>
+</tr>
+<tr class="odd">
+<td>Philosophy Mismatch</td>
+<td>Racing speed vs.&nbsp;reliable quality</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Defense:</strong></p>
+<blockquote class="blockquote">
+<p>“We chose the Pitan not because Voron extruders are bad, but because they solve problems we don’t have. Amalgam isn’t chasing speed records—it’s chasing reliable, repairable, affordable quality.”</p>
+</blockquote>
+<p><strong>Status: ❌ Not Recommended</strong></p>
+<hr>
+</section>
+<section id="complete-bmg-clone-pre-assembled" class="level3">
+<h3 class="anchored" data-anchor-id="complete-bmg-clone-pre-assembled">9. Complete BMG Clone (Pre-assembled)</h3>
+<p>Pre-assembled BMG extruders with full NEMA17 motors, sold as complete units.</p>
+<p><strong>Why Not Recommended:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Weight</td>
+<td>250-350g causes gantry sag</td>
+</tr>
+<tr class="even">
+<td>Not RepRap</td>
+<td>No printed parts, no customization</td>
+</tr>
+<tr class="odd">
+<td>Motor Waste</td>
+<td>Full NEMA17 better used for Z-axis</td>
+</tr>
+<tr class="even">
+<td>Design</td>
+<td>Optimized for Bowden, not direct drive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status: ❌ Not Recommended</strong></p>
+<hr>
+</section>
+</section>
+<section id="the-decision-pitan-as-reference-spec" class="level2">
+<h2 class="anchored" data-anchor-id="the-decision-pitan-as-reference-spec">The Decision: Pitan as Reference Spec</h2>
+<section id="why-pitan" class="level3">
+<h3 class="anchored" data-anchor-id="why-pitan">Why Pitan?</h3>
+<p>The Pitan wins on multiple fronts for Amalgam’s philosophy:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 47%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Pitan</th>
+<th>Dual-Drive Options</th>
+<th>Wade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Drive Architecture</td>
+<td>✅ Single (no mesh artifacts)</td>
+<td>❌ Dual (mesh artifacts)</td>
+<td>✅ Single</td>
+</tr>
+<tr class="even">
+<td>Motor Scavengeable</td>
+<td>✅ NEMA17 (everywhere)</td>
+<td>❌ Specific motors</td>
+<td>✅ NEMA17</td>
+</tr>
+<tr class="odd">
+<td>Total Cost</td>
+<td>$4-10</td>
+<td>$20-150</td>
+<td>$2-5</td>
+</tr>
+<tr class="even">
+<td>Weight</td>
+<td>~280g</td>
+<td>85-165g</td>
+<td>360-600g</td>
+</tr>
+<tr class="odd">
+<td>M8 Rod Compatible</td>
+<td>✅ Yes (≤280mm)</td>
+<td>✅ Yes</td>
+<td>⚠️ Pancake only</td>
+</tr>
+<tr class="even">
+<td>1.75mm Filament Path</td>
+<td>✅ Designed for it</td>
+<td>✅ Yes</td>
+<td>⚠️ 3mm adapted</td>
+</tr>
+<tr class="odd">
+<td>TPU Capability</td>
+<td>⚠️ With care</td>
+<td>✅ Good</td>
+<td>❌ Poor</td>
+</tr>
+<tr class="even">
+<td>Repair Printability</td>
+<td>✅ Full body + gears</td>
+<td>⚠️ Varies</td>
+<td>✅ Full</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The single-drive + scavengeable motor combination is decisive.</strong> The Pitan delivers consistent extrusion quality without gear mesh artifacts, using motors from any donor printer, at a fraction of the cost of alternatives.</p>
+</section>
+<section id="why-not-sherpa-mini-or-other-dual-drive" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-sherpa-mini-or-other-dual-drive">Why Not Sherpa Mini (or other dual-drive)?</h3>
+<p>The Sherpa Mini is mechanically excellent — lightweight, strong community, great TPU handling. But:</p>
+<ol type="1">
+<li><strong>Dual-drive architecture</strong> introduces gear mesh artifacts</li>
+<li><strong>Specific motor required</strong> — NEMA14 pancake with integrated pinion (~$14-21)</li>
+<li><strong>BMG gears</strong> — quality varies, and meshing gears = periodic extrusion variations</li>
+</ol>
+<p>For Amalgam’s quality-focused philosophy, the single-drive Pitan produces more consistent results.</p>
+</section>
+<section id="why-not-wade" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-wade">Why Not Wade?</h3>
+<p>The Wade offers pure RepRap heritage and massive torque, but:</p>
+<ol type="1">
+<li><strong>3.00mm design</strong> — adapted 1.75mm path struggles with TPU</li>
+<li><strong>Heavy</strong> — requires pancake motor or M10 rods</li>
+<li><strong>Less refined</strong> — older design lacks modern conveniences</li>
+</ol>
+<p>The Wade is documented as a heritage option for builders who value RepRap roots and only print PLA/PETG.</p>
+</section>
+<section id="the-quote-that-captures-it" class="level3">
+<h3 class="anchored" data-anchor-id="the-quote-that-captures-it">The Quote That Captures It</h3>
+<blockquote class="blockquote">
+<p>“If a gear breaks on a Pitan, you have a new one before your coffee gets cold. That’s the RepRap spirit.”</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="reference-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="reference-configuration">Reference Configuration</h2>
+<section id="bill-of-materials" class="level3">
+<h3 class="anchored" data-anchor-id="bill-of-materials">Bill of Materials</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Source</th>
+<th>Cost (AUD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pitan printed parts (body + gears)</td>
+<td>Print yourself</td>
+<td>$0.50-1</td>
+</tr>
+<tr class="even">
+<td>Hobbed bolt or MK8 drive gear</td>
+<td>AliExpress/hardware</td>
+<td>$2-5</td>
+</tr>
+<tr class="odd">
+<td>NEMA17 motor</td>
+<td>Scavenge from donor</td>
+<td>$0</td>
+</tr>
+<tr class="even">
+<td>608 bearings (×2)</td>
+<td>Hardware store/scavenge</td>
+<td>$0-2</td>
+</tr>
+<tr class="odd">
+<td>M3 hardware + springs</td>
+<td>Hardware store</td>
+<td>$1-2</td>
+</tr>
+<tr class="even">
+<td>PTFE tube + fitting</td>
+<td>Hardware store</td>
+<td>$1</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>$4.50-11</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rod-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="rod-requirements">Rod Requirements</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Rod Size</th>
+<th>Span</th>
+<th>Sag</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pitan + NEMA17</td>
+<td>M8</td>
+<td>250mm</td>
+<td>0.024mm</td>
+<td>✅ Reference spec</td>
+</tr>
+<tr class="even">
+<td>Pitan + NEMA17</td>
+<td>M8</td>
+<td>280mm</td>
+<td>0.034mm</td>
+<td>✅ Acceptable</td>
+</tr>
+<tr class="odd">
+<td>Pitan + NEMA17</td>
+<td>M10</td>
+<td>280mm</td>
+<td>0.014mm</td>
+<td>✅ Excellent</td>
+</tr>
+<tr class="even">
+<td>Pitan + Pancake</td>
+<td>M8</td>
+<td>280mm</td>
+<td>0.020mm</td>
+<td>✅ Ideal lightweight</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="klipper-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="klipper-configuration">Klipper Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[extruder]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: E_STEP</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: E_DIR</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !E_EN</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">microsteps: 16</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">rotation_distance: 22.678  # Calibrate for your setup</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">gear_ratio: 3:1            # Pitan standard</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">nozzle_diameter: 0.4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">filament_diameter: 1.750</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[tmc2209 extruder]</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">uart_pin: E_UART</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">run_current: 0.5           # Start low, adjust as needed</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">hold_current: 0.4</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">stealthchop_threshold: 0</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">[firmware_retraction]</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">retract_length: 0.5</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dt">retract_speed: 35</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="dt">unretract_extra_length: 0</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">unretract_speed: 35</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-performance" class="level3">
+<h3 class="anchored" data-anchor-id="expected-performance">Expected Performance</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Print Speed</td>
+<td>80-120mm/s (quality range)</td>
+</tr>
+<tr class="even">
+<td>Acceleration</td>
+<td>1000-1500mm/s²</td>
+</tr>
+<tr class="odd">
+<td>Layer Heights</td>
+<td>0.1-0.3mm</td>
+</tr>
+<tr class="even">
+<td>Materials</td>
+<td>PLA, PLA+, PETG (TPU with care)</td>
+</tr>
+<tr class="odd">
+<td>Consistency</td>
+<td>±0.05mm (with bed mesh)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="alternative-configurations" class="level2">
+<h2 class="anchored" data-anchor-id="alternative-configurations">Alternative Configurations</h2>
+<section id="heritage-option-gregs-wade-pancake-nema17" class="level3">
+<h3 class="anchored" data-anchor-id="heritage-option-gregs-wade-pancake-nema17">Heritage Option: Greg’s Wade + Pancake NEMA17</h3>
+<p>For builders who value pure RepRap heritage and only print PLA/PETG:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Cost (AUD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Printed gears and body</td>
+<td>$0.50</td>
+</tr>
+<tr class="even">
+<td>Pancake NEMA17 motor</td>
+<td>$0-15 (scavenged or purchased)</td>
+</tr>
+<tr class="odd">
+<td>608 bearings</td>
+<td>$0-2 (scavenged)</td>
+</tr>
+<tr class="even">
+<td>Hobbed bolt</td>
+<td>$2-3</td>
+</tr>
+<tr class="odd">
+<td>Hardware</td>
+<td>$1-2</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>$3.50-22</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key considerations:</strong> - Use pancake NEMA17 to keep weight under 410g (M8 compatible) - Full NEMA17 requires M10 rods - 3.00mm adapted design — not suitable for TPU with 1.75mm filament - 5.22:1 gear ratio provides massive torque headroom</p>
+<p><strong>When to choose Wade:</strong> - You value pure RepRap heritage over modern conveniences - You only print PLA and PETG (no flexible filaments) - You have or can scavenge a pancake NEMA17 - You appreciate the “Flat-6 Engine” aesthetic of visible gears</p>
+</section>
+<section id="ultra-scavenger-option-mk8-direct-drive" class="level3">
+<h3 class="anchored" data-anchor-id="ultra-scavenger-option-mk8-direct-drive">Ultra-Scavenger Option: MK8 Direct Drive</h3>
+<p>For extreme budget constraints or if you already have one:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Cost (AUD)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MK8 drive gear</td>
+<td>$0-3 (scavenged or purchased)</td>
+</tr>
+<tr class="even">
+<td>NEMA17 motor</td>
+<td>$0 (scavenged)</td>
+</tr>
+<tr class="odd">
+<td>Idler assembly</td>
+<td>$0-2 (scavenged/printed)</td>
+</tr>
+<tr class="even">
+<td>Hardware</td>
+<td>$1</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>$0-6</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key considerations:</strong> - No gear reduction — relies entirely on motor torque - Lightweight (~150-200g) — excellent for M8 rods - Klipper pressure advance helps compensate for 1:1 ratio - Best for moderate speeds with PLA/PETG</p>
+<p><strong>When to choose MK8:</strong> - You already have one from a donor printer - Ultra-minimal budget - Only printing PLA/PETG at moderate speeds - You value simplicity over performance headroom</p>
+</section>
+<section id="use-what-you-have" class="level3">
+<h3 class="anchored" data-anchor-id="use-what-you-have">Use What You Have</h3>
+<p><strong>This is the most important option.</strong></p>
+<p>If you have an extruder in your parts bin—Titan, Hemera, or even a dual-drive BMG—<strong>use it</strong>. The Amalgam carriage design is meant to be adaptable.</p>
+<p>The Pitan is the <em>reference specification</em>, not a mandate. The whole point of being a tinkerer is making it your own. If you already own a Sherpa Mini or Orbiter, the dual-drive concerns are academic — use what you have and enjoy printing.</p>
+<p>The single-drive recommendation is about optimal quality for new builds, not a condemnation of existing equipment.</p>
+<hr>
+</section>
+</section>
+<section id="spare-parts-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="spare-parts-strategy">Spare Parts Strategy</h2>
+<section id="recommended-spares-kit-5-10-aud" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-spares-kit-5-10-aud">Recommended Spares Kit (~$5-10 AUD)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Qty</th>
+<th>Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hobbed bolt or MK8 gear</td>
+<td>1</td>
+<td>$2-3</td>
+<td>Drive gear replacement</td>
+</tr>
+<tr class="even">
+<td>608 bearings</td>
+<td>4</td>
+<td>$2</td>
+<td>Common wear item</td>
+</tr>
+<tr class="odd">
+<td>Pitan body (printed)</td>
+<td>1 set</td>
+<td>$0.50</td>
+<td>Print during initial build</td>
+</tr>
+<tr class="even">
+<td>Printed gears</td>
+<td>1 set</td>
+<td>$0.25</td>
+<td>Print spares with body</td>
+</tr>
+<tr class="odd">
+<td>PTFE tube</td>
+<td>1m</td>
+<td>$1</td>
+<td>Cut to length as needed</td>
+</tr>
+<tr class="even">
+<td>M3 hardware assortment</td>
+<td>Various</td>
+<td>$2</td>
+<td>For any repairs</td>
+</tr>
+</tbody>
+</table>
+<p>With these spares, you’re covered for 5+ years of operation.</p>
+<hr>
+</section>
+</section>
+<section id="responding-to-critics" class="level2">
+<h2 class="anchored" data-anchor-id="responding-to-critics">Responding to Critics</h2>
+<section id="why-not-just-use-a-sherpa-mini-like-everyone-else" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-just-use-a-sherpa-mini-like-everyone-else">“Why not just use a Sherpa Mini like everyone else?”</h3>
+<blockquote class="blockquote">
+<p>“The Sherpa Mini is mechanically excellent, but it has two issues for Amalgam: First, its dual-drive architecture introduces gear mesh artifacts that affect extrusion consistency — the same reason Bambu Lab uses single-drive. Second, it requires a specific NEMA14 pancake motor that can’t be scavenged. The Pitan delivers cleaner extrusion with motors from any donor printer.”</p>
+</blockquote>
+</section>
+<section id="dual-drive-artifacts-that-sounds-like-audiophile-nonsense." class="level3">
+<h3 class="anchored" data-anchor-id="dual-drive-artifacts-that-sounds-like-audiophile-nonsense.">“Dual-drive artifacts? That sounds like audiophile nonsense.”</h3>
+<blockquote class="blockquote">
+<p>“Fair skepticism! The effect is subtle but measurable — periodic micro-variations in extrusion pressure as gear teeth mesh and unmesh. For most printing it’s invisible. But Amalgam targets quality over speed, and the single-drive architecture removes one variable from the quality equation. It’s also why Bambu Lab — known for print quality — uses single-drive designs.”</p>
+</blockquote>
+</section>
+<section id="the-orbiter-has-7.51-gearing-isnt-that-better" class="level3">
+<h3 class="anchored" data-anchor-id="the-orbiter-has-7.51-gearing-isnt-that-better">“The Orbiter has 7.5:1 gearing — isn’t that better?”</h3>
+<blockquote class="blockquote">
+<p>“The Orbiter is excellent for high-speed printing where you need rapid extrusion acceleration. But Amalgam targets 80-120mm/s where the Pitan’s 3:1 ratio is plenty. The Orbiter also requires a specific $50-75 LDO motor and costs $75-100 complete. For our philosophy, the Pitan’s $4-10 with scavenged motor makes more sense.”</p>
+</blockquote>
+</section>
+<section id="the-wade-has-more-torque-isnt-that-better" class="level3">
+<h3 class="anchored" data-anchor-id="the-wade-has-more-torque-isnt-that-better">“The Wade has more torque — isn’t that better?”</h3>
+<blockquote class="blockquote">
+<p>“The Wade’s 5.22:1 ratio provides impressive torque, but it was designed for 3.00mm filament. The adapted 1.75mm filament path has too much exposure — TPU will buckle and jam. With a pancake motor it’s M8-compatible and makes a fine heritage option for PLA/PETG, but the Pitan handles all materials better.”</p>
+</blockquote>
+</section>
+<section id="why-not-a-voron-extruder-theyre-proven." class="level3">
+<h3 class="anchored" data-anchor-id="why-not-a-voron-extruder-theyre-proven.">“Why not a Voron extruder? They’re proven.”</h3>
+<blockquote class="blockquote">
+<p>“Voron extruders are designed for 300mm/s+ racing with dual-drive BMG gears. Amalgam targets 80-120mm/s quality printing with single-drive consistency. The $60-120 cost of a Clockwork 2 kit equals our entire extruder budget plus half the frame. We’d rather spend that money on a better heated bed or quality thermistors.”</p>
+</blockquote>
+</section>
+<section id="can-i-use-other-extruder-instead" class="level3">
+<h3 class="anchored" data-anchor-id="can-i-use-other-extruder-instead">“Can I use [other extruder] instead?”</h3>
+<blockquote class="blockquote">
+<p>“Absolutely! The Pitan is our reference spec, but you’re a maker — use what you have. If there’s a Sherpa, Orbiter, or BMG in your parts bin, use it. The dual-drive concerns are about optimal quality for new builds, not a condemnation of existing equipment. The documentation is a starting point, not a constraint.”</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<section id="the-pitan-decision" class="level3">
+<h3 class="anchored" data-anchor-id="the-pitan-decision">The Pitan Decision</h3>
+<p>The Pitan extruder embodies the Amalgam philosophy:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Principle</th>
+<th>How Pitan Delivers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quality-Focused</td>
+<td>✅ Single-drive = no gear mesh artifacts</td>
+</tr>
+<tr class="even">
+<td>Scavenger-Friendly</td>
+<td>Uses NEMA17 from any donor printer</td>
+</tr>
+<tr class="odd">
+<td>Budget-Conscious</td>
+<td>$4-10 total cost</td>
+</tr>
+<tr class="even">
+<td>Repairable</td>
+<td>Print replacement parts yourself</td>
+</tr>
+<tr class="odd">
+<td>Mechanically Sound</td>
+<td>3:1 gearing + Klipper = consistent extrusion</td>
+</tr>
+<tr class="even">
+<td>M8 Compatible</td>
+<td>Enables scavenged rods at practical spans</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-final-word" class="level3">
+<h3 class="anchored" data-anchor-id="the-final-word">The Final Word</h3>
+<blockquote class="blockquote">
+<p><em>“A tractor doesn’t win races. It pulls loads reliably. The Pitan doesn’t chase 300mm/s. It produces quality prints consistently, inexpensively, and repairably — without the hidden artifacts of dual-drive designs.”</em></p>
+</blockquote>
+<p><strong>Your extruder, your choice.</strong> The Pitan is our answer — but Amalgam is your machine.</p>
+<hr>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="extruders-evaluated-1" class="level3">
+<h3 class="anchored" data-anchor-id="extruders-evaluated-1">Extruders Evaluated</h3>
+<ul>
+<li>Pitan Extruder: Community designs on Printables/Thingiverse (Printable Titan clone)</li>
+<li>Greg’s Wade: Original RepRap design, various community versions</li>
+<li>MK8/MK9: Standard on Creality, Anet, and most budget printers</li>
+<li>Sherpa Mini/Micro: <code>github.com/Annex-Engineering/Sherpa_Mini-Extruder</code></li>
+<li>Orbiter v1.5: <code>orbiterprojects.com</code> (designed by Róbert Lőrincz)</li>
+<li>Bondtech LGX Lite: <code>bondtech.se/product/lgx-lite-v2-large-gears-extruder/</code></li>
+<li>Voron Extruders: <code>vorondesign.com</code></li>
+</ul>
+</section>
+<section id="component-sourcing" class="level3">
+<h3 class="anchored" data-anchor-id="component-sourcing">Component Sourcing</h3>
+<ul>
+<li>BMG Gear Clones: AliExpress (Trianglelab, Mellow, FYSETC)</li>
+<li>NEMA14 Pancake Motors: AliExpress, KB-3D, West3D (~$14-21 AUD)</li>
+<li>LDO Motors: Official distributors, ~$50-75 AUD for Orbiter-specific</li>
+</ul>
+</section>
+<section id="engineering-calculations" class="level3">
+<h3 class="anchored" data-anchor-id="engineering-calculations">Engineering Calculations</h3>
+<ul>
+<li>Rod sag analysis: See <code>extruder.md</code> for full deflection calculations</li>
+<li>Motor torque specifications: LDO Motors datasheets</li>
+</ul>
+<hr>
+<p><em>Document prepared for the Amalgam Project</em> <em>“A Tractor with the Brain of a Racecar”</em></p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

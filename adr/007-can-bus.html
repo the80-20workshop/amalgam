@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>can-bus – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-007-can-bus-architecture" id="toc-adr-007-can-bus-architecture" class="nav-link active" data-scroll-target="#adr-007-can-bus-architecture">ADR-007: CAN Bus Architecture</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#architecture-options" id="toc-architecture-options" class="nav-link" data-scroll-target="#architecture-options">Architecture Options</a></li>
+  <li><a href="#why-optional-can-bus" id="toc-why-optional-can-bus" class="nav-link" data-scroll-target="#why-optional-can-bus">Why Optional CAN Bus?</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits-can-bus" id="toc-benefits-can-bus" class="nav-link" data-scroll-target="#benefits-can-bus">Benefits (CAN Bus)</a></li>
+  <li><a href="#trade-offs-can-bus" id="toc-trade-offs-can-bus" class="nav-link" data-scroll-target="#trade-offs-can-bus">Trade-offs (CAN Bus)</a></li>
+  <li><a href="#benefits-traditional-wiring---baseline" id="toc-benefits-traditional-wiring---baseline" class="nav-link" data-scroll-target="#benefits-traditional-wiring---baseline">Benefits (Traditional Wiring - Baseline)</a></li>
+  <li><a href="#trade-offs-traditional-wiring" id="toc-trade-offs-traditional-wiring" class="nav-link" data-scroll-target="#trade-offs-traditional-wiring">Trade-offs (Traditional Wiring)</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-a-traditional-wiring-recommended-for-tier-1-2" id="toc-scenario-a-traditional-wiring-recommended-for-tier-1-2" class="nav-link" data-scroll-target="#scenario-a-traditional-wiring-recommended-for-tier-1-2">Scenario A: Traditional Wiring (Recommended for Tier 1-2)</a></li>
+  <li><a href="#scenario-b-can-toolhead-only-tier-3" id="toc-scenario-b-can-toolhead-only-tier-3" class="nav-link" data-scroll-target="#scenario-b-can-toolhead-only-tier-3">Scenario B: CAN Toolhead Only (Tier 3)</a></li>
+  <li><a href="#scenario-c-full-can-system-tier-4" id="toc-scenario-c-full-can-system-tier-4" class="nav-link" data-scroll-target="#scenario-c-full-can-system-tier-4">Scenario C: Full CAN System (Tier 4)</a></li>
+  <li><a href="#scenario-d-hybrid-can-recommended-path" id="toc-scenario-d-hybrid-can-recommended-path" class="nav-link" data-scroll-target="#scenario-d-hybrid-can-recommended-path">Scenario D: Hybrid CAN (Recommended Path)</a></li>
+  <li><a href="#scenario-e-legacy-board-tier-1" id="toc-scenario-e-legacy-board-tier-1" class="nav-link" data-scroll-target="#scenario-e-legacy-board-tier-1">Scenario E: Legacy Board (Tier 1)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#can-bus-topology" id="toc-can-bus-topology" class="nav-link" data-scroll-target="#can-bus-topology">CAN Bus Topology</a></li>
+  <li><a href="#mks-skipr-can-support" id="toc-mks-skipr-can-support" class="nav-link" data-scroll-target="#mks-skipr-can-support">MKS SKIPR CAN Support</a></li>
+  <li><a href="#can-cable-requirements" id="toc-can-cable-requirements" class="nav-link" data-scroll-target="#can-cable-requirements">CAN Cable Requirements</a></li>
+  <li><a href="#can-toolhead-board-ebb36-example" id="toc-can-toolhead-board-ebb36-example" class="nav-link" data-scroll-target="#can-toolhead-board-ebb36-example">CAN Toolhead Board (EBB36 Example)</a></li>
+  <li><a href="#traditional-vs-can-wiring-comparison" id="toc-traditional-vs-can-wiring-comparison" class="nav-link" data-scroll-target="#traditional-vs-can-wiring-comparison">Traditional vs CAN Wiring Comparison</a></li>
+  <li><a href="#board-can-compatibility" id="toc-board-can-compatibility" class="nav-link" data-scroll-target="#board-can-compatibility">Board CAN Compatibility</a></li>
+  <li><a href="#klipper-can-configuration" id="toc-klipper-can-configuration" class="nav-link" data-scroll-target="#klipper-can-configuration">Klipper CAN Configuration</a></li>
+  <li><a href="#can-uuid-discovery" id="toc-can-uuid-discovery" class="nav-link" data-scroll-target="#can-uuid-discovery">CAN UUID Discovery</a></li>
+  <li><a href="#can-bus-health-monitoring" id="toc-can-bus-health-monitoring" class="nav-link" data-scroll-target="#can-bus-health-monitoring">CAN Bus Health Monitoring</a></li>
+  <li><a href="#termination" id="toc-termination" class="nav-link" data-scroll-target="#termination">Termination</a></li>
+  <li><a href="#recommended-path-for-amalgam" id="toc-recommended-path-for-amalgam" class="nav-link" data-scroll-target="#recommended-path-for-amalgam">Recommended Path for Amalgam</a></li>
+  <li><a href="#common-can-issues" id="toc-common-can-issues" class="nav-link" data-scroll-target="#common-can-issues">Common CAN Issues</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-007-can-bus-architecture" class="level1">
+<h1>ADR-007: CAN Bus Architecture</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam has multiple electrical components that need to communicate: - Main board (motion control) - Toolhead (extruder, hotend, fan) - Z-probe (BLTouch/PINDA) - Future expansions (ERCF, toolhead boards, bed heater, etc.)</p>
+<p>In 2026, there are two main communication architectures: - <strong>Traditional wiring</strong>: Every component wired directly to main board with individual cables - <strong>CAN bus</strong>: Network-based communication with shared twisted-pair wiring</p>
+<p>Traditional 3D printers use direct wiring, but high-end systems (Voron 2.4, toolhead boards) use CAN bus for reduced wiring and improved reliability.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We choose <strong>CAN bus support as an optional upgrade path</strong> for Amalgam, with traditional wiring as the baseline.</p>
+<section id="architecture-options" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-options">Architecture Options</h3>
+<ol type="1">
+<li><strong>Tier 1-2: Traditional Wiring</strong> (Baseline)
+<ul>
+<li>All stepper motors wired to main board</li>
+<li>Toolhead components wired with multicore cable</li>
+<li>BLTouch wired directly to board</li>
+<li>Simple, proven, works with all boards</li>
+</ul></li>
+<li><strong>Tier 3-4: CAN Bus</strong> (Optional Upgrade)
+<ul>
+<li>CAN-connected toolhead board (e.g., BTT EBB36)</li>
+<li>CAN bus for expansions (ERCF, bed heaters, etc.)</li>
+<li>Reduced wiring (4 wires: VCC, GND, CAN-H, CAN-L)</li>
+<li>Requires CAN-capable main board</li>
+</ul></li>
+</ol>
+</section>
+<section id="why-optional-can-bus" class="level3">
+<h3 class="anchored" data-anchor-id="why-optional-can-bus">Why Optional CAN Bus?</h3>
+<ol type="1">
+<li><strong>Wiring reduction</strong>: 20+ wires reduced to 4 for toolhead</li>
+<li><strong>Noise immunity</strong>: Differential signaling is electrically robust</li>
+<li><strong>Expandability</strong>: Easy to add CAN-connected devices</li>
+<li><strong>Modern standard</strong>: Used in Voron, RatRig, high-end systems</li>
+<li><strong>Future-proof</strong>: Supports toolhead boards, smart peripherals</li>
+</ol>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits-can-bus" class="level3">
+<h3 class="anchored" data-anchor-id="benefits-can-bus">Benefits (CAN Bus)</h3>
+<ul>
+<li><strong>Reduced cable clutter</strong>: 4 wires vs 20+ for toolhead</li>
+<li><strong>Improved reliability</strong>: Fewer connections = fewer failure points</li>
+<li><strong>Noise resistance</strong>: CAN bus immune to EMI from steppers</li>
+<li><strong>Flexible mounting</strong>: CAN nodes can be placed anywhere</li>
+<li><strong>Daisy-chain</strong>: Multiple devices on single bus</li>
+<li><strong>Hot-swappable</strong>: Some CAN boards support hot-plug</li>
+</ul>
+</section>
+<section id="trade-offs-can-bus" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs-can-bus">Trade-offs (CAN Bus)</h3>
+<ul>
+<li><strong>Cost</strong>: Additional CAN board(s) ~$30-50 AUD</li>
+<li><strong>Complexity</strong>: Requires CAN-capable main board</li>
+<li><strong>Configuration</strong>: More complex Klipper setup</li>
+<li><strong>Debugging</strong>: Hardware issues harder to diagnose</li>
+<li><strong>Compatibility</strong>: Not all boards support CAN</li>
+</ul>
+</section>
+<section id="benefits-traditional-wiring---baseline" class="level3">
+<h3 class="anchored" data-anchor-id="benefits-traditional-wiring---baseline">Benefits (Traditional Wiring - Baseline)</h3>
+<ul>
+<li><strong>Simple</strong>: Works with all boards, no special hardware</li>
+<li><strong>Proven</strong>: Decades of community knowledge</li>
+<li><strong>Cheap</strong>: No extra boards required</li>
+<li><strong>Easy debugging</strong>: Each wire individually testable</li>
+<li><strong>Universal</strong>: Works with any board/donor</li>
+</ul>
+</section>
+<section id="trade-offs-traditional-wiring" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs-traditional-wiring">Trade-offs (Traditional Wiring)</h3>
+<ul>
+<li><strong>Cable clutter</strong>: Wiring looms can be messy</li>
+<li><strong>More connections</strong>: More potential failure points</li>
+<li><strong>EMI sensitive</strong>: Long cable runs susceptible to noise</li>
+<li><strong>Fixed architecture</strong>: Adding devices requires running new cables</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="scenario-a-traditional-wiring-recommended-for-tier-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-a-traditional-wiring-recommended-for-tier-1-2">Scenario A: Traditional Wiring (Recommended for Tier 1-2)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Main board (MKS SKIPR, BTT SKR 3, etc.)</li>
+<li>Standard stepper motor cables (4-pin)</li>
+<li>Multicore toolhead cable (4-6 conductors)</li>
+<li>BLTouch cable (3-5 pin)</li>
+<li>Hotend cable (heater, thermistor, fan)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Included in main board price</li>
+<li><strong>Donor compatibility</strong>: All donors</li>
+<li><strong>Board requirement</strong>: Any board with 6+ drivers</li>
+<li><strong>Experience</strong>: Simple, proven setup</li>
+</ul>
+</section>
+<section id="scenario-b-can-toolhead-only-tier-3" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-b-can-toolhead-only-tier-3">Scenario B: CAN Toolhead Only (Tier 3)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Main board with CAN support (MKS SKIPR, BTT SKR 3, BTT Octopus)</li>
+<li>CAN toolhead board (BTT EBB36, EBB42)</li>
+<li>CAN bus cable (twisted pair, 4 wires)</li>
+<li>24V power for toolhead board</li>
+<li>Reduced toolhead cabling (just 4 CAN + 24V)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (+$35-50 AUD for EBB36)</li>
+<li><strong>Donor compatibility</strong>: All donors (board upgrade)</li>
+<li><strong>Board requirement</strong>: MUST have CAN port</li>
+<li><strong>Benefits</strong>: Cleaner toolhead wiring, noise immunity</li>
+</ul>
+</section>
+<section id="scenario-c-full-can-system-tier-4" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-c-full-can-system-tier-4">Scenario C: Full CAN System (Tier 4)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Main board with CAN support</li>
+<li>CAN toolhead board (BTT EBB36/EBB42)</li>
+<li>CAN ERCF controller (Happy Hare CAN)</li>
+<li>CAN bed heater controller</li>
+<li>Multiple CAN bus segments (terminators as needed)</li>
+<li>CAN bus cables throughout</li>
+</ul></li>
+<li><strong>Cost implication</strong>: High (+$100-150 AUD for all CAN boards)</li>
+<li><strong>Donor compatibility</strong>: All donors (board upgrade)</li>
+<li><strong>Board requirement</strong>: Multiple CAN ports or CAN hub</li>
+<li><strong>Benefits</strong>: Minimal wiring, highly modular, future-proof</li>
+</ul>
+</section>
+<section id="scenario-d-hybrid-can-recommended-path" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-d-hybrid-can-recommended-path">Scenario D: Hybrid CAN (Recommended Path)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Main board with CAN support (MKS SKIPR)</li>
+<li>CAN toolhead board (future upgrade)</li>
+<li>Traditional wiring for now</li>
+<li>Upgrade toolhead to CAN later</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (buy CAN-capable board, add EBB36 later)</li>
+<li><strong>Donor compatibility</strong>: All donors</li>
+<li><strong>Board requirement</strong>: CAN-capable board</li>
+<li><strong>Experience</strong>: Traditional start, upgrade to CAN as needed</li>
+</ul>
+</section>
+<section id="scenario-e-legacy-board-tier-1" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-e-legacy-board-tier-1">Scenario E: Legacy Board (Tier 1)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>Salvaged board (Creality 4.2.2, Anet, etc.)</li>
+<li>All traditional wiring</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low ($0)</li>
+<li><strong>Donor compatibility</strong>: Use donor board</li>
+<li><strong>Board requirement</strong>: Legacy board (no CAN)</li>
+<li><strong>Limitation</strong>: Cannot upgrade to CAN without board replacement</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="can-bus-topology" class="level3">
+<h3 class="anchored" data-anchor-id="can-bus-topology">CAN Bus Topology</h3>
+<pre><code>Main Board (CAN Controller)
+  |
+  +-- CAN Termination (120Ω)
+  |
+  +-- Toolhead CAN Board (EBB36)
+  |
+  +-- CAN Hub (if needed)
+        |
+        +-- ERCF CAN Controller
+        +-- Bed Heater CAN Board
+        +-- Other CAN peripherals
+  |
+  +-- CAN Termination (120Ω)</code></pre>
+</section>
+<section id="mks-skipr-can-support" class="level3">
+<h3 class="anchored" data-anchor-id="mks-skipr-can-support">MKS SKIPR CAN Support</h3>
+<pre><code>Native CAN Port: Yes
+CAN Protocol:  CAN FD (backward compatible with CAN 2.0)
+Max Nodes:     64 (theoretical)
+Recommended:   Start with 1-3 nodes</code></pre>
+</section>
+<section id="can-cable-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="can-cable-requirements">CAN Cable Requirements</h3>
+<pre><code>Type:           Twisted pair (CAN-H and CAN-L)
+Shielding:      Optional but recommended (EMI)
+Termination:    120Ω resistor at each end
+Length:         Up to 40m (NEO-DARWIN: &lt; 2m typical)
+Wire gauge:     22-24 AWG</code></pre>
+</section>
+<section id="can-toolhead-board-ebb36-example" class="level3">
+<h3 class="anchored" data-anchor-id="can-toolhead-board-ebb36-example">CAN Toolhead Board (EBB36 Example)</h3>
+<pre><code>Drivers:        2x TMC2209 (for dual gear or direct drive)
+Sensors:        Thermistor, ADXL345 (onboard)
+Outputs:        Heater, Fan, Part fan
+Inputs:         BLTouch, Probe
+Power:          24V (5V generated onboard)
+Communication:  CAN bus
+Size:           36mm × 36mm</code></pre>
+</section>
+<section id="traditional-vs-can-wiring-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-vs-can-wiring-comparison">Traditional vs CAN Wiring Comparison</h3>
+<pre><code>Traditional Toolhead Wiring:
+- Extruder motor:  4 wires
+- Hotend heater:   2 wires
+- Hotend therm:    2 wires
+- Part fan:        2 wires
+- Hotend fan:      2 wires
+- BLTouch:         3-5 wires
+- Total:           15-17 wires + bulky cable management
+
+CAN Toolhead Wiring:
+- CAN bus:        4 wires (VCC, GND, CAN-H, CAN-L)
+- 24V power:      2 wires (from main PSU)
+- Total:          6 wires (clean loom)</code></pre>
+</section>
+<section id="board-can-compatibility" class="level3">
+<h3 class="anchored" data-anchor-id="board-can-compatibility">Board CAN Compatibility</h3>
+<pre><code>MKS SKIPR:     ✓ Native CAN (recommended)
+BTT SKR 3:     ✓ Native CAN
+BTT Octopus:   ✓ Native CAN
+Creality 4.x:  ✗ No CAN
+Anet A8:       ✗ No CAN
+Prusa boards:  ✗ No CAN (proprietary)</code></pre>
+</section>
+<section id="klipper-can-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="klipper-can-configuration">Klipper CAN Configuration</h3>
+<pre><code># MCU config for CAN-connected toolhead
+[mcu canbus]
+canbus_uuid: [UUID from EBB36]
+
+# Extruder on CAN toolhead
+[extruder]
+step_pin: canbus_gpio:26
+dir_pin: canbus_gpio:22
+enable_pin: !canbus_gpio:10
+...</code></pre>
+</section>
+<section id="can-uuid-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="can-uuid-discovery">CAN UUID Discovery</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On MKS SKIPR or Pi host</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/klippy-env/bin/python</span> <span class="at">-m</span> klippy.canbus_query</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press BOOT button on CAN board to get UUID</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="can-bus-health-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="can-bus-health-monitoring">CAN Bus Health Monitoring</h3>
+<pre><code>Klipper command: CAN_BUS_STATUS
+
+Monitors:
+- Bus errors
+- Node status
+- Message rates
+- Error counters
+
+Normal: &lt; 10 errors/hour
+High:   &gt; 100 errors/hour (check terminators, noise)</code></pre>
+</section>
+<section id="termination" class="level3">
+<h3 class="anchored" data-anchor-id="termination">Termination</h3>
+<pre><code>Required: 120Ω resistor at BOTH ends of CAN bus
+- One on main board
+- One on furthest node
+- Remove terminators from middle nodes
+
+Diagnostic: Measure resistance between CAN-H and CAN-L
+- With power off: 60Ω (two 120Ω in parallel)
+- With terminators: Correct
+- Without terminators: Open circuit</code></pre>
+</section>
+<section id="recommended-path-for-amalgam" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-path-for-amalgam">Recommended Path for Amalgam</h3>
+<pre><code>Tier 1-2:
+  - Use traditional wiring
+  - Save money
+  - Focus on frame mechanics first
+
+Tier 3 (MKS SKIPR):
+  - Buy CAN-capable board
+  - Start with traditional wiring
+  - Plan for CAN toolhead upgrade
+
+Tier 4:
+  - Full CAN system from start
+  - Toolhead CAN board
+  - Clean wiring loom
+  - Future ERCF CAN integration</code></pre>
+</section>
+<section id="common-can-issues" class="level3">
+<h3 class="anchored" data-anchor-id="common-can-issues">Common CAN Issues</h3>
+<ul>
+<li><strong>No communication</strong>: Check terminators, verify 24V power, check UUID</li>
+<li><strong>High error rate</strong>: Check for loose connections, add shielding, reduce cable length</li>
+<li><strong>Node not detected</strong>: Press BOOT button to get UUID, check canbus_uuid in config</li>
+<li><strong>Intermittent faults</strong>: Add CAN bus shield, separate from stepper cables</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://github.com/bigtreetech/EBB/tree/master/EBB36%20V1.2">BTT EBB36 Documentation</a></li>
+<li><a href="https://www.klipper3d.org/CANbus.html">Klipper CAN Bus Guide</a></li>
+<li><a href="https://docs.vorondesign.com/build/electronics/canbus.html">Voron 2.4 CAN Bus Setup</a></li>
+<li>docs/AI-Conversations/ [Relevant conversations about CAN bus architecture]</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

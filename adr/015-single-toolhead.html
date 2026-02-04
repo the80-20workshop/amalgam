@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>single-toolhead – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-015-single-toolhead-architecture" id="toc-adr-015-single-toolhead-architecture" class="nav-link active" data-scroll-target="#adr-015-single-toolhead-architecture">ADR-015: Single Toolhead Architecture</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#base-spec-single-toolhead" id="toc-base-spec-single-toolhead" class="nav-link" data-scroll-target="#base-spec-single-toolhead">Base Spec: Single Toolhead</a></li>
+  <li><a href="#official-expansion-ercf-v2-filament-swapper" id="toc-official-expansion-ercf-v2-filament-swapper" class="nav-link" data-scroll-target="#official-expansion-ercf-v2-filament-swapper">Official Expansion: ERCF v2 (Filament Swapper)</a></li>
+  <li><a href="#rejected-automated-tool-changer" id="toc-rejected-automated-tool-changer" class="nav-link" data-scroll-target="#rejected-automated-tool-changer">Rejected: Automated Tool-Changer</a></li>
+  <li><a href="#manual-tool-swaps-via-puck-system-adr-009" id="toc-manual-tool-swaps-via-puck-system-adr-009" class="nav-link" data-scroll-target="#manual-tool-swaps-via-puck-system-adr-009">Manual Tool Swaps via Puck System (ADR-009)</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#what-this-replaces" id="toc-what-this-replaces" class="nav-link" data-scroll-target="#what-this-replaces">What This Replaces</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#base-spec-single-toolhead-1" id="toc-base-spec-single-toolhead-1" class="nav-link" data-scroll-target="#base-spec-single-toolhead-1">Base Spec: Single Toolhead</a></li>
+  <li><a href="#tier-2-expansion-ercf-v2" id="toc-tier-2-expansion-ercf-v2" class="nav-link" data-scroll-target="#tier-2-expansion-ercf-v2">Tier 2 Expansion: ERCF v2</a></li>
+  <li><a href="#tier-3-expansion-manual-pucks" id="toc-tier-3-expansion-manual-pucks" class="nav-link" data-scroll-target="#tier-3-expansion-manual-pucks">Tier 3 Expansion: Manual Pucks</a></li>
+  <li><a href="#tier-4-rejected-automated-tool-changer" id="toc-tier-4-rejected-automated-tool-changer" class="nav-link" data-scroll-target="#tier-4-rejected-automated-tool-changer">Tier 4 (Rejected): Automated Tool-Changer</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#base-spec-configuration" id="toc-base-spec-configuration" class="nav-link" data-scroll-target="#base-spec-configuration">Base Spec Configuration</a></li>
+  <li><a href="#ercf-v2-configuration" id="toc-ercf-v2-configuration" class="nav-link" data-scroll-target="#ercf-v2-configuration">ERCF v2 Configuration</a></li>
+  <li><a href="#manual-tool-swap-macros" id="toc-manual-tool-swap-macros" class="nav-link" data-scroll-target="#manual-tool-swap-macros">Manual Tool-Swap Macros</a></li>
+  <li><a href="#puck-system-integration" id="toc-puck-system-integration" class="nav-link" data-scroll-target="#puck-system-integration">Puck System Integration</a></li>
+  <li><a href="#safety-considerations" id="toc-safety-considerations" class="nav-link" data-scroll-target="#safety-considerations">Safety Considerations</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#evolution-notes" id="toc-evolution-notes" class="nav-link" data-scroll-target="#evolution-notes">Evolution Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-015-single-toolhead-architecture" class="level1">
+<h1>ADR-015: Single Toolhead Architecture</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam requires a decision on multi-material/color capability. Three approaches exist in 2026:</p>
+<p><strong>1. Single Toolhead</strong> (Base Spec) - One hotend/extruder - Manual material changes (swap filament manually) - No waste, no complexity - Cost: $0 additional</p>
+<p><strong>2. Filament Swapper</strong> (e.g., ERCF v2) - Single hotend, multiple filament inputs - Switches filament behind nozzle - High waste (purge tower), same-material limitation - Cost: ~$150 AUD - Best for: Multi-color PLA prints</p>
+<p><strong>3. Tool-Changer</strong> (e.g., Tapchanger, Prusa XL) - Multiple hotends/extruders on automated docking system - Near-zero waste, true multi-material (PLA+TPU+PVA) - Extreme mechanical complexity - Cost: $300-600+ AUD - Best for: Professional multi-material production</p>
+<p><strong>Key Engineering Trade-offs</strong>: - <strong>Cost</strong>: Single → ERCF → Tool-changer (exponential increase) - <strong>Complexity</strong>: Low → High → Extreme (calibration nightmare) - <strong>Waste</strong>: None → High → Near-zero - <strong>Multi-Material</strong>: No → Same-material only → True multi-material</p>
+<p>The Amalgam’s $300 AUD target and “Tractor” philosophy prioritizes reliability and low cost.</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>Single Toolhead Base Spec</strong> with <strong>ERCF v2 as Official Expansion</strong>.</p>
+<section id="base-spec-single-toolhead" class="level3">
+<h3 class="anchored" data-anchor-id="base-spec-single-toolhead">Base Spec: Single Toolhead</h3>
+<p><strong>Architecture</strong>: One E3D V6/CHT hotend with Greg Wade extruder</p>
+<p><strong>Why This Fits the “Tractor”</strong>: - <strong>Cost</strong>: $0 additional (already in BOM) - <strong>Reliability</strong>: One hotend = one point of failure - <strong>Simplicity</strong>: No calibration, no macro tuning - <strong>Maintenance</strong>: Standard single-nozzle maintenance only - <strong>Speed</strong>: No swap time, continuous printing - <strong>Best For</strong>: Single-color/monochrome prints, prototype iteration</p>
+<p><strong>Limitations</strong>: - Manual filament changes required - No multi-material printing (without manual swap) - No nozzle diversity (one nozzle size per print)</p>
+</section>
+<section id="official-expansion-ercf-v2-filament-swapper" class="level3">
+<h3 class="anchored" data-anchor-id="official-expansion-ercf-v2-filament-swapper">Official Expansion: ERCF v2 (Filament Swapper)</h3>
+<p><strong>Architecture</strong>: ERCF v2 with Bowden extension to single hotend</p>
+<p><strong>Why ERCF Over Tool-Changer</strong>: - <strong>Cost</strong>: ~$150 AUD vs $300-600+ for tool-changer - <strong>Simplicity</strong>: High complexity, but manageable macro tuning - <strong>Compatibility</strong>: Uses single hotend (no multiple hotend costs) - <strong>Materials</strong>: Handles 12+ colors in same material (e.g., PLA) - <strong>Proven</strong>: Well-documented community support</p>
+<p><strong>Trade-offs</strong>: - <strong>Waste</strong>: Requires purge tower (~10-20g waste per swap) - <strong>Speed</strong>: 30-60s per filament swap - <strong>Materials</strong>: Limited to same-material family (PLA+PLA, not PLA+TPU) - <strong>Tuning</strong>: Requires macro calibration for reliable operation</p>
+<p><strong>Best For</strong>: Multi-color prints, hobbyist experimentation, color prototypes</p>
+</section>
+<section id="rejected-automated-tool-changer" class="level3">
+<h3 class="anchored" data-anchor-id="rejected-automated-tool-changer">Rejected: Automated Tool-Changer</h3>
+<p><strong>Architecture</strong>: Multiple hotends/extruders with automated docking</p>
+<p><strong>Why Rejected for Amalgam</strong>: - <strong>Cost</strong>: Violates $300 AUD target immediately - <strong>Complexity</strong>: Sub-millimeter mechanical offsets required - <strong>Calibration</strong>: Tool A must be within 0.1mm of Tool B (expert-level tuning) - <strong>Failure Points</strong>: Docking system, multiple hotends, multiple extruders - <strong>Not “Tractor”</strong>: Requires constant tweaking, contradicts “set-and-forget” philosophy</p>
+<p><strong>Tool-Changer Advantages</strong> (for reference): - Near-zero waste (tiny prime tower) - True multi-material (PLA+TPU+PVA in same print) - Nozzle diversity (0.4mm + 0.8mm on same job) - Fast swaps (&lt;10s)</p>
+<p><strong>When to Consider Tool-Changer</strong>: - Professional multi-material production needs - Budget $600+ AUD beyond base spec - Expert-level calibration skills and patience - Multi-material (not just multi-color) requirements</p>
+</section>
+<section id="manual-tool-swaps-via-puck-system-adr-009" class="level3">
+<h3 class="anchored" data-anchor-id="manual-tool-swaps-via-puck-system-adr-009">Manual Tool Swaps via Puck System (ADR-009)</h3>
+<p>While automated tool-changing is rejected, the <strong>Modular Puck System</strong> enables manual tool swaps:</p>
+<p><strong>Supported Pucks</strong>: - <strong>3D Printing Puck</strong>: Standard hotend + extruder - <strong>Laser Engraving Puck</strong>: 5W-10W diode laser - <strong>Pen Plotting Puck</strong>: Sharpie or technical pen holder - <strong>Drag Knife Puck</strong>: Vinyl/cutting blade</p>
+<p><strong>Workflow</strong>: 1. Print completes 2. Power off machine 3. Unscrew 3D printing puck 4. Install laser/pen puck 5. Power on 6. Run <code>TOOL_OFFSET</code> calibration macro 7. Execute laser/pen job</p>
+<p><strong>Benefits</strong>: - <strong>CNC-Style Versatility</strong>: One machine, multiple purposes - <strong>No Docking Complexity</strong>: Manual swap eliminates automated failure points - <strong>Cost-Effective</strong>: Each puck ~$20-50 AUD - <strong>Reliability</strong>: No automated mechanism to fail</p>
+<p><strong>Limitations</strong>: - Not automated (30-second manual swap required) - Power cycle between swaps (safety requirement) - No in-print tool changing (separate jobs)</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Tiered Flexibility</strong>: Base (single) → Expansion (ERCF) → Advanced (manual pucks)</li>
+<li><strong>Cost Alignment</strong>: Base spec maintains $300 AUD target</li>
+<li><strong>Reliability Priority</strong>: Single toolhead = minimal failure points</li>
+<li><strong>Future-Proof</strong>: ERCF adds color without changing core architecture</li>
+<li><strong>CNS-Style Expansion</strong>: Manual puck swaps for laser/pen capabilities</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Base Spec</strong>: No multi-color capability (requires manual filament swap)</li>
+<li><strong>ERCF</strong>: Waste generation (purge tower), same-material limitation</li>
+<li><strong>No Automated Tool-Changing</strong>: True multi-material (PLA+TPU) requires separate machine or expensive upgrade</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Base Spec</strong>: Reliable single-nozzle printing for &lt;$300 AUD</li>
+<li><strong>Tier 2 Expansion</strong>: ERCF v2 adds 12+ color capability for ~$150 AUD</li>
+<li><strong>Tier 3 Expansion</strong>: Manual puck swaps for laser/pen/drag knife</li>
+<li><strong>All Tiers</strong>: Focus on reliability and “set-and-forget” philosophy</li>
+</ul>
+</section>
+<section id="what-this-replaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-replaces">What This Replaces</h3>
+<ul>
+<li>Multi-toolhead systems (tool-changers)</li>
+<li>Dual-extruder setups (bowden systems)</li>
+<li>Automated docking systems</li>
+<li>Cross-platform multi-material machines</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="base-spec-single-toolhead-1" class="level3">
+<h3 class="anchored" data-anchor-id="base-spec-single-toolhead-1">Base Spec: Single Toolhead</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x E3D V6/CHT hotend (already in BOM)</li>
+<li>1x Greg Wade extruder (already in BOM)</li>
+<li>1x Toolhead puck (already in ADR-009)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: $0 (included in base spec)</li>
+<li><strong>Capability</strong>: Single-color/monochrome printing</li>
+<li><strong>Maintenance</strong>: Standard hotend/extruder maintenance only</li>
+</ul>
+</section>
+<section id="tier-2-expansion-ercf-v2" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-expansion-ercf-v2">Tier 2 Expansion: ERCF v2</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x ERCF v2 kit (gears, selectors, servos)</li>
+<li>1x Servo motor (SG90 or MG90S)</li>
+<li>12x Filament tube holders</li>
+<li>3D-printed ERCF parts (body, gears, mounting)</li>
+<li>1x Bowden extension cable (hotend to ERCF)</li>
+<li>1x CAN bus cable (if using remote CAN board)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: ~$150 AUD</li>
+<li><strong>Capability</strong>: 12+ colors, same-material family</li>
+<li><strong>Complexity</strong>: High (macro calibration required)</li>
+<li><strong>Prerequisites</strong>: Base spec built, Klipper configured, CAN bus if needed</li>
+</ul>
+</section>
+<section id="tier-3-expansion-manual-pucks" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-expansion-manual-pucks">Tier 3 Expansion: Manual Pucks</h3>
+<ul>
+<li><strong>Parts needed per puck</strong>:
+<ul>
+<li>1x Puck base (3D-printed, standard interface from ADR-009)</li>
+<li>1x Device mounting hardware (laser heatsink, pen holder, etc.)</li>
+<li>1x Wiring harness (device-specific)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (~$20-50 AUD per puck)</li>
+<li><strong>Capability</strong>: Laser engraving, pen plotting, drag knife cutting</li>
+<li><strong>Complexity</strong>: Low (manual swap, calibration macro)</li>
+<li><strong>Prerequisites</strong>: Base spec built, Klipper profiles configured</li>
+</ul>
+</section>
+<section id="tier-4-rejected-automated-tool-changer" class="level3">
+<h3 class="anchored" data-anchor-id="tier-4-rejected-automated-tool-changer">Tier 4 (Rejected): Automated Tool-Changer</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>3-4x Complete toolheads (hotend + extruder + nozzle)</li>
+<li>1x Automated docking system (gantry, sensors, actuators)</li>
+<li>1x Kinematic coupling system (ball locks, precision alignment)</li>
+<li>Extra drivers (1-2 per additional toolhead)</li>
+<li>Extended wiring harnesses</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very High ($300-600+ AUD)</li>
+<li><strong>Capability</strong>: True multi-material (PLA+TPU+PVA), zero waste</li>
+<li><strong>Complexity</strong>: Extreme (sub-millimeter calibration, expert-level tuning)</li>
+<li><strong>Status</strong>: Rejected for Amalgam (violates cost/reliability targets)</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="base-spec-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="base-spec-configuration">Base Spec Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[extruder]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: PB7</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: PB6</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !PA8</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">microsteps: 16</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">rotation_distance: 7.5  # Greg Wade gear ratio</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[heater_generic hotend]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">pin: PA1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">sensor_type: EPCOS 100K B57560G104F</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">sensor_pin: PC2</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">min_temp: 0</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">max_temp: 300</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">control: pid</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">[fan]</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dt">pin: PA3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ercf-v2-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="ercf-v2-configuration">ERCF v2 Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[extruder]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: PB7</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: PB6</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !PA8</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">microsteps: 16</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">rotation_distance: 7.5</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ERCF-specific settings</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">[gcode_macro ERCF_SELECT_COLOR]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dt">variable_color_index: 0</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">gcode:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># ERCF macro sequence</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 1. Retract filament from hotend</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 2. Select color via servo</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 3. Load new filament</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 4. Purge to wipe tower</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="manual-tool-swap-macros" class="level3">
+<h3 class="anchored" data-anchor-id="manual-tool-swap-macros">Manual Tool-Swap Macros</h3>
+<p><strong>Laser Puck Profile</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[gcode_macro LASER_MODE]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">description: Switch to laser engraving mode</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">gcode:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">  G28                     # Home</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">  SET_HEATER_TEMPERATURE HEATER</span><span class="ot">=</span><span class="st">heater_generic_hotend TARGET=0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># User: Power off, swap puck</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># Power on, run LASER_OFFSET</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">  SET_VELOCITY_LIMIT VELOCITY</span><span class="ot">=</span><span class="st">3000 ACCEL=500  # Laser-safe limits</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">  SET_EXTRUDER_STEP_DISTANCE DISTANCE</span><span class="ot">=</span><span class="st">0        # Disable extruder</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tool Offset Calibration</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[gcode_macro TOOL_OFFSET]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">description: Calibrate tool offset after puck swap</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">gcode:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">  G28 X Y</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dt">  G0 Z10 F300</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># Manual calibration steps</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 1. Move nozzle to known position (e.g., bed center)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 2. Measure offset from new tool</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 3. Set TOOL_OFFSET_X/Y</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="dt">  </span><span class="co"># 4. Save to config</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="puck-system-integration" class="level3">
+<h3 class="anchored" data-anchor-id="puck-system-integration">Puck System Integration</h3>
+<ul>
+<li>All pucks use standard interface from ADR-009</li>
+<li>Toolhead puck is “base” reference (0,0,0)</li>
+<li>Laser/pen pucks have calibrated offsets</li>
+<li>Offsets stored in Klipper <code>[tool_offset]</code> sections</li>
+</ul>
+</section>
+<section id="safety-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="safety-considerations">Safety Considerations</h3>
+<ul>
+<li><strong>Laser Puck</strong>: Always power off before swap, verify wavelength/功率 safety</li>
+<li><strong>Manual Swaps</strong>: Power off machine before puck changes (safety requirement)</li>
+<li><strong>ERCF</strong>: Jam detection, filament runout sensors recommended</li>
+<li><strong>Hotend</strong>: Always cool before puck removal</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>docs/reference/ai-conversations/multi-toolhead.md</strong>: Complete multi-tool discussion</li>
+<li><strong>docs/adr/009-puck-system.md</strong>: Modular puck mounting system</li>
+<li><strong>docs/adr/002-greg-wade.md</strong>: Extruder architecture</li>
+<li><strong>docs/adr/004-v6-cht.md</strong>: Hotend architecture</li>
+<li>ERCF v2 Documentation: <a href="https://github.com/Letmein1030/ERCF_v2">ERCF Official</a></li>
+<li>Tool-Changer References: <a href="https://tapchanger.com/">Tapchanger</a>, <a href="https://www.prusa3d.com/en/product/original-prusa-xl">Prusa XL</a></li>
+</ul>
+</section>
+<section id="evolution-notes" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-notes">Evolution Notes</h2>
+<p>This ADR establishes single toolhead as Base Spec with ERCF as official expansion. The decision framework remains: - Cost: &lt;$300 AUD (base), +$150 AUD (ERCF) - Complexity: Low (base) → High (ERCF) → Extreme (tool-changer) - Reliability: Maximum (base) → Manageable (ERCF) → Difficult (tool-changer)</p>
+<p>Future automated tool-changer systems will be evaluated against: - Sub-$100 AUD additional cost (unlikely) - Plug-and-play calibration (no manual offset tuning) - True multi-material capability (beyond ERCF same-material)</p>
+<p>Until those criteria are met, manual puck swaps + ERCF remain the recommended path.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

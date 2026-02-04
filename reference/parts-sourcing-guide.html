@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>parts-sourcing-guide – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/parts-sourcing-guide.html">Parts Sourcing &amp; Replacement Guide</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/donor-printer-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Donor 3D Printer Compatibility Guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/MASTER_PARTS_LIST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📋 Master Parts List (MPL) - Amalgam M12 Box Frame</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/parts-sourcing-guide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Parts Sourcing &amp; Replacement Guide</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parts-sourcing-replacement-guide" id="toc-parts-sourcing-replacement-guide" class="nav-link active" data-scroll-target="#parts-sourcing-replacement-guide">Parts Sourcing &amp; Replacement Guide</a>
+  <ul class="collapse">
+  <li><a href="#parts-youll-likely-need-to-source" id="toc-parts-youll-likely-need-to-source" class="nav-link" data-scroll-target="#parts-youll-likely-need-to-source">Parts You’ll Likely Need to Source</a></li>
+  <li><a href="#how-to-assess-parts-spot-fakes-duds" id="toc-how-to-assess-parts-spot-fakes-duds" class="nav-link" data-scroll-target="#how-to-assess-parts-spot-fakes-duds">How to Assess Parts: Spot Fakes &amp; Duds</a>
+  <ul class="collapse">
+  <li><a href="#know-your-specs" id="toc-know-your-specs" class="nav-link" data-scroll-target="#know-your-specs">1. Know Your Specs</a></li>
+  <li><a href="#red-flags-on-listings" id="toc-red-flags-on-listings" class="nav-link" data-scroll-target="#red-flags-on-listings">2. Red Flags on Listings</a></li>
+  <li><a href="#green-flags" id="toc-green-flags" class="nav-link" data-scroll-target="#green-flags">3. Green Flags</a></li>
+  <li><a href="#common-pitfalls-how-to-avoid-them" id="toc-common-pitfalls-how-to-avoid-them" class="nav-link" data-scroll-target="#common-pitfalls-how-to-avoid-them">4. Common Pitfalls &amp; How to Avoid Them</a></li>
+  <li><a href="#verification-tips" id="toc-verification-tips" class="nav-link" data-scroll-target="#verification-tips">5. Verification Tips</a></li>
+  </ul></li>
+  <li><a href="#sourcing-strategy-by-platform" id="toc-sourcing-strategy-by-platform" class="nav-link" data-scroll-target="#sourcing-strategy-by-platform">Sourcing Strategy by Platform</a>
+  <ul class="collapse">
+  <li><a href="#aliexpress" id="toc-aliexpress" class="nav-link" data-scroll-target="#aliexpress">AliExpress</a></li>
+  <li><a href="#temu" id="toc-temu" class="nav-link" data-scroll-target="#temu">Temu</a></li>
+  <li><a href="#ebay" id="toc-ebay" class="nav-link" data-scroll-target="#ebay">eBay</a></li>
+  <li><a href="#secondhand-facebook-marketplace-gumtree-local" id="toc-secondhand-facebook-marketplace-gumtree-local" class="nav-link" data-scroll-target="#secondhand-facebook-marketplace-gumtree-local">Secondhand (Facebook Marketplace, Gumtree, Local)</a></li>
+  </ul></li>
+  <li><a href="#budget-what-to-expect" id="toc-budget-what-to-expect" class="nav-link" data-scroll-target="#budget-what-to-expect">Budget: What to Expect</a></li>
+  <li><a href="#quick-decision-tree-source-or-scavenge" id="toc-quick-decision-tree-source-or-scavenge" class="nav-link" data-scroll-target="#quick-decision-tree-source-or-scavenge">Quick Decision Tree: Source or Scavenge?</a></li>
+  <li><a href="#tips-for-successful-sourcing" id="toc-tips-for-successful-sourcing" class="nav-link" data-scroll-target="#tips-for-successful-sourcing">Tips for Successful Sourcing</a></li>
+  <li><a href="#red-alert-when-to-give-up-and-buy-new" id="toc-red-alert-when-to-give-up-and-buy-new" class="nav-link" data-scroll-target="#red-alert-when-to-give-up-and-buy-new">Red Alert: When to Give Up and Buy New</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="parts-sourcing-replacement-guide" class="level1">
+<h1>Parts Sourcing &amp; Replacement Guide</h1>
+<p>You’ve scavenged two donors. But things happen: a PSU dies, a leadscrew is bent, bearings are worn, or you discover a mainboard is unusable. This guide helps you <strong>source replacement parts</strong> from the secondhand market (AliExpress, Temu, eBay) without getting scammed or buying duds.</p>
+<p><strong>Budget reality:</strong> Expect to spend $80-150 on parts you can’t scavenge, depending on donor condition and your frame path. Plan for contingencies.</p>
+<hr>
+<section id="parts-youll-likely-need-to-source" class="level2">
+<h2 class="anchored" data-anchor-id="parts-youll-likely-need-to-source">Parts You’ll Likely Need to Source</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 28%">
+<col style="width: 36%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Why Needed</th>
+<th>Typical Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>M10 Threaded Rods</strong></td>
+<td>Scaffold frame skeleton</td>
+<td>$30-45</td>
+<td>8 rods per set; check length</td>
+</tr>
+<tr class="even">
+<td><strong>M8 Lead Screws</strong></td>
+<td>Z-axis motion (Triple-Z)</td>
+<td>$15-25</td>
+<td>T8 2mm pitch standard; verify in photos</td>
+</tr>
+<tr class="odd">
+<td><strong>8mm Smooth Rods</strong></td>
+<td>X-Y motion (if donors lack)</td>
+<td>$40-60</td>
+<td>8× rods, check straightness</td>
+</tr>
+<tr class="even">
+<td><strong>IGUS RJ4JP-01-08</strong></td>
+<td>Bearings (if donors worn)</td>
+<td>$25-35</td>
+<td>Cheap alternative to LM8UU; check brand</td>
+</tr>
+<tr class="odd">
+<td><strong>Power Supply</strong></td>
+<td>If donor PSU dead</td>
+<td>$40-80</td>
+<td>24V preferred; verify wattage</td>
+</tr>
+<tr class="even">
+<td><strong>NEMA17 Motors</strong></td>
+<td>If donor motors bad</td>
+<td>$10-15 each</td>
+<td>Usually abundant, but verify shaft</td>
+</tr>
+<tr class="odd">
+<td><strong>Misc Bolts/Springs</strong></td>
+<td>Assembly</td>
+<td>$15-20</td>
+<td>M3, M4, M5 assortment; cheap</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="how-to-assess-parts-spot-fakes-duds" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-assess-parts-spot-fakes-duds">How to Assess Parts: Spot Fakes &amp; Duds</h2>
+<p><strong>Before you buy anything, know exactly what you need:</strong></p>
+<section id="know-your-specs" class="level3">
+<h3 class="anchored" data-anchor-id="know-your-specs">1. Know Your Specs</h3>
+<ul>
+<li><strong>M10 threaded rods:</strong> 1.5mm pitch, fully threaded (not partially)</li>
+<li><strong>M8 lead screws:</strong> T8 2mm pitch (not 8mm pitch—yes, this confusion exists!)</li>
+<li><strong>8mm smooth rods:</strong> 8.00 ±0.02mm diameter (not 8.5mm or “precision” variants)</li>
+<li><strong>LM8UU bearing:</strong> 8mm bore, 15mm OD, 45mm length (not LM8, not generic “linear bearing”)</li>
+<li><strong>IGUS RJ4JP-01-08:</strong> Polymer, 8mm bore (cheaper than LM8UU, acceptable for Amalgam)</li>
+<li><strong>PSU:</strong> Check voltage (12V vs.&nbsp;24V) AND wattage (30A minimum for 24V systems = 720W)</li>
+<li><strong>NEMA17:</strong> 1.8° step angle (not 0.9°), standard mounting face</li>
+</ul>
+</section>
+<section id="red-flags-on-listings" class="level3">
+<h3 class="anchored" data-anchor-id="red-flags-on-listings">2. Red Flags on Listings</h3>
+<p>🚩 <strong>Avoid these:</strong> - Suspiciously cheap (99¢ for 8× rods? probably fake/short lengths) - Zero reviews or only 1-2 reviews - Fuzzy/low-quality photos or generic stock images (not showing the actual product) - Vague descriptions (“linear bearing set” with no size spec) - Photos don’t match description (“shows 12mm rod but title says 8mm”) - Seller has low ratings on other items (pattern of problems) - Shipping “from China” with “fast delivery” but actually 6-8 weeks</p>
+</section>
+<section id="green-flags" class="level3">
+<h3 class="anchored" data-anchor-id="green-flags">3. Green Flags</h3>
+<p>✅ <strong>Look for these:</strong> - 10+ reviews with photos (shows real user experience) - Reviews mention “fits perfectly,” “exactly as described,” “good quality” - Photos show the actual product clearly (not stock images; you can see details) - Seller specializes in 3D printer parts (high rating across multiple items) - Clear specs in title + description (e.g., “8×250mm Smooth Rod, 8.00mm diameter”) - Honest shipping timeline (2-4 weeks from China, clearly stated) - Seller responds to questions with clarification photos</p>
+</section>
+<section id="common-pitfalls-how-to-avoid-them" class="level3">
+<h3 class="anchored" data-anchor-id="common-pitfalls-how-to-avoid-them">4. Common Pitfalls &amp; How to Avoid Them</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 35%">
+<col style="width: 30%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pitfall</th>
+<th>What Happens</th>
+<th>How to Spot</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mixed pack sizes</strong></td>
+<td>Order says “8 rods” but it’s 2 long + 2 short + 4 medium</td>
+<td>Check ALL photos carefully; count pieces</td>
+<td>Message seller for specification</td>
+</tr>
+<tr class="even">
+<td><strong>Counterfeit bearings</strong></td>
+<td>Fake IGUS or LM8UU logo; poor quality</td>
+<td>Compare packaging to verified images; check seller history</td>
+<td>Order from established 3D printer supplier</td>
+</tr>
+<tr class="odd">
+<td><strong>Wrong lead screw pitch</strong></td>
+<td>T8 comes in 2mm AND 8mm pitch; ordered wrong</td>
+<td>Photos must show the pitch clearly; read reviews mentioning it</td>
+<td>Verify with seller before ordering</td>
+</tr>
+<tr class="even">
+<td><strong>Wrong voltage PSU</strong></td>
+<td>PSU says 12V but is actually 24V (or vice versa)</td>
+<td>Check product photos for actual labels (not just title)</td>
+<td>Message seller; ask for label photo</td>
+</tr>
+<tr class="odd">
+<td><strong>Shipping takes forever</strong></td>
+<td>“3-5 day shipping” actually takes 4-6 weeks</td>
+<td>Read negative reviews about shipping time</td>
+<td>Accept 2-4 weeks as realistic from China</td>
+</tr>
+<tr class="even">
+<td><strong>Broken on arrival</strong></td>
+<td>Rod bent, bearing seized, PSU dead from shipping shock</td>
+<td>Buy from sellers with good return policy; request protective packaging</td>
+<td>Check AliExpress “buyer protection” or eBay returns</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="verification-tips" class="level3">
+<h3 class="anchored" data-anchor-id="verification-tips">5. Verification Tips</h3>
+<p><strong>Before you hit “buy”:</strong></p>
+<ol type="1">
+<li><strong>Check seller profile</strong>
+<ul>
+<li>How many items sold? (100+ = established)</li>
+<li>What other products? (Do they specialize in 3D printer parts?)</li>
+<li>Average rating? (4.5+ is good; &lt;4.0 is risky)</li>
+</ul></li>
+<li><strong>Read reviews carefully</strong>
+<ul>
+<li>Skim positive reviews for specific product praise</li>
+<li>Read negative reviews for patterns (e.g., “shipping took 2 months” vs.&nbsp;“bent on arrival”)</li>
+<li>Look for reviews with photos (shows real users tested it)</li>
+</ul></li>
+<li><strong>Message seller if unclear</strong>
+<ul>
+<li>Ask: “Is this [specific spec]?”</li>
+<li>Ask for: Measurement photos, close-ups of packaging</li>
+<li>Some sellers respond helpfully; others ignore you (red flag)</li>
+</ul></li>
+<li><strong>Use buyer protection</strong>
+<ul>
+<li>AliExpress: “Buyer Protection” covers most cases</li>
+<li>eBay: “Item Not As Described” protection (good return policy)</li>
+<li>Temu: Less reliable; avoid for critical parts</li>
+</ul></li>
+<li><strong>Cross-check specs across listings</strong>
+<ul>
+<li>If multiple sellers have the same product, do they all say the same spec?</li>
+<li>If one says 8mm and another says “8.5mm precision rod,” they’re different</li>
+<li>Trust the one with more reviews + photos</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="sourcing-strategy-by-platform" class="level2">
+<h2 class="anchored" data-anchor-id="sourcing-strategy-by-platform">Sourcing Strategy by Platform</h2>
+<section id="aliexpress" class="level3">
+<h3 class="anchored" data-anchor-id="aliexpress">AliExpress</h3>
+<ul>
+<li><strong>Pros:</strong> Generally reliable, good buyer protection, low prices, photos often accurate</li>
+<li><strong>Cons:</strong> Slow shipping (2-6 weeks), sometimes vague specs, disputes can take time</li>
+<li><strong>Tips:</strong> Filter by “Free Shipping” (often built into price); read reviews for realistic times</li>
+<li><strong>Best for:</strong> Common parts (rods, bearings, bolts); bulk orders</li>
+</ul>
+</section>
+<section id="temu" class="level3">
+<h3 class="anchored" data-anchor-id="temu">Temu</h3>
+<ul>
+<li><strong>Pros:</strong> Aggressive pricing, fast initial delivery sometimes, growing inventory</li>
+<li><strong>Cons:</strong> Newer platform, lower review counts, inconsistent quality, fewer detailed specs</li>
+<li><strong>Tips:</strong> Stick to established sellers; avoid unique/critical items</li>
+<li><strong>Best for:</strong> Non-critical items (bolts, misc hardware); budget sourcing</li>
+</ul>
+</section>
+<section id="ebay" class="level3">
+<h3 class="anchored" data-anchor-id="ebay">eBay</h3>
+<ul>
+<li><strong>Pros:</strong> Fast local shipping (1-7 days), easy returns, verified sellers</li>
+<li><strong>Cons:</strong> Higher prices, smaller selection of cheap parts</li>
+<li><strong>Tips:</strong> Filter by “Ships from [your country]”; pay slightly more for speed/reliability</li>
+<li><strong>Best for:</strong> Critical items (PSU, mainboard) where reliability matters more than cost</li>
+</ul>
+</section>
+<section id="secondhand-facebook-marketplace-gumtree-local" class="level3">
+<h3 class="anchored" data-anchor-id="secondhand-facebook-marketplace-gumtree-local">Secondhand (Facebook Marketplace, Gumtree, Local)</h3>
+<ul>
+<li><strong>Pros:</strong> Inspect in person, negotiate price, immediate pickup</li>
+<li><strong>Cons:</strong> Limited selection, condition varies, no returns</li>
+<li><strong>Tips:</strong> Ask for photos of the actual item; test before buying if possible</li>
+<li><strong>Best for:</strong> Motors, PSU, electronics (inspect for damage); larger items (reduces shipping)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="budget-what-to-expect" class="level2">
+<h2 class="anchored" data-anchor-id="budget-what-to-expect">Budget: What to Expect</h2>
+<p><strong>Baseline donor pair assumption:</strong> - Two donors at $50-100 each: $100-200 - MDF base: $15-20 - Misc (bolts, wires): ~$30</p>
+<p><strong>Add contingencies (parts you’ll likely need to source):</strong> - M10 rods (Scaffold path): $30-45 - M8 lead screws (1-2 extra): $15-25 - Extra bearings (if worn): $20-35 - Replacement PSU (if needed): $40-80 - Misc parts (springs, connectors, etc.): $20-30</p>
+<p><strong>Total realistic budget:</strong> $250-380 AUD</p>
+<p>If you’re hitting $300+ on donors + parts, reconsider (see <a href="../reference/donor-printer-guide.html#when-not-to-scavenge-enclosed--proprietary-printers">When NOT to Scavenge</a>).</p>
+<hr>
+</section>
+<section id="quick-decision-tree-source-or-scavenge" class="level2">
+<h2 class="anchored" data-anchor-id="quick-decision-tree-source-or-scavenge">Quick Decision Tree: Source or Scavenge?</h2>
+<p>When you find a part is missing/broken, decide quickly:</p>
+<pre><code>Is the part scavengeable from second donor?
+  ├─ YES → Use it; inspect quality before assembly
+  └─ NO → Go to next question
+
+Is it a common part (rod, bearing, bolt)?
+  ├─ YES → Source cheap from AliExpress/Temu; wait 3-4 weeks
+  └─ NO → Go to next question
+
+Is it critical (mainboard, PSU, hotend)?
+  ├─ YES → Buy from eBay/local (faster, more reliable)
+  └─ NO → Source cheap; can wait
+
+Is your total cost (donors + parts) approaching $300?
+  ├─ YES → Reconsider; just buy Bambu A1 Mini or Ender 3 V3 SE
+  └─ NO → Proceed; you're in good budget territory</code></pre>
+<hr>
+</section>
+<section id="tips-for-successful-sourcing" class="level2">
+<h2 class="anchored" data-anchor-id="tips-for-successful-sourcing">Tips for Successful Sourcing</h2>
+<ol type="1">
+<li><strong>Order early, expect delays</strong> — Plan 3-4 weeks for AliExpress/Temu; 1 week for eBay local</li>
+<li><strong>Buy spares of common wear items</strong> — Get 2 sets of bearings/rods; they’re cheap</li>
+<li><strong>Verify measurements in photos</strong> — Don’t trust title specs alone; measure from photos</li>
+<li><strong>Keep receipts &amp; tracking</strong> — In case you need to return/dispute</li>
+<li><strong>Join communities</strong> — Ask on 3D printing forums which sellers are reliable (this changes monthly)</li>
+<li><strong>Test before assembly</strong> — Roll rods on glass, spin motors by hand, measure diameters</li>
+<li><strong>Account for shipping shock</strong> — Order breakable items from sellers who use protective packaging</li>
+</ol>
+<hr>
+</section>
+<section id="red-alert-when-to-give-up-and-buy-new" class="level2">
+<h2 class="anchored" data-anchor-id="red-alert-when-to-give-up-and-buy-new">Red Alert: When to Give Up and Buy New</h2>
+<p>If your sourced parts cost + donor cost exceed $320 AUD, <strong>stop and recalculate.</strong></p>
+<p>You’re better off: - <strong>Bambu A1 Mini:</strong> ~$180 AUD, brand new, warranty, proven print quality - <strong>Ender 3 V3 SE:</strong> ~$150 AUD, budget option, great community support - <strong>Just Klipperize a single donor:</strong> You already have one; upgrade it instead of Amalgam</p>
+<p>Scavenging is about <strong>smart reuse</strong>, not <strong>budget creativity</strong>.</p>
+<hr>
+<p><em>“The parts you source should cost less than your donors. If not, you’ve lost the economics game.”</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

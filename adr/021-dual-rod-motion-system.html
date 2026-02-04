@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>dual-rod-motion-system – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-021-dual-rod-motion-system-reference-specification" id="toc-adr-021-dual-rod-motion-system-reference-specification" class="nav-link active" data-scroll-target="#adr-021-dual-rod-motion-system-reference-specification">ADR-021: Dual-Rod Motion System (Reference Specification)</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#supersedes" id="toc-supersedes" class="nav-link" data-scroll-target="#supersedes">Supersedes</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#evolution-of-thinking" id="toc-evolution-of-thinking" class="nav-link" data-scroll-target="#evolution-of-thinking">Evolution of Thinking</a></li>
+  <li><a href="#the-physics-discovery" id="toc-the-physics-discovery" class="nav-link" data-scroll-target="#the-physics-discovery">The Physics Discovery</a></li>
+  <li><a href="#the-scavengeability-argument" id="toc-the-scavengeability-argument" class="nav-link" data-scroll-target="#the-scavengeability-argument">The Scavengeability Argument</a></li>
+  </ul></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#reference-configuration" id="toc-reference-configuration" class="nav-link" data-scroll-target="#reference-configuration">Reference Configuration</a></li>
+  <li><a href="#why-vertical-stacking" id="toc-why-vertical-stacking" class="nav-link" data-scroll-target="#why-vertical-stacking">Why Vertical Stacking?</a></li>
+  <li><a href="#rod-count-summary" id="toc-rod-count-summary" class="nav-link" data-scroll-target="#rod-count-summary">Rod Count Summary</a></li>
+  <li><a href="#bearing-summary" id="toc-bearing-summary" class="nav-link" data-scroll-target="#bearing-summary">Bearing Summary</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  </ul></li>
+  <li><a href="#alternative-paths-still-supported" id="toc-alternative-paths-still-supported" class="nav-link" data-scroll-target="#alternative-paths-still-supported">Alternative Paths (Still Supported)</a>
+  <ul class="collapse">
+  <li><a href="#m10-single-rod-legacy-reference" id="toc-m10-single-rod-legacy-reference" class="nav-link" data-scroll-target="#m10-single-rod-legacy-reference">M10 Single-Rod (Legacy Reference)</a></li>
+  <li><a href="#m8-single-rod-budgetcompact" id="toc-m8-single-rod-budgetcompact" class="nav-link" data-scroll-target="#m8-single-rod-budgetcompact">M8 Single-Rod (Budget/Compact)</a></li>
+  <li><a href="#mgn12-linear-rails-tinker-path" id="toc-mgn12-linear-rails-tinker-path" class="nav-link" data-scroll-target="#mgn12-linear-rails-tinker-path">MGN12 Linear Rails (Tinker Path)</a></li>
+  </ul></li>
+  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
+  <ul class="collapse">
+  <li><a href="#reference-build-two-prusa-clone-donors" id="toc-reference-build-two-prusa-clone-donors" class="nav-link" data-scroll-target="#reference-build-two-prusa-clone-donors">Reference Build: Two Prusa Clone Donors</a></li>
+  <li><a href="#cost-comparison" id="toc-cost-comparison" class="nav-link" data-scroll-target="#cost-comparison">Cost Comparison</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#deflection-thresholds" id="toc-deflection-thresholds" class="nav-link" data-scroll-target="#deflection-thresholds">Deflection Thresholds</a></li>
+  <li><a href="#toolhead-mass-budget" id="toc-toolhead-mass-budget" class="nav-link" data-scroll-target="#toolhead-mass-budget">Toolhead Mass Budget</a></li>
+  <li><a href="#span-calculations" id="toc-span-calculations" class="nav-link" data-scroll-target="#span-calculations">Span Calculations</a></li>
+  <li><a href="#cad-parameters" id="toc-cad-parameters" class="nav-link" data-scroll-target="#cad-parameters">CAD Parameters</a></li>
+  <li><a href="#assembly-sequence" id="toc-assembly-sequence" class="nav-link" data-scroll-target="#assembly-sequence">Assembly Sequence</a></li>
+  </ul></li>
+  <li><a href="#quality-verification" id="toc-quality-verification" class="nav-link" data-scroll-target="#quality-verification">Quality Verification</a>
+  <ul class="collapse">
+  <li><a href="#rod-quality" id="toc-rod-quality" class="nav-link" data-scroll-target="#rod-quality">Rod Quality</a></li>
+  <li><a href="#parallelism-check" id="toc-parallelism-check" class="nav-link" data-scroll-target="#parallelism-check">Parallelism Check</a></li>
+  <li><a href="#load-test" id="toc-load-test" class="nav-link" data-scroll-target="#load-test">Load Test</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-021-dual-rod-motion-system-reference-specification" class="level1">
+<h1>ADR-021: Dual-Rod Motion System (Reference Specification)</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="supersedes" class="level2">
+<h2 class="anchored" data-anchor-id="supersedes">Supersedes</h2>
+<ul>
+<li>ADR-003: Precision Smooth Rods</li>
+<li>ADR-020: Dual-8 Scavenger Variant</li>
+</ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<section id="evolution-of-thinking" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-of-thinking">Evolution of Thinking</h3>
+<p><strong>ADR-003</strong> established M10 smooth rods as the reference specification based on: - 2.4× stiffness advantage over M8 - Adequate rigidity for 220mm build volume at 330mm span (see ADR-024) - Single-rod-per-axis simplicity</p>
+<p><strong>ADR-020</strong> proposed a “Dual-8 Scavenger” variant after analyzing the Voron Legacy, which achieves acceptable performance with 8mm rods at 200mm build volume. The key insight was that <strong>dual rods sharing load halve deflection</strong>, potentially enabling 8mm rods at Amalgam’s larger build volume.</p>
+</section>
+<section id="the-physics-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="the-physics-discovery">The Physics Discovery</h3>
+<p>Beam deflection follows: <code>δ = F × L³ / (48 × E × I)</code></p>
+<p>When two parallel rods share the load equally: - Each rod carries F/2 - Deflection: <code>δ_dual = (F/2) × L³ / (48 × E × I) = δ_single / 2</code></p>
+<p><strong>Dual 8mm rods achieve LESS deflection than single 10mm rods:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Deflection @ 360mm, 280g</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Single 8mm</td>
+<td>0.066mm</td>
+<td>Excessive</td>
+</tr>
+<tr class="even">
+<td>Single 10mm</td>
+<td>0.027mm</td>
+<td>Acceptable</td>
+</tr>
+<tr class="odd">
+<td><strong>Dual 8mm</strong></td>
+<td><strong>0.033mm</strong></td>
+<td><strong>Acceptable</strong></td>
+</tr>
+</tbody>
+</table>
+<p>While dual 8mm has ~82% the stiffness of single 10mm, the load sharing more than compensates—resulting in better deflection performance.</p>
+</section>
+<section id="the-scavengeability-argument" class="level3">
+<h3 class="anchored" data-anchor-id="the-scavengeability-argument">The Scavengeability Argument</h3>
+<p>Amalgam already requires <strong>two donor printers</strong> for triple-Z (ADR-005): - 6-7 NEMA17 motors needed (X, Y×2, Z×3, extruder) - Most donor printers have 4-5 motors - Two donors are the practical minimum</p>
+<p>Given two donors are required anyway: - Two Prusa clones provide 12× 8mm smooth rods - M10 smooth rods are rarely scavengeable - Buying M10 adds $60-80 AUD to build cost - Dual 8mm achieves equal or better performance at zero rod cost</p>
+<p><strong>The scavenger path became the optimal path.</strong></p>
+</section>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt <strong>Dual 8mm Smooth Rods with Vertical Stacking</strong> as the Amalgam reference specification for XY motion.</p>
+<section id="reference-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="reference-configuration">Reference Configuration</h3>
+<p><strong>X-Axis: Two 8mm rods, vertically stacked</strong></p>
+<pre><code>═══════════════════════════════════  Top rod
+        [Plough carriage]
+═══════════════════════════════════  Bottom rod
+        ↑ ~30mm spacing ↑</code></pre>
+<p><strong>Y-Axis: Two 8mm rods per side, vertically stacked</strong></p>
+<pre><code>Left Y-rail:              Right Y-rail:
+  ║══ 8mm ══║               ║══ 8mm ══║
+  ║  belt   ║               ║  belt   ║
+  ║══ 8mm ══║               ║══ 8mm ══║
+    LM8LUU                    LM8LUU</code></pre>
+<p><strong>Z-Axis: Two 8mm rods (unchanged from ADR-003)</strong> - Vertical orientation - Lower load than XY (bed weight distributed across triple-Z)</p>
+</section>
+<section id="why-vertical-stacking" class="level3">
+<h3 class="anchored" data-anchor-id="why-vertical-stacking">Why Vertical Stacking?</h3>
+<p>For pure gravitational sag, vertical and horizontal stacking are equivalent—both share the load equally.</p>
+<p>The difference is <strong>moment resistance</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Orientation</th>
+<th>Resists</th>
+<th>Vulnerable to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Horizontal</td>
+<td>Yaw (twist L↔︎R)</td>
+<td>Pitch (nose-dive)</td>
+</tr>
+<tr class="even">
+<td>Vertical</td>
+<td>Pitch (nose-dive)</td>
+<td>Yaw (twist L↔︎R)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vertical stacking is preferred because:</strong> 1. Pitch forces from Y-acceleration dominate toolhead dynamics 2. Belt runs cleanly between stacked rods 3. Validated by Voron Legacy design 4. X-end brackets are more compact vertically</p>
+</section>
+<section id="rod-count-summary" class="level3">
+<h3 class="anchored" data-anchor-id="rod-count-summary">Rod Count Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Axis</th>
+<th>Previous (ADR-003)</th>
+<th>New Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X</td>
+<td>2× M10</td>
+<td>2× M8 (vertical stack)</td>
+</tr>
+<tr class="even">
+<td>Y</td>
+<td>2× M10</td>
+<td>4× M8 (2 per side, stacked)</td>
+</tr>
+<tr class="odd">
+<td>Z</td>
+<td>2× M10</td>
+<td>2× M8</td>
+</tr>
+<tr class="even">
+<td><strong>Total XYZ</strong></td>
+<td><strong>6 rods</strong></td>
+<td><strong>8 rods</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bearing-summary" class="level3">
+<h3 class="anchored" data-anchor-id="bearing-summary">Bearing Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Location</th>
+<th>Previous</th>
+<th>New Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X carriage</td>
+<td>4× LM10UU</td>
+<td>4× LM8LUU (recommended)</td>
+</tr>
+<tr class="even">
+<td>Y gantry (total)</td>
+<td>4× LM10UU</td>
+<td>8× LM8UU (4 per side)</td>
+</tr>
+<tr class="odd">
+<td>Z axis</td>
+<td>4× LM10UU</td>
+<td>4× LM8UU</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>12× LM10UU</strong></td>
+<td><strong>4× LM8LUU + 12× LM8UU</strong></td>
+</tr>
+</tbody>
+</table>
+<p>See <strong>ADR-022: Linear Bearing Selection</strong> for detailed bearing rationale, scavenged bearing protocol, and alternative options (IGUS, printed bearings).</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ol type="1">
+<li><strong>True scavengeability</strong>: All smooth rods from 2 donor printers</li>
+<li><strong>Cost reduction</strong>: Eliminates $60-80 AUD rod purchase</li>
+<li><strong>Equal or better stiffness</strong>: Dual 8mm outperforms single 10mm on deflection</li>
+<li><strong>Proven design</strong>: Vertical stacking validated by Voron Legacy</li>
+<li><strong>Parts availability</strong>: 8mm rods/bearings are ubiquitous</li>
+<li><strong>Aligned with triple-Z</strong>: Already need 2 donors for motors</li>
+</ol>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ol type="1">
+<li><strong>More parts</strong>: 8 rods + 16 bearings vs 6 rods + 12 bearings</li>
+<li><strong>Redesigned brackets</strong>: X-ends and Y-pucks need dual-rod mounts</li>
+<li><strong>Toolhead mass budget</strong>: Keep under 280g for optimal performance</li>
+<li><strong>Slightly more complex assembly</strong>: More rods to align</li>
+</ol>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Sub-$250 AUD builds</strong>: When fully scavenging from 2 donors</li>
+<li><strong>$300 target easily achieved</strong>: Even with MKS SKIPR + CANbus upgrade</li>
+<li><strong>Lower barrier to entry</strong>: No need to source obscure M10 precision rods</li>
+<li><strong>Better alignment with RepRap philosophy</strong>: Use what you have</li>
+</ul>
+</section>
+</section>
+<section id="alternative-paths-still-supported" class="level2">
+<h2 class="anchored" data-anchor-id="alternative-paths-still-supported">Alternative Paths (Still Supported)</h2>
+<p>The parametric CAD system supports alternative configurations:</p>
+<section id="m10-single-rod-legacy-reference" class="level3">
+<h3 class="anchored" data-anchor-id="m10-single-rod-legacy-reference">M10 Single-Rod (Legacy Reference)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_DIA <span class="op">=</span> <span class="fl">10.0</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_CONFIG <span class="op">=</span> <span class="st">"SINGLE"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>For builders purchasing new rods</li>
+<li>Fewer parts, simpler assembly</li>
+<li>~$60-80 AUD additional cost</li>
+</ul>
+</section>
+<section id="m8-single-rod-budgetcompact" class="level3">
+<h3 class="anchored" data-anchor-id="m8-single-rod-budgetcompact">M8 Single-Rod (Budget/Compact)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_DIA <span class="op">=</span> <span class="fl">8.0</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_CONFIG <span class="op">=</span> <span class="st">"SINGLE"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Limited to ~200mm build volume</li>
+<li>Single donor may suffice</li>
+<li>Marginal deflection at 235mm span</li>
+</ul>
+</section>
+<section id="mgn12-linear-rails-tinker-path" class="level3">
+<h3 class="anchored" data-anchor-id="mgn12-linear-rails-tinker-path">MGN12 Linear Rails (Tinker Path)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>LINEAR_MOTION <span class="op">=</span> <span class="st">"MGN12"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>For high-speed experiments (200mm/s+)</li>
+<li>Requires rail purchase (~$150-200 AUD)</li>
+<li>Different bracket designs</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
+<section id="reference-build-two-prusa-clone-donors" class="level3">
+<h3 class="anchored" data-anchor-id="reference-build-two-prusa-clone-donors">Reference Build: Two Prusa Clone Donors</h3>
+<p><strong>Scavenged:</strong> | Part | Quantity | Source | |——|———-|——–| | 8mm smooth rods | 8-10 | Donors (12 available) | | LM8UU bearings | 16 | Donors (24 available) | | NEMA17 motors | 7 | Donors (8-10 available) | | Heated bed | 1 | Best of 2 donors | | Power supply | 1 | Best of 2 donors |</p>
+<p><strong>Purchased:</strong> | Part | Cost (AUD) | |——|————| | M10 threaded rod (frame) | $45 | | MKS SKIPR + EBB36 + ADXL | $130 | | E3D V6 clone hotend | $15 | | Belts, pulleys, hardware | $30 | | <strong>Total</strong> | <strong>~$220</strong> |</p>
+</section>
+<section id="cost-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="cost-comparison">Cost Comparison</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Configuration</th>
+<th>Rod Cost</th>
+<th>Total Build</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Dual 8mm (reference)</strong></td>
+<td><strong>$0</strong></td>
+<td><strong>~$220</strong></td>
+</tr>
+<tr class="even">
+<td>Single M10</td>
+<td>$70</td>
+<td>~$290</td>
+</tr>
+<tr class="odd">
+<td>MGN12 rails</td>
+<td>$150</td>
+<td>~$370</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="deflection-thresholds" class="level3">
+<h3 class="anchored" data-anchor-id="deflection-thresholds">Deflection Thresholds</h3>
+<p>Based on layer height and quality requirements:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Deflection</th>
+<th>Verdict</th>
+<th>Suitable For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt; 0.015mm</td>
+<td>Excellent</td>
+<td>All applications</td>
+</tr>
+<tr class="even">
+<td>&lt; 0.025mm</td>
+<td>Good</td>
+<td>Standard printing</td>
+</tr>
+<tr class="odd">
+<td>&lt; 0.035mm</td>
+<td>Acceptable</td>
+<td>Most printing</td>
+</tr>
+<tr class="even">
+<td>&lt; 0.050mm</td>
+<td>Marginal</td>
+<td>Draft quality</td>
+</tr>
+<tr class="odd">
+<td>&gt; 0.050mm</td>
+<td>Excessive</td>
+<td>Not recommended</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="toolhead-mass-budget" class="level3">
+<h3 class="anchored" data-anchor-id="toolhead-mass-budget">Toolhead Mass Budget</h3>
+<p>For acceptable deflection (&lt; 0.035mm) at 360mm span with dual 8mm:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Toolhead</th>
+<th>Mass</th>
+<th>Deflection</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pitan + pancake NEMA17</td>
+<td>~220g</td>
+<td>0.025mm</td>
+<td>Good</td>
+</tr>
+<tr class="even">
+<td>Pitan + standard NEMA17</td>
+<td>~280g</td>
+<td>0.033mm</td>
+<td>Acceptable</td>
+</tr>
+<tr class="odd">
+<td>Wade + standard NEMA17</td>
+<td>~400g</td>
+<td>0.047mm</td>
+<td>Marginal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> Use pancake NEMA17 on extruder for best results.</p>
+</section>
+<section id="span-calculations" class="level3">
+<h3 class="anchored" data-anchor-id="span-calculations">Span Calculations</h3>
+<p>For 220mm build volume (reference spec, see ADR-024):</p>
+<pre><code>X-rod length = BUILD_X + (2 × CARRIAGE_OVERHANG) + CLEARANCE
+            = 220 + 80 + 30 = 330mm
+
+Y-rod length = BUILD_Y + GANTRY_DEPTH + CLEARANCE
+            = 220 + 80 + 30 = 330mm</code></pre>
+</section>
+<section id="cad-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="cad-parameters">CAD Parameters</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference specification (Dual 8mm)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_DIA <span class="op">=</span> <span class="fl">8.0</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>SMOOTH_ROD_CONFIG <span class="op">=</span> <span class="st">"DUAL_VERTICAL"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>BEARING_TYPE <span class="op">=</span> <span class="st">"LM8UU"</span>  <span class="co"># or "LM8LUU" for long bearings</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Derived</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>X_ROD_COUNT <span class="op">=</span> <span class="dv">2</span>  <span class="co"># vertically stacked</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>Y_ROD_COUNT <span class="op">=</span> <span class="dv">4</span>  <span class="co"># 2 per side, stacked</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Z_ROD_COUNT <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>TOTAL_SMOOTH_RODS <span class="op">=</span> <span class="dv">8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="assembly-sequence" class="level3">
+<h3 class="anchored" data-anchor-id="assembly-sequence">Assembly Sequence</h3>
+<ol type="1">
+<li><strong>Y-rails first</strong>: Install dual rods on each Y-rail assembly</li>
+<li><strong>Verify parallelism</strong>: Rods must be parallel within 0.1mm over length</li>
+<li><strong>X-gantry</strong>: Mount X-end brackets to Y-rails</li>
+<li><strong>X-rods</strong>: Install vertical stack, verify spacing</li>
+<li><strong>Plough carriage</strong>: Install with bearings on both rods</li>
+<li><strong>Belt routing</strong>: Run belts between stacked rods</li>
+</ol>
+</section>
+</section>
+<section id="quality-verification" class="level2">
+<h2 class="anchored" data-anchor-id="quality-verification">Quality Verification</h2>
+<section id="rod-quality" class="level3">
+<h3 class="anchored" data-anchor-id="rod-quality">Rod Quality</h3>
+<ul>
+<li><strong>Spec</strong>: Precision ground, hardened steel</li>
+<li><strong>Test</strong>: Roll LM8UU bearing along rod—should be smooth, no grinding</li>
+<li><strong>Measure</strong>: Verify 8.00mm ± 0.01mm diameter with calipers</li>
+</ul>
+</section>
+<section id="parallelism-check" class="level3">
+<h3 class="anchored" data-anchor-id="parallelism-check">Parallelism Check</h3>
+<ul>
+<li>Measure rod spacing at both ends</li>
+<li>Should be equal within 0.1mm</li>
+<li>Adjust bracket mounting if needed</li>
+</ul>
+</section>
+<section id="load-test" class="level3">
+<h3 class="anchored" data-anchor-id="load-test">Load Test</h3>
+<ul>
+<li>With toolhead at center of X travel</li>
+<li>Measure deflection with dial indicator</li>
+<li>Should be &lt; 0.05mm under static load</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>ADR-003: Precision Smooth Rods (superseded—historical reference)</li>
+<li>ADR-005: Triple-Z Independent Kinematic Leveling</li>
+<li>ADR-020: Dual-8 Scavenger Variant (superseded—merged into this ADR)</li>
+<li>ADR-022: Linear Bearing Selection (companion ADR for bearing choices)</li>
+<li>ADR-024: Heated Bed Size Selection (defines 220mm reference build volume)</li>
+<li><a href="https://vorondesign.com/voron_legacy">Voron Legacy</a>: Vertical stacking validation</li>
+<li><a href="https://en.wikipedia.org/wiki/Deflection_(engineering)">Beam Deflection Theory</a></li>
+<li>PHILOSOPHY.md: “Tractor with a Racecar Brain”</li>
+<li>Analysis conversation: “Voron Legacy Comparison” (2025-01-27)</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

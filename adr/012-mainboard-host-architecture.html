@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>mainboard-host-architecture – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adr-012-mainboard-host-architecture" id="toc-adr-012-mainboard-host-architecture" class="nav-link active" data-scroll-target="#adr-012-mainboard-host-architecture">ADR-012: Mainboard &amp; Host Architecture</a>
+  <ul class="collapse">
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <ul class="collapse">
+  <li><a href="#tier-1-pure-scavenger-belted-z" id="toc-tier-1-pure-scavenger-belted-z" class="nav-link" data-scroll-target="#tier-1-pure-scavenger-belted-z">Tier 1: Pure Scavenger (Belted-Z)</a></li>
+  <li><a href="#tier-2-multi-mcu-scavenger-dual-board-triple-z-recommended-scavenger-path" id="toc-tier-2-multi-mcu-scavenger-dual-board-triple-z-recommended-scavenger-path" class="nav-link" data-scroll-target="#tier-2-multi-mcu-scavenger-dual-board-triple-z-recommended-scavenger-path">Tier 2: Multi-MCU Scavenger (Dual Board Triple-Z) ★ Recommended Scavenger Path</a></li>
+  <li><a href="#tier-3-reference-spec-mks-skipr" id="toc-tier-3-reference-spec-mks-skipr" class="nav-link" data-scroll-target="#tier-3-reference-spec-mks-skipr">Tier 3: Reference Spec (MKS SKIPR)</a></li>
+  <li><a href="#why-mks-skipr-reference-spec" id="toc-why-mks-skipr-reference-spec" class="nav-link" data-scroll-target="#why-mks-skipr-reference-spec">Why MKS SKIPR (Reference Spec)?</a></li>
+  <li><a href="#alternative-btt-manta-m8p-v2.0" id="toc-alternative-btt-manta-m8p-v2.0" class="nav-link" data-scroll-target="#alternative-btt-manta-m8p-v2.0">Alternative: BTT Manta M8P V2.0</a></li>
+  <li><a href="#host-performance-comparison" id="toc-host-performance-comparison" class="nav-link" data-scroll-target="#host-performance-comparison">Host Performance Comparison</a></li>
+  <li><a href="#multi-mcu-configuration-tier-2" id="toc-multi-mcu-configuration-tier-2" class="nav-link" data-scroll-target="#multi-mcu-configuration-tier-2">Multi-MCU Configuration (Tier 2)</a></li>
+  </ul></li>
+  <li><a href="#second-hand-market-economics-2026" id="toc-second-hand-market-economics-2026" class="nav-link" data-scroll-target="#second-hand-market-economics-2026">Second-Hand Market Economics (2026)</a>
+  <ul class="collapse">
+  <li><a href="#donor-printer-pricing" id="toc-donor-printer-pricing" class="nav-link" data-scroll-target="#donor-printer-pricing">Donor Printer Pricing</a></li>
+  <li><a href="#real-world-parts-pricing-aliexpress-2026" id="toc-real-world-parts-pricing-aliexpress-2026" class="nav-link" data-scroll-target="#real-world-parts-pricing-aliexpress-2026">Real-World Parts Pricing (AliExpress, 2026)</a></li>
+  <li><a href="#cost-comparison-by-path" id="toc-cost-comparison-by-path" class="nav-link" data-scroll-target="#cost-comparison-by-path">Cost Comparison by Path</a></li>
+  </ul></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <ul class="collapse">
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#what-this-replaces" id="toc-what-this-replaces" class="nav-link" data-scroll-target="#what-this-replaces">What This Replaces</a></li>
+  </ul></li>
+  <li><a href="#bom-implications-generic" id="toc-bom-implications-generic" class="nav-link" data-scroll-target="#bom-implications-generic">BOM Implications (Generic)</a>
+  <ul class="collapse">
+  <li><a href="#tier-1-pure-scavenger-belted-z-1" id="toc-tier-1-pure-scavenger-belted-z-1" class="nav-link" data-scroll-target="#tier-1-pure-scavenger-belted-z-1">Tier 1: Pure Scavenger (Belted-Z)</a></li>
+  <li><a href="#tier-2-multi-mcu-scavenger-dual-board-recommended" id="toc-tier-2-multi-mcu-scavenger-dual-board-recommended" class="nav-link" data-scroll-target="#tier-2-multi-mcu-scavenger-dual-board-recommended">Tier 2: Multi-MCU Scavenger (Dual Board) ★ Recommended</a></li>
+  <li><a href="#tier-3-reference-spec-mks-skipr-1" id="toc-tier-3-reference-spec-mks-skipr-1" class="nav-link" data-scroll-target="#tier-3-reference-spec-mks-skipr-1">Tier 3: Reference Spec (MKS SKIPR)</a></li>
+  <li><a href="#tier-3-alternative-btt-manta-m8p" id="toc-tier-3-alternative-btt-manta-m8p" class="nav-link" data-scroll-target="#tier-3-alternative-btt-manta-m8p">Tier 3 Alternative: BTT Manta M8P</a></li>
+  <li><a href="#universal-requirements-all-tiers" id="toc-universal-requirements-all-tiers" class="nav-link" data-scroll-target="#universal-requirements-all-tiers">Universal Requirements (All Tiers)</a></li>
+  </ul></li>
+  <li><a href="#implementation-notes" id="toc-implementation-notes" class="nav-link" data-scroll-target="#implementation-notes">Implementation Notes</a>
+  <ul class="collapse">
+  <li><a href="#mks-skipr-setup-tier-3" id="toc-mks-skipr-setup-tier-3" class="nav-link" data-scroll-target="#mks-skipr-setup-tier-3">MKS SKIPR Setup (Tier 3)</a></li>
+  <li><a href="#multi-mcu-setup-tier-2" id="toc-multi-mcu-setup-tier-2" class="nav-link" data-scroll-target="#multi-mcu-setup-tier-2">Multi-MCU Setup (Tier 2)</a></li>
+  <li><a href="#performance-optimization" id="toc-performance-optimization" class="nav-link" data-scroll-target="#performance-optimization">Performance Optimization</a></li>
+  <li><a href="#safety-considerations" id="toc-safety-considerations" class="nav-link" data-scroll-target="#safety-considerations">Safety Considerations</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#evolution-notes" id="toc-evolution-notes" class="nav-link" data-scroll-target="#evolution-notes">Evolution Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="adr-012-mainboard-host-architecture" class="level1">
+<h1>ADR-012: Mainboard &amp; Host Architecture</h1>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>Accepted</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>The Amalgam requires <strong>7 stepper drivers</strong> (X, Y1, Y2, E, Z1, Z2, Z3) for the dual-Y gantry and Triple-Z kinematic leveling. The heavy XY gantry (dual 8mm rods, see ADR-021) benefits from dual Y motors driving from both sides. In 2026, the 3D printing electronics ecosystem offers three distinct approaches:</p>
+<ol type="1">
+<li><strong>Salvaged Legacy Boards</strong>: 4-driver boards from donor printers (Ender 3, Anet A8, i3 Mega)</li>
+<li><strong>Modular Modern Boards</strong>: 5-8 driver boards requiring separate host (FYSETC Spider, BTT SKR 3)</li>
+<li><strong>Integrated All-in-One Boards</strong>: Boards with built-in Linux host (MKS SKIPR, BTT Manta M8P)</li>
+</ol>
+<p>Each path has trade-offs in cost, complexity, and reliability. The decision impacts: - BOM cost ($0 - $100+ AUD) - Wiring complexity (USB cabling, power supplies) - Future expandability (ERCF, multi-color, toolhead modules) - Maintenance (single vs multiple boards to debug)</p>
+</section>
+<section id="decision" class="level2">
+<h2 class="anchored" data-anchor-id="decision">Decision</h2>
+<p>We adopt a <strong>three-tier architecture</strong> with the <strong>MKS SKIPR</strong> as the Tier 3 Reference Spec mainboard.</p>
+<section id="tier-1-pure-scavenger-belted-z" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-pure-scavenger-belted-z">Tier 1: Pure Scavenger (Belted-Z)</h3>
+<p><strong>Hardware</strong>: Single salvaged 4-driver board + external host - <strong>The Hack</strong>: Single Z-motor drives all three lead screws via closed-loop belt - <strong>Z-Leveling</strong>: Manual leveling once with spacers (no Z-tilt) - <strong>Host</strong>: Pi Zero 2W or old laptop - <strong>Cost</strong>: ~$80 AUD total - <strong>Trade-off</strong>: No automated Z-tilt, belt-driven Z synchronization - <strong>Best For</strong>: Emergency builds, absolute minimum cost</p>
+</section>
+<section id="tier-2-multi-mcu-scavenger-dual-board-triple-z-recommended-scavenger-path" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-multi-mcu-scavenger-dual-board-triple-z-recommended-scavenger-path">Tier 2: Multi-MCU Scavenger (Dual Board Triple-Z) ★ Recommended Scavenger Path</h3>
+<p><strong>Hardware</strong>: Two salvaged 4-driver boards + external host</p>
+<p>This is the <strong>recommended path for dual-donor builds</strong>. Two donor printers provide 8 stepper drivers total—more than enough for Amalgam’s 7 motors.</p>
+<ul>
+<li><strong>Configuration</strong>:
+<ul>
+<li>Board A: X, Y1, Z1, E (4 drivers)</li>
+<li>Board B: Y2, Z2, Z3, spare (4 drivers)</li>
+</ul></li>
+<li><strong>Connection</strong>: Both boards via USB to single Klipper host</li>
+<li><strong>Host</strong>: Old laptop (free), Pi Zero 2W ($25), or Pi 3B ($50)</li>
+<li><strong>Z-Leveling</strong>: Automated Klipper Z-tilt</li>
+<li><strong>Cost</strong>: ~$100-150 AUD (2× donors @ $50 + host)</li>
+<li><strong>Trade-off</strong>: Higher wiring complexity, dual firmware flashing</li>
+<li><strong>Best For</strong>: Maximum scavengeability, lowest total cost</li>
+</ul>
+<p><strong>Why dual Y motors (Y1, Y2)?</strong> The XY gantry with dual 8mm rods (ADR-021) is heavier than single-rod designs. Driving from both sides eliminates racking forces and improves motion quality. Most donor printers have 4-5 motors, so two donors provide 8-10 motors—plenty for the 7 required.</p>
+<p><strong>Single Y motor option</strong>: If using a lighter gantry or limited motors, a single Y motor works but may exhibit slight racking at high accelerations. This reduces driver requirement to 6, allowing a single 6-driver board (MKS SKIPR) or leaving a spare on Tier 2 dual-board setup.</p>
+</section>
+<section id="tier-3-reference-spec-mks-skipr" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-reference-spec-mks-skipr">Tier 3: Reference Spec (MKS SKIPR)</h3>
+<p><strong>Hardware</strong>: MKS SKIPR all-in-one board - <strong>Integrated SOC</strong>: Rockchip RK3328 (equivalent to Pi 3) built-in - <strong>Driver Capacity</strong>: 7 driver slots (7 required, or 6 + 1 spare if single Y motor) - <strong>Storage</strong>: 8GB/16GB eMMC onboard - <strong>CAN Bus</strong>: Native port for toolhead modules (MKS THR36/42) - <strong>Z-Leveling</strong>: Automated Klipper Z-tilt on single MCU - <strong>Cost</strong>: ~$85 AUD - <strong>Trade-off</strong>: Cannot upgrade SOC (fixed to RK3328) - <strong>Best For</strong>: Reference Spec build, maximum reliability</p>
+</section>
+<section id="why-mks-skipr-reference-spec" class="level3">
+<h3 class="anchored" data-anchor-id="why-mks-skipr-reference-spec">Why MKS SKIPR (Reference Spec)?</h3>
+<p><strong>1. Cost-Performance Ratio</strong> - $85 AUD vs ~$130+ AUD for BTT Manta M8P + CB1 module - Includes integrated host (no separate Pi to buy) - 7 drivers covers all requirements with spare slot</p>
+<p><strong>2. Simplicity</strong> - One board, one power supply, zero external USB data cables - Single firmware flash - Reduces wiring complexity (common failure point in DIY builds)</p>
+<p><strong>3. CAN Bus Synergy</strong> - Native CAN port compatible with toolhead modules - Future-proof for ERCF v2, toolhead sensors - Eliminates need for separate CAN adapters</p>
+<p><strong>4. Driver Density</strong> - Perfect “6+1” count: Triple-Z + X/Y/E + ERCF spare - All Z-tilt motors on single MCU timing domain (no sync issues)</p>
+</section>
+<section id="alternative-btt-manta-m8p-v2.0" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-btt-manta-m8p-v2.0">Alternative: BTT Manta M8P V2.0</h3>
+<p>Considered but rejected for Reference Spec due to: - Higher total cost (~$130+ AUD with CB1 module) - Modular complexity (board + separate compute module) - Overkill for “Tractor” speed envelope (STM32H723 @ 550MHz)</p>
+<p>Useful for: - Builders with existing CB1/CM4 modules - Voron-style “Racecar” builds requiring 48V support - Future high-voltage upgrades (beyond Amalgam scope)</p>
+</section>
+<section id="host-performance-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="host-performance-comparison">Host Performance Comparison</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 12%">
+<col style="width: 25%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Host Option</th>
+<th>RAM</th>
+<th>Best For</th>
+<th>Trade-offs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Pi Zero 2W</strong></td>
+<td>512MB</td>
+<td>Tier 1/2 Builds</td>
+<td>UI lag; struggles with high-res webcams</td>
+</tr>
+<tr class="even">
+<td><strong>MKS SKIPR SOC</strong></td>
+<td>1GB</td>
+<td><strong>Reference Spec</strong></td>
+<td>Cleanest integration; built-in eMMC</td>
+</tr>
+<tr class="odd">
+<td><strong>Pi 3B / 4B</strong></td>
+<td>1GB+</td>
+<td>Pro/Tinker Build</td>
+<td>Snappy UI; handles KlipperScreen, 1080p cameras</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="multi-mcu-configuration-tier-2" class="level3">
+<h3 class="anchored" data-anchor-id="multi-mcu-configuration-tier-2">Multi-MCU Configuration (Tier 2)</h3>
+<p>Klipper excels at controlling multiple MCUs as a single machine:</p>
+<p><strong>Setup</strong>:</p>
+<pre><code>Host (Pi/Laptop) --USB--&gt; Board A (X, Y1, Z1, E)
+                    |
+                    +---USB--&gt; Board B (Y2, Z2, Z3)</code></pre>
+<p><strong>Driver Assignment</strong>: | Board | Driver 1 | Driver 2 | Driver 3 | Driver 4 | |——-|———-|———-|———-|———-| | A | X | Y1 | Z1 | E | | B | Y2 | Z2 | Z3 | (spare) |</p>
+<p><strong>printer.cfg Example</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[mcu]</span><span class="dt">  # Board A is default MCU</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[mcu board_b]</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">serial: /dev/serial/by-id/usb-Klipper_stm32f103xe-if00</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># X-axis on Board A</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_x]</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: PA2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: PA3</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !PA1</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Dual Y motors - one on each board</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_y]</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: PB6</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: PB7</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !PB5</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_y1]</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: board_b:PA2</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: board_b:PA3</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !board_b:PA1</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Triple-Z across both boards</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z]</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: PC0</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: PC1</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !PC2</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z1]</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: board_b:PB6</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: board_b:PB7</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !board_b:PB5</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z2]</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: board_b:PC0</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: board_b:PC1</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !board_b:PC2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Constraints</strong>: - Y1/Y2 should be configured as a single axis with <code>[stepper_y1]</code> mirroring <code>[stepper_y]</code> - Z-tilt works across MCUs (Klipper handles timing) - Use non-blocking (MTT) USB hubs for 4+ MCUs - Each board requires separate firmware flash - Identify unique serial IDs in <code>/dev/serial/by-id/</code></p>
+</section>
+</section>
+<section id="second-hand-market-economics-2026" class="level2">
+<h2 class="anchored" data-anchor-id="second-hand-market-economics-2026">Second-Hand Market Economics (2026)</h2>
+<section id="donor-printer-pricing" class="level3">
+<h3 class="anchored" data-anchor-id="donor-printer-pricing">Donor Printer Pricing</h3>
+<p>The second-hand market for entry-level 3D printers is expected to bottom out around <strong>$50 AUD</strong> per unit by end of 2026. Key factors:</p>
+<ul>
+<li><strong>Market saturation</strong>: Millions of Ender 3, Anet A8, and i3 clones sold 2017-2024</li>
+<li><strong>New competition</strong>: Sub-$200 printers (Ender 3 V3, Bambu A1 Mini) make older stock undesirable</li>
+<li><strong>Perception shift</strong>: Sellers increasingly recognize true market value</li>
+<li><strong>Patience pays</strong>: Avoid $150+ listings; wait for motivated sellers or post “wanted” ads</li>
+</ul>
+<p><strong>Recommended donor sources:</strong> - Facebook Marketplace “broken 3D printer” listings - Gumtree/Craigslist lot sales - Makerspace clearouts - University/school surplus</p>
+</section>
+<section id="real-world-parts-pricing-aliexpress-2026" class="level3">
+<h3 class="anchored" data-anchor-id="real-world-parts-pricing-aliexpress-2026">Real-World Parts Pricing (AliExpress, 2026)</h3>
+<p>For V-slot donor builds (Ender 3) requiring purchased rods:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Quantity</th>
+<th>Cost (AUD)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stainless steel 8mm rods</td>
+<td>8× 400mm</td>
+<td>$43</td>
+<td>AliExpress</td>
+</tr>
+<tr class="even">
+<td>IGUS RJ4JP-01-08 bushings</td>
+<td>22×</td>
+<td>$30</td>
+<td>AliExpress</td>
+</tr>
+<tr class="odd">
+<td><strong>Total motion system</strong></td>
+<td></td>
+<td><strong>$73</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>This validates the ADR-022 estimate of $70-90 for rod + bushing replacement when donors lack smooth rods.</p>
+</section>
+<section id="cost-comparison-by-path" class="level3">
+<h3 class="anchored" data-anchor-id="cost-comparison-by-path">Cost Comparison by Path</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Build Path</th>
+<th>Donor Cost</th>
+<th>Motion Gap</th>
+<th>Electronics</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2× Anet A8 (rod-bearing)</td>
+<td>$100</td>
+<td>$0</td>
+<td>$0 (Tier 2)</td>
+<td><strong>$100</strong></td>
+</tr>
+<tr class="even">
+<td>2× Ender 3 (V-slot)</td>
+<td>$100</td>
+<td>$73</td>
+<td>$0 (Tier 2)</td>
+<td><strong>$173</strong></td>
+</tr>
+<tr class="odd">
+<td>2× Ender 3 + MKS SKIPR</td>
+<td>$100</td>
+<td>$73</td>
+<td>$85</td>
+<td><strong>$258</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Add ~$100 for frame materials (M10 rod, MDF, hardware) to get total build cost.</p>
+</section>
+</section>
+<section id="consequences" class="level2">
+<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
+<section id="benefits" class="level3">
+<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
+<ul>
+<li><strong>Tiered Flexibility</strong>: Path exists for $0 salvage builds to $85 Reference Spec</li>
+<li><strong>Klipper-Native</strong>: All paths use Klipper (no vendor lock-in)</li>
+<li><strong>Scalable</strong>: Tier 1 can upgrade to Tier 3 without redesigning mechanics</li>
+<li><strong>Future-Proof</strong>: Reference Spec has CAN bus and spare driver for expansions</li>
+<li><strong>Reliability</strong>: Single-board Reference Spec eliminates USB failure points</li>
+</ul>
+</section>
+<section id="trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
+<ul>
+<li><strong>Tier 1</strong>: No automated Z-tilt, belt complexity</li>
+<li><strong>Tier 2</strong>: Higher wiring complexity, dual firmware management</li>
+<li><strong>Tier 3</strong>: Fixed SOC (RK3328), cannot upgrade host separately</li>
+</ul>
+</section>
+<section id="what-this-enables" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-enables">What This Enables</h3>
+<ul>
+<li><strong>Tier 1</strong>: Emergency builds from any 4-driver donor</li>
+<li><strong>Tier 2</strong>: Premium features (Z-tilt) from broken hardware</li>
+<li><strong>Tier 3</strong>: Industrial-grade single-board solution</li>
+<li><strong>All Paths</strong>: Klipper Z-tilt, Input Shaping, Pressure Advance</li>
+</ul>
+</section>
+<section id="what-this-replaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-replaces">What This Replaces</h3>
+<ul>
+<li>Discrete Raspberry Pi + separate mainboard (except Tier 2 multi-MCU)</li>
+<li>RAMPS + Arduino combos (obsolete, more expensive than SKR Pico)</li>
+<li>“Dumb” 8-bit MCUs without Klipper support</li>
+</ul>
+</section>
+</section>
+<section id="bom-implications-generic" class="level2">
+<h2 class="anchored" data-anchor-id="bom-implications-generic">BOM Implications (Generic)</h2>
+<section id="tier-1-pure-scavenger-belted-z-1" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-pure-scavenger-belted-z-1">Tier 1: Pure Scavenger (Belted-Z)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x Salvaged 4-driver mainboard</li>
+<li>1x Host (Pi Zero 2W or laptop)</li>
+<li>1x Z-motor (reuses existing)</li>
+<li>2x Pulleys + belt (for belted Z)</li>
+<li>3x Belt tensioners</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Very Low (~$0-30 AUD)</li>
+<li><strong>Donor compatibility</strong>: Any 4-driver donor board</li>
+<li><strong>Z-Leveling</strong>: Manual (no Z-tilt)</li>
+<li><strong>Warning</strong>: No future upgrade path to triple-Z without replacing belt system</li>
+</ul>
+</section>
+<section id="tier-2-multi-mcu-scavenger-dual-board-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-multi-mcu-scavenger-dual-board-recommended">Tier 2: Multi-MCU Scavenger (Dual Board) ★ Recommended</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>2× Salvaged 4-driver boards (8 drivers total, need 7)</li>
+<li>1× Host (laptop free, Pi Zero 2W $25, or Pi 3B $50)</li>
+<li>2× USB cables (host to boards)</li>
+<li>7× Motors (X, Y1, Y2, Z1, Z2, Z3, E)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Lowest (~$100-175 AUD for donors + host)</li>
+<li><strong>Donor compatibility</strong>: Any 4-driver boards (Creality, Anet, etc.)</li>
+<li><strong>Z-Leveling</strong>: Automated (Klipper Z-tilt)</li>
+<li><strong>Complexity</strong>: Medium (dual firmware, but well-documented)</li>
+</ul>
+</section>
+<section id="tier-3-reference-spec-mks-skipr-1" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-reference-spec-mks-skipr-1">Tier 3: Reference Spec (MKS SKIPR)</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1× MKS SKIPR board (7 driver slots)</li>
+<li>7× TMC2209 drivers (sometimes included in bundle)</li>
+<li>7× Motors (X, Y1, Y2, Z1, Z2, Z3, E)</li>
+<li>1× SD card (for OS, eMMC optional)</li>
+<li>1× USB cable (only for firmware flash)</li>
+<li>0× External host (integrated)</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Low (~$85-100 AUD for board)</li>
+<li><strong>Donor compatibility</strong>: Motors from donors, board purchased new</li>
+<li><strong>Z-Leveling</strong>: Automated (Klipper Z-tilt)</li>
+<li><strong>Complexity</strong>: Low (single board, single firmware)</li>
+</ul>
+</section>
+<section id="tier-3-alternative-btt-manta-m8p" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-alternative-btt-manta-m8p">Tier 3 Alternative: BTT Manta M8P</h3>
+<ul>
+<li><strong>Parts needed</strong>:
+<ul>
+<li>1x BTT Manta M8P V2.0</li>
+<li>1x CB1 or CM4 module</li>
+<li>6x TMC2209 drivers</li>
+<li>1x eMMC or SD card for module</li>
+</ul></li>
+<li><strong>Cost implication</strong>: Medium (~$130+ AUD)</li>
+<li><strong>Donor compatibility</strong>: None (new board required)</li>
+<li><strong>Z-Leveling</strong>: Automated (Klipper Z-tilt)</li>
+<li><strong>Advantages</strong>: Upgradable host, higher-voltage support</li>
+</ul>
+</section>
+<section id="universal-requirements-all-tiers" class="level3">
+<h3 class="anchored" data-anchor-id="universal-requirements-all-tiers">Universal Requirements (All Tiers)</h3>
+<ul>
+<li><strong>PSU</strong>: 12V or 24V power supply (sufficient current for 6 motors + heater + bed)</li>
+<li><strong>Firmware</strong>: Klipper compiled for target MCU(s)</li>
+<li><strong>Cabling</strong>: Motor wiring, thermistor wiring, endstop wiring</li>
+</ul>
+</section>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">Implementation Notes</h2>
+<section id="mks-skipr-setup-tier-3" class="level3">
+<h3 class="anchored" data-anchor-id="mks-skipr-setup-tier-3">MKS SKIPR Setup (Tier 3)</h3>
+<p><strong>Flashing Klipper</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SSH into SKIPR via network or USB</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Klipper3d/klipper.git</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> klipper</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> menuconfig  <span class="co"># Select STM32F407, 16KB bootloader, USB CDC</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp out/klipper.bin /boot/firmware</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> reboot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>pinout Configuration</strong>: - Follow MKS SKIPR Klipper documentation - 6 stepper drivers for: X, Y, E, Z1, Z2, Z3 - Spare driver slot for ERCF or additional axis</p>
+<p><strong>Z-Tilt Config</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[z_tilt]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">z_positions: 100,100 100,300 300,100</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">points: 3</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">horizontal_move_z: 5</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dt">retries: 3</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">[stepper_z1]</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: PB13</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: PB12</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !PA8</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="dt">...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="multi-mcu-setup-tier-2" class="level3">
+<h3 class="anchored" data-anchor-id="multi-mcu-setup-tier-2">Multi-MCU Setup (Tier 2)</h3>
+<p><strong>Identifying Board Serial IDs</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /dev/serial/by-id/</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Output shows unique IDs for each board</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Configuring Dual MCUs</strong>: - Use <code>[mcu]</code> section for each board - Tag pins with <code>board_name:pin_name</code> syntax - Keep all Z-motors on same board for Z-tilt sync</p>
+</section>
+<section id="performance-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="performance-optimization">Performance Optimization</h3>
+<p><strong>Pi Zero 2W</strong>: - Increase swapfile to 1024MB (prevents crashes) - Consider ZRAM for compressed swap - Disable webcam during high-load operations (resonance testing)</p>
+<p><strong>MKS SKIPR</strong>: - Use eMMC for faster OS (if available) - Klipper host runs on RK3328 (1GB RAM) - Webcam support good for 720p, may struggle with 1080p</p>
+</section>
+<section id="safety-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="safety-considerations">Safety Considerations</h3>
+<ul>
+<li><strong>USB Cables</strong>: Use shielded cables for MCU communication</li>
+<li><strong>Power</strong>: Ensure PSU has sufficient current for all motors + hotend + bed</li>
+<li><strong>Firmware</strong>: Always test on test bench before full assembly</li>
+<li><strong>Backup</strong>: Keep config backups, especially for multi-MCU setups</li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>ADR-021</strong>: Dual-Rod Motion System (defines dual-Y gantry requirement)</li>
+<li><strong>ADR-022</strong>: Linear Bearing Selection (rod material for V-slot donor builds)</li>
+<li><strong>ADR-005</strong>: Triple-Z Kinematic Leveling</li>
+<li><strong>ADR-013</strong>: TMC driver and endstop architecture</li>
+<li><strong>docs/reference/ai-conversations/mainboard.md</strong>: Complete mainboard discussion</li>
+<li><strong>docs/reference/ai-conversations/mcu-drivers-endstops.md</strong>: Driver and endstop strategy</li>
+<li>MKS SKIPR Documentation: <a href="https://github.com/makerbase-mks/MKS-SKIPR">Makerbase Official</a></li>
+<li>Klipper Multi-MCU: <a href="https://www.klipper3d.org/Multi_MCU_sample.html">Klipper Documentation</a></li>
+</ul>
+</section>
+<section id="evolution-notes" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-notes">Evolution Notes</h2>
+<p>This ADR establishes the three-tier architecture. As new boards emerge (e.g., MKS SKIPR successors), they will be evaluated against the Reference Spec criteria: 6+ drivers, integrated host, CAN bus support, and &lt;$100 AUD target cost.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

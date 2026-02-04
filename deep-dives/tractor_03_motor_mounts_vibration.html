@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tractor_03_motor_mounts_vibration – Amalgam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Amalgam</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/index.html">
+ <span class="dropdown-text">All Guides</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/print-settings.html">
+ <span class="dropdown-text">Print Settings &amp; Brand Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/frame-assembly.html">
+ <span class="dropdown-text">Frame Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/klipper-config.html">
+ <span class="dropdown-text">Klipper Configuration</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-guide.html">
+ <span class="dropdown-text">Calibration Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/calibration-cheatsheet.html">
+ <span class="dropdown-text">Calibration Cheatsheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/maintenance-setup.html">
+ <span class="dropdown-text">Maintenance &amp; Setup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../reference/donor-printer-guide.html">
+ <span class="dropdown-text">Donor Printer Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/MASTER_PARTS_LIST.html">
+ <span class="dropdown-text">Master Parts List</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reference/parts-sourcing-guide.html">
+ <span class="dropdown-text">Parts Sourcing Guide</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../adr/index.html"> 
+<span class="menu-text">ADRs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Engineering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+        <li>
+    <a class="dropdown-item" href="../analysis/README.md">
+ <span class="dropdown-text">Analysis Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../analysis/rod-sag-analysis.html">
+ <span class="dropdown-text">Rod Sag Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/z-height-analysis.html">
+ <span class="dropdown-text">Z-Height Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/single-vs-dual-rod.html">
+ <span class="dropdown-text">Single vs Dual Rod</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
+ <span class="dropdown-text">Motion System Comparison</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../deep-dives/README.md">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/the80-20workshop/amalgam"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_03_motor_mounts_vibration.html">The Tractor: Motor Mounts &amp; Vibration Control</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deep Dives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_00_decision_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Tier 0 Decision Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_01_frame_and_assembly.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: Frame Design &amp; Assembly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_02_xy_axis_system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Tractor: X-Y Axis System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_03_motor_mounts_vibration.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The Tractor: Motor Mounts &amp; Vibration Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_04_xgantry_design_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: X-Gantry Design Decision</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_05_psu_configurations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Power Supply Configurations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep-dives/tractor_06_extruder_decision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amalgam: Extruder Selection &amp; Decision Record</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-tractor-motor-mounts-vibration-control" id="toc-the-tractor-motor-mounts-vibration-control" class="nav-link active" data-scroll-target="#the-tractor-motor-mounts-vibration-control">The Tractor: Motor Mounts &amp; Vibration Control</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#vibration-control-philosophy" id="toc-vibration-control-philosophy" class="nav-link" data-scroll-target="#vibration-control-philosophy">Vibration Control Philosophy</a>
+  <ul class="collapse">
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem">The Problem</a></li>
+  <li><a href="#the-tractor-solution" id="toc-the-tractor-solution" class="nav-link" data-scroll-target="#the-tractor-solution">The Tractor Solution</a></li>
+  </ul></li>
+  <li><a href="#strategy-b-the-sandwich-mount" id="toc-strategy-b-the-sandwich-mount" class="nav-link" data-scroll-target="#strategy-b-the-sandwich-mount">Strategy B: The Sandwich Mount</a>
+  <ul class="collapse">
+  <li><a href="#why-sandwich-over-simple-gasket" id="toc-why-sandwich-over-simple-gasket" class="nav-link" data-scroll-target="#why-sandwich-over-simple-gasket">Why Sandwich Over Simple Gasket?</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
+  <li><a href="#advantages-for-the-tractor" id="toc-advantages-for-the-tractor" class="nav-link" data-scroll-target="#advantages-for-the-tractor">Advantages for The Tractor</a></li>
+  </ul></li>
+  <li><a href="#sourcing-rubber-grommets" id="toc-sourcing-rubber-grommets" class="nav-link" data-scroll-target="#sourcing-rubber-grommets">Sourcing Rubber Grommets</a>
+  <ul class="collapse">
+  <li><a href="#hardware-store-options" id="toc-hardware-store-options" class="nav-link" data-scroll-target="#hardware-store-options">Hardware Store Options</a></li>
+  <li><a href="#scavenger-sources" id="toc-scavenger-sources" class="nav-link" data-scroll-target="#scavenger-sources">Scavenger Sources</a></li>
+  </ul></li>
+  <li><a href="#sandwich-mount-printed-parts" id="toc-sandwich-mount-printed-parts" class="nav-link" data-scroll-target="#sandwich-mount-printed-parts">Sandwich Mount: Printed Parts</a>
+  <ul class="collapse">
+  <li><a href="#part-1-the-frame-bracket-socket" id="toc-part-1-the-frame-bracket-socket" class="nav-link" data-scroll-target="#part-1-the-frame-bracket-socket">Part 1: The Frame Bracket (Socket)</a></li>
+  <li><a href="#part-2-the-sub-plate-plug" id="toc-part-2-the-sub-plate-plug" class="nav-link" data-scroll-target="#part-2-the-sub-plate-plug">Part 2: The Sub-Plate (Plug)</a></li>
+  </ul></li>
+  <li><a href="#assembly-the-sandwich" id="toc-assembly-the-sandwich" class="nav-link" data-scroll-target="#assembly-the-sandwich">Assembly: The Sandwich</a>
+  <ul class="collapse">
+  <li><a href="#hardware-required" id="toc-hardware-required" class="nav-link" data-scroll-target="#hardware-required">Hardware Required</a></li>
+  <li><a href="#step-by-step" id="toc-step-by-step" class="nav-link" data-scroll-target="#step-by-step">Step-by-Step</a></li>
+  <li><a href="#the-double-nut-hack-no-sub-plate" id="toc-the-double-nut-hack-no-sub-plate" class="nav-link" data-scroll-target="#the-double-nut-hack-no-sub-plate">The “Double-Nut Hack” (No Sub-Plate)</a></li>
+  </ul></li>
+  <li><a href="#z-motors-mass-damping" id="toc-z-motors-mass-damping" class="nav-link" data-scroll-target="#z-motors-mass-damping">Z-Motors: Mass Damping</a>
+  <ul class="collapse">
+  <li><a href="#the-anvil-mount" id="toc-the-anvil-mount" class="nav-link" data-scroll-target="#the-anvil-mount">The “Anvil” Mount</a></li>
+  <li><a href="#under-mount-configuration" id="toc-under-mount-configuration" class="nav-link" data-scroll-target="#under-mount-configuration">Under-Mount Configuration</a></li>
+  <li><a href="#triple-z-layout" id="toc-triple-z-layout" class="nav-link" data-scroll-target="#triple-z-layout">Triple-Z Layout</a></li>
+  </ul></li>
+  <li><a href="#kinematic-z-joints" id="toc-kinematic-z-joints" class="nav-link" data-scroll-target="#kinematic-z-joints">Kinematic Z-Joints</a>
+  <ul class="collapse">
+  <li><a href="#the-problem-binding" id="toc-the-problem-binding" class="nav-link" data-scroll-target="#the-problem-binding">The Problem: Binding</a></li>
+  <li><a href="#the-solution-decoupling" id="toc-the-solution-decoupling" class="nav-link" data-scroll-target="#the-solution-decoupling">The Solution: Decoupling</a></li>
+  <li><a href="#the-ball-and-cup-joint" id="toc-the-ball-and-cup-joint" class="nav-link" data-scroll-target="#the-ball-and-cup-joint">The “Ball-and-Cup” Joint</a></li>
+  <li><a href="#build123d-kinematic-bracket" id="toc-build123d-kinematic-bracket" class="nav-link" data-scroll-target="#build123d-kinematic-bracket">build123d: Kinematic Bracket</a></li>
+  <li><a href="#mixing-m8-and-m10-rods" id="toc-mixing-m8-and-m10-rods" class="nav-link" data-scroll-target="#mixing-m8-and-m10-rods">Mixing M8 and M10 Rods</a></li>
+  </ul></li>
+  <li><a href="#klipper-input-shaping" id="toc-klipper-input-shaping" class="nav-link" data-scroll-target="#klipper-input-shaping">Klipper Input Shaping</a>
+  <ul class="collapse">
+  <li><a href="#how-it-complements-hardware-isolation" id="toc-how-it-complements-hardware-isolation" class="nav-link" data-scroll-target="#how-it-complements-hardware-isolation">How It Complements Hardware Isolation</a></li>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
+  <li><a href="#stealthchop-vs-spreadcycle" id="toc-stealthchop-vs-spreadcycle" class="nav-link" data-scroll-target="#stealthchop-vs-spreadcycle">StealthChop vs SpreadCycle</a></li>
+  </ul></li>
+  <li><a href="#the-quiet-tractor-specification" id="toc-the-quiet-tractor-specification" class="nav-link" data-scroll-target="#the-quiet-tractor-specification">The “Quiet Tractor” Specification</a></li>
+  <li><a href="#gasket-cutting-template" id="toc-gasket-cutting-template" class="nav-link" data-scroll-target="#gasket-cutting-template">Gasket Cutting Template</a></li>
+  <li><a href="#hardware-store-shopping-list" id="toc-hardware-store-shopping-list" class="nav-link" data-scroll-target="#hardware-store-shopping-list">Hardware Store Shopping List</a>
+  <ul class="collapse">
+  <li><a href="#for-sandwich-mounts-per-motor" id="toc-for-sandwich-mounts-per-motor" class="nav-link" data-scroll-target="#for-sandwich-mounts-per-motor">For Sandwich Mounts (Per Motor)</a></li>
+  <li><a href="#for-simple-gaskets-alternative" id="toc-for-simple-gaskets-alternative" class="nav-link" data-scroll-target="#for-simple-gaskets-alternative">For Simple Gaskets (Alternative)</a></li>
+  <li><a href="#for-z-motor-mdf-mounting" id="toc-for-z-motor-mdf-mounting" class="nav-link" data-scroll-target="#for-z-motor-mdf-mounting">For Z-Motor MDF Mounting</a></li>
+  </ul></li>
+  <li><a href="#mdf-drill-jig-for-z-motors" id="toc-mdf-drill-jig-for-z-motors" class="nav-link" data-scroll-target="#mdf-drill-jig-for-z-motors">MDF Drill Jig for Z-Motors</a>
+  <ul class="collapse">
+  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
+  <li><a href="#design-concept" id="toc-design-concept" class="nav-link" data-scroll-target="#design-concept">Design Concept</a></li>
+  </ul></li>
+  <li><a href="#weight-and-anti-drop-protection" id="toc-weight-and-anti-drop-protection" class="nav-link" data-scroll-target="#weight-and-anti-drop-protection">Weight and Anti-Drop Protection</a>
+  <ul class="collapse">
+  <li><a href="#the-z-drop-weight-concern" id="toc-the-z-drop-weight-concern" class="nav-link" data-scroll-target="#the-z-drop-weight-concern">The Z-Drop Weight Concern</a></li>
+  <li><a href="#additional-safety" id="toc-additional-safety" class="nav-link" data-scroll-target="#additional-safety">Additional Safety</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_03_motor_mounts_vibration.html">The Tractor: Motor Mounts &amp; Vibration Control</a></li></ol></nav></header>
+
+
+
+
+<section id="the-tractor-motor-mounts-vibration-control" class="level1">
+<h1>The Tractor: Motor Mounts &amp; Vibration Control</h1>
+<p>✅ <strong>Still Relevant:</strong> This exploration of vibration damping and motor mounting strategies remains current. <strong>For canonical design decisions, see:</strong> - <strong>ADR-000</strong>: Engineering Philosophy (mass damping as core principle) - <strong>ADR-011</strong>: Laminated Plinth Baseboard (MDF damping) - <strong>ADR-009</strong>: Modular Puck &amp; Spider Bed System (motor mounting) - <strong>ADR-005</strong>: Triple-Z Kinematic Leveling</p>
+<p>This deep-dive explains the philosophy behind why mass damping + strategic motor placement is essential for scavenger builds.</p>
+<hr>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>“The Tractor” addresses motor vibration through strategic mounting: Z-motors sink into the massive MDF base for mass damping, while X and Y motors use “Sandwich Mounts” with rubber isolation. This document covers mount designs, vibration control, and the Triple-Z bed system.</p>
+<hr>
+</section>
+<section id="vibration-control-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="vibration-control-philosophy">Vibration Control Philosophy</h2>
+<section id="the-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem">The Problem</h3>
+<p>Stepper motors generate high-frequency vibrations during rapid direction changes. In a threaded-rod frame (especially M10/M12 steel), these rods can act like tuning forks, amplifying motor noise into audible “singing.”</p>
+</section>
+<section id="the-tractor-solution" class="level3">
+<h3 class="anchored" data-anchor-id="the-tractor-solution">The Tractor Solution</h3>
+<p>A two-pronged approach:</p>
+<ol type="1">
+<li><strong>Mass Damping (Z-Motors):</strong> Mount directly to 36mm MDF “Anvil”</li>
+<li><strong>Mechanical Isolation (X/Y Motors):</strong> Sandwich mount with rubber grommets</li>
+<li><strong>Software Compensation:</strong> Klipper Input Shaping</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="strategy-b-the-sandwich-mount" class="level2">
+<h2 class="anchored" data-anchor-id="strategy-b-the-sandwich-mount">Strategy B: The Sandwich Mount</h2>
+<section id="why-sandwich-over-simple-gasket" class="level3">
+<h3 class="anchored" data-anchor-id="why-sandwich-over-simple-gasket">Why Sandwich Over Simple Gasket?</h3>
+<p><strong>Strategy A (Flat Gasket):</strong> Motor pressed against rubber, but screws pass directly through to frame. Under belt tension, rubber compresses and vibration travels through metal screws.</p>
+<p><strong>Strategy B (Sandwich Mount):</strong> Motor bolts to a “Sub-Plate.” That plate mounts to frame using rubber grommets. Motor screws and frame screws never touch each other. <strong>True mechanical isolation.</strong></p>
+</section>
+<section id="how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
+<pre><code>[MOTOR]
+   ↓ (M3 bolts)
+[SUB-PLATE] ←── Small printed plate
+   ↓ (through rubber grommets)
+[FRAME BRACKET] ←── Main corner/anchor
+   ↓
+[M10 THREADED ROD FRAME]</code></pre>
+<p>The motor’s vibration path: 1. Motor → Sub-Plate (rigid connection) 2. Sub-Plate → Rubber → Frame Bracket (damped) 3. The frame never “feels” the motor directly</p>
+</section>
+<section id="advantages-for-the-tractor" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-for-the-tractor">Advantages for The Tractor</h3>
+<ul>
+<li><strong>Handles Belt Tension:</strong> Sub-plate distributes load; rubber doesn’t get crushed unevenly</li>
+<li><strong>Thicker Rubber Possible:</strong> Not limited to thin gaskets</li>
+<li><strong>Scavenger Friendly:</strong> Uses standard hardware store grommets</li>
+<li><strong>Industrial Aesthetic:</strong> Looks like proper machinery</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="sourcing-rubber-grommets" class="level2">
+<h2 class="anchored" data-anchor-id="sourcing-rubber-grommets">Sourcing Rubber Grommets</h2>
+<section id="hardware-store-options" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-store-options">Hardware Store Options</h3>
+<p>You don’t need “3D printer grommets”—standard electrical/plumbing parts work perfectly:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Product</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Electrical Aisle</td>
+<td>Wiring Grommet Assortment</td>
+<td>Various sizes, rubber</td>
+</tr>
+<tr class="even">
+<td>Electrical Aisle</td>
+<td>IP68 Cable Glands</td>
+<td>Use just the rubber insert</td>
+</tr>
+<tr class="odd">
+<td>Plumbing Aisle</td>
+<td>Rubber Tap Washers</td>
+<td>Sandwich between two washers</td>
+</tr>
+<tr class="even">
+<td>Bike Shop</td>
+<td>Old Inner Tubes</td>
+<td>Layer for custom thickness</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scavenger-sources" class="level3">
+<h3 class="anchored" data-anchor-id="scavenger-sources">Scavenger Sources</h3>
+<ul>
+<li><strong>PC Power Supplies:</strong> Wire pass-through grommets</li>
+<li><strong>Microwave Ovens:</strong> Chassis wire grommets</li>
+<li><strong>Any Appliance:</strong> Where wires pass through metal panels</li>
+</ul>
+<p><strong>The “Tap Washer” Alternative:</strong> If you can’t find grommets, sandwich the printed bracket between two rubber tap washers from plumbing section.</p>
+<hr>
+</section>
+</section>
+<section id="sandwich-mount-printed-parts" class="level2">
+<h2 class="anchored" data-anchor-id="sandwich-mount-printed-parts">Sandwich Mount: Printed Parts</h2>
+<section id="part-1-the-frame-bracket-socket" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-the-frame-bracket-socket">Part 1: The Frame Bracket (Socket)</h3>
+<p>This is your main anchor that clamps to the M10 frame. Instead of small precise holes, it has large 10mm sockets for grommets.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frame Bracket with Grommet Sockets</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>grommet_hole <span class="op">=</span> <span class="fl">10.0</span>  <span class="co"># Standard rubber grommet OD</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BuildPart() <span class="im">as</span> frame_bracket:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Core frame clamping logic</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># [M10 rod sleeves, etc.]</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Grommet Sockets (instead of M3 holes)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> BuildSketch(face.sort_by(Axis.X)[<span class="op">-</span><span class="dv">1</span>]) <span class="im">as</span> s:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> loc <span class="kw">in</span> GridLocations(<span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">2</span>, <span class="dv">2</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> Locations(loc):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                Circle(grommet_hole <span class="op">/</span> <span class="dv">2</span>)  <span class="co"># 10mm holes</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    extrude(amount<span class="op">=-</span><span class="dv">15</span>, mode<span class="op">=</span>Mode.SUBTRACT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Why Large Holes Help Donor Printers:</strong> - 10mm circles are much easier to print than precise 3mm holes - Rubber grommet hides any “lumpy” print imperfections - Grommet squishes to fill gaps</p>
+</section>
+<section id="part-2-the-sub-plate-plug" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-the-sub-plate-plug">Part 2: The Sub-Plate (Plug)</h3>
+<p>Simple flat plate that bolts directly to the motor:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Motor Sub-Plate</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plate_size <span class="op">=</span> <span class="fl">42.5</span>  <span class="co"># NEMA 17 footprint</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>hole_spacing <span class="op">=</span> <span class="fl">31.0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BuildPart() <span class="im">as</span> sub_plate:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> BuildSketch() <span class="im">as</span> s:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        Rectangle(plate_size, plate_size)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Motor mounting holes (M3)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> loc <span class="kw">in</span> GridLocations(hole_spacing, hole_spacing, <span class="dv">2</span>, <span class="dv">2</span>):</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> Locations(loc):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                Circle(<span class="fl">1.7</span>)  <span class="co"># M3 clearance</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Center hole for motor boss/pulley</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        Circle(<span class="dv">12</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    extrude(amount<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is the <strong>easiest possible shape</strong> to print: - No supports needed - Won’t warp easily - Perfect “warm-up” print for donor machines</p>
+<hr>
+</section>
+</section>
+<section id="assembly-the-sandwich" class="level2">
+<h2 class="anchored" data-anchor-id="assembly-the-sandwich">Assembly: The Sandwich</h2>
+<section id="hardware-required" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-required">Hardware Required</h3>
+<p>Per motor: - 1× Sub-Plate (printed) - 4× Rubber Grommets (10mm OD) - 4× M3×25 or M3×30 bolts (longer than normal) - 4× M3 nuts - 4× M3 washers (optional, helps distribute load)</p>
+</section>
+<section id="step-by-step" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step">Step-by-Step</h3>
+<ol type="1">
+<li><strong>Create Motor Assembly:</strong>
+<ul>
+<li>Bolt NEMA 17 to Sub-Plate using standard M3×8 motor screws</li>
+<li>This is now your “Motor Module”</li>
+</ul></li>
+<li><strong>Install Grommets:</strong>
+<ul>
+<li>Push rubber grommets into the 10mm holes on Frame Bracket</li>
+<li>They should fit snugly</li>
+</ul></li>
+<li><strong>Connect the Sandwich:</strong>
+<ul>
+<li>Pass long M3 bolts through Sub-Plate</li>
+<li>Through center of rubber grommets</li>
+<li>Through Frame Bracket</li>
+<li>Secure with nuts on back side</li>
+</ul></li>
+<li><strong>Tension Check:</strong>
+<ul>
+<li>Bolts should compress grommets slightly</li>
+<li>Motor should “float” with slight give</li>
+<li>No metal-to-metal contact anywhere</li>
+</ul></li>
+</ol>
+</section>
+<section id="the-double-nut-hack-no-sub-plate" class="level3">
+<h3 class="anchored" data-anchor-id="the-double-nut-hack-no-sub-plate">The “Double-Nut Hack” (No Sub-Plate)</h3>
+<p>If you want Strategy B without printing the sub-plate:</p>
+<ol type="1">
+<li>Put long M3 screw into motor</li>
+<li>Thread a nut onto screw, tighten against motor</li>
+<li>Slide on rubber washer</li>
+<li>Slide on printed bracket</li>
+<li>Add another rubber washer</li>
+<li>Final nut on the end</li>
+</ol>
+<p><strong>Result:</strong> Bracket sandwiched between rubber washers; screw only touches rubber as it passes through.</p>
+<hr>
+</section>
+</section>
+<section id="z-motors-mass-damping" class="level2">
+<h2 class="anchored" data-anchor-id="z-motors-mass-damping">Z-Motors: Mass Damping</h2>
+<section id="the-anvil-mount" class="level3">
+<h3 class="anchored" data-anchor-id="the-anvil-mount">The “Anvil” Mount</h3>
+<p>Z-motors don’t need sandwich mounts—they’re bolted directly to the 36mm MDF base. The wood’s mass absorbs vibration.</p>
+<p><strong>Why This Works:</strong> - Z-motors move in small steps (layer height) - They’re the “least busy” motors - Drop one layer, then all X-Y stuff happens - MDF is “lossy”—converts vibration to heat</p>
+</section>
+<section id="under-mount-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="under-mount-configuration">Under-Mount Configuration</h3>
+<p>Motors mount to the <strong>underside</strong> of the MDF:</p>
+<pre><code>[MDF BASE - 36mm thick]
+        ↓
+    [COUPLER]
+        ↓
+  [NEMA 17 Z-MOTOR]</code></pre>
+<p><strong>Benefits:</strong> - Lowers center of gravity further - Hides motors and wiring (cleaner look) - MDF acts as sound baffle (near-silent Z-moves)</p>
+</section>
+<section id="triple-z-layout" class="level3">
+<h3 class="anchored" data-anchor-id="triple-z-layout">Triple-Z Layout</h3>
+<p>For a 235×235mm bed, three motors in isosceles triangle:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Position</th>
+<th>X Coordinate</th>
+<th>Y Coordinate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Front Left</td>
+<td>20mm from left</td>
+<td>20mm from front</td>
+</tr>
+<tr class="even">
+<td>Front Right</td>
+<td>20mm from right</td>
+<td>20mm from front</td>
+</tr>
+<tr class="odd">
+<td>Rear Center</td>
+<td>Center (117.5mm)</td>
+<td>20mm from back</td>
+</tr>
+</tbody>
+</table>
+<p>This creates the most stable plane for Klipper’s <code>z_tilt_adjust</code>.</p>
+<hr>
+</section>
+</section>
+<section id="kinematic-z-joints" class="level2">
+<h2 class="anchored" data-anchor-id="kinematic-z-joints">Kinematic Z-Joints</h2>
+<section id="the-problem-binding" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-binding">The Problem: Binding</h3>
+<p>If three Z-rods aren’t perfectly parallel (to the nanometer), a rigid bed mount will: - Fight the motors - Cause skipped steps - Leave artifacts on prints</p>
+</section>
+<section id="the-solution-decoupling" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-decoupling">The Solution: Decoupling</h3>
+<p>Separate the <strong>movement</strong> (lead screw) from the <strong>constraint</strong> (smooth rod).</p>
+</section>
+<section id="the-ball-and-cup-joint" class="level3">
+<h3 class="anchored" data-anchor-id="the-ball-and-cup-joint">The “Ball-and-Cup” Joint</h3>
+<p>A scavenger-friendly kinematic coupling:</p>
+<ol type="1">
+<li><strong>Nut Carrier:</strong> T8 lead screw nut bolted to small printed part</li>
+<li><strong>The Ball:</strong> 6mm or 8mm steel ball (from bearing) sits on carrier</li>
+<li><strong>Bed Bracket:</strong> Has a conical “cup” that rests on the ball</li>
+</ol>
+<p><strong>How It Works:</strong> - Gravity holds bed down on balls - If lead screw is slightly tilted, ball shifts in cup - No bending forces transferred to bed or lead screw</p>
+</section>
+<section id="build123d-kinematic-bracket" class="level3">
+<h3 class="anchored" data-anchor-id="build123d-kinematic-bracket">build123d: Kinematic Bracket</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kinematic Z-Bracket (LM8UU + Floating Nut)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>bearing_od <span class="op">=</span> <span class="fl">15.0</span>  <span class="co"># LM8UU</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>bearing_len <span class="op">=</span> <span class="fl">24.0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BuildPart() <span class="im">as</span> z_bracket:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Rigid Carriage (slides on M8 smooth rod)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> BuildSketch() <span class="im">as</span> s:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        Rectangle(bearing_od <span class="op">+</span> <span class="dv">10</span>, bearing_len <span class="op">+</span> <span class="dv">10</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    extrude(amount<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bearing Bore</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># [LM8UU housing logic]</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Floating Cup Interface</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> BuildSketch(face.sort_by(Axis.Z)[<span class="op">-</span><span class="dv">1</span>]) <span class="im">as</span> s3:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> Locations((<span class="dv">25</span>, <span class="dv">0</span>)):  <span class="co"># Offset from smooth rod</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            Circle(<span class="dv">10</span>)  <span class="co"># Cup base</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    extrude(amount<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Conical cup (90° countersink) for kinematic seat</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># [Chamfer or revolve to create cone]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="mixing-m8-and-m10-rods" class="level3">
+<h3 class="anchored" data-anchor-id="mixing-m8-and-m10-rods">Mixing M8 and M10 Rods</h3>
+<p>If your donor provides M8 smooth rods:</p>
+<ul>
+<li><strong>Z-Verticals:</strong> M8 smooth rods for Z-guides</li>
+<li><strong>Frame:</strong> Stay with M10 threaded for structure</li>
+<li><strong>Brackets:</strong> Have both 10.5mm (frame) and 8.2mm (Z-rod) holes</li>
+</ul>
+<p><strong>Note:</strong> M8 rods may flex more than M10. Triple-Z and kinematic joints compensate for this.</p>
+<hr>
+</section>
+</section>
+<section id="klipper-input-shaping" class="level2">
+<h2 class="anchored" data-anchor-id="klipper-input-shaping">Klipper Input Shaping</h2>
+<section id="how-it-complements-hardware-isolation" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-complements-hardware-isolation">How It Complements Hardware Isolation</h3>
+<p>Even with rubber mounts, some vibration reaches the frame. Klipper handles this in software:</p>
+<ol type="1">
+<li><strong>Attach ADXL345</strong> accelerometer to carriage (~$5)</li>
+<li><strong>Run Calibration:</strong> Printer shakes at different frequencies</li>
+<li><strong>Klipper Calculates:</strong> Mathematical “anti-vibration” signal</li>
+<li><strong>Real-time Compensation:</strong> Motor pulses offset to cancel resonance</li>
+</ol>
+<p><strong>Result:</strong> Even if frame rings, Klipper “shapes” movement to never excite those frequencies.</p>
+</section>
+<section id="configuration" class="level3">
+<h3 class="anchored" data-anchor-id="configuration">Configuration</h3>
+<p>In <code>printer.cfg</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[adxl345]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">cs_pin: ...  # Your pin</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[resonance_tester]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">accel_chip: adxl345</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dt">probe_points: 117.5, 117.5, 20  # Center of bed</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[input_shaper]</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-calibrated values go here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="stealthchop-vs-spreadcycle" class="level3">
+<h3 class="anchored" data-anchor-id="stealthchop-vs-spreadcycle">StealthChop vs SpreadCycle</h3>
+<p>For TMC drivers:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Mode</th>
+<th>Use For</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>StealthChop</td>
+<td>X-motor</td>
+<td>Quieter, lighter load</td>
+</tr>
+<tr class="even">
+<td>SpreadCycle</td>
+<td>Y-motors (dual)</td>
+<td>More torque for heavy gantry</td>
+</tr>
+<tr class="odd">
+<td>SpreadCycle</td>
+<td>Z-motors</td>
+<td>Holding torque for bed</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="the-quiet-tractor-specification" class="level2">
+<h2 class="anchored" data-anchor-id="the-quiet-tractor-specification">The “Quiet Tractor” Specification</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Axis</th>
+<th>Mount Style</th>
+<th>Damping Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X</td>
+<td>Sandwich Mount</td>
+<td>Strategy B (Rubber Grommets)</td>
+</tr>
+<tr class="even">
+<td>Y (Dual)</td>
+<td>Sandwich Mount</td>
+<td>Strategy B (Rubber Grommets)</td>
+</tr>
+<tr class="odd">
+<td>Z (Triple)</td>
+<td>MDF Rigid Mount</td>
+<td>Mass Damping (36mm Laminated MDF)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional:</strong> - Klipper Input Shaping for residual resonance - StealthChop on X for quiet operation - SpreadCycle on Y/Z for torque</p>
+<hr>
+</section>
+<section id="gasket-cutting-template" class="level2">
+<h2 class="anchored" data-anchor-id="gasket-cutting-template">Gasket Cutting Template</h2>
+<p>For users who want the simpler flat-gasket approach (Strategy A), provide a cutting template:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Motor Gasket Cutting Template</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Print 2mm thick as stencil for rubber mat</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BuildPart() <span class="im">as</span> template:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> BuildSketch() <span class="im">as</span> s:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        Rectangle(<span class="fl">42.5</span>, <span class="fl">42.5</span>)  <span class="co"># NEMA 17 footprint</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Center Shaft Hole (24mm for clearance)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        Circle(<span class="dv">12</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Mounting Holes (4.5mm for easy bolt passthrough)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> loc <span class="kw">in</span> GridLocations(<span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">2</span>, <span class="dv">2</span>):</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> Locations(loc):</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                Circle(<span class="fl">2.25</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    extrude(amount<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Usage:</strong> 1. Place template on rubber mat (bike tube, hardware store rubber) 2. Stab through holes with screwdriver/knife 3. Cut the square outline 4. Ready to install</p>
+<hr>
+</section>
+<section id="hardware-store-shopping-list" class="level2">
+<h2 class="anchored" data-anchor-id="hardware-store-shopping-list">Hardware Store Shopping List</h2>
+<section id="for-sandwich-mounts-per-motor" class="level3">
+<h3 class="anchored" data-anchor-id="for-sandwich-mounts-per-motor">For Sandwich Mounts (Per Motor)</h3>
+<ul>
+<li>4× Rubber Grommets (10mm OD) - Electrical aisle</li>
+<li>4× M3×25 or M3×30 bolts</li>
+<li>4× M3 nuts</li>
+<li>4× M3 washers (optional)</li>
+</ul>
+</section>
+<section id="for-simple-gaskets-alternative" class="level3">
+<h3 class="anchored" data-anchor-id="for-simple-gaskets-alternative">For Simple Gaskets (Alternative)</h3>
+<ul>
+<li>Rubber utility mat OR</li>
+<li>Bike inner tube</li>
+<li>4× Rubber tap washers per motor (plumbing aisle)</li>
+</ul>
+</section>
+<section id="for-z-motor-mdf-mounting" class="level3">
+<h3 class="anchored" data-anchor-id="for-z-motor-mdf-mounting">For Z-Motor MDF Mounting</h3>
+<ul>
+<li>6× M4 or M5 bolts (through MDF from bottom)</li>
+<li>6× Large washers (prevent pull-through)</li>
+<li>3× Flexible shaft couplers (5mm to 8mm typical)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="mdf-drill-jig-for-z-motors" class="level2">
+<h2 class="anchored" data-anchor-id="mdf-drill-jig-for-z-motors">MDF Drill Jig for Z-Motors</h2>
+<section id="purpose" class="level3">
+<h3 class="anchored" data-anchor-id="purpose">Purpose</h3>
+<p>Print a jig that hooks onto the MDF corner to mark exact drill locations—no measuring required.</p>
+</section>
+<section id="design-concept" class="level3">
+<h3 class="anchored" data-anchor-id="design-concept">Design Concept</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MDF Drill Jig (L-shaped ruler)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BuildPart() <span class="im">as</span> drill_jig:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Long arm that hooks over MDF edge</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Hole at exact motor position</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># User: hook on corner, drill through hole, move to next corner</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Positions to mark:</strong> - Front-Left Z-motor: (20, 20) - Front-Right Z-motor: (Width-20, 20) - Rear-Center Z-motor: (Width/2, Depth-20)</p>
+<hr>
+</section>
+</section>
+<section id="weight-and-anti-drop-protection" class="level2">
+<h2 class="anchored" data-anchor-id="weight-and-anti-drop-protection">Weight and Anti-Drop Protection</h2>
+<section id="the-z-drop-weight-concern" class="level3">
+<h3 class="anchored" data-anchor-id="the-z-drop-weight-concern">The Z-Drop Weight Concern</h3>
+<p>Heavy Z-drop beds can slide down if power goes out.</p>
+<p><strong>The Tractor Solution:</strong> M10 threaded rods or lead screws have steep enough thread pitch that friction holds the bed in place—even without power.</p>
+</section>
+<section id="additional-safety" class="level3">
+<h3 class="anchored" data-anchor-id="additional-safety">Additional Safety</h3>
+<ul>
+<li>Use lead screws with low pitch (T8×2 recommended)</li>
+<li>NEMA 17 stepper motor cogging provides holding torque</li>
+<li>Bed should not free-fall even with motors disabled</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong>Z-Motors → MDF:</strong> Mass damping is the simplest, most effective solution</li>
+<li><strong>X/Y Motors → Sandwich Mount:</strong> True mechanical isolation from frame</li>
+<li><strong>Rubber Grommets:</strong> Available at any hardware store</li>
+<li><strong>Klipper Input Shaping:</strong> Handles any residual resonance in software</li>
+<li><strong>Kinematic Z-Joints:</strong> Prevent binding in Triple-Z system</li>
+<li><strong>The “Scavenger” wins:</strong> Bike tubes and tap washers work as well as specialty parts</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/theamalgam\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
