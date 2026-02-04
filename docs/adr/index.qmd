@@ -1,0 +1,83 @@
+---
+title: "Architecture Decision Records"
+---
+
+Amalgam documents every major engineering decision as an Architecture Decision Record (ADR). Each ADR captures context, alternatives considered, rationale, and consequences.
+
+## Reading Order
+
+If you're new to Amalgam, read in this order:
+
+1. **[ADR-000: Engineering Philosophy](000-engineering-philosophy.md)** — Core principles: Mass, Software, Gearing, trade-offs
+2. **[ADR-025: Multi-Frame Architecture](025-multi-frame-architecture.md)** — Scaffold, Mill, Lathe paths (all on MDF base)
+3. **[ADR-026: Donor Fitness & Constraints](026-donor-fitness-constraints.md)** — Bed size, Z-height, stability limits
+4. **[ADR-021: Dual-Rod Motion System](021-dual-rod-motion-system.md)** — Dual 8mm vertical stacking
+5. **[ADR-012: Mainboard & Host Architecture](012-mainboard-host-architecture.md)** — Electronics paths, dual-MCU config
+6. **[ADR-019: Pitan Extruder](019-pitan-extruder.md)** — Single-drive, 3:1 geared
+7. **[ADR-004: E3D V6 + CHT](004-v6-cht.md)** — Hotend selection
+
+## Foundational
+
+| ADR | Title | Status |
+|-----|-------|--------|
+| [000](000-engineering-philosophy.md) | Engineering Philosophy (20 Years of RepRap Wisdom) | Accepted |
+| [001](001-m10-skeleton.md) | M10 Threaded Rod Skeleton | Accepted |
+| ~~[002](002-greg-wade.md)~~ | ~~Greg's Wade Geared Extruder~~ | Archived (see ADR-019) |
+| ~~[003](003-smooth-rods.md)~~ | ~~Smooth Rods vs Linear Rails~~ | Superseded (see ADR-021) |
+| [004](004-v6-cht.md) | E3D V6 Hotend with CHT Nozzle | Accepted |
+
+## Motion & Leveling
+
+| ADR | Title | Status |
+|-----|-------|--------|
+| [005](005-triple-z.md) | Triple-Z Kinematic Leveling | Accepted |
+| ~~006~~ | Z-Probe Selection (Legacy) | Archived (see ADR-014) |
+| [009](009-puck-system.md) | Modular Puck & Spider Bed System | Accepted |
+| [010](010-floating-z-puck.md) | Floating Z-Puck System | Accepted |
+| ~~[020](020-dual-8-scavenger.md)~~ | ~~Dual-8 Scavenger Variant~~ | Superseded (see ADR-021) |
+| [021](021-dual-rod-motion-system.md) | Dual-Rod Motion System | Accepted |
+| [022](022-linear-bearings.md) | Linear Bearing Selection | Accepted |
+| [023](023-z-drop-architecture.md) | Z-Drop Architecture | Accepted |
+| [024](024-heated-bed-size.md) | Heated Bed Size Selection | Accepted |
+| [025](025-multi-frame-architecture.md) | Multi-Frame Architecture | Accepted |
+| [026](026-donor-fitness-constraints.md) | Donor Fitness & Frame Constraints | Accepted |
+| [027](027-build-plate-surfaces.md) | Build Plate Surface Selection | Accepted |
+| [028](028-target-filaments.md) | Target Filament Selection | Accepted |
+| [029](029-brand-palette.md) | Brand Palette & Visual Identity | Accepted |
+
+## Foundation & Electronics
+
+| ADR | Title | Status |
+|-----|-------|--------|
+| [007](007-can-bus.md) | CAN Bus Architecture | Accepted |
+| [008](008-spider-bed.md) | Spider Bed Support System | Accepted |
+| [011](011-laminated-plinth.md) | Laminated Plinth Baseboard | Accepted |
+| [012](012-mainboard-host-architecture.md) | Mainboard & Host Architecture | Accepted |
+| [013](013-drivers-endstops.md) | Driver & Endstop Strategy | Accepted |
+| [016](016-electronics-mounting.md) | Electronics & PSU Mounting Strategy | Accepted |
+
+## Tooling & Probing
+
+| ADR | Title | Status |
+|-----|-------|--------|
+| [014](014-z-probe-selection.md) | Z-Probe Selection (SuperPINDA vs BLTouch) | Accepted |
+| [015](015-single-toolhead.md) | Single Toolhead Architecture | Accepted |
+
+## Software & Tooling
+
+| ADR | Title | Status |
+|-----|-------|--------|
+| [017](017-parametric-cad-system.md) | Parametric CAD System (build123d) | Accepted |
+| [018](018-documentation-system.md) | Documentation & Assembly Guide System (Quarto) | Accepted |
+| [019](019-pitan-extruder.md) | Pitan Extruder | Accepted |
+| [030](030-multi-format-exports.md) | Multi-Format Export System | Accepted |
+
+## ADR Lifecycle
+
+- **Accepted** — Decision finalized, implemented
+- **Superseded** — Replaced by newer ADR, kept for decision history
+- **Archived** — No longer relevant, kept for historical reference
+
+## Creating New ADRs
+
+Use the template at [`template.md`](template.md). Number sequentially from the highest existing ADR.

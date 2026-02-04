@@ -20,5 +20,21 @@ frame_z: 0
 x_span: 0
 hotend_type: "E3D_V6_CLONE"
 groovemount_dia: 16.0
+
+# Brand palette
+brand_body_color: "#4A4A4A"
+brand_accent_color: "#FFFFFF"
+brand_base_color: "#1A1A1A"
+
+# Logo pad
+logo_pad_enabled: true
+logo_pad_diameter: 18.0
+logo_pad_height: 0.5
+
+# Texture recommendations
+fuzzy_skin_recommended: true
+fuzzy_skin_point_distance: 0.3
+fuzzy_skin_thickness: 0.2
+
 tier_name: "Reference Spec"
 z_type_desc: "Triple Independent Z"

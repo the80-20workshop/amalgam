@@ -112,7 +112,7 @@ Critical step! An out-of-square frame causes:
 - Binding on Z
 - Poor print quality
 
-See [Frame Squaring](frame-squaring.qmd) for detailed procedure.
+Use diagonal measurements to verify squareness (both diagonals should match within 1-2mm).
 
 ## Verification
 
@@ -126,8 +126,8 @@ Before proceeding, verify:
 
 ## Next Steps
 
-1. [Frame Squaring](frame-squaring.qmd) - Get it perfect
-2. [X Gantry](x-gantry.qmd) - Install motion system
+1. Verify frame squareness with diagonal measurements
+2. Install motion system on the squared frame
 
 ---
 

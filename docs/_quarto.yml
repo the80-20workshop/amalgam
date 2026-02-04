@@ -1,9 +1,18 @@
 # Amalgam Documentation
-# Quarto project configuration for config-driven documentation
+# Quarto project configuration for project documentation site
 
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "!reference/legacy/"
+    - "!reference/RENAME-TRACKING.md"
+    - "!articles/"
+  resources:
+    - CNAME
+    - .nojekyll
 
 website:
   title: "Amalgam"
@@ -13,35 +22,93 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Build Guides"
+      - text: "Guides"
         menu:
-          - text: "Getting Started"
+          - text: "All Guides"
             href: guides/index.qmd
           - text: "---"
+          - text: "Print Settings & Brand Guide"
+            href: guides/print-settings.qmd
           - text: "Frame Assembly"
             href: guides/frame-assembly.qmd
+          - text: "Klipper Configuration"
+            href: guides/klipper-config.qmd
+          - text: "---"
+          - text: "Calibration Guide"
+            href: guides/calibration-guide.md
+          - text: "Calibration Cheatsheet"
+            href: guides/calibration-cheatsheet.md
+          - text: "Maintenance & Setup"
+            href: guides/maintenance-setup.md
       - text: "Reference"
         menu:
-          - text: "Parts List"
+          - text: "Donor Printer Guide"
+            href: reference/donor-printer-guide.md
+          - text: "Master Parts List"
             href: reference/MASTER_PARTS_LIST.md
+          - text: "Parts Sourcing Guide"
+            href: reference/parts-sourcing-guide.md
       - text: "ADRs"
         href: adr/index.qmd
+      - text: "Engineering"
+        menu:
+          - text: "Analysis Overview"
+            href: analysis/README.md
+          - text: "---"
+          - text: "Rod Sag Analysis"
+            href: analysis/rod-sag-analysis.md
+          - text: "Max Safe Acceleration"
+            href: analysis/max-safe-acceleration.md
+          - text: "Z-Height Analysis"
+            href: analysis/z-height-analysis.md
+          - text: "Single vs Dual Rod"
+            href: analysis/single-vs-dual-rod.md
+          - text: "Motion System Comparison"
+            href: analysis/motion-system-comparison.md
+          - text: "---"
+          - text: "Deep Dives Overview"
+            href: deep-dives/README.md
     right:
       - icon: github
         href: https://github.com/the80-20workshop/amalgam
 
   sidebar:
-    - title: "Build Guides"
-      style: "docked"
+    - title: "Guides"
       contents:
         - guides/index.qmd
-        - section: "Assembly"
+        - guides/print-settings.qmd
+        - guides/frame-assembly.qmd
+        - guides/klipper-config.qmd
+        - guides/calibration-guide.md
+        - guides/calibration-cheatsheet.md
+        - guides/maintenance-setup.md
+
+    - title: "Reference"
+      contents:
+        - reference/donor-printer-guide.md
+        - reference/MASTER_PARTS_LIST.md
+        - reference/parts-sourcing-guide.md
+
+    - title: "Engineering"
+      contents:
+        - section: "Analysis"
           contents:
-            - guides/frame-assembly.qmd
-            - guides/klipper-config.qmd
-        - section: "Reference"
+            - analysis/README.md
+            - analysis/rod-sag-analysis.md
+            - analysis/max-safe-acceleration.md
+            - analysis/z-height-analysis.md
+            - analysis/single-vs-dual-rod.md
+            - analysis/motion-system-comparison.md
+        - section: "Deep Dives"
           contents:
-            - guides/print-settings.qmd
+            - deep-dives/README.md
+            - deep-dives/tractor_00_decision_guide.md
+            - deep-dives/tractor_01_frame_and_assembly.md
+            - deep-dives/tractor_02_xy_axis_system.md
+            - deep-dives/tractor_03_motor_mounts_vibration.md
+            - deep-dives/tractor_04_xgantry_design_decision.md
+            - deep-dives/tractor_05_psu_configurations.md
+            - deep-dives/tractor_06_extruder_decision.md
 
 format:
   html:
@@ -50,11 +117,9 @@ format:
     toc-depth: 3
     code-fold: true
 
-# Variables from config.py
+# Variables from config.py (reference spec defaults for public site)
 # Populated by: python scripts/export_config.py > docs/_variables.yml
 # Referenced in .qmd as {{< var name >}}
-
-# Load variables file if it exists
 metadata-files:
   - _variables.yml
 

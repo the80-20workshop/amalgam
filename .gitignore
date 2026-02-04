@@ -48,3 +48,7 @@ build/
 
 # Reference documents (large PDFs)
 docs/reference/*.pdf
+
+# Quarto build output
+docs/_site/
+docs/.quarto/
