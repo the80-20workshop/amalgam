@@ -9,6 +9,10 @@
     <lastmod>2026-02-04T04:55:22.043Z</lastmod>
   </url>
   <url>
+    <loc>https://theamalgam.org/manifesto.html</loc>
+    <lastmod>2026-02-04T08:22:07.821Z</lastmod>
+  </url>
+  <url>
     <loc>https://theamalgam.org/guides/calibration-guide.html</loc>
     <lastmod>2026-02-04T04:55:22.041Z</lastmod>
   </url>
@@ -30,11 +34,11 @@
   </url>
   <url>
     <loc>https://theamalgam.org/articles/reclaiming-the-reprap-legacy.html</loc>
-    <lastmod>2026-02-04T04:55:22.037Z</lastmod>
+    <lastmod>2026-02-04T08:26:36.294Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/articles/age-of-the-appliance.html</loc>
-    <lastmod>2026-02-04T04:55:22.037Z</lastmod>
+    <lastmod>2026-02-04T08:26:34.776Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/analysis/single-vs-dual-rod.html</loc>
@@ -54,7 +58,7 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/026-donor-fitness-constraints.html</loc>
-    <lastmod>2026-02-04T04:55:22.031Z</lastmod>
+    <lastmod>2026-02-04T08:29:34.003Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/024-heated-bed-size.html</loc>
@@ -86,11 +90,11 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/010-floating-z-puck.html</loc>
-    <lastmod>2026-02-04T04:55:22.026Z</lastmod>
+    <lastmod>2026-02-04T08:29:29.031Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/008-spider-bed.html</loc>
-    <lastmod>2026-02-04T04:55:22.025Z</lastmod>
+    <lastmod>2026-02-04T08:29:26.410Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/006-z-probe.html</loc>
@@ -98,15 +102,15 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/004-v6-cht.html</loc>
-    <lastmod>2026-02-04T04:55:22.024Z</lastmod>
+    <lastmod>2026-02-04T08:29:23.660Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/002-greg-wade.html</loc>
-    <lastmod>2026-02-04T04:55:22.023Z</lastmod>
+    <lastmod>2026-02-04T08:29:20.996Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/000-engineering-philosophy.html</loc>
-    <lastmod>2026-02-04T04:55:22.022Z</lastmod>
+    <lastmod>2026-02-04T08:29:18.412Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/guides/print-settings.html</loc>
@@ -130,7 +134,7 @@
   </url>
   <url>
     <loc>https://theamalgam.org/articles/index.html</loc>
-    <lastmod>2026-02-04T06:12:03.576Z</lastmod>
+    <lastmod>2026-02-04T08:27:40.362Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/guides/frame-assembly.html</loc>
@@ -146,15 +150,15 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/001-m10-skeleton.html</loc>
-    <lastmod>2026-02-04T04:55:22.022Z</lastmod>
+    <lastmod>2026-02-04T08:29:19.712Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/003-smooth-rods.html</loc>
-    <lastmod>2026-02-04T04:55:22.023Z</lastmod>
+    <lastmod>2026-02-04T08:29:22.345Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/005-triple-z.html</loc>
-    <lastmod>2026-02-04T04:55:22.024Z</lastmod>
+    <lastmod>2026-02-04T08:29:25.074Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/007-can-bus.html</loc>
@@ -162,11 +166,11 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/009-puck-system.html</loc>
-    <lastmod>2026-02-04T04:55:22.025Z</lastmod>
+    <lastmod>2026-02-04T08:29:27.700Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/011-laminated-plinth.html</loc>
-    <lastmod>2026-02-04T04:55:22.026Z</lastmod>
+    <lastmod>2026-02-04T08:29:30.271Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/013-drivers-endstops.html</loc>
@@ -186,7 +190,7 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/021-dual-rod-motion-system.html</loc>
-    <lastmod>2026-02-04T04:55:22.029Z</lastmod>
+    <lastmod>2026-02-04T08:29:31.539Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/023-z-drop-architecture.html</loc>
@@ -194,7 +198,7 @@
   </url>
   <url>
     <loc>https://theamalgam.org/adr/025-multi-frame-architecture.html</loc>
-    <lastmod>2026-02-04T04:55:22.030Z</lastmod>
+    <lastmod>2026-02-04T08:29:32.736Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/027-build-plate-surfaces.html</loc>
@@ -218,11 +222,11 @@
   </url>
   <url>
     <loc>https://theamalgam.org/articles/core-engineering-truths.html</loc>
-    <lastmod>2026-02-04T04:55:22.036Z</lastmod>
+    <lastmod>2026-02-04T08:26:35.458Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/articles/reconfiguration-of-3d-printing-market.html</loc>
-    <lastmod>2026-02-04T04:55:22.038Z</lastmod>
+    <lastmod>2026-02-04T08:26:37.213Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/deep-dives/tractor_01_frame_and_assembly.html</loc>
@@ -243,6 +247,10 @@
   <url>
     <loc>https://theamalgam.org/guides/maintenance-setup.html</loc>
     <lastmod>2026-02-04T04:55:22.042Z</lastmod>
+  </url>
+  <url>
+    <loc>https://theamalgam.org/philosophy.html</loc>
+    <lastmod>2026-02-04T08:22:08.261Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/reference/donor-printer-guide.html</loc>

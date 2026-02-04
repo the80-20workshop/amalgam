@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -323,13 +294,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../articles/core-engineering-truths.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
+ <span class="menu-text">1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../articles/reclaiming-the-reprap-legacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
+ <span class="menu-text"><strong>Amalgam: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -359,17 +330,13 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#retail-pricing-analysis-in-australia-aud" id="toc-retail-pricing-analysis-in-australia-aud" class="nav-link" data-scroll-target="#retail-pricing-analysis-in-australia-aud"><strong>2026 Retail Pricing Analysis in Australia (AUD)</strong></a></li>
   </ul></li>
-  <li><a href="#the-technical-viability-of-the-modernized-m12-reprap" id="toc-the-technical-viability-of-the-modernized-m12-reprap" class="nav-link" data-scroll-target="#the-technical-viability-of-the-modernized-m12-reprap"><strong>The Technical Viability of the Modernized M12 RepRap</strong></a>
+  <li><a href="#the-technical-viability-of-the-modernized-reprap" id="toc-the-technical-viability-of-the-modernized-reprap" class="nav-link" data-scroll-target="#the-technical-viability-of-the-modernized-reprap"><strong>The Technical Viability of the Modernized RepRap</strong></a>
   <ul class="collapse">
   <li><a href="#mechanical-engineering-mass-and-damping" id="toc-mechanical-engineering-mass-and-damping" class="nav-link" data-scroll-target="#mechanical-engineering-mass-and-damping"><strong>Mechanical Engineering: Mass and Damping</strong></a></li>
-  <li><a href="#mechanical-simplification-the-belted-3-point-z-axis" id="toc-mechanical-simplification-the-belted-3-point-z-axis" class="nav-link" data-scroll-target="#mechanical-simplification-the-belted-3-point-z-axis"><strong>Mechanical Simplification: The Belted 3-Point Z-Axis</strong></a></li>
+  <li><a href="#the-two-donor-model" id="toc-the-two-donor-model" class="nav-link" data-scroll-target="#the-two-donor-model"><strong>The Two-Donor Model</strong></a></li>
+  <li><a href="#triple-z-independent-leveling" id="toc-triple-z-independent-leveling" class="nav-link" data-scroll-target="#triple-z-independent-leveling"><strong>Triple-Z Independent Leveling</strong></a></li>
   </ul></li>
-  <li><a href="#tiered-build-strategy-reclaiming-the-reprap-spirit" id="toc-tiered-build-strategy-reclaiming-the-reprap-spirit" class="nav-link" data-scroll-target="#tiered-build-strategy-reclaiming-the-reprap-spirit"><strong>Tiered Build Strategy: Reclaiming the RepRap Spirit</strong></a>
-  <ul class="collapse">
-  <li><a href="#tier-1-the-scavenged-junkstrap-50---150-aud" id="toc-tier-1-the-scavenged-junkstrap-50---150-aud" class="nav-link" data-scroll-target="#tier-1-the-scavenged-junkstrap-50---150-aud"><strong>Tier 1: The Scavenged “JunkStrap” ($50 - $150 AUD)</strong></a></li>
-  <li><a href="#tier-2-the-modern-diy-core-250---350-aud" id="toc-tier-2-the-modern-diy-core-250---350-aud" class="nav-link" data-scroll-target="#tier-2-the-modern-diy-core-250---350-aud"><strong>Tier 2: The Modern DIY Core ($250 - $350 AUD)</strong></a></li>
-  <li><a href="#tiered-cost-comparison-aud" id="toc-tiered-cost-comparison-aud" class="nav-link" data-scroll-target="#tiered-cost-comparison-aud"><strong>Tiered Cost Comparison (AUD)</strong></a></li>
-  </ul></li>
+  <li><a href="#build-strategy-maximizing-reuse" id="toc-build-strategy-maximizing-reuse" class="nav-link" data-scroll-target="#build-strategy-maximizing-reuse"><strong>Build Strategy: Maximizing Reuse</strong></a></li>
   <li><a href="#parametric-cad-as-code-design-with-build123d" id="toc-parametric-cad-as-code-design-with-build123d" class="nav-link" data-scroll-target="#parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></a></li>
   <li><a href="#conclusion-the-path-back-to-technological-sovereignty" id="toc-conclusion-the-path-back-to-technological-sovereignty" class="nav-link" data-scroll-target="#conclusion-the-path-back-to-technological-sovereignty"><strong>Conclusion: The Path Back to Technological Sovereignty</strong></a></li>
   </ul></li>
@@ -384,7 +351,7 @@ window.Quarto = {
 
 <section id="the-reconfiguration-of-the-3d-printing-market-from-reprap-open-source-idealism-to-the-era-of-integrated-prosumer-appliances" class="level1">
 <h1><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></h1>
-<p>The fused deposition modeling (FDM) industry has entered a period of profound structural realignment. For over a decade, the desktop 3D printing market was defined by the tension between the enthusiast’s desire for tinkering and the prosumer’s need for reliability. This landscape was historically dominated by the RepRap movement and its most successful commercial offspring, Prusa Research, which established the “bed-slinger” Cartesian architecture as the global hobbyist standard.1 However, the emergence of vertically integrated manufacturers, most notably Bambu Lab, has fundamentally disrupted the “reliability-speed-quality” triangle that previously forced users to compromise on at least one of these pillars.3 This report analyzes the historical evolution of these technologies, the economic pressures currently facing the maker community—particularly in high-cost regions such as Australia—and the technical feasibility of returning to open-source roots through tiered, salvaged hardware designs.</p>
+<p>The fused deposition modeling (FDM) industry has entered a period of profound structural realignment. For over a decade, the desktop 3D printing market was defined by the tension between the enthusiast’s desire for tinkering and the prosumer’s need for reliability. This landscape was historically dominated by the RepRap movement and its most successful commercial offspring, Prusa Research, which established the “bed-slinger” Cartesian architecture as the global hobbyist standard.1 However, the emergence of vertically integrated manufacturers, most notably Bambu Lab, has fundamentally disrupted the “reliability-speed-quality” triangle that previously forced users to compromise on at least one of these pillars.3 This report analyzes the historical evolution of these technologies, the economic pressures currently facing the maker community—particularly in high-cost regions such as Australia—and the technical feasibility of returning to open-source roots through salvaged hardware designs.</p>
 <section id="the-historical-foundations-of-the-consumer-3d-printing-industry" class="level2">
 <h2 class="anchored" data-anchor-id="the-historical-foundations-of-the-consumer-3d-printing-industry"><strong>The Historical Foundations of the Consumer 3D Printing Industry</strong></h2>
 <p>The modern 3D printing era began with a radical vision of self-replicating machines. The RepRap project, initiated by Dr.&nbsp;Adrian Bowyer, sought to democratize manufacturing by creating printers that could print their own components. Early iterations like the Darwin and Mendel utilized threaded metal rods, nuts, and washers sourced from hardware stores to form rigid frames.</p>
@@ -486,154 +453,95 @@ window.Quarto = {
 <p>While the A1 Mini is aggressively priced at ~$319 AUD, its small build volume (180mm cube) often leads to “buyer’s remorse” for those needing larger functional items.14 Building a high-performance open-source printer like a Voron remains expensive, with kits often exceeding $1,500 AUD.16</p>
 </section>
 </section>
-<section id="the-technical-viability-of-the-modernized-m12-reprap" class="level2">
-<h2 class="anchored" data-anchor-id="the-technical-viability-of-the-modernized-m12-reprap"><strong>The Technical Viability of the Modernized M12 RepRap</strong></h2>
-<p>To counter these costs, a return to the “threaded rod” RepRap spirit is technically viable when combined with modern firmware. This project involves a box-frame printer utilizing M12 threaded rods to achieve A1-quality prints with Prusa MK4 build volume for under $300 AUD.</p>
+<section id="the-technical-viability-of-the-modernized-reprap" class="level2">
+<h2 class="anchored" data-anchor-id="the-technical-viability-of-the-modernized-reprap"><strong>The Technical Viability of the Modernized RepRap</strong></h2>
+<p>To counter these costs, a return to the “threaded rod” RepRap spirit is technically viable when combined with modern firmware. Amalgam offers multiple frame paths — from M10 threaded rod skeletons (Scaffold) to aluminum extrusion frames (Mill, Lathe) — all achieving high-quality prints with 220×220×220mm build volume for under $300 AUD.</p>
 <section id="mechanical-engineering-mass-and-damping" class="level3">
 <h3 class="anchored" data-anchor-id="mechanical-engineering-mass-and-damping"><strong>Mechanical Engineering: Mass and Damping</strong></h3>
-<p>M12 steel rods (12mm diameter) provide inherent vibration damping—a critical factor for high-speed FDM. A high-mass frame increases the system’s inertia, resisting oscillations from rapid stepper movements.</p>
-<p><span class="math display">\[F\_D(t) \= c \\cdot \\dot{u}(t)\]</span><br>
-By increasing the damping coefficient (<span class="math inline">\(c\)</span>) through M12 rods, the printer can operate at higher accelerations without the “ghosting” artifacts common in lighter aluminum frames.6</p>
+<p>The Scaffold path uses M10 steel rods (10mm diameter) that provide inherent vibration damping — a critical factor for high-speed FDM. A high-mass frame increases the system’s inertia, resisting oscillations from rapid stepper movements. The Mill and Lathe paths achieve similar damping through aluminum extrusion stiffness combined with an MDF base that acts as a mass damper.</p>
 </section>
-<section id="mechanical-simplification-the-belted-3-point-z-axis" class="level3">
-<h3 class="anchored" data-anchor-id="mechanical-simplification-the-belted-3-point-z-axis"><strong>Mechanical Simplification: The Belted 3-Point Z-Axis</strong></h3>
-<p>To reduce cost and complexity, the 3-point Z-axis can be driven by a single NEMA 17 stepper motor using a shared belt routing system. This configuration:</p>
+<section id="the-two-donor-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-two-donor-model"><strong>The Two-Donor Model</strong></h3>
+<p>Amalgam requires two donor printers. This isn’t arbitrary — it provides:</p>
 <ul>
-<li><strong>Ensures Synchronization:</strong> A single belt connecting all three lead screws prevents the independent Z-motors from drifting out of sync during power cycles.<br>
-</li>
-<li><strong>Reduces Electronics Cost:</strong> Reusing a donor printer’s board (often limited in stepper drivers) becomes possible because only one driver is required for the entire Z-axis.<br>
-</li>
-<li><strong>Eliminates Z-Wobble:</strong> Belted drives can eliminate the lateral forces caused by slightly bent lead screws that cause “z-wobble” in traditional builds.</li>
+<li><strong>Sufficient motors:</strong> 4-5 steppers per donor, 8-10 total (Amalgam needs 7-8)</li>
+<li><strong>Redundant electronics:</strong> Two boards for Klipper dual-MCU, or spare parts</li>
+<li><strong>Motion components:</strong> Rods, bearings, belts, pulleys from both donors</li>
+<li><strong>The bed:</strong> 220×220mm heated bed from an Anet A8 or similar donor</li>
+</ul>
+</section>
+<section id="triple-z-independent-leveling" class="level3">
+<h3 class="anchored" data-anchor-id="triple-z-independent-leveling"><strong>Triple-Z Independent Leveling</strong></h3>
+<p>All Amalgam paths use three independent Z-motors for true kinematic leveling. This configuration:</p>
+<ul>
+<li><strong>Ensures Precision:</strong> Three-point tilt eliminates bed-to-gantry parallelism errors</li>
+<li><strong>Enables Auto-Leveling:</strong> Klipper’s Z-tilt calibration runs at every print start</li>
+<li><strong>Eliminates Z-Wobble:</strong> Independent motors avoid the binding issues of shared-belt systems</li>
 </ul>
 </section>
 </section>
-<section id="tiered-build-strategy-reclaiming-the-reprap-spirit" class="level2">
-<h2 class="anchored" data-anchor-id="tiered-build-strategy-reclaiming-the-reprap-spirit"><strong>Tiered Build Strategy: Reclaiming the RepRap Spirit</strong></h2>
-<p>This project proposes a “tiered” approach to construction, allowing users to enter the hobby based on their available resources.</p>
-<section id="tier-1-the-scavenged-junkstrap-50---150-aud" class="level3">
-<h3 class="anchored" data-anchor-id="tier-1-the-scavenged-junkstrap-50---150-aud"><strong>Tier 1: The Scavenged “JunkStrap” ($50 - $150 AUD)</strong></h3>
-<p>The most accessible entry point is the “JunkStrap”—a printer cobbled together from salvaged parts.</p>
-<ul>
-<li><strong>Donor Sourcing:</strong> Salvaging stepper motors, power supplies, and heat beds from non-functional Ender 3 or Anet printers found on marketplaces.<br>
-</li>
-<li><strong>Electronics Reuse:</strong> Directly reusing the 8-bit or 32-bit controller board from the donor machine, even if it lacks advanced features like 3-point Z-probing.<br>
-</li>
-<li><strong>Framework:</strong> Primarily the cost of M12 rods and printed parts.</li>
-</ul>
-</section>
-<section id="tier-2-the-modern-diy-core-250---350-aud" class="level3">
-<h3 class="anchored" data-anchor-id="tier-2-the-modern-diy-core-250---350-aud"><strong>Tier 2: The Modern DIY Core ($250 - $350 AUD)</strong></h3>
-<p>An upgrade path that incorporates modern reliability features:</p>
-<ul>
-<li><strong>Controller:</strong> BigTreeTech Octopus Pro for high I/O density and independent motor control.17<br>
-</li>
-<li><strong>Firmware Sovereignty:</strong> Klipper firmware on a Raspberry Pi for active vibration compensation (Input Shaping).18<br>
-</li>
-<li><strong>Automatic Leveling:</strong> Transitioning from the shared-belt Z-axis to three independent motors for “true” Z-tilt adjustment.</li>
-</ul>
-</section>
-<section id="tiered-cost-comparison-aud" class="level3">
-<h3 class="anchored" data-anchor-id="tiered-cost-comparison-aud"><strong>Tiered Cost Comparison (AUD)</strong></h3>
+<section id="build-strategy-maximizing-reuse" class="level2">
+<h2 class="anchored" data-anchor-id="build-strategy-maximizing-reuse"><strong>Build Strategy: Maximizing Reuse</strong></h2>
+<p>Rather than a tiered “cheap to expensive” approach, Amalgam adapts to what you scavenged:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Component</th>
-<th style="text-align: left;">Scavenged Tier</th>
-<th style="text-align: left;">Upgraded Tier</th>
-<th style="text-align: left;">Logic / Source</th>
+<th>Your Donors</th>
+<th>Recommended Path</th>
+<th>Extra Cost Beyond Donors</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Frame</strong></td>
-<td style="text-align: left;">$45.00 (M12 Rods)</td>
-<td style="text-align: left;">$45.00</td>
-<td style="text-align: left;">Local hardware sourcing 6</td>
+<td>Two Anet A8s / Wanhao i3s</td>
+<td><strong>Scaffold</strong></td>
+<td>~$70-110 (M10 rods, misc)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Electronics</strong></td>
-<td style="text-align: left;">$0.00 (Donor Board)</td>
-<td style="text-align: left;">$195.00 (Octopus+RPi)</td>
-<td style="text-align: left;">Salvage vs.&nbsp;New</td>
+<td>Two Ender 3s / CR-10s</td>
+<td><strong>Mill</strong></td>
+<td>~$40-65 (misc only, zero waste)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Motion</strong></td>
-<td style="text-align: left;">$10.00 (Salvaged)</td>
-<td style="text-align: left;">$30.00 (New Belts)</td>
-<td style="text-align: left;">Donor printers</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Hotend</strong></td>
-<td style="text-align: left;">$15.00 (V6 Clone)</td>
-<td style="text-align: left;">$15.00</td>
-<td style="text-align: left;">Proven reliability</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Total</strong></td>
-<td style="text-align: left;"><strong>~$70.00</strong></td>
-<td style="text-align: left;"><strong>~$285.00</strong></td>
-<td style="text-align: left;"><strong>Accessibility vs.&nbsp;Performance</strong></td>
+<td>Mixed donors</td>
+<td><strong>Lathe</strong></td>
+<td>~$115-160 (rods + IGUS bearings)</td>
 </tr>
 </tbody>
 </table>
-</section>
+<p>The key principle: <strong>maximize reuse of existing parts</strong>. The Mill path with two Ender 3 donors is nearly zero-waste — even the aluminum extrusions become the frame.</p>
 </section>
 <section id="parametric-cad-as-code-design-with-build123d" class="level2">
 <h2 class="anchored" data-anchor-id="parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></h2>
 <p>A central requirement for modernizing the RepRap movement is the transition to fully parametric, code-based design. Build123d is a Python-based framework that allows the entire printer to be resized or adapted to different hardware in seconds.19</p>
-<p>By defining variables for rod_dia, build_volume, and linear_rail_size, the community can “fork” the machine to fit whatever they scavenge. If a user finds M10 rods instead of M12, a single variable change regenerates the entire printable BOM.</p>
+<p>By defining variables for rod diameter, build volume, and bearing type, the community can “fork” the machine to fit whatever they scavenge. If a user finds different donors than expected, a configuration change regenerates the entire printable BOM.</p>
 </section>
 <section id="conclusion-the-path-back-to-technological-sovereignty" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-the-path-back-to-technological-sovereignty"><strong>Conclusion: The Path Back to Technological Sovereignty</strong></h2>
 <p>The 3D printing industry in 2026 stands at a crossroads between the “appliance” (Bambu) and the “project” (RepRap). The mission of the RepRap project—to make printers that only require readily available and affordable parts—is more relevant today as commercial ecosystems become increasingly closed.2</p>
-<p>The M12 threaded rod build, designed in build123d, represents a synthesis of 2011’s Mendel spirit with 2026’s high-speed computational capabilities. By utilizing a tiered approach—starting with a “JunkStrap” scavenged from donor machines and upgrading to a Klipper-powered powerhouse—the maker reclaims economic and technological sovereignty. It proves that the “triangle” of reliability, speed, and quality can be conquered not just through expensive corporate R&amp;D, but through sound engineering, massive damping, and open-source collaboration.</p>
+<p>Amalgam, designed in build123d, represents a synthesis of 2007’s Darwin spirit with 2026’s high-speed computational capabilities. By utilizing a two-donor scavenger model with frame paths that adapt to available hardware, the maker reclaims economic and technological sovereignty. It proves that the “triangle” of reliability, speed, and quality can be conquered not just through expensive corporate R&amp;D, but through sound engineering, massive damping, and open-source collaboration.</p>
 <section id="works-cited" class="level4">
 <h4 class="anchored" data-anchor-id="works-cited"><strong>Works cited</strong></h4>
 <ol type="1">
-<li>1 Million 3D Printers Sold in Q1 2025: The Brutal Truth About Where Real Profit Hides, accessed on January 6, 2026, <a href="https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025">https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025</a><br>
-</li>
-<li>What RepRap is worth building in 2026? : r/3Dprinting - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/">https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/</a><br>
-</li>
-<li>Strategic view of Bambu &amp; Prusa - Part 2 - Corporate Signaling, accessed on January 6, 2026, <a href="https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de">https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de</a><br>
-</li>
-<li>The Best 3D Printers for Home, Workshop or Business in 2026 | Tom’s Hardware, accessed on January 6, 2026, <a href="https://www.tomshardware.com/best-picks/best-3d-printers">https://www.tomshardware.com/best-picks/best-3d-printers</a><br>
-</li>
-<li>Should I build my own DIY 3D printer or buy a Bambu Lab A1 Mini? : r/3dprintIndia - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/">https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/</a><br>
-</li>
-<li>Effect of 3D Printing Process Parameters on Damping Characteristic of Cantilever Beams Fabricated Using Material Extrusion - NIH, accessed on January 6, 2026, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9863848/">https://pmc.ncbi.nlm.nih.gov/articles/PMC9863848/</a><br>
-</li>
-<li>Prusa Mendel (iteration 2) - RepRap, accessed on January 6, 2026, <a href="https://reprap.org/wiki/Prusa_Mendel_(iteration_2)">https://reprap.org/wiki/Prusa_Mendel_(iteration_2)</a><br>
-</li>
-<li>Prusa Mendel Assembly (iteration 2) - RepRap, accessed on January 6, 2026, <a href="https://reprap.org/wiki/Prusa_Mendel_Assembly_(iteration_2)">https://reprap.org/wiki/Prusa_Mendel_Assembly_(iteration_2)</a><br>
-</li>
-<li>Building Prusa Mendel i2. - Reprap 3d Printer, accessed on January 6, 2026, <a href="https://reprap.snowcron.com/prusa_i2.htm">https://reprap.snowcron.com/prusa_i2.htm</a><br>
-</li>
-<li>Australian 3D Printers For Sale, accessed on January 6, 2026, <a href="https://www.3dprintergear.com.au/3d-printers/">https://www.3dprintergear.com.au/3d-printers/</a><br>
-</li>
-<li>Shop 3D printers, filaments and accessories | Bambu Lab AU store, accessed on January 6, 2026, <a href="https://au.store.bambulab.com/">https://au.store.bambulab.com/</a><br>
-</li>
-<li>3D Printers - 3docity, accessed on January 6, 2026, <a href="https://www.3docity.com.au/collections/3d-printers">https://www.3docity.com.au/collections/3d-printers</a><br>
-</li>
-<li>Bambu Lab Printers - 3D Printing Perth, accessed on January 6, 2026, <a href="https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab">https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab</a><br>
-</li>
-<li>Bambu Lab A1 or A1 mini. Price vs built size : r/BambuLab - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/">https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/</a><br>
-</li>
-<li>Is the bambulab a1 mini the best printer in it’s price range? : r/3dprinter - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprinter/comments/1obcxtq/is_the_bambulab_a1_mini_the_best_printer_in_its/">https://www.reddit.com/r/3dprinter/comments/1obcxtq/is_the_bambulab_a1_mini_the_best_printer_in_its/</a><br>
-</li>
-<li>BigtreeTech - Aurarum | Australian manufacturer of 3D printers, accessed on January 6, 2026, <a href="https://aurarum.com.au/brand/bigtreetech/">https://aurarum.com.au/brand/bigtreetech/</a><br>
-</li>
-<li>Unlock the Elite BigTreeTech BTT Octopus Pro V1.0 for 3D Printers - Raven 3D Tech, accessed on January 6, 2026, <a href="https://raven3dtech.com.au/product/bigtreetech-btt-octopus-pro-v1-0-v1-1-for-3d-printer/">https://raven3dtech.com.au/product/bigtreetech-btt-octopus-pro-v1-0-v1-1-for-3d-printer/</a><br>
-</li>
-<li>build123d - PyPI, accessed on January 6, 2026, <a href="https://pypi.org/project/build123d/">https://pypi.org/project/build123d/</a><br>
-</li>
-<li>build123d/docs/index.rst at dev - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d/blob/dev/docs/index.rst">https://github.com/gumyr/build123d/blob/dev/docs/index.rst</a><br>
-</li>
+<li>1 Million 3D Printers Sold in Q1 2025: The Brutal Truth About Where Real Profit Hides, accessed on January 6, 2026, <a href="https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025">https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025</a></li>
+<li>What RepRap is worth building in 2026? : r/3Dprinting - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/">https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/</a></li>
+<li>Strategic view of Bambu &amp; Prusa - Part 2 - Corporate Signaling, accessed on January 6, 2026, <a href="https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de">https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de</a></li>
+<li>The Best 3D Printers for Home, Workshop or Business in 2026 | Tom’s Hardware, accessed on January 6, 2026, <a href="https://www.tomshardware.com/best-picks/best-3d-printers">https://www.tomshardware.com/best-picks/best-3d-printers</a></li>
+<li>Should I build my own DIY 3D printer or buy a Bambu Lab A1 Mini? : r/3dprintIndia - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/">https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/</a></li>
+<li>Effect of 3D Printing Process Parameters on Damping Characteristic of Cantilever Beams Fabricated Using Material Extrusion - NIH, accessed on January 6, 2026, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9863848/">https://pmc.ncbi.nlm.nih.gov/articles/PMC9863848/</a></li>
+<li>Prusa Mendel (iteration 2) - RepRap, accessed on January 6, 2026, <a href="https://reprap.org/wiki/Prusa_Mendel_(iteration_2)">https://reprap.org/wiki/Prusa_Mendel_(iteration_2)</a></li>
+<li>Prusa Mendel Assembly (iteration 2) - RepRap, accessed on January 6, 2026, <a href="https://reprap.org/wiki/Prusa_Mendel_Assembly_(iteration_2)">https://reprap.org/wiki/Prusa_Mendel_Assembly_(iteration_2)</a></li>
+<li>Building Prusa Mendel i2. - Reprap 3d Printer, accessed on January 6, 2026, <a href="https://reprap.snowcron.com/prusa_i2.htm">https://reprap.snowcron.com/prusa_i2.htm</a></li>
+<li>Australian 3D Printers For Sale, accessed on January 6, 2026, <a href="https://www.3dprintergear.com.au/3d-printers/">https://www.3dprintergear.com.au/3d-printers/</a></li>
+<li>Shop 3D printers, filaments and accessories | Bambu Lab AU store, accessed on January 6, 2026, <a href="https://au.store.bambulab.com/">https://au.store.bambulab.com/</a></li>
+<li>3D Printers - 3docity, accessed on January 6, 2026, <a href="https://www.3docity.com.au/collections/3d-printers">https://www.3docity.com.au/collections/3d-printers</a></li>
+<li>Bambu Lab Printers - 3D Printing Perth, accessed on January 6, 2026, <a href="https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab">https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab</a></li>
+<li>Bambu Lab A1 or A1 mini. Price vs built size : r/BambuLab - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/">https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/</a></li>
+<li>Is the bambulab a1 mini the best printer in it’s price range? : r/3dprinter - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprinter/comments/1obcxtq/is_the_bambulab_a1_mini_the_best_printer_in_its/">https://www.reddit.com/r/3dprinter/comments/1obcxtq/is_the_bambulab_a1_mini_the_best_printer_in_its/</a></li>
+<li>BigtreeTech - Aurarum | Australian manufacturer of 3D printers, accessed on January 6, 2026, <a href="https://aurarum.com.au/brand/bigtreetech/">https://aurarum.com.au/brand/bigtreetech/</a></li>
+<li>Unlock the Elite BigTreeTech BTT Octopus Pro V1.0 for 3D Printers - Raven 3D Tech, accessed on January 6, 2026, <a href="https://raven3dtech.com.au/product/bigtreetech-btt-octopus-pro-v1-0-v1-1-for-3d-printer/">https://raven3dtech.com.au/product/bigtreetech-btt-octopus-pro-v1-0-v1-1-for-3d-printer/</a></li>
+<li>build123d - PyPI, accessed on January 6, 2026, <a href="https://pypi.org/project/build123d/">https://pypi.org/project/build123d/</a></li>
+<li>build123d/docs/index.rst at dev - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d/blob/dev/docs/index.rst">https://github.com/gumyr/build123d/blob/dev/docs/index.rst</a></li>
 <li>gumyr/build123d: A python CAD programming library - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d">https://github.com/gumyr/build123d</a></li>
 </ol>
 

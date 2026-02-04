@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -69,35 +104,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -296,7 +302,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../articles/reclaiming-the-reprap-legacy.html"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../articles/reclaiming-the-reprap-legacy.html"><strong>Amalgam: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -323,13 +329,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../articles/core-engineering-truths.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
+ <span class="menu-text">1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../articles/reclaiming-the-reprap-legacy.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
+ <span class="menu-text"><strong>Amalgam: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -348,21 +354,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" id="toc-darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" class="nav-link active" data-scroll-target="#darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></a>
+  <li><a href="#amalgam-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" id="toc-amalgam-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" class="nav-link active" data-scroll-target="#amalgam-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027"><strong>Amalgam: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></a>
   <ul class="collapse">
   <li><a href="#the-historical-foundations-and-the-darwin-milestone" id="toc-the-historical-foundations-and-the-darwin-milestone" class="nav-link" data-scroll-target="#the-historical-foundations-and-the-darwin-milestone"><strong>The Historical Foundations and the Darwin Milestone</strong></a>
   <ul class="collapse">
   <li><a href="#the-3d-printing-market-paradox-2024-2026" id="toc-the-3d-printing-market-paradox-2024-2026" class="nav-link" data-scroll-target="#the-3d-printing-market-paradox-2024-2026"><strong>The 3D Printing Market Paradox (2024-2026)</strong></a></li>
   </ul></li>
   <li><a href="#regional-economic-impacts-the-australian-perspective" id="toc-regional-economic-impacts-the-australian-perspective" class="nav-link" data-scroll-target="#regional-economic-impacts-the-australian-perspective"><strong>Regional Economic Impacts: The Australian Perspective</strong></a></li>
-  <li><a href="#mechanical-sovereignty-the-darwin-neo-architecture" id="toc-mechanical-sovereignty-the-darwin-neo-architecture" class="nav-link" data-scroll-target="#mechanical-sovereignty-the-darwin-neo-architecture"><strong>Mechanical Sovereignty: The Darwin-Neo Architecture</strong></a>
+  <li><a href="#mechanical-sovereignty-the-amalgam-architecture" id="toc-mechanical-sovereignty-the-amalgam-architecture" class="nav-link" data-scroll-target="#mechanical-sovereignty-the-amalgam-architecture"><strong>Mechanical Sovereignty: The Amalgam Architecture</strong></a>
   <ul class="collapse">
-  <li><a href="#frame-engineering-m12-mass-and-damping" id="toc-frame-engineering-m12-mass-and-damping" class="nav-link" data-scroll-target="#frame-engineering-m12-mass-and-damping"><strong>Frame Engineering: M12 Mass and Damping</strong></a></li>
-  <li><a href="#the-cold-end-wades-geared-extruder" id="toc-the-cold-end-wades-geared-extruder" class="nav-link" data-scroll-target="#the-cold-end-wades-geared-extruder"><strong>The Cold End: Wade’s Geared Extruder</strong></a></li>
+  <li><a href="#frame-paths-adapting-to-your-donors" id="toc-frame-paths-adapting-to-your-donors" class="nav-link" data-scroll-target="#frame-paths-adapting-to-your-donors"><strong>Frame Paths: Adapting to Your Donors</strong></a></li>
+  <li><a href="#the-toolhead-pitan-e3d-v6" id="toc-the-toolhead-pitan-e3d-v6" class="nav-link" data-scroll-target="#the-toolhead-pitan-e3d-v6"><strong>The Toolhead: Pitan + E3D V6</strong></a></li>
   </ul></li>
-  <li><a href="#electronic-integration-the-tiered-brain-strategy" id="toc-electronic-integration-the-tiered-brain-strategy" class="nav-link" data-scroll-target="#electronic-integration-the-tiered-brain-strategy"><strong>Electronic Integration: The Tiered “Brain” Strategy</strong></a>
+  <li><a href="#electronic-integration-the-brain-strategy" id="toc-electronic-integration-the-brain-strategy" class="nav-link" data-scroll-target="#electronic-integration-the-brain-strategy"><strong>Electronic Integration: The “Brain” Strategy</strong></a>
   <ul class="collapse">
-  <li><a href="#the-final-brain-decision-matrix" id="toc-the-final-brain-decision-matrix" class="nav-link" data-scroll-target="#the-final-brain-decision-matrix"><strong>The Final “Brain” Decision Matrix</strong></a></li>
+  <li><a href="#the-brain-decision-matrix" id="toc-the-brain-decision-matrix" class="nav-link" data-scroll-target="#the-brain-decision-matrix"><strong>The “Brain” Decision Matrix</strong></a></li>
   </ul></li>
   <li><a href="#parametric-cad-as-code-design-with-build123d" id="toc-parametric-cad-as-code-design-with-build123d" class="nav-link" data-scroll-target="#parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></a></li>
   <li><a href="#conclusion-the-march-2027-rebirth" id="toc-conclusion-the-march-2027-rebirth" class="nav-link" data-scroll-target="#conclusion-the-march-2027-rebirth"><strong>Conclusion: The March 2027 Rebirth</strong></a></li>
@@ -376,10 +382,10 @@ window.Quarto = {
 
 
 
-<section id="darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" class="level1">
-<h1><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></h1>
+<section id="amalgam-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" class="level1">
+<h1><strong>Amalgam: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></h1>
 <p>The fused deposition modeling (FDM) industry has entered a period of profound structural realignment. For over a decade, the desktop 3D printing market was defined by the tension between the enthusiast’s desire for tinkering and the prosumer’s need for reliability. This landscape was historically dominated by the RepRap movement and its commercial offspring, Prusa Research.1 However, the emergence of vertically integrated manufacturers like Bambu Lab has created a “closed-source matrix” where users trade technological sovereignty for out-of-the-box speed.3</p>
-<p><strong>Darwin-Neo</strong> is a project aimed at “waking up” the maker community by the <strong>March 2027</strong> 20th anniversary of the original RepRap Darwin (first released in March 2007). This report analyzes the technical feasibility of returning to open-source roots through tiered designs that utilize high-mass M12 hardware and modernized legacy components.</p>
+<p><strong>Amalgam</strong> is a project aimed at “waking up” the maker community by the <strong>March 2027</strong> 20th anniversary of the original RepRap Darwin (first released in March 2007). This report analyzes the technical feasibility of returning to open-source roots through a two-donor, scavenger-friendly design with multiple frame paths adapted to what builders can salvage.</p>
 <section id="the-historical-foundations-and-the-darwin-milestone" class="level2">
 <h2 class="anchored" data-anchor-id="the-historical-foundations-and-the-darwin-milestone"><strong>The Historical Foundations and the Darwin Milestone</strong></h2>
 <p>The RepRap project, initiated by Dr.&nbsp;Adrian Bowyer in 2004, sought to democratize manufacturing via self-replicating machines. The <strong>RepRap 1.0 “Darwin”</strong>, released in early 2007, proved the viability of this vision by printing over half of its own components. By May 2008, Darwin achieved full self-replication, birthing the first “child” machine.</p>
@@ -427,32 +433,72 @@ window.Quarto = {
 <section id="regional-economic-impacts-the-australian-perspective" class="level2">
 <h2 class="anchored" data-anchor-id="regional-economic-impacts-the-australian-perspective"><strong>Regional Economic Impacts: The Australian Perspective</strong></h2>
 <p>For makers in high-cost regions like Australia, the “affordable” $800 USD printer typically costs $1,300 to $1,500 AUD, making quality printing a significant financial barrier.6 Even the entry-level Bambu Lab A1 Mini, while priced at ~$319 AUD, often leads to “buyer’s remorse” due to its limited 180mm cube build volume.8</p>
-<p>Darwin-Neo addresses this by aiming for a <strong>$300 AUD budget</strong> for a machine with Prusa MK4 build volume, utilizing a tiered build strategy to maximize accessibility.</p>
+<p>Amalgam addresses this by aiming for a <strong>$300 AUD budget</strong> for a machine with 220×220×220mm build volume, utilizing a two-donor scavenger strategy to maximize accessibility.</p>
 </section>
-<section id="mechanical-sovereignty-the-darwin-neo-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="mechanical-sovereignty-the-darwin-neo-architecture"><strong>Mechanical Sovereignty: The Darwin-Neo Architecture</strong></h2>
-<p>To achieve high-quality prints at low cost, Darwin-Neo returns to the “JunkStrap” philosophy—cobbling together high-performance machines from scavenged materials.</p>
-<section id="frame-engineering-m12-mass-and-damping" class="level3">
-<h3 class="anchored" data-anchor-id="frame-engineering-m12-mass-and-damping"><strong>Frame Engineering: M12 Mass and Damping</strong></h3>
-<p>While modern printers use lightweight 2020 aluminum extrusions, Darwin-Neo utilizes <strong>M12 steel threaded rods</strong> (12mm diameter). The significant mass of steel provides superior vibration damping—essential for high-speed FDM.</p>
-<p><span class="math display">\[F\_D(t) \= c \\cdot \\dot{u}(t)\]</span><br>
-By increasing the damping coefficient (<span class="math inline">\(c\)</span>) through heavy M12 rods, the frame inherently resists the “ghosting” or “ringing” artifacts caused by rapid accelerations.</p>
+<section id="mechanical-sovereignty-the-amalgam-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="mechanical-sovereignty-the-amalgam-architecture"><strong>Mechanical Sovereignty: The Amalgam Architecture</strong></h2>
+<p>To achieve high-quality prints at low cost, Amalgam returns to the “JunkStrap” philosophy—cobbling together high-performance machines from scavenged materials. The key insight: <strong>two donor printers provide nearly everything you need</strong>.</p>
+<section id="frame-paths-adapting-to-your-donors" class="level3">
+<h3 class="anchored" data-anchor-id="frame-paths-adapting-to-your-donors"><strong>Frame Paths: Adapting to Your Donors</strong></h3>
+<p>Rather than prescribing a single frame design, Amalgam offers three paths based on what you scavenged:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 32%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>Frame</th>
+<th>Motion</th>
+<th>Best Donors</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Scaffold</strong></td>
+<td>M10 Threaded Rod + MDF</td>
+<td>Smooth Rods + LM8UU</td>
+<td>Anet A8, Wanhao, Prusa clones</td>
+<td>~$190-230</td>
+</tr>
+<tr class="even">
+<td><strong>Mill</strong></td>
+<td>Aluminum Extrusion + MDF</td>
+<td>V-Slots + POM Wheels</td>
+<td>Ender 3, CR-10</td>
+<td>~$160-185</td>
+</tr>
+<tr class="odd">
+<td><strong>Lathe</strong></td>
+<td>Aluminum Extrusion + MDF</td>
+<td>Smooth Rods + IGUS</td>
+<td>Mixed donors</td>
+<td>~$235-280</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Scaffold path</strong> is the spiritual heir to RepRap Darwin — M10 threaded rods forming a box-frame skeleton. The significant mass of steel provides superior vibration damping, essential for high-speed FDM. All paths share an MDF base that acts as both a squaring jig and a mass damper.</p>
 </section>
-<section id="the-cold-end-wades-geared-extruder" class="level3">
-<h3 class="anchored" data-anchor-id="the-cold-end-wades-geared-extruder"><strong>The Cold End: Wade’s Geared Extruder</strong></h3>
-<p>A signature of the Darwin-Neo build is the use of <strong>Wade’s Geared Extruder</strong>, a hallmark of early RepRap engineering. This design uses a printed gear reduction to provide massive torque from a standard NEMA 17 motor, allowing for consistent extrusion even with cheaper filaments.</p>
+<section id="the-toolhead-pitan-e3d-v6" class="level3">
+<h3 class="anchored" data-anchor-id="the-toolhead-pitan-e3d-v6"><strong>The Toolhead: Pitan + E3D V6</strong></h3>
+<p>A signature of the Amalgam build is the <strong>Pitan extruder</strong>, a 3:1 geared design descended from Greg’s Wade. This geared architecture provides massive torque from a standard NEMA17 motor, allowing for consistent extrusion even with cheaper filaments.</p>
 <ul>
-<li><strong>Heat Creep Refinement:</strong> Traditional designs are improved with modern refinements (such as Thingiverse 961767) to improve airflow and thermal isolation, solving the primary reliability issues of the classic geared design.<br>
-</li>
-<li><strong>Klipper Synergy:</strong> Using Klipper’s <strong>Pressure Advance</strong> algorithm, the high-torque Wade’s extruder can achieve sharp corners and reduced blobbing at high speeds.</li>
+<li><strong>Heat Creep Refinement:</strong> Modern refinements improve airflow and thermal isolation, solving the primary reliability issues of the classic geared design.</li>
+<li><strong>Klipper Synergy:</strong> Using Klipper’s <strong>Pressure Advance</strong> algorithm, the high-torque Pitan can achieve sharp corners and reduced blobbing at high speeds.</li>
+<li><strong>Standardized Quality:</strong> By specifying the same Pitan + E3D V6 toolhead across all frame paths, every Amalgam produces comparable print quality regardless of frame type.</li>
 </ul>
 </section>
 </section>
-<section id="electronic-integration-the-tiered-brain-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="electronic-integration-the-tiered-brain-strategy"><strong>Electronic Integration: The Tiered “Brain” Strategy</strong></h2>
-<p>To maximize accessibility, Darwin-Neo employs a tiered motherboard strategy. This allows the builder to choose their level of connectivity based on their budget or the contents of their “junk drawer.”</p>
-<section id="the-final-brain-decision-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="the-final-brain-decision-matrix"><strong>The Final “Brain” Decision Matrix</strong></h3>
+<section id="electronic-integration-the-brain-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="electronic-integration-the-brain-strategy"><strong>Electronic Integration: The “Brain” Strategy</strong></h2>
+<p>To maximize accessibility, Amalgam employs a tiered motherboard strategy. This allows the builder to choose their level of connectivity based on their budget or the contents of their “junk drawer.”</p>
+<section id="the-brain-decision-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="the-brain-decision-matrix"><strong>The “Brain” Decision Matrix</strong></h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -494,40 +540,29 @@ By increasing the damping coefficient (<span class="math inline">\(c\)</span>) t
 </section>
 <section id="parametric-cad-as-code-design-with-build123d" class="level2">
 <h2 class="anchored" data-anchor-id="parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></h2>
-<p>To ensure the project is truly evolvable, Darwin-Neo is designed using <strong>build123d</strong>, a Python-based parametric modeling framework.10 This allows the community to “fork” the machine by simply changing variables in a script.</p>
-<p>Python</p>
-<p># Darwin-Neo Parametric Variables<br>
-rod_dia = 12.0 # Resizes all clamps and vertices<br>
-build_volume_z = 250.0 # Adjusts rod lengths and cable runs<br>
-z_motor_count = 1 # Switches between shared-belt or independent Z</p>
+<p>To ensure the project is truly evolvable, Amalgam is designed using <strong>build123d</strong>, a Python-based parametric modeling framework.10 This allows the community to “fork” the machine by simply changing variables in a script.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Amalgam Parametric Variables</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rod_dia <span class="op">=</span> <span class="fl">10.0</span>          <span class="co"># Resizes all clamps and vertices</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>build_volume_z <span class="op">=</span> <span class="fl">220.0</span>  <span class="co"># Adjusts rod lengths and cable runs</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>z_motor_count <span class="op">=</span> <span class="dv">3</span>       <span class="co"># Triple-Z independent leveling</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This approach represents the “Digital RepRap”—where the hardware instructions are as flexible as the firmware.</p>
 </section>
 <section id="conclusion-the-march-2027-rebirth" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-the-march-2027-rebirth"><strong>Conclusion: The March 2027 Rebirth</strong></h2>
-<p>Darwin-Neo is more than a 3D printer; it is an act of technological sovereignty. By the <strong>March 2027</strong> anniversary, the project aims to prove that the “triangle” of reliability, speed, and quality can be conquered without the “closed” ecosystem of contemporary integrated appliances. Through sound engineering, massive damping, and the synthesis of classic mechanical designs with modern computational power, Darwin-Neo brings the “soul” back to the RepRap community.</p>
+<p>Amalgam is more than a 3D printer; it is an act of technological sovereignty. By the <strong>March 2027</strong> anniversary, the project aims to prove that the “triangle” of reliability, speed, and quality can be conquered without the “closed” ecosystem of contemporary integrated appliances. Through sound engineering, massive damping, and the synthesis of classic mechanical designs with modern computational power, Amalgam brings the “soul” back to the RepRap community.</p>
 <section id="works-cited" class="level4">
 <h4 class="anchored" data-anchor-id="works-cited"><strong>Works cited</strong></h4>
 <ol type="1">
-<li>1 Million 3D Printers Sold in Q1 2025: The Brutal Truth About Where Real Profit Hides, accessed on January 6, 2026, <a href="https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025">https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025</a><br>
-</li>
-<li>What RepRap is worth building in 2026? : r/3Dprinting - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/">https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/</a><br>
-</li>
-<li>Strategic view of Bambu &amp; Prusa - Part 2 - Corporate Signaling, accessed on January 6, 2026, <a href="https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de">https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de</a><br>
-</li>
-<li>Should I build my own DIY 3D printer or buy a Bambu Lab A1 Mini? : r/3dprintIndia - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/">https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/</a><br>
-</li>
-<li>My Prusa Mendel Build - Instructables, accessed on January 6, 2026, <a href="https://www.instructables.com/My-Prusa-Mendel-Build/">https://www.instructables.com/My-Prusa-Mendel-Build/</a><br>
-</li>
-<li>Shop 3D printers, filaments and accessories | Bambu Lab AU store, accessed on January 6, 2026, <a href="https://au.store.bambulab.com/">https://au.store.bambulab.com/</a><br>
-</li>
-<li>Australian 3D Printers For Sale, accessed on January 6, 2026, <a href="https://www.3dprintergear.com.au/3d-printers/">https://www.3dprintergear.com.au/3d-printers/</a><br>
-</li>
-<li>Bambu Lab A1 or A1 mini. Price vs built size : r/BambuLab - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/">https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/</a><br>
-</li>
-<li>Bambu Lab Printers - 3D Printing Perth, accessed on January 6, 2026, <a href="https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab">https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab</a><br>
-</li>
-<li>gumyr/build123d: A python CAD programming library - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d">https://github.com/gumyr/build123d</a><br>
-</li>
+<li>1 Million 3D Printers Sold in Q1 2025: The Brutal Truth About Where Real Profit Hides, accessed on January 6, 2026, <a href="https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025">https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025</a></li>
+<li>What RepRap is worth building in 2026? : r/3Dprinting - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/">https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/</a></li>
+<li>Strategic view of Bambu &amp; Prusa - Part 2 - Corporate Signaling, accessed on January 6, 2026, <a href="https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de">https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de</a></li>
+<li>Should I build my own DIY 3D printer or buy a Bambu Lab A1 Mini? : r/3dprintIndia - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/">https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/</a></li>
+<li>My Prusa Mendel Build - Instructables, accessed on January 6, 2026, <a href="https://www.instructables.com/My-Prusa-Mendel-Build/">https://www.instructables.com/My-Prusa-Mendel-Build/</a></li>
+<li>Shop 3D printers, filaments and accessories | Bambu Lab AU store, accessed on January 6, 2026, <a href="https://au.store.bambulab.com/">https://au.store.bambulab.com/</a></li>
+<li>Australian 3D Printers For Sale, accessed on January 6, 2026, <a href="https://www.3dprintergear.com.au/3d-printers/">https://www.3dprintergear.com.au/3d-printers/</a></li>
+<li>Bambu Lab A1 or A1 mini. Price vs built size : r/BambuLab - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/">https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/</a></li>
+<li>Bambu Lab Printers - 3D Printing Perth, accessed on January 6, 2026, <a href="https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab">https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab</a></li>
+<li>gumyr/build123d: A python CAD programming library - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d">https://github.com/gumyr/build123d</a></li>
 <li>build123d - PyPI, accessed on January 6, 2026, <a href="https://pypi.org/project/build123d/">https://pypi.org/project/build123d/</a></li>
 </ol>
 
