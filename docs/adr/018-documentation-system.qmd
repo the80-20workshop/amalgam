@@ -1,6 +1,6 @@
 ---
 execute:
-  enabled: false
+  eval: false
 ---
 
 # ADR-018: Documentation & Assembly Guide System
