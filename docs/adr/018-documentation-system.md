@@ -96,20 +96,15 @@ We adopt **Quarto** as the documentation and assembly guide system.
 
 ## Integration with build123d (ADR-017)
 
-> **Note on code examples below:** In actual `.qmd` files, executable code blocks use
-> curly braces around the language name: `` ```{python} `` and `` ```{r} ``.
-> The examples below show `python` and `r` without braces to prevent Quarto from
-> attempting to execute them during site rendering.
-
 ### Literate CAD Workflow
-```qmd
+````qmd
 ---
 title: "Corner Bracket Assembly"
 ---
 
 ## Build the Corner Bracket
 
-```python
+```{{python}}
 #| label: fig-corner
 #| echo: false
 from include.corner_components import make_standard_corner
@@ -127,13 +122,13 @@ corner.visualize()
 ## Assembly Steps
 
 1. **Install M12 Rods** (@fig-rods): Thread rods through corner...
-```
+````
 
 ### Automated BOM Generation
-```qmd
+````qmd
 ## Bill of Materials
 
-```python
+```{{python}}
 #| label: tbl-bom
 #| echo: false
 import pandas as pd
@@ -148,15 +143,15 @@ bom
 ```
 
 **Table 1**: BOM for `@tbl-tier` configuration.
-```
+````
 
 ### Conditional Content
-```qmd
+````qmd
 ---
 title: "Assembly Guide"
 ---
 
-```r
+```{{r}}
 #| echo: false
 #| include: false
 #| condition: meta.tier == 3
@@ -168,7 +163,7 @@ title: "Assembly Guide"
 
 Drill MDF board using template...
 
-```r
+```{{r}}
 #| include: true
 #| condition: meta.tier == 1 || meta.tier == 2
 ```
@@ -178,7 +173,7 @@ Drill MDF board using template...
 {# This section shown for Tier 1 and 2 #}
 
 Place frame on rubber pads...
-```
+````
 
 ### Cross-Referencing
 ```qmd
@@ -276,23 +271,23 @@ bed_type: mk52
 probe_type: superpinda
 ```
 
-```qmd
-```r
+````qmd
+```{{r}}
 #| condition: meta.tier == 3
 ```
 
 Tier 3 content...
 
-```r
+```{{r}}
 #| condition: meta.tier == 1 || meta.tier == 2
 ```
 
 Tier 1/2 content...
-```
+````
 
 ### Code Cell Options
-```qmd
-```python
+````qmd
+```{{python}}
 #| label: fig-part-render
 #| echo: false      # Don't show code
 #| eval: true       # Execute code
@@ -300,7 +295,7 @@ Tier 1/2 content...
 from build123d import *
 part = Box(10, 10, 10)
 part.visualize()  # Generates figure
-```
+````
 
 ### Cross-Referencing Syntax
 - Figures: `@fig-label` or `See @fig-label`
