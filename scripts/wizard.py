@@ -193,6 +193,9 @@ class PartsInventory:
     export_format: str = "stl"  # stl, step, 3mf, brep, gltf, all
     export_drawings: bool = False
 
+    # Brand & cosmetics
+    logo_pad_enabled: bool = True
+
 
 def collect_inventory() -> PartsInventory:
     """Collect parts inventory from user through interactive prompts."""
@@ -355,6 +358,13 @@ def collect_inventory() -> PartsInventory:
 
     export_drawings = get_yes_no("Generate technical drawings (SVG/PDF)?", default=False)
 
+    # --- Brand & Cosmetics ---
+    print_section("Brand & Cosmetics")
+    print("Amalgam parts can include a raised logo pad on visible faces.")
+    print("This is a 0.5mm raised octagon+A mark — swap to white filament")
+    print("at that layer for the signature grey+white look. No MMU needed.")
+    logo_pad = get_yes_no("Add logo pads to printed parts?", default=True)
+
     return PartsInventory(
         motor_count=motor_count,
         motor_source=motor_source,
@@ -370,6 +380,7 @@ def collect_inventory() -> PartsInventory:
         build_z=build_z,
         export_format=export_format,
         export_drawings=export_drawings,
+        logo_pad_enabled=logo_pad,
     )
 
 
@@ -558,6 +569,25 @@ EXPORT_FORMAT = "{inventory.export_format}"
 
 # Generate technical drawings (orthographic projections as SVG/PDF)
 EXPORT_DRAWINGS = {inventory.export_drawings}
+
+# =============================================================================
+# 11. BRAND & COSMETICS
+# =============================================================================
+
+# Official palette (hex). Feeds into exports, docs, and website.
+BRAND_BODY_COLOR = "#4A4A4A"       # Dark Grey — printed parts
+BRAND_ACCENT_COLOR = "#FFFFFF"     # White — logo pad / raised details
+BRAND_BASE_COLOR = "#1A1A1A"       # Near-Black — MDF base, extrusions
+
+# Logo pad on printed parts (raised 0.5mm for filament-swap color change)
+LOGO_PAD_ENABLED = {inventory.logo_pad_enabled}
+LOGO_PAD_DIAMETER = 18.0           # mm, across flats
+LOGO_PAD_HEIGHT = 0.5              # mm raised above surface
+
+# Texture (slicer recommendation, not enforced by geometry)
+FUZZY_SKIN_RECOMMENDED = True
+FUZZY_SKIN_POINT_DISTANCE = 0.3   # mm
+FUZZY_SKIN_THICKNESS = 0.2        # mm
 '''
 
     return config

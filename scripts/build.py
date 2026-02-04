@@ -190,7 +190,7 @@ def build_all(interactive: bool = True):
     if all_success:
         print("\n  All builds completed successfully!")
         print("\n  Next steps:")
-        print("    1. Review STLs in cad/stl/")
+        print("    1. Review exports in cad/exports/")
         print("    2. Open docs/_site/index.html")
         print("    3. Run 'python scripts/analyze.py' for detailed analysis")
     else:

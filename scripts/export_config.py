@@ -82,6 +82,21 @@ def export_quarto_variables():
         # Hotend
         "hotend_type": config.get("HOTEND_TYPE", "E3D_V6_CLONE"),
         "groovemount_dia": config.get("GROOVEMOUNT_DIA", 16.0),
+
+        # Brand palette
+        "brand_body_color": config.get("BRAND_BODY_COLOR", "#4A4A4A"),
+        "brand_accent_color": config.get("BRAND_ACCENT_COLOR", "#FFFFFF"),
+        "brand_base_color": config.get("BRAND_BASE_COLOR", "#1A1A1A"),
+
+        # Logo pad
+        "logo_pad_enabled": config.get("LOGO_PAD_ENABLED", True),
+        "logo_pad_diameter": config.get("LOGO_PAD_DIAMETER", 18.0),
+        "logo_pad_height": config.get("LOGO_PAD_HEIGHT", 0.5),
+
+        # Texture recommendations
+        "fuzzy_skin_recommended": config.get("FUZZY_SKIN_RECOMMENDED", True),
+        "fuzzy_skin_point_distance": config.get("FUZZY_SKIN_POINT_DISTANCE", 0.3),
+        "fuzzy_skin_thickness": config.get("FUZZY_SKIN_THICKNESS", 0.2),
     }
 
     # Add derived values

@@ -48,7 +48,7 @@ BUILD_VOLUME = {"X": 220, "Y": 220, "Z": 220}
 # Extruder overhang on X-axis (Wade needs more than Pitan)
 X_OVERHANG = 50.0 if EXTRUDER_TYPE == "WADE" else 35.0 if EXTRUDER_TYPE == "PITAN" else 25.0
 
-# --- 6.1 FRAME GEOMETRY (Neo-Darwin M12 Frame) ---
+# --- 6.1 FRAME GEOMETRY (Amalgam M10 Frame) ---
 # Frame has 8 vertical rods (4 front, 4 back) with horizontal top/bottom rods
 
 # M12 SKELETON (Reduced height from 80 to 50 for efficiency)
@@ -120,7 +120,32 @@ EXPORT_FORMAT = "stl"
 EXPORT_DRAWINGS = False
 
 
-# --- 8. UTILITIES ---
+# --- 8. BRAND & COSMETICS ---
+# The Amalgam visual identity: Dark Grey body, White logo accent, Black base.
+# Creates a layered look: black base → grey parts with white logos → silver hardware.
+
+# Official palette (hex). Feeds into 3MF/glTF exports, docs, and website.
+BRAND_BODY_COLOR = "#4A4A4A"       # Dark Grey — printed parts
+BRAND_ACCENT_COLOR = "#FFFFFF"     # White — logo pad / raised details
+BRAND_BASE_COLOR = "#1A1A1A"       # Near-Black — MDF base (painted), aluminum extrusions
+
+# Logo pad on printed parts.
+# A raised 0.5mm pad with the Amalgam octagon+A mark.
+# Print in body color, then filament-swap to white at the pad layer for accent.
+# No MMU required — single pause/swap at the right layer height.
+LOGO_PAD_ENABLED = True            # Set False for plain parts (no branding)
+LOGO_PAD_DIAMETER = 18.0           # mm, across flats
+LOGO_PAD_HEIGHT = 0.5              # mm raised above surface (2-3 layers at 0.2mm)
+
+# Texture recommendation (applied in slicer, not in geometry).
+# Fuzzy skin on cosmetic surfaces gives an industrial "cast iron" texture,
+# hides layer lines, and adds grip. Leave functional mating surfaces smooth.
+FUZZY_SKIN_RECOMMENDED = True
+FUZZY_SKIN_POINT_DISTANCE = 0.3   # mm between fuzzy points
+FUZZY_SKIN_THICKNESS = 0.2        # mm fuzzy skin depth
+
+
+# --- 9. UTILITIES ---
 def print_config_summary():
     """Manifesto Transparency Check"""
     print(f"--- Darwin-Neo Configuration: {DONOR_TYPE} Path ---")

@@ -37,8 +37,8 @@ def get_parts_dir() -> Path:
 
 
 def get_stl_dir() -> Path:
-    """Get the cad/stl/ directory path."""
-    return get_cad_dir() / "stl"
+    """Get the cad/exports/stl/ directory path."""
+    return get_cad_dir() / "exports" / "stl"
 
 
 def discover_parts() -> list[Path]:

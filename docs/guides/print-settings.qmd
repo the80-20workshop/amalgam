@@ -1,0 +1,123 @@
+---
+title: "Print Settings & Brand Guide"
+---
+
+# Amalgam Print Settings
+
+Recommended settings for printing Amalgam parts. These are suggestions — the parts work in any color and without texture. But following the brand palette gives your build a distinctive, intentional look.
+
+## The Palette
+
+Amalgam uses a three-color system from cheap, universally available filaments:
+
+| Role | Color | Hex | Used For |
+|------|-------|-----|----------|
+| **Body** | Dark Grey | {{< var brand_body_color >}} | All printed parts |
+| **Accent** | White | {{< var brand_accent_color >}} | Logo pads (filament swap) |
+| **Base** | Near-Black | {{< var brand_base_color >}} | MDF base (painted), aluminum extrusions |
+
+**Visual hierarchy:** Black base and frame → Dark grey printed parts with white logos → Silver hardware (bolts, rods, bearings).
+
+### Why These Colors?
+
+- **Grey is the tractor color.** Cast iron, concrete, industrial machinery — all grey. It's the one color no other printer project owns.
+- **White logos pop** against dark grey without being flashy. Same contrast as the website and logo.
+- **Black base disappears**, letting the grey structural parts stand out.
+- **All three filament colors are the cheapest available.** No specialty colors needed.
+
+## Logo Pads
+
+::: {.callout-note}
+Logo pads are currently **{{< var logo_pad_enabled >}}** in your config.
+Pad size: {{< var logo_pad_diameter >}}mm, raised {{< var logo_pad_height >}}mm.
+:::
+
+Each structural part has a small raised pad with the Amalgam octagon+A mark. The pad is {{< var logo_pad_height >}}mm above the surface — just 2-3 print layers at standard settings.
+
+### Single-Swap Color Change
+
+No multi-material unit (MMU) required. Just one filament swap:
+
+1. **Slice the part** in your grey filament as normal.
+2. **Add a pause** at the logo pad layer height (the layer where the raised pad starts).
+3. **Swap to white filament** when the printer pauses.
+4. **Resume printing.** The logo pad prints in white.
+5. **Swap back to grey** after the pad completes (2-3 layers later), or leave white for the remaining top layers if the logo is the highest feature.
+
+#### Slicer-Specific Instructions
+
+**PrusaSlicer / OrcaSlicer:**
+
+1. Slice the part and open the layer preview.
+2. Find the layer where the logo pad starts (look for the small octagon appearing).
+3. Right-click the layer slider → "Add custom G-code" → type `M600` (filament change).
+4. Optionally add another `M600` 2-3 layers later to swap back.
+
+**Cura:**
+
+1. Install the "Filament Change" post-processing script (Extensions → Post Processing → Modify G-Code).
+2. Set the layer number where the logo pad begins.
+3. The printer will pause for filament change at that layer.
+
+**Bambu Studio:**
+
+1. Right-click on the layer bar at the logo pad layer.
+2. Select "Add filament change."
+
+### Disabling Logo Pads
+
+Set `LOGO_PAD_ENABLED = False` in `cad/config.py` to generate parts without logo pads. The parts are structurally identical either way.
+
+## Fuzzy Skin (Texture)
+
+::: {.callout-tip}
+## The "Cast Iron" Look
+Fuzzy skin on cosmetic surfaces gives printed parts an industrial textured finish that:
+
+- **Hides layer lines** (forgiving on a scavenger-built printer)
+- **Adds grip** (textured corners hold rods better during assembly)
+- **Looks intentional** (distinguishes from generic smooth prints)
+:::
+
+### Recommended Settings
+
+| Setting | Value |
+|---------|-------|
+| **Point Distance** | {{< var fuzzy_skin_point_distance >}} mm |
+| **Thickness** | {{< var fuzzy_skin_thickness >}} mm |
+| **Apply to** | Outer surfaces only (not mating faces) |
+
+### Where to Apply
+
+- **Yes:** Outer faces of corners, visible bracket surfaces, cosmetic covers.
+- **No:** Rod channels, bolt holes, bearing seats, any surface that mates with hardware.
+
+Most slicers let you enable fuzzy skin per-model or paint it onto specific surfaces. Apply it only to the "show" faces.
+
+#### Slicer Settings
+
+**PrusaSlicer / OrcaSlicer:** Print Settings → Others → Fuzzy Skin → Type: "Outside Walls"
+
+**Cura:** Search "Fuzzy Skin" in settings → Enable → Fuzzy Skin Outside Only
+
+## MDF Base
+
+Paint the MDF base **matte black** before assembly:
+
+1. Sand the MDF lightly (220 grit).
+2. Apply a coat of PVA wood sealer (prevents MDF from absorbing too much paint).
+3. Apply 2 coats of matte black spray paint or roller paint.
+4. Allow to dry fully before mounting hardware.
+
+The black base visually recedes, making the grey structural parts the focal point. It also seals the MDF against moisture.
+
+## Filament Recommendations
+
+Any brand works. These are common, cheap options:
+
+| Color | Examples |
+|-------|----------|
+| **Dark Grey** | eSun PLA+ Dark Grey, Hatchbox Dark Grey, Polymaker PolyLite Grey |
+| **White** | Any white PLA/PLA+ (you only need a small amount for logo swaps) |
+
+PLA+ is recommended for structural parts (better layer adhesion and impact resistance than standard PLA). PETG is also fine if you prefer it.

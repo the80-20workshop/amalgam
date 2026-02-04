@@ -16,7 +16,7 @@ This section explains how to generate STL files from the parametric CAD files.
 Clone the repository and navigate to the CAD directory:
 
 ```bash
-git clone https://github.com/amalgam-reprap/amalgam.git
+git clone https://github.com/the80-20workshop/amalgam.git
 cd amalgam/cad
 ```
 
@@ -476,7 +476,7 @@ Documentation uses variables from `config.py`:
 
 | System | Command | Output |
 |--------|---------|--------|
-| **CAD/STL** | `./build.sh build_all` | `cad/stl/*.stl` |
+| **CAD/STL** | `./build.sh build_all` | `cad/exports/stl/*.stl` |
 | **Analysis** | `python scripts/analyze.py` | Terminal output |
 | **Documentation** | `quarto render` | `docs/_site/` |
 
@@ -505,7 +505,7 @@ Want to add new parts or improve existing ones?
 
 ## Getting Help
 
-- **Issues**: [GitHub Issues](https://github.com/amalgam-reprap/amalgam/issues)
+- **Issues**: [GitHub Issues](https://github.com/the80-20workshop/amalgam/issues)
 - **Discussions**: Coming soon
 - **Documentation**: See `docs/` directory for detailed design docs
 

@@ -43,6 +43,7 @@ Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADR
 | [ADR-026](026-donor-fitness-constraints.md) | Donor Fitness & Frame Constraints | **Accepted** | Bed size and Z-height fitness tiers; stability limits; heatbed swap guidance |
 | [ADR-027](027-build-plate-surfaces.md) | Build Plate Surface Selection | **Accepted** | Donor surfaces preferred; G10/FR4 for replacement; thickness scaling by bed size |
 | [ADR-028](028-target-filaments.md) | Target Filament Selection | **Accepted** | PLA, PETG, TPU as primary (80/20 rule); ABS possible but not optimized |
+| [ADR-029](029-brand-palette.md) | Brand Palette & Visual Identity | **Accepted** | Grey/White/Black palette; optional logo pads; fuzzy skin texture; cheapest filaments |
 
 ### Foundation & Electronics ADRs
 
@@ -69,11 +70,12 @@ Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADR
 | [ADR-017](017-parametric-cad-system.md) | Parametric CAD System | Accepted | build123d over OpenSCAD/FreeCAD/TinkerCAD for BREP and Python ecosystem |
 | [ADR-018](018-documentation-system.md) | Documentation & Assembly Guide System | Accepted | Quarto for literate CAD, professional PDFs, conditional content |
 | [ADR-019](019-pitan-extruder.md) | Pitan Extruder | Accepted | Single-drive, scavengeable NEMA17, $4-10 cost (supersedes ADR-002) |
+| [ADR-030](030-multi-format-exports.md) | Multi-Format Export System | **Accepted** | STL, STEP, 3MF, glTF, DXF, SVG from single source; Python builds, everyone else consumes |
 
 ## ADR Categories
 
-### Core Hardware (001, 004, 019, 021, 025, 027, 028)
-Frame, extruder, hotend, motion system, build surface, and target filaments - the physical foundation of the machine.
+### Core Hardware (001, 004, 019, 021, 025, 027, 028, 029)
+Frame, extruder, hotend, motion system, build surface, target filaments, and brand identity - the physical foundation of the machine.
 - ADR-025: Multi-Frame Architecture (Scaffold, Mill, Lathe paths - all on MDF base)
 - ADR-001: M10 Frame Skeleton (Scaffold path)
 - ADR-021: Dual-Rod Motion System (Dual 8mm vertical stacking - Scaffold/Lathe)
@@ -81,6 +83,7 @@ Frame, extruder, hotend, motion system, build surface, and target filaments - th
 - ADR-019: Pitan Extruder (Reference Spec)
 - ADR-027: Build Plate Surface (donor surfaces or G10 replacement)
 - ADR-028: Target Filaments (PLA, PETG, TPU — 80/20 rule)
+- ADR-029: Brand Palette (Grey/White/Black — industrial tractor aesthetic)
 
 ### Motion & Leveling (005, 007-010)
 Z-axis leveling, CAN bus, modular bed, and Z-motor mounting - kinematic accuracy and foundation.
@@ -91,8 +94,8 @@ Baseboard, mainboard, drivers, endstops, and electronics mounting - "Brain" and 
 ### Tooling & Probing (014-015)
 Z-probe selection and toolhead architecture - single/multi-material capability.
 
-### Software & Tooling (017-018)
-CAD system and documentation - parametric design and assembly guides.
+### Software & Tooling (017-018, 030)
+CAD system, documentation, and export pipeline - parametric design, assembly guides, and multi-format distribution.
 
 ## Reading Order for New Contributors
 
@@ -101,12 +104,12 @@ If you're new to Amalgam and want to understand the engineering decisions:
 1. **Engineering Philosophy** → ADR-000
 2. **Frame & Donor Selection** → ADR-025 (Multi-Frame: Scaffold, Mill, Lathe paths)
 3. **Donor Fitness & Constraints** → ADR-026 (Bed size, Z-height, stability limits)
-4. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend), ADR-028 (Target Filaments)
+4. **Hardware Foundations** → ADR-001 (M10 Frame), ADR-019 (Pitan Extruder), ADR-004 (Hotend), ADR-028 (Target Filaments), ADR-029 (Brand Palette)
 5. **Motion System** → ADR-021 (Dual-Rod Motion), ADR-005 (Triple-Z), ADR-024 (Bed Size), ADR-027 (Build Surface)
 6. **Electronics** → ADR-012, 013
 7. **Probing** → ADR-014
 8. **Advanced Features** → ADR-007, 009, 011, 015, 016
-9. **Tooling** → ADR-017, 018
+9. **Tooling** → ADR-017, 018, ADR-030 (Multi-Format Exports)
 
 **For Donors:** Start with ADR-025, then ADR-026 for fitness constraints. See `docs/reference/donor-printer-guide.md` for per-printer details.
 

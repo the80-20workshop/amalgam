@@ -7,6 +7,7 @@ import sys
 
 from amalgam.lib.corner import make_standard_corner
 from amalgam.lib.export import export_part
+from amalgam.lib.logo_pad import apply_logo_pad
 
 try:
     from config import *
@@ -28,6 +29,9 @@ def main():
         wall_thickness=WALL_THICKNESS,
         jam_nut_access_dia=JAM_NUT_ACCESS_DIA,
     )
+
+    # Apply optional brand logo pad
+    corner = apply_logo_pad(corner, face="top")
 
     # Export using centralized export module
     print("\nExporting...")

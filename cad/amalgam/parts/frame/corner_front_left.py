@@ -8,6 +8,7 @@ import sys
 
 from amalgam.lib.corner import make_motorized_corner
 from amalgam.lib.export import export_part
+from amalgam.lib.logo_pad import apply_logo_pad
 
 try:
     from config import *
@@ -25,6 +26,9 @@ def main():
 
     # Generate front-left corner (default orientation, no mirror)
     corner_1 = make_motorized_corner(location="front_left", mirror=False)
+
+    # Apply optional brand logo pad
+    corner_1 = apply_logo_pad(corner_1, face="top")
 
     # Export using centralized export module
     print("\nExporting...")

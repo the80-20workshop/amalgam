@@ -13,13 +13,16 @@ This document provides coding standards and workflows for AI agents working on t
 cd cad
 
 # Test single part (fastest iteration)
-.venv/bin/python parts/corner_standard.py
+.venv/bin/python amalgam/parts/frame/corner_standard.py
 
 # Build all parts
 ./build.sh build_all
 
 # Build specific part
 ./build.sh build corner_standard
+
+# Build with specific format
+./build.sh build corner_standard --format step
 
 # List parts
 ./build.sh list
@@ -40,21 +43,32 @@ pytest             # Run tests
 ### File Structure
 ```
 cad/
-├── include/              # Shared components
-│   └── *_components.py
-├── parts/                # Individual parts
-│   └── *.py
-├── config.py.example      # Reference config
-├── config.py            # User config (gitignored)
-└── build.sh             # Build script
+├── amalgam/
+│   ├── lib/              # Shared components
+│   │   ├── export.py     # Multi-format export system
+│   │   ├── corner.py     # Corner components
+│   │   └── logo.py       # Logo generation
+│   └── parts/            # Individual parts (by category)
+│       ├── frame/        # Frame parts
+│       ├── motion/       # Motion system parts
+│       ├── extruder/     # Extruder parts
+│       ├── bed/          # Bed parts
+│       ├── calibration/  # Calibration prints
+│       └── victory/      # Fun/reward parts
+├── exports/              # Generated output (by format)
+│   ├── stl/
+│   ├── step/
+│   ├── 3mf/
+│   └── drawings/
+├── config.py.example     # Reference config
+├── config.py             # User config (gitignored)
+└── build.sh              # Build script
 ```
 
 ### Import Pattern (parts/)
 ```python
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-
-from include.corner_components import make_standard_corner
+from amalgam.lib.export import export_part
+from amalgam.lib.corner import make_standard_corner
 
 try:
     from config import *
@@ -66,16 +80,18 @@ except ImportError:
     sys.exit(1)
 
 def main():
-    from build123d import export_stl as export_stl_func
     # ... generate part ...
-    export_stl_func(part, "stl/filename.stl")
+    export_part(part, "my_part_name")  # Uses config default format
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### Naming
 - Files: `snake_case.py`
 - Functions: `snake_case`
 - Constants: `UPPER_SNAKE_CASE` (from config)
-- STL files: Match part name (`corner_standard.py` → `corner_standard.stl`)
+- Exports: Match part name (`corner_standard.py` → `exports/stl/corner_standard.stl`)
 
 ### Config Usage
 **Always use config values - no fallbacks for dimensions:**
@@ -83,11 +99,11 @@ def main():
 # CORRECT
 corner = make_standard_corner(
     corner_size=CORNER_SIZE,
-    m12_fit_dia=M12_FIT_DIA,
+    m10_fit_dia=M10_FIT_DIA,
 )
 
 # INCORRECT (hardcoded)
-corner = make_standard_corner(corner_size=50.0, m12_fit_dia=12.5)
+corner = make_standard_corner(corner_size=50.0, m10_fit_dia=10.5)
 ```
 
 ### build123d Patterns
@@ -106,11 +122,32 @@ hole = hole.rotate(Axis.Z, 90)
 
 ---
 
+## Export System
+
+The multi-format export system supports STL, STEP, 3MF, BREP, glTF, DXF, SVG, and technical drawings.
+
+```python
+from amalgam.lib.export import export_part
+
+# Default format (from config.py or STL)
+export_part(part, "my_part")
+
+# Specific format(s)
+export_part(part, "my_part", formats=["stl", "step"])
+
+# All 3D formats
+export_part(part, "my_part", formats="all")
+```
+
+Output goes to `cad/exports/<format>/` (e.g., `cad/exports/stl/my_part.stl`).
+
+---
+
 ## Common Pitfalls
 
 1. Missing config.py → Exit with error (no fallbacks)
-2. Wrong import path → Use `os.path.dirname(os.path.dirname(__file__))`
-3. STL location → Export to `stl/`, not `parts/`
+2. Wrong import path → Use `from amalgam.lib.<module> import ...`
+3. Export location → Use `export_part()`, not direct `export_stl()`
 4. Method names → Use `.rotate()`, not `.rotated()`
 5. Hardcoded dims → Always use `config.py` for fit parameters
 

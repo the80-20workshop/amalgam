@@ -10,7 +10,9 @@
 
 Amalgam is a scavenger-friendly 3D printer — a high-mass, fully parametric machine built from two donor printers and open-source intelligence. The name reflects its nature: an amalgam of salvaged parts merged into something new.
 
-**Expected Release:** Q2/Q3 2026
+**Website:** [theamalgam.org](https://theamalgam.org)
+
+**Expected Release:** End of 2026
 
 ---
 
@@ -35,7 +37,7 @@ We build a **"Tractor with the Brain of a Racecar"** — using heavy, high-torqu
 ### Option 1: Configuration Wizard (Recommended)
 
 ```bash
-git clone https://github.com/amalgam-3d/amalgam.git  # URL pending rename
+git clone https://github.com/the80-20workshop/amalgam.git
 cd amalgam
 
 # Run the wizard - it asks what donor printers you have
@@ -44,7 +46,7 @@ python scripts/wizard.py
 
 The wizard:
 1. Asks what donor printers you have
-2. Recommends a frame path (Scaffold, Mill, or Lathe)
+2. Recommends a frame path (Darwin, S-Core, or V-Core)
 3. Generates `config.py` for your specific build
 4. Runs engineering analysis
 
@@ -59,12 +61,12 @@ python scripts/whatif.py --compare-rods
 python scripts/whatif.py --compare-beds
 ```
 
-### Option 3: Build STL Parts
+### Option 3: Build Parts
 
 ```bash
 cd cad
 ./setup.sh        # First time: creates venv, installs deps, configures
-./build.sh build_all   # Build all STL files
+./build.sh build_all   # Build all parts
 ```
 
 See [BUILDING.md](BUILDING.md) for complete guide.
@@ -77,11 +79,11 @@ Amalgam requires **two donor printers**. The frame path depends on what you scav
 
 | Path | Frame | Motion | Best Donors | Character |
 |------|-------|--------|-------------|-----------|
-| **Scaffold** | M10 Threaded Rod + MDF | Smooth Rods | Anet A8, Wanhao, Prusa i3 clones | Heritage — RepRap Darwin tribute |
-| **Mill** | Aluminum Extrusion + MDF | V-Slots | Ender 3, CR-10, Voxelab Aquila | Zero-waste — use everything |
-| **Lathe** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | Precision — best motion quality |
+| **Darwin** | M10 Threaded Rod + MDF | Smooth Rods | Anet A8, Wanhao, Prusa i3 clones | Heritage — RepRap Darwin tribute |
+| **V-Core** | Aluminum Extrusion + MDF | V-Slots | Ender 3, CR-10, Voxelab Aquila | Zero-waste — use everything |
+| **S-Core** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | Precision — best motion quality |
 
-**Cost:** ~$160-280 depending on path (Mill cheapest, Lathe ~$75 more for better motion).
+**Cost:** ~$160-280 depending on path (V-Core cheapest, S-Core ~$75 more for better motion).
 
 **All paths share:** MDF base (squaring jig + damping), Triple-Z leveling, Pitan extruder, E3D V6, Klipper.
 
@@ -110,7 +112,7 @@ Amalgam requires **two donor printers**. The frame path depends on what you scav
 
 We stand on the shoulders of giants:
 
-* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** Box-frame threaded-rod origin. Inspired our "Scaffold" frame path.
+* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** Box-frame threaded-rod origin. Inspired our "Darwin" frame path.
 * **[RepRap Mendel (2009)](https://reprap.org/wiki/Mendel):** The "plough" X-carriage sled design.
 * **[Prusa i3 Rework (2013)](https://www.thingiverse.com/thing:119616):** Greg's Wade geared extruder—ancestor of our Pitan.
 * **[Voron Legacy](https://vorondesign.com/voron_legacy):** Dual 8mm rods with vertical stacking for X-Y gantry.

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Neo-Darwin Setup Wizard
+# Amalgam Setup Wizard
 # Full setup for new users: environment setup, configuration, and building
 # Supports Linux, macOS, and Windows (via Git Bash/WSL)
 
@@ -299,7 +299,7 @@ ask_yes_no() {
 }
 
 main() {
-    print_header "Neo-Darwin Setup Wizard"
+    print_header "Amalgam Setup Wizard"
 
     local os_name=$(detect_os)
     echo "Detected OS: $os_name"
@@ -347,9 +347,9 @@ main() {
     print_header "Setup Complete"
 
     echo ""
-    echo "Your Neo-Darwin environment is ready!"
+    echo "Your Amalgam environment is ready!"
     echo ""
-    echo "STL files are in 'stl' directory"
+    echo "Exports are in the 'exports' directory"
     echo ""
 
     if [ "$USE_UV" = false ]; then

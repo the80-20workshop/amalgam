@@ -2,7 +2,7 @@
 
 The Amalgam build system generates everything you need from a single configuration:
 
-- **STL files** for 3D printing
+- **Parts** for 3D printing (STL, STEP, 3MF, and more)
 - **Documentation** customized to your build
 - **Engineering analysis** to verify your configuration
 
@@ -44,16 +44,23 @@ scripts/
 
 ## The Three Build Systems
 
-### 1. STL Generation (CAD)
+### 1. Part Generation (CAD)
 
-Builds 3D-printable parts from parametric build123d scripts.
+Builds parts from parametric build123d scripts. Supports multiple export formats.
 
 ```bash
 cd cad
-./build.sh build_all
+./build.sh build_all                    # Default format (STL)
+./build.sh build_all --format step      # STEP format
+./build.sh build_all --format all       # All formats
+./build.sh build_all --drawings         # Include technical drawings
 ```
 
-Output: `cad/stl/*.stl`
+Output: `cad/exports/<format>/` (e.g., `cad/exports/stl/`, `cad/exports/step/`)
+
+CAD source structure:
+- `cad/amalgam/lib/` — Shared components and utilities
+- `cad/amalgam/parts/` — Individual part scripts (organized by category)
 
 ### 2. Documentation (Quarto)
 
@@ -199,7 +206,7 @@ python scripts/build.py --wizard    # Run wizard
     ┌────┴────┬──────────┐
     ▼         ▼          ▼
 ┌───────┐ ┌───────┐ ┌─────────┐
-│ STLs  │ │ Docs  │ │Analysis │
+│ Parts │ │ Docs  │ │Analysis │
 │build.sh│ │Quarto │ │analyze.py│
 └───────┘ └───────┘ └─────────┘
 ```
@@ -230,9 +237,10 @@ The wizard auto-detects your tier based on available parts.
 
 ### Adding New Parts (CAD)
 
-1. Create Python file in `cad/parts/`
-2. Import components from `cad/include/`
-3. Parts auto-discovered by `build.sh`
+1. Create Python file in `cad/amalgam/parts/<category>/`
+2. Import components from `cad/amalgam/lib/`
+3. Use `export_part(part, "name")` for output
+4. Parts auto-discovered by `build.sh`
 
 ## Philosophy
 

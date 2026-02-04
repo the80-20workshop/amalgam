@@ -1,4 +1,4 @@
-# Neo-Darwin Documentation
+# Amalgam Documentation
 # Quarto project configuration for config-driven documentation
 
 project:
@@ -6,7 +6,7 @@ project:
   output-dir: _site
 
 website:
-  title: "Neo-Darwin"
+  title: "Amalgam"
   description: "A 2026 RepRap Reference Specification"
 
   navbar:
@@ -28,7 +28,7 @@ website:
         href: adr/index.qmd
     right:
       - icon: github
-        href: https://github.com/amalgam-reprap/amalgam
+        href: https://github.com/the80-20workshop/amalgam
 
   sidebar:
     - title: "Build Guides"
@@ -39,6 +39,9 @@ website:
           contents:
             - guides/frame-assembly.qmd
             - guides/klipper-config.qmd
+        - section: "Reference"
+          contents:
+            - guides/print-settings.qmd
 
 format:
   html:

@@ -26,8 +26,7 @@ title: "Amalgam Documentation"
 | Document | Description |
 |----------|-------------|
 | [Build Guide](guides/index.qmd) | Step-by-step assembly instructions |
-| [Parts List](reference/parts-list.qmd) | Complete BOM for your configuration |
-| [Klipper Config](reference/klipper-config.qmd) | Printer configuration files |
+| [Parts List](reference/MASTER_PARTS_LIST.md) | Complete BOM for your configuration |
 | [ADRs](adr/index.qmd) | Architecture Decision Records |
 
 ## The Amalgam Philosophy
@@ -55,7 +54,7 @@ Amalgam is not designed to compete with consumer printers. It's designed to teac
 
 1. **Run the Wizard**: `python scripts/wizard.py`
 2. **Review Analysis**: `python scripts/analyze.py`
-3. **Build STLs**: `cd cad && ./build.sh build_all`
+3. **Build Parts**: `cd cad && ./build.sh build_all`
 4. **Read the Guide**: Start with [Frame Assembly](guides/frame-assembly.qmd)
 
 ---

@@ -92,3 +92,32 @@ LOOSE_TOLERANCE = 0.4    # Loose fit (sliding)
 # Printing parameters
 MIN_WALL = 1.2           # Minimum wall thickness
 MIN_FLOOR = 0.8          # Minimum floor thickness
+
+# =============================================================================
+# 10. EXPORT SETTINGS
+# =============================================================================
+
+# Default export format: stl, step, 3mf, brep, gltf, or all
+EXPORT_FORMAT = "stl"
+
+# Generate technical drawings (orthographic projections as SVG/PDF)
+EXPORT_DRAWINGS = False
+
+# =============================================================================
+# 11. BRAND & COSMETICS
+# =============================================================================
+
+# Official palette (hex). Feeds into exports, docs, and website.
+BRAND_BODY_COLOR = "#4A4A4A"       # Dark Grey — printed parts
+BRAND_ACCENT_COLOR = "#FFFFFF"     # White — logo pad / raised details
+BRAND_BASE_COLOR = "#1A1A1A"       # Near-Black — MDF base, extrusions
+
+# Logo pad on printed parts (raised 0.5mm for filament-swap color change)
+LOGO_PAD_ENABLED = True            # Set False for plain parts
+LOGO_PAD_DIAMETER = 18.0           # mm, across flats
+LOGO_PAD_HEIGHT = 0.5              # mm raised above surface
+
+# Texture (slicer recommendation, not enforced by geometry)
+FUZZY_SKIN_RECOMMENDED = True
+FUZZY_SKIN_POINT_DISTANCE = 0.3   # mm
+FUZZY_SKIN_THICKNESS = 0.2        # mm

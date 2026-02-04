@@ -125,6 +125,12 @@ def export_to_3mf(part: Part, filepath: Path, name: str = "part") -> None:
     try:
         mesher.add_meta_data("", "Application", "Amalgam CAD (build123d)", "xs:string", False)
         mesher.add_meta_data("", "Title", name, "xs:string", False)
+        # Add brand color hint for slicers that support it
+        try:
+            from amalgam.lib.brand import PALETTE
+            mesher.add_meta_data("", "DisplayColor", PALETTE["body"], "xs:string", False)
+        except ImportError:
+            pass
     except TypeError:
         # Older API or different signature - skip metadata
         pass
@@ -138,6 +144,13 @@ def export_to_brep(part: Part, filepath: Path) -> None:
 
 def export_to_gltf(part: Part, filepath: Path) -> None:
     """Export part to glTF format (binary .glb for web/visualization)."""
+    # Apply brand body color if part has no color set
+    if part.color is None:
+        try:
+            from amalgam.lib.brand import get_body_color
+            part.color = get_body_color()
+        except ImportError:
+            pass
     export_gltf(part, str(filepath), binary=True, unit=Unit.MM)
 
 
