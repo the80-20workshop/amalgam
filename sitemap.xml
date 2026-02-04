@@ -29,6 +29,14 @@
     <lastmod>2026-02-04T04:55:22.038Z</lastmod>
   </url>
   <url>
+    <loc>https://theamalgam.org/articles/reclaiming-the-reprap-legacy.html</loc>
+    <lastmod>2026-02-04T04:55:22.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://theamalgam.org/articles/age-of-the-appliance.html</loc>
+    <lastmod>2026-02-04T04:55:22.037Z</lastmod>
+  </url>
+  <url>
     <loc>https://theamalgam.org/analysis/single-vs-dual-rod.html</loc>
     <lastmod>2026-02-04T04:55:22.036Z</lastmod>
   </url>
@@ -109,8 +117,20 @@
     <lastmod>2026-02-04T04:55:22.119Z</lastmod>
   </url>
   <url>
+    <loc>https://theamalgam.org/deep-dives/index.html</loc>
+    <lastmod>2026-02-04T06:12:03.482Z</lastmod>
+  </url>
+  <url>
+    <loc>https://theamalgam.org/analysis/index.html</loc>
+    <lastmod>2026-02-04T06:12:03.379Z</lastmod>
+  </url>
+  <url>
     <loc>https://theamalgam.org/adr/index.html</loc>
     <lastmod>2026-02-04T05:15:43.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://theamalgam.org/articles/index.html</loc>
+    <lastmod>2026-02-04T06:12:03.576Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/guides/frame-assembly.html</loc>
@@ -122,7 +142,7 @@
   </url>
   <url>
     <loc>https://theamalgam.org/index.html</loc>
-    <lastmod>2026-02-04T04:55:22.119Z</lastmod>
+    <lastmod>2026-02-04T06:12:39.116Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/adr/001-m10-skeleton.html</loc>
@@ -195,6 +215,14 @@
   <url>
     <loc>https://theamalgam.org/analysis/z-height-analysis.html</loc>
     <lastmod>2026-02-04T04:55:22.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://theamalgam.org/articles/core-engineering-truths.html</loc>
+    <lastmod>2026-02-04T04:55:22.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://theamalgam.org/articles/reconfiguration-of-3d-printing-market.html</loc>
+    <lastmod>2026-02-04T04:55:22.038Z</lastmod>
   </url>
   <url>
     <loc>https://theamalgam.org/deep-dives/tractor_01_frame_and_assembly.html</loc>

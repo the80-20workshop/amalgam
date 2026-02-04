@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pitan-extruder – Amalgam</title>
+<title>core-engineering-truths – Amalgam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -297,50 +262,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../articles/core-engineering-truths.html">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Articles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/age-of-the-appliance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>The Amalgam Context: Sovereignty in the Age of the Appliance</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/core-engineering-truths.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/reclaiming-the-reprap-legacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/reconfiguration-of-3d-printing-market.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adr-019-pitan-extruder-reference-specification" id="toc-adr-019-pitan-extruder-reference-specification" class="nav-link active" data-scroll-target="#adr-019-pitan-extruder-reference-specification">ADR-019: Pitan Extruder (Reference Specification)</a>
-  <ul class="collapse">
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
-  <ul class="collapse">
-  <li><a href="#key-insight-single-drive-architecture" id="toc-key-insight-single-drive-architecture" class="nav-link" data-scroll-target="#key-insight-single-drive-architecture">Key Insight: Single-Drive Architecture</a></li>
-  <li><a href="#extruders-evaluated" id="toc-extruders-evaluated" class="nav-link" data-scroll-target="#extruders-evaluated">Extruders Evaluated</a></li>
-  </ul></li>
-  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
-  <ul class="collapse">
-  <li><a href="#why-pitan" id="toc-why-pitan" class="nav-link" data-scroll-target="#why-pitan">Why Pitan?</a></li>
-  <li><a href="#why-not-wade" id="toc-why-not-wade" class="nav-link" data-scroll-target="#why-not-wade">Why Not Wade?</a></li>
-  <li><a href="#why-not-dual-drive-sherpa-orbiter-bmg" id="toc-why-not-dual-drive-sherpa-orbiter-bmg" class="nav-link" data-scroll-target="#why-not-dual-drive-sherpa-orbiter-bmg">Why Not Dual-Drive (Sherpa, Orbiter, BMG)?</a></li>
-  </ul></li>
-  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
-  <ul class="collapse">
-  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
-  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
-  <li><a href="#rod-compatibility-analysis" id="toc-rod-compatibility-analysis" class="nav-link" data-scroll-target="#rod-compatibility-analysis">Rod Compatibility Analysis</a></li>
-  </ul></li>
-  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
-  <ul class="collapse">
-  <li><a href="#reference-build-tier-3" id="toc-reference-build-tier-3" class="nav-link" data-scroll-target="#reference-build-tier-3">Reference Build (Tier 3)</a></li>
-  <li><a href="#scavenger-build-tier-1-2" id="toc-scavenger-build-tier-1-2" class="nav-link" data-scroll-target="#scavenger-build-tier-1-2">Scavenger Build (Tier 1-2)</a></li>
-  </ul></li>
-  <li><a href="#klipper-configuration" id="toc-klipper-configuration" class="nav-link" data-scroll-target="#klipper-configuration">Klipper Configuration</a></li>
-  <li><a href="#alternative-configurations" id="toc-alternative-configurations" class="nav-link" data-scroll-target="#alternative-configurations">Alternative Configurations</a>
-  <ul class="collapse">
-  <li><a href="#heritage-option-gregs-wade-pancake-nema17" id="toc-heritage-option-gregs-wade-pancake-nema17" class="nav-link" data-scroll-target="#heritage-option-gregs-wade-pancake-nema17">Heritage Option: Greg’s Wade + Pancake NEMA17</a></li>
-  <li><a href="#ultra-scavenger-option-mk8-direct-drive" id="toc-ultra-scavenger-option-mk8-direct-drive" class="nav-link" data-scroll-target="#ultra-scavenger-option-mk8-direct-drive">Ultra-Scavenger Option: MK8 Direct Drive</a></li>
-  <li><a href="#use-what-you-have" id="toc-use-what-you-have" class="nav-link" data-scroll-target="#use-what-you-have">Use What You Have</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
+  <li><a href="#motion-systems-bed-slinger-vs.-box-frame-vs.-corexy" id="toc-motion-systems-bed-slinger-vs.-box-frame-vs.-corexy" class="nav-link active" data-scroll-target="#motion-systems-bed-slinger-vs.-box-frame-vs.-corexy">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</a></li>
+  <li><a href="#filament-1.75mm-vs.-3mm-2.85mm" id="toc-filament-1.75mm-vs.-3mm-2.85mm" class="nav-link" data-scroll-target="#filament-1.75mm-vs.-3mm-2.85mm">🧵 2. Filament: 1.75mm vs.&nbsp;3mm (2.85mm)</a></li>
+  <li><a href="#the-dry-filament-mandate" id="toc-the-dry-filament-mandate" class="nav-link" data-scroll-target="#the-dry-filament-mandate">💧 3. The “Dry Filament” Mandate</a></li>
+  <li><a href="#triple-z-and-kinematic-leveling" id="toc-triple-z-and-kinematic-leveling" class="nav-link" data-scroll-target="#triple-z-and-kinematic-leveling">📐 4. Triple-Z and Kinematic Leveling</a></li>
+  <li><a href="#the-software-intelligence-revolution" id="toc-the-software-intelligence-revolution" class="nav-link" data-scroll-target="#the-software-intelligence-revolution">🧠 5. The “Software Intelligence” Revolution</a></li>
+  <li><a href="#general-reprap-wisdom" id="toc-general-reprap-wisdom" class="nav-link" data-scroll-target="#general-reprap-wisdom">📦 6. General “RepRap Wisdom”</a></li>
+  <li><a href="#the-tractor-racecar-motion-balance" id="toc-the-tractor-racecar-motion-balance" class="nav-link" data-scroll-target="#the-tractor-racecar-motion-balance">🚜 1. The “Tractor-Racecar” Motion Balance</a></li>
+  <li><a href="#to-mount-or-not-to-mount-psu-filament" id="toc-to-mount-or-not-to-mount-psu-filament" class="nav-link" data-scroll-target="#to-mount-or-not-to-mount-psu-filament">📦 2. To Mount or Not to Mount? (PSU &amp; Filament)</a></li>
+  <li><a href="#multi-toolhead-vs.-multi-color-the-waste-debate" id="toc-multi-toolhead-vs.-multi-color-the-waste-debate" class="nav-link" data-scroll-target="#multi-toolhead-vs.-multi-color-the-waste-debate">🌈 3. Multi-Toolhead vs.&nbsp;Multi-Color (The Waste Debate)</a></li>
+  <li><a href="#other-distilled-wisdom-gems" id="toc-other-distilled-wisdom-gems" class="nav-link" data-scroll-target="#other-distilled-wisdom-gems">📜 4. Other “Distilled Wisdom” Gems</a></li>
+  <li><a href="#the-amalgam-square-speed-quality-cost-and-effort" id="toc-the-amalgam-square-speed-quality-cost-and-effort" class="nav-link" data-scroll-target="#the-amalgam-square-speed-quality-cost-and-effort">📐 The Amalgam Square: Speed, Quality, Cost, and Effort</a></li>
+  <li><a href="#the-battle-tested-wisdom-why-the-triangle-shifts" id="toc-the-battle-tested-wisdom-why-the-triangle-shifts" class="nav-link" data-scroll-target="#the-battle-tested-wisdom-why-the-triangle-shifts">🏛️ The “Battle-Tested” Wisdom: Why the Triangle Shifts</a></li>
+  <li><a href="#the-distilled-pillars-of-truth" id="toc-the-distilled-pillars-of-truth" class="nav-link" data-scroll-target="#the-distilled-pillars-of-truth">💎 The Distilled “Pillars of Truth”</a></li>
   </ul>
 </nav>
     </div>
@@ -350,322 +341,188 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="adr-019-pitan-extruder-reference-specification" class="level1">
-<h1>ADR-019: Pitan Extruder (Reference Specification)</h1>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Accepted (supersedes ADR-002)</p>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The extruder choice is critical to Amalgam’s philosophy of building a “Tractor with the Brain of a Racecar.” After extensive evaluation documented in:</p>
+<p>After two decades of RepRap development, the “distilled wisdom” of the 3D printing community has moved beyond just the “Amalgam” philosophy. It now focuses on the balance between physical mass, software intelligence, and environmental control.</p>
+<p>Here are the core engineering truths distilled from 20 years of RepRap history:</p>
+<section id="motion-systems-bed-slinger-vs.-box-frame-vs.-corexy" class="level3">
+<h3 class="anchored" data-anchor-id="motion-systems-bed-slinger-vs.-box-frame-vs.-corexy">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</h3>
+<p>The evolution of motion systems reflects a shift from <strong>Simplicity</strong> to <strong>Performance</strong>.</p>
 <ul>
-<li><code>docs/decisions/tractor_06_extruder_decision.md</code> (comprehensive analysis)</li>
-<li><code>docs/reference/ai-conversations/pitian-v-orbiter.md</code></li>
-<li><code>docs/reference/ai-conversations/single-v-dual-drive.md</code></li>
+<li><strong>Bed-Slinger (Cartesian):</strong> These are the “early heroes” of the hobbyist scene, prized for their low cost and ease of maintenance. Their primary drawback is <strong>inertia</strong>; rapidly slinging a heavy bed creates vibrations and “ghosting,” especially as parts get taller and heavier.</li>
+<li><strong>Box-Style Cartesian:</strong> Often used in professional environments, these provide far better <strong>thermal consistency</strong> and reliability for engineering materials like ABS or PC.</li>
+<li><strong>CoreXY:</strong> Currently the “motion system of choice” for high performance. By keeping motors stationary and minimizing moving mass, it achieves high acceleration and excellent surface accuracy without sacrificing quality. However, CoreXY is less forgiving than Cartesian systems; belt tensioning and frame squareness are critical.</li>
 </ul>
-<p>We reconsidered the original Greg’s Wade decision (ADR-002) and evaluated multiple alternatives.</p>
-<section id="key-insight-single-drive-architecture" class="level3">
-<h3 class="anchored" data-anchor-id="key-insight-single-drive-architecture">Key Insight: Single-Drive Architecture</h3>
-<p>A critical discovery shaped this decision: <strong>dual-drive extruders introduce gear mesh artifacts</strong> that affect print quality consistency. When two drive gears mesh, microscopic variations in tooth engagement create periodic pressure fluctuations on the filament.</p>
-<p>This is one reason Bambu Lab printers—known for print quality—use single-drive designs. For Amalgam’s quality-focused philosophy at 80-120mm/s, single-drive advantages outweigh dual-drive TPU benefits.</p>
+<hr>
 </section>
-<section id="extruders-evaluated" class="level3">
-<h3 class="anchored" data-anchor-id="extruders-evaluated">Extruders Evaluated</h3>
+<section id="filament-1.75mm-vs.-3mm-2.85mm" class="level3">
+<h3 class="anchored" data-anchor-id="filament-1.75mm-vs.-3mm-2.85mm">🧵 2. Filament: 1.75mm vs.&nbsp;3mm (2.85mm)</h3>
+<p>The industry has effectively standardized on <strong>1.75mm</strong>, and for good reason:</p>
+<ul>
+<li><strong>Flow Control:</strong> 1.75mm filament is easier to melt and requires less force to extrude, allowing for finer flow control and more responsive retractions.</li>
+<li><strong>Thermal Efficiency:</strong> Because it has a higher surface-area-to-volume ratio than 3mm filament, it heats up more consistently, which is critical for the high-speed printing demanded in 2026.</li>
+<li><strong>Detail:</strong> Finer filaments allow for more precise control over the volume of plastic exiting the nozzle, which is essential for high-detail work.</li>
+</ul>
+<hr>
+</section>
+<section id="the-dry-filament-mandate" class="level3">
+<h3 class="anchored" data-anchor-id="the-dry-filament-mandate">💧 3. The “Dry Filament” Mandate</h3>
+<p>In 2026, drying filament is no longer considered “optional” for high-quality results.</p>
+<ul>
+<li><strong>Hygroscopy:</strong> Most filaments (especially Nylon, TPU, and PETG) are “hygroscopic,” meaning they absorb water from the air.</li>
+<li><strong>Mechanical Failure:</strong> Moist filament causes steam bubbles to form in the nozzle, leading to popping sounds, “surface fuzz,” and severe drops in <strong>layer adhesion</strong> (wet Nylon can lose up to 40% of its stiffness).</li>
+<li><strong>Dryers are Essential:</strong> A dedicated filament dryer ensures consistent results and prevents “blistering” or uneven extrusion that is often misdiagnosed as a printer hardware problem.</li>
+</ul>
+<hr>
+</section>
+<section id="triple-z-and-kinematic-leveling" class="level3">
+<h3 class="anchored" data-anchor-id="triple-z-and-kinematic-leveling">📐 4. Triple-Z and Kinematic Leveling</h3>
+<p>The transition from single or dual Z-axes to <strong>Triple-Z</strong> represents a shift from “correcting” errors to “eliminating” them.</p>
+<ul>
+<li><strong>True Leveling:</strong> A Triple-Z setup uses three independent motors to physically tilt the bed until it is perfectly parallel to the gantry.</li>
+<li><strong>Stability:</strong> This 3-point system is more precise than cantilevered or dual-Z designs because it provides a stable “tripod” foundation that resists vibrations and lead-screw “wobble”.</li>
+<li><strong>Set-and-Forget:</strong> Auto-leveling with Triple-Z provides a “set-and-forget” experience that removes human error from the first-layer equation.</li>
+</ul>
+<hr>
+</section>
+<section id="the-software-intelligence-revolution" class="level3">
+<h3 class="anchored" data-anchor-id="the-software-intelligence-revolution">🧠 5. The “Software Intelligence” Revolution</h3>
+<p>The greatest jump in the last 20 years hasn’t been just in iron, but in <strong>math</strong>.</p>
+<ul>
+<li><strong>Input Shaping:</strong> This software technique cancels out the physical resonances of a frame. It allows a heavy “Tractor” frame to move as precisely as a lightweight racecar by predicting and counter-acting vibrations.</li>
+<li><strong>Pressure Advance:</strong> This compensates for the “ooze” or elasticity of molten plastic, ensuring that corners are sharp and extrusion is consistent even during rapid speed changes.</li>
+</ul>
+<hr>
+</section>
+<section id="general-reprap-wisdom" class="level3">
+<h3 class="anchored" data-anchor-id="general-reprap-wisdom">📦 6. General “RepRap Wisdom”</h3>
+<ul>
+<li><strong>Mass is a Double-Edged Sword:</strong> High-mass frames (like the Amalgam M12) dampen high-frequency ringing but require more torque to move.</li>
+<li><strong>Drafts are the Enemy:</strong> Keeping the print area draft-free is essential to minimize warping and delamination, especially for materials like ABS.</li>
+<li><strong>Over-Cooling Kills Strength:</strong> Too much fan cooling can destroy inter-layer bonding; sometimes “ugly” prints with less cooling are mechanically stronger.</li>
+<li><strong>Fasteners in Plastic:</strong> Don’t over-tighten bolts running through printed parts; plastic deforms over time. Use <strong>nylon locking nuts</strong> or jam nuts to prevent them from backing out due to vibration.</li>
+</ul>
+<p>The engineering consensus after 20 years of RepRap history has settled on a “Rigid Base, Agile Head” philosophy. Your intuition about mass and weight is the foundation of high-performance 3D printing in 2026.</p>
+</section>
+<section id="the-tractor-racecar-motion-balance" class="level3">
+<h3 class="anchored" data-anchor-id="the-tractor-racecar-motion-balance">🚜 1. The “Tractor-Racecar” Motion Balance</h3>
+<p>The ideal setup is a <strong>high-mass frame</strong> paired with a <strong>low-weight gantry</strong>.</p>
+<ul>
+<li><strong>High-Mass Frame:</strong> A heavy frame (like the M12 steel skeleton) acts as a mechanical “battery” that absorbs and dampens high-frequency vibrations. This provides <strong>structural authority</strong>, ensuring the machine doesn’t physically shake itself out of alignment during rapid moves.</li>
+<li><strong>Low-Weight Gantry:</strong> Every gram you remove from the moving gantry (X and Y axes) reduces <strong>inertia</strong>. A lightweight toolhead can stop, start, and change direction instantly without “ghosting” or ringing artifacts.</li>
+<li><strong>The Conflict:</strong> High-torque “Tractor” extruders like the <strong>Greg’s Wade</strong> are heavy. While they provide superior reliability, they limit outright speed. This is why the Amalgam is a “Tractor”—it trades the lightning-fast speed of a lightweight carriage for the <strong>unstoppable flow</strong> and quality of a geared motor.</li>
+</ul>
+<hr>
+</section>
+<section id="to-mount-or-not-to-mount-psu-filament" class="level3">
+<h3 class="anchored" data-anchor-id="to-mount-or-not-to-mount-psu-filament">📦 2. To Mount or Not to Mount? (PSU &amp; Filament)</h3>
+<p>Deciding where to bolt your “Vitamins” is a trade-off between <strong>Rigidity</strong> and <strong>Vibration</strong>.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 21%">
-<col style="width: 12%">
-<col style="width: 21%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Extruder</th>
-<th>Drive Type</th>
-<th>Motor</th>
-<th>Cost (AUD)</th>
-<th>Weight</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Greg’s Wade</td>
-<td>Single</td>
-<td>NEMA17</td>
-<td>$2-5</td>
-<td>360-600g</td>
-<td>Heritage Option</td>
-</tr>
-<tr class="even">
-<td>MK8/MK9</td>
-<td>Single</td>
-<td>NEMA17</td>
-<td>$0-6</td>
-<td>150-200g</td>
-<td>Ultra-Scavenger</td>
-</tr>
-<tr class="odd">
-<td>Sherpa Mini</td>
-<td>Dual</td>
-<td>NEMA14</td>
-<td>$22-34</td>
-<td>110-127g</td>
-<td>Not selected (dual-drive)</td>
-</tr>
-<tr class="even">
-<td>Orbiter v1.5</td>
-<td>Dual</td>
-<td>LDO specific</td>
-<td>$60-100</td>
-<td>140-150g</td>
-<td>Not selected (cost, dual-drive)</td>
-</tr>
-<tr class="odd">
-<td>LGX Lite</td>
-<td>Dual</td>
-<td>NEMA14</td>
-<td>$120-150</td>
-<td>150-165g</td>
-<td>Not selected (cost, dual-drive)</td>
-</tr>
-<tr class="even">
-<td><strong>Pitan</strong></td>
-<td><strong>Single</strong></td>
-<td><strong>NEMA17</strong></td>
-<td><strong>$4-10</strong></td>
-<td><strong>260-300g</strong></td>
-<td><strong>Reference Spec</strong></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="decision" class="level2">
-<h2 class="anchored" data-anchor-id="decision">Decision</h2>
-<p>We choose the <strong>Pitan Extruder</strong> (Printable Titan) as the Amalgam Reference Specification.</p>
-<section id="why-pitan" class="level3">
-<h3 class="anchored" data-anchor-id="why-pitan">Why Pitan?</h3>
-<ol type="1">
-<li><strong>Single-Drive Design</strong>: No gear mesh artifacts—cleaner extrusion consistency</li>
-<li><strong>Scavengeable Motor</strong>: Uses standard NEMA17 from any donor printer (Ender 3, Prusa, etc.)</li>
-<li><strong>Fully Printable</strong>: Body and gears can be printed—true RepRap spirit</li>
-<li><strong>3:1 Gear Ratio</strong>: Adequate torque for PLA, PETG, and careful TPU work</li>
-<li><strong>Budget</strong>: $4-10 total vs $20-150 for alternatives</li>
-<li><strong>M8 Rod Compatible</strong>: At 260-300g, works with M8 smooth rods at spans up to 280mm</li>
-<li><strong>Repairability</strong>: “If a gear breaks, you have a new one before your coffee gets cold”</li>
-</ol>
-</section>
-<section id="why-not-wade" class="level3">
-<h3 class="anchored" data-anchor-id="why-not-wade">Why Not Wade?</h3>
-<p>The Greg’s Wade was our original choice (ADR-002) but has limitations:</p>
-<ul>
-<li><strong>3.00mm Design</strong>: Originally designed for 3mm filament; 1.75mm adaptation has exposed filament path—TPU will buckle</li>
-<li><strong>Heavy</strong>: Full NEMA17 variant (450-600g) requires M10 smooth rods or causes excessive sag</li>
-<li><strong>Pancake Limitation</strong>: Pancake motor reduces weight but also reduces torque headroom</li>
-</ul>
-<p>The Wade is preserved as a <strong>Heritage Option</strong> for builders who value pure RepRap roots and only print PLA/PETG.</p>
-</section>
-<section id="why-not-dual-drive-sherpa-orbiter-bmg" class="level3">
-<h3 class="anchored" data-anchor-id="why-not-dual-drive-sherpa-orbiter-bmg">Why Not Dual-Drive (Sherpa, Orbiter, BMG)?</h3>
-<ul>
-<li><strong>Gear mesh artifacts</strong>: Two meshing gears create periodic micro-variations in extrusion pressure</li>
-<li><strong>Specific motors</strong>: Sherpa needs NEMA14 pancake with pinion ($14-21); Orbiter needs LDO motor ($50-75)</li>
-<li><strong>Not scavengeable</strong>: These motors don’t come from donor printers</li>
-<li><strong>Cost</strong>: $22-150 vs $4-10 for equivalent print quality at our target speeds</li>
-</ul>
-</section>
-</section>
-<section id="consequences" class="level2">
-<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
-<section id="benefits" class="level3">
-<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
-<ul>
-<li><strong>Print quality parity across tiers</strong>: Scavenger builds achieve the same quality as Reference builds</li>
-<li><strong>Universal motor sourcing</strong>: Any NEMA17 works—from Ender 3, Prusa clone, CNC, etc.</li>
-<li><strong>True RepRap</strong>: Print your own replacement parts</li>
-<li><strong>Budget alignment</strong>: Entire extruder costs less than a Sherpa Mini motor alone</li>
-<li><strong>M8 compatibility</strong>: Enables scavenged smooth rods at practical spans</li>
-</ul>
-</section>
-<section id="trade-offs" class="level3">
-<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
-<ul>
-<li><strong>Heavier than Sherpa Mini</strong>: ~280g vs ~120g (but still M8-compatible)</li>
-<li><strong>TPU requires care</strong>: Single-drive is less aggressive than dual-drive for flexible filaments</li>
-<li><strong>Less community support</strong>: Smaller community than Voron ecosystem extruders</li>
-<li><strong>Printed gear wear</strong>: May need reprinting after many hours (but cost is $0.25 in filament)</li>
-</ul>
-</section>
-<section id="rod-compatibility-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="rod-compatibility-analysis">Rod Compatibility Analysis</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Configuration</th>
-<th>Rod Size</th>
-<th>Span</th>
-<th>Sag</th>
-<th>Verdict</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pitan + NEMA17</td>
-<td>M8</td>
-<td>250mm</td>
-<td>0.024mm</td>
-<td>Reference spec</td>
-</tr>
-<tr class="even">
-<td>Pitan + NEMA17</td>
-<td>M8</td>
-<td>280mm</td>
-<td>0.034mm</td>
-<td>Acceptable</td>
-</tr>
-<tr class="odd">
-<td>Pitan + NEMA17</td>
-<td>M10</td>
-<td>280mm</td>
-<td>0.014mm</td>
-<td>Excellent</td>
-</tr>
-<tr class="even">
-<td>Pitan + Pancake</td>
-<td>M8</td>
-<td>280mm</td>
-<td>0.020mm</td>
-<td>Ideal lightweight</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="bom-implications" class="level2">
-<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
-<section id="reference-build-tier-3" class="level3">
-<h3 class="anchored" data-anchor-id="reference-build-tier-3">Reference Build (Tier 3)</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
 <th>Component</th>
-<th>Source</th>
-<th>Cost (AUD)</th>
+<th>Mounting Wisdom</th>
+<th>Reason</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Pitan printed parts (body + gears)</td>
-<td>Print yourself</td>
-<td>$0.50-1</td>
+<td><strong>Power Supply (PSU)</strong></td>
+<td><strong>Mount to Frame</strong></td>
+<td>Adding the weight of a metal PSU at the <em>bottom</em> of the frame lowers the machine’s center of gravity, making the “Tractor” even more stable.</td>
 </tr>
 <tr class="even">
-<td>Hobbed bolt or MK8 drive gear</td>
-<td>AliExpress/hardware</td>
-<td>$2-5</td>
+<td><strong>Filament Spool</strong></td>
+<td><strong>Keep Independent</strong></td>
+<td><strong>Never mount filament to the top of the frame.</strong> A 1kg spool 40cm in the air creates a “pendulum effect,” inducing oscillations that ruin surface quality. Mount it to a side bracket or a standalone table stand.</td>
 </tr>
 <tr class="odd">
-<td>NEMA17 motor</td>
-<td>Scavenge from donor</td>
-<td>$0</td>
-</tr>
-<tr class="even">
-<td>608 bearings (x2)</td>
-<td>Hardware store/scavenge</td>
-<td>$0-2</td>
-</tr>
-<tr class="odd">
-<td>M3 hardware + springs</td>
-<td>Hardware store</td>
-<td>$1-2</td>
-</tr>
-<tr class="even">
-<td>PTFE tube + fitting</td>
-<td>Hardware store</td>
-<td>$1</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td></td>
-<td><strong>$4.50-11</strong></td>
+<td><strong>Electronics</strong></td>
+<td><strong>Base Mount</strong></td>
+<td>Keep mainboards and wiring at the bottom to protect them from heat and keep the gantry clear of “spaghetti” wiring.</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
-<section id="scavenger-build-tier-1-2" class="level3">
-<h3 class="anchored" data-anchor-id="scavenger-build-tier-1-2">Scavenger Build (Tier 1-2)</h3>
-<p>Same as above—the Pitan is scavenger-native by design.</p>
-</section>
-</section>
-<section id="klipper-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="klipper-configuration">Klipper Configuration</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[extruder]</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: E_STEP</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: E_DIR</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !E_EN</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">microsteps: 16</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">rotation_distance: 22.678  # Calibrate for your setup</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">gear_ratio: 3:1            # Pitan standard</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">nozzle_diameter: 0.4</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">filament_diameter: 1.750</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[tmc2209 extruder]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">uart_pin: E_UART</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">run_current: 0.5           # Start low, adjust as needed</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">hold_current: 0.4</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">stealthchop_threshold: 0</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">[firmware_retraction]</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">retract_length: 0.5</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dt">retract_speed: 35</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="dt">unretract_extra_length: 0</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">unretract_speed: 35</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="alternative-configurations" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-configurations">Alternative Configurations</h2>
-<section id="heritage-option-gregs-wade-pancake-nema17" class="level3">
-<h3 class="anchored" data-anchor-id="heritage-option-gregs-wade-pancake-nema17">Heritage Option: Greg’s Wade + Pancake NEMA17</h3>
-<p>For builders who value pure RepRap heritage and only print PLA/PETG:</p>
+<section id="multi-toolhead-vs.-multi-color-the-waste-debate" class="level3">
+<h3 class="anchored" data-anchor-id="multi-toolhead-vs.-multi-color-the-waste-debate">🌈 3. Multi-Toolhead vs.&nbsp;Multi-Color (The Waste Debate)</h3>
+<p>This is the great debate of 2026. Both systems allow for colors, but their “philosophies” are opposites.</p>
 <ul>
-<li>Use pancake NEMA17 to keep weight under 410g (M8 compatible)</li>
-<li>5.22:1 gear ratio provides massive torque headroom</li>
-<li>Not suitable for TPU with 1.75mm filament</li>
-</ul>
-</section>
-<section id="ultra-scavenger-option-mk8-direct-drive" class="level3">
-<h3 class="anchored" data-anchor-id="ultra-scavenger-option-mk8-direct-drive">Ultra-Scavenger Option: MK8 Direct Drive</h3>
-<p>For extreme budget constraints or if you already have one:</p>
-<ul>
-<li>No gear reduction—relies entirely on motor torque</li>
-<li>Lightweight (~150-200g)—excellent for M8 rods</li>
-<li>Klipper pressure advance compensates for 1:1 ratio</li>
-</ul>
-</section>
-<section id="use-what-you-have" class="level3">
-<h3 class="anchored" data-anchor-id="use-what-you-have">Use What You Have</h3>
-<p><strong>This is the most important option.</strong> If you have an extruder in your parts bin—Titan, Hemera, BMG, Sherpa—<strong>use it</strong>. The Amalgam carriage design is adaptable.</p>
-<p>The Pitan is the <em>reference specification</em>, not a mandate. The single-drive recommendation is about optimal quality for new builds, not a condemnation of existing equipment.</p>
-</section>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="../adr/002-greg-wade.html">ADR-002</a>: Original Wade decision (now archived)</li>
-<li><code>docs/decisions/tractor_06_extruder_decision.md</code>: Full evaluation document</li>
-<li><code>docs/reference/ai-conversations/pitian-v-orbiter.md</code>: Pitan vs Orbiter analysis</li>
-<li><code>docs/reference/ai-conversations/single-v-dual-drive.md</code>: Drive architecture discussion</li>
-<li>Pitan designs: Community versions on Printables/Thingiverse (Printable Titan clone)</li>
-<li>E3D Titan: Original design the Pitan is based on</li>
+<li><p><strong>Multi-Toolhead (e.g., Tool-Changer/IDEX):</strong> * <strong>Precision:</strong> Uses sub-mm kinematic couplings (like steel ball locks) to ensure the head clicks into the exact same spot every time (often within 0.04mm).</p></li>
+<li><p><strong>Waste:</strong> <strong>Near-zero.</strong> Since each nozzle has its own color, you don’t need to “purge” the old plastic out.</p></li>
+<li><p><strong>Complexity:</strong> Very high. Aligning 3 or 4 nozzles so they all hit the exact same Z-height is a major engineering challenge.</p></li>
+<li><p><strong>Multi-Color (e.g., ERCF / Bambu AMS):</strong> * <strong>Efficiency:</strong> Uses a single nozzle and swaps the filament behind it.</p></li>
+<li><p><strong>Waste:</strong> <strong>High.</strong> Every color change requires a “poop” or “purge tower” to clear the old color from the hotend.</p></li>
+<li><p><strong>Simplicity:</strong> Mechanically much simpler than a tool changer and fits on a standard “Tractor” gantry easily.</p></li>
 </ul>
 <hr>
-<p><em>“A tractor doesn’t win races. It pulls loads reliably. The Pitan doesn’t chase 300mm/s. It produces quality prints consistently, inexpensively, and repairably.”</em></p>
-
-
 </section>
+<section id="other-distilled-wisdom-gems" class="level3">
+<h3 class="anchored" data-anchor-id="other-distilled-wisdom-gems">📜 4. Other “Distilled Wisdom” Gems</h3>
+<ul>
+<li><strong>The “Golden Screw” Rule:</strong> Never use two different types of screws for the same function. If you can build the whole frame with <strong>M3 and M12</strong>, do it. It makes your “Vitamin” box simpler to maintain.</li>
+<li><strong>Heat Creep is the Silent Killer:</strong> Most jams aren’t caused by the nozzle; they are caused by the <strong>cold-end</strong> getting too hot and softening the filament before it reaches the heater. Use a high-quality ball-bearing fan on your E3D V6 to prevent this.</li>
+<li><strong>Cable Chains vs.&nbsp;Umbilicals:</strong> While cable chains look cool, they can cause “hidden” wire fatigue. Many modern high-end builds have returned to the simple <strong>“Umbilical”</strong> (a bundle of wires held up by a single piece of filament) because it places less stress on the copper over thousands of hours.</li>
+</ul>
+</section>
+<section id="the-amalgam-square-speed-quality-cost-and-effort" class="level3">
+<h3 class="anchored" data-anchor-id="the-amalgam-square-speed-quality-cost-and-effort">📐 The Amalgam Square: Speed, Quality, Cost, and Effort</h3>
+<p>In engineering, we often talk about the <strong>“Iron Triangle”</strong> (Pick two: Fast, Cheap, or Good). But for 3D printing—and specifically for the <strong>Amalgam</strong>—a triangle is too simple. The project actually balances a <strong>Square of Constraints</strong>.</p>
+<p>To build a machine for under $300 AUD that performs like a modern industrial tool, you have to understand how these four corners pull against each other.</p>
+<p>In the “Tractor” philosophy, we don’t just “pick two”; we strategically sacrifice one to maximize the others.</p>
+<section id="cost-the-300-aud-hard-ceiling" class="level4">
+<h4 class="anchored" data-anchor-id="cost-the-300-aud-hard-ceiling"><strong>1. Cost (The $300 AUD Hard Ceiling)</strong></h4>
+<p>This is our primary constraint. To keep costs low, we sacrifice “Convenience.” Instead of buying a $150 pre-assembled Voron StealthBurner, we spend time building a <strong>Wade Extruder</strong> from $20 of vitamins. We trade money for <strong>Effort</strong>.</p>
+</section>
+<section id="speed-the-racecar-mirage" class="level4">
+<h4 class="anchored" data-anchor-id="speed-the-racecar-mirage"><strong>2. Speed (The “Racecar” Mirage)</strong></h4>
+<p>This is where most modern printers fail the triangle. Chasing 600mm/s requires expensive linear rails and lightweight carbon fiber—both of which blow the budget.</p>
+<ul>
+<li><strong>The Wisdom:</strong> We “settle” for <strong>70–120mm/s</strong>. In the 3D printing world, 100mm/s with perfect quality is faster than 300mm/s with a 50% failure rate.</li>
+</ul>
+</section>
+<section id="quality-the-non-negotiable" class="level4">
+<h4 class="anchored" data-anchor-id="quality-the-non-negotiable"><strong>3. Quality (The Non-Negotiable)</strong></h4>
+<p>Thanks to <strong>Klipper</strong>, quality is no longer tied to the price of the hardware.</p>
+<ul>
+<li><strong>Input Shaping</strong> cancels out the vibrations of our heavy M12 frame.</li>
+<li><strong>Pressure Advance</strong> manages the flow of our geared Wade extruder.</li>
+<li><strong>The Result:</strong> We achieve high-end quality on a “junk” budget by using software intelligence to solve analog hardware problems.</li>
+</ul>
+</section>
+<section id="reliability-effort-the-tractor-soul" class="level4">
+<h4 class="anchored" data-anchor-id="reliability-effort-the-tractor-soul"><strong>4. Reliability / Effort (The “Tractor” Soul)</strong></h4>
+<p>This is the fourth corner. A machine can be cheap and high-quality, but usually, that means it’s a “tinker-trap” (like a stock Ender 3).</p>
+<ul>
+<li><strong>The Amalgam approach:</strong> We use <strong>Overbuilt Hardware</strong> (M12 rods, Geared Wade, E3D V6). It takes more effort to <em>build</em> (Effort), but once it’s running, it requires almost no <em>maintenance</em> (Reliability).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="the-battle-tested-wisdom-why-the-triangle-shifts" class="level3">
+<h3 class="anchored" data-anchor-id="the-battle-tested-wisdom-why-the-triangle-shifts">🏛️ The “Battle-Tested” Wisdom: Why the Triangle Shifts</h3>
+<p>If you look at the last 20 years, the “Golden Ratio” of these trade-offs has shifted:</p>
+<ul>
+<li><strong>2007 (Darwin Era):</strong> High Cost / Low Speed / Low Quality / Maximum Effort. (Everything was a struggle).</li>
+<li><strong>2014 (i3 Era):</strong> Medium Cost / Medium Speed / Medium Quality / Medium Effort. (The birth of the “reliable enough” hobbyist).</li>
+<li><strong>2026 (Amalgam Era):</strong> <strong>Ultra-Low Cost / Medium Speed / High Quality / High Initial Effort.</strong></li>
+</ul>
+</section>
+<section id="the-distilled-pillars-of-truth" class="level3">
+<h3 class="anchored" data-anchor-id="the-distilled-pillars-of-truth">💎 The Distilled “Pillars of Truth”</h3>
+<p>If you were to sum up the wisdom of those 20 years into the Amalgam “Standard,” it would look like this:</p>
+<ol type="1">
+<li><strong>Mass is a Filter:</strong> A heavy machine is a quiet machine. Mass filters out the “noise” of cheap motors.</li>
+<li><strong>Gearing is Sovereignty:</strong> Direct drive is good, but <strong>Geared Direct Drive</strong> (Wade/BMG) is king. It turns a cheap motor into a powerful one.</li>
+<li><strong>Software is the Great Equalizer:</strong> Don’t spend $200 on rails if $0 of code (Klipper) can fix the vibration.</li>
+<li><strong>The “Good Enough” Zenith:</strong> Chasing the last 5% of speed costs 500% more money. The Amalgam lives at the “Zenith”—where performance is high, but the cost is still accessible to anyone with a local hardware store.</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->

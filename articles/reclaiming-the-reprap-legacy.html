@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pitan-extruder – Amalgam</title>
+<title>reclaiming-the-reprap-legacy – Amalgam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -104,10 +69,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -297,49 +291,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../articles/reclaiming-the-reprap-legacy.html"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Articles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/age-of-the-appliance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>The Amalgam Context: Sovereignty in the Age of the Appliance</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/core-engineering-truths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/reclaiming-the-reprap-legacy.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/reconfiguration-of-3d-printing-market.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adr-019-pitan-extruder-reference-specification" id="toc-adr-019-pitan-extruder-reference-specification" class="nav-link active" data-scroll-target="#adr-019-pitan-extruder-reference-specification">ADR-019: Pitan Extruder (Reference Specification)</a>
+  <li><a href="#darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" id="toc-darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" class="nav-link active" data-scroll-target="#darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></a>
   <ul class="collapse">
-  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
+  <li><a href="#the-historical-foundations-and-the-darwin-milestone" id="toc-the-historical-foundations-and-the-darwin-milestone" class="nav-link" data-scroll-target="#the-historical-foundations-and-the-darwin-milestone"><strong>The Historical Foundations and the Darwin Milestone</strong></a>
   <ul class="collapse">
-  <li><a href="#key-insight-single-drive-architecture" id="toc-key-insight-single-drive-architecture" class="nav-link" data-scroll-target="#key-insight-single-drive-architecture">Key Insight: Single-Drive Architecture</a></li>
-  <li><a href="#extruders-evaluated" id="toc-extruders-evaluated" class="nav-link" data-scroll-target="#extruders-evaluated">Extruders Evaluated</a></li>
+  <li><a href="#the-3d-printing-market-paradox-2024-2026" id="toc-the-3d-printing-market-paradox-2024-2026" class="nav-link" data-scroll-target="#the-3d-printing-market-paradox-2024-2026"><strong>The 3D Printing Market Paradox (2024-2026)</strong></a></li>
   </ul></li>
-  <li><a href="#decision" id="toc-decision" class="nav-link" data-scroll-target="#decision">Decision</a>
+  <li><a href="#regional-economic-impacts-the-australian-perspective" id="toc-regional-economic-impacts-the-australian-perspective" class="nav-link" data-scroll-target="#regional-economic-impacts-the-australian-perspective"><strong>Regional Economic Impacts: The Australian Perspective</strong></a></li>
+  <li><a href="#mechanical-sovereignty-the-darwin-neo-architecture" id="toc-mechanical-sovereignty-the-darwin-neo-architecture" class="nav-link" data-scroll-target="#mechanical-sovereignty-the-darwin-neo-architecture"><strong>Mechanical Sovereignty: The Darwin-Neo Architecture</strong></a>
   <ul class="collapse">
-  <li><a href="#why-pitan" id="toc-why-pitan" class="nav-link" data-scroll-target="#why-pitan">Why Pitan?</a></li>
-  <li><a href="#why-not-wade" id="toc-why-not-wade" class="nav-link" data-scroll-target="#why-not-wade">Why Not Wade?</a></li>
-  <li><a href="#why-not-dual-drive-sherpa-orbiter-bmg" id="toc-why-not-dual-drive-sherpa-orbiter-bmg" class="nav-link" data-scroll-target="#why-not-dual-drive-sherpa-orbiter-bmg">Why Not Dual-Drive (Sherpa, Orbiter, BMG)?</a></li>
+  <li><a href="#frame-engineering-m12-mass-and-damping" id="toc-frame-engineering-m12-mass-and-damping" class="nav-link" data-scroll-target="#frame-engineering-m12-mass-and-damping"><strong>Frame Engineering: M12 Mass and Damping</strong></a></li>
+  <li><a href="#the-cold-end-wades-geared-extruder" id="toc-the-cold-end-wades-geared-extruder" class="nav-link" data-scroll-target="#the-cold-end-wades-geared-extruder"><strong>The Cold End: Wade’s Geared Extruder</strong></a></li>
   </ul></li>
-  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences">Consequences</a>
+  <li><a href="#electronic-integration-the-tiered-brain-strategy" id="toc-electronic-integration-the-tiered-brain-strategy" class="nav-link" data-scroll-target="#electronic-integration-the-tiered-brain-strategy"><strong>Electronic Integration: The Tiered “Brain” Strategy</strong></a>
   <ul class="collapse">
-  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
-  <li><a href="#trade-offs" id="toc-trade-offs" class="nav-link" data-scroll-target="#trade-offs">Trade-offs</a></li>
-  <li><a href="#rod-compatibility-analysis" id="toc-rod-compatibility-analysis" class="nav-link" data-scroll-target="#rod-compatibility-analysis">Rod Compatibility Analysis</a></li>
+  <li><a href="#the-final-brain-decision-matrix" id="toc-the-final-brain-decision-matrix" class="nav-link" data-scroll-target="#the-final-brain-decision-matrix"><strong>The Final “Brain” Decision Matrix</strong></a></li>
   </ul></li>
-  <li><a href="#bom-implications" id="toc-bom-implications" class="nav-link" data-scroll-target="#bom-implications">BOM Implications</a>
-  <ul class="collapse">
-  <li><a href="#reference-build-tier-3" id="toc-reference-build-tier-3" class="nav-link" data-scroll-target="#reference-build-tier-3">Reference Build (Tier 3)</a></li>
-  <li><a href="#scavenger-build-tier-1-2" id="toc-scavenger-build-tier-1-2" class="nav-link" data-scroll-target="#scavenger-build-tier-1-2">Scavenger Build (Tier 1-2)</a></li>
-  </ul></li>
-  <li><a href="#klipper-configuration" id="toc-klipper-configuration" class="nav-link" data-scroll-target="#klipper-configuration">Klipper Configuration</a></li>
-  <li><a href="#alternative-configurations" id="toc-alternative-configurations" class="nav-link" data-scroll-target="#alternative-configurations">Alternative Configurations</a>
-  <ul class="collapse">
-  <li><a href="#heritage-option-gregs-wade-pancake-nema17" id="toc-heritage-option-gregs-wade-pancake-nema17" class="nav-link" data-scroll-target="#heritage-option-gregs-wade-pancake-nema17">Heritage Option: Greg’s Wade + Pancake NEMA17</a></li>
-  <li><a href="#ultra-scavenger-option-mk8-direct-drive" id="toc-ultra-scavenger-option-mk8-direct-drive" class="nav-link" data-scroll-target="#ultra-scavenger-option-mk8-direct-drive">Ultra-Scavenger Option: MK8 Direct Drive</a></li>
-  <li><a href="#use-what-you-have" id="toc-use-what-you-have" class="nav-link" data-scroll-target="#use-what-you-have">Use What You Have</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#parametric-cad-as-code-design-with-build123d" id="toc-parametric-cad-as-code-design-with-build123d" class="nav-link" data-scroll-target="#parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></a></li>
+  <li><a href="#conclusion-the-march-2027-rebirth" id="toc-conclusion-the-march-2027-rebirth" class="nav-link" data-scroll-target="#conclusion-the-march-2027-rebirth"><strong>Conclusion: The March 2027 Rebirth</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -350,321 +376,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="adr-019-pitan-extruder-reference-specification" class="level1">
-<h1>ADR-019: Pitan Extruder (Reference Specification)</h1>
-<section id="status" class="level2">
-<h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Accepted (supersedes ADR-002)</p>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The extruder choice is critical to Amalgam’s philosophy of building a “Tractor with the Brain of a Racecar.” After extensive evaluation documented in:</p>
-<ul>
-<li><code>docs/decisions/tractor_06_extruder_decision.md</code> (comprehensive analysis)</li>
-<li><code>docs/reference/ai-conversations/pitian-v-orbiter.md</code></li>
-<li><code>docs/reference/ai-conversations/single-v-dual-drive.md</code></li>
-</ul>
-<p>We reconsidered the original Greg’s Wade decision (ADR-002) and evaluated multiple alternatives.</p>
-<section id="key-insight-single-drive-architecture" class="level3">
-<h3 class="anchored" data-anchor-id="key-insight-single-drive-architecture">Key Insight: Single-Drive Architecture</h3>
-<p>A critical discovery shaped this decision: <strong>dual-drive extruders introduce gear mesh artifacts</strong> that affect print quality consistency. When two drive gears mesh, microscopic variations in tooth engagement create periodic pressure fluctuations on the filament.</p>
-<p>This is one reason Bambu Lab printers—known for print quality—use single-drive designs. For Amalgam’s quality-focused philosophy at 80-120mm/s, single-drive advantages outweigh dual-drive TPU benefits.</p>
-</section>
-<section id="extruders-evaluated" class="level3">
-<h3 class="anchored" data-anchor-id="extruders-evaluated">Extruders Evaluated</h3>
+<section id="darwin-neo-reclaiming-the-reprap-legacy-for-the-20th-anniversary-2027" class="level1">
+<h1><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></h1>
+<p>The fused deposition modeling (FDM) industry has entered a period of profound structural realignment. For over a decade, the desktop 3D printing market was defined by the tension between the enthusiast’s desire for tinkering and the prosumer’s need for reliability. This landscape was historically dominated by the RepRap movement and its commercial offspring, Prusa Research.1 However, the emergence of vertically integrated manufacturers like Bambu Lab has created a “closed-source matrix” where users trade technological sovereignty for out-of-the-box speed.3</p>
+<p><strong>Darwin-Neo</strong> is a project aimed at “waking up” the maker community by the <strong>March 2027</strong> 20th anniversary of the original RepRap Darwin (first released in March 2007). This report analyzes the technical feasibility of returning to open-source roots through tiered designs that utilize high-mass M12 hardware and modernized legacy components.</p>
+<section id="the-historical-foundations-and-the-darwin-milestone" class="level2">
+<h2 class="anchored" data-anchor-id="the-historical-foundations-and-the-darwin-milestone"><strong>The Historical Foundations and the Darwin Milestone</strong></h2>
+<p>The RepRap project, initiated by Dr.&nbsp;Adrian Bowyer in 2004, sought to democratize manufacturing via self-replicating machines. The <strong>RepRap 1.0 “Darwin”</strong>, released in early 2007, proved the viability of this vision by printing over half of its own components. By May 2008, Darwin achieved full self-replication, birthing the first “child” machine.</p>
+<p>While subsequent iterations like the Mendel (2009) and the Prusa i3 (2012) simplified the assembly, the industry eventually diverged into a “race to the bottom” with cheap clones and a “race to the top” with integrated appliances.5</p>
+<section id="the-3d-printing-market-paradox-2024-2026" class="level3">
+<h3 class="anchored" data-anchor-id="the-3d-printing-market-paradox-2024-2026"><strong>The 3D Printing Market Paradox (2024-2026)</strong></h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 21%">
-<col style="width: 12%">
-<col style="width: 21%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Extruder</th>
-<th>Drive Type</th>
-<th>Motor</th>
-<th>Cost (AUD)</th>
-<th>Weight</th>
-<th>Status</th>
+<th style="text-align: left;">Era</th>
+<th style="text-align: left;">Key Model</th>
+<th style="text-align: left;">Mechanical Standard</th>
+<th style="text-align: left;">Paradigm</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Greg’s Wade</td>
-<td>Single</td>
-<td>NEMA17</td>
-<td>$2-5</td>
-<td>360-600g</td>
-<td>Heritage Option</td>
+<td style="text-align: left;"><strong>Genesis (2007-2008)</strong></td>
+<td style="text-align: left;">RepRap Darwin</td>
+<td style="text-align: left;">M8 Rods (Cube)</td>
+<td style="text-align: left;">Radical Self-Replication</td>
 </tr>
 <tr class="even">
-<td>MK8/MK9</td>
-<td>Single</td>
-<td>NEMA17</td>
-<td>$0-6</td>
-<td>150-200g</td>
-<td>Ultra-Scavenger</td>
+<td style="text-align: left;"><strong>Standard (2013-2018)</strong></td>
+<td style="text-align: left;">Prusa i3 MK3</td>
+<td style="text-align: left;">Aluminum Plates</td>
+<td style="text-align: left;">Reliable Bed-Slinger</td>
 </tr>
 <tr class="odd">
-<td>Sherpa Mini</td>
-<td>Dual</td>
-<td>NEMA14</td>
-<td>$22-34</td>
-<td>110-127g</td>
-<td>Not selected (dual-drive)</td>
-</tr>
-<tr class="even">
-<td>Orbiter v1.5</td>
-<td>Dual</td>
-<td>LDO specific</td>
-<td>$60-100</td>
-<td>140-150g</td>
-<td>Not selected (cost, dual-drive)</td>
-</tr>
-<tr class="odd">
-<td>LGX Lite</td>
-<td>Dual</td>
-<td>NEMA14</td>
-<td>$120-150</td>
-<td>150-165g</td>
-<td>Not selected (cost, dual-drive)</td>
-</tr>
-<tr class="even">
-<td><strong>Pitan</strong></td>
-<td><strong>Single</strong></td>
-<td><strong>NEMA17</strong></td>
-<td><strong>$4-10</strong></td>
-<td><strong>260-300g</strong></td>
-<td><strong>Reference Spec</strong></td>
+<td style="text-align: left;"><strong>Integrated (2023-Present)</strong></td>
+<td style="text-align: left;">Bambu Lab X1/P1</td>
+<td style="text-align: left;">Proprietary CoreXY</td>
+<td style="text-align: left;">Integrated Appliance</td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="decision" class="level2">
-<h2 class="anchored" data-anchor-id="decision">Decision</h2>
-<p>We choose the <strong>Pitan Extruder</strong> (Printable Titan) as the Amalgam Reference Specification.</p>
-<section id="why-pitan" class="level3">
-<h3 class="anchored" data-anchor-id="why-pitan">Why Pitan?</h3>
+<section id="regional-economic-impacts-the-australian-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="regional-economic-impacts-the-australian-perspective"><strong>Regional Economic Impacts: The Australian Perspective</strong></h2>
+<p>For makers in high-cost regions like Australia, the “affordable” $800 USD printer typically costs $1,300 to $1,500 AUD, making quality printing a significant financial barrier.6 Even the entry-level Bambu Lab A1 Mini, while priced at ~$319 AUD, often leads to “buyer’s remorse” due to its limited 180mm cube build volume.8</p>
+<p>Darwin-Neo addresses this by aiming for a <strong>$300 AUD budget</strong> for a machine with Prusa MK4 build volume, utilizing a tiered build strategy to maximize accessibility.</p>
+</section>
+<section id="mechanical-sovereignty-the-darwin-neo-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="mechanical-sovereignty-the-darwin-neo-architecture"><strong>Mechanical Sovereignty: The Darwin-Neo Architecture</strong></h2>
+<p>To achieve high-quality prints at low cost, Darwin-Neo returns to the “JunkStrap” philosophy—cobbling together high-performance machines from scavenged materials.</p>
+<section id="frame-engineering-m12-mass-and-damping" class="level3">
+<h3 class="anchored" data-anchor-id="frame-engineering-m12-mass-and-damping"><strong>Frame Engineering: M12 Mass and Damping</strong></h3>
+<p>While modern printers use lightweight 2020 aluminum extrusions, Darwin-Neo utilizes <strong>M12 steel threaded rods</strong> (12mm diameter). The significant mass of steel provides superior vibration damping—essential for high-speed FDM.</p>
+<p><span class="math display">\[F\_D(t) \= c \\cdot \\dot{u}(t)\]</span><br>
+By increasing the damping coefficient (<span class="math inline">\(c\)</span>) through heavy M12 rods, the frame inherently resists the “ghosting” or “ringing” artifacts caused by rapid accelerations.</p>
+</section>
+<section id="the-cold-end-wades-geared-extruder" class="level3">
+<h3 class="anchored" data-anchor-id="the-cold-end-wades-geared-extruder"><strong>The Cold End: Wade’s Geared Extruder</strong></h3>
+<p>A signature of the Darwin-Neo build is the use of <strong>Wade’s Geared Extruder</strong>, a hallmark of early RepRap engineering. This design uses a printed gear reduction to provide massive torque from a standard NEMA 17 motor, allowing for consistent extrusion even with cheaper filaments.</p>
+<ul>
+<li><strong>Heat Creep Refinement:</strong> Traditional designs are improved with modern refinements (such as Thingiverse 961767) to improve airflow and thermal isolation, solving the primary reliability issues of the classic geared design.<br>
+</li>
+<li><strong>Klipper Synergy:</strong> Using Klipper’s <strong>Pressure Advance</strong> algorithm, the high-torque Wade’s extruder can achieve sharp corners and reduced blobbing at high speeds.</li>
+</ul>
+</section>
+</section>
+<section id="electronic-integration-the-tiered-brain-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="electronic-integration-the-tiered-brain-strategy"><strong>Electronic Integration: The Tiered “Brain” Strategy</strong></h2>
+<p>To maximize accessibility, Darwin-Neo employs a tiered motherboard strategy. This allows the builder to choose their level of connectivity based on their budget or the contents of their “junk drawer.”</p>
+<section id="the-final-brain-decision-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="the-final-brain-decision-matrix"><strong>The Final “Brain” Decision Matrix</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Path</th>
+<th style="text-align: left;">Hardware</th>
+<th style="text-align: left;">Best For…</th>
+<th style="text-align: left;">Wiring Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>The Integrated (Pro)</strong></td>
+<td style="text-align: left;">MKS SKIPR</td>
+<td style="text-align: left;">New builds, maximum features, under-budget.</td>
+<td style="text-align: left;">Ultra-Low (All-in-one)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>The Recycled (Mid)</strong></td>
+<td style="text-align: left;">Donor Board + RPi 3B+</td>
+<td style="text-align: left;">Reusing working Ender 3 boards, full webcam support.</td>
+<td style="text-align: left;">Medium (USB loop needed)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>The Minimalist (Budget)</strong></td>
+<td style="text-align: left;">Donor Board + RPi Zero 2W</td>
+<td style="text-align: left;">Absolute lowest cost, skipping the camera.</td>
+<td style="text-align: left;">High (Adapters/dongles)</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>MKS SKIPR</strong> provides an integrated solution, combining a 32-bit MCU with an onboard Linux host to run Klipper without external Raspberry Pi hardware, retailing for approximately $125 to $169 AUD in the Australian market. For builders on an extreme budget, the <strong>Raspberry Pi Zero 2W</strong> (~$31 AUD) paired with a salvaged 8-bit board from a donor printer (like an Anet A8 or Ender 3) provides the same high-speed Klipper processing at the lowest possible entry point.</p>
+</section>
+</section>
+<section id="parametric-cad-as-code-design-with-build123d" class="level2">
+<h2 class="anchored" data-anchor-id="parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></h2>
+<p>To ensure the project is truly evolvable, Darwin-Neo is designed using <strong>build123d</strong>, a Python-based parametric modeling framework.10 This allows the community to “fork” the machine by simply changing variables in a script.</p>
+<p>Python</p>
+<p># Darwin-Neo Parametric Variables<br>
+rod_dia = 12.0 # Resizes all clamps and vertices<br>
+build_volume_z = 250.0 # Adjusts rod lengths and cable runs<br>
+z_motor_count = 1 # Switches between shared-belt or independent Z</p>
+<p>This approach represents the “Digital RepRap”—where the hardware instructions are as flexible as the firmware.</p>
+</section>
+<section id="conclusion-the-march-2027-rebirth" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-the-march-2027-rebirth"><strong>Conclusion: The March 2027 Rebirth</strong></h2>
+<p>Darwin-Neo is more than a 3D printer; it is an act of technological sovereignty. By the <strong>March 2027</strong> anniversary, the project aims to prove that the “triangle” of reliability, speed, and quality can be conquered without the “closed” ecosystem of contemporary integrated appliances. Through sound engineering, massive damping, and the synthesis of classic mechanical designs with modern computational power, Darwin-Neo brings the “soul” back to the RepRap community.</p>
+<section id="works-cited" class="level4">
+<h4 class="anchored" data-anchor-id="works-cited"><strong>Works cited</strong></h4>
 <ol type="1">
-<li><strong>Single-Drive Design</strong>: No gear mesh artifacts—cleaner extrusion consistency</li>
-<li><strong>Scavengeable Motor</strong>: Uses standard NEMA17 from any donor printer (Ender 3, Prusa, etc.)</li>
-<li><strong>Fully Printable</strong>: Body and gears can be printed—true RepRap spirit</li>
-<li><strong>3:1 Gear Ratio</strong>: Adequate torque for PLA, PETG, and careful TPU work</li>
-<li><strong>Budget</strong>: $4-10 total vs $20-150 for alternatives</li>
-<li><strong>M8 Rod Compatible</strong>: At 260-300g, works with M8 smooth rods at spans up to 280mm</li>
-<li><strong>Repairability</strong>: “If a gear breaks, you have a new one before your coffee gets cold”</li>
+<li>1 Million 3D Printers Sold in Q1 2025: The Brutal Truth About Where Real Profit Hides, accessed on January 6, 2026, <a href="https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025">https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025</a><br>
+</li>
+<li>What RepRap is worth building in 2026? : r/3Dprinting - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/">https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/</a><br>
+</li>
+<li>Strategic view of Bambu &amp; Prusa - Part 2 - Corporate Signaling, accessed on January 6, 2026, <a href="https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de">https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de</a><br>
+</li>
+<li>Should I build my own DIY 3D printer or buy a Bambu Lab A1 Mini? : r/3dprintIndia - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/">https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/</a><br>
+</li>
+<li>My Prusa Mendel Build - Instructables, accessed on January 6, 2026, <a href="https://www.instructables.com/My-Prusa-Mendel-Build/">https://www.instructables.com/My-Prusa-Mendel-Build/</a><br>
+</li>
+<li>Shop 3D printers, filaments and accessories | Bambu Lab AU store, accessed on January 6, 2026, <a href="https://au.store.bambulab.com/">https://au.store.bambulab.com/</a><br>
+</li>
+<li>Australian 3D Printers For Sale, accessed on January 6, 2026, <a href="https://www.3dprintergear.com.au/3d-printers/">https://www.3dprintergear.com.au/3d-printers/</a><br>
+</li>
+<li>Bambu Lab A1 or A1 mini. Price vs built size : r/BambuLab - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/">https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/</a><br>
+</li>
+<li>Bambu Lab Printers - 3D Printing Perth, accessed on January 6, 2026, <a href="https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab">https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab</a><br>
+</li>
+<li>gumyr/build123d: A python CAD programming library - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d">https://github.com/gumyr/build123d</a><br>
+</li>
+<li>build123d - PyPI, accessed on January 6, 2026, <a href="https://pypi.org/project/build123d/">https://pypi.org/project/build123d/</a></li>
 </ol>
-</section>
-<section id="why-not-wade" class="level3">
-<h3 class="anchored" data-anchor-id="why-not-wade">Why Not Wade?</h3>
-<p>The Greg’s Wade was our original choice (ADR-002) but has limitations:</p>
-<ul>
-<li><strong>3.00mm Design</strong>: Originally designed for 3mm filament; 1.75mm adaptation has exposed filament path—TPU will buckle</li>
-<li><strong>Heavy</strong>: Full NEMA17 variant (450-600g) requires M10 smooth rods or causes excessive sag</li>
-<li><strong>Pancake Limitation</strong>: Pancake motor reduces weight but also reduces torque headroom</li>
-</ul>
-<p>The Wade is preserved as a <strong>Heritage Option</strong> for builders who value pure RepRap roots and only print PLA/PETG.</p>
-</section>
-<section id="why-not-dual-drive-sherpa-orbiter-bmg" class="level3">
-<h3 class="anchored" data-anchor-id="why-not-dual-drive-sherpa-orbiter-bmg">Why Not Dual-Drive (Sherpa, Orbiter, BMG)?</h3>
-<ul>
-<li><strong>Gear mesh artifacts</strong>: Two meshing gears create periodic micro-variations in extrusion pressure</li>
-<li><strong>Specific motors</strong>: Sherpa needs NEMA14 pancake with pinion ($14-21); Orbiter needs LDO motor ($50-75)</li>
-<li><strong>Not scavengeable</strong>: These motors don’t come from donor printers</li>
-<li><strong>Cost</strong>: $22-150 vs $4-10 for equivalent print quality at our target speeds</li>
-</ul>
-</section>
-</section>
-<section id="consequences" class="level2">
-<h2 class="anchored" data-anchor-id="consequences">Consequences</h2>
-<section id="benefits" class="level3">
-<h3 class="anchored" data-anchor-id="benefits">Benefits</h3>
-<ul>
-<li><strong>Print quality parity across tiers</strong>: Scavenger builds achieve the same quality as Reference builds</li>
-<li><strong>Universal motor sourcing</strong>: Any NEMA17 works—from Ender 3, Prusa clone, CNC, etc.</li>
-<li><strong>True RepRap</strong>: Print your own replacement parts</li>
-<li><strong>Budget alignment</strong>: Entire extruder costs less than a Sherpa Mini motor alone</li>
-<li><strong>M8 compatibility</strong>: Enables scavenged smooth rods at practical spans</li>
-</ul>
-</section>
-<section id="trade-offs" class="level3">
-<h3 class="anchored" data-anchor-id="trade-offs">Trade-offs</h3>
-<ul>
-<li><strong>Heavier than Sherpa Mini</strong>: ~280g vs ~120g (but still M8-compatible)</li>
-<li><strong>TPU requires care</strong>: Single-drive is less aggressive than dual-drive for flexible filaments</li>
-<li><strong>Less community support</strong>: Smaller community than Voron ecosystem extruders</li>
-<li><strong>Printed gear wear</strong>: May need reprinting after many hours (but cost is $0.25 in filament)</li>
-</ul>
-</section>
-<section id="rod-compatibility-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="rod-compatibility-analysis">Rod Compatibility Analysis</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Configuration</th>
-<th>Rod Size</th>
-<th>Span</th>
-<th>Sag</th>
-<th>Verdict</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pitan + NEMA17</td>
-<td>M8</td>
-<td>250mm</td>
-<td>0.024mm</td>
-<td>Reference spec</td>
-</tr>
-<tr class="even">
-<td>Pitan + NEMA17</td>
-<td>M8</td>
-<td>280mm</td>
-<td>0.034mm</td>
-<td>Acceptable</td>
-</tr>
-<tr class="odd">
-<td>Pitan + NEMA17</td>
-<td>M10</td>
-<td>280mm</td>
-<td>0.014mm</td>
-<td>Excellent</td>
-</tr>
-<tr class="even">
-<td>Pitan + Pancake</td>
-<td>M8</td>
-<td>280mm</td>
-<td>0.020mm</td>
-<td>Ideal lightweight</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="bom-implications" class="level2">
-<h2 class="anchored" data-anchor-id="bom-implications">BOM Implications</h2>
-<section id="reference-build-tier-3" class="level3">
-<h3 class="anchored" data-anchor-id="reference-build-tier-3">Reference Build (Tier 3)</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Source</th>
-<th>Cost (AUD)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pitan printed parts (body + gears)</td>
-<td>Print yourself</td>
-<td>$0.50-1</td>
-</tr>
-<tr class="even">
-<td>Hobbed bolt or MK8 drive gear</td>
-<td>AliExpress/hardware</td>
-<td>$2-5</td>
-</tr>
-<tr class="odd">
-<td>NEMA17 motor</td>
-<td>Scavenge from donor</td>
-<td>$0</td>
-</tr>
-<tr class="even">
-<td>608 bearings (x2)</td>
-<td>Hardware store/scavenge</td>
-<td>$0-2</td>
-</tr>
-<tr class="odd">
-<td>M3 hardware + springs</td>
-<td>Hardware store</td>
-<td>$1-2</td>
-</tr>
-<tr class="even">
-<td>PTFE tube + fitting</td>
-<td>Hardware store</td>
-<td>$1</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td></td>
-<td><strong>$4.50-11</strong></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="scavenger-build-tier-1-2" class="level3">
-<h3 class="anchored" data-anchor-id="scavenger-build-tier-1-2">Scavenger Build (Tier 1-2)</h3>
-<p>Same as above—the Pitan is scavenger-native by design.</p>
-</section>
-</section>
-<section id="klipper-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="klipper-configuration">Klipper Configuration</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[extruder]</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">step_pin: E_STEP</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">dir_pin: E_DIR</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">enable_pin: !E_EN</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">microsteps: 16</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">rotation_distance: 22.678  # Calibrate for your setup</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">gear_ratio: 3:1            # Pitan standard</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">nozzle_diameter: 0.4</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">filament_diameter: 1.750</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[tmc2209 extruder]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">uart_pin: E_UART</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">run_current: 0.5           # Start low, adjust as needed</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">hold_current: 0.4</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">stealthchop_threshold: 0</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">[firmware_retraction]</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">retract_length: 0.5</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dt">retract_speed: 35</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="dt">unretract_extra_length: 0</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">unretract_speed: 35</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="alternative-configurations" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-configurations">Alternative Configurations</h2>
-<section id="heritage-option-gregs-wade-pancake-nema17" class="level3">
-<h3 class="anchored" data-anchor-id="heritage-option-gregs-wade-pancake-nema17">Heritage Option: Greg’s Wade + Pancake NEMA17</h3>
-<p>For builders who value pure RepRap heritage and only print PLA/PETG:</p>
-<ul>
-<li>Use pancake NEMA17 to keep weight under 410g (M8 compatible)</li>
-<li>5.22:1 gear ratio provides massive torque headroom</li>
-<li>Not suitable for TPU with 1.75mm filament</li>
-</ul>
-</section>
-<section id="ultra-scavenger-option-mk8-direct-drive" class="level3">
-<h3 class="anchored" data-anchor-id="ultra-scavenger-option-mk8-direct-drive">Ultra-Scavenger Option: MK8 Direct Drive</h3>
-<p>For extreme budget constraints or if you already have one:</p>
-<ul>
-<li>No gear reduction—relies entirely on motor torque</li>
-<li>Lightweight (~150-200g)—excellent for M8 rods</li>
-<li>Klipper pressure advance compensates for 1:1 ratio</li>
-</ul>
-</section>
-<section id="use-what-you-have" class="level3">
-<h3 class="anchored" data-anchor-id="use-what-you-have">Use What You Have</h3>
-<p><strong>This is the most important option.</strong> If you have an extruder in your parts bin—Titan, Hemera, BMG, Sherpa—<strong>use it</strong>. The Amalgam carriage design is adaptable.</p>
-<p>The Pitan is the <em>reference specification</em>, not a mandate. The single-drive recommendation is about optimal quality for new builds, not a condemnation of existing equipment.</p>
-</section>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li><a href="../adr/002-greg-wade.html">ADR-002</a>: Original Wade decision (now archived)</li>
-<li><code>docs/decisions/tractor_06_extruder_decision.md</code>: Full evaluation document</li>
-<li><code>docs/reference/ai-conversations/pitian-v-orbiter.md</code>: Pitan vs Orbiter analysis</li>
-<li><code>docs/reference/ai-conversations/single-v-dual-drive.md</code>: Drive architecture discussion</li>
-<li>Pitan designs: Community versions on Printables/Thingiverse (Printable Titan clone)</li>
-<li>E3D Titan: Original design the Pitan is based on</li>
-</ul>
-<hr>
-<p><em>“A tractor doesn’t win races. It pulls loads reliably. The Pitan doesn’t chase 300mm/s. It produces quality prints consistently, inexpensively, and repairably.”</em></p>
 
 
+</section>
 </section>
 </section>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>motion-system-comparison – Amalgam</title>
+<title>reconfiguration-of-3d-printing-market – Amalgam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -267,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/motion-system-comparison.html">Motion System Comparison: Smooth Rods vs V-Slots</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../articles/reconfiguration-of-3d-printing-market.html"><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -281,32 +310,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Engineering Analysis</span></a>
+  <a href="../articles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Articles</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
+  <a href="../articles/age-of-the-appliance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>The Amalgam Context: Sovereignty in the Age of the Appliance</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
+  <a href="../articles/core-engineering-truths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">⚙️ 1. Motion Systems: Bed-Slinger vs.&nbsp;Box Frame vs.&nbsp;CoreXY</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
+  <a href="../articles/reclaiming-the-reprap-legacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027)</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
+  <a href="../articles/reconfiguration-of-3d-printing-market.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></span></a>
   </div>
 </li>
     </ul>
@@ -319,51 +348,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motion-system-comparison-smooth-rods-vs-v-slots" id="toc-motion-system-comparison-smooth-rods-vs-v-slots" class="nav-link active" data-scroll-target="#motion-system-comparison-smooth-rods-vs-v-slots">Motion System Comparison: Smooth Rods vs V-Slots</a>
+  <li><a href="#the-reconfiguration-of-the-3d-printing-market-from-reprap-open-source-idealism-to-the-era-of-integrated-prosumer-appliances" id="toc-the-reconfiguration-of-the-3d-printing-market-from-reprap-open-source-idealism-to-the-era-of-integrated-prosumer-appliances" class="nav-link active" data-scroll-target="#the-reconfiguration-of-the-3d-printing-market-from-reprap-open-source-idealism-to-the-era-of-integrated-prosumer-appliances"><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></a>
   <ul class="collapse">
-  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">1. Purpose</a></li>
-  <li><a href="#system-overview" id="toc-system-overview" class="nav-link" data-scroll-target="#system-overview">2. System Overview</a>
+  <li><a href="#the-historical-foundations-of-the-consumer-3d-printing-industry" id="toc-the-historical-foundations-of-the-consumer-3d-printing-industry" class="nav-link" data-scroll-target="#the-historical-foundations-of-the-consumer-3d-printing-industry"><strong>The Historical Foundations of the Consumer 3D Printing Industry</strong></a>
   <ul class="collapse">
-  <li><a href="#smooth-rods-linear-bearings" id="toc-smooth-rods-linear-bearings" class="nav-link" data-scroll-target="#smooth-rods-linear-bearings">2.1 Smooth Rods + Linear Bearings</a></li>
-  <li><a href="#v-slots-pom-wheels" id="toc-v-slots-pom-wheels" class="nav-link" data-scroll-target="#v-slots-pom-wheels">2.2 V-Slots + POM Wheels</a></li>
+  <li><a href="#the-evolution-of-standard-architectures-and-materials" id="toc-the-evolution-of-standard-architectures-and-materials" class="nav-link" data-scroll-target="#the-evolution-of-standard-architectures-and-materials"><strong>The Evolution of Standard Architectures and Materials</strong></a></li>
   </ul></li>
-  <li><a href="#precision-comparison" id="toc-precision-comparison" class="nav-link" data-scroll-target="#precision-comparison">3. Precision Comparison</a>
+  <li><a href="#the-bambu-lab-disruption-and-the-speed-revolution" id="toc-the-bambu-lab-disruption-and-the-speed-revolution" class="nav-link" data-scroll-target="#the-bambu-lab-disruption-and-the-speed-revolution"><strong>The Bambu Lab Disruption and the Speed Revolution</strong></a></li>
+  <li><a href="#regional-economic-impacts-the-australian-prosumer-perspective" id="toc-regional-economic-impacts-the-australian-prosumer-perspective" class="nav-link" data-scroll-target="#regional-economic-impacts-the-australian-prosumer-perspective"><strong>Regional Economic Impacts: The Australian Prosumer Perspective</strong></a>
   <ul class="collapse">
-  <li><a href="#geometric-accuracy" id="toc-geometric-accuracy" class="nav-link" data-scroll-target="#geometric-accuracy">3.1 Geometric Accuracy</a></li>
-  <li><a href="#deflection-under-load" id="toc-deflection-under-load" class="nav-link" data-scroll-target="#deflection-under-load">3.2 Deflection Under Load</a></li>
-  <li><a href="#practical-accuracy" id="toc-practical-accuracy" class="nav-link" data-scroll-target="#practical-accuracy">3.3 Practical Accuracy</a></li>
+  <li><a href="#retail-pricing-analysis-in-australia-aud" id="toc-retail-pricing-analysis-in-australia-aud" class="nav-link" data-scroll-target="#retail-pricing-analysis-in-australia-aud"><strong>2026 Retail Pricing Analysis in Australia (AUD)</strong></a></li>
   </ul></li>
-  <li><a href="#vibration-and-damping" id="toc-vibration-and-damping" class="nav-link" data-scroll-target="#vibration-and-damping">4. Vibration and Damping</a>
+  <li><a href="#the-technical-viability-of-the-modernized-m12-reprap" id="toc-the-technical-viability-of-the-modernized-m12-reprap" class="nav-link" data-scroll-target="#the-technical-viability-of-the-modernized-m12-reprap"><strong>The Technical Viability of the Modernized M12 RepRap</strong></a>
   <ul class="collapse">
-  <li><a href="#vibration-transmission" id="toc-vibration-transmission" class="nav-link" data-scroll-target="#vibration-transmission">4.1 Vibration Transmission</a></li>
-  <li><a href="#input-shaping-interaction" id="toc-input-shaping-interaction" class="nav-link" data-scroll-target="#input-shaping-interaction">4.2 Input Shaping Interaction</a></li>
-  <li><a href="#practical-difference" id="toc-practical-difference" class="nav-link" data-scroll-target="#practical-difference">4.3 Practical Difference</a></li>
+  <li><a href="#mechanical-engineering-mass-and-damping" id="toc-mechanical-engineering-mass-and-damping" class="nav-link" data-scroll-target="#mechanical-engineering-mass-and-damping"><strong>Mechanical Engineering: Mass and Damping</strong></a></li>
+  <li><a href="#mechanical-simplification-the-belted-3-point-z-axis" id="toc-mechanical-simplification-the-belted-3-point-z-axis" class="nav-link" data-scroll-target="#mechanical-simplification-the-belted-3-point-z-axis"><strong>Mechanical Simplification: The Belted 3-Point Z-Axis</strong></a></li>
   </ul></li>
-  <li><a href="#wear-and-lifespan" id="toc-wear-and-lifespan" class="nav-link" data-scroll-target="#wear-and-lifespan">5. Wear and Lifespan</a>
+  <li><a href="#tiered-build-strategy-reclaiming-the-reprap-spirit" id="toc-tiered-build-strategy-reclaiming-the-reprap-spirit" class="nav-link" data-scroll-target="#tiered-build-strategy-reclaiming-the-reprap-spirit"><strong>Tiered Build Strategy: Reclaiming the RepRap Spirit</strong></a>
   <ul class="collapse">
-  <li><a href="#failure-modes" id="toc-failure-modes" class="nav-link" data-scroll-target="#failure-modes">5.1 Failure Modes</a></li>
-  <li><a href="#lifespan-estimates" id="toc-lifespan-estimates" class="nav-link" data-scroll-target="#lifespan-estimates">5.2 Lifespan Estimates</a></li>
-  <li><a href="#replacement-cost" id="toc-replacement-cost" class="nav-link" data-scroll-target="#replacement-cost">5.3 Replacement Cost</a></li>
-  <li><a href="#wear-comparison-summary" id="toc-wear-comparison-summary" class="nav-link" data-scroll-target="#wear-comparison-summary">5.4 Wear Comparison Summary</a></li>
+  <li><a href="#tier-1-the-scavenged-junkstrap-50---150-aud" id="toc-tier-1-the-scavenged-junkstrap-50---150-aud" class="nav-link" data-scroll-target="#tier-1-the-scavenged-junkstrap-50---150-aud"><strong>Tier 1: The Scavenged “JunkStrap” ($50 - $150 AUD)</strong></a></li>
+  <li><a href="#tier-2-the-modern-diy-core-250---350-aud" id="toc-tier-2-the-modern-diy-core-250---350-aud" class="nav-link" data-scroll-target="#tier-2-the-modern-diy-core-250---350-aud"><strong>Tier 2: The Modern DIY Core ($250 - $350 AUD)</strong></a></li>
+  <li><a href="#tiered-cost-comparison-aud" id="toc-tiered-cost-comparison-aud" class="nav-link" data-scroll-target="#tiered-cost-comparison-aud"><strong>Tiered Cost Comparison (AUD)</strong></a></li>
   </ul></li>
-  <li><a href="#maintenance-requirements" id="toc-maintenance-requirements" class="nav-link" data-scroll-target="#maintenance-requirements">6. Maintenance Requirements</a>
-  <ul class="collapse">
-  <li><a href="#smooth-rods-bearings" id="toc-smooth-rods-bearings" class="nav-link" data-scroll-target="#smooth-rods-bearings">6.1 Smooth Rods + Bearings</a></li>
-  <li><a href="#v-slots-pom-wheels-1" id="toc-v-slots-pom-wheels-1" class="nav-link" data-scroll-target="#v-slots-pom-wheels-1">6.2 V-Slots + POM Wheels</a></li>
-  <li><a href="#maintenance-comparison" id="toc-maintenance-comparison" class="nav-link" data-scroll-target="#maintenance-comparison">6.3 Maintenance Comparison</a></li>
-  </ul></li>
-  <li><a href="#decision-guide" id="toc-decision-guide" class="nav-link" data-scroll-target="#decision-guide">7. Decision Guide</a>
-  <ul class="collapse">
-  <li><a href="#use-smooth-rods-scaffoldlathe-if" id="toc-use-smooth-rods-scaffoldlathe-if" class="nav-link" data-scroll-target="#use-smooth-rods-scaffoldlathe-if">7.1 Use Smooth Rods (Scaffold/Lathe) If:</a></li>
-  <li><a href="#use-v-slots-mill-if" id="toc-use-v-slots-mill-if" class="nav-link" data-scroll-target="#use-v-slots-mill-if">7.2 Use V-Slots (Mill) If:</a></li>
-  <li><a href="#should-you-buy-rods-for-v-slot-donors" id="toc-should-you-buy-rods-for-v-slot-donors" class="nav-link" data-scroll-target="#should-you-buy-rods-for-v-slot-donors">7.3 Should You Buy Rods for V-Slot Donors?</a></li>
-  <li><a href="#should-you-buy-v-slots-for-rod-donors" id="toc-should-you-buy-v-slots-for-rod-donors" class="nav-link" data-scroll-target="#should-you-buy-v-slots-for-rod-donors">7.4 Should You Buy V-Slots for Rod Donors?</a></li>
-  </ul></li>
-  <li><a href="#performance-summary" id="toc-performance-summary" class="nav-link" data-scroll-target="#performance-summary">8. Performance Summary</a>
-  <ul class="collapse">
-  <li><a href="#for-amalgams-target-70-120mms-0.1mm" id="toc-for-amalgams-target-70-120mms-0.1mm" class="nav-link" data-scroll-target="#for-amalgams-target-70-120mms-0.1mm">8.1 For Amalgam’s Target (70-120mm/s, ±0.1mm)</a></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">9. Conclusion</a></li>
+  <li><a href="#parametric-cad-as-code-design-with-build123d" id="toc-parametric-cad-as-code-design-with-build123d" class="nav-link" data-scroll-target="#parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></a></li>
+  <li><a href="#conclusion-the-path-back-to-technological-sovereignty" id="toc-conclusion-the-path-back-to-technological-sovereignty" class="nav-link" data-scroll-target="#conclusion-the-path-back-to-technological-sovereignty"><strong>Conclusion: The Path Back to Technological Sovereignty</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -374,595 +382,263 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="motion-system-comparison-smooth-rods-vs-v-slots" class="level1">
-<h1>Motion System Comparison: Smooth Rods vs V-Slots</h1>
-<section id="purpose" class="level2">
-<h2 class="anchored" data-anchor-id="purpose">1. Purpose</h2>
-<p>Amalgam supports two motion systems depending on your donor printers: - <strong>Smooth rods + linear bearings</strong> (Scaffold and Lathe paths) - <strong>V-slots + POM wheels</strong> (Mill path)</p>
-<p>This analysis compares the two systems to help you decide: 1. Which path to choose based on your donors 2. Whether to buy smooth rods for V-slot donors (or vice versa) 3. What maintenance differences to expect</p>
-<p><strong>Bottom line:</strong> Both work well. Use what you have. Don’t buy parts to switch systems unless you have a specific reason.</p>
-<hr>
-</section>
-<section id="system-overview" class="level2">
-<h2 class="anchored" data-anchor-id="system-overview">2. System Overview</h2>
-<section id="smooth-rods-linear-bearings" class="level3">
-<h3 class="anchored" data-anchor-id="smooth-rods-linear-bearings">2.1 Smooth Rods + Linear Bearings</h3>
+<section id="the-reconfiguration-of-the-3d-printing-market-from-reprap-open-source-idealism-to-the-era-of-integrated-prosumer-appliances" class="level1">
+<h1><strong>The Reconfiguration of the 3D Printing Market: From RepRap Open-Source Idealism to the Era of Integrated Prosumer Appliances</strong></h1>
+<p>The fused deposition modeling (FDM) industry has entered a period of profound structural realignment. For over a decade, the desktop 3D printing market was defined by the tension between the enthusiast’s desire for tinkering and the prosumer’s need for reliability. This landscape was historically dominated by the RepRap movement and its most successful commercial offspring, Prusa Research, which established the “bed-slinger” Cartesian architecture as the global hobbyist standard.1 However, the emergence of vertically integrated manufacturers, most notably Bambu Lab, has fundamentally disrupted the “reliability-speed-quality” triangle that previously forced users to compromise on at least one of these pillars.3 This report analyzes the historical evolution of these technologies, the economic pressures currently facing the maker community—particularly in high-cost regions such as Australia—and the technical feasibility of returning to open-source roots through tiered, salvaged hardware designs.</p>
+<section id="the-historical-foundations-of-the-consumer-3d-printing-industry" class="level2">
+<h2 class="anchored" data-anchor-id="the-historical-foundations-of-the-consumer-3d-printing-industry"><strong>The Historical Foundations of the Consumer 3D Printing Industry</strong></h2>
+<p>The modern 3D printing era began with a radical vision of self-replicating machines. The RepRap project, initiated by Dr.&nbsp;Adrian Bowyer, sought to democratize manufacturing by creating printers that could print their own components. Early iterations like the Darwin and Mendel utilized threaded metal rods, nuts, and washers sourced from hardware stores to form rigid frames.</p>
+<p>The Prusa Mendel Iteration 2 (i2), released in November 2011, represented a significant step forward in simplifying the RepRap assembly process. By utilizing M8 threaded rods to form an equilateral triangle on each side, the frame provided a stable platform for its time.7 However, these machines remained temperamental, often leading to a situation where users spent more time printing parts for the printer than functional objects.9</p>
+<section id="the-evolution-of-standard-architectures-and-materials" class="level3">
+<h3 class="anchored" data-anchor-id="the-evolution-of-standard-architectures-and-materials"><strong>The Evolution of Standard Architectures and Materials</strong></h3>
+<p>The transition from the Mendel i2 to the Prusa i3 marked the consolidation of the “bed-slinger” design. This era saw the industry-wide shift from 3mm filament to 1.75mm, which allowed for more precise extrusion control.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 42%">
-<col style="width: 57%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Component</th>
-<th>Specification</th>
+<th style="text-align: left;">Era</th>
+<th style="text-align: left;">Key Model</th>
+<th style="text-align: left;">Mechanical Standard</th>
+<th style="text-align: left;">Primary Firmware/Control</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Rods</td>
-<td>8mm hardened steel, chrome-plated</td>
+<td style="text-align: left;"><strong>RepRap Genesis (2008-2012)</strong></td>
+<td style="text-align: left;">Mendel i2</td>
+<td style="text-align: left;">Threaded Rods (M8), 3mm Filament</td>
+<td style="text-align: left;">Arduino Mega, Sprinter/Marlin</td>
 </tr>
 <tr class="even">
-<td>Bearings</td>
-<td>LM8UU (ball), LM8LUU (long), or IGUS RJ4JP-01-08 (polymer)</td>
+<td style="text-align: left;"><strong>I3 Era (2013-2018)</strong></td>
+<td style="text-align: left;">Prusa i3 MK2/MK3</td>
+<td style="text-align: left;">Aluminum Profile/Plate, 1.75mm</td>
+<td style="text-align: left;">8-bit ATMega, Marlin</td>
 </tr>
 <tr class="odd">
-<td>Contact</td>
-<td>Rolling (ball) or sliding (polymer)</td>
+<td style="text-align: left;"><strong>CoreXY Rise (2019-2022)</strong></td>
+<td style="text-align: left;">Voron 2.4, RatRig</td>
+<td style="text-align: left;">Linear Rails, Enclosed Frames</td>
+<td style="text-align: left;">32-bit MCU, Klipper</td>
 </tr>
 <tr class="even">
-<td>Preload</td>
-<td>None (clearance fit) or light press fit</td>
+<td style="text-align: left;"><strong>Integrated Era (2023-Present)</strong></td>
+<td style="text-align: left;">Bambu Lab X1/P1</td>
+<td style="text-align: left;">Proprietary CoreXY, AI Sensors</td>
+<td style="text-align: left;">Custom Linux/ESP32, Proprietary</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="v-slots-pom-wheels" class="level3">
-<h3 class="anchored" data-anchor-id="v-slots-pom-wheels">2.2 V-Slots + POM Wheels</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Rails</td>
-<td>2020/2040 aluminum extrusion with V-groove</td>
-</tr>
-<tr class="even">
-<td>Wheels</td>
-<td>POM (Delrin) with 625 bearings</td>
-</tr>
-<tr class="odd">
-<td>Contact</td>
-<td>Rolling on V-groove</td>
-</tr>
-<tr class="even">
-<td>Preload</td>
-<td>Adjustable via eccentric nut</td>
-</tr>
-</tbody>
-</table>
-<hr>
+<p>During this period, the market saw a “race to the bottom” with inexpensive Chinese clones such as the Anet A8 and the original Ender 3. While these machines were “just good enough,” they lacked the safety features and optimized firmware that made the Prusa MK3S+ the “gold standard” for reliability.1</p>
 </section>
 </section>
-<section id="precision-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="precision-comparison">3. Precision Comparison</h2>
-<section id="geometric-accuracy" class="level3">
-<h3 class="anchored" data-anchor-id="geometric-accuracy">3.1 Geometric Accuracy</h3>
+<section id="the-bambu-lab-disruption-and-the-speed-revolution" class="level2">
+<h2 class="anchored" data-anchor-id="the-bambu-lab-disruption-and-the-speed-revolution"><strong>The Bambu Lab Disruption and the Speed Revolution</strong></h2>
+<p>In 2023, Bambu Lab fundamentally altered user expectations for speed and ease of use.3 Their flagship X1 Carbon and the more affordable P1 and A1 series introduced high-speed kinematics and fully integrated software ecosystems as standard features. This success is driven by “usability”; surveys indicate that over 35% of first-time 3D printer users abandon their devices within six months due to calibration or interface frustrations.</p>
+<p>However, this shift has come at the cost of a “closed” ecosystem, relying on proprietary parts and cloud-tethered services that raise concerns about long-term repairability.3</p>
+</section>
+<section id="regional-economic-impacts-the-australian-prosumer-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="regional-economic-impacts-the-australian-prosumer-perspective"><strong>Regional Economic Impacts: The Australian Prosumer Perspective</strong></h2>
+<p>For makers in regions such as Australia, global pricing is compounded by currency exchange and logistics. A printer marketed at $800 USD often translates to $1,300 to $1,500 AUD, placing it beyond the reach of many hobbyists.10</p>
+<section id="retail-pricing-analysis-in-australia-aud" class="level3">
+<h3 class="anchored" data-anchor-id="retail-pricing-analysis-in-australia-aud"><strong>2026 Retail Pricing Analysis in Australia (AUD)</strong></h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 43%">
-<col style="width: 30%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Factor</th>
-<th>Smooth Rods</th>
-<th>V-Slots</th>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Retail Price (AUD)</th>
+<th style="text-align: left;">Estimated Status</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Rod/rail straightness</td>
-<td>±0.02mm (quality rods)</td>
-<td>±0.1mm (typical extrusion)</td>
+<td style="text-align: left;"><strong>High-End Enthusiast</strong></td>
+<td style="text-align: left;">Bambu Lab H2C</td>
+<td style="text-align: left;">$3,699.00</td>
+<td style="text-align: left;">Premium Investment 11</td>
 </tr>
 <tr class="even">
-<td>Bearing play</td>
-<td>0.01-0.02mm (LM8UU)</td>
-<td>0.05-0.1mm (wheel + nut)</td>
+<td style="text-align: left;"><strong>Mid-Range CoreXY</strong></td>
+<td style="text-align: left;">Bambu Lab P2S</td>
+<td style="text-align: left;">$949.00 - $1,249.00</td>
+<td style="text-align: left;">Professional Tool 12</td>
 </tr>
 <tr class="odd">
-<td>Repeatability</td>
-<td>Excellent</td>
-<td>Good</td>
-</tr>
-<tr class="even">
-<td>Thermal stability</td>
-<td>Good (steel vs steel)</td>
-<td>Moderate (aluminum expands more)</td>
+<td style="text-align: left;"><strong>Entry-Level Speed</strong></td>
+<td style="text-align: left;">Bambu Lab A1 Mini</td>
+<td style="text-align: left;">$319.00 - $379.00</td>
+<td style="text-align: left;">Beginner Gateway 13</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="deflection-under-load" class="level3">
-<h3 class="anchored" data-anchor-id="deflection-under-load">3.2 Deflection Under Load</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>System</th>
-<th>Deflection Mechanism</th>
-<th>Typical Magnitude</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Dual 8mm rods</td>
-<td>Beam bending</td>
-<td>0.065mm at 350mm span</td>
-</tr>
-<tr class="even">
-<td>V-slot + 3 wheels</td>
-<td>Wheel compression + play</td>
-<td>0.05-0.10mm</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Interpretation:</strong> Smooth rods have lower and more predictable deflection. V-slots have slightly higher but still acceptable deflection, primarily from wheel preload and play.</p>
-</section>
-<section id="practical-accuracy" class="level3">
-<h3 class="anchored" data-anchor-id="practical-accuracy">3.3 Practical Accuracy</h3>
-<p>For the Amalgam target (±0.1mm accuracy, 70-120mm/s):</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>System</th>
-<th>Achieves Target?</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Dual 8mm smooth rods</td>
-<td>Yes</td>
-<td>Comfortable margin</td>
-</tr>
-<tr class="even">
-<td>V-slot + POM wheels</td>
-<td>Yes</td>
-<td>Requires proper adjustment</td>
-</tr>
-</tbody>
-</table>
-<p>Both systems achieve the target accuracy when properly assembled and maintained.</p>
-<hr>
+<p>While the A1 Mini is aggressively priced at ~$319 AUD, its small build volume (180mm cube) often leads to “buyer’s remorse” for those needing larger functional items.14 Building a high-performance open-source printer like a Voron remains expensive, with kits often exceeding $1,500 AUD.16</p>
 </section>
 </section>
-<section id="vibration-and-damping" class="level2">
-<h2 class="anchored" data-anchor-id="vibration-and-damping">4. Vibration and Damping</h2>
-<section id="vibration-transmission" class="level3">
-<h3 class="anchored" data-anchor-id="vibration-transmission">4.1 Vibration Transmission</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 48%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>System</th>
-<th>Vibration Path</th>
-<th>Damping</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Smooth rods</td>
-<td>Steel rod → Steel bearing → Carriage</td>
-<td>Minimal (metal-on-metal)</td>
-</tr>
-<tr class="even">
-<td>V-slots</td>
-<td>Aluminum rail → POM wheel → Carriage</td>
-<td>Moderate (polymer absorbs some)</td>
-</tr>
-</tbody>
-</table>
+<section id="the-technical-viability-of-the-modernized-m12-reprap" class="level2">
+<h2 class="anchored" data-anchor-id="the-technical-viability-of-the-modernized-m12-reprap"><strong>The Technical Viability of the Modernized M12 RepRap</strong></h2>
+<p>To counter these costs, a return to the “threaded rod” RepRap spirit is technically viable when combined with modern firmware. This project involves a box-frame printer utilizing M12 threaded rods to achieve A1-quality prints with Prusa MK4 build volume for under $300 AUD.</p>
+<section id="mechanical-engineering-mass-and-damping" class="level3">
+<h3 class="anchored" data-anchor-id="mechanical-engineering-mass-and-damping"><strong>Mechanical Engineering: Mass and Damping</strong></h3>
+<p>M12 steel rods (12mm diameter) provide inherent vibration damping—a critical factor for high-speed FDM. A high-mass frame increases the system’s inertia, resisting oscillations from rapid stepper movements.</p>
+<p><span class="math display">\[F\_D(t) \= c \\cdot \\dot{u}(t)\]</span><br>
+By increasing the damping coefficient (<span class="math inline">\(c\)</span>) through M12 rods, the printer can operate at higher accelerations without the “ghosting” artifacts common in lighter aluminum frames.6</p>
 </section>
-<section id="input-shaping-interaction" class="level3">
-<h3 class="anchored" data-anchor-id="input-shaping-interaction">4.2 Input Shaping Interaction</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>System</th>
-<th>Resonance Character</th>
-<th>Shaping Effectiveness</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Smooth rods</td>
-<td>Sharp, well-defined peaks</td>
-<td>Excellent — easy to tune</td>
-</tr>
-<tr class="even">
-<td>V-slots</td>
-<td>Broader, damped peaks</td>
-<td>Good — may need MZV or EI shaper</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="practical-difference" class="level3">
-<h3 class="anchored" data-anchor-id="practical-difference">4.3 Practical Difference</h3>
-<p>POM wheels provide ~10-15% natural damping compared to steel bearings. This can: - Reduce ringing slightly without Input Shaping - Make resonance peaks less sharp (easier to tune… or harder to identify) - Mask small mechanical issues</p>
-<p><strong>Trade-off:</strong> The damping is helpful for beginners but can hide problems that should be fixed mechanically.</p>
-<hr>
-</section>
-</section>
-<section id="wear-and-lifespan" class="level2">
-<h2 class="anchored" data-anchor-id="wear-and-lifespan">5. Wear and Lifespan</h2>
-<section id="failure-modes" class="level3">
-<h3 class="anchored" data-anchor-id="failure-modes">5.1 Failure Modes</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 35%">
-<col style="width: 43%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>System</th>
-<th>Primary Wear</th>
-<th>Secondary Wear</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Smooth rods + LM8UU</td>
-<td>Bearing balls wear tracks in rod</td>
-<td>Bearing cage failure</td>
-</tr>
-<tr class="even">
-<td>Smooth rods + IGUS</td>
-<td>Polymer liner wears</td>
-<td>Rod surface contamination</td>
-</tr>
-<tr class="odd">
-<td>V-slots + POM</td>
-<td>Wheel surface flattens</td>
-<td>Eccentric nut loosens</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="lifespan-estimates" class="level3">
-<h3 class="anchored" data-anchor-id="lifespan-estimates">5.2 Lifespan Estimates</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Expected Life</th>
-<th>Signs of Wear</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>LM8UU bearing</td>
-<td>3-5 years</td>
-<td>Clicks, rough motion, visible track</td>
-</tr>
-<tr class="even">
-<td>IGUS bearing</td>
-<td>2-4 years</td>
-<td>Increased play, squeaking</td>
-</tr>
-<tr class="odd">
-<td>Chrome rod</td>
-<td>5-10 years</td>
-<td>Visible wear track, rust spots</td>
-</tr>
-<tr class="even">
-<td>POM wheel</td>
-<td>1-3 years</td>
-<td>Flat spot, visible groove, wobble</td>
-</tr>
-<tr class="odd">
-<td>V-slot rail</td>
-<td>5-10 years</td>
-<td>Groove wear (rare with POM)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="replacement-cost" class="level3">
-<h3 class="anchored" data-anchor-id="replacement-cost">5.3 Replacement Cost</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Part</th>
-<th>Approximate Cost</th>
-<th>Difficulty</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>LM8UU bearing (×4)</td>
-<td>$10-15</td>
-<td>Easy (drop-in)</td>
-</tr>
-<tr class="even">
-<td>IGUS bearing (×4)</td>
-<td>$15-25</td>
-<td>Easy (drop-in)</td>
-</tr>
-<tr class="odd">
-<td>8mm rod (×2)</td>
-<td>$15-25</td>
-<td>Moderate (disassembly)</td>
-</tr>
-<tr class="even">
-<td>POM wheel (×4)</td>
-<td>$5-10</td>
-<td>Easy (eccentric nut removal)</td>
-</tr>
-<tr class="odd">
-<td>V-slot rail</td>
-<td>$10-20</td>
-<td>Difficult (frame disassembly)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="wear-comparison-summary" class="level3">
-<h3 class="anchored" data-anchor-id="wear-comparison-summary">5.4 Wear Comparison Summary</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Smooth Rods</th>
-<th>V-Slots</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>First failure</td>
-<td>2-4 years (bearing)</td>
-<td>1-3 years (wheel)</td>
-</tr>
-<tr class="even">
-<td>Replacement cost</td>
-<td>$10-25</td>
-<td>$5-10</td>
-</tr>
-<tr class="odd">
-<td>Replacement difficulty</td>
-<td>Easy-Moderate</td>
-<td>Easy</td>
-</tr>
-<tr class="even">
-<td>Catastrophic failure risk</td>
-<td>Low</td>
-<td>Very low</td>
-</tr>
-</tbody>
-</table>
-<p><strong>V-slots wear faster but are cheaper and easier to replace.</strong> Smooth rod bearings last longer but cost more to replace.</p>
-<hr>
-</section>
-</section>
-<section id="maintenance-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="maintenance-requirements">6. Maintenance Requirements</h2>
-<section id="smooth-rods-bearings" class="level3">
-<h3 class="anchored" data-anchor-id="smooth-rods-bearings">6.1 Smooth Rods + Bearings</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Interval</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Monthly</td>
-<td>Wipe rods with lint-free cloth</td>
-</tr>
-<tr class="even">
-<td>3-6 months</td>
-<td>Light lubrication (PTFE or light machine oil)</td>
-</tr>
-<tr class="odd">
-<td>Annually</td>
-<td>Inspect bearings for play, replace if needed</td>
-</tr>
-<tr class="even">
-<td>As needed</td>
-<td>Check rod straightness (roll on glass)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Warning:</strong> Over-lubrication attracts dust and can cause issues. Use sparingly.</p>
-</section>
-<section id="v-slots-pom-wheels-1" class="level3">
-<h3 class="anchored" data-anchor-id="v-slots-pom-wheels-1">6.2 V-Slots + POM Wheels</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Interval</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Monthly</td>
-<td>Check eccentric nut tension</td>
-</tr>
-<tr class="even">
-<td>3-6 months</td>
-<td>Clean V-groove with brush</td>
-</tr>
-<tr class="odd">
-<td>Annually</td>
-<td>Inspect wheels for flat spots, replace if needed</td>
-</tr>
-<tr class="even">
-<td>As needed</td>
-<td>Re-adjust eccentric nuts after replacement</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Warning:</strong> POM wheels should NOT be lubricated. Lubrication attracts dust and accelerates wear.</p>
-</section>
-<section id="maintenance-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="maintenance-comparison">6.3 Maintenance Comparison</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Smooth Rods</th>
-<th>V-Slots</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lubrication needed</td>
-<td>Yes (light)</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>Adjustment needed</td>
-<td>No</td>
-<td>Yes (eccentric nut)</td>
-</tr>
-<tr class="odd">
-<td>Cleaning frequency</td>
-<td>Low</td>
-<td>Moderate</td>
-</tr>
-<tr class="even">
-<td>Skill required</td>
-<td>Low</td>
-<td>Low-Medium</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-</section>
-<section id="decision-guide" class="level2">
-<h2 class="anchored" data-anchor-id="decision-guide">7. Decision Guide</h2>
-<section id="use-smooth-rods-scaffoldlathe-if" class="level3">
-<h3 class="anchored" data-anchor-id="use-smooth-rods-scaffoldlathe-if">7.1 Use Smooth Rods (Scaffold/Lathe) If:</h3>
+<section id="mechanical-simplification-the-belted-3-point-z-axis" class="level3">
+<h3 class="anchored" data-anchor-id="mechanical-simplification-the-belted-3-point-z-axis"><strong>Mechanical Simplification: The Belted 3-Point Z-Axis</strong></h3>
+<p>To reduce cost and complexity, the 3-point Z-axis can be driven by a single NEMA 17 stepper motor using a shared belt routing system. This configuration:</p>
 <ul>
-<li>Your donors have smooth rods (Anet A8, Wanhao, Prusa clones)</li>
-<li>You prioritize precision and predictability</li>
-<li>You’re comfortable with occasional lubrication</li>
-<li>You plan to run high accelerations (&gt;8000 mm/s²)</li>
-<li>You want “set and forget” motion system</li>
+<li><strong>Ensures Synchronization:</strong> A single belt connecting all three lead screws prevents the independent Z-motors from drifting out of sync during power cycles.<br>
+</li>
+<li><strong>Reduces Electronics Cost:</strong> Reusing a donor printer’s board (often limited in stepper drivers) becomes possible because only one driver is required for the entire Z-axis.<br>
+</li>
+<li><strong>Eliminates Z-Wobble:</strong> Belted drives can eliminate the lateral forces caused by slightly bent lead screws that cause “z-wobble” in traditional builds.</li>
 </ul>
 </section>
-<section id="use-v-slots-mill-if" class="level3">
-<h3 class="anchored" data-anchor-id="use-v-slots-mill-if">7.2 Use V-Slots (Mill) If:</h3>
+</section>
+<section id="tiered-build-strategy-reclaiming-the-reprap-spirit" class="level2">
+<h2 class="anchored" data-anchor-id="tiered-build-strategy-reclaiming-the-reprap-spirit"><strong>Tiered Build Strategy: Reclaiming the RepRap Spirit</strong></h2>
+<p>This project proposes a “tiered” approach to construction, allowing users to enter the hobby based on their available resources.</p>
+<section id="tier-1-the-scavenged-junkstrap-50---150-aud" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-the-scavenged-junkstrap-50---150-aud"><strong>Tier 1: The Scavenged “JunkStrap” ($50 - $150 AUD)</strong></h3>
+<p>The most accessible entry point is the “JunkStrap”—a printer cobbled together from salvaged parts.</p>
 <ul>
-<li>Your donors have V-slots (Ender 3, CR-10, Aquila)</li>
-<li>You want zero-waste from donors</li>
-<li>You’re comfortable checking eccentric nuts periodically</li>
-<li>You prefer cheap, easy wheel replacement</li>
-<li>You’re running moderate accelerations (5000-8000 mm/s²)</li>
+<li><strong>Donor Sourcing:</strong> Salvaging stepper motors, power supplies, and heat beds from non-functional Ender 3 or Anet printers found on marketplaces.<br>
+</li>
+<li><strong>Electronics Reuse:</strong> Directly reusing the 8-bit or 32-bit controller board from the donor machine, even if it lacks advanced features like 3-point Z-probing.<br>
+</li>
+<li><strong>Framework:</strong> Primarily the cost of M12 rods and printed parts.</li>
 </ul>
 </section>
-<section id="should-you-buy-rods-for-v-slot-donors" class="level3">
-<h3 class="anchored" data-anchor-id="should-you-buy-rods-for-v-slot-donors">7.3 Should You Buy Rods for V-Slot Donors?</h3>
-<p><strong>Usually no.</strong> The Mill path exists specifically so Ender 3 scavengers don’t waste their parts.</p>
-<p>Consider buying smooth rods only if: - You want maximum precision for specific applications - You hate adjusting eccentric nuts - You plan very high accelerations (&gt;10000 mm/s²) - Cost: ~$60-80 for rods + bearings</p>
+<section id="tier-2-the-modern-diy-core-250---350-aud" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-the-modern-diy-core-250---350-aud"><strong>Tier 2: The Modern DIY Core ($250 - $350 AUD)</strong></h3>
+<p>An upgrade path that incorporates modern reliability features:</p>
+<ul>
+<li><strong>Controller:</strong> BigTreeTech Octopus Pro for high I/O density and independent motor control.17<br>
+</li>
+<li><strong>Firmware Sovereignty:</strong> Klipper firmware on a Raspberry Pi for active vibration compensation (Input Shaping).18<br>
+</li>
+<li><strong>Automatic Leveling:</strong> Transitioning from the shared-belt Z-axis to three independent motors for “true” Z-tilt adjustment.</li>
+</ul>
 </section>
-<section id="should-you-buy-v-slots-for-rod-donors" class="level3">
-<h3 class="anchored" data-anchor-id="should-you-buy-v-slots-for-rod-donors">7.4 Should You Buy V-Slots for Rod Donors?</h3>
-<p><strong>Almost never.</strong> If you have smooth rods, use them. V-slots would require: - Buying extrusions (~$40-60) - Buying wheels (~$20-30) - Discarding perfectly good rods</p>
-<p>This makes no economic sense for Amalgam’s scavenger philosophy.</p>
-<hr>
-</section>
-</section>
-<section id="performance-summary" class="level2">
-<h2 class="anchored" data-anchor-id="performance-summary">8. Performance Summary</h2>
+<section id="tiered-cost-comparison-aud" class="level3">
+<h3 class="anchored" data-anchor-id="tiered-cost-comparison-aud"><strong>Tiered Cost Comparison (AUD)</strong></h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Metric</th>
-<th>Smooth Rods</th>
-<th>V-Slots</th>
-<th>Winner</th>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Scavenged Tier</th>
+<th style="text-align: left;">Upgraded Tier</th>
+<th style="text-align: left;">Logic / Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Precision</td>
-<td>±0.02mm</td>
-<td>±0.05mm</td>
-<td>Smooth rods</td>
+<td style="text-align: left;"><strong>Frame</strong></td>
+<td style="text-align: left;">$45.00 (M12 Rods)</td>
+<td style="text-align: left;">$45.00</td>
+<td style="text-align: left;">Local hardware sourcing 6</td>
 </tr>
 <tr class="even">
-<td>Vibration damping</td>
-<td>Low</td>
-<td>Moderate</td>
-<td>V-slots</td>
+<td style="text-align: left;"><strong>Electronics</strong></td>
+<td style="text-align: left;">$0.00 (Donor Board)</td>
+<td style="text-align: left;">$195.00 (Octopus+RPi)</td>
+<td style="text-align: left;">Salvage vs.&nbsp;New</td>
 </tr>
 <tr class="odd">
-<td>Max acceleration</td>
-<td>~12000 mm/s²</td>
-<td>~8000 mm/s²</td>
-<td>Smooth rods</td>
+<td style="text-align: left;"><strong>Motion</strong></td>
+<td style="text-align: left;">$10.00 (Salvaged)</td>
+<td style="text-align: left;">$30.00 (New Belts)</td>
+<td style="text-align: left;">Donor printers</td>
 </tr>
 <tr class="even">
-<td>Maintenance effort</td>
-<td>Low</td>
-<td>Medium</td>
-<td>Smooth rods</td>
+<td style="text-align: left;"><strong>Hotend</strong></td>
+<td style="text-align: left;">$15.00 (V6 Clone)</td>
+<td style="text-align: left;">$15.00</td>
+<td style="text-align: left;">Proven reliability</td>
 </tr>
 <tr class="odd">
-<td>Wear part cost</td>
-<td>$10-25</td>
-<td>$5-10</td>
-<td>V-slots</td>
-</tr>
-<tr class="even">
-<td>Replacement ease</td>
-<td>Moderate</td>
-<td>Easy</td>
-<td>V-slots</td>
-</tr>
-<tr class="odd">
-<td>Zero-waste scavenging</td>
-<td>Depends on donor</td>
-<td>Depends on donor</td>
-<td>Tie</td>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: left;"><strong>~$70.00</strong></td>
+<td style="text-align: left;"><strong>~$285.00</strong></td>
+<td style="text-align: left;"><strong>Accessibility vs.&nbsp;Performance</strong></td>
 </tr>
 </tbody>
 </table>
-<section id="for-amalgams-target-70-120mms-0.1mm" class="level3">
-<h3 class="anchored" data-anchor-id="for-amalgams-target-70-120mms-0.1mm">8.1 For Amalgam’s Target (70-120mm/s, ±0.1mm)</h3>
-<p><strong>Both systems comfortably achieve the target.</strong> The differences are measurable but not practically significant for typical 3D printing.</p>
-<hr>
 </section>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">9. Conclusion</h2>
-<p>The best motion system is <strong>the one your donors have</strong>.</p>
-<ul>
-<li>Two smooth-rod donors → Scaffold path</li>
-<li>Two V-slot donors → Mill path</li>
-<li>Mixed donors → Usually Scaffold (buy M10 rods, use scavenged smooth rods)</li>
-</ul>
-<p>Don’t spend money switching systems unless you have specific requirements beyond Amalgam’s target specs. The cost of switching (~$60-80) could instead go toward better hotend components or electronics.</p>
-<hr>
-<p><em>“The best bearing is the one you already have. The second best is the one that costs nothing.”</em></p>
+<section id="parametric-cad-as-code-design-with-build123d" class="level2">
+<h2 class="anchored" data-anchor-id="parametric-cad-as-code-design-with-build123d"><strong>Parametric CAD-as-Code: Design with Build123d</strong></h2>
+<p>A central requirement for modernizing the RepRap movement is the transition to fully parametric, code-based design. Build123d is a Python-based framework that allows the entire printer to be resized or adapted to different hardware in seconds.19</p>
+<p>By defining variables for rod_dia, build_volume, and linear_rail_size, the community can “fork” the machine to fit whatever they scavenge. If a user finds M10 rods instead of M12, a single variable change regenerates the entire printable BOM.</p>
+</section>
+<section id="conclusion-the-path-back-to-technological-sovereignty" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-the-path-back-to-technological-sovereignty"><strong>Conclusion: The Path Back to Technological Sovereignty</strong></h2>
+<p>The 3D printing industry in 2026 stands at a crossroads between the “appliance” (Bambu) and the “project” (RepRap). The mission of the RepRap project—to make printers that only require readily available and affordable parts—is more relevant today as commercial ecosystems become increasingly closed.2</p>
+<p>The M12 threaded rod build, designed in build123d, represents a synthesis of 2011’s Mendel spirit with 2026’s high-speed computational capabilities. By utilizing a tiered approach—starting with a “JunkStrap” scavenged from donor machines and upgrading to a Klipper-powered powerhouse—the maker reclaims economic and technological sovereignty. It proves that the “triangle” of reliability, speed, and quality can be conquered not just through expensive corporate R&amp;D, but through sound engineering, massive damping, and open-source collaboration.</p>
+<section id="works-cited" class="level4">
+<h4 class="anchored" data-anchor-id="works-cited"><strong>Works cited</strong></h4>
+<ol type="1">
+<li>1 Million 3D Printers Sold in Q1 2025: The Brutal Truth About Where Real Profit Hides, accessed on January 6, 2026, <a href="https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025">https://www.shelftrend.com/business-industrial/3d-printer-market-analysis-profit-guide-online-sellers-2025</a><br>
+</li>
+<li>What RepRap is worth building in 2026? : r/3Dprinting - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/">https://www.reddit.com/r/3Dprinting/comments/1p4z7y0/what_reprap_is_worth_building_in_2026/</a><br>
+</li>
+<li>Strategic view of Bambu &amp; Prusa - Part 2 - Corporate Signaling, accessed on January 6, 2026, <a href="https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de">https://forum.prusa3d.com/forum/english-forum-general-discussion-announcements-and-releases/strategic-view-of-bambu-prusa-part-2-corporate-signaling/?language=de</a><br>
+</li>
+<li>The Best 3D Printers for Home, Workshop or Business in 2026 | Tom’s Hardware, accessed on January 6, 2026, <a href="https://www.tomshardware.com/best-picks/best-3d-printers">https://www.tomshardware.com/best-picks/best-3d-printers</a><br>
+</li>
+<li>Should I build my own DIY 3D printer or buy a Bambu Lab A1 Mini? : r/3dprintIndia - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/">https://www.reddit.com/r/3dprintIndia/comments/1mxvv3p/should_i_build_my_own_diy_3d_printer_or_buy_a/</a><br>
+</li>
+<li>Effect of 3D Printing Process Parameters on Damping Characteristic of Cantilever Beams Fabricated Using Material Extrusion - NIH, accessed on January 6, 2026, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9863848/">https://pmc.ncbi.nlm.nih.gov/articles/PMC9863848/</a><br>
+</li>
+<li>Prusa Mendel (iteration 2) - RepRap, accessed on January 6, 2026, <a href="https://reprap.org/wiki/Prusa_Mendel_(iteration_2)">https://reprap.org/wiki/Prusa_Mendel_(iteration_2)</a><br>
+</li>
+<li>Prusa Mendel Assembly (iteration 2) - RepRap, accessed on January 6, 2026, <a href="https://reprap.org/wiki/Prusa_Mendel_Assembly_(iteration_2)">https://reprap.org/wiki/Prusa_Mendel_Assembly_(iteration_2)</a><br>
+</li>
+<li>Building Prusa Mendel i2. - Reprap 3d Printer, accessed on January 6, 2026, <a href="https://reprap.snowcron.com/prusa_i2.htm">https://reprap.snowcron.com/prusa_i2.htm</a><br>
+</li>
+<li>Australian 3D Printers For Sale, accessed on January 6, 2026, <a href="https://www.3dprintergear.com.au/3d-printers/">https://www.3dprintergear.com.au/3d-printers/</a><br>
+</li>
+<li>Shop 3D printers, filaments and accessories | Bambu Lab AU store, accessed on January 6, 2026, <a href="https://au.store.bambulab.com/">https://au.store.bambulab.com/</a><br>
+</li>
+<li>3D Printers - 3docity, accessed on January 6, 2026, <a href="https://www.3docity.com.au/collections/3d-printers">https://www.3docity.com.au/collections/3d-printers</a><br>
+</li>
+<li>Bambu Lab Printers - 3D Printing Perth, accessed on January 6, 2026, <a href="https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab">https://3dprintingperth.com/collections/bambu-lab-printer/bambu-lab</a><br>
+</li>
+<li>Bambu Lab A1 or A1 mini. Price vs built size : r/BambuLab - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/">https://www.reddit.com/r/BambuLab/comments/1cmzpmm/bambu_lab_a1_or_a1_mini_price_vs_built_size/</a><br>
+</li>
+<li>Is the bambulab a1 mini the best printer in it’s price range? : r/3dprinter - Reddit, accessed on January 6, 2026, <a href="https://www.reddit.com/r/3dprinter/comments/1obcxtq/is_the_bambulab_a1_mini_the_best_printer_in_its/">https://www.reddit.com/r/3dprinter/comments/1obcxtq/is_the_bambulab_a1_mini_the_best_printer_in_its/</a><br>
+</li>
+<li>BigtreeTech - Aurarum | Australian manufacturer of 3D printers, accessed on January 6, 2026, <a href="https://aurarum.com.au/brand/bigtreetech/">https://aurarum.com.au/brand/bigtreetech/</a><br>
+</li>
+<li>Unlock the Elite BigTreeTech BTT Octopus Pro V1.0 for 3D Printers - Raven 3D Tech, accessed on January 6, 2026, <a href="https://raven3dtech.com.au/product/bigtreetech-btt-octopus-pro-v1-0-v1-1-for-3d-printer/">https://raven3dtech.com.au/product/bigtreetech-btt-octopus-pro-v1-0-v1-1-for-3d-printer/</a><br>
+</li>
+<li>build123d - PyPI, accessed on January 6, 2026, <a href="https://pypi.org/project/build123d/">https://pypi.org/project/build123d/</a><br>
+</li>
+<li>build123d/docs/index.rst at dev - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d/blob/dev/docs/index.rst">https://github.com/gumyr/build123d/blob/dev/docs/index.rst</a><br>
+</li>
+<li>gumyr/build123d: A python CAD programming library - GitHub, accessed on January 6, 2026, <a href="https://github.com/gumyr/build123d">https://github.com/gumyr/build123d</a></li>
+</ol>
 
 
+</section>
 </section>
 </section>
 

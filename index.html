@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,12 +189,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">ADRs</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Engineering</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analysis</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
         <li>
-    <a class="dropdown-item" href="./analysis/README.md">
+    <a class="dropdown-item" href="./analysis/index.html">
  <span class="dropdown-text">Analysis Overview</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
@@ -214,10 +214,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./analysis/motion-system-comparison.html">
  <span class="dropdown-text">Motion System Comparison</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-deep-dives" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Deep Dives</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-deep-dives">    
+        <li>
+    <a class="dropdown-item" href="./deep-dives/index.html">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./deep-dives/README.md">
- <span class="dropdown-text">Deep Dives Overview</span></a>
+    <a class="dropdown-item" href="./deep-dives/tractor_00_decision_guide.html">
+ <span class="dropdown-text">Decision Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deep-dives/tractor_01_frame_and_assembly.html">
+ <span class="dropdown-text">Frame &amp; Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deep-dives/tractor_02_xy_axis_system.html">
+ <span class="dropdown-text">X-Y Axis System</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deep-dives/tractor_03_motor_mounts_vibration.html">
+ <span class="dropdown-text">Motor Mounts &amp; Vibration</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deep-dives/tractor_04_xgantry_design_decision.html">
+ <span class="dropdown-text">X-Gantry Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deep-dives/tractor_05_psu_configurations.html">
+ <span class="dropdown-text">PSU Configurations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deep-dives/tractor_06_extruder_decision.html">
+ <span class="dropdown-text">Extruder Decision</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-articles" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Articles</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-articles">    
+        <li>
+    <a class="dropdown-item" href="./articles/index.html">
+ <span class="dropdown-text">All Articles</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./articles/age-of-the-appliance.html">
+ <span class="dropdown-text">Age of the Appliance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./articles/core-engineering-truths.html">
+ <span class="dropdown-text">Core Engineering Truths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./articles/reclaiming-the-reprap-legacy.html">
+ <span class="dropdown-text">Reclaiming the RepRap Legacy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./articles/reconfiguration-of-3d-printing-market.html">
+ <span class="dropdown-text">Reconfiguration of 3D Printing Market</span></a>
   </li>  
     </ul>
   </li>
@@ -236,21 +299,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Amalgam</h1>
+<p class="subtitle lead">A 2026 RepRap Reference Specification</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -263,173 +327,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <style>
-    .amalgam-hero {
-        /* Amalgam Brand Palette */
-        --brand-body: #4A4A4A;
-        --brand-accent: #FFFFFF;
-        --brand-base: #1A1A1A;
-        --bg-card: #252525;
-        --border-subtle: #505050;
-        --text-body: #e0e0e0;
-        --text-muted: #b0b0b0;
-        --text-label: #808080;
-        --border-ui: #404040;
-        --bg-badge: #333333;
-
-        background: var(--brand-base);
-        color: var(--text-body);
-        padding: 3rem 2rem;
+    .amalgam-header {
         text-align: center;
-        margin: -1rem -1rem 0 -1rem;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        padding: 1.5rem 0 1rem 0;
     }
 
-    .amalgam-hero .hero-container {
-        max-width: 600px;
-        margin: 0 auto;
+    .amalgam-header .logo {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 0.75rem;
     }
 
-    .amalgam-hero .logo {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 1.5rem;
+    .amalgam-header .tagline {
+        font-size: 1.15rem;
+        color: #666;
+        font-style: italic;
+        margin: 0;
     }
 
-    .amalgam-hero h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--brand-accent);
-    }
-
-    .amalgam-hero .tagline {
-        font-size: 1.1rem;
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-        font-weight: 500;
-    }
-
-    .amalgam-hero .description {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-        color: var(--text-muted);
-    }
-
-    .amalgam-hero .specs {
+    .amalgam-specs {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-        text-align: left;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+        margin: 1.5rem 0;
     }
 
-    .amalgam-hero .spec {
-        background: var(--bg-card);
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid var(--border-subtle);
+    .amalgam-specs .spec {
+        background: #f8f8f8;
+        border: 1px solid #e0e0e0;
+        border-left: 3px solid #4A4A4A;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
     }
 
-    .amalgam-hero .spec-label {
-        font-size: 0.75rem;
+    .amalgam-specs .spec-label {
+        font-size: 0.7rem;
         text-transform: uppercase;
-        color: var(--text-label);
-        margin-bottom: 0.25rem;
+        letter-spacing: 0.05em;
+        color: #888;
+        margin-bottom: 0.2rem;
     }
 
-    .amalgam-hero .spec-value {
-        font-size: 1.1rem;
+    .amalgam-specs .spec-value {
+        font-size: 1rem;
         font-weight: 600;
-        color: var(--brand-accent);
+        color: #1A1A1A;
     }
 
-    .amalgam-hero .github-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text-body);
-        text-decoration: none;
-        padding: 0.75rem 1.5rem;
-        border: 1px solid var(--border-ui);
-        border-radius: 6px;
-        transition: all 0.2s;
-    }
-
-    .amalgam-hero .github-link:hover {
-        border-color: var(--brand-accent);
-        color: var(--brand-accent);
-    }
-
-    .amalgam-hero .github-link svg {
-        width: 20px;
-        height: 20px;
-        fill: currentColor;
-    }
-
-    @media (max-width: 480px) {
-        .amalgam-hero h1 {
-            font-size: 2rem;
-        }
-        .amalgam-hero .specs {
-            grid-template-columns: 1fr;
+    @media (max-width: 600px) {
+        .amalgam-specs {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 </style>
 
-<div class="amalgam-hero">
-    <div class="hero-container">
-        <svg class="logo" viewbox="-55.05 -55.05 110.1 110.1" xmlns="http://www.w3.org/2000/svg">
-            <g transform="scale(1,-1)" stroke-linecap="round">
-                <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.09" id="octagon">
-                    <path d="M 50.0,20.710678 L 20.710678,50.0 L -20.710678,50.0 L -50.0,20.710678 L -50.0,-20.710678 L -20.710678,-50.0 L 20.710678,-50.0 L 50.0,-20.710678 L 50.0,20.710678"></path>
-                </g>
-                <g fill="#1A1A1A" stroke="#1A1A1A" stroke-width="0.09" id="recess">
-                    <path d="M 35.159608,-22.948177 L 30.821794,-13.30859 A 32.5,32.5 -22.42422491029962 0,1 12.725696,26.904961 L 12.209608,28.051823 A 5.0,5.0 180.0 0,1 7.65,31.0 L -7.65,31.0 A 5.0,5.0 -114.22774531795417 0,1 -12.209608,28.051823 L -12.725696,26.904961 A 32.5,32.5 0.0 0,1 -30.668941,7.754816 A 5.0,5.0 -114.22774531795417 0,1 -32.507608,5.611823 L -36.791608,-3.908177 A 5.0,5.0 0.0 0,1 -32.232,-10.96 L -31.510132,-10.96 A 32.5,32.5 0.0 0,1 -30.821794,-13.30859 L -35.159608,-22.948177 A 5.0,5.0 0.0 0,1 -30.6,-30.0 L -20.808,-30.0 A 5.0,5.0 62.94330649492843 0,1 -18.740619,-29.552574 A 32.5,32.5 0.0 0,1 18.740619,-29.552574 A 5.0,5.0 0.0 0,1 20.808,-30.0 L 30.6,-30.0 A 5.0,5.0 114.22774531795417 0,1 35.159608,-22.948177 M -30.6,-25.0 L -22.95,-8.0 L -12.124868,-8.0 L -20.808,-25.0 L -30.6,-25.0 M 30.6,-25.0 L 20.808,-25.0 L -0.0,15.738297 L -6.220339,3.56 L -1.292,3.56 L 2.992,-5.96 L -32.232,-5.96 L -27.948,3.56 L -17.748,3.56 L -7.65,26.0 L 7.65,26.0 L 30.6,-25.0"></path>
-                </g>
-                <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.09" id="a">
-                    <path d="M -12.124868,-8.0 L -22.95,-8.0 L -30.6,-25.0 L -20.808,-25.0 L -12.124868,-8.0"></path>
-                    <path d="M -0.0,15.738297 L 20.808,-25.0 L 30.6,-25.0 L 7.65,26.0 L -7.65,26.0 L -17.748,3.56 L -27.948,3.56 L -32.232,-5.96 L 2.992,-5.96 L -1.292,3.56 L -6.220339,3.56 L 0.0,15.738297"></path>
-                </g>
+<div class="amalgam-header">
+    <svg class="logo" viewbox="-55.05 -55.05 110.1 110.1" xmlns="http://www.w3.org/2000/svg">
+        <g transform="scale(1,-1)" stroke-linecap="round">
+            <g fill="#4A4A4A" stroke="#4A4A4A" stroke-width="0.09">
+                <path d="M 50.0,20.710678 L 20.710678,50.0 L -20.710678,50.0 L -50.0,20.710678 L -50.0,-20.710678 L -20.710678,-50.0 L 20.710678,-50.0 L 50.0,-20.710678 L 50.0,20.710678"></path>
             </g>
-        </svg>
+            <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.09">
+                <path d="M 35.159608,-22.948177 L 30.821794,-13.30859 A 32.5,32.5 -22.42422491029962 0,1 12.725696,26.904961 L 12.209608,28.051823 A 5.0,5.0 180.0 0,1 7.65,31.0 L -7.65,31.0 A 5.0,5.0 -114.22774531795417 0,1 -12.209608,28.051823 L -12.725696,26.904961 A 32.5,32.5 0.0 0,1 -30.668941,7.754816 A 5.0,5.0 -114.22774531795417 0,1 -32.507608,5.611823 L -36.791608,-3.908177 A 5.0,5.0 0.0 0,1 -32.232,-10.96 L -31.510132,-10.96 A 32.5,32.5 0.0 0,1 -30.821794,-13.30859 L -35.159608,-22.948177 A 5.0,5.0 0.0 0,1 -30.6,-30.0 L -20.808,-30.0 A 5.0,5.0 62.94330649492843 0,1 -18.740619,-29.552574 A 32.5,32.5 0.0 0,1 18.740619,-29.552574 A 5.0,5.0 0.0 0,1 20.808,-30.0 L 30.6,-30.0 A 5.0,5.0 114.22774531795417 0,1 35.159608,-22.948177 M -30.6,-25.0 L -22.95,-8.0 L -12.124868,-8.0 L -20.808,-25.0 L -30.6,-25.0 M 30.6,-25.0 L 20.808,-25.0 L -0.0,15.738297 L -6.220339,3.56 L -1.292,3.56 L 2.992,-5.96 L -32.232,-5.96 L -27.948,3.56 L -17.748,3.56 L -7.65,26.0 L 7.65,26.0 L 30.6,-25.0"></path>
+            </g>
+            <g fill="#4A4A4A" stroke="#4A4A4A" stroke-width="0.09">
+                <path d="M -12.124868,-8.0 L -22.95,-8.0 L -30.6,-25.0 L -20.808,-25.0 L -12.124868,-8.0"></path>
+                <path d="M -0.0,15.738297 L 20.808,-25.0 L 30.6,-25.0 L 7.65,26.0 L -7.65,26.0 L -17.748,3.56 L -27.948,3.56 L -32.232,-5.96 L 2.992,-5.96 L -1.292,3.56 L -6.220339,3.56 L 0.0,15.738297"></path>
+            </g>
+        </g>
+    </svg>
+    <p class="tagline">"A Tractor with the Brain of a Racecar"</p>
+</div>
 
-        <h1>Amalgam</h1>
-        <p class="tagline">A 2026 RepRap Reference Specification</p>
-
-        <p class="description">
-            A scavenger-friendly 3D printer built from two donor printers
-            and open-source intelligence.
-            We're building a <strong>Tractor with the Brain of a Racecar</strong>.
-        </p>
-
-        <div class="specs">
-            <div class="spec">
-                <div class="spec-label">Target Price</div>
-                <div class="spec-value">&lt; $300 AUD</div>
-            </div>
-            <div class="spec">
-                <div class="spec-label">Build Volume</div>
-                <div class="spec-value">220×220×220mm</div>
-            </div>
-            <div class="spec">
-                <div class="spec-label">Accuracy</div>
-                <div class="spec-value">±0.1mm</div>
-            </div>
-            <div class="spec">
-                <div class="spec-label">Control</div>
-                <div class="spec-value">100% Local</div>
-            </div>
-        </div>
-
-        <a href="https://github.com/the80-20workshop/amalgam" class="github-link">
-            <svg viewbox="0 0 16 16" aria-hidden="true">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-            </svg>
-            Star on GitHub
-        </a>
+<div class="amalgam-specs">
+    <div class="spec">
+        <div class="spec-label">Target Price</div>
+        <div class="spec-value">&lt; $300 AUD</div>
+    </div>
+    <div class="spec">
+        <div class="spec-label">Build Volume</div>
+        <div class="spec-value">220×220×220mm</div>
+    </div>
+    <div class="spec">
+        <div class="spec-label">Accuracy</div>
+        <div class="spec-value">±0.1mm</div>
+    </div>
+    <div class="spec">
+        <div class="spec-label">Control</div>
+        <div class="spec-value">100% Local</div>
     </div>
 </div>
+<p>A scavenger-friendly 3D printer built from two donor printers and open-source intelligence.</p>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 <section id="build-guides" class="level3">
@@ -451,9 +439,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="engineering" class="level3">
 <h3 class="anchored" data-anchor-id="engineering">Engineering</h3>
 <ul>
-<li><a href="analysis/README.md">Engineering Analysis</a> — rod sag, acceleration limits, Z-height trade-offs, motion system comparison</li>
-<li><a href="deep-dives/README.md">Deep Dives</a> — historical design explorations that informed the ADRs</li>
+<li><a href="./analysis/index.html">Engineering Analysis</a> — rod sag, acceleration limits, Z-height trade-offs, motion system comparison</li>
+<li><a href="./deep-dives/index.html">Deep Dives</a> — historical design explorations that informed the ADRs</li>
 </ul>
+</section>
+<section id="articles" class="level3">
+<h3 class="anchored" data-anchor-id="articles"><a href="./articles/index.html">Articles</a></h3>
+<p>Long-form essays on 3D printing philosophy, market dynamics, and open-source heritage.</p>
 </section>
 </section>
 <section id="frame-paths" class="level2">
@@ -504,9 +496,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-philosophy" class="level2">
 <h2 class="anchored" data-anchor-id="the-philosophy">The Philosophy</h2>
-<blockquote class="blockquote">
-<p><em>“A Tractor with the Brain of a Racecar”</em></p>
-</blockquote>
 <p>Amalgam is not designed to compete with consumer printers. It’s designed to teach you everything about 3D printers by building one from salvaged parts.</p>
 <p><strong>Key Principles:</strong></p>
 <ol type="1">

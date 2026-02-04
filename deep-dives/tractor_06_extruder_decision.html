@@ -189,12 +189,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">ADRs</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-engineering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Engineering</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analysis</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-engineering">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
         <li>
-    <a class="dropdown-item" href="../analysis/README.md">
+    <a class="dropdown-item" href="../analysis/index.html">
  <span class="dropdown-text">Analysis Overview</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
@@ -214,10 +214,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../analysis/motion-system-comparison.html">
  <span class="dropdown-text">Motion System Comparison</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-deep-dives" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Deep Dives</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-deep-dives">    
+        <li>
+    <a class="dropdown-item" href="../deep-dives/index.html">
+ <span class="dropdown-text">Deep Dives Overview</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../deep-dives/README.md">
- <span class="dropdown-text">Deep Dives Overview</span></a>
+    <a class="dropdown-item" href="../deep-dives/tractor_00_decision_guide.html">
+ <span class="dropdown-text">Decision Guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../deep-dives/tractor_01_frame_and_assembly.html">
+ <span class="dropdown-text">Frame &amp; Assembly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../deep-dives/tractor_02_xy_axis_system.html">
+ <span class="dropdown-text">X-Y Axis System</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../deep-dives/tractor_03_motor_mounts_vibration.html">
+ <span class="dropdown-text">Motor Mounts &amp; Vibration</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../deep-dives/tractor_04_xgantry_design_decision.html">
+ <span class="dropdown-text">X-Gantry Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../deep-dives/tractor_05_psu_configurations.html">
+ <span class="dropdown-text">PSU Configurations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../deep-dives/tractor_06_extruder_decision.html">
+ <span class="dropdown-text">Extruder Decision</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-articles" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Articles</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-articles">    
+        <li>
+    <a class="dropdown-item" href="../articles/index.html">
+ <span class="dropdown-text">All Articles</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../articles/age-of-the-appliance.html">
+ <span class="dropdown-text">Age of the Appliance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../articles/core-engineering-truths.html">
+ <span class="dropdown-text">Core Engineering Truths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../articles/reclaiming-the-reprap-legacy.html">
+ <span class="dropdown-text">Reclaiming the RepRap Legacy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../articles/reconfiguration-of-3d-printing-market.html">
+ <span class="dropdown-text">Reconfiguration of 3D Printing Market</span></a>
   </li>  
     </ul>
   </li>
@@ -239,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_06_extruder_decision.html">Amalgam: Extruder Selection &amp; Decision Record</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/tractor_06_extruder_decision.html">Amalgam: Extruder Selection &amp; Decision Record</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -251,94 +314,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis/rod-sag-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Rod Sag Analysis &amp; Extruder Mass Considerations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../analysis/z-height-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Z-Height Analysis: When Tall Builds Become Problematic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../analysis/single-vs-dual-rod.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Single vs Dual Rod Analysis: Why Single Rods Don’t Work</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../analysis/motion-system-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Motion System Comparison: Smooth Rods vs V-Slots</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+  <a href="../deep-dives/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deep Dives</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+  </div>
+</li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_00_decision_guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Amalgam: Tier 0 Decision Guide</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_01_frame_and_assembly.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Tractor: Frame Design &amp; Assembly</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_02_xy_axis_system.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Tractor: X-Y Axis System</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_03_motor_mounts_vibration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Tractor: Motor Mounts &amp; Vibration Control</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_04_xgantry_design_decision.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Amalgam: X-Gantry Design Decision</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_05_psu_configurations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Amalgam: Power Supply Configurations</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deep-dives/tractor_06_extruder_decision.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Amalgam: Extruder Selection &amp; Decision Record</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -427,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../deep-dives/README.md">Deep Dives</a></li><li class="breadcrumb-item"><a href="../deep-dives/tractor_06_extruder_decision.html">Amalgam: Extruder Selection &amp; Decision Record</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
