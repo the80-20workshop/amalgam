@@ -52,8 +52,7 @@ Design exploration documents that informed the ADRs:
 
 | Document | Topic |
 |----------|-------|
-| [rod-sag-analysis](analysis/rod-sag-analysis.md) | Smooth rod deflection |
-| [max-safe-acceleration](analysis/max-safe-acceleration.md) | Motion limits |
+| [rod-sag-analysis](analysis/rod-sag-analysis.md) | Smooth rod deflection + acceleration limits |
 
 ### Build Guides
 
