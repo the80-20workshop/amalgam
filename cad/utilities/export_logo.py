@@ -44,6 +44,7 @@ from amalgam.lib.logo import (
     CIRCLE_Y_OFFSET_RATIO,
     EDGE_CHAMFER,
     OUTER_FILLET,
+    DIAMETER as LOGO_DIAMETER,
 )
 
 # =============================================================================
@@ -64,10 +65,10 @@ BRAND_COLORS = {
     "chamfer": (90, 90, 90),    # #5A5A5A - Lighter grey for chamfer highlight
 }
 
-# Chamfer border for 2D export.
-# In 3D the chamfer (0.4mm) + fillet (0.5mm) at 27mm ≈ 3.3% of diameter.
-# Use the same ratio so the 2D matches the 3D visual proportions.
-BORDER_RATIO = 0.033
+# Derived from logo.py parameters — no magic numbers.
+# The chamfer + fillet create the visible border in the 3D model.
+CHAMFER_RATIO = EDGE_CHAMFER / LOGO_DIAMETER       # Chamfer inset as ratio of diameter
+BORDER_RATIO = (EDGE_CHAMFER + OUTER_FILLET) / LOGO_DIAMETER  # Full border (chamfer + fillet)
 
 
 # =============================================================================
@@ -171,64 +172,51 @@ def make_outline_logo_sketch(
 # Multi-color Logo (black octagon, white recess, black A)
 # =============================================================================
 
-def make_recess_logo_parts(
+def make_layered_logo(
     diameter: float = DIAMETER,
-    outline_width: float = None,
+    match_3d: bool = True,
 ) -> tuple[Sketch, Sketch, Sketch]:
     """
-    Create logo as separate parts for multi-color export.
+    Create logo as three stacked layers for multi-color export.
+
+    Simple approach: three shapes layered bottom-to-top.
+    All dimensions come directly from logo.py parameters.
+
+    Args:
+        match_3d: If True, draw the octagon at the chamfer-edge size
+                  (EDGE_CHAMFER inset) to match the 3D top-down view.
 
     Returns:
-        (octagon_sketch, recess_sketch, a_sketch) - three separate sketches
-        - octagon: The full octagon (black background)
-        - recess: The recessed area (circle + expanded A outline, white)
-        - a: The raised A (black foreground)
+        (octagon, circle, a) - three sketches, layered bottom to top:
+        - octagon: Background shape (black)
+        - circle: Middle layer (white)
+        - a: Foreground shape (black)
     """
-    if outline_width is None:
-        outline_width = diameter * 0.05
+    # Layer 1: Octagon background
+    if match_3d:
+        oct_diameter = diameter * (1 - 2 * CHAMFER_RATIO)
+    else:
+        oct_diameter = diameter
+    octagon = make_octagon_sketch(oct_diameter)
 
-    inradius = diameter / 2
-    circumradius = inradius / math.cos(math.pi / SIDES)
-
-    a_size = diameter * A_SIZE_RATIO
-    a_y_offset = diameter * A_Y_OFFSET_RATIO
+    # Layer 2: Circle (dimensions from logo.py ratios)
     circle_diameter = diameter * CIRCLE_DIAMETER_RATIO
     circle_y_offset = diameter * CIRCLE_Y_OFFSET_RATIO
-
-    # Get the A sketch
-    a_sketch = make_stylized_a_sketch(height=a_size)
-
-    # 1. Full octagon
-    with BuildSketch() as octagon:
-        RegularPolygon(
-            radius=circumradius,
-            side_count=SIDES,
-            rotation=OCTAGON_ROTATION,
-            align=(Align.CENTER, Align.CENTER)
-        )
-    octagon_sketch = octagon.sketch
-
-    # 2. Recess area (circle + expanded A, but NOT the A itself)
-    with BuildSketch() as recess:
-        # Start with circle
+    with BuildSketch() as circle_sk:
         with Locations([(0, circle_y_offset)]):
             Circle(radius=circle_diameter / 2)
-        # Add expanded A outline
-        with Locations([(0, a_y_offset)]):
-            add(a_sketch)
-            offset(amount=outline_width, kind=Kind.ARC, mode=Mode.ADD)
-        # Subtract the A itself (so recess is just the outline gap)
-        with Locations([(0, a_y_offset)]):
-            add(a_sketch, mode=Mode.SUBTRACT)
-    recess_sketch = recess.sketch
+    circle = circle_sk.sketch
 
-    # 3. The A (positioned)
+    # Layer 3: Stylized A (positioned)
+    a_size = diameter * A_SIZE_RATIO
+    a_y_offset = diameter * A_Y_OFFSET_RATIO
+    a_sketch = make_stylized_a_sketch(height=a_size)
     with BuildSketch() as a_positioned:
         with Locations([(0, a_y_offset)]):
             add(a_sketch)
     a_final = a_positioned.sketch
 
-    return octagon_sketch, recess_sketch, a_final
+    return octagon, circle, a_final
 
 
 def export_multicolor_svg(
@@ -359,12 +347,12 @@ def export_web_logo(diameter: float = DIAMETER) -> Path:
     """
     filepath = OUTPUT_DIR / "amalgam_logo_web.svg"
 
-    # Generate sketches
-    octagon, recess, a_shape = make_recess_logo_parts(diameter)
+    # Generate layered sketches (octagon at chamfer-edge size by default)
+    octagon, circle, a_shape = make_layered_logo(diameter)
 
     # Export with brand colors
     export_multicolor_svg(
-        octagon, recess, a_shape, filepath,
+        octagon, circle, a_shape, filepath,
         colors={"body": BRAND_COLORS["body"], "recess": BRAND_COLORS["recess"]},
     )
 
@@ -424,9 +412,9 @@ def export_all_variants(diameter: float = DIAMETER):
     export_sketch_svg(outline_logo, OUTPUT_DIR / "amalgam_logo_outline.svg", fill=True)
 
     # 5. Multi-color logo (black octagon, white recess, black A)
-    print("5. Multi-color logo (black/white/black layers)...")
-    octagon, recess, a_shape = make_recess_logo_parts(diameter)
-    export_multicolor_svg(octagon, recess, a_shape, OUTPUT_DIR / "amalgam_logo_bw.svg")
+    print("5. Multi-color logo (black/white/black layers, match 3D)...")
+    octagon, circle, a_shape = make_layered_logo(diameter)
+    export_multicolor_svg(octagon, circle, a_shape, OUTPUT_DIR / "amalgam_logo_bw.svg")
 
     # 6. Web logo (brand colors + chamfer border)
     print("6. Web logo (brand colors, chamfer border)...")
