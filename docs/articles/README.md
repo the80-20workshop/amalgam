@@ -4,21 +4,21 @@ This folder contains **longer-form thinking pieces** on 3D printing market dynam
 
 ## Contents
 
-- **3D-Printing-In-The-Age-Of-The-Appliance.md** — The shift from DIY tooling to consumer appliances
+- **age-of-the-appliance.md** — The shift from DIY tooling to consumer appliances
   - Market consolidation around easy-to-use commercial systems
   - Where scavenger projects fit in the appliance era
   - Philosophy: "Tractor with a Racecar Brain"
 
-- **Darwin-Neo: Reclaiming the RepRap Legacy for the 20th Anniversary (2027).md** — Vision piece for Amalgam's target release
+- **reclaiming-the-reprap-legacy.md** — Vision piece for Amalgam's target release
   - RepRap heritage and Amalgam's connection to it
   - Why threaded-rod frame design remains relevant
   - Market positioning in 2027
 
-- **The-Reconfiguration-of-the-3D-Printing-Market: From-RepRap-Open-Source-Idealism-to-the-Era-of-Integrated-Prosumer-Appliances.md** — Market analysis and trends
+- **reconfiguration-of-3d-printing-market.md** — Market analysis and trends
   - 20-year arc from RepRap to modern appliance printers
   - Why Amalgam exists as an alternative path
 
-- **Core-Engineering-Truths-Distilled-from-20-years-of-RepRap.md** — Philosophical foundations
+- **core-engineering-truths.md** — Philosophical foundations
   - Core principles that have survived 20 years of 3D printing
   - Why certain design choices are timeless
 

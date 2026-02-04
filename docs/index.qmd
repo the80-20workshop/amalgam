@@ -119,8 +119,12 @@ Print settings, frame assembly, Klipper configuration, calibration, and maintena
 
 ### Engineering
 
-- [Engineering Analysis](analysis/README.md) — rod sag, acceleration limits, Z-height trade-offs, motion system comparison
-- [Deep Dives](deep-dives/README.md) — historical design explorations that informed the ADRs
+- [Engineering Analysis](analysis/index.qmd) — rod sag, acceleration limits, Z-height trade-offs, motion system comparison
+- [Deep Dives](deep-dives/index.qmd) — historical design explorations that informed the ADRs
+
+### [Articles](articles/index.qmd)
+
+Long-form essays on 3D printing philosophy, market dynamics, and open-source heritage.
 
 ## Frame Paths
 

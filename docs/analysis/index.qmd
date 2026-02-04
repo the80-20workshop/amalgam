@@ -1,0 +1,28 @@
+---
+title: "Engineering Analysis"
+subtitle: "Technical calculations and measurements validating Amalgam design decisions"
+---
+
+This section contains physics-based analysis that validates design choices and supports parametric configuration. Use these when you need to understand the engineering behind Amalgam or explore trade-offs.
+
+## Analysis Documents
+
+| Document | Key Insight |
+|----------|-------------|
+| [Rod Sag Analysis](rod-sag-analysis.md) | M8 vs M10 deflection at various spans; max safe acceleration per rod diameter |
+| [Z-Height Analysis](z-height-analysis.md) | Leadscrew whip, frame resonance, and why 280mm is the practical limit |
+| [Single vs Dual Rod](single-vs-dual-rod.md) | Why single rods have 4x deflection and can't resist rotation |
+| [Motion System Comparison](motion-system-comparison.md) | Precision, wear, and maintenance differences between rods and V-slots |
+
+## What These Validate
+
+- **ADR decisions** --- Physics-based justification for design choices (e.g., why M10 frame, why MDF damping)
+- **Parametric defaults** --- `config.py` settings based on tested ranges
+- **Tuning guidance** --- Input Shaping, acceleration profiles per frame path
+- **Fitness constraints** --- ADR-026 stability analysis for bed size and Z-height
+
+## Related
+
+- [Architecture Decision Records](../adr/index.qmd) --- Formal decisions these analyses inform
+- [Deep Dives](../deep-dives/index.qmd) --- Historical design explorations
+- [Build Guides](../guides/index.qmd) --- How to implement these validated designs

@@ -9,7 +9,6 @@ project:
     - "*.md"
     - "!reference/legacy/"
     - "!reference/RENAME-TRACKING.md"
-    - "!articles/"
   resources:
     - CNAME
     - .nojekyll
@@ -50,10 +49,10 @@ website:
             href: reference/parts-sourcing-guide.md
       - text: "ADRs"
         href: adr/index.qmd
-      - text: "Engineering"
+      - text: "Analysis"
         menu:
           - text: "Analysis Overview"
-            href: analysis/README.md
+            href: analysis/index.qmd
           - text: "---"
           - text: "Rod Sag Analysis"
             href: analysis/rod-sag-analysis.md
@@ -63,9 +62,38 @@ website:
             href: analysis/single-vs-dual-rod.md
           - text: "Motion System Comparison"
             href: analysis/motion-system-comparison.md
-          - text: "---"
+      - text: "Deep Dives"
+        menu:
           - text: "Deep Dives Overview"
-            href: deep-dives/README.md
+            href: deep-dives/index.qmd
+          - text: "---"
+          - text: "Decision Guide"
+            href: deep-dives/tractor_00_decision_guide.md
+          - text: "Frame & Assembly"
+            href: deep-dives/tractor_01_frame_and_assembly.md
+          - text: "X-Y Axis System"
+            href: deep-dives/tractor_02_xy_axis_system.md
+          - text: "Motor Mounts & Vibration"
+            href: deep-dives/tractor_03_motor_mounts_vibration.md
+          - text: "X-Gantry Design"
+            href: deep-dives/tractor_04_xgantry_design_decision.md
+          - text: "PSU Configurations"
+            href: deep-dives/tractor_05_psu_configurations.md
+          - text: "Extruder Decision"
+            href: deep-dives/tractor_06_extruder_decision.md
+      - text: "Articles"
+        menu:
+          - text: "All Articles"
+            href: articles/index.qmd
+          - text: "---"
+          - text: "Age of the Appliance"
+            href: articles/age-of-the-appliance.md
+          - text: "Core Engineering Truths"
+            href: articles/core-engineering-truths.md
+          - text: "Reclaiming the RepRap Legacy"
+            href: articles/reclaiming-the-reprap-legacy.md
+          - text: "Reconfiguration of 3D Printing Market"
+            href: articles/reconfiguration-of-3d-printing-market.md
     right:
       - icon: github
         href: https://github.com/the80-20workshop/amalgam
@@ -87,25 +115,32 @@ website:
         - reference/MASTER_PARTS_LIST.md
         - reference/parts-sourcing-guide.md
 
-    - title: "Engineering"
+    - title: "Analysis"
       contents:
-        - section: "Analysis"
-          contents:
-            - analysis/README.md
-            - analysis/rod-sag-analysis.md
-            - analysis/z-height-analysis.md
-            - analysis/single-vs-dual-rod.md
-            - analysis/motion-system-comparison.md
-        - section: "Deep Dives"
-          contents:
-            - deep-dives/README.md
-            - deep-dives/tractor_00_decision_guide.md
-            - deep-dives/tractor_01_frame_and_assembly.md
-            - deep-dives/tractor_02_xy_axis_system.md
-            - deep-dives/tractor_03_motor_mounts_vibration.md
-            - deep-dives/tractor_04_xgantry_design_decision.md
-            - deep-dives/tractor_05_psu_configurations.md
-            - deep-dives/tractor_06_extruder_decision.md
+        - analysis/index.qmd
+        - analysis/rod-sag-analysis.md
+        - analysis/z-height-analysis.md
+        - analysis/single-vs-dual-rod.md
+        - analysis/motion-system-comparison.md
+
+    - title: "Deep Dives"
+      contents:
+        - deep-dives/index.qmd
+        - deep-dives/tractor_00_decision_guide.md
+        - deep-dives/tractor_01_frame_and_assembly.md
+        - deep-dives/tractor_02_xy_axis_system.md
+        - deep-dives/tractor_03_motor_mounts_vibration.md
+        - deep-dives/tractor_04_xgantry_design_decision.md
+        - deep-dives/tractor_05_psu_configurations.md
+        - deep-dives/tractor_06_extruder_decision.md
+
+    - title: "Articles"
+      contents:
+        - articles/index.qmd
+        - articles/age-of-the-appliance.md
+        - articles/core-engineering-truths.md
+        - articles/reclaiming-the-reprap-legacy.md
+        - articles/reconfiguration-of-3d-printing-market.md
 
 format:
   html:

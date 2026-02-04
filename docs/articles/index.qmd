@@ -1,0 +1,21 @@
+---
+title: "Articles"
+subtitle: "Long-form essays on 3D printing philosophy, market dynamics, and open-source heritage"
+---
+
+These essays provide context for why Amalgam exists --- covering market shifts, open-source philosophy, and the engineering principles distilled from 20 years of RepRap history. They are position papers, not technical specifications.
+
+## Essays
+
+| Article | Description |
+|---------|-------------|
+| [3D Printing in the Age of the Appliance](age-of-the-appliance.md) | The shift from DIY tooling to consumer appliances, and where scavenger projects fit in the appliance era |
+| [Core Engineering Truths](core-engineering-truths.md) | Core principles distilled from 20 years of RepRap development --- motion systems, mass, software intelligence |
+| [Reclaiming the RepRap Legacy](reclaiming-the-reprap-legacy.md) | Vision piece for the RepRap 20th anniversary (2027) --- heritage, threaded-rod relevance, market positioning |
+| [Reconfiguration of the 3D Printing Market](reconfiguration-of-3d-printing-market.md) | Market analysis: the 20-year arc from RepRap open-source idealism to integrated prosumer appliances |
+
+## Related
+
+- [Engineering Philosophy (ADR-000)](../adr/000-engineering-philosophy.md) --- The formal design philosophy these essays explore
+- [Deep Dives](../deep-dives/index.qmd) --- Technical design explorations
+- [Project Philosophy](../../PHILOSOPHY.md) --- Core "Tractor" values
