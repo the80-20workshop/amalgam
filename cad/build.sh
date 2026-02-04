@@ -14,10 +14,16 @@ NC='\033[0m' # No Color
 
 # Config
 PARTS_DIR="amalgam/parts"
-STL_DIR="stl"
+EXPORTS_DIR="exports"
+STL_DIR="$EXPORTS_DIR/stl"  # Default format location
 VENV_DIR=".venv"
 PYPROJECT_FILE="pyproject.toml"
 PARTS_LIST_SCRIPT="utilities/list.py"
+
+# Export format (can be overridden with --format flag)
+# Options: stl, step, 3mf, brep, gltf, all
+EXPORT_FORMAT="${EXPORT_FORMAT:-stl}"
+EXPORT_DRAWINGS="${EXPORT_DRAWINGS:-false}"
 
 # Testing mode (use only corner parts for initial testing)
 TEST_MODE="${TEST_MODE:-false}"
@@ -34,7 +40,7 @@ PARTS=(
 show_help() {
     echo "Amalgam Build Script"
     echo ""
-    echo "Usage: $0 [command] [args...]"
+    echo "Usage: $0 [command] [options] [args...]"
     echo ""
     echo "Setup:"
     echo "  First time? Run: ./setup.sh"
@@ -43,24 +49,40 @@ show_help() {
     echo "  build [PARTS...]    Build specified parts"
     echo "  build_all           Build all parts"
     echo "  list                List all available parts"
-    echo "  clean               Delete all STLs"
+    echo "  clean               Delete all exported files"
+    echo "  formats             Show available export formats"
     echo "  help                Show this help"
+    echo ""
+    echo "Export Options:"
+    echo "  --format FORMAT     Export format: stl, step, 3mf, brep, gltf, all"
+    echo "  --drawings          Also generate technical drawings (SVG/PDF)"
     echo ""
     echo "The script automatically:"
     echo "  - Checks for and activates .venv"
     echo "  - Installs dependencies if missing"
     echo "  - Discovers parts dynamically from amalgam/parts/ directory"
     echo ""
-    echo "Advanced options:"
+    echo "Output Directory:"
+    echo "  exports/stl/        STL files (3D printing)"
+    echo "  exports/step/       STEP files (CAD interchange)"
+    echo "  exports/3mf/        3MF files (modern slicers)"
+    echo "  exports/brep/       BREP files (build123d native)"
+    echo "  exports/gltf/       glTF files (web/3D viewers)"
+    echo "  exports/drawings/   Technical drawings (SVG/PDF)"
+    echo ""
+    echo "Environment Variables:"
+    echo "  EXPORT_FORMAT=step  Set default export format"
+    echo "  EXPORT_DRAWINGS=true  Always generate drawings"
     echo "  TEST_MODE=true      Only use test part list"
     echo ""
     echo "Parts available:"
     list_parts
     echo ""
     echo "Examples:"
-    echo "  ./build.sh build corner_front_left"
-    echo "  ./build.sh build corner_front_left corner_standard"
-    echo "  ./build.sh build maker_coin fidget_bolt"
+    echo "  ./build.sh build maker_coin                    # Default format (STL)"
+    echo "  ./build.sh build maker_coin --format step      # Export as STEP"
+    echo "  ./build.sh build maker_coin --format all       # All formats"
+    echo "  ./build.sh build_all --format step --drawings  # STEP + drawings"
 }
 
 # Load dynamic parts list
@@ -173,6 +195,65 @@ list_parts() {
     done
 }
 
+# Show available export formats
+show_formats() {
+    echo -e "${BLUE}Available Export Formats:${NC}"
+    echo ""
+    echo "3D Formats:"
+    echo "  stl    Standard 3D printing format (mesh)"
+    echo "  step   CAD interchange - Fusion 360, FreeCAD, SolidWorks (BREP)"
+    echo "  3mf    Modern slicer format with metadata (mesh)"
+    echo "  brep   build123d native format (exact geometry)"
+    echo "  gltf   Web/3D viewer format (binary .glb)"
+    echo "  all    Export all 3D formats"
+    echo ""
+    echo "Technical Drawings (with --drawings flag):"
+    echo "  SVG    Vector graphics, scalable"
+    echo "  PDF    Print-ready (requires cairosvg, inkscape, or rsvg-convert)"
+    echo ""
+    echo "Current default: $EXPORT_FORMAT"
+    echo ""
+    echo "Set default in config.py:"
+    echo "  EXPORT_FORMAT = \"step\""
+    echo "  EXPORT_DRAWINGS = True"
+}
+
+# Parse command line options (call before processing commands)
+parse_options() {
+    PARTS_ARGS=()
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --format)
+                shift
+                if [[ -n "$1" && ! "$1" =~ ^-- ]]; then
+                    EXPORT_FORMAT="$1"
+                    shift
+                else
+                    echo -e "${RED}Error: --format requires a value${NC}"
+                    exit 1
+                fi
+                ;;
+            --format=*)
+                EXPORT_FORMAT="${1#*=}"
+                shift
+                ;;
+            --drawings)
+                EXPORT_DRAWINGS="true"
+                shift
+                ;;
+            *)
+                PARTS_ARGS+=("$1")
+                shift
+                ;;
+        esac
+    done
+
+    # Export these as environment variables for Python scripts
+    export EXPORT_FORMAT
+    export EXPORT_DRAWINGS
+}
+
 # Build single part
 build_part() {
     local part_spec="$1"
@@ -181,7 +262,7 @@ build_part() {
     local rel_path="${remaining%%:*}"
     local cli_args="${remaining#*:}"
 
-    echo -e "${BLUE}Building: $display_name${NC}"
+    echo -e "${BLUE}Building: $display_name (format: $EXPORT_FORMAT)${NC}"
 
     local full_path="${PARTS_DIR}/${rel_path}.py"
 
@@ -193,17 +274,62 @@ build_part() {
 
     # Run Python script from cad/ directory (so package imports work)
     # PYTHONPATH=. ensures config.py and amalgam package are importable
+    # EXPORT_FORMAT and EXPORT_DRAWINGS are passed via environment
     PYTHONPATH=. $PYTHON_CMD "$full_path" $cli_args
     local exit_code=$?
 
-    # Check if STL was created
-    if [ -f "$STL_DIR/${display_name}.stl" ]; then
-        echo -e "${GREEN}Success: ${display_name}.stl created${NC}"
-        local stl_size=$(du -h "$STL_DIR/${display_name}.stl" | cut -f1)
-        echo -e "  Size: $stl_size"
-    else
-        echo -e "${YELLOW}Note: ${display_name}.stl not in expected location${NC}"
-        # Not necessarily an error - script may use different output path
+    # Check for exported files in the new exports/ directory structure
+    local found_exports=false
+
+    # Check STL (default)
+    if [ -f "$EXPORTS_DIR/stl/${display_name}.stl" ]; then
+        found_exports=true
+        local file_size=$(du -h "$EXPORTS_DIR/stl/${display_name}.stl" | cut -f1)
+        echo -e "${GREEN}  STL: ${display_name}.stl ($file_size)${NC}"
+    fi
+
+    # Check STEP
+    if [ -f "$EXPORTS_DIR/step/${display_name}.step" ]; then
+        found_exports=true
+        local file_size=$(du -h "$EXPORTS_DIR/step/${display_name}.step" | cut -f1)
+        echo -e "${GREEN}  STEP: ${display_name}.step ($file_size)${NC}"
+    fi
+
+    # Check 3MF
+    if [ -f "$EXPORTS_DIR/3mf/${display_name}.3mf" ]; then
+        found_exports=true
+        local file_size=$(du -h "$EXPORTS_DIR/3mf/${display_name}.3mf" | cut -f1)
+        echo -e "${GREEN}  3MF: ${display_name}.3mf ($file_size)${NC}"
+    fi
+
+    # Check BREP
+    if [ -f "$EXPORTS_DIR/brep/${display_name}.brep" ]; then
+        found_exports=true
+        local file_size=$(du -h "$EXPORTS_DIR/brep/${display_name}.brep" | cut -f1)
+        echo -e "${GREEN}  BREP: ${display_name}.brep ($file_size)${NC}"
+    fi
+
+    # Check glTF
+    if [ -f "$EXPORTS_DIR/gltf/${display_name}.glb" ]; then
+        found_exports=true
+        local file_size=$(du -h "$EXPORTS_DIR/gltf/${display_name}.glb" | cut -f1)
+        echo -e "${GREEN}  glTF: ${display_name}.glb ($file_size)${NC}"
+    fi
+
+    # Check drawings
+    if [ -f "$EXPORTS_DIR/drawings/${display_name}_drawing.svg" ]; then
+        found_exports=true
+        echo -e "${GREEN}  Drawing: ${display_name}_drawing.svg${NC}"
+    fi
+
+    # Backward compatibility: check old stl/ location
+    if [ "$found_exports" = false ] && [ -f "stl/${display_name}.stl" ]; then
+        echo -e "${YELLOW}  Note: Found in legacy stl/ directory${NC}"
+        found_exports=true
+    fi
+
+    if [ "$found_exports" = false ]; then
+        echo -e "${YELLOW}  Note: No exports found in expected locations${NC}"
     fi
 
     return $exit_code
@@ -212,6 +338,11 @@ build_part() {
 # Build all parts
 build_all() {
     echo -e "${BLUE}Building all parts...${NC}"
+    echo -e "  Format: $EXPORT_FORMAT"
+    if [ "$EXPORT_DRAWINGS" = "true" ]; then
+        echo -e "  Drawings: enabled"
+    fi
+    echo ""
 
     load_parts_list
 
@@ -227,8 +358,9 @@ build_all() {
     echo ""
     echo -e "${GREEN}Build summary:${NC}"
     echo -e "  Success: $success_count / $total"
+    echo -e "  Format: $EXPORT_FORMAT"
     echo ""
-    echo -e "${BLUE}STL files location: $STL_DIR/${NC}"
+    echo -e "${BLUE}Export location: $EXPORTS_DIR/${NC}"
 }
 
 # Build specific parts
@@ -255,26 +387,60 @@ build_specific() {
     done
 }
 
-# Clean all STLs
+# Clean all exported files
 clean_all() {
-    echo -e "${YELLOW}Cleaning all STLs...${NC}"
-    rm -f ${STL_DIR}/*.stl
+    echo -e "${YELLOW}Cleaning all exports...${NC}"
+
+    # Clean new exports directory
+    if [ -d "$EXPORTS_DIR" ]; then
+        rm -rf "$EXPORTS_DIR/stl"/*.stl 2>/dev/null
+        rm -rf "$EXPORTS_DIR/step"/*.step 2>/dev/null
+        rm -rf "$EXPORTS_DIR/3mf"/*.3mf 2>/dev/null
+        rm -rf "$EXPORTS_DIR/brep"/*.brep 2>/dev/null
+        rm -rf "$EXPORTS_DIR/gltf"/*.glb 2>/dev/null
+        rm -rf "$EXPORTS_DIR/drawings"/*.svg 2>/dev/null
+        rm -rf "$EXPORTS_DIR/drawings"/*.pdf 2>/dev/null
+        echo -e "  Cleaned: $EXPORTS_DIR/"
+    fi
+
+    # Also clean legacy stl/ directory for backward compatibility
+    if [ -d "stl" ]; then
+        rm -f stl/*.stl 2>/dev/null
+        echo -e "  Cleaned: stl/ (legacy)"
+    fi
+
     echo -e "${GREEN}Done!${NC}"
 }
 
-# Create STL directory if not exists
-mkdir -p "$STL_DIR"
+# Create export directories
+mkdir -p "$EXPORTS_DIR/stl"
+mkdir -p "$EXPORTS_DIR/step"
+mkdir -p "$EXPORTS_DIR/3mf"
+mkdir -p "$EXPORTS_DIR/brep"
+mkdir -p "$EXPORTS_DIR/gltf"
+mkdir -p "$EXPORTS_DIR/drawings"
+
+# Also keep legacy stl/ for backward compatibility
+mkdir -p "stl"
 
 # Main execution
-case "${1:-help}" in
+COMMAND="${1:-help}"
+shift 2>/dev/null || true
+
+# Parse options from remaining arguments
+parse_options "$@"
+
+case "$COMMAND" in
     build)
-        shift
         setup_environment
         load_parts_list
-        if [ $# -eq 0 ]; then
-            build_all
+        if [ ${#PARTS_ARGS[@]} -eq 0 ]; then
+            echo -e "${RED}Error: No parts specified${NC}"
+            echo "Usage: ./build.sh build PART_NAME [--format FORMAT]"
+            list_parts
+            exit 1
         else
-            build_specific "$@"
+            build_specific "${PARTS_ARGS[@]}"
         fi
         ;;
     build_all)
@@ -282,7 +448,11 @@ case "${1:-help}" in
         build_all
         ;;
     list)
+        setup_environment
         list_parts
+        ;;
+    formats)
+        show_formats
         ;;
     clean)
         clean_all
@@ -291,7 +461,7 @@ case "${1:-help}" in
         show_help
         ;;
     *)
-        echo -e "${RED}Unknown command: $1${NC}"
+        echo -e "${RED}Unknown command: $COMMAND${NC}"
         show_help
         exit 1
         ;;

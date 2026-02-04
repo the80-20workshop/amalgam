@@ -14,6 +14,9 @@ import math
 # Import the logo from lib/
 from amalgam.lib.logo import make_logo
 
+# Import centralized export
+from amalgam.lib.export import export_part
+
 # Try to import show for interactive viewing
 try:
     from ocp_vscode import show
@@ -387,15 +390,10 @@ def main():
         nut = make_simple_nut()
         print("Simple nut generated!")
 
-    # Export to STL (path relative to cad/ directory where build.sh runs)
-    try:
-        export_stl(bolt, "stl/fidget_bolt.stl")
-        print("Exported: stl/fidget_bolt.stl")
-
-        export_stl(nut, "stl/fidget_nut.stl")
-        print("Exported: stl/fidget_nut.stl")
-    except Exception as e:
-        print(f"Could not export STL: {e}")
+    # Export using centralized export module (format from config/env)
+    print("\nExporting...")
+    export_part(bolt, "fidget_bolt")
+    export_part(nut, "fidget_nut")
 
     # Show in viewer
     if HAS_VIEWER:

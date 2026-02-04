@@ -26,6 +26,8 @@ Usage:
 import sys
 from build123d import *
 
+from amalgam.lib.export import export_part
+
 try:
     from config import BUILD_VOLUME
     BED_X = BUILD_VOLUME["x"]
@@ -168,16 +170,13 @@ def main():
     # Generate grid pattern (default)
     grid = make_first_layer_grid()
 
-    # Export
-    stl_path = "stl/first_layer_grid.stl"
-    export_stl(grid, stl_path)
-    print(f"\nExported: {stl_path}")
+    # Export using centralized export module
+    print("\nExporting...")
+    export_part(grid, "first_layer_grid")
 
     # Also generate snake pattern as alternative
     snake = make_first_layer_snake()
-    snake_path = "stl/first_layer_snake.stl"
-    export_stl(snake, snake_path)
-    print(f"Exported: {snake_path}")
+    export_part(snake, "first_layer_snake")
 
     print()
     print("Print settings:")

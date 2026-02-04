@@ -6,6 +6,7 @@ Basic corner with 4 M12 rod clamps and jam nut access
 import sys
 
 from amalgam.lib.corner import make_standard_corner
+from amalgam.lib.export import export_part
 
 try:
     from config import *
@@ -28,12 +29,9 @@ def main():
         jam_nut_access_dia=JAM_NUT_ACCESS_DIA,
     )
 
-    # Export to STL (path relative to cad/ directory where build.sh runs)
-    from build123d import export_stl as export_stl_func
-
-    stl_path = "stl/corner_standard.stl"
-    export_stl_func(corner, stl_path)
-    print(f"Exported: {stl_path}")
+    # Export using centralized export module
+    print("\nExporting...")
+    export_part(corner, "corner_standard")
 
     print("Standard corner complete!")
     return corner

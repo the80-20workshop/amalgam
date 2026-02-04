@@ -7,6 +7,7 @@ Uses shared motorized corner component from amalgam.lib.corner
 import sys
 
 from amalgam.lib.corner import make_motorized_corner
+from amalgam.lib.export import export_part
 
 try:
     from config import *
@@ -25,11 +26,9 @@ def main():
     # Generate front-left corner (default orientation, no mirror)
     corner_1 = make_motorized_corner(location="front_left", mirror=False)
 
-    # Export to STL (path relative to cad/ directory where build.sh runs)
-    from build123d import export_stl as export_stl_func
-
-    export_stl_func(corner_1, "stl/corner_front_left.stl")
-    print("Exported: stl/corner_front_left.stl")
+    # Export using centralized export module
+    print("\nExporting...")
+    export_part(corner_1, "corner_front_left")
 
     # Print dimensions
     print(f"  Motor: NEMA17 (Z1)")

@@ -14,6 +14,9 @@ import math
 # Import the logo from lib/
 from amalgam.lib.logo import make_logo
 
+# Import centralized export
+from amalgam.lib.export import export_part
+
 # Try to import show for interactive viewing
 try:
     from ocp_vscode import show
@@ -173,13 +176,9 @@ def main():
 
     print("Coin generated successfully!")
 
-    # Export to STL (path relative to cad/ directory where build.sh runs)
-    stl_path = "stl/maker_coin.stl"
-    try:
-        export_stl(coin, stl_path)
-        print(f"Exported: {stl_path}")
-    except Exception as e:
-        print(f"Could not export STL: {e}")
+    # Export using centralized export module (format from config/env)
+    print("\nExporting...")
+    export_part(coin, "maker_coin")
 
     # Show in viewer if available
     if HAS_VIEWER:

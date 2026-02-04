@@ -104,7 +104,23 @@ SPIDER_INTERLOCK = True
 SPIDER_LEADSCREW_SPACING = 40  # Distance between leadscrews for hub
 
 
-# --- 7. UTILITIES ---
+# --- 7. EXPORT SETTINGS ---
+# Default export format for build.sh
+# Options: "stl" (default), "step", "3mf", "brep", "gltf", "all"
+# STL: Standard 3D printing format
+# STEP: CAD interchange (Fusion 360, FreeCAD, SolidWorks)
+# 3MF: Modern slicer format with metadata
+# BREP: build123d native (exact geometry)
+# glTF: Web/visualization (3D viewers)
+# all: Export all formats
+EXPORT_FORMAT = "stl"
+
+# Generate technical drawings (orthographic projections)
+# Creates front, top, side, and isometric views as SVG and PDF
+EXPORT_DRAWINGS = False
+
+
+# --- 8. UTILITIES ---
 def print_config_summary():
     """Manifesto Transparency Check"""
     print(f"--- Darwin-Neo Configuration: {DONOR_TYPE} Path ---")

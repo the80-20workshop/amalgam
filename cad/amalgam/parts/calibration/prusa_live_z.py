@@ -26,6 +26,8 @@ Usage:
 import sys
 from build123d import *
 
+from amalgam.lib.export import export_part
+
 try:
     from config import BUILD_VOLUME
     BED_X = BUILD_VOLUME["x"]
@@ -218,10 +220,9 @@ def main():
     # Generate the simple version (closer to original Prusa)
     pattern = make_prusa_live_z_simple()
 
-    # Export
-    stl_path = "stl/prusa_live_z.stl"
-    export_stl(pattern, stl_path)
-    print(f"\nExported: {stl_path}")
+    # Export using centralized export module
+    print("\nExporting...")
+    export_part(pattern, "prusa_live_z")
 
     print()
     print("How to use:")

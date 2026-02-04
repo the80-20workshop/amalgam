@@ -189,6 +189,10 @@ class PartsInventory:
     # Build height
     build_z: int
 
+    # Export settings
+    export_format: str = "stl"  # stl, step, 3mf, brep, gltf, all
+    export_drawings: bool = False
+
 
 def collect_inventory() -> PartsInventory:
     """Collect parts inventory from user through interactive prompts."""
@@ -333,6 +337,24 @@ def collect_inventory() -> PartsInventory:
         default="PITAN",
     )
 
+    # --- Export Settings ---
+    print_section("Export Settings")
+    print("What format should parts be exported in?")
+    print("  stl:   Standard 3D printing format (default)")
+    print("  step:  CAD interchange (Fusion 360, FreeCAD, etc.)")
+    print("  3mf:   Modern slicer format with metadata")
+    print("  brep:  build123d native (exact geometry)")
+    print("  gltf:  Web/3D viewer format")
+    print("  all:   Export all formats")
+
+    export_format = get_input(
+        "Export format",
+        default="stl",
+        valid_options=["stl", "step", "3mf", "brep", "gltf", "all"],
+    )
+
+    export_drawings = get_yes_no("Generate technical drawings (SVG/PDF)?", default=False)
+
     return PartsInventory(
         motor_count=motor_count,
         motor_source=motor_source,
@@ -346,6 +368,8 @@ def collect_inventory() -> PartsInventory:
         threaded_rod_type="M10",
         extruder_id=extruder_id,
         build_z=build_z,
+        export_format=export_format,
+        export_drawings=export_drawings,
     )
 
 
@@ -524,6 +548,16 @@ LOOSE_TOLERANCE = 0.4    # Loose fit (sliding)
 # Printing parameters
 MIN_WALL = 1.2           # Minimum wall thickness
 MIN_FLOOR = 0.8          # Minimum floor thickness
+
+# =============================================================================
+# 10. EXPORT SETTINGS
+# =============================================================================
+
+# Default export format: stl, step, 3mf, brep, gltf, or all
+EXPORT_FORMAT = "{inventory.export_format}"
+
+# Generate technical drawings (orthographic projections as SVG/PDF)
+EXPORT_DRAWINGS = {inventory.export_drawings}
 '''
 
     return config
@@ -622,6 +656,8 @@ def run_wizard(quick: bool = False, force_tier: int = None, auto_save: bool = Fa
             threaded_rod_type="M10",
             extruder_id="PITAN",
             build_z=250,
+            export_format="stl",
+            export_drawings=False,
         )
     else:
         inventory = collect_inventory()
@@ -649,6 +685,9 @@ def run_wizard(quick: bool = False, force_tier: int = None, auto_save: bool = Fa
     print(f"  Smooth rods: M{int(inventory.smooth_rod_diameter)}")
     print(f"  Extruder: {inventory.extruder_id}")
     print(f"  Board(s): {', '.join(inventory.board_ids)}")
+    print(f"  Export format: {inventory.export_format}")
+    if inventory.export_drawings:
+        print(f"  Technical drawings: enabled")
 
     # Ask to save
     print_section("Save Configuration")
