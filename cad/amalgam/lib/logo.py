@@ -40,18 +40,18 @@ SIDES = 8
 OCTAGON_ROTATION = 22.5       # Degrees (22.5 = flat edge at top)
 
 # Logo dimensions (as ratios for scalability)
-A_SIZE_RATIO = 0.68           # A height as ratio of diameter
-RECESS_DEPTH_RATIO = 0.30     # Recess depth as ratio of thickness
+A_SIZE_RATIO = 0.65           # A height as ratio of diameter
+RECESS_DEPTH_RATIO = 0.20     # Recess depth as ratio of thickness
 
 # Circle creates the bulging sides
-CIRCLE_DIAMETER_RATIO = 0.55  # Circle diameter as ratio of octagon diameter
-CIRCLE_Y_OFFSET_RATIO = -0.03 # Offset down (negative = down)
+CIRCLE_DIAMETER_RATIO = 0.75  # Circle diameter as ratio of octagon diameter
+CIRCLE_Y_OFFSET_RATIO = -0.0 # Offset down (negative = down)
 
 # A positioning
-A_Y_OFFSET_RATIO = 0.09           # Shift up to visually center (stylized A has more mass below)
+A_Y_OFFSET_RATIO = 0.135           # Shift up to visually center (stylized A has more mass below)
 
 # Rounded corners on the cutout A
-CUTOUT_EXPAND = 1.5 * MM      # How much to expand cutout A (creates outline gap)
+CUTOUT_EXPAND = 0 * MM      # How much to expand cutout A (creates outline gap)
 
 # Edge treatments (fixed values like maker coin)
 OUTER_FILLET = 0.5 * MM           # Fillet on outer vertical edges

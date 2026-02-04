@@ -10,6 +10,7 @@ Variants:
 - Full: Octagon with stylized A (outline effect)
 - Flat: Simple octagon + A silhouette (no recess, good for B&W)
 - A only: Just the stylized A (no octagon)
+- Web: Brand-colored with chamfer border (for website)
 
 Usage:
     python utilities/export_logo.py
@@ -17,8 +18,10 @@ Usage:
     python cad/utilities/export_logo.py
 
 Outputs to: cad/exports/logo/
+Copies web logo to: docs/images/
 """
 
+import shutil
 import sys
 from pathlib import Path
 
@@ -32,22 +35,39 @@ import math
 
 # Import logo components
 from amalgam.lib.stylized_a import make_stylized_a_sketch
+from amalgam.lib.logo import (
+    SIDES,
+    OCTAGON_ROTATION,
+    A_SIZE_RATIO,
+    A_Y_OFFSET_RATIO,
+    CIRCLE_DIAMETER_RATIO,
+    CIRCLE_Y_OFFSET_RATIO,
+    EDGE_CHAMFER,
+    OUTER_FILLET,
+)
 
 # =============================================================================
 # Configuration
 # =============================================================================
 
 OUTPUT_DIR = Path(__file__).parent.parent / "exports" / "logo"
+DOCS_IMAGES_DIR = Path(__file__).parent.parent.parent / "docs" / "images"
 
 # Default sizes
 DIAMETER = 100 * MM      # Export size (mm) - large for quality
 THICKNESS = 10 * MM      # For 3D projection (affects SVG shading)
 
-# Octagon parameters (matching logo.py)
-SIDES = 8
-OCTAGON_ROTATION = 22.5  # Flat edge at top
-A_SIZE_RATIO = 0.68
-A_Y_OFFSET_RATIO = 0.09
+# Brand palette (from ADR-029)
+BRAND_COLORS = {
+    "body": (74, 74, 74),       # #4A4A4A - Dark Grey
+    "recess": (255, 255, 255),  # #FFFFFF - White
+    "chamfer": (90, 90, 90),    # #5A5A5A - Lighter grey for chamfer highlight
+}
+
+# Chamfer border for 2D export.
+# In 3D the chamfer (0.4mm) + fillet (0.5mm) at 27mm ≈ 3.3% of diameter.
+# Use the same ratio so the 2D matches the 3D visual proportions.
+BORDER_RATIO = 0.033
 
 
 # =============================================================================
@@ -130,8 +150,8 @@ def make_outline_logo_sketch(
         )
 
         # Cut circle (creates the bulging sides effect area)
-        circle_diameter = diameter * 0.55
-        circle_y_offset = diameter * -0.03
+        circle_diameter = diameter * CIRCLE_DIAMETER_RATIO
+        circle_y_offset = diameter * CIRCLE_Y_OFFSET_RATIO
         with Locations([(0, circle_y_offset)]):
             Circle(radius=circle_diameter / 2, mode=Mode.SUBTRACT)
 
@@ -172,8 +192,8 @@ def make_recess_logo_parts(
 
     a_size = diameter * A_SIZE_RATIO
     a_y_offset = diameter * A_Y_OFFSET_RATIO
-    circle_diameter = diameter * 0.55
-    circle_y_offset = diameter * -0.03
+    circle_diameter = diameter * CIRCLE_DIAMETER_RATIO
+    circle_y_offset = diameter * CIRCLE_Y_OFFSET_RATIO
 
     # Get the A sketch
     a_sketch = make_stylized_a_sketch(height=a_size)
@@ -216,11 +236,22 @@ def export_multicolor_svg(
     recess: Sketch,
     a_shape: Sketch,
     filepath: Path,
+    colors: dict = None,
 ):
     """
-    Export multi-color logo: black octagon, white recess, black A.
+    Export multi-color logo as SVG.
+
+    Args:
+        colors: Dict with 'body' and 'recess' keys, each an (R, G, B) tuple.
+                Defaults to pure black/white for print use.
     """
     from build123d import ExportSVG, Unit
+
+    if colors is None:
+        colors = {"body": (0, 0, 0), "recess": (255, 255, 255)}
+
+    body = colors["body"]
+    recess_color = colors["recess"]
 
     exporter = ExportSVG(
         unit=Unit.MM,
@@ -230,9 +261,9 @@ def export_multicolor_svg(
     )
 
     # Add layers with different colors
-    exporter.add_layer("octagon", fill_color=(0, 0, 0), line_color=(0, 0, 0))
-    exporter.add_layer("recess", fill_color=(255, 255, 255), line_color=(255, 255, 255))
-    exporter.add_layer("a", fill_color=(0, 0, 0), line_color=(0, 0, 0))
+    exporter.add_layer("octagon", fill_color=body, line_color=body)
+    exporter.add_layer("recess", fill_color=recess_color, line_color=recess_color)
+    exporter.add_layer("a", fill_color=body, line_color=body)
 
     # Add shapes to their layers
     exporter.add_shape(octagon, layer="octagon")
@@ -241,6 +272,52 @@ def export_multicolor_svg(
 
     exporter.write(str(filepath))
     print(f"Exported: {filepath}")
+
+
+# =============================================================================
+# SVG Helpers
+# =============================================================================
+
+def _octagon_svg_path(diameter: float) -> str:
+    """Compute SVG path data for a regular octagon at the given across-flats diameter."""
+    inradius = diameter / 2
+    circumradius = inradius / math.cos(math.pi / SIDES)
+
+    points = []
+    for i in range(SIDES):
+        angle = math.radians(OCTAGON_ROTATION + i * (360 / SIDES))
+        x = circumradius * math.cos(angle)
+        y = circumradius * math.sin(angle)
+        points.append((x, y))
+
+    path = f"M {points[0][0]:.6f},{points[0][1]:.6f}"
+    for p in points[1:]:
+        path += f" L {p[0]:.6f},{p[1]:.6f}"
+    path += " Z"
+    return path
+
+
+def _add_chamfer_border(svg_content: str, diameter: float, color: tuple) -> str:
+    """
+    Add a chamfer-edge line to an SVG, matching the 3D logo's chamfered border.
+
+    The 3D logo has chamfered top edges that create a visible border between
+    the octagon perimeter and the recessed circle. This adds an inner octagon
+    stroke to replicate that visual in 2D.
+    """
+    inner_diameter = diameter * (1 - 2 * BORDER_RATIO)
+    border_path = _octagon_svg_path(inner_diameter)
+
+    r, g, b = color
+    border_element = (
+        f'    <g id="chamfer">\n'
+        f'      <path fill="none" stroke="rgb({r},{g},{b})" '
+        f'stroke-width="0.5" d="{border_path}" />\n'
+        f'    </g>\n'
+    )
+
+    # Insert before the closing </g> of the transform group
+    return svg_content.replace("  </g>\n</svg>", f"{border_element}  </g>\n</svg>")
 
 
 # =============================================================================
@@ -271,6 +348,46 @@ def export_sketch_svg(sketch: Sketch, filepath: Path, fill: bool = True):
     # Write the file
     exporter.write(str(filepath))
     print(f"Exported: {filepath}")
+
+
+def export_web_logo(diameter: float = DIAMETER) -> Path:
+    """
+    Export brand-colored logo with chamfer border for website use.
+
+    Uses the brand palette from ADR-029 and adds a chamfer-edge inner
+    octagon line to match the visual proportions of the 3D model.
+    """
+    filepath = OUTPUT_DIR / "amalgam_logo_web.svg"
+
+    # Generate sketches
+    octagon, recess, a_shape = make_recess_logo_parts(diameter)
+
+    # Export with brand colors
+    export_multicolor_svg(
+        octagon, recess, a_shape, filepath,
+        colors={"body": BRAND_COLORS["body"], "recess": BRAND_COLORS["recess"]},
+    )
+
+    # Post-process: add chamfer border line
+    svg_content = filepath.read_text()
+    svg_content = _add_chamfer_border(svg_content, diameter, BRAND_COLORS["chamfer"])
+    filepath.write_text(svg_content)
+
+    return filepath
+
+
+def copy_to_docs():
+    """Copy the web logo to docs/images/ for Quarto site use."""
+    DOCS_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+
+    src = OUTPUT_DIR / "amalgam_logo_web.svg"
+    dst = DOCS_IMAGES_DIR / "amalgam_logo_web.svg"
+
+    if src.exists():
+        shutil.copy2(src, dst)
+        print(f"Copied: {dst}")
+    else:
+        print(f"Warning: {src} not found, skipping docs copy")
 
 
 def export_all_variants(diameter: float = DIAMETER):
@@ -311,6 +428,15 @@ def export_all_variants(diameter: float = DIAMETER):
     octagon, recess, a_shape = make_recess_logo_parts(diameter)
     export_multicolor_svg(octagon, recess, a_shape, OUTPUT_DIR / "amalgam_logo_bw.svg")
 
+    # 6. Web logo (brand colors + chamfer border)
+    print("6. Web logo (brand colors, chamfer border)...")
+    export_web_logo(diameter)
+
+    # Copy web logo to docs/images/ for Quarto site
+    print()
+    print("Copying web logo to docs/images/...")
+    copy_to_docs()
+
     print()
     print("=" * 60)
     print("Export Complete")
@@ -321,7 +447,9 @@ def export_all_variants(diameter: float = DIAMETER):
     print(f"  {OUTPUT_DIR}/amalgam_octagon.svg      - Octagon outline only")
     print(f"  {OUTPUT_DIR}/amalgam_logo_flat.svg    - Simple logo (good for B&W)")
     print(f"  {OUTPUT_DIR}/amalgam_logo_outline.svg - Full logo with outline effect")
-    print(f"  {OUTPUT_DIR}/amalgam_logo_bw.svg      - Multi-color (black octagon, white recess, black A)")
+    print(f"  {OUTPUT_DIR}/amalgam_logo_bw.svg      - Multi-color (black/white)")
+    print(f"  {OUTPUT_DIR}/amalgam_logo_web.svg     - Web logo (brand colors)")
+    print(f"  {DOCS_IMAGES_DIR}/amalgam_logo_web.svg - Copy for Quarto site")
     print()
     print("To convert to PNG with transparent background:")
     print("  inkscape -w 512 -h 512 amalgam_logo_flat.svg -o logo_512.png")

@@ -25,7 +25,7 @@ except ImportError:
 # Parameters - All proportions relative to HEIGHT
 # =============================================================================
 
-HEIGHT = 30 * MM          # Overall height of the A
+HEIGHT = 18 * MM          # Overall height of the A
 THICKNESS = 3 * MM        # Extrusion thickness
 
 # --- Outer triangle (A silhouette) ---
