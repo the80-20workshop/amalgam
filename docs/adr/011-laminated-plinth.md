@@ -238,8 +238,8 @@ For flush underside:
 - **docs/reference/ai-conversations/baseboard.md**: Complete technical discussion
 - **docs/adr/010-floating-z-puck.md**: Z-puck mounting on plinth
 - **docs/adr/001-m12-skeleton.md**: Frame architecture
-- MANIFESTO.md: "The Bed is the Anchor; the Plinth is the Bedrock" pillar
-- MANIFESTO.md: Tier 3 Reference Spec
+- [../manifesto.md](../manifesto.md): "The Bed is the Anchor; the Plinth is the Bedrock" pillar
+- [../manifesto.md](../manifesto.md): Tier 3 Reference Spec
 
 ## Evolution Notes
 This ADR establishes the laminated plinth as the optimal foundation for Tier 3 builds. The plinth concept can be adapted for different applications (e.g., enclosed build chamber, heated build chamber) while maintaining CLD principles.

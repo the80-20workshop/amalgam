@@ -2,7 +2,7 @@
 
 **The "Blessed" Hardware Configuration for 2026**
 
-This document defines the specific hardware choices for the Amalgam. For the philosophy behind these choices, see [PHILOSOPHY.md](PHILOSOPHY.md). For build instructions, see [BUILDING.md](BUILDING.md).
+This document defines the specific hardware choices for the Amalgam. For the philosophy behind these choices, see [docs/philosophy.md](docs/philosophy.md). For build instructions, see [BUILDING.md](BUILDING.md).
 
 ---
 
@@ -235,7 +235,7 @@ For detailed instructions, see [docs/guides/](docs/guides/).
 
 ## Related Documents
 
-* [PHILOSOPHY.md](PHILOSOPHY.md) - The engineering philosophy
+* [docs/philosophy.md](docs/philosophy.md) - The engineering philosophy
 * [BUILDING.md](BUILDING.md) - CAD/STL generation
 * [docs/adr/](docs/adr/) - Architecture Decision Records
 * [docs/deep-dives/](docs/deep-dives/) - Design exploration documents

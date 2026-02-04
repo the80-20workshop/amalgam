@@ -23,8 +23,8 @@ docs/
 
 | Document | Description |
 |----------|-------------|
-| [../MANIFESTO.md](../MANIFESTO.md) | Project overview and quick-start |
-| [../PHILOSOPHY.md](../PHILOSOPHY.md) | The "Tractor" philosophy |
+| [manifesto.md](manifesto.md) | Project overview and quick-start |
+| [philosophy.md](philosophy.md) | The "Tractor" philosophy |
 | [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md) | Hardware specification |
 | [../BUILDING.md](../BUILDING.md) | CAD/STL generation |
 
@@ -68,9 +68,9 @@ Design exploration documents that informed the ADRs:
 ## Document Relationships
 
 ```
-MANIFESTO.md (Quick Start)
+docs/manifesto.md (Quick Start)
     │
-    ├── PHILOSOPHY.md (Why we build tractors)
+    ├── docs/philosophy.md (Why we build tractors)
     │
     ├── REFERENCE-SPEC.md (What we build)
     │       │

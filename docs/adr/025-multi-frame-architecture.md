@@ -295,7 +295,7 @@ The frame and motion type affect resonance frequency, not quality. Input Shaping
 - ADR-005: Triple-Z Kinematic Leveling
 - ADR-021: Dual-Rod Motion System
 - ADR-023: Z-Drop Architecture
-- PHILOSOPHY.md: "Tractor with a Racecar Brain"
+- [../philosophy.md](../philosophy.md): "Tractor with a Racecar Brain"
 - [RepRap Darwin](https://reprap.org/wiki/Darwin): Original threaded-rod heritage
 - [Voron Legacy](https://vorondesign.com/voron_legacy): Extrusion + smooth rod validation
 - [Ender 5](https://www.creality.com/products/ender-5-3d-printer): V-slot Cartesian Z-drop reference

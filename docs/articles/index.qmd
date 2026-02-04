@@ -18,4 +18,4 @@ These essays provide context for why Amalgam exists --- covering market shifts, 
 
 - [Engineering Philosophy (ADR-000)](../adr/000-engineering-philosophy.md) --- The formal design philosophy these essays explore
 - [Deep Dives](../deep-dives/index.qmd) --- Technical design explorations
-- [Project Philosophy](../../PHILOSOPHY.md) --- Core "Tractor" values
+- [Project Philosophy](../philosophy.md) --- Core "Tractor" values

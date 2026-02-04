@@ -98,8 +98,8 @@ Amalgam requires **two donor printers**. The frame path depends on what you scav
 | Document | Description |
 |----------|-------------|
 | [SAFETY.md](SAFETY.md) | **Read first** — Hazards and safety guidance |
-| [MANIFESTO.md](MANIFESTO.md) | Quick-start overview |
-| [PHILOSOPHY.md](PHILOSOPHY.md) | The "Tractor" philosophy and heritage |
+| [docs/manifesto.md](docs/manifesto.md) | Quick-start overview |
+| [docs/philosophy.md](docs/philosophy.md) | The "Tractor" philosophy and heritage |
 | [REFERENCE-SPEC.md](REFERENCE-SPEC.md) | Hardware specification |
 | [BUILDING.md](BUILDING.md) | Complete build guide |
 | [scripts/README.md](scripts/README.md) | Build system documentation |
@@ -125,7 +125,7 @@ We stand on the shoulders of giants:
 
 | Component | Status |
 |-----------|--------|
-| Manifesto & Philosophy | ✅ Complete |
+| Philosophy & Manifesto | ✅ Complete |
 | Build System (wizard, analysis, what-if) | ✅ Complete |
 | build123d Parametric Parts | 🔧 In Development |
 | Klipper Configurations | 🔧 In Development |

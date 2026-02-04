@@ -11,14 +11,14 @@ Amalgam is a scavenger-friendly 3D printer built from two donor printers. It rep
 ## What is Amalgam?
 
 A 3D printer that uses:
-- **Heavy hardware** (M10 threaded rods, geared extruder) for mechanical stability
+- **Heavy hardware** (geared extruder, overbuilt frame) for mechanical stability
 - **Software intelligence** (Klipper) for precision and auto-leveling
 - **Scavenged parts** to prove high-performance manufacturing from e-waste
 
 | Spec | Target |
 |------|--------|
 | **Price** | < $300 AUD |
-| **Build Volume** | ~250mm³ |
+| **Build Volume** | 220×220×220mm |
 | **Speed** | 70-120mm/s |
 | **Accuracy** | ±0.1mm |
 
@@ -28,12 +28,12 @@ A 3D printer that uses:
 
 | Document | Description |
 |----------|-------------|
-| [PHILOSOPHY.md](PHILOSOPHY.md) | The "Tractor" philosophy and 20 years of RepRap wisdom |
-| [REFERENCE-SPEC.md](REFERENCE-SPEC.md) | The specific hardware choices (M10, Pitan, SKIPR, etc.) |
-| [BUILDING.md](BUILDING.md) | How to generate STL files from parametric CAD |
-| [docs/adr/](docs/adr/) | Architecture Decision Records |
-| [docs/guides/](docs/guides/) | Path-specific build guides |
-| [docs/deep-dives/](docs/deep-dives/) | Design exploration documents |
+| [philosophy.md](philosophy.md) | The "Tractor" philosophy and 20 years of RepRap wisdom |
+| [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md) | The specific hardware choices (Pitan, E3D V6, etc.) |
+| [../BUILDING.md](../BUILDING.md) | How to generate STL files from parametric CAD |
+| [adr/](adr/) | Architecture Decision Records |
+| [guides/](guides/) | Build guides |
+| [deep-dives/](deep-dives/) | Design exploration documents |
 
 ---
 
@@ -43,9 +43,11 @@ Amalgam requires **two donor printers**. Pick your path based on what you scaven
 
 | Path | Frame | Motion | Best Donors | Cost |
 |------|-------|--------|-------------|------|
-| **Scaffold** | M10 Threaded Rod | Smooth Rods | Anet A8, Wanhao, Prusa clones | ~$190-230 |
-| **Mill** | Aluminum Extrusion | V-Slots | Ender 3, CR-10 | ~$160-185 |
-| **Lathe** | Aluminum Extrusion | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | ~$235-280 |
+| **Scaffold** | M10 Threaded Rod + MDF | Smooth Rods + LM8UU | Anet A8, Wanhao, Prusa clones | ~$190-230 |
+| **Mill** | Aluminum Extrusion + MDF | V-Slots + POM Wheels | Ender 3, CR-10 | ~$160-185 |
+| **Lathe** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | ~$235-280 |
+
+**All paths share:** MDF base (squaring jig + damping), Triple-Z leveling, Pitan extruder + E3D V6 hotend, Klipper firmware.
 
 **Optional:** Add MKS SKIPR (~$130) for cleaner single-board electronics.
 
@@ -57,11 +59,11 @@ Amalgam requires **two donor printers**. Pick your path based on what you scaven
 |-----------|--------|-----|
 | **Base** | MDF | Squaring jig + mass damping |
 | **Extruder** | Pitan (3:1 geared) | Single-drive, scavengeable NEMA17, $4-10 |
-| **Hotend** | E3D V6 + CHT Nozzle | Proven reliability, +50% flow |
-| **Z-System** | Triple-Z Independent | Auto-leveling via Klipper |
+| **Hotend** | E3D V6 + CHT Nozzle | Proven reliability, consistent print quality across all builds |
+| **Z-System** | Triple-Z Independent | Auto-leveling via Klipper Z-tilt |
 | **Firmware** | Klipper | Input Shaping, Pressure Advance |
 
-See [REFERENCE-SPEC.md](REFERENCE-SPEC.md) for complete details.
+See [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md) for complete details.
 
 ---
 
@@ -82,11 +84,11 @@ See [REFERENCE-SPEC.md](REFERENCE-SPEC.md) for complete details.
 
 ## Getting Started
 
-1. **Read the philosophy:** [PHILOSOPHY.md](PHILOSOPHY.md)
-2. **Understand the hardware:** [REFERENCE-SPEC.md](REFERENCE-SPEC.md)
+1. **Read the philosophy:** [philosophy.md](philosophy.md)
+2. **Understand the hardware:** [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md)
 3. **Get two donors:** Match donor types if possible (two rod-based or two V-slot)
 4. **Run the wizard:** `python scripts/wizard.py` — it recommends your frame path
-5. **Build it:** [docs/guides/](docs/guides/)
+5. **Build it:** [guides/](guides/)
 
 ---
 
@@ -108,5 +110,5 @@ The Amalgam is released under **GNU GPL v3**, the same license as the original R
 
 ---
 
-*For the complete philosophy, see [PHILOSOPHY.md](PHILOSOPHY.md).*
-*For the hardware specification, see [REFERENCE-SPEC.md](REFERENCE-SPEC.md).*
+*For the complete philosophy, see [philosophy.md](philosophy.md).*
+*For the hardware specification, see [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md).*

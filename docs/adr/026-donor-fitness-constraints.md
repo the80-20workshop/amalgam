@@ -244,6 +244,6 @@ Tier 2 with mitigations (heatbed swap or heavier MDF) should achieve similar tar
 - ADR-025: Multi-Frame Architecture
 - ADR-023: Z-Drop Architecture
 - ADR-005: Triple-Z Kinematic Leveling
-- PHILOSOPHY.md: Scavenger mindset
+- [../philosophy.md](../philosophy.md): Scavenger mindset
 - docs/reference/donor-printer-guide.md: Per-printer details
 - [Modal analysis of gantry systems](https://en.wikipedia.org/wiki/Resonance_(physics)): Background physics

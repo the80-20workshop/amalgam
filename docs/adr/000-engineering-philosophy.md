@@ -137,8 +137,8 @@ We balance four constraints, not three:
 ## References
 
 ### Project Documentation
-- **PHILOSOPHY.md**: The "Tractor" philosophy and heritage acknowledgments
-- **MANIFESTO.md**: Project philosophy and "Tractor" concept
+- **[../philosophy.md](../philosophy.md)**: The "Tractor" philosophy and heritage acknowledgments
+- **[../manifesto.md](../manifesto.md)**: Project philosophy and "Tractor" concept
 - **docs/articles/3D-Printing-In-The-Age-Of-The-Appliance.md**: Context on why Amalgam rejects the appliance model
 
 ### Technical Ancestors (What We Borrowed)

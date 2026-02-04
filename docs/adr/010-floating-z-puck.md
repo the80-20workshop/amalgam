@@ -196,8 +196,8 @@ Configuration Wizard
 - **docs/adr/011-laminated-plinth.md**: Baseboard foundation strategy
 - **docs/adr/001-m12-skeleton.md**: Frame architecture
 - **docs/adr/005-triple-z.md**: Triple-Z kinematic leveling
-- MANIFESTO.md: "The Bed is the Anchor" pillar
-- MANIFESTO.md: Modular Puck & Spider concept
+- [../manifesto.md](../manifesto.md): "The Bed is the Anchor" pillar
+- [../manifesto.md](../manifesto.md): Modular Puck & Spider concept
 
 ## Evolution Notes
 This ADR establishes the Z-puck as a universal mounting system that supports all bed sizes and foundation strategies. Future variations (e.g., different motor types, direct-drive Z) will maintain this modular approach.

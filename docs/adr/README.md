@@ -160,7 +160,7 @@ All ADRs are tracked in git. Changes to accepted ADRs should be:
 
 ## References
 
-- **Project Manifesto**: `MANIFESTO.md` - High-level philosophy and goals
+- **Project Manifesto**: `docs/manifesto.md` - High-level philosophy and goals
 - **Reference Documentation**: `docs/reference/` - Detailed technical discussions
 - **AI Conversations**: `docs/reference/ai-conversations/` - Raw design discussions
 - **CAD System**: `cad/` - build123d parametric scripts

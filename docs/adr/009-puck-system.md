@@ -285,6 +285,6 @@ Board patterns:    Per-board (defined in config.py)
 - **Cracked puck**: Check print quality (infill, perimeters)
 
 ## References
-- MANIFESTO.md: Section "The Modular 'Puck' & 'Spider' Concept"
+- [../manifesto.md](../manifesto.md): Section "The Modular 'Puck' & 'Spider' Concept"
 - [Parametric Design Pattern](https://github.com/guykabu/build123d)
 - docs/AI-Conversations/ [Relevant conversations about modular mounting]

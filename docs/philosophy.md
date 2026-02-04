@@ -2,7 +2,7 @@
 
 **20 Years of RepRap Wisdom, Distilled**
 
-This document captures the engineering philosophy behind Amalgam. For the specific hardware specification, see [REFERENCE-SPEC.md](REFERENCE-SPEC.md). For build instructions, see [BUILDING.md](BUILDING.md).
+This document captures the engineering philosophy behind Amalgam. For the specific hardware specification, see [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md). For build instructions, see [../BUILDING.md](../BUILDING.md).
 
 ---
 
@@ -10,7 +10,7 @@ This document captures the engineering philosophy behind Amalgam. For the specif
 
 To prove that **Software Intelligence** can overcome **Analog Hardware**. We build a "Tractor with the Brain of a Racecar"—using heavy, high-torque, battle-tested hardware and giving it extreme precision through Klipper.
 
-* **The Tractor (Hardware):** High-mass steel and geared extruders create a mechanical foundation that doesn't flex, skip, or drift.
+* **The Tractor (Hardware):** High-mass frames and geared extruders create a mechanical foundation that doesn't flex, skip, or drift.
 * **The Racecar (Software):** Klipper's software intelligence—Input Shaping and 3-Point Kinematic Leveling—gives this iron skeleton the precision of a high-end industrial machine.
 
 ### Why "The Tractor"?
@@ -20,6 +20,20 @@ In 2026, you can buy a 3D-printing "appliance" that is fast but fragile, or you 
 * **Longevity over Velocity:** While others chase 600mm/s, we prioritize a consistent 70-120mm/s baseline to ensure the machine prints identically on Day 1000 as it did on Day 1.
 * **Total Sovereignty:** You own every line of code and every bolt. Independent of proprietary ecosystems and cloud-lock.
 * **Accuracy:** Dimensional consistency within ±0.1mm across the full build volume, enabled by a non-flexing frame and true kinematic leveling.
+
+---
+
+## Frame Paths
+
+Amalgam adapts to your scavenged donors through three frame paths:
+
+| Path | Frame | Motion | Character |
+|------|-------|--------|-----------|
+| **Scaffold** | M10 Threaded Rod + MDF | Smooth Rods + LM8UU | Heritage — RepRap Darwin tribute |
+| **Mill** | Aluminum Extrusion + MDF | V-Slots + POM Wheels | Zero-waste — uses everything from Ender donors |
+| **Lathe** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Precision — superior motion quality |
+
+All paths share the same toolhead: **Pitan extruder + E3D V6 hotend**. This standardizes print quality across every Amalgam build regardless of frame type.
 
 ---
 
@@ -37,7 +51,7 @@ In engineering, we often talk about the "Iron Triangle" (Pick two: Fast, Cheap, 
 
 ### 1. Cost (The $300 AUD Ceiling)
 
-Our primary constraint. To keep costs low, we sacrifice "Convenience." Instead of buying a $150 pre-assembled extruder, we print one from $10 of vitamins. We trade money for **Effort**.
+Our primary constraint. To keep costs low, we sacrifice "Convenience." Instead of buying a $150 pre-assembled toolhead, we print a Pitan extruder from $4-10 of vitamins. We trade money for **Effort**.
 
 ### 2. Speed (The "Racecar" Mirage)
 
@@ -50,14 +64,14 @@ This is where most modern printers fail the triangle. Chasing 600mm/s requires e
 Thanks to Klipper, quality is no longer tied to the price of the hardware.
 
 * **Input Shaping** cancels out the vibrations of our heavy frame
-* **Pressure Advance** manages the flow of our geared extruder
+* **Pressure Advance** manages the flow of our geared Pitan extruder
 * **The Result:** High-end quality on a "junk" budget by using software intelligence to solve analog hardware problems
 
 ### 4. Reliability / Effort (The "Tractor" Soul)
 
 A machine can be cheap and high-quality, but usually that means it's a "tinker-trap" (like a stock Ender 3).
 
-**The Amalgam approach:** We use Overbuilt Hardware (M10 rods, Geared Extruder, E3D V6). It takes more effort to *build*, but once running, it requires almost no *maintenance*.
+**The Amalgam approach:** We use Overbuilt Hardware (heavy frame, geared Pitan, E3D V6). It takes more effort to *build*, but once running, it requires almost no *maintenance*.
 
 ---
 
@@ -77,13 +91,15 @@ If you were to sum up the wisdom of those 20 years:
 
 1. **Mass is a Filter:** A heavy machine is a quiet machine. Mass filters out the "noise" of cheap motors.
 
-2. **Gearing is Sovereignty:** Direct drive is good, but Geared Direct Drive is king. It turns a cheap motor into a powerful one.
+2. **Gearing is Sovereignty:** Direct drive is good, but Geared Direct Drive is king. The Pitan's 3:1 gear ratio turns a cheap NEMA17 into a powerful, reliable extruder.
 
 3. **Software is the Great Equalizer:** Don't spend $200 on rails if $0 of code (Klipper) can fix the vibration.
 
 4. **The "Good Enough" Zenith:** Chasing the last 5% of speed costs 500% more money. The Amalgam lives at the "Zenith"—where performance is high, but the cost is still accessible.
 
 5. **The Bed is the Anchor:** The frame serves the bed, not the other way around. We prioritize a quiet, immovable foundation.
+
+6. **Standardize the Toolhead:** All frame paths share the same Pitan + E3D V6 toolhead. This means every Amalgam—Scaffold, Mill, or Lathe—produces comparable print quality, and the community shares one set of print profiles.
 
 ---
 
@@ -117,7 +133,7 @@ We stand on the shoulders of giants. Each project contributed specific technical
 
 | Feature | Amalgam | Bambu A1 Mini | Prusa MK4 |
 |---------|------------|---------------|-----------|
-| **Price (AUD)** | ~$250 | ~$489 | ~$1,100 |
+| **Price (AUD)** | ~$160-280 | ~$489 | ~$1,100 |
 | **Z-Logic** | Triple-Z Tilt | Single Motor | Dual (Synced) |
 | **Repair** | Hardware Store | Proprietary | Open (Premium) |
 | **Control** | 100% Local | Cloud-Lock | Local/Cloud |
@@ -146,7 +162,7 @@ Each of these projects contributed specific technical DNA to Amalgam:
 |---------|------------------|
 | **[Voron Legacy](https://vorondesign.com/voron_legacy)** | Dual 8mm rods with vertical stacking for X-Y gantry (ADR-021) |
 | **[Voron Trident](https://vorondesign.com/voron_trident)** | Three-pillar Z-drop bed with independent motors (ADR-005, ADR-023) |
-| **[RepRap Mendel Revisited](https://www.thingiverse.com/thing:6783269)** | M10/M12 threaded-rod skeleton revival |
+| **[RepRap Mendel Revisited](https://www.thingiverse.com/thing:6783269)** | M10 threaded-rod skeleton revival (Scaffold path) |
 | **[The 100](https://github.com/MSzturc/the100)** | Klipper-first philosophy—software compensates for cheap hardware |
 | **[The Rook](https://github.com/Kanrog/Rook)** | Box-frame serviceability, ease of maintenance |
 | **[Rat Rig V-Core](https://v-core4.ratrig.com/)** | Open-source hybrid motion documentation style |
@@ -171,4 +187,4 @@ We use the **GNU General Public License v3**, the same license used by the origi
 
 ---
 
-*For the specific hardware specification, see [REFERENCE-SPEC.md](REFERENCE-SPEC.md).*
+*For the specific hardware specification, see [../REFERENCE-SPEC.md](../REFERENCE-SPEC.md).*

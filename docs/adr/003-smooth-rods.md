@@ -181,6 +181,6 @@ SMOOTH_ROD_DIA = 8.0  → BEARING_TYPE = "LM8UU"
 - **Measure**: Verify diameter with calipers (critical for bearing fit)
 
 ## References
-- MANIFESTO.md: Section "The Motion System" and "Why we don't offer a Roller Variant"
+- [../manifesto.md](../manifesto.md): Section "The Motion System" and "Why we don't offer a Roller Variant"
 - [RepRap Mendel Revisited](https://www.thingiverse.com/thing:6783269): Modern smooth rod implementation
 - docs/AI-Conversations/ [Relevant conversations about linear motion]

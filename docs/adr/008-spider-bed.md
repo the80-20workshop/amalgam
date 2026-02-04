@@ -247,7 +247,7 @@ PCB: Cheaper, can delaminate, hotter spots
 - **Arms don't fit**: Check print dimensions, may need scaling for donor
 
 ## References
-- MANIFESTO.md: Section "The Modular 'Puck' & 'Spider' Concept"
+- [../manifesto.md](../manifesto.md): Section "The Modular 'Puck' & 'Spider' Concept"
 - [Voron Trident Bed](https://vorondesign.com/voron_trident): Three-point kinematic reference
 - [Prusa MK3 Bed Assembly](https://help.prusa3d.com/guide/3d-printers/assembly-prusa-i3-mk3s/_25242)
 - docs/AI-Conversations/ [Relevant conversations about bed support]

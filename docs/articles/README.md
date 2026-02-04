@@ -36,7 +36,7 @@ They are **not** technical specifications. For design rationale, see `docs/adr/`
 
 - **Technical Decisions** → See `docs/adr/` (structured design choices)
 - **Deep Dives** → See `docs/deep-dives/` (design exploration)
-- **Philosophy** → See `PHILOSOPHY.md` (core project values)
+- **Philosophy** → See `docs/philosophy.md` (core project values)
 
 ---
 

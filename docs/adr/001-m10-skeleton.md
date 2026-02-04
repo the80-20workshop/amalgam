@@ -124,7 +124,7 @@ For 250mm³ build volume:
 - Torque nuts to 15-20 ft-lbs (moderate, not extreme)
 
 ## References
-- MANIFESTO.md: Section "The Skeleton" and "Why we don't offer a Roller Variant"
+- [../manifesto.md](../manifesto.md): Section "The Skeleton" and "Why we don't offer a Roller Variant"
 - [RepRap Darwin (2007)](https://reprap.org/wiki/Darwin): Original threaded-rod design
 - [RepRap Mendel Revisited (M12)](https://www.thingiverse.com/thing:6783269): Modern M12 implementation
 - docs/AI-Conversations/ [Relevant conversations about frame selection]

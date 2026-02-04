@@ -152,7 +152,7 @@ Extruder steps/mm = 200 * 16 / (5.22 * 8 * 3.14159)
 ```
 
 ## References
-- MANIFESTO.md: Section "Extruder Archaeology"
+- [../manifesto.md](../manifesto.md): Section "Extruder Archaeology"
 - [Greg's Wade Rework](https://www.thingiverse.com/thing:961630)
 - [Hobb-Goblin Hobbed Bolt](https://www.thingiverse.com/thing:1058422)
 - [Genealogy of Greg's Wade](https://reprap.org/wiki/Genealogy_/_Archeology_of_the_Greg's_Wade's_Geared_Extruder)

@@ -287,5 +287,5 @@ TOTAL_SMOOTH_RODS = 8
 - ADR-024: Heated Bed Size Selection (defines 220mm reference build volume)
 - [Voron Legacy](https://vorondesign.com/voron_legacy): Vertical stacking validation
 - [Beam Deflection Theory](https://en.wikipedia.org/wiki/Deflection_(engineering))
-- PHILOSOPHY.md: "Tractor with a Racecar Brain"
+- [../philosophy.md](../philosophy.md): "Tractor with a Racecar Brain"
 - Analysis conversation: "Voron Legacy Comparison" (2025-01-27)

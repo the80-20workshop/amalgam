@@ -206,7 +206,7 @@ BTT SKR 3: 8 drivers (excellent)
 
 ## References
 - ADR-023: Z-Drop Architecture (explains why Z-drop enables Triple-Z)
-- MANIFESTO.md: Section "The Tiered Path" and "Triple-Z Kinematic Leveling"
+- [../manifesto.md](../manifesto.md): Section "The Tiered Path" and "Triple-Z Kinematic Leveling"
 - [Voron Trident Z-System](https://vorondesign.com/voron_trident): Triple-Z reference design
 - [Klipper Z-Tilt Documentation](https://www.klipper3d.org/Bed_Level.html#z-tilt)
 - docs/AI-Conversations/ [Relevant conversations about Z-system selection]
