@@ -322,12 +322,6 @@ build_part() {
         echo -e "${GREEN}  Drawing: ${display_name}_drawing.svg${NC}"
     fi
 
-    # Backward compatibility: check old stl/ location
-    if [ "$found_exports" = false ] && [ -f "stl/${display_name}.stl" ]; then
-        echo -e "${YELLOW}  Note: Found in legacy stl/ directory${NC}"
-        found_exports=true
-    fi
-
     if [ "$found_exports" = false ]; then
         echo -e "${YELLOW}  Note: No exports found in expected locations${NC}"
     fi
@@ -391,22 +385,15 @@ build_specific() {
 clean_all() {
     echo -e "${YELLOW}Cleaning all exports...${NC}"
 
-    # Clean new exports directory
     if [ -d "$EXPORTS_DIR" ]; then
-        rm -rf "$EXPORTS_DIR/stl"/*.stl 2>/dev/null
-        rm -rf "$EXPORTS_DIR/step"/*.step 2>/dev/null
-        rm -rf "$EXPORTS_DIR/3mf"/*.3mf 2>/dev/null
-        rm -rf "$EXPORTS_DIR/brep"/*.brep 2>/dev/null
-        rm -rf "$EXPORTS_DIR/gltf"/*.glb 2>/dev/null
-        rm -rf "$EXPORTS_DIR/drawings"/*.svg 2>/dev/null
-        rm -rf "$EXPORTS_DIR/drawings"/*.pdf 2>/dev/null
+        rm -f "$EXPORTS_DIR/stl"/*.stl 2>/dev/null
+        rm -f "$EXPORTS_DIR/step"/*.step 2>/dev/null
+        rm -f "$EXPORTS_DIR/3mf"/*.3mf 2>/dev/null
+        rm -f "$EXPORTS_DIR/brep"/*.brep 2>/dev/null
+        rm -f "$EXPORTS_DIR/gltf"/*.glb 2>/dev/null
+        rm -f "$EXPORTS_DIR/drawings"/*.svg 2>/dev/null
+        rm -f "$EXPORTS_DIR/drawings"/*.pdf 2>/dev/null
         echo -e "  Cleaned: $EXPORTS_DIR/"
-    fi
-
-    # Also clean legacy stl/ directory for backward compatibility
-    if [ -d "stl" ]; then
-        rm -f stl/*.stl 2>/dev/null
-        echo -e "  Cleaned: stl/ (legacy)"
     fi
 
     echo -e "${GREEN}Done!${NC}"
@@ -419,9 +406,6 @@ mkdir -p "$EXPORTS_DIR/3mf"
 mkdir -p "$EXPORTS_DIR/brep"
 mkdir -p "$EXPORTS_DIR/gltf"
 mkdir -p "$EXPORTS_DIR/drawings"
-
-# Also keep legacy stl/ for backward compatibility
-mkdir -p "stl"
 
 # Main execution
 COMMAND="${1:-help}"
