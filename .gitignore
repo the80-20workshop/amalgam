@@ -26,8 +26,9 @@ cad/config.py.backup
 cad/exports/*
 !cad/exports/README.md
 
-# Downloaded calibration STLs (use utilities/download_calibration.py)
-cad/calibration/
+# Downloaded calibration STLs (use utilities/download_calibration.py) - keep README
+cad/calibration/*
+!cad/calibration/README.md
 
 # IDE
 .idea/
