@@ -11,7 +11,7 @@
 | Document | Topic | Status | Read For | See Instead For Current Decision |
 |----------|-------|--------|----------|------|
 | [tractor_00_decision_guide.md](tractor_00_decision_guide.md) | Overview of key design space | ⚠️ Partially Outdated | Historical perspective on scavenger philosophy | **ADR-025** (Multi-Frame), **ADR-026** (Donor Fitness), **ADR-000** (Philosophy) |
-| [tractor_01_frame_and_assembly.md](tractor_01_frame_and_assembly.md) | M10 frame design, squaring, MDF | ✅ Relevant | Darwin path details | **ADR-001** (M10 Skeleton), **ADR-025** (Multi-Frame) |
+| [tractor_01_frame_and_assembly.md](tractor_01_frame_and_assembly.md) | M10 frame design, squaring, MDF | ✅ Relevant | Scaffold path details | **ADR-001** (M10 Skeleton), **ADR-025** (Multi-Frame) |
 | [tractor_02_xy_axis_system.md](tractor_02_xy_axis_system.md) | X-Y motion, smooth rods | ✅ Relevant | Motion system design rationale | **ADR-021** (Dual-Rod Motion), **ADR-022** (Bearings) |
 | [tractor_03_motor_mounts_vibration.md](tractor_03_motor_mounts_vibration.md) | Motor mounting, vibration damping | ✅ Relevant | Why mass damping matters | **ADR-000** (Philosophy), **ADR-011** (Plinth) |
 | [tractor_04_xgantry_design_decision.md](tractor_04_xgantry_design_decision.md) | X-gantry architecture | ⚠️ Partially Outdated | Core-XY vs Cartesian trade-offs | **ADR-025** (Multi-Frame paths) |
@@ -35,8 +35,8 @@
 ## What Changed?
 
 The pivot from "Tier 0/1/2/3" to "**Two Donors + Three Paths**" (ADR-025, ADR-026) simplified many of these explorations:
-- ✅ **Darwin path** (M10 + smooth rods) — primary, well-established
-- ✅ **S-Core/V-Core paths** — zero-waste donor alternatives
+- ✅ **Scaffold path** (M10 + smooth rods) — primary, well-established
+- ✅ **Mill/Lathe paths** — zero-waste donor alternatives
 - ✅ **Donor fitness tiers** — explicit constraints on bed size and Z-height
 
 Old tier system docs are outdated; refer to ADR-025 and `docs/reference/donor-printer-guide.md` instead.

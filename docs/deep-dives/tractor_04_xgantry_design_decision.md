@@ -1,7 +1,7 @@
 # Amalgam: X-Gantry Design Decision
 
 ⚠️ **Partially Outdated:** This document explores Cartesian vs. Core-XY trade-offs in the context of old tier system (Tier 0/1/2/3). **Current canonical decisions are in:**
-- **ADR-025**: Multi-Frame Architecture (Darwin, S-Core, V-Core all use Cartesian, not Core-XY)
+- **ADR-025**: Multi-Frame Architecture (Scaffold, Mill, Lathe all use Cartesian, not Core-XY)
 - **ADR-000**: Engineering Philosophy ("Tractor" principles favor Cartesian simplicity)
 
 The core insight (Cartesian is simpler for scavenger builds) remains valid, but framework is outdated.

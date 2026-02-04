@@ -1,8 +1,8 @@
 # The Tractor: Frame Design & Assembly
 
-✅ **Still Relevant:** This exploration of the Darwin (M10 + MDF) frame path remains current. **For canonical design decisions, see:**
+✅ **Still Relevant:** This exploration of the Scaffold (M10 + MDF) frame path remains current. **For canonical design decisions, see:**
 - **ADR-001**: M10 Threaded Rod Skeleton
-- **ADR-025**: Multi-Frame Architecture (includes Darwin as primary path)
+- **ADR-025**: Multi-Frame Architecture (includes Scaffold as primary path)
 - **ADR-011**: Laminated Plinth Baseboard (MDF damping)
 
 This deep-dive provides detailed design rationale for why M10 + MDF works well.

@@ -20,7 +20,7 @@ This folder contains **factual reference materials** for Amalgam: specifications
   - Use this if a donor part fails during build
 
 - **MASTER_PARTS_LIST.md** — Complete bill of materials for all configurations
-  - By frame path (Darwin, S-Core, V-Core)
+  - By frame path (Scaffold, Mill, Lathe)
   - By electronics configuration (Dual-MCU, SKIPR)
   - Part sourcing notes and costs
 

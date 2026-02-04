@@ -46,7 +46,7 @@ python scripts/wizard.py
 
 The wizard:
 1. Asks what donor printers you have
-2. Recommends a frame path (Darwin, S-Core, or V-Core)
+2. Recommends a frame path (Scaffold, Mill, or Lathe)
 3. Generates `config.py` for your specific build
 4. Runs engineering analysis
 
@@ -79,11 +79,11 @@ Amalgam requires **two donor printers**. The frame path depends on what you scav
 
 | Path | Frame | Motion | Best Donors | Character |
 |------|-------|--------|-------------|-----------|
-| **Darwin** | M10 Threaded Rod + MDF | Smooth Rods | Anet A8, Wanhao, Prusa i3 clones | Heritage — RepRap Darwin tribute |
-| **V-Core** | Aluminum Extrusion + MDF | V-Slots | Ender 3, CR-10, Voxelab Aquila | Zero-waste — use everything |
-| **S-Core** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | Precision — best motion quality |
+| **Scaffold** | M10 Threaded Rod + MDF | Smooth Rods | Anet A8, Wanhao, Prusa i3 clones | Heritage — RepRap Darwin tribute |
+| **Mill** | Aluminum Extrusion + MDF | V-Slots | Ender 3, CR-10, Voxelab Aquila | Zero-waste — use everything |
+| **Lathe** | Aluminum Extrusion + MDF | Smooth Rods + IGUS | Ender 3 + bought rods, mixed | Precision — best motion quality |
 
-**Cost:** ~$160-280 depending on path (V-Core cheapest, S-Core ~$75 more for better motion).
+**Cost:** ~$160-280 depending on path (Mill cheapest, Lathe ~$75 more for better motion).
 
 **All paths share:** MDF base (squaring jig + damping), Triple-Z leveling, Pitan extruder, E3D V6, Klipper.
 
@@ -112,7 +112,7 @@ Amalgam requires **two donor printers**. The frame path depends on what you scav
 
 We stand on the shoulders of giants:
 
-* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** Box-frame threaded-rod origin. Inspired our "Darwin" frame path.
+* **[RepRap Darwin (2007)](https://reprap.org/wiki/Darwin):** Box-frame threaded-rod origin. Inspired our "Scaffold" frame path.
 * **[RepRap Mendel (2009)](https://reprap.org/wiki/Mendel):** The "plough" X-carriage sled design.
 * **[Prusa i3 Rework (2013)](https://www.thingiverse.com/thing:119616):** Greg's Wade geared extruder—ancestor of our Pitan.
 * **[Voron Legacy](https://vorondesign.com/voron_legacy):** Dual 8mm rods with vertical stacking for X-Y gantry.

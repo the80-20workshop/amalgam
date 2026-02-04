@@ -1,7 +1,7 @@
 # Amalgam: Tier 0 Decision Guide
 
 ⚠️ **Historical Document:** This guide explores design space and philosophy from the exploratory phase. **Current canonical decisions are in:**
-- **ADR-025**: Multi-Frame Architecture (Darwin, S-Core, V-Core paths)
+- **ADR-025**: Multi-Frame Architecture (Scaffold, Mill, Lathe paths)
 - **ADR-026**: Donor Fitness & Frame Constraints (bed size, Z-height tiers)
 - **ADR-000**: Engineering Philosophy (core "Tractor" principles)
 

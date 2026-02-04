@@ -4,7 +4,7 @@
 
 This guide covers the practical setup and ongoing maintenance for Amalgam. Unlike the analysis documents (which explain *why*), this guide explains *how* — step-by-step procedures for keeping your printer running well.
 
-**Scope:** Frame-agnostic procedures that apply to all paths (Darwin, S-Core, V-Core), with path-specific sections where needed.
+**Scope:** Frame-agnostic procedures that apply to all paths (Scaffold, Mill, Lathe), with path-specific sections where needed.
 
 ---
 
@@ -27,7 +27,7 @@ Before any motion system work, verify your frame is square.
    - If larger, adjust frame joints before proceeding
 3. Check vertical members with square against MDF base
    - Should be 90° ±0.5°
-4. For Darwin path: check M10 rod parallelism
+4. For Scaffold path: check M10 rod parallelism
    - Measure spacing at top and bottom
    - Difference should be <1mm
 
@@ -35,7 +35,7 @@ Before any motion system work, verify your frame is square.
 
 ---
 
-### 2.2 Smooth Rod Installation (Darwin, S-Core)
+### 2.2 Smooth Rod Installation (Scaffold, Lathe)
 
 **Tools needed:**
 - Flat glass or granite surface plate
@@ -64,7 +64,7 @@ Before any motion system work, verify your frame is square.
 
 ---
 
-### 2.3 V-Slot Wheel Setup (V-Core)
+### 2.3 V-Slot Wheel Setup (Mill)
 
 **Tools needed:**
 - Eccentric nut wrench (8mm typically)
@@ -180,12 +180,12 @@ Before any motion system work, verify your frame is square.
 |----------|------|------------|
 | Weekly | Visual inspection | All |
 | Monthly | Belt tension check | All |
-| Monthly | Eccentric nut check | V-Core only |
-| Monthly | Clean V-slots | V-Core only |
-| 3 months | Lubricate rods | Darwin, S-Core |
+| Monthly | Eccentric nut check | Mill only |
+| Monthly | Clean V-slots | Mill only |
+| 3 months | Lubricate rods | Scaffold, Lathe |
 | 3 months | Lubricate leadscrews | All |
-| 6 months | Check bearing play | Darwin, S-Core |
-| 6 months | Check wheel wear | V-Core only |
+| 6 months | Check bearing play | Scaffold, Lathe |
+| 6 months | Check wheel wear | Mill only |
 | Annually | Full mechanical inspection | All |
 
 ---
@@ -209,7 +209,7 @@ Before any motion system work, verify your frame is square.
 
 ---
 
-### 3.3 Monthly: Eccentric Nut Check (V-Core)
+### 3.3 Monthly: Eccentric Nut Check (Mill)
 
 **Signs adjustment needed:**
 - Wobble in carriage (push side-to-side, check for play)
@@ -226,7 +226,7 @@ Before any motion system work, verify your frame is square.
 
 ---
 
-### 3.4 Quarterly: Rod Lubrication (Darwin, S-Core)
+### 3.4 Quarterly: Rod Lubrication (Scaffold, Lathe)
 
 **Lubricant options:**
 - PTFE dry lubricant (preferred — doesn't attract dust)
@@ -260,7 +260,7 @@ Before any motion system work, verify your frame is square.
 
 ---
 
-### 3.6 Semi-Annual: Bearing Inspection (Darwin, S-Core)
+### 3.6 Semi-Annual: Bearing Inspection (Scaffold, Lathe)
 
 **Signs of bearing wear:**
 - Clicking or crunching sounds
@@ -283,7 +283,7 @@ Before any motion system work, verify your frame is square.
 
 ---
 
-### 3.7 Semi-Annual: Wheel Inspection (V-Core)
+### 3.7 Semi-Annual: Wheel Inspection (Mill)
 
 **Signs of wheel wear:**
 - Flat spots (visible or felt as bumps during motion)
@@ -308,7 +308,7 @@ Before any motion system work, verify your frame is square.
 | Possible Cause | Check | Fix |
 |---------------|-------|-----|
 | Misaligned rods/rails | Parallelism measurement | Re-align mounts |
-| Over-tight eccentric (V-Core) | Wheel spin test | Loosen eccentric |
+| Over-tight eccentric (Mill) | Wheel spin test | Loosen eccentric |
 | Over-tight belt | Belt deflection | Loosen tensioner |
 | Dry bearings (rods) | Listen for squeaking | Lubricate |
 | Bent rod | Roll on glass | Replace rod |
@@ -318,9 +318,9 @@ Before any motion system work, verify your frame is square.
 
 | Possible Cause | Check | Fix |
 |---------------|-------|-----|
-| Loose eccentric (V-Core) | Wobble test | Tighten eccentric |
+| Loose eccentric (Mill) | Wobble test | Tighten eccentric |
 | Worn bearings (rods) | Roll carriage, feel for play | Replace bearings |
-| Worn wheels (V-Core) | Visual + spin test | Replace wheels |
+| Worn wheels (Mill) | Visual + spin test | Replace wheels |
 | Loose belt | Pluck test | Tighten belt |
 | Loose rod mounts | Wiggle rod holders | Tighten fasteners |
 
@@ -454,13 +454,13 @@ Notes: None
 
 ### Monthly (5 minutes)
 - [ ] Belt tension — pluck test
-- [ ] Eccentric nuts (V-Core) — wobble test
+- [ ] Eccentric nuts (Mill) — wobble test
 - [ ] Clean build surface
 
 ### Quarterly (15 minutes)
-- [ ] Rod lubrication (Darwin, S-Core)
+- [ ] Rod lubrication (Scaffold, Lathe)
 - [ ] Leadscrew lubrication
-- [ ] V-slot cleaning (V-Core)
+- [ ] V-slot cleaning (Mill)
 
 ### Semi-Annually (30 minutes)
 - [ ] Bearing/wheel inspection

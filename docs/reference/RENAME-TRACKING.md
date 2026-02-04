@@ -26,9 +26,11 @@ This document tracks the rename from "Neo-Darwin" to "Amalgam".
 ### Frame Paths
 | Path | Frame | Motion |
 |------|-------|--------|
-| Darwin | M10 Threaded Rod + MDF | Smooth Rods |
-| S-Core | Aluminum Extrusion + MDF | Smooth Rods |
-| V-Core | Aluminum Extrusion + MDF | V-Slots |
+| Scaffold (was "Darwin") | M10 Threaded Rod + MDF | Smooth Rods |
+| Mill (was "V-Core") | Aluminum Extrusion + MDF | V-Slots |
+| Lathe (was "S-Core") | Aluminum Extrusion + MDF | Smooth Rods |
+
+**Note:** Frame paths were renamed from Darwin/S-Core/V-Core to Scaffold/Mill/Lathe to avoid confusion with RepRap Darwin heritage references and the Rat Rig V-Core product.
 
 ### Electronics Paths
 | Path | Description |

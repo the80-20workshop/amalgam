@@ -10,7 +10,7 @@ You've scavenged two donors. But things happen: a PSU dies, a leadscrew is bent,
 
 | Part | Why Needed | Typical Cost | Notes |
 |------|-----------|--------------|-------|
-| **M10 Threaded Rods** | Darwin frame skeleton | $30-45 | 8 rods per set; check length |
+| **M10 Threaded Rods** | Scaffold frame skeleton | $30-45 | 8 rods per set; check length |
 | **M8 Lead Screws** | Z-axis motion (Triple-Z) | $15-25 | T8 2mm pitch standard; verify in photos |
 | **8mm Smooth Rods** | X-Y motion (if donors lack) | $40-60 | 8× rods, check straightness |
 | **IGUS RJ4JP-01-08** | Bearings (if donors worn) | $25-35 | Cheap alternative to LM8UU; check brand |
@@ -134,7 +134,7 @@ You've scavenged two donors. But things happen: a PSU dies, a leadscrew is bent,
 - Misc (bolts, wires): ~$30
 
 **Add contingencies (parts you'll likely need to source):**
-- M10 rods (Darwin path): $30-45
+- M10 rods (Scaffold path): $30-45
 - M8 lead screws (1-2 extra): $15-25
 - Extra bearings (if worn): $20-35
 - Replacement PSU (if needed): $40-80

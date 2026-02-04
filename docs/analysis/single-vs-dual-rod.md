@@ -164,10 +164,10 @@ The Amalgam specification requires dual rods because:
 
 | Your Donor Has | Recommendation |
 |----------------|----------------|
-| Dual 8mm smooth rods | **Use them** — Darwin or S-Core path |
+| Dual 8mm smooth rods | **Use them** — Scaffold or Lathe path |
 | Single 8mm + guide rail | **Maybe** — test stability before building |
 | Single 8mm only | **Don't use** — buy rods or find different donor |
-| V-slots + wheels | **Use them** — V-Core path (rotation constrained by wheels) |
+| V-slots + wheels | **Use them** — Mill path (rotation constrained by wheels) |
 
 ### 7.1 Cost to Fix Single-Rod Donors
 

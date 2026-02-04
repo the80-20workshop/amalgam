@@ -3,8 +3,8 @@
 ## 1. Purpose
 
 Amalgam supports two motion systems depending on your donor printers:
-- **Smooth rods + linear bearings** (Darwin and S-Core paths)
-- **V-slots + POM wheels** (V-Core path)
+- **Smooth rods + linear bearings** (Scaffold and Lathe paths)
+- **V-slots + POM wheels** (Mill path)
 
 This analysis compares the two systems to help you decide:
 1. Which path to choose based on your donors
@@ -177,7 +177,7 @@ POM wheels provide ~10-15% natural damping compared to steel bearings. This can:
 
 ## 7. Decision Guide
 
-### 7.1 Use Smooth Rods (Darwin/S-Core) If:
+### 7.1 Use Smooth Rods (Scaffold/Lathe) If:
 
 - Your donors have smooth rods (Anet A8, Wanhao, Prusa clones)
 - You prioritize precision and predictability
@@ -185,7 +185,7 @@ POM wheels provide ~10-15% natural damping compared to steel bearings. This can:
 - You plan to run high accelerations (>8000 mm/s²)
 - You want "set and forget" motion system
 
-### 7.2 Use V-Slots (V-Core) If:
+### 7.2 Use V-Slots (Mill) If:
 
 - Your donors have V-slots (Ender 3, CR-10, Aquila)
 - You want zero-waste from donors
@@ -195,7 +195,7 @@ POM wheels provide ~10-15% natural damping compared to steel bearings. This can:
 
 ### 7.3 Should You Buy Rods for V-Slot Donors?
 
-**Usually no.** The V-Core path exists specifically so Ender 3 scavengers don't waste their parts.
+**Usually no.** The Mill path exists specifically so Ender 3 scavengers don't waste their parts.
 
 Consider buying smooth rods only if:
 - You want maximum precision for specific applications
@@ -236,9 +236,9 @@ This makes no economic sense for Amalgam's scavenger philosophy.
 
 The best motion system is **the one your donors have**.
 
-- Two smooth-rod donors → Darwin path
-- Two V-slot donors → V-Core path
-- Mixed donors → Usually Darwin (buy M10 rods, use scavenged smooth rods)
+- Two smooth-rod donors → Scaffold path
+- Two V-slot donors → Mill path
+- Mixed donors → Usually Scaffold (buy M10 rods, use scavenged smooth rods)
 
 Don't spend money switching systems unless you have specific requirements beyond Amalgam's target specs. The cost of switching (~$60-80) could instead go toward better hotend components or electronics.
 
