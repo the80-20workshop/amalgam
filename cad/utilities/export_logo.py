@@ -148,6 +148,102 @@ def make_outline_logo_sketch(
 
 
 # =============================================================================
+# Multi-color Logo (black octagon, white recess, black A)
+# =============================================================================
+
+def make_recess_logo_parts(
+    diameter: float = DIAMETER,
+    outline_width: float = None,
+) -> tuple[Sketch, Sketch, Sketch]:
+    """
+    Create logo as separate parts for multi-color export.
+
+    Returns:
+        (octagon_sketch, recess_sketch, a_sketch) - three separate sketches
+        - octagon: The full octagon (black background)
+        - recess: The recessed area (circle + expanded A outline, white)
+        - a: The raised A (black foreground)
+    """
+    if outline_width is None:
+        outline_width = diameter * 0.05
+
+    inradius = diameter / 2
+    circumradius = inradius / math.cos(math.pi / SIDES)
+
+    a_size = diameter * A_SIZE_RATIO
+    a_y_offset = diameter * A_Y_OFFSET_RATIO
+    circle_diameter = diameter * 0.55
+    circle_y_offset = diameter * -0.03
+
+    # Get the A sketch
+    a_sketch = make_stylized_a_sketch(height=a_size)
+
+    # 1. Full octagon
+    with BuildSketch() as octagon:
+        RegularPolygon(
+            radius=circumradius,
+            side_count=SIDES,
+            rotation=OCTAGON_ROTATION,
+            align=(Align.CENTER, Align.CENTER)
+        )
+    octagon_sketch = octagon.sketch
+
+    # 2. Recess area (circle + expanded A, but NOT the A itself)
+    with BuildSketch() as recess:
+        # Start with circle
+        with Locations([(0, circle_y_offset)]):
+            Circle(radius=circle_diameter / 2)
+        # Add expanded A outline
+        with Locations([(0, a_y_offset)]):
+            add(a_sketch)
+            offset(amount=outline_width, kind=Kind.ARC, mode=Mode.ADD)
+        # Subtract the A itself (so recess is just the outline gap)
+        with Locations([(0, a_y_offset)]):
+            add(a_sketch, mode=Mode.SUBTRACT)
+    recess_sketch = recess.sketch
+
+    # 3. The A (positioned)
+    with BuildSketch() as a_positioned:
+        with Locations([(0, a_y_offset)]):
+            add(a_sketch)
+    a_final = a_positioned.sketch
+
+    return octagon_sketch, recess_sketch, a_final
+
+
+def export_multicolor_svg(
+    octagon: Sketch,
+    recess: Sketch,
+    a_shape: Sketch,
+    filepath: Path,
+):
+    """
+    Export multi-color logo: black octagon, white recess, black A.
+    """
+    from build123d import ExportSVG, Unit
+
+    exporter = ExportSVG(
+        unit=Unit.MM,
+        scale=1,
+        margin=5,
+        line_weight=0.1,  # Thin lines
+    )
+
+    # Add layers with different colors
+    exporter.add_layer("octagon", fill_color=(0, 0, 0), line_color=(0, 0, 0))
+    exporter.add_layer("recess", fill_color=(255, 255, 255), line_color=(255, 255, 255))
+    exporter.add_layer("a", fill_color=(0, 0, 0), line_color=(0, 0, 0))
+
+    # Add shapes to their layers
+    exporter.add_shape(octagon, layer="octagon")
+    exporter.add_shape(recess, layer="recess")
+    exporter.add_shape(a_shape, layer="a")
+
+    exporter.write(str(filepath))
+    print(f"Exported: {filepath}")
+
+
+# =============================================================================
 # Export Functions
 # =============================================================================
 
@@ -210,16 +306,22 @@ def export_all_variants(diameter: float = DIAMETER):
     outline_logo = make_outline_logo_sketch(diameter)
     export_sketch_svg(outline_logo, OUTPUT_DIR / "amalgam_logo_outline.svg", fill=True)
 
+    # 5. Multi-color logo (black octagon, white recess, black A)
+    print("5. Multi-color logo (black/white/black layers)...")
+    octagon, recess, a_shape = make_recess_logo_parts(diameter)
+    export_multicolor_svg(octagon, recess, a_shape, OUTPUT_DIR / "amalgam_logo_bw.svg")
+
     print()
     print("=" * 60)
     print("Export Complete")
     print("=" * 60)
     print()
     print("Files created:")
-    print(f"  {OUTPUT_DIR}/amalgam_a.svg          - Stylized A only")
-    print(f"  {OUTPUT_DIR}/amalgam_octagon.svg    - Octagon outline only")
-    print(f"  {OUTPUT_DIR}/amalgam_logo_flat.svg  - Simple logo (good for B&W)")
+    print(f"  {OUTPUT_DIR}/amalgam_a.svg            - Stylized A only")
+    print(f"  {OUTPUT_DIR}/amalgam_octagon.svg      - Octagon outline only")
+    print(f"  {OUTPUT_DIR}/amalgam_logo_flat.svg    - Simple logo (good for B&W)")
     print(f"  {OUTPUT_DIR}/amalgam_logo_outline.svg - Full logo with outline effect")
+    print(f"  {OUTPUT_DIR}/amalgam_logo_bw.svg      - Multi-color (black octagon, white recess, black A)")
     print()
     print("To convert to PNG with transparent background:")
     print("  inkscape -w 512 -h 512 amalgam_logo_flat.svg -o logo_512.png")
