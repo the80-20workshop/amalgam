@@ -139,10 +139,68 @@ Key configuration parameters:
 - `TRIPLE_Z` - Enable/disable triple Z system
 - `Z_MOUNT_PATTERN` - Z-motor mounting configuration
 
+## Export Formats
+
+By default, parts are exported as STL. You can export in multiple formats:
+
+```bash
+./build.sh build maker_coin                    # Default (STL)
+./build.sh build maker_coin --format step      # CAD interchange
+./build.sh build maker_coin --format all       # All formats
+./build.sh build maker_coin --drawings         # Include technical drawings
+./build.sh formats                             # Show all available formats
+```
+
+**Available formats:**
+| Format | Extension | Use Case |
+|--------|-----------|----------|
+| STL | `.stl` | 3D printing (default) |
+| STEP | `.step` | CAD interchange (Fusion 360, FreeCAD, SolidWorks) |
+| 3MF | `.3mf` | Modern slicers with metadata |
+| BREP | `.brep` | build123d native (exact geometry) |
+| glTF | `.glb` | Web viewers, 3D visualization |
+
+**Technical drawings:** Front, top, side orthographic projections as SVG and combined PDF.
+
+**Configure default format** in `config.py`:
+```python
+EXPORT_FORMAT = "stl"      # Options: stl, step, 3mf, brep, gltf, all
+EXPORT_DRAWINGS = False    # Generate technical drawings
+```
+
+## Directory Structure
+
+```
+cad/
+├── amalgam/              # Python package
+│   ├── lib/              # Shared libraries (logo, export, corners)
+│   └── parts/            # Part scripts by category
+│       ├── calibration/  # First layer grid, Prusa live Z
+│       ├── frame/        # Corner brackets
+│       └── victory/      # Maker coin, fidget bolt
+├── exports/              # Generated files (gitignored)
+│   ├── stl/              # STL files
+│   ├── step/             # STEP files
+│   ├── 3mf/              # 3MF files
+│   ├── brep/             # BREP files
+│   ├── gltf/             # glTF files
+│   ├── drawings/         # Technical drawings (SVG/PDF)
+│   └── logo/             # Brand assets (SVG)
+├── utilities/            # Helper scripts
+│   ├── download_calibration.py  # Download community calibration prints
+│   ├── export_logo.py           # Generate logo SVGs
+│   └── list.py                  # List available parts
+├── build.sh              # Main build script
+├── setup.sh              # First-time setup
+├── configure.py          # Configuration wizard
+├── config.py             # Your configuration (gitignored)
+└── config.py.example     # Reference configuration
+```
+
 ## Dependencies
 
 - Python 3.9+
 - build123d
 - numpy
 
-See `requirements.txt` for specific versions.
+See `pyproject.toml` for specific versions.
