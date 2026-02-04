@@ -18,6 +18,7 @@ website:
   description: "A 2026 RepRap Reference Specification"
 
   navbar:
+    logo: images/amalgam_logo_web.svg
     left:
       - text: "Home"
         href: index.qmd
