@@ -57,8 +57,6 @@ website:
           - text: "---"
           - text: "Rod Sag Analysis"
             href: analysis/rod-sag-analysis.md
-          - text: "Max Safe Acceleration"
-            href: analysis/max-safe-acceleration.md
           - text: "Z-Height Analysis"
             href: analysis/z-height-analysis.md
           - text: "Single vs Dual Rod"
@@ -95,7 +93,6 @@ website:
           contents:
             - analysis/README.md
             - analysis/rod-sag-analysis.md
-            - analysis/max-safe-acceleration.md
             - analysis/z-height-analysis.md
             - analysis/single-vs-dual-rod.md
             - analysis/motion-system-comparison.md
