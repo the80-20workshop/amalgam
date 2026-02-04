@@ -68,7 +68,7 @@ Note: Some ADRs are superseded (003→021, 002→019, 006→014). Superseded ADR
 | ADR | Title | Status | Summary |
 |-----|-------|--------|---------|
 | [ADR-017](017-parametric-cad-system.md) | Parametric CAD System | Accepted | build123d over OpenSCAD/FreeCAD/TinkerCAD for BREP and Python ecosystem |
-| [ADR-018](018-documentation-system.qmd) | Documentation & Assembly Guide System | Accepted | Quarto for literate CAD, professional PDFs, conditional content |
+| [ADR-018](018-documentation-system.md) | Documentation & Assembly Guide System | Accepted | Quarto for literate CAD, professional PDFs, conditional content |
 | [ADR-019](019-pitan-extruder.md) | Pitan Extruder | Accepted | Single-drive, scavengeable NEMA17, $4-10 cost (supersedes ADR-002) |
 | [ADR-030](030-multi-format-exports.md) | Multi-Format Export System | **Accepted** | STL, STEP, 3MF, glTF, DXF, SVG from single source; Python builds, everyone else consumes |
 
